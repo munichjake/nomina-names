@@ -1,0 +1,372 @@
+/* ===============================
+   Names Module – Dunkles Theme (Vollständiges Fenster-Styling)
+   Farbschema & States an importer_styles.css angelehnt
+   =============================== */
+
+/* === WINDOW CONTAINER STYLING === */
+/* Gesamtes Anwendungsfenster dunkel machen */
+.window-app.names-module-app {
+  background: var(--color-bg, #1e1e1e) !important;
+  border: 1px solid var(--color-border-dark, #7a7971) !important;
+  border-radius: 10px !important;
+}
+
+.window-app.names-module-app .window-header {
+  background: var(--color-bg, #1e1e1e) !important;
+  border-bottom: 1px solid var(--color-border-dark, #7a7971) !important;
+  color: var(--color-text-primary, #eee) !important;
+}
+
+.window-app.names-module-app .window-title {
+  color: var(--color-text-primary, #eee) !important;
+}
+
+.window-app.names-module-app .window-content {
+  background: var(--color-bg, #1e1e1e) !important;
+  color: var(--color-text-primary, #eee) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.window-app.names-module-app .window-resizable-handle {
+  border-color: var(--color-border-dark, #7a7971) !important;
+}
+
+/* === BASIS & TYPO === */
+.names-module-form {
+  padding: 16px;
+  font-family: var(--font-primary, "Signika", sans-serif);
+  font-size: 14px;
+  color: var(--color-text-primary, #eee);
+  background: var(--color-bg, #1e1e1e);
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* === SEKTIONEN / PANELS === */
+.names-module-section {
+  background: var(--color-bg-option, #2a2a2a);
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.names-module-section h3 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  color: var(--color-text-primary, #eee);
+  border-bottom: 1px solid var(--color-border-dark, #7a7971);
+  padding-bottom: 4px;
+}
+
+/* === FORM GRUPPEN === */
+.names-module-form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.names-module-form-group label {
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: var(--color-text-primary, #eee);
+}
+
+/* === INPUTS & SELECTS === */
+.names-module-form-group select,
+.names-module-form-group input[type="text"],
+.names-module-form-group input[type="number"] {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 22px;
+  background: var(--color-bg-option, #2a2a2a) !important;
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 6px;
+  color: var(--color-text-primary, #eee) !important;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.names-module-form-group input[type="number"]::-webkit-outer-spin-button,
+.names-module-form-group input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+}
+
+/* === SELECT DROPDOWN STYLING === */
+.names-module-form-group select {
+  background: var(--color-bg-option, #2a2a2a) 
+    linear-gradient(45deg, transparent 50%, var(--color-text-primary, #eee) 50%),
+    linear-gradient(135deg, var(--color-text-primary, #eee) 50%, transparent 50%) !important;
+  background-position:
+    calc(100% - 16px) 14px, calc(100% - 10px) 14px;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+/* Select Optionen */
+.names-module-form-group select option {
+  background: var(--color-bg-option, #2a2a2a) !important;
+  color: var(--color-text-primary, #eee) !important;
+  padding: 6px 10px;
+}
+
+.names-module-form-group select option:hover,
+.names-module-form-group select option:focus {
+  background: var(--color-border-highlight, #ff6400) !important;
+  color: #fff !important;
+}
+
+/* Focus States */
+.names-module-form-group select:focus,
+.names-module-form-group input:focus {
+  outline: none;
+  border-color: var(--color-border-highlight, #ff6400);
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.3);
+}
+
+/* === HINWEISTEXT / NOTES === */
+.names-module-format-help {
+  font-size: 12px;
+  color: var(--color-text-dark-secondary, #999);
+  margin-top: 4px;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+/* === CHECKBOX-GRID === */
+.names-module-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.names-module-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg, #333);
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .2s ease;
+}
+
+.names-module-checkbox-item:hover {
+  background: var(--color-bg-btn-hover, #3a3a3a);
+  border-color: var(--color-border-highlight, #ff6400);
+}
+
+.names-module-checkbox-item input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border-dark, #7a7971);
+  border-radius: 3px;
+  background: var(--color-bg, #333);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.names-module-checkbox-item input[type="checkbox"]:checked {
+  background: #ff6400;
+  border-color: #ff6400;
+}
+
+.names-module-checkbox-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -1px;
+  left: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* === BUTTONS === */
+.names-module-generate-btn,
+.names-module-action-btn {
+  background: var(--color-bg-btn, #4b4a44);
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--color-text-primary, #eee);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+}
+
+.names-module-generate-btn:not(:disabled):hover,
+.names-module-action-btn:not(:disabled):hover {
+  background: var(--color-bg-btn-hover, #5a5a5a);
+  border-color: var(--color-border-highlight, #ff6400);
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.names-module-generate-btn:active,
+.names-module-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Primär-CTA: Generieren in Orange */
+.names-module-generate-btn {
+  background: linear-gradient(to bottom, #ff6400, #e55a00);
+  color: #fff;
+  border-color: #ff6400;
+}
+
+.names-module-generate-btn:not(:disabled):hover {
+  background: linear-gradient(to bottom, #ff8533, #ff6400);
+  box-shadow: 0 0 12px rgba(255, 100, 0, 0.4);
+}
+
+.names-module-generate-btn:disabled,
+.names-module-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.names-module-generate-btn:disabled:hover,
+.names-module-action-btn:disabled:hover {
+  background: var(--color-bg-btn, #4b4a44);
+  border-color: var(--color-border-dark, #7a7971);
+  box-shadow: none;
+  transform: none;
+}
+
+/* === ERGEBNISSE === */
+.names-module-result-section {
+  background: var(--color-bg-option, #2a2a2a);
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.names-module-result-display {
+  background: var(--color-bg, #333);
+  border: 1px solid var(--color-border-dark, #7a7971);
+  border-radius: 6px;
+  padding: 10px;
+  min-height: 90px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  color: var(--color-text-primary, #eee);
+}
+
+.names-module-no-result {
+  text-align: center;
+  color: var(--color-text-dark-secondary, #999);
+  font-style: italic;
+}
+
+.names-module-generated-name {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border-dark, #555);
+  color: var(--color-text-primary, #eee);
+  font-weight: 500;
+}
+
+.names-module-generated-name:last-child {
+  border-bottom: none;
+}
+
+.names-module-result-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* === AUTHOR CREDITS === */
+.names-module-author-credits {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-dark, #555);
+  font-size: 12px;
+  color: var(--color-text-dark-secondary, #999);
+}
+
+.names-module-author-entry {
+  margin-bottom: 4px;
+}
+
+.names-module-author-name {
+  font-weight: 600;
+  color: var(--color-text-primary, #eee);
+}
+
+.names-module-author-links a {
+  color: var(--color-border-highlight, #ff6400);
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.names-module-author-links a:hover {
+  color: #ff8533;
+}
+
+/* === CUSTOM SCROLLBAR === */
+.names-module-result-display::-webkit-scrollbar {
+  width: 8px;
+}
+
+.names-module-result-display::-webkit-scrollbar-track {
+  background: var(--color-bg-option, #2a2a2a);
+  border-radius: 4px;
+}
+
+.names-module-result-display::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark, #7a7971);
+  border-radius: 4px;
+}
+
+.names-module-result-display::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-highlight, #ff6400);
+}
+
+/* Token HUD Button Styling */
+.token-hud .control-icon {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  margin: 2px;
+}
+
+.token-hud .control-icon:hover {
+  background: var(--color-border-highlight, #ff6400);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 520px) {
+  .names-module-checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .names-module-form {
+    padding: 12px;
+  }
+  
+  .names-module-section {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}

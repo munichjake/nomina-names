@@ -1,0 +1,22 @@
+{
+  "names": {
+    "title": "Names",
+    "language": "Sprache",
+    "species": "Spezies", 
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "firstname": "Vorname",
+    "surname": "Nachname",
+    "titles": "Titel",
+    "nickname": "Beiname",
+    "generate": "Generieren",
+    "copy": "Kopieren",
+    "clear": "Löschen",
+    "copied": "Name kopiert!",
+    "select-options": "Wähle Optionen und klicke 'Generieren'",
+    "no-names-found": "Keine Namen gefunden für",
+    "select-all": "Bitte wähle Sprache und Spezies aus",
+    "select-components": "Bitte wähle mindestens eine Namenskomponente aus"
+  }
+}

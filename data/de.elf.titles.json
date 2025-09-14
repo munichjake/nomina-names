@@ -1,0 +1,108 @@
+{
+  "authors": [
+    {
+      "name": "munichjake",
+      "email": "munichjake@dnd-session.de",
+      "url": "https://dnd-session.de",
+      "github": "https://github.com/munichjake"
+    }
+  ],
+  "description": "Deutsche Adelstitel der Elfen mit Grammatik-Regeln",
+  "version": "1.0.0",
+  "grammar": {
+    "articles": {
+      "von": {
+        "m": "von",
+        "f": "von",
+        "n": "von"
+      },
+      "zu": {
+        "m": "zum",
+        "f": "zur",
+        "n": "zu"
+      },
+      "aus": {
+        "m": "aus",
+        "f": "aus",
+        "n": "aus"
+      },
+      "in": {
+        "m": "im",
+        "f": "in der",
+        "n": "im"
+      }
+    }
+  },
+  "titles": [
+    {
+      "name": "Blütenfürst",
+      "template": "Blütenfürst {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Blütenfürstin",
+      "template": "Blütenfürstin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Hainherzog",
+      "template": "Hainherzog {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Hainherzogin",
+      "template": "Hainherzogin {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Mondbaron",
+      "template": "Mondbaron {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Mondbaronin",
+      "template": "Mondbaronin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Waldritter",
+      "template": "Waldritter {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Walddame",
+      "template": "Walddame {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Sternfürst",
+      "template": "Sternfürst {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Sternfürstin",
+      "template": "Sternfürstin {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Silbermarkgraf",
+      "template": "Silbermarkgraf {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Silbermarkgräfin",
+      "template": "Silbermarkgräfin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Lichtweber",
+      "template": "Lichtweber {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Lichtweberin",
+      "template": "Lichtweberin {preposition} {settlement}",
+      "preposition": "von"
+    }
+  ]
+}

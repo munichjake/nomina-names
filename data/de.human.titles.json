@@ -1,0 +1,108 @@
+{
+  "authors": [
+    {
+      "name": "munichjake",
+      "email": "munichjake@dnd-session.de",
+      "url": "https://dnd-session.de",
+      "github": "https://github.com/munichjake"
+    }
+  ],
+  "description": "Deutsche Adelstitel mit Grammatik-Regeln",
+  "version": "1.0.0",
+  "grammar": {
+    "articles": {
+      "von": {
+        "m": "von",
+        "f": "von", 
+        "n": "von"
+      },
+      "zu": {
+        "m": "zum",
+        "f": "zur",
+        "n": "zu"
+      },
+      "aus": {
+        "m": "aus",
+        "f": "aus",
+        "n": "aus"
+      },
+      "in": {
+        "m": "im",
+        "f": "in der",
+        "n": "im"
+      }
+    }
+  },
+  "titles": [
+    {
+      "name": "Graf",
+      "template": "Graf {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Gräfin",
+      "template": "Gräfin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Herzog",
+      "template": "Herzog {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Herzogin",
+      "template": "Herzogin {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Baron",
+      "template": "Baron {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Baronin",
+      "template": "Baronin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Freiherr",
+      "template": "Freiherr {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Freifrau",
+      "template": "Freifrau {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Ritter",
+      "template": "Ritter {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Dame",
+      "template": "Dame {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Fürst",
+      "template": "Fürst {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Fürstin", 
+      "template": "Fürstin {preposition} {settlement}",
+      "preposition": "zu"
+    },
+    {
+      "name": "Markgraf",
+      "template": "Markgraf {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Markgräfin",
+      "template": "Markgräfin {preposition} {settlement}",
+      "preposition": "von"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "names": {
+    "title": "Names",
+    "language": "Language",
+    "species": "Species",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "firstname": "First Name",
+    "surname": "Surname", 
+    "titles": "Title",
+    "nickname": "Nickname",
+    "generate": "Generate",
+    "copy": "Copy",
+    "clear": "Clear",
+    "copied": "Name copied!",
+    "select-options": "Select options and click 'Generate'",
+    "no-names-found": "No names found for",
+    "select-all": "Please select language and species",
+    "select-components": "Please select at least one name component"
+  }
+}

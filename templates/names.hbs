@@ -1,0 +1,126 @@
+<form class="names-module-form">
+  <div class="names-module-section">
+    <h3>Grundeinstellungen</h3>
+    
+    <div class="names-module-form-group">
+      <label for="names-language-select">Sprache/Klang:</label>
+      <select id="names-language-select" name="names-language" required>
+        <option value="">-- Sprache wählen --</option>
+        {{#each languages}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="names-module-form-group">
+      <label for="names-species-select">Spezies:</label>
+      <select id="names-species-select" name="names-species" required>
+        <option value="">-- Spezies wählen --</option>
+        {{#each species}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="names-module-form-group">
+      <label for="names-category-select">Kategorie:</label>
+      <select id="names-category-select" name="names-category" required>
+        <option value="">-- Kategorie wählen --</option>
+        <!-- Optionen werden dynamisch von JavaScript gefüllt -->
+      </select>
+      <div class="names-module-format-help">
+        Wähle was generiert werden soll: Namen, Siedlungen, Titel, etc.
+      </div>
+    </div>
+  </div>
+
+  <!-- Namenskomponenten Panel - wird nur für male/female Namen angezeigt -->
+  <div class="names-module-section names-module-components-section" style="display: none;">
+    <h3>Namenskomponenten</h3>
+    
+    <div class="names-module-checkbox-grid">
+      <label class="names-module-checkbox-item">
+        <input type="checkbox" name="names-include-firstname" checked>
+        <span class="names-module-checkmark"></span>
+        Vorname
+      </label>
+      
+      <label class="names-module-checkbox-item">
+        <input type="checkbox" name="names-include-surname">
+        <span class="names-module-checkmark"></span>
+        Nachname
+      </label>
+      
+      <label class="names-module-checkbox-item">
+        <input type="checkbox" name="names-include-title">
+        <span class="names-module-checkmark"></span>
+        Titel (Graf, von...)
+      </label>
+      
+      <label class="names-module-checkbox-item">
+        <input type="checkbox" name="names-include-nickname">
+        <span class="names-module-checkmark"></span>
+        Beiname
+      </label>
+    </div>
+
+    <div class="names-module-format-group" style="display: none;">
+      <div class="names-module-form-group">
+        <label for="names-format-input">Namensformat:</label>
+        <input 
+          type="text" 
+          id="names-format-input" 
+          name="names-format"
+          class="names-module-format-input"
+          value="{firstname} {nickname} {surname}, {title}"
+          placeholder="{firstname} {nickname} {surname}, {title}"
+        >
+        <div class="names-module-format-help">
+          Verfügbare Platzhalter: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
+          Beispiele: "{firstname} {surname}" oder "{title} {firstname} '{nickname}' {surname}"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="names-module-section">
+    <h3>Generierung</h3>
+    
+    <div class="names-module-form-group">
+      <label for="names-count-input">Anzahl Namen:</label>
+      <input 
+        type="number" 
+        id="names-count-input" 
+        name="names-count"
+        min="1" 
+        max="20" 
+        value="1"
+        class="names-module-count-input"
+      >
+      <div class="names-module-format-help">
+        Erstelle 1-20 Namen gleichzeitig
+      </div>
+    </div>
+
+    <div class="names-module-form-group">
+      <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
+        <i class="fas fa-dice"></i> Generieren
+      </button>
+    </div>
+  </div>
+
+  <div class="names-module-result-section">
+    <div id="names-result-display" class="names-module-result-display">
+      <div class="names-module-no-result">Wähle Optionen und klicke "Generieren"</div>
+    </div>
+    
+    <div class="names-module-result-actions">
+      <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
+        <i class="fas fa-copy"></i> Alle kopieren
+      </button>
+      <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
+        <i class="fas fa-trash"></i> Löschen
+      </button>
+    </div>
+  </div>
+</form>
