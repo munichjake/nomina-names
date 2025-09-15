@@ -1,0 +1,108 @@
+{
+  "authors": [
+    {
+      "name": "munichjake",
+      "email": "munichjake@dnd-session.de",
+      "url": "https://dnd-session.de",
+      "github": "https://github.com/munichjake"
+    }
+  ],
+  "description": "English noble titles with grammar rules",
+  "version": "1.0.0",
+  "grammar": {
+    "articles": {
+      "of": {
+        "m": "of",
+        "f": "of",
+        "n": "of"
+      },
+      "from": {
+        "m": "from",
+        "f": "from",
+        "n": "from"
+      },
+      "in": {
+        "m": "in",
+        "f": "in",
+        "n": "in"
+      },
+      "at": {
+        "m": "at",
+        "f": "at",
+        "n": "at"
+      }
+    }
+  },
+  "titles": [
+    {
+      "name": "Count",
+      "template": "Count {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Countess",
+      "template": "Countess {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Duke",
+      "template": "Duke {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Duchess",
+      "template": "Duchess {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Baron",
+      "template": "Baron {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Baroness",
+      "template": "Baroness {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Lord",
+      "template": "Lord {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Lady",
+      "template": "Lady {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Knight",
+      "template": "Knight {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Dame",
+      "template": "Dame {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Prince",
+      "template": "Prince {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Princess",
+      "template": "Princess {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Marquess",
+      "template": "Marquess {preposition} {settlement}",
+      "preposition": "of"
+    },
+    {
+      "name": "Marchioness",
+      "template": "Marchioness {preposition} {settlement}",
+      "preposition": "of"
+    }
+  ]
+}

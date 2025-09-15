@@ -1,0 +1,24 @@
+# --------------------------------------------------------
+# .gitignore
+#
+# Dieses .gitignore stellt sicher, dass PowerShell‑Skripte
+# (Dateien mit der Endung .ps1) nicht vom Git‑Repository erfasst
+# werden. Es ist hilfreich, wenn Sie versehentlich lokal
+# ausgeführte Skripte oder Hilfstools nicht versionieren wollen.
+# Weitere Einträge können Sie bei Bedarf ergänzen.
+
+## PowerShell‑Skripte ausschließen
+*.ps1
+
+# Bei Bedarf können Sie hier weitere Dateien oder Verzeichnisse
+# hinzufügen, die git ignorieren soll. Beispiele:
+#
+# # Protokolldateien
+# *.log
+#
+# # Temporäre Backupdateien
+# *~
+#
+# # Python‑Bytecode
+# __pycache__/
+# *.py[cod]
