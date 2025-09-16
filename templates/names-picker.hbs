@@ -2,51 +2,52 @@
   <div class="names-picker-options">
     <div class="names-picker-controls">
       <div class="names-picker-form-group">
-        <label for="picker-language">Sprache:</label>
+        <label for="picker-language">{{localize "names.language"}}:</label>
         <select id="picker-language" name="language">
           {{#each languages}}
-          <option value="{{this}}" {{#if (eq this ../defaultLanguage)}}selected{{/if}}>{{this}}</option>
+          <option value="{{this.code}}" {{#if (eq this.code ../defaultLanguage)}}selected{{/if}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>
       
       <div class="names-picker-form-group">
-        <label for="picker-species">Spezies:</label>
+        <label for="picker-species">{{localize "names.lbl_species"}}:</label>
         <select id="picker-species" name="species">
           {{#each species}}
-          <option value="{{this}}" {{#if (eq this ../actorSpecies)}}selected{{/if}}>{{this}}</option>
+          <option value="{{this.code}}" {{#if (eq this.code ../actorSpecies)}}selected{{/if}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>
       
       <div class="names-picker-form-group">
-        <label for="picker-category">Typ:</label>
+        <label for="picker-category">{{localize "names.category"}}:</label>
         <select id="picker-category" name="category">
-          <option value="male">Männlich</option>
-          <option value="female">Weiblich</option>
-          <option value="surnames">Nachnamen</option>
-          <option value="settlements">Siedlungen</option>
+          <option value="male">{{localize "names.categories.male"}}</option>
+          <option value="female">{{localize "names.categories.female"}}</option>
+          <option value="nonbinary">{{localize "names.categories.nonbinary"}}</option>
+          <option value="surnames">{{localize "names.categories.surnames"}}</option>
+          <option value="settlements">{{localize "names.categories.settlements"}}</option>
         </select>
       </div>
     </div>
     
     <button type="button" class="names-picker-generate">
       <i class="fas fa-sync-alt"></i>
-      Neue Namen
+      {{localize "names.new-names"}}
     </button>
   </div>
 
   <div class="names-picker-names">
-    <h3>Namen wählen:</h3>
+    <h3>{{localize "names.choose-name"}}</h3>
     <div class="names-picker-list">
       <div class="names-picker-placeholder">
         <i class="fas fa-dice"></i>
-        Klicke "Neue Namen" um 3 Vorschläge zu erhalten
+        {{localize "names.click-for-suggestions"}}
       </div>
     </div>
   </div>
   
   <div class="names-picker-help">
-    Klicke auf einen Namen um ihn für den Charakter zu übernehmen
+    {{localize "names.click-to-adopt"}}
   </div>
 </form>

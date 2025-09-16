@@ -7,12 +7,13 @@ class NamesGeneratorApp extends Application {
     this.availableCategories = new Set();
     this.grammarRules = new Map();
     this.nameCategories = {
-      'firstnames': ['male', 'female'],
+      'firstnames': ['male', 'female', 'nonbinary'],
       'surnames': ['surnames'],
       'titles': ['titles'],
       'nicknames': ['nicknames'],
       'settlements': ['settlements']
     };
+    this.supportedGenders = ['male', 'female', 'nonbinary'];
   }
 
   static get defaultOptions() {
@@ -31,10 +32,59 @@ class NamesGeneratorApp extends Application {
     await this.loadNameData();
 
     return {
-      languages: Array.from(this.availableLanguages).sort(),
-      species: Array.from(this.availableSpecies).sort(),
+      languages: this._getLocalizedLanguages(),
+      species: this._getLocalizedSpecies(),
       categories: Array.from(this.availableCategories).sort()
     };
+  }
+
+  _getLocalizedLanguages() {
+    const languages = [];
+    const languageMap = {
+      'de': 'languages.de',
+      'en': 'languages.en', 
+      'fr': 'languages.fr',
+      'es': 'languages.es',
+      'it': 'languages.it'
+    };
+
+    for (const lang of this.availableLanguages) {
+      const locKey = `names.${languageMap[lang] || `languages.${lang}`}`;
+      languages.push({
+        code: lang,
+        name: game.i18n.localize(locKey) || lang.toUpperCase()
+      });
+    }
+
+    return languages.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  _getLocalizedSpecies() {
+    const species = [];
+    
+    for (const spec of this.availableSpecies) {
+      const locKey = `names.species.${spec}`;
+      species.push({
+        code: spec,
+        name: game.i18n.localize(locKey) || spec.charAt(0).toUpperCase() + spec.slice(1)
+      });
+    }
+
+    return species.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  _getLocalizedCategories() {
+    const categories = [];
+    
+    for (const cat of this.availableCategories) {
+      const locKey = `names.categories.${cat}`;
+      categories.push({
+        code: cat,
+        name: game.i18n.localize(locKey) || cat.charAt(0).toUpperCase() + cat.slice(1)
+      });
+    }
+
+    return categories.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   async loadNameData() {
@@ -105,12 +155,22 @@ class NamesGeneratorApp extends Application {
         console.log(`Names Module: Grammatik-Regeln geladen für ${grammarKey}`);
       }
 
-      const entryCount = data.names?.length || data.settlements?.length || data.titles?.length || 0;
+      const entryCount = this._getDataEntryCount(data, fileInfo.category);
       console.log(`Names Module: ✓ ${fileInfo.filename} (${entryCount} Einträge)`);
 
     } catch (error) {
       console.log(`Names Module: ✗ ${fileInfo.filename} - ${error.message}`);
     }
+  }
+
+  _getDataEntryCount(data, category) {
+    if (category === 'titles' && data.titles) {
+      return (data.titles.male?.length || 0) + (data.titles.female?.length || 0) + (data.titles.nonbinary?.length || 0);
+    }
+    if (category === 'nicknames' && data.names) {
+      return (data.names.male?.length || 0) + (data.names.female?.length || 0) + (data.names.nonbinary?.length || 0);
+    }
+    return data.names?.length || data.settlements?.length || data.titles?.length || 0;
   }
 
   activateListeners(html) {
@@ -135,7 +195,6 @@ class NamesGeneratorApp extends Application {
   }
 
   _onDropdownChange(event) {
-    // Konsistent jQuery verwenden
     const $form = $(event.currentTarget).closest('form');
     this._updateUI($form);
   }
@@ -149,6 +208,7 @@ class NamesGeneratorApp extends Application {
     this._toggleNameComponentsPanel($form, category);
     this._updateGenerateButtonState($form, category);
   }
+
   _updateCategoryOptions(html, language, species) {
     const categorySelect = html.find('#names-category-select');
     const currentValue = categorySelect.val();
@@ -165,9 +225,19 @@ class NamesGeneratorApp extends Application {
         }
       }
 
-      for (const category of Array.from(availableCategories).sort()) {
-        const displayName = this._getCategoryDisplayName(category);
-        categorySelect.append(`<option value="${category}">${displayName}</option>`);
+      const localizedCategories = [];
+      for (const category of availableCategories) {
+        const locKey = `names.categories.${category}`;
+        localizedCategories.push({
+          code: category,
+          name: game.i18n.localize(locKey) || this._getCategoryDisplayName(category)
+        });
+      }
+
+      localizedCategories.sort((a, b) => a.name.localeCompare(b.name));
+
+      for (const category of localizedCategories) {
+        categorySelect.append(`<option value="${category.code}">${category.name}</option>`);
       }
 
       if (currentValue && availableCategories.has(currentValue)) {
@@ -180,6 +250,7 @@ class NamesGeneratorApp extends Application {
     const displayNames = {
       'male': 'Männliche Vornamen',
       'female': 'Weibliche Vornamen',
+      'nonbinary': 'Nicht-binäre Vornamen',
       'surnames': 'Nachnamen',
       'titles': 'Titel/Adelstitel',
       'nicknames': 'Beinamen',
@@ -192,7 +263,7 @@ class NamesGeneratorApp extends Application {
     const panel = html.find('.names-module-components-section');
     const formatGroup = html.find('.names-module-format-group');
 
-    if (category === 'male' || category === 'female') {
+    if (this.supportedGenders.includes(category)) {
       panel.show();
       formatGroup.show();
     } else {
@@ -206,7 +277,7 @@ class NamesGeneratorApp extends Application {
     const language = html.find('#names-language-select').val();
     const species = html.find('#names-species-select').val();
 
-    if (category === 'male' || category === 'female') {
+    if (this.supportedGenders.includes(category)) {
       const checkboxes = html.find('input[type="checkbox"]:checked');
       generateBtn.prop('disabled', !language || !species || !category || checkboxes.length === 0);
     } else {
@@ -227,7 +298,7 @@ class NamesGeneratorApp extends Application {
     const count = parseInt(formData.get('names-count')) || 1;
 
     if (!language || !species || !category) {
-      ui.notifications.warn("Bitte wähle Sprache, Spezies und Kategorie aus.");
+      ui.notifications.warn(game.i18n.localize("names.select-all"));
       return;
     }
 
@@ -237,7 +308,7 @@ class NamesGeneratorApp extends Application {
       for (let i = 0; i < count; i++) {
         let generatedName;
 
-        if (category === 'male' || category === 'female') {
+        if (this.supportedGenders.includes(category)) {
           const selectedComponents = [];
           if (formData.get('names-include-firstname')) selectedComponents.push('firstname');
           if (formData.get('names-include-surname')) selectedComponents.push('surname');
@@ -245,7 +316,7 @@ class NamesGeneratorApp extends Application {
           if (formData.get('names-include-nickname')) selectedComponents.push('nickname');
 
           if (selectedComponents.length === 0) {
-            ui.notifications.warn("Bitte wähle mindestens eine Namenskomponente aus.");
+            ui.notifications.warn(game.i18n.localize("names.select-components"));
             return;
           }
 
@@ -360,10 +431,10 @@ class NamesGeneratorApp extends Application {
         return this._getRandomFromData(language, species, 'surnames');
 
       case 'title':
-        return this._generateTitle(language, species, settlement);
+        return this._generateTitle(language, species, gender, settlement);
 
       case 'nickname':
-        const nickname = this._getRandomFromData(language, species, 'nicknames');
+        const nickname = this._getRandomFromGenderedData(language, species, 'nicknames', gender);
         return nickname ? `"${nickname}"` : null;
 
       default:
@@ -371,12 +442,27 @@ class NamesGeneratorApp extends Application {
     }
   }
 
-  _generateTitle(language, species, settlement) {
+  _generateTitle(language, species, gender, settlement) {
     const titleData = this.nameData.get(`${language}.${species}.titles`);
     if (!titleData?.titles) return null;
 
-    const titles = titleData.titles;
-    const selectedTitle = titles[Math.floor(Math.random() * titles.length)];
+    // Geschlechtsspezifische Titel auswählen
+    const genderTitles = titleData.titles[gender];
+    if (!genderTitles || genderTitles.length === 0) {
+      console.warn(`Names Module: Keine ${gender} Titel gefunden für ${language}.${species}`);
+      // Fallback zu männlichen Titeln für Nicht-binäre wenn keine verfügbar
+      if (gender === 'nonbinary' && titleData.titles.male) {
+        const maleTitles = titleData.titles.male;
+        const selectedTitle = maleTitles[Math.floor(Math.random() * maleTitles.length)];
+        if (settlement && selectedTitle.template) {
+          return this._formatTitleWithSettlement(selectedTitle, settlement, language, species);
+        }
+        return selectedTitle.name || selectedTitle;
+      }
+      return null;
+    }
+
+    const selectedTitle = genderTitles[Math.floor(Math.random() * genderTitles.length)];
 
     if (settlement && selectedTitle.template) {
       return this._formatTitleWithSettlement(selectedTitle, settlement, language, species);
@@ -418,6 +504,29 @@ class NamesGeneratorApp extends Application {
     return data.names[Math.floor(Math.random() * data.names.length)];
   }
 
+  _getRandomFromGenderedData(language, species, category, gender) {
+    const key = `${language}.${species}.${category}`;
+    const data = this.nameData.get(key);
+
+    // Prüfe ob es geschlechtsspezifische Daten gibt
+    if (data?.names && typeof data.names === 'object' && data.names[gender]) {
+      const genderNames = data.names[gender];
+      if (genderNames.length === 0) {
+        console.warn(`Names Module: Keine ${gender} ${category} gefunden für ${key}`);
+        return null;
+      }
+      return genderNames[Math.floor(Math.random() * genderNames.length)];
+    }
+
+    // Fallback für alte Datenstruktur
+    if (data?.names && Array.isArray(data.names)) {
+      return data.names[Math.floor(Math.random() * data.names.length)];
+    }
+
+    console.warn(`Names Module: Keine Daten gefunden für ${key}`);
+    return null;
+  }
+
   _collectAuthorCredits(language, species, components) {
     const authors = new Map();
 
@@ -425,9 +534,11 @@ class NamesGeneratorApp extends Application {
       const key = `${language}.${species}.${component}`;
       const data = this.nameData.get(key);
 
-      if (data?.author) {
-        const authorKey = data.author.name || data.author.email || 'Unbekannt';
-        authors.set(authorKey, data.author);
+      if (data?.authors) {
+        for (const author of data.authors) {
+          const authorKey = author.name || author.email || 'Unbekannt';
+          authors.set(authorKey, author);
+        }
       }
     }
 
@@ -441,7 +552,7 @@ class NamesGeneratorApp extends Application {
 
       const links = [];
       if (author.email) links.push(`<a href="mailto:${author.email}" title="E-Mail">✉️</a>`);
-      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌐</a>`);
+      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌍</a>`);
       if (author.github) links.push(`<a href="${author.github}" target="_blank" title="GitHub">💻</a>`);
       if (author.twitter) links.push(`<a href="${author.twitter}" target="_blank" title="Twitter">🐦</a>`);
 
@@ -467,7 +578,7 @@ class NamesGeneratorApp extends Application {
 
     try {
       await navigator.clipboard.writeText(names);
-      ui.notifications.info("Namen in Zwischenablage kopiert!");
+      ui.notifications.info(game.i18n.localize("names.copied"));
     } catch (error) {
       console.warn("Names Module: Clipboard API nicht verfügbar, verwende Fallback");
       this._fallbackCopyToClipboard(names);
@@ -483,7 +594,7 @@ class NamesGeneratorApp extends Application {
 
     try {
       document.execCommand('copy');
-      ui.notifications.info("Namen in Zwischenablage kopiert!");
+      ui.notifications.info(game.i18n.localize("names.copied"));
     } catch (error) {
       ui.notifications.error("Kopieren fehlgeschlagen");
     }
@@ -497,7 +608,7 @@ class NamesGeneratorApp extends Application {
     const form = event.currentTarget.closest('form');
     const resultDiv = form.querySelector('#names-result-display');
 
-    resultDiv.innerHTML = '<div class="names-module-no-result">Wähle Optionen und klicke "Generieren"</div>';
+    resultDiv.innerHTML = `<div class="names-module-no-result">${game.i18n.localize("names.select-options")}</div>`;
 
     form.querySelector('#names-copy-btn').disabled = true;
     form.querySelector('#names-clear-btn').disabled = true;
@@ -511,12 +622,13 @@ class NamesPickerApp extends Application {
     this.actor = options.actor;
     this.nameGenerator = new NamesGeneratorApp();
     this.currentNames = [];
+    this.supportedGenders = ['male', 'female', 'nonbinary'];
   }
 
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "names-picker",
-      title: "Namen wählen",
+      title: game.i18n.localize("names.title"),
       template: "modules/names/templates/names-picker.hbs",
       width: 400,
       height: 300,
@@ -528,13 +640,12 @@ class NamesPickerApp extends Application {
   async getData() {
     await this.nameGenerator.loadNameData();
 
-    // Versuche Rasse aus Actor zu ermitteln
     const actorSpecies = this._getActorSpecies();
-    const language = 'de'; // Standard
+    const language = 'de';
 
     return {
-      languages: Array.from(this.nameGenerator.availableLanguages).sort(),
-      species: Array.from(this.nameGenerator.availableSpecies).sort(),
+      languages: this.nameGenerator._getLocalizedLanguages(),
+      species: this.nameGenerator._getLocalizedSpecies(),
       currentNames: this.currentNames,
       actorSpecies: actorSpecies,
       defaultLanguage: language
@@ -544,17 +655,13 @@ class NamesPickerApp extends Application {
   _getActorSpecies() {
     if (!this.actor) return null;
 
-    // Versuche verschiedene Wege die Rasse zu ermitteln
     const actorData = this.actor.system || this.actor.data?.data || {};
-
-    // Gängige Felder für Rassen
     const raceFields = ['race', 'species', 'ancestry', 'details.race', 'details.species'];
 
     for (const field of raceFields) {
       const value = foundry.utils.getProperty(actorData, field);
       if (value) {
         const normalized = value.toString().toLowerCase();
-        // Mapping gängiger Rassen
         const raceMapping = {
           'human': 'human',
           'mensch': 'human',
@@ -574,7 +681,7 @@ class NamesPickerApp extends Application {
       }
     }
 
-    return 'human'; // Fallback
+    return 'human';
   }
 
   activateListeners(html) {
@@ -584,12 +691,10 @@ class NamesPickerApp extends Application {
     html.find('.names-picker-name').click(this._onSelectName.bind(this));
     html.find('select').change(this._onOptionChange.bind(this));
 
-    // Initial generieren
     this._onGenerateNames();
   }
 
   _onOptionChange(event) {
-    // Bei Änderung der Optionen neue Namen generieren
     this._onGenerateNames();
   }
 
@@ -600,10 +705,20 @@ class NamesPickerApp extends Application {
     const category = html.find('#picker-category').val() || 'male';
 
     try {
-      // Generiere 3 Namen
       const names = [];
       for (let i = 0; i < 3; i++) {
-        const name = await this.nameGenerator._generateSimpleName(language, species, category);
+        let name;
+        if (this.supportedGenders.includes(category)) {
+          // Für Vornamen generiere vollständige Namen
+          name = await this.nameGenerator._generateFormattedName(
+            language, species, category, 
+            ['firstname', 'surname'], 
+            '{firstname} {surname}'
+          );
+        } else {
+          name = await this.nameGenerator._generateSimpleName(language, species, category);
+        }
+        
         if (name) {
           names.push(name);
         }
@@ -611,7 +726,6 @@ class NamesPickerApp extends Application {
 
       this.currentNames = names;
 
-      // UI aktualisieren
       const namesList = html.find('.names-picker-list');
       namesList.empty();
 
@@ -624,7 +738,6 @@ class NamesPickerApp extends Application {
         `);
       }
 
-      // Event Listener neu setzen
       html.find('.names-picker-name').click(this._onSelectName.bind(this));
 
     } catch (error) {
@@ -638,7 +751,6 @@ class NamesPickerApp extends Application {
     if (!selectedName || !this.actor) return;
 
     try {
-      // Namen in Actor, Token und Prototype Token setzen
       await this._updateActorName(selectedName);
       ui.notifications.info(`Name "${selectedName}" wurde übernommen!`);
       this.close();
@@ -652,16 +764,13 @@ class NamesPickerApp extends Application {
   async _updateActorName(name) {
     if (!this.actor) return;
 
-    // Actor Name aktualisieren
     await this.actor.update({ name: name });
 
-    // Alle Tokens dieses Actors aktualisieren
     const tokens = canvas.tokens.placeables.filter(t => t.actor?.id === this.actor.id);
     for (const token of tokens) {
       await token.document.update({ name: name });
     }
 
-    // Prototype Token aktualisieren
     if (this.actor.prototypeToken) {
       await this.actor.update({
         "prototypeToken.name": name
@@ -674,7 +783,6 @@ class NamesPickerApp extends Application {
 Hooks.once('init', () => {
   console.log("Names Modul init");
 
-  // Settings registrieren
   game.settings.register("names", "showInTokenControls", {
     name: "Button in Token Controls anzeigen",
     hint: "Zeigt den Namen-Generator Button in der linken Toolbar an",
@@ -694,15 +802,6 @@ Hooks.once('init', () => {
   });
 
   game.settings.register("names", "showInTokenContextMenu", {
-    name: "Option im Token Rechtsklick-Menü",
-    hint: "Fügt eine 'Name ändern' Option zum Token Rechtsklick-Menü hinzu",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true
-  });
-
-  game.settings.register("names", "showInTokenContextMenu", {
     name: "Token HUD & Kontextmenü",
     hint: "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu",
     scope: "world",
@@ -711,7 +810,6 @@ Hooks.once('init', () => {
     default: true
   });
 
-  // Token Controls Button
   Hooks.on('getSceneControlButtons', (controls) => {
     if (!game.settings.get("names", "showInTokenControls")) return;
 
@@ -730,12 +828,10 @@ Hooks.once('init', () => {
     });
   });
 
-  // Character Sheet Integration
   Hooks.on('renderActorSheet', (app, html, data) => {
     if (!game.settings.get("names", "showInCharacterSheet")) return;
     if (app.actor.type !== 'character') return;
 
-    // Suche nach dem Namensfeld und füge Button hinzu
     const nameInput = html.find('input[name="name"]');
     if (nameInput.length > 0) {
       const button = $(`
@@ -744,15 +840,12 @@ Hooks.once('init', () => {
         </button>
       `);
 
-      // Button nach dem Namensfeld einfügen
       nameInput.after(button);
 
-      // Event Listener
       button.click(() => {
         new NamesPickerApp({ actor: app.actor }).render(true);
       });
 
-      // CSS für Button hinzufügen falls nötig
       if (!$('#names-picker-button-style').length) {
         $('head').append(`
           <style id="names-picker-button-style">
@@ -777,12 +870,11 @@ Hooks.once('init', () => {
     }
   });
 
-  // Token Context Menu
   Hooks.on('getTokenContextOptions', (html, options) => {
     if (!game.settings.get("names", "showInTokenContextMenu")) return;
 
     options.push({
-      name: "Namen ändern",
+      name: game.i18n.localize("names.title"),
       icon: '<i class="fas fa-user-tag"></i>',
       condition: (token) => {
         return token.actor && game.user.isGM;
@@ -794,29 +886,24 @@ Hooks.once('init', () => {
   });
 });
 
-// Token HUD Integration - füge das in scripts/names.js ein
 Hooks.on('renderTokenHUD', (app, html, data) => {
   if (!game.settings.get("names", "showInTokenContextMenu")) return;
   if (!game.user.isGM) return;
   if (!app.object?.actor) return;
 
-  // Button zum Token HUD hinzufügen
   const button = $(`
-    <div class="control-icon" title="Namen ändern">
+    <div class="control-icon" title="${game.i18n.localize("names.title")}">
       <i class="fas fa-user-tag"></i>
     </div>
   `);
 
-  // Button-Click Handler
   button.click(() => {
     new NamesPickerApp({ actor: app.object.actor }).render(true);
   });
 
-  // Button zum HUD hinzufügen (links oben)
   html.find('.left').append(button);
 });
 
-// Chat-Befehl
 Hooks.on('chatMessage', (html, content, msg) => {
   if (content === '/names' || content === '/namen') {
     new NamesGeneratorApp().render(true);

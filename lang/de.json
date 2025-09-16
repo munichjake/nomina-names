@@ -2,14 +2,17 @@
   "names": {
     "title": "Names",
     "language": "Sprache",
-    "species": "Spezies", 
+    "lbl_species": "Spezies", 
+    "category": "Kategorie",
     "gender": "Geschlecht",
     "male": "Männlich",
     "female": "Weiblich",
+    "nonbinary": "Nicht-binär",
     "firstname": "Vorname",
     "surname": "Nachname",
     "titles": "Titel",
     "nickname": "Beiname",
+    "settlements": "Siedlungen",
     "generate": "Generieren",
     "copy": "Kopieren",
     "clear": "Löschen",
@@ -17,6 +20,44 @@
     "select-options": "Wähle Optionen und klicke 'Generieren'",
     "no-names-found": "Keine Namen gefunden für",
     "select-all": "Bitte wähle Sprache und Spezies aus",
-    "select-components": "Bitte wähle mindestens eine Namenskomponente aus"
+    "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
+    "new-names": "Neue Namen",
+    "choose-name": "Namen wählen:",
+    "max-20": "Erstelle 1-20 Namen gleichzeitig",
+    "lbl_amount": "Anzahl Namen",
+    "placeholders": "Verfügbare Platzhalter",
+    "examples": "Beispiele",
+    "or": "oder",
+    "nameformat": "Namensformat",
+    "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
+    "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
+    "languages": {
+      "de": "Deutsch",
+      "en": "Englisch",
+      "fr": "Französisch",
+      "es": "Spanisch",
+      "it": "Italienisch"
+    },
+    "species": {
+      "human": "Mensch",
+      "elf": "Elf",
+      "dwarf": "Zwerg",
+      "halfling": "Halbling",
+      "orc": "Ork",
+      "goblin": "Goblin",
+      "dragonborn": "Drachengeborener",
+      "tiefling": "Tiefling",
+      "aasimar": "Aasimar",
+      "gnome": "Gnom"
+    },
+    "categories": {
+      "male": "Männliche Vornamen",
+      "female": "Weibliche Vornamen", 
+      "nonbinary": "Nicht-binäre Vornamen",
+      "surnames": "Nachnamen",
+      "titles": "Titel/Adelstitel",
+      "nicknames": "Beinamen",
+      "settlements": "Siedlungen/Orte"
+    }
   }
 }

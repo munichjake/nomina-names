@@ -1,72 +1,72 @@
 <form class="names-module-form">
   <div class="names-module-section">
-    <h3>Grundeinstellungen</h3>
+    <h3>{{localize "names.title"}}</h3>
     
     <div class="names-module-form-group">
-      <label for="names-language-select">Sprache/Klang:</label>
+      <label for="names-language-select">{{localize "names.language"}}:</label>
       <select id="names-language-select" name="names-language" required>
-        <option value="">-- Sprache wählen --</option>
+        <option value="">-- {{localize "names.language"}} {{localize "names.select-all"}} --</option>
         {{#each languages}}
-        <option value="{{this}}">{{this}}</option>
+        <option value="{{this.code}}">{{this.name}}</option>
         {{/each}}
       </select>
     </div>
 
     <div class="names-module-form-group">
-      <label for="names-species-select">Spezies:</label>
+      <label for="names-species-select">{{localize "names.lbl_species"}}:</label>
       <select id="names-species-select" name="names-species" required>
-        <option value="">-- Spezies wählen --</option>
+        <option value="">-- {{localize "names.select-all"}} --</option>
         {{#each species}}
-        <option value="{{this}}">{{this}}</option>
+        <option value="{{this.code}}">{{this.name}}</option>
         {{/each}}
       </select>
     </div>
 
     <div class="names-module-form-group">
-      <label for="names-category-select">Kategorie:</label>
+      <label for="names-category-select">{{localize "names.category"}}:</label>
       <select id="names-category-select" name="names-category" required>
-        <option value="">-- Kategorie wählen --</option>
+        <option value="">-- {{localize "names.select-all"}} --</option>
         <!-- Optionen werden dynamisch von JavaScript gefüllt -->
       </select>
       <div class="names-module-format-help">
-        Wähle was generiert werden soll: Namen, Siedlungen, Titel, etc.
+        {{localize "names.select-options"}}
       </div>
     </div>
   </div>
 
-  <!-- Namenskomponenten Panel - wird nur für male/female Namen angezeigt -->
+  <!-- Namenskomponenten Panel - wird nur für male/female/nonbinary Namen angezeigt -->
   <div class="names-module-section names-module-components-section" style="display: none;">
-    <h3>Namenskomponenten</h3>
+    <h3>{{localize "names.firstname"}}</h3>
     
     <div class="names-module-checkbox-grid">
       <label class="names-module-checkbox-item">
         <input type="checkbox" name="names-include-firstname" checked>
         <span class="names-module-checkmark"></span>
-        Vorname
+        {{localize "names.firstname"}}
       </label>
       
       <label class="names-module-checkbox-item">
         <input type="checkbox" name="names-include-surname">
         <span class="names-module-checkmark"></span>
-        Nachname
+        {{localize "names.surname"}}
       </label>
       
       <label class="names-module-checkbox-item">
         <input type="checkbox" name="names-include-title">
         <span class="names-module-checkmark"></span>
-        Titel (Graf, von...)
+        {{localize "names.titles"}}
       </label>
       
       <label class="names-module-checkbox-item">
         <input type="checkbox" name="names-include-nickname">
         <span class="names-module-checkmark"></span>
-        Beiname
+        {{localize "names.nickname"}}
       </label>
     </div>
 
     <div class="names-module-format-group" style="display: none;">
       <div class="names-module-form-group">
-        <label for="names-format-input">Namensformat:</label>
+        <label for="names-format-input">{{localize "nameformat"}}:</label>
         <input 
           type="text" 
           id="names-format-input" 
@@ -76,18 +76,18 @@
           placeholder="{firstname} {nickname} {surname}, {title}"
         >
         <div class="names-module-format-help">
-          Verfügbare Platzhalter: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
-          Beispiele: "{firstname} {surname}" oder "{title} {firstname} '{nickname}' {surname}"
+          {{localize "placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
+          {{localize "examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
         </div>
       </div>
     </div>
   </div>
 
   <div class="names-module-section">
-    <h3>Generierung</h3>
+    <h3>{{localize "names.generate"}}</h3>
     
     <div class="names-module-form-group">
-      <label for="names-count-input">Anzahl Namen:</label>
+      <label for="names-count-input">{{localize "names.lbl_amount"}}:</label>
       <input 
         type="number" 
         id="names-count-input" 
@@ -98,28 +98,28 @@
         class="names-module-count-input"
       >
       <div class="names-module-format-help">
-        Erstelle 1-20 Namen gleichzeitig
+        {{localize "names.max-20"}} 
       </div>
     </div>
 
     <div class="names-module-form-group">
       <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
-        <i class="fas fa-dice"></i> Generieren
+        <i class="fas fa-dice"></i> {{localize "names.generate"}}
       </button>
     </div>
   </div>
 
   <div class="names-module-result-section">
     <div id="names-result-display" class="names-module-result-display">
-      <div class="names-module-no-result">Wähle Optionen und klicke "Generieren"</div>
+      <div class="names-module-no-result">{{localize "names.select-options"}}</div>
     </div>
     
     <div class="names-module-result-actions">
       <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
-        <i class="fas fa-copy"></i> Alle kopieren
+        <i class="fas fa-copy"></i> {{localize "names.copy"}}
       </button>
       <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
-        <i class="fas fa-trash"></i> Löschen
+        <i class="fas fa-trash"></i> {{localize "names.clear"}}
       </button>
     </div>
   </div>

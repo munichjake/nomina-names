@@ -10,6 +10,9 @@
 ## PowerShell‑Skripte ausschließen
 *.ps1
 
+## Backupdateien ausschließen
+*.bck
+
 # Bei Bedarf können Sie hier weitere Dateien oder Verzeichnisse
 # hinzufügen, die git ignorieren soll. Beispiele:
 #
