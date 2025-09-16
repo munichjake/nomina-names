@@ -35,74 +35,94 @@
   },
   "titles": [
     {
-      "name": "Graf",
-      "template": "Graf {preposition} {settlement}",
+      "name": "König",
+      "template": "König {preposition} {settlement}",
       "preposition": "von"
     },
     {
-      "name": "Gräfin",
-      "template": "Gräfin {preposition} {settlement}",
+      "name": "Königin",
+      "template": "Königin {preposition} {settlement}",
       "preposition": "von"
     },
     {
-      "name": "Herzog",
-      "template": "Herzog {preposition} {settlement}",
+      "name": "Hochkönig",
+      "template": "Hochkönig {preposition} {settlement}",
+      "preposition": "aller Hallen"
+    },
+    {
+      "name": "Erzfürst",
+      "template": "Erzfürst {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Erzfürstin",
+      "template": "Erzfürstin {preposition} {settlement}",
+      "preposition": "von"
+    },
+    {
+      "name": "Bergbaron",
+      "template": "Bergbaron {preposition} {settlement}",
       "preposition": "zu"
     },
     {
-      "name": "Herzogin",
-      "template": "Herzogin {preposition} {settlement}",
+      "name": "Bergbaronin",
+      "template": "Bergbaronin {preposition} {settlement}",
       "preposition": "zu"
     },
     {
-      "name": "Baron",
-      "template": "Baron {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Tiefenherr",
+      "template": "Tiefenherr {preposition} {settlement}",
+      "preposition": "des"
     },
     {
-      "name": "Baronin",
-      "template": "Baronin {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Tiefenherrin",
+      "template": "Tiefenherrin {preposition} {settlement}",
+      "preposition": "der"
     },
     {
-      "name": "Freiherr",
-      "template": "Freiherr {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Felsengraf",
+      "template": "Felsengraf {preposition} {settlement}",
+      "preposition": "vom"
     },
     {
-      "name": "Freifrau",
-      "template": "Freifrau {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Felsengräfin",
+      "template": "Felsengräfin {preposition} {settlement}",
+      "preposition": "vom"
     },
     {
-      "name": "Ritter",
-      "template": "Ritter {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Runenmeister",
+      "template": "Runenmeister {preposition} {settlement}",
+      "preposition": "der Runen von"
     },
     {
-      "name": "Dame",
-      "template": "Dame {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Runenmeisterin",
+      "template": "Runenmeisterin {preposition} {settlement}",
+      "preposition": "der Runen von"
     },
     {
-      "name": "Fürst",
-      "template": "Fürst {preposition} {settlement}",
-      "preposition": "zu"
+      "name": "Schildwächter",
+      "template": "Schildwächter {preposition} {settlement}",
+      "preposition": "des"
     },
     {
-      "name": "Fürstin",
-      "template": "Fürstin {preposition} {settlement}",
-      "preposition": "zu"
+      "name": "Ältester",
+      "template": "Ältester {preposition} {settlement}",
+      "preposition": "des Hauses"
     },
     {
-      "name": "Markgraf",
-      "template": "Markgraf {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Älteste",
+      "template": "Älteste {preposition} {settlement}",
+      "preposition": "des Hauses"
     },
     {
-      "name": "Markgräfin",
-      "template": "Markgräfin {preposition} {settlement}",
-      "preposition": "von"
+      "name": "Gildenherr",
+      "template": "Gildenherr {preposition} {settlement}",
+      "preposition": "der Schmiede von"
+    },
+    {
+      "name": "Gildenherrin",
+      "template": "Gildenherrin {preposition} {settlement}",
+      "preposition": "der Schmiede von"
     }
   ]
 }

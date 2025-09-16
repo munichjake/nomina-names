@@ -1,8 +1,9 @@
 # Pfad zur JSON-Datei
-$jsonPath = "de.human.female.json"
+$jsonPath = "./de.aasimar.female.json"
 
 # JSON laden
-$json = Get-Content $jsonPath -Raw | ConvertFrom-Json
+#$json = Get-Content $jsonPath -Raw | ConvertFrom-Json
+$json = ConvertFrom-Json (Get-Content $jsonPath -Raw)
 
 # Namen extrahieren
 $names = $json.names

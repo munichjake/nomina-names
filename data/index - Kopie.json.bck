@@ -1,0 +1,190 @@
+{
+  "version": "1.0.0",
+  "description": "Index aller verfügbaren Namensdateien",
+  "files": [
+    {
+      "filename": "de.human.male.json",
+      "language": "de",
+      "species": "human",
+      "category": "male",
+      "description": "Deutsche männliche Menschenvornamen"
+    },
+    {
+      "filename": "de.human.female.json",
+      "language": "de",
+      "species": "human",
+      "category": "female",
+      "description": "Deutsche weibliche Menschenvornamen"
+    },
+    {
+      "filename": "de.human.surnames.json",
+      "language": "de",
+      "species": "human",
+      "category": "surnames",
+      "description": "Deutsche Nachnamen"
+    },
+    {
+      "filename": "de.human.titles.json",
+      "language": "de",
+      "species": "human",
+      "category": "titles",
+      "description": "Deutsche Adelstitel"
+    },
+    {
+      "filename": "de.human.nicknames.json",
+      "language": "de",
+      "species": "human",
+      "category": "nicknames",
+      "description": "Deutsche Beinamen"
+    },
+    {
+      "filename": "de.human.settlements.json",
+      "language": "de",
+      "species": "human",
+      "category": "settlements",
+      "description": "Deutsche Siedlungsnamen"
+    },
+    {
+      "filename": "de.elf.male.json",
+      "language": "de",
+      "species": "elf",
+      "category": "male",
+      "description": "Deutsche Elfenvornamen (männlich)"
+    },
+    {
+      "filename": "en.human.male.json",
+      "language": "en",
+      "species": "human",
+      "category": "male",
+      "description": "English male human first names",
+      "enabled": false
+    },
+    {
+      "filename": "de.dwarf.male.json",
+      "language": "de",
+      "species": "dwarf",
+      "category": "male",
+      "description": "Deutsche Zwergenvornamen (männlich)",
+      "enabled": false
+    },
+    {
+      "filename": "de.elf.female.json",
+      "language": "de",
+      "species": "elf",
+      "category": "female",
+      "description": "Deutsche Elfenvornamen (weiblich)"
+    },
+    {
+      "filename": "de.elf.surnames.json",
+      "language": "de",
+      "species": "elf",
+      "category": "surnames",
+      "description": "Deutsche Elfen-Nachnamen"
+    },
+    {
+      "filename": "de.elf.nicknames.json",
+      "language": "de",
+      "species": "elf",
+      "category": "nicknames",
+      "description": "Deutsche Elfen-Beinamen"
+    },
+    {
+      "filename": "de.elf.settlements.json",
+      "language": "de",
+      "species": "elf",
+      "category": "settlements",
+      "description": "Deutsche Elfen-Siedlungsnamen"
+    },
+    {
+      "filename": "de.elf.titles.json",
+      "language": "de",
+      "species": "elf",
+      "category": "titles",
+      "description": "Deutsche Elfen-Adelstitel"
+    },
+    {
+      "filename": "de.halfling.male.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "male",
+      "description": "Deutsche Halblingvornamen (männlich)"
+    },
+    {
+      "filename": "de.halfling.female.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "female",
+      "description": "Deutsche Halblingvornamen (weiblich)"
+    },
+    {
+      "filename": "de.halfling.surnames.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "surnames",
+      "description": "Deutsche Halbling-Nachnamen"
+    },
+    {
+      "filename": "de.halfling.nicknames.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "nicknames",
+      "description": "Deutsche Halbling-Beinamen"
+    },
+    {
+      "filename": "de.halfling.settlements.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "settlements",
+      "description": "Deutsche Halbling-Siedlungsnamen"
+    },
+    {
+      "filename": "de.halfling.titles.json",
+      "language": "de",
+      "species": "halfling",
+      "category": "titles",
+      "description": "Deutsche Halbling-Adelstitel"
+    },
+    {
+      "filename": "de.gnome.male.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "male",
+      "description": "Deutsche Gnomevornamen (männlich)"
+    },
+    {
+      "filename": "de.gnome.female.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "female",
+      "description": "Deutsche Gnomevornamen (weiblich)"
+    },
+    {
+      "filename": "de.gnome.surnames.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "surnames",
+      "description": "Deutsche Gnome-Nachnamen"
+    },
+    {
+      "filename": "de.gnome.nicknames.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "nicknames",
+      "description": "Deutsche Gnome-Beinamen"
+    },
+    {
+      "filename": "de.gnome.settlements.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "settlements",
+      "description": "Deutsche Gnome-Siedlungsnamen"
+    },
+    {
+      "filename": "de.gnome.titles.json",
+      "language": "de",
+      "species": "gnome",
+      "category": "titles",
+      "description": "Deutsche Gnome-Adelstitel"
+    }
+  ]
+}
