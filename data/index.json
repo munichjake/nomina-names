@@ -269,6 +269,13 @@
                       "description":  "menschlich und Vornamen (mÃ¤nnlich)"
                   },
                   {
+                      "filename":  "de.human.nonbinary.json",
+                      "language":  "de",
+                      "species":  "human",
+                      "category":  "nonbinary",
+                      "description":  "menschliche Vornamen (non-binär)"
+                  },
+                  {
                       "filename":  "de.human.nicknames.json",
                       "language":  "de",
                       "species":  "human",
