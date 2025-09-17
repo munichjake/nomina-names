@@ -6,6 +6,8 @@ class NamesGeneratorApp extends Application {
     this.availableSpecies = new Set();
     this.availableCategories = new Set();
     this.grammarRules = new Map();
+    this.languageConfig = null;
+    this.speciesConfig = null;
     this.nameCategories = {
       'firstnames': ['male', 'female', 'nonbinary'],
       'surnames': ['surnames'],
@@ -19,16 +21,17 @@ class NamesGeneratorApp extends Application {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "names-generator",
-      title: "Names",
+      title: game.i18n.localize("names.title"),
       template: "modules/names/templates/names.hbs",
       width: 450,
-      height: 600,
+      height: 690,
       resizable: true,
       classes: ["names-module-app"]
     });
   }
 
   async getData() {
+    await this.loadConfigs();
     await this.loadNameData();
 
     return {
@@ -38,22 +41,50 @@ class NamesGeneratorApp extends Application {
     };
   }
 
+  async loadConfigs() {
+    try {
+      const langResponse = await fetch("modules/names/lang/_config.json");
+      if (langResponse.ok) {
+        this.languageConfig = await langResponse.json();
+        this._log('console.grammar-loaded', { key: 'language config' });
+      }
+    } catch (error) {
+      this._log('console.index-error', null, error);
+    }
+
+    try {
+      const speciesResponse = await fetch("modules/names/lang/_species-mapping.json");
+      if (speciesResponse.ok) {
+        this.speciesConfig = await speciesResponse.json();
+        this._log('console.grammar-loaded', { key: 'species config' });
+      }
+    } catch (error) {
+      this._log('console.index-error', null, error);
+    }
+  }
+
   _getLocalizedLanguages() {
     const languages = [];
-    const languageMap = {
-      'de': 'languages.de',
-      'en': 'languages.en', 
-      'fr': 'languages.fr',
-      'es': 'languages.es',
-      'it': 'languages.it'
-    };
-
-    for (const lang of this.availableLanguages) {
-      const locKey = `names.${languageMap[lang] || `languages.${lang}`}`;
-      languages.push({
-        code: lang,
-        name: game.i18n.localize(locKey) || lang.toUpperCase()
-      });
+    
+    if (this.languageConfig) {
+      // Verwende Konfigurationsdatei
+      for (const [code, config] of Object.entries(this.languageConfig.supportedLanguages)) {
+        if (config.enabled && this.availableLanguages.has(code)) {
+          languages.push({
+            code: code,
+            name: game.i18n.localize(config.name) || config.nativeName || code.toUpperCase()
+          });
+        }
+      }
+    } else {
+      // Fallback zu alter Methode
+      for (const lang of this.availableLanguages) {
+        const locKey = `names.languages.${lang}`;
+        languages.push({
+          code: lang,
+          name: game.i18n.localize(locKey) || lang.toUpperCase()
+        });
+      }
     }
 
     return languages.sort((a, b) => a.name.localeCompare(b.name));
@@ -73,33 +104,19 @@ class NamesGeneratorApp extends Application {
     return species.sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  _getLocalizedCategories() {
-    const categories = [];
-    
-    for (const cat of this.availableCategories) {
-      const locKey = `names.categories.${cat}`;
-      categories.push({
-        code: cat,
-        name: game.i18n.localize(locKey) || cat.charAt(0).toUpperCase() + cat.slice(1)
-      });
-    }
-
-    return categories.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
   async loadNameData() {
-    console.log("Names Module: Lade Datenindex...");
+    this._log('console.loading-index');
 
     try {
       const indexResponse = await fetch("modules/names/data/index.json");
       if (!indexResponse.ok) {
-        console.warn("Names Module: index.json nicht gefunden, verwende Fallback");
+        this._log('console.index-not-found');
         await this.loadFallbackData();
         return;
       }
 
       const indexData = await indexResponse.json();
-      console.log(`Names Module: Index geladen, ${indexData.files.length} Dateien gefunden`);
+      this._log('console.index-loaded', { count: indexData.files.length });
 
       const loadPromises = indexData.files
         .filter(file => file.enabled !== false)
@@ -108,13 +125,13 @@ class NamesGeneratorApp extends Application {
       await Promise.all(loadPromises);
 
     } catch (error) {
-      console.warn("Names Module: Fehler beim Laden der Index-Datei:", error);
+      this._log('console.index-error', null, error);
       await this.loadFallbackData();
     }
 
-    console.log("Names Module: Verfügbare Sprachen:", Array.from(this.availableLanguages));
-    console.log("Names Module: Verfügbare Spezies:", Array.from(this.availableSpecies));
-    console.log("Names Module: Verfügbare Kategorien:", Array.from(this.availableCategories));
+    this._log('console.available-languages', null, Array.from(this.availableLanguages));
+    this._log('console.available-species', null, Array.from(this.availableSpecies));
+    this._log('console.available-categories', null, Array.from(this.availableCategories));
   }
 
   async loadFallbackData() {
@@ -136,7 +153,10 @@ class NamesGeneratorApp extends Application {
     try {
       const response = await fetch(`modules/names/data/${fileInfo.filename}`);
       if (!response.ok) {
-        console.log(`Names Module: ${fileInfo.filename} nicht verfügbar (${response.status})`);
+        this._log('console.file-unavailable', { 
+          filename: fileInfo.filename, 
+          status: response.status 
+        });
         return;
       }
 
@@ -152,14 +172,20 @@ class NamesGeneratorApp extends Application {
       if (data.grammar && fileInfo.category === 'titles') {
         const grammarKey = `${fileInfo.language}.${fileInfo.species}`;
         this.grammarRules.set(grammarKey, data.grammar);
-        console.log(`Names Module: Grammatik-Regeln geladen für ${grammarKey}`);
+        this._log('console.grammar-loaded', { key: grammarKey });
       }
 
       const entryCount = this._getDataEntryCount(data, fileInfo.category);
-      console.log(`Names Module: ✓ ${fileInfo.filename} (${entryCount} Einträge)`);
+      this._log('console.file-loaded', { 
+        filename: fileInfo.filename, 
+        count: entryCount 
+      });
 
     } catch (error) {
-      console.log(`Names Module: ✗ ${fileInfo.filename} - ${error.message}`);
+      this._log('console.file-failed', { 
+        filename: fileInfo.filename, 
+        error: error.message 
+      });
     }
   }
 
@@ -230,7 +256,7 @@ class NamesGeneratorApp extends Application {
         const locKey = `names.categories.${category}`;
         localizedCategories.push({
           code: category,
-          name: game.i18n.localize(locKey) || this._getCategoryDisplayName(category)
+          name: game.i18n.localize(locKey) || category
         });
       }
 
@@ -244,19 +270,6 @@ class NamesGeneratorApp extends Application {
         categorySelect.val(currentValue);
       }
     }
-  }
-
-  _getCategoryDisplayName(category) {
-    const displayNames = {
-      'male': 'Männliche Vornamen',
-      'female': 'Weibliche Vornamen',
-      'nonbinary': 'Nicht-binäre Vornamen',
-      'surnames': 'Nachnamen',
-      'titles': 'Titel/Adelstitel',
-      'nicknames': 'Beinamen',
-      'settlements': 'Siedlungen/Orte'
-    };
-    return displayNames[category] || category;
   }
 
   _toggleNameComponentsPanel(html, category) {
@@ -331,7 +344,7 @@ class NamesGeneratorApp extends Application {
       }
 
       if (results.length === 0) {
-        throw new Error("Keine Namen konnten generiert werden");
+        throw new Error(game.i18n.localize("names.no-names-generated"));
       }
 
       const resultDiv = form.querySelector('#names-result-display');
@@ -347,7 +360,8 @@ class NamesGeneratorApp extends Application {
       form.querySelector('#names-clear-btn').disabled = false;
 
     } catch (error) {
-      ui.notifications.error(`Fehler beim Generieren: ${error.message}`);
+      const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
+      ui.notifications.error(errorMsg);
     }
   }
 
@@ -384,12 +398,12 @@ class NamesGeneratorApp extends Application {
           nameComponents[component] = part;
         }
       } catch (error) {
-        console.warn(`Names Module: Konnte ${component} nicht generieren:`, error);
+        this._log('console.component-generation-failed', { component }, error);
       }
     }
 
     if (Object.keys(nameComponents).length === 0) {
-      throw new Error("Keine Namenskomponenten konnten generiert werden");
+      throw new Error(game.i18n.localize("names.no-names-generated"));
     }
 
     return this._formatName(nameFormat, nameComponents);
@@ -446,11 +460,14 @@ class NamesGeneratorApp extends Application {
     const titleData = this.nameData.get(`${language}.${species}.titles`);
     if (!titleData?.titles) return null;
 
-    // Geschlechtsspezifische Titel auswählen
     const genderTitles = titleData.titles[gender];
     if (!genderTitles || genderTitles.length === 0) {
-      console.warn(`Names Module: Keine ${gender} Titel gefunden für ${language}.${species}`);
-      // Fallback zu männlichen Titeln für Nicht-binäre wenn keine verfügbar
+      this._log('console.no-titles-found', { 
+        gender, 
+        language, 
+        species 
+      });
+      
       if (gender === 'nonbinary' && titleData.titles.male) {
         const maleTitles = titleData.titles.male;
         const selectedTitle = maleTitles[Math.floor(Math.random() * maleTitles.length)];
@@ -497,7 +514,7 @@ class NamesGeneratorApp extends Application {
     const data = this.nameData.get(key);
 
     if (!data?.names || data.names.length === 0) {
-      console.warn(`Names Module: Keine Daten gefunden für ${key}`);
+      this._log('console.no-data-found', { key });
       return null;
     }
 
@@ -508,22 +525,24 @@ class NamesGeneratorApp extends Application {
     const key = `${language}.${species}.${category}`;
     const data = this.nameData.get(key);
 
-    // Prüfe ob es geschlechtsspezifische Daten gibt
     if (data?.names && typeof data.names === 'object' && data.names[gender]) {
       const genderNames = data.names[gender];
       if (genderNames.length === 0) {
-        console.warn(`Names Module: Keine ${gender} ${category} gefunden für ${key}`);
+        this._log('console.no-gender-data', { 
+          gender, 
+          category, 
+          key 
+        });
         return null;
       }
       return genderNames[Math.floor(Math.random() * genderNames.length)];
     }
 
-    // Fallback für alte Datenstruktur
     if (data?.names && Array.isArray(data.names)) {
       return data.names[Math.floor(Math.random() * data.names.length)];
     }
 
-    console.warn(`Names Module: Keine Daten gefunden für ${key}`);
+    this._log('console.no-data-found', { key });
     return null;
   }
 
@@ -552,7 +571,7 @@ class NamesGeneratorApp extends Application {
 
       const links = [];
       if (author.email) links.push(`<a href="mailto:${author.email}" title="E-Mail">✉️</a>`);
-      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌍</a>`);
+      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌐</a>`);
       if (author.github) links.push(`<a href="${author.github}" target="_blank" title="GitHub">💻</a>`);
       if (author.twitter) links.push(`<a href="${author.twitter}" target="_blank" title="Twitter">🐦</a>`);
 
@@ -580,7 +599,7 @@ class NamesGeneratorApp extends Application {
       await navigator.clipboard.writeText(names);
       ui.notifications.info(game.i18n.localize("names.copied"));
     } catch (error) {
-      console.warn("Names Module: Clipboard API nicht verfügbar, verwende Fallback");
+      this._log('console.clipboard-fallback');
       this._fallbackCopyToClipboard(names);
     }
   }
@@ -596,7 +615,7 @@ class NamesGeneratorApp extends Application {
       document.execCommand('copy');
       ui.notifications.info(game.i18n.localize("names.copied"));
     } catch (error) {
-      ui.notifications.error("Kopieren fehlgeschlagen");
+      ui.notifications.error(game.i18n.localize("names.copy-error"));
     }
 
     document.body.removeChild(textArea);
@@ -612,6 +631,28 @@ class NamesGeneratorApp extends Application {
 
     form.querySelector('#names-copy-btn').disabled = true;
     form.querySelector('#names-clear-btn').disabled = true;
+  }
+
+  // Logging helper mit i18n Support
+  _log(messageKey, params = null, error = null) {
+    let message;
+    
+    try {
+      message = params ? 
+        game.i18n.format(`names.${messageKey}`, params) : 
+        game.i18n.localize(`names.${messageKey}`);
+    } catch (e) {
+      // Fallback falls i18n Key nicht existiert
+      message = messageKey;
+    }
+
+    const prefix = "Names Module: ";
+    
+    if (error) {
+      console.warn(prefix + message, error);
+    } else {
+      console.log(prefix + message);
+    }
   }
 }
 
@@ -631,24 +672,25 @@ class NamesPickerApp extends Application {
       title: game.i18n.localize("names.title"),
       template: "modules/names/templates/names-picker.hbs",
       width: 400,
-      height: 300,
+      height: 350,
       resizable: false,
       classes: ["names-picker-app"]
     });
   }
 
   async getData() {
+    await this.nameGenerator.loadConfigs();
     await this.nameGenerator.loadNameData();
 
     const actorSpecies = this._getActorSpecies();
-    const language = 'de';
+    const defaultLanguage = this.nameGenerator.languageConfig?.defaultLanguage || 'de';
 
     return {
       languages: this.nameGenerator._getLocalizedLanguages(),
       species: this.nameGenerator._getLocalizedSpecies(),
       currentNames: this.currentNames,
       actorSpecies: actorSpecies,
-      defaultLanguage: language
+      defaultLanguage: defaultLanguage
     };
   }
 
@@ -656,32 +698,57 @@ class NamesPickerApp extends Application {
     if (!this.actor) return null;
 
     const actorData = this.actor.system || this.actor.data?.data || {};
-    const raceFields = ['race', 'species', 'ancestry', 'details.race', 'details.species'];
-
-    for (const field of raceFields) {
-      const value = foundry.utils.getProperty(actorData, field);
-      if (value) {
-        const normalized = value.toString().toLowerCase();
-        const raceMapping = {
-          'human': 'human',
-          'mensch': 'human',
-          'elf': 'elf',
-          'elfe': 'elf',
-          'dwarf': 'dwarf',
-          'zwerg': 'dwarf',
-          'halfling': 'halfling',
-          'halbling': 'halfling'
-        };
-
-        for (const [key, mapped] of Object.entries(raceMapping)) {
-          if (normalized.includes(key)) {
-            return mapped;
+    
+    if (this.nameGenerator.speciesConfig) {
+      // Verwende Species-Config
+      const searchFields = this.nameGenerator.speciesConfig.searchFields;
+      
+      for (const field of searchFields) {
+        const value = foundry.utils.getProperty(actorData, field);
+        if (value) {
+          const normalized = value.toString().toLowerCase();
+          
+          // Durchsuche alle Species-Mappings
+          for (const [species, config] of Object.entries(this.nameGenerator.speciesConfig.speciesMappings)) {
+            for (const keyword of config.keywords) {
+              if (normalized.includes(keyword.toLowerCase())) {
+                return species;
+              }
+            }
           }
         }
       }
-    }
+      
+      return this.nameGenerator.speciesConfig.defaultSpecies;
+    } else {
+      // Fallback zu alter Methode
+      const raceFields = ['race', 'species', 'ancestry', 'details.race', 'details.species'];
+      
+      for (const field of raceFields) {
+        const value = foundry.utils.getProperty(actorData, field);
+        if (value) {
+          const normalized = value.toString().toLowerCase();
+          const raceMapping = {
+            'human': 'human',
+            'mensch': 'human',
+            'elf': 'elf',
+            'elfe': 'elf',
+            'dwarf': 'dwarf',
+            'zwerg': 'dwarf',
+            'halfling': 'halfling',
+            'halbling': 'halfling'
+          };
 
-    return 'human';
+          for (const [key, mapped] of Object.entries(raceMapping)) {
+            if (normalized.includes(key)) {
+              return mapped;
+            }
+          }
+        }
+      }
+      
+      return 'human';
+    }
   }
 
   activateListeners(html) {
@@ -700,7 +767,8 @@ class NamesPickerApp extends Application {
 
   async _onGenerateNames() {
     const html = this.element;
-    const language = html.find('#picker-language').val() || 'de';
+    const language = html.find('#picker-language').val() || 
+                    this.nameGenerator.languageConfig?.defaultLanguage || 'de';
     const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
     const category = html.find('#picker-category').val() || 'male';
 
@@ -709,7 +777,6 @@ class NamesPickerApp extends Application {
       for (let i = 0; i < 3; i++) {
         let name;
         if (this.supportedGenders.includes(category)) {
-          // Für Vornamen generiere vollständige Namen
           name = await this.nameGenerator._generateFormattedName(
             language, species, category, 
             ['firstname', 'surname'], 
@@ -741,8 +808,8 @@ class NamesPickerApp extends Application {
       html.find('.names-picker-name').click(this._onSelectName.bind(this));
 
     } catch (error) {
-      console.error("Names Module: Fehler beim Generieren:", error);
-      ui.notifications.error("Fehler beim Generieren der Namen");
+      this.nameGenerator._log('console.generation-error', null, error);
+      ui.notifications.error(game.i18n.localize("names.generation-error"));
     }
   }
 
@@ -752,12 +819,13 @@ class NamesPickerApp extends Application {
 
     try {
       await this._updateActorName(selectedName);
-      ui.notifications.info(`Name "${selectedName}" wurde übernommen!`);
+      const message = game.i18n.format("names.name-adopted", { name: selectedName });
+      ui.notifications.info(message);
       this.close();
 
     } catch (error) {
-      console.error("Names Module: Fehler beim Setzen des Namens:", error);
-      ui.notifications.error("Fehler beim Übernehmen des Namens");
+      this.nameGenerator._log('console.name-setting-error', null, error);
+      ui.notifications.error(game.i18n.localize("names.name-error"));
     }
   }
 
@@ -779,13 +847,161 @@ class NamesPickerApp extends Application {
   }
 }
 
+// ===== UTILITY FUNCTIONS FOR ROLE PERMISSIONS =====
+
+function hasNamesGeneratorPermission() {
+  const allowedRoles = game.settings.get("names", "allowedUserRoles");
+  const userRole = game.user.role;
+  
+  return allowedRoles.includes(userRole);
+}
+
+class NamesRoleConfig extends FormApplication {
+  static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      id: "names-role-config",
+      title: game.i18n.localize("names.roleConfig.title"),
+      template: "modules/names/templates/role-config.hbs",
+      width: 620,
+      height: 550,
+      closeOnSubmit: true,
+      resizable: false
+    });
+  }
+
+  getData() {
+    const currentRoles = game.settings.get("names", "allowedUserRoles");
+    const allRoles = [
+      { level: CONST.USER_ROLES.PLAYER, name: "PLAYER", key: "PLAYER" },
+      { level: CONST.USER_ROLES.TRUSTED, name: "TRUSTED", key: "TRUSTED" },
+      { level: CONST.USER_ROLES.ASSISTANT, name: "ASSISTANT", key: "ASSISTANT" },
+      { level: CONST.USER_ROLES.GAMEMASTER, name: "GAMEMASTER", key: "GAMEMASTER" }
+    ];
+
+    return {
+      roles: allRoles.map(role => ({
+        ...role,
+        checked: currentRoles.includes(role.level) || role.level === CONST.USER_ROLES.GAMEMASTER
+      }))
+    };
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+
+    // Toggle-Verhalten für die Role Cards
+    html.find('.role-toggle').click((event) => {
+      const toggle = $(event.currentTarget);
+      const checkbox = toggle.find('input[type="checkbox"]');
+      
+      // GM-Rolle kann nicht geändert werden
+      if (toggle.hasClass('locked')) {
+        return;
+      }
+      
+      const wasChecked = checkbox.prop('checked');
+      checkbox.prop('checked', !wasChecked);
+      
+      if (!wasChecked) {
+        toggle.addClass('active');
+      } else {
+        toggle.removeClass('active');
+      }
+      
+      event.preventDefault();
+    });
+
+    // Verhindere Event-Bubbling bei direkten Checkbox-Klicks
+    html.find('input[type="checkbox"]').click((event) => {
+      event.stopPropagation();
+      const checkbox = $(event.currentTarget);
+      const toggle = checkbox.closest('.role-toggle');
+      
+      // Ignoriere disabled checkboxes
+      if (checkbox.prop('disabled')) {
+        return;
+      }
+      
+      if (checkbox.prop('checked')) {
+        toggle.addClass('active');
+      } else {
+        toggle.removeClass('active');
+      }
+    });
+
+    // Reset Button
+    html.find('button[name="reset"]').click((event) => {
+      event.preventDefault();
+      const defaultRoles = [CONST.USER_ROLES.GAMEMASTER];
+      
+      html.find('.role-toggle').each((i, toggle) => {
+        const $toggle = $(toggle);
+        const checkbox = $toggle.find('input[type="checkbox"]');
+        const level = parseInt(checkbox.attr('name').replace('role_', ''));
+        
+        if (defaultRoles.includes(level)) {
+          checkbox.prop('checked', true);
+          $toggle.addClass('active');
+        } else if (!$toggle.hasClass('locked')) {
+          checkbox.prop('checked', false);
+          $toggle.removeClass('active');
+        }
+      });
+    });
+  }
+
+  async _updateObject(event, formData) {
+    const oldRoles = game.settings.get("names", "allowedUserRoles");
+    const newAllowedRoles = [CONST.USER_ROLES.GAMEMASTER]; // GM ist immer dabei
+    
+    for (const [key, value] of Object.entries(formData)) {
+      if (key.startsWith('role_') && value) {
+        const roleLevel = parseInt(key.replace('role_', ''));
+        if (!newAllowedRoles.includes(roleLevel)) {
+          newAllowedRoles.push(roleLevel);
+        }
+      }
+    }
+
+    await game.settings.set("names", "allowedUserRoles", newAllowedRoles);
+    ui.notifications.info(game.i18n.localize("names.permissions-saved"));
+    
+    // Bestimme welche User von der Änderung betroffen sind
+    const affectedUsers = this._getAffectedUsers(oldRoles, newAllowedRoles);
+    
+    // Socket-Message an betroffene User senden für Reload
+    if (affectedUsers.length > 0) {
+      game.socket.emit("module.names", {
+        type: "permissionChanged",
+        affectedUsers: affectedUsers
+      });
+    }
+  }
+
+  _getAffectedUsers(oldRoles, newRoles) {
+    const affectedUsers = [];
+    
+    // Finde alle User deren Berechtigung sich geändert hat
+    for (const user of game.users) {
+      const hadPermission = oldRoles.includes(user.role);
+      const hasPermission = newRoles.includes(user.role);
+      
+      if (hadPermission !== hasPermission) {
+        affectedUsers.push(user.id);
+      }
+    }
+    
+    return affectedUsers;
+  }
+}
+
 // ===== MODULE SETTINGS =====
 Hooks.once('init', () => {
-  console.log("Names Modul init");
+  console.log(game.i18n.localize("names.console.module-init"));
 
   game.settings.register("names", "showInTokenControls", {
-    name: "Button in Token Controls anzeigen",
-    hint: "Zeigt den Namen-Generator Button in der linken Toolbar an",
+    name: game.i18n.localize("names.settings.showInTokenControls.name"),
+    hint: game.i18n.localize("names.settings.showInTokenControls.hint"),
     scope: "world",
     config: true,
     type: Boolean,
@@ -793,8 +1009,8 @@ Hooks.once('init', () => {
   });
 
   game.settings.register("names", "showInCharacterSheet", {
-    name: "Button im Character Sheet anzeigen",
-    hint: "Zeigt einen Namen-Picker Button neben dem Namensfeld im Character Sheet an",
+    name: game.i18n.localize("names.settings.showInCharacterSheet.name"),
+    hint: game.i18n.localize("names.settings.showInCharacterSheet.hint"),
     scope: "world",
     config: true,
     type: Boolean,
@@ -802,16 +1018,67 @@ Hooks.once('init', () => {
   });
 
   game.settings.register("names", "showInTokenContextMenu", {
-    name: "Token HUD & Kontextmenü",
-    hint: "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu",
+    name: game.i18n.localize("names.settings.showInTokenContextMenu.name"),
+    hint: game.i18n.localize("names.settings.showInTokenContextMenu.hint"),
     scope: "world",
     config: true,
     type: Boolean,
     default: true
   });
 
+  game.settings.register("names", "allowedUserRoles", {
+    name: "Erlaubte Benutzerrollen",
+    hint: "Welche Benutzerrollen dürfen den Namen-Generator verwenden",
+    scope: "world",
+    config: false,
+    type: Array,
+    default: [CONST.USER_ROLES.GAMEMASTER]
+  });
+
+  game.settings.registerMenu("names", "roleConfig", {
+    name: game.i18n.localize("names.settings.roleConfig.name"),
+    hint: game.i18n.localize("names.settings.roleConfig.hint"),
+    label: game.i18n.localize("names.settings.roleConfig.label"),
+    icon: "fas fa-users-cog",
+    type: NamesRoleConfig,
+    restricted: true
+  });
+
+  // Socket-Listener für Permission-Änderungen
+  game.socket.on("module.names", (data) => {
+    if (data.type === "permissionChanged" && data.affectedUsers.includes(game.user.id)) {
+      // Zeige Notification und biete Reload an
+      new Dialog({
+        title: game.i18n.localize("names.permissionChange.title") || "Berechtigung geändert",
+        content: `
+          <div style="text-align: center; padding: 20px;">
+            <i class="fas fa-exclamation-triangle" style="font-size: 2em; color: #ff6400; margin-bottom: 15px;"></i>
+            <p>${game.i18n.localize("names.permissionChange.content") || "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden."}</p>
+          </div>
+        `,
+        buttons: {
+          reload: {
+            icon: '<i class="fas fa-sync-alt"></i>',
+            label: game.i18n.localize("names.permissionChange.reload") || "Seite neu laden",
+            callback: () => location.reload()
+          },
+          later: {
+            icon: '<i class="fas fa-clock"></i>',
+            label: game.i18n.localize("names.permissionChange.later") || "Später",
+            callback: () => {}
+          }
+        },
+        default: "reload"
+      }, {
+        width: 400,
+        height: 200
+      }).render(true);
+    }
+  });
+
   Hooks.on('getSceneControlButtons', (controls) => {
     if (!game.settings.get("names", "showInTokenControls")) return;
+    if (!hasNamesGeneratorPermission()) return;
 
     const token = controls.find(c => c.name === 'token');
     if (!token) return;
@@ -820,22 +1087,23 @@ Hooks.once('init', () => {
 
     token.tools.push({
       name: 'names-generator',
-      title: 'Names Generator',
+      title: game.i18n.localize("names.title"),
       icon: 'fas fa-user-tag',
       button: true,
-      visible: () => true,
+      visible: () => hasNamesGeneratorPermission(),
       onClick: () => new NamesGeneratorApp().render(true)
     });
   });
 
   Hooks.on('renderActorSheet', (app, html, data) => {
     if (!game.settings.get("names", "showInCharacterSheet")) return;
+    if (!hasNamesGeneratorPermission()) return;
     if (app.actor.type !== 'character') return;
 
     const nameInput = html.find('input[name="name"]');
     if (nameInput.length > 0) {
       const button = $(`
-        <button type="button" class="names-picker-button" title="Namen wählen">
+        <button type="button" class="names-picker-button" title="${game.i18n.localize("names.choose-name")}">
           <i class="fas fa-dice"></i>
         </button>
       `);
@@ -872,12 +1140,13 @@ Hooks.once('init', () => {
 
   Hooks.on('getTokenContextOptions', (html, options) => {
     if (!game.settings.get("names", "showInTokenContextMenu")) return;
+    if (!hasNamesGeneratorPermission()) return;
 
     options.push({
       name: game.i18n.localize("names.title"),
       icon: '<i class="fas fa-user-tag"></i>',
       condition: (token) => {
-        return token.actor && game.user.isGM;
+        return token.actor && hasNamesGeneratorPermission();
       },
       callback: (token) => {
         new NamesPickerApp({ actor: token.actor }).render(true);
@@ -888,7 +1157,7 @@ Hooks.once('init', () => {
 
 Hooks.on('renderTokenHUD', (app, html, data) => {
   if (!game.settings.get("names", "showInTokenContextMenu")) return;
-  if (!game.user.isGM) return;
+  if (!hasNamesGeneratorPermission()) return;
   if (!app.object?.actor) return;
 
   const button = $(`
@@ -905,6 +1174,14 @@ Hooks.on('renderTokenHUD', (app, html, data) => {
 });
 
 Hooks.on('chatMessage', (html, content, msg) => {
+  if (!hasNamesGeneratorPermission()) {
+    if (content === '/names' || content === '/namen' || content === '/pick-name' || content === '/name-picker') {
+      ui.notifications.warn(game.i18n.localize("names.no-permission"));
+      return false;
+    }
+    return;
+  }
+
   if (content === '/names' || content === '/namen') {
     new NamesGeneratorApp().render(true);
     return false;
@@ -915,7 +1192,7 @@ Hooks.on('chatMessage', (html, content, msg) => {
     if (controlled.length === 1 && controlled[0].actor) {
       new NamesPickerApp({ actor: controlled[0].actor }).render(true);
     } else {
-      ui.notifications.warn("Bitte wähle genau einen Token aus.");
+      ui.notifications.warn(game.i18n.localize("names.select-one-token"));
     }
     return false;
   }

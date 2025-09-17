@@ -31,6 +31,78 @@
     "nameformat": "Namensformat",
     "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
     "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
+    "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
+    "name-adopted": "Name \"{name}\" wurde übernommen!",
+    "select-one-token": "Bitte wähle genau einen Token aus.",
+    "generation-error": "Fehler beim Generieren: {error}",
+    "name-error": "Fehler beim Übernehmen des Namens",
+    "copy-error": "Kopieren fehlgeschlagen",
+    "no-names-generated": "Keine Namen konnten generiert werden",
+    "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
+    
+    "permissionChange": {
+      "title": "Berechtigung geändert",
+      "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
+      "reload": "Seite neu laden",
+      "later": "Später"
+    },
+    
+    "settings": {
+      "showInTokenControls": {
+        "name": "Button in Token Controls anzeigen",
+        "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
+      },
+      "showInCharacterSheet": {
+        "name": "Button im Character Sheet anzeigen", 
+        "hint": "Zeigt einen Namen-Picker Button neben dem Namensfeld im Character Sheet an"
+      },
+      "showInTokenContextMenu": {
+        "name": "Token HUD & Kontextmenü",
+        "hint": "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu"
+      },
+      "roleConfig": {
+        "name": "Rollenberechtigungen konfigurieren",
+        "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
+        "label": "Rollen konfigurieren"
+      }
+    },
+
+    "roleConfig": {
+      "title": "Namen-Generator Rollenberechtigungen",
+      "description": "Wähle aus, welche Benutzerrollen den Namen-Generator verwenden dürfen. Benutzer ohne entsprechende Rolle sehen keine Namen-Generator Buttons und können die Chat-Befehle nicht verwenden.",
+      "allowedRoles": "Erlaubte Rollen:",
+      "save": "Speichern",
+      "reset": "Zurücksetzen",
+      "roles": {
+        "PLAYER": "Spieler",
+        "TRUSTED": "Vertrauensvoller Spieler", 
+        "ASSISTANT": "Assistent",
+        "GAMEMASTER": "Spielleiter"
+      }
+    },
+
+    "console": {
+      "module-init": "Names Modul init",
+      "loading-index": "Lade Datenindex...",
+      "index-not-found": "index.json nicht gefunden, verwende Fallback",
+      "index-loaded": "Index geladen, {count} Dateien gefunden",
+      "index-error": "Fehler beim Laden der Index-Datei:",
+      "available-languages": "Verfügbare Sprachen:",
+      "available-species": "Verfügbare Spezies:",
+      "available-categories": "Verfügbare Kategorien:",
+      "file-unavailable": "{filename} nicht verfügbar ({status})",
+      "grammar-loaded": "Grammatik-Regeln geladen für {key}",
+      "file-loaded": "✓ {filename} ({count} Einträge)",
+      "file-failed": "✗ {filename} - {error}",
+      "no-data-found": "Keine Daten gefunden für {key}",
+      "no-gender-data": "Keine {gender} {category} gefunden für {key}",
+      "no-titles-found": "Keine {gender} Titel gefunden für {language}.{species}",
+      "component-generation-failed": "Konnte {component} nicht generieren:",
+      "generation-error": "Fehler beim Generieren:",
+      "name-setting-error": "Fehler beim Setzen des Namens:",
+      "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
+    },
+
     "languages": {
       "de": "Deutsch",
       "en": "Englisch",

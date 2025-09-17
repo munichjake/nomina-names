@@ -5,7 +5,7 @@
     <div class="names-module-form-group">
       <label for="names-language-select">{{localize "names.language"}}:</label>
       <select id="names-language-select" name="names-language" required>
-        <option value="">-- {{localize "names.language"}} {{localize "names.select-all"}} --</option>
+        <option value="">-- {{localize "names.select-all"}} --</option>
         {{#each languages}}
         <option value="{{this.code}}">{{this.name}}</option>
         {{/each}}

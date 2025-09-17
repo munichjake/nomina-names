@@ -1,0 +1,59 @@
+{
+  "speciesMappings": {
+    "human": {
+      "keywords": ["human", "mensch", "homo", "homme", "humano", "umano"],
+      "priority": 10
+    },
+    "elf": {
+      "keywords": ["elf", "elfe", "elves", "elfen", "elfo", "elfos"],
+      "priority": 9
+    },
+    "dwarf": {
+      "keywords": ["dwarf", "dwarves", "zwerg", "zwerge", "nain", "nains", "enano", "enanos", "nano", "nani"],
+      "priority": 8
+    },
+    "halfling": {
+      "keywords": ["halfling", "halflings", "halbling", "halblinge", "semi-homme", "mediano", "mezzuomo"],
+      "priority": 7
+    },
+    "orc": {
+      "keywords": ["orc", "orcs", "ork", "orks", "orque", "orques", "orco", "orchi"],
+      "priority": 6
+    },
+    "goblin": {
+      "keywords": ["goblin", "goblins", "gobeline", "duende", "folletto"],
+      "priority": 5
+    },
+    "dragonborn": {
+      "keywords": ["dragonborn", "drachengeborener", "drachengeborene", "né-dragon", "dracónido", "draconico"],
+      "priority": 4
+    },
+    "tiefling": {
+      "keywords": ["tiefling", "tieflings", "planétouché", "infernal", "diavolo"],
+      "priority": 3
+    },
+    "aasimar": {
+      "keywords": ["aasimar", "aasamar", "assimar", "céleste", "angelical", "celestiale"],
+      "priority": 2
+    },
+    "gnome": {
+      "keywords": ["gnome", "gnomes", "gnom", "gnome", "gnomo"],
+      "priority": 1
+    }
+  },
+  "defaultSpecies": "human",
+  "searchFields": [
+    "race",
+    "species", 
+    "ancestry",
+    "details.race",
+    "details.species",
+    "details.ancestry",
+    "system.details.race",
+    "system.details.species", 
+    "system.details.ancestry",
+    "data.details.race",
+    "data.details.species",
+    "data.details.ancestry"
+  ]
+}

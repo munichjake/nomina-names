@@ -1,0 +1,341 @@
+<div class="names-role-config-window">
+  <form autocomplete="off" class="names-role-form">
+    <header class="names-config-header">
+      <div class="header-icon">
+        <i class="fas fa-users-cog"></i>
+      </div>
+      <div class="header-content">
+        <h2>{{localize "names.roleConfig.title"}}</h2>
+        <p>{{localize "names.roleConfig.description"}}</p>
+      </div>
+    </header>
+
+    <main class="names-roles-main">
+      <div class="roles-grid">
+        {{#each roles}}
+        <div class="role-toggle {{#if checked}}active{{/if}} {{#if (eq key 'GAMEMASTER')}}locked{{/if}}" 
+             data-role="{{level}}" 
+             data-key="{{key}}">
+          <input type="checkbox" 
+                 id="role_{{level}}" 
+                 name="role_{{level}}" 
+                 {{#if checked}}checked{{/if}}
+                 {{#if (eq key 'GAMEMASTER')}}disabled{{/if}}>
+          
+          <div class="role-content">
+            <div class="role-icon-wrapper">
+              <i class="fas {{#if (eq key 'GAMEMASTER')}}fa-crown{{else if (eq key 'ASSISTANT')}}fa-user-cog{{else if (eq key 'TRUSTED')}}fa-user-shield{{else}}fa-user{{/if}}"></i>
+              {{#if (eq key 'GAMEMASTER')}}
+                <div class="lock-indicator">
+                  <i class="fas fa-lock"></i>
+                </div>
+              {{/if}}
+            </div>
+            
+            <div class="role-details">
+              <h3>{{localize (concat "names.roleConfig.roles." key)}}</h3>
+              <span class="role-level">Level {{level}}</span>
+            </div>
+            
+            <div class="toggle-switch">
+              <div class="switch-track">
+                <div class="switch-thumb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </main>
+
+    <footer class="names-config-footer">
+      <button type="button" name="reset" class="btn-reset">
+        <i class="fas fa-undo"></i>
+        {{localize "names.roleConfig.reset"}}
+      </button>
+      <button type="submit" name="submit" class="btn-save">
+        <i class="fas fa-save"></i>
+        {{localize "names.roleConfig.save"}}
+      </button>
+    </footer>
+  </form>
+</div>
+
+<style>
+  .names-role-config-window {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg, #f8f8f7);
+  }
+
+  .names-role-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Header */
+  .names-config-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border-bottom: 2px solid var(--color-border-light-primary, #b5b3a4);
+    background: linear-gradient(135deg, #f8f8f7 0%, #f0f0ef 100%);
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--color-bg-btn-minor-active, #ff6400);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 2px 8px rgba(255, 100, 0, 0.3);
+  }
+
+  .header-content h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--color-text-dark-primary, #191813);
+  }
+
+  .header-content p {
+    margin: 0;
+    color: var(--color-text-dark-secondary, #4b4a44);
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  /* Main Content */
+  .names-roles-main {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* Role Toggle Cards */
+  .role-toggle {
+    background: white;
+    border: 2px solid var(--color-border-light-tertiary, #c8c7bc);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+
+  .role-toggle:hover:not(.locked) {
+    border-color: var(--color-border-highlight-1, #ff6400);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .role-toggle.active {
+    border-color: var(--color-border-highlight-1, #ff6400);
+    background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+    box-shadow: 0 4px 12px rgba(255, 100, 0, 0.15);
+  }
+
+  .role-toggle.locked {
+    border-color: var(--color-border-highlight-1, #ff6400);
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+    cursor: not-allowed;
+  }
+
+  .role-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .role-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  /* Role Icon */
+  .role-icon-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: var(--color-bg-btn-minor-inactive, #ddd);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .role-toggle.active .role-icon-wrapper {
+    background: var(--color-bg-btn-minor-active, #ff6400);
+  }
+
+  .role-toggle.locked .role-icon-wrapper {
+    background: linear-gradient(135deg, #ffd700 0%, #ff6400 100%);
+  }
+
+  .lock-indicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 16px;
+    height: 16px;
+    background: #ffd700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: #333;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  /* Role Details */
+  .role-details {
+    flex: 1;
+  }
+
+  .role-details h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-text-dark-primary, #191813);
+  }
+
+  .role-level {
+    font-size: 0.85em;
+    color: var(--color-text-dark-secondary, #666);
+    opacity: 0.8;
+  }
+
+  /* Toggle Switch */
+  .toggle-switch {
+    flex-shrink: 0;
+  }
+
+  .switch-track {
+    width: 44px;
+    height: 24px;
+    background: var(--color-bg-btn-minor-inactive, #ccc);
+    border-radius: 12px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .role-toggle.active .switch-track {
+    background: var(--color-bg-btn-minor-active, #ff6400);
+  }
+
+  .role-toggle.locked .switch-track {
+    background: #ffd700;
+  }
+
+  .switch-thumb {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  .role-toggle.active .switch-thumb {
+    transform: translateX(20px);
+  }
+
+  /* Footer */
+  .names-config-footer {
+    padding: 20px;
+    border-top: 2px solid var(--color-border-light-primary, #b5b3a4);
+    background: var(--color-bg-option, #f0f0ef);
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .names-config-footer button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  .btn-reset {
+    background: var(--color-bg-btn-minor-inactive, #6c757d);
+    color: var(--color-text-dark-primary, #333);
+  }
+
+  .btn-reset:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    color: #ddd;
+  }
+
+  .btn-save {
+    background: var(--color-bg-btn-minor-active, #ff6400);
+    color: var(--color-text-dark-primary,#333);
+  }
+
+  .btn-save:hover {
+    background: #ff7a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(255, 100, 0, 0.3);
+    color: #ddd;
+  }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .roles-grid {
+      grid-template-columns: 1fr;
+      max-width: 300px;
+    }
+    
+    .names-config-header {
+      padding: 15px;
+    }
+    
+    .names-roles-main {
+      padding: 20px;
+    }
+    
+    .header-content h2 {
+      font-size: 1.2em;
+    }
+  }
+</style>

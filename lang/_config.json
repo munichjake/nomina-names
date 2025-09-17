@@ -1,0 +1,35 @@
+{
+  "supportedLanguages": {
+    "de": {
+      "code": "de",
+      "name": "names.languages.de",
+      "nativeName": "Deutsch",
+      "enabled": true
+    },
+    "en": {
+      "code": "en", 
+      "name": "names.languages.en",
+      "nativeName": "English",
+      "enabled": true
+    },
+    "fr": {
+      "code": "fr",
+      "name": "names.languages.fr", 
+      "nativeName": "Français",
+      "enabled": true
+    },
+    "es": {
+      "code": "es",
+      "name": "names.languages.es",
+      "nativeName": "Español", 
+      "enabled": true
+    },
+    "it": {
+      "code": "it",
+      "name": "names.languages.it",
+      "nativeName": "Italiano",
+      "enabled": true
+    }
+  },
+  "defaultLanguage": "de"
+}

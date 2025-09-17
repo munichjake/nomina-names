@@ -31,6 +31,78 @@
     "choose-name": "Choose name:",
     "click-for-suggestions": "Click \"New Names\" to get 3 suggestions",
     "click-to-adopt": "Click on a name to adopt it for the character",
+    "no-permission": "You don't have permission to use the name generator.",
+    "name-adopted": "Name \"{name}\" has been adopted!",
+    "select-one-token": "Please select exactly one token.",
+    "generation-error": "Error generating: {error}",
+    "name-error": "Error adopting name",
+    "copy-error": "Copy failed",
+    "no-names-generated": "No names could be generated",
+    "permissions-saved": "Role permissions have been saved!",
+
+    "permissionChange": {
+      "title": "Permission Changed",
+      "content": "Your Names Generator permission has been changed by the Game Master. A page reload is required for the changes to take effect.",
+      "reload": "Reload Page",
+      "later": "Later"
+    },
+
+    "settings": {
+      "showInTokenControls": {
+        "name": "Show Button in Token Controls",
+        "hint": "Shows the name generator button in the left toolbar"
+      },
+      "showInCharacterSheet": {
+        "name": "Show Button in Character Sheet",
+        "hint": "Shows a name picker button next to the name field in character sheets"
+      },
+      "showInTokenContextMenu": {
+        "name": "Token HUD & Context Menu",
+        "hint": "Shows a name button in the token HUD and adds a 'Change Name' option to the right-click menu"
+      },
+      "roleConfig": {
+        "name": "Configure Role Permissions",
+        "hint": "Determine which user roles can use the name generator",
+        "label": "Configure Roles"
+      }
+    },
+
+    "roleConfig": {
+      "title": "Name Generator Role Permissions",
+      "description": "Select which user roles are allowed to use the name generator. Users without the appropriate role will not see any name generator buttons and cannot use chat commands.",
+      "allowedRoles": "Allowed Roles:",
+      "save": "Save",
+      "reset": "Reset",
+      "roles": {
+        "PLAYER": "Player",
+        "TRUSTED": "Trusted Player",
+        "ASSISTANT": "Assistant",
+        "GAMEMASTER": "Game Master"
+      }
+    },
+
+    "console": {
+      "module-init": "Names Module init",
+      "loading-index": "Loading data index...",
+      "index-not-found": "index.json not found, using fallback",
+      "index-loaded": "Index loaded, {count} files found",
+      "index-error": "Error loading index file:",
+      "available-languages": "Available languages:",
+      "available-species": "Available species:",
+      "available-categories": "Available categories:",
+      "file-unavailable": "{filename} not available ({status})",
+      "grammar-loaded": "Grammar rules loaded for {key}",
+      "file-loaded": "✓ {filename} ({count} entries)",
+      "file-failed": "✗ {filename} - {error}",
+      "no-data-found": "No data found for {key}",
+      "no-gender-data": "No {gender} {category} found for {key}",
+      "no-titles-found": "No {gender} titles found for {language}.{species}",
+      "component-generation-failed": "Could not generate {component}:",
+      "generation-error": "Error generating:",
+      "name-setting-error": "Error setting name:",
+      "clipboard-fallback": "Clipboard API not available, using fallback"
+    },
+
     "languages": {
       "de": "German",
       "en": "English",
