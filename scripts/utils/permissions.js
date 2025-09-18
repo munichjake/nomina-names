@@ -3,6 +3,7 @@
  */
 
 import { MODULE_ID } from '../shared/constants.js';
+import { logWarn } from './logger.js';
 
 /**
  * Checks if the current user has permission to use the names generator
@@ -15,7 +16,7 @@ export function hasNamesGeneratorPermission() {
     
     return allowedRoles.includes(userRole);
   } catch (error) {
-    console.warn("Names Module: Permission check failed, defaulting to GM only:", error);
+    logWarn("Permission check failed, defaulting to GM only", error);
     return game.user.role === CONST.USER_ROLES.GAMEMASTER;
   }
 }

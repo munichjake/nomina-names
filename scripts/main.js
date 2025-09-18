@@ -12,18 +12,19 @@ import { hasNamesGeneratorPermission, showPermissionChangeDialog } from './utils
 import { injectEmergencyButton, removeEmergencyButton } from './utils/ui-helpers.js';
 import { MODULE_ID } from './shared/constants.js';
 import { NamesAPI } from './api-system.js';
+import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
 
 // ===== MODULE INITIALIZATION =====
 Hooks.once('init', () => {
-  console.log(game.i18n.localize("names.console.module-init") || "Names Module: Initialisiere...");
+  logInfoL("console.module-init");
 
   // Create global instance with error protection
   try {
     const dataManager = new NamesDataManager();
     setGlobalNamesData(dataManager);
-    console.log("Names Module: NamesDataManager created successfully");
+    logDebug("NamesDataManager created successfully");
   } catch (error) {
-    console.error("Names Module: Failed to create NamesDataManager:", error);
+    logError("Failed to create NamesDataManager", error);
   }
 
   // Register settings
@@ -35,7 +36,10 @@ Hooks.once('init', () => {
 
 // ===== BACKGROUND LOADING =====
 Hooks.once('ready', () => {
-  console.log("Names Module: Ready hook - initializing data");
+  logDebug("Ready hook - initializing data");
+  
+  // Initialize log level
+  updateLogLevel();
   
   // Ensure globalNamesData exists and start loading
   const dataManager = ensureGlobalNamesData();
@@ -53,6 +57,7 @@ Hooks.once('ready', () => {
   // Register the API with Foundry's module system
   if (game.modules.get(MODULE_ID)) {
     game.modules.get(MODULE_ID).api = NamesAPI;
+    logDebug("API registered with Foundry module system");
   }
   
   // Fire the data loaded hook for other modules
@@ -183,6 +188,31 @@ Hooks.on('chatMessage', (html, content, msg) => {
 
 // ===== SETTINGS REGISTRATION =====
 function registerModuleSettings() {
+  // Function to get log level choices with proper localization
+  function getLogLevelChoices() {
+    return {
+      [game.i18n.localize("names.settings.logLevel.error") || "Nur Fehler"]: LOG_LEVELS.ERROR,
+      [game.i18n.localize("names.settings.logLevel.warn") || "Warnungen"]: LOG_LEVELS.WARN,
+      [game.i18n.localize("names.settings.logLevel.info") || "Informationen"]: LOG_LEVELS.INFO,
+      [game.i18n.localize("names.settings.logLevel.debug") || "Alle Details"]: LOG_LEVELS.DEBUG
+    };
+  }
+
+  // Log Level Setting
+  game.settings.register(MODULE_ID, "logLevel", {
+    name: game.i18n.localize("names.settings.logLevel.name") || "Log Level",
+    hint: game.i18n.localize("names.settings.logLevel.hint") || "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
+    scope: "client",
+    config: true,
+    type: Number,
+    choices: getLogLevelChoices(),
+    default: LOG_LEVELS.INFO,
+    onChange: (value) => {
+      updateLogLevel();
+      logInfo(`Log level changed to: ${value}`);
+    }
+  });
+
   // Token Controls Setting
   game.settings.register(MODULE_ID, "showInTokenControls", {
     name: game.i18n.localize("names.settings.showInTokenControls.name"),
@@ -261,6 +291,8 @@ function registerModuleSettings() {
     type: NamesRoleConfig,
     restricted: true
   });
+
+  logDebug("Module settings registered");
 }
 
 // ===== SOCKET HANDLING =====
@@ -270,6 +302,8 @@ function registerSocketHandler() {
       showPermissionChangeDialog();
     }
   });
+  
+  logDebug("Socket handler registered");
 }
 
 // ===== CSS INJECTION =====

@@ -5,6 +5,7 @@
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
 import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClipboard } from '../utils/ui-helpers.js';
 import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders } from '../shared/constants.js';
+import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 export class EmergencyNamesApp extends Application {
   constructor(options = {}) {
@@ -31,7 +32,7 @@ export class EmergencyNamesApp extends Application {
     const globalNamesData = getGlobalNamesData();
 
     if (!globalNamesData) {
-      console.warn("Names Module: globalNamesData not available, creating temporary instance");
+      logWarn("globalNamesData not available, using temporary instance");
       return {
         emergencyNames: this.emergencyNames,
         isLoading: false
@@ -42,7 +43,7 @@ export class EmergencyNamesApp extends Application {
     try {
       await globalNamesData.initializeData();
     } catch (error) {
-      console.warn("Names Module: Failed to initialize data:", error);
+      logWarn("Failed to initialize data", error);
     }
 
     return {
@@ -66,13 +67,15 @@ export class EmergencyNamesApp extends Application {
       const globalNamesData = getGlobalNamesData();
       
       if (globalNamesData && globalNamesData.isLoading) {
+        logDebug("Data still loading, showing loading state");
         showLoadingState(html);
         await this._waitForLoadingComplete(html);
       } else {
+        logDebug("Data ready, generating emergency names");
         await this._generateEmergencyNames();
       }
     } catch (error) {
-      console.error("Names Module: Emergency app initialization failed:", error);
+      logError("Emergency app initialization failed", error);
       this._generateFallbackNames();
       this._updateNamesDisplay();
     }
@@ -88,41 +91,43 @@ export class EmergencyNamesApp extends Application {
       hideLoadingState(html);
       await this._generateEmergencyNames();
     } catch (error) {
-      console.warn("Names Module: Loading failed, using fallback:", error);
+      logWarn("Loading failed, using fallback", error);
       this._generateFallbackNames();
       this._updateNamesDisplay();
     }
   }
 
   async _generateEmergencyNames() {
-    console.log("Names Module: Generating emergency names...");
+    logDebug("Generating emergency names...");
     
     try {
       const language = this._getFoundryLanguage();
-      console.log("Names Module: Using language:", language);
+      logDebug(`Using language: ${language}`);
       
       const names = [];
       const globalNamesData = getGlobalNamesData();
       
       // Check if data is loaded
       if (!globalNamesData || !globalNamesData.isLoaded) {
-        console.warn("Names Module: Data not loaded, using fallback names");
+        logWarn("Data not loaded, using fallback names");
         this._generateFallbackNames();
         return;
       }
 
       // Determine available species
       const availableSpecies = this._getAvailableSpecies(language);
-      console.log("Names Module: Available species:", availableSpecies);
+      logDebug("Available species:", availableSpecies);
       
       if (availableSpecies.length === 0) {
-        console.warn("Names Module: No species data available, using fallback");
+        logWarn("No species data available, using fallback");
         this._generateFallbackNames();
         return;
       }
       
-      let i = 0;
-      while (names.length < 6) {
+      let attempts = 0;
+      const maxAttempts = 20; // Prevent infinite loops
+      
+      while (names.length < 6 && attempts < maxAttempts) {
         try {
           const species = availableSpecies[Math.floor(Math.random() * availableSpecies.length)];
           const gender = this._getRandomGender();
@@ -135,31 +140,32 @@ export class EmergencyNamesApp extends Application {
               gender: gender,
               displaySpecies: this._getLocalizedSpecies(species)
             });
-            $i++;
           }
+          attempts++;
         } catch (error) {
-          console.warn(`Names Module: Failed to generate name ${i}:`, error);
+          logWarn(`Failed to generate name (attempt ${attempts})`, error);
+          attempts++;
         }
       }
 
       // Fallback if no names generated
       if (names.length === 0) {
-        console.warn("Names Module: No names generated, using fallback");
+        logWarn("No names generated, using fallback");
         this._generateFallbackNames();
       } else {
         this.emergencyNames = names;
-        console.log("Names Module: Generated", names.length, "emergency names");
+        logInfo(`Generated ${names.length} emergency names`);
         this._updateNamesDisplay();
       }
 
     } catch (error) {
-      console.error("Names Module: Emergency name generation failed:", error);
+      logError("Emergency name generation failed", error);
       this._generateFallbackNames();
     }
   }
 
   _generateFallbackNames() {
-    console.log("Names Module: Using fallback emergency names");
+    logDebug("Using fallback emergency names");
     const supportedGenders = getSupportedGenders();
     this.emergencyNames = [
       { name: "Alaric Steinherz", species: "human", gender: "male", displaySpecies: "Mensch" },
@@ -177,6 +183,7 @@ export class EmergencyNamesApp extends Application {
         gender: "nonbinary", 
         displaySpecies: "Mensch" 
       });
+      logDebug("Added nonbinary fallback name");
     }
     
     this._updateNamesDisplay();
@@ -194,7 +201,7 @@ export class EmergencyNamesApp extends Application {
     };
 
     const mappedLang = languageMapping[foundryLang] || 'de';
-    console.log("Names Module: Foundry lang:", foundryLang, "mapped to:", mappedLang);
+    logDebug(`Foundry language ${foundryLang} mapped to ${mappedLang}`);
     
     const globalNamesData = getGlobalNamesData();
     if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(mappedLang)) {
@@ -203,7 +210,7 @@ export class EmergencyNamesApp extends Application {
     
     if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.size > 0) {
       const firstLang = Array.from(globalNamesData.availableLanguages)[0];
-      console.log("Names Module: Using first available language:", firstLang);
+      logDebug(`Using first available language: ${firstLang}`);
       return firstLang;
     }
     
@@ -228,13 +235,15 @@ export class EmergencyNamesApp extends Application {
            Array.from(speciesWithData) : 
            ['human', 'elf', 'dwarf'];
            
-    console.log("Names Module: Species with data for", language, ":", result);
+    logDebug(`Species with data for ${language}:`, result);
     return result;
   }
 
   _getRandomGender() {
     const supportedGenders = getSupportedGenders();
-    return supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+    const selectedGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+    logDebug(`Selected random gender: ${selectedGender}`);
+    return selectedGender;
   }
 
   async _generateSingleName(language, species, gender) {
@@ -243,14 +252,18 @@ export class EmergencyNamesApp extends Application {
       const lastName = this._getRandomFromData(language, species, 'surnames');
       
       if (firstName && lastName) {
-        return `${firstName} ${lastName}`;
+        const fullName = `${firstName} ${lastName}`;
+        logDebug(`Generated full name: ${fullName} (${species}, ${gender})`);
+        return fullName;
       } else if (firstName) {
+        logDebug(`Generated first name only: ${firstName} (${species}, ${gender})`);
         return firstName;
       }
       
+      logDebug(`Failed to generate name for ${species} ${gender}`);
       return null;
     } catch (error) {
-      console.warn(`Names Module: Failed to generate name for ${language}.${species}.${gender}:`, error);
+      logWarn(`Failed to generate name for ${language}.${species}.${gender}`, error);
       return null;
     }
   }
@@ -265,11 +278,13 @@ export class EmergencyNamesApp extends Application {
     const data = globalNamesData.getData(key);
 
     if (!data?.names || data.names.length === 0) {
-      console.warn(`Names Module: No data found for key: ${key}`);
+      logDebug(`No data found for key: ${key}`);
       return null;
     }
 
-    return data.names[Math.floor(Math.random() * data.names.length)];
+    const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
+    logDebug(`Selected name from ${key}: ${selectedName}`);
+    return selectedName;
   }
 
   _getLocalizedSpecies(species) {
@@ -280,17 +295,17 @@ export class EmergencyNamesApp extends Application {
   _updateNamesDisplay() {
     const html = this.element;
     if (!html || html.length === 0) {
-      console.warn("Names Module: Cannot update display - element not found");
+      logWarn("Cannot update display - element not found");
       return;
     }
     
     const container = html.find('.emergency-names-grid');
     if (container.length === 0) {
-      console.warn("Names Module: Cannot find emergency names grid container");
+      logWarn("Cannot find emergency names grid container");
       return;
     }
     
-    console.log("Names Module: Updating display with", this.emergencyNames.length, "names");
+    logDebug(`Updating display with ${this.emergencyNames.length} names`);
     
     container.empty();
     
@@ -310,7 +325,7 @@ export class EmergencyNamesApp extends Application {
   }
 
   async _onRerollNames(event) {
-    console.log("Names Module: Reroll button clicked");
+    logDebug("Reroll button clicked");
     event.preventDefault();
     
     const html = this.element;
@@ -321,8 +336,9 @@ export class EmergencyNamesApp extends Application {
     
     try {
       await this._generateEmergencyNames();
+      logInfo("Successfully rerolled emergency names");
     } catch (error) {
-      console.error("Names Module: Reroll failed:", error);
+      logError("Reroll failed", error);
       ui.notifications.error("Fehler beim Generieren der Namen");
     } finally {
       rerollBtn.prop('disabled', false);
@@ -331,25 +347,31 @@ export class EmergencyNamesApp extends Application {
   }
 
   _onOpenGenerator() {
-    console.log("Names Module: Opening main generator");
+    logDebug("Opening main generator");
     // Import dynamically to avoid circular dependencies
     import('./generator-app.js').then(({ NamesGeneratorApp }) => {
       new NamesGeneratorApp().render(true);
+      logDebug("Main generator opened successfully");
+    }).catch(error => {
+      logError("Failed to open main generator", error);
+      ui.notifications.error("Fehler beim Öffnen des Haupt-Generators");
     });
     this.close();
   }
 
   async _onCopyName(event) {
-    console.log("Names Module: Copy name clicked");
+    logDebug("Copy name clicked");
     event.preventDefault();
     
     const nameElement = $(event.currentTarget);
     const name = nameElement.data('name');
     
     if (!name) {
-      console.warn("Names Module: No name data found");
+      logWarn("No name data found in clicked element");
       return;
     }
+
+    logDebug(`Copying name to clipboard: ${name}`);
 
     try {
       await copyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
@@ -358,8 +380,9 @@ export class EmergencyNamesApp extends Application {
       nameElement.addClass('copied');
       setTimeout(() => nameElement.removeClass('copied'), 1000);
       
+      logDebug(`Successfully copied name: ${name}`);
     } catch (error) {
-      console.warn("Names Module: Clipboard copy failed:", error);
+      logWarn("Clipboard copy failed, using fallback", error);
       fallbackCopyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
     }
   }

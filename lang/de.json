@@ -66,6 +66,14 @@
       "includeNonbinaryNames": {
         "name": "Nicht-binäre Namen einbeziehen",
         "hint": "Ermöglicht die Auswahl von nicht-binären Vornamen, wenn die Spezies dies unterstützt"
+      },
+      "logLevel": {
+        "name": "Log Level",
+        "hint": "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
+        "error": "Nur Fehler",
+        "warn": "Warnungen",
+        "info": "Informationen", 
+        "debug": "Alle Details"
       }
     },
     "roleConfig": {

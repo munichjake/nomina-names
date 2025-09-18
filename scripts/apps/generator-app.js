@@ -5,11 +5,13 @@
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
 import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT } from '../shared/constants.js';
+import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 export class NamesGeneratorApp extends Application {
   constructor(options = {}) {
     super(options);
     this.supportedGenders = getSupportedGenders();
+    logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
   }
 
   static get defaultOptions() {
@@ -32,7 +34,7 @@ export class NamesGeneratorApp extends Application {
       await globalNamesData.initializeData();
     }
 
-    return {
+    const data = {
       languages: globalNamesData ? globalNamesData.getLocalizedLanguages() : [],
       species: globalNamesData ? globalNamesData.getLocalizedSpecies() : [],
       categories: globalNamesData ? Array.from(globalNamesData.availableCategories).sort() : [],
@@ -40,6 +42,16 @@ export class NamesGeneratorApp extends Application {
       isLoaded: globalNamesData ? globalNamesData.isLoaded : false,
       supportedGenders: getSupportedGenders()
     };
+
+    logDebug("Generator app data prepared:", {
+      languages: data.languages.length,
+      species: data.species.length,
+      categories: data.categories.length,
+      isLoading: data.isLoading,
+      isLoaded: data.isLoaded
+    });
+
+    return data;
   }
 
   activateListeners(html) {
@@ -47,6 +59,7 @@ export class NamesGeneratorApp extends Application {
 
     // Update supported genders on render
     this.supportedGenders = getSupportedGenders();
+    logDebug("Updated supported genders:", this.supportedGenders);
 
     html.find('#names-generate-btn').click(this._onGenerateName.bind(this));
     html.find('#names-copy-btn').click(this._onCopyName.bind(this));
@@ -57,6 +70,7 @@ export class NamesGeneratorApp extends Application {
 
     const globalNamesData = getGlobalNamesData();
     if (globalNamesData && globalNamesData.isLoading) {
+      logDebug("Data still loading, showing loading state");
       showLoadingState(html);
       this._waitForLoadingComplete(html);
     } else {
@@ -67,11 +81,13 @@ export class NamesGeneratorApp extends Application {
   async _waitForLoadingComplete(html) {
     const globalNamesData = getGlobalNamesData();
     if (globalNamesData && globalNamesData.loadingPromise) {
+      logDebug("Waiting for data loading to complete");
       await globalNamesData.loadingPromise;
     }
     
     hideLoadingState(html);
     this._updateUI(html);
+    logDebug("Data loading completed, UI updated");
     this.render(false);
   }
 
@@ -81,10 +97,13 @@ export class NamesGeneratorApp extends Application {
     const generateBtn = form.querySelector('#names-generate-btn');
 
     generateBtn.disabled = checkboxes.length === 0;
+    logDebug(`Component selection changed: ${checkboxes.length} components selected`);
   }
 
   _onDropdownChange(event) {
     const $form = $(event.currentTarget).closest('form');
+    const changedElement = event.currentTarget;
+    logDebug(`Dropdown changed: ${changedElement.name} = ${changedElement.value}`);
     this._updateUI($form);
   }
 
@@ -92,6 +111,8 @@ export class NamesGeneratorApp extends Application {
     const language = $form.find('#names-language-select').val();
     const species = $form.find('#names-species-select').val();
     const category = $form.find('#names-category-select').val();
+
+    logDebug("Updating UI with selection:", { language, species, category });
 
     this._updateCategoryOptions($form, language, species);
     this._toggleNameComponentsPanel($form, category);
@@ -144,6 +165,8 @@ export class NamesGeneratorApp extends Application {
       if (currentValue && filteredCategories.includes(currentValue)) {
         categorySelect.val(currentValue);
       }
+
+      logDebug(`Updated category options for ${language}.${species}:`, filteredCategories);
     }
   }
 
@@ -154,9 +177,11 @@ export class NamesGeneratorApp extends Application {
     if (this.supportedGenders.includes(category)) {
       panel.show();
       formatGroup.show();
+      logDebug(`Showing components panel for gender category: ${category}`);
     } else {
       panel.hide();
       formatGroup.hide();
+      logDebug(`Hiding components panel for non-gender category: ${category}`);
     }
   }
 
@@ -167,14 +192,25 @@ export class NamesGeneratorApp extends Application {
 
     if (this.supportedGenders.includes(category)) {
       const checkboxes = html.find('input[type="checkbox"]:checked');
-      generateBtn.prop('disabled', !language || !species || !category || checkboxes.length === 0);
+      const isDisabled = !language || !species || !category || checkboxes.length === 0;
+      generateBtn.prop('disabled', isDisabled);
+      
+      if (isDisabled) {
+        logDebug("Generate button disabled: missing required fields or components");
+      }
     } else {
-      generateBtn.prop('disabled', !language || !species || !category);
+      const isDisabled = !language || !species || !category;
+      generateBtn.prop('disabled', isDisabled);
+      
+      if (isDisabled) {
+        logDebug("Generate button disabled: missing required fields");
+      }
     }
   }
 
   async _onGenerateName(event) {
     event.preventDefault();
+    logDebug("Generate name button clicked");
 
     const form = event.currentTarget.closest('form');
     const formData = new FormData(form);
@@ -185,6 +221,8 @@ export class NamesGeneratorApp extends Application {
     const nameFormat = formData.get('names-format') || DEFAULT_NAME_FORMAT;
     const count = parseInt(formData.get('names-count')) || 1;
 
+    logInfo(`Generating ${count} names: ${language}.${species}.${category}`);
+
     if (!language || !species || !category) {
       ui.notifications.warn(game.i18n.localize("names.select-all"));
       return;
@@ -192,12 +230,14 @@ export class NamesGeneratorApp extends Application {
 
     const globalNamesData = getGlobalNamesData();
     if (!globalNamesData) {
+      logError("Data manager not available for name generation");
       ui.notifications.error("Names data manager not available");
       return;
     }
 
     const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
     if (!hasData) {
+      logWarn(`No data available for ${language}.${species}.${category}`);
       ui.notifications.error(game.i18n.localize("names.data-not-available"));
       return;
     }
@@ -220,13 +260,16 @@ export class NamesGeneratorApp extends Application {
             return;
           }
 
+          logDebug(`Generating formatted name with components:`, selectedComponents);
           generatedName = await this._generateFormattedName(language, species, category, selectedComponents, nameFormat);
         } else {
+          logDebug(`Generating simple name for category: ${category}`);
           generatedName = await this._generateSimpleName(language, species, category);
         }
 
         if (generatedName) {
           results.push(generatedName);
+          logDebug(`Generated name ${i + 1}/${count}: ${generatedName}`);
         }
       }
 
@@ -246,7 +289,10 @@ export class NamesGeneratorApp extends Application {
       form.querySelector('#names-copy-btn').disabled = false;
       form.querySelector('#names-clear-btn').disabled = false;
 
+      logInfo(`Successfully generated ${results.length} names`);
+
     } catch (error) {
+      logError("Name generation failed", error);
       const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
       ui.notifications.error(errorMsg);
     }
@@ -263,7 +309,9 @@ export class NamesGeneratorApp extends Application {
       }
       const settlements = settlementData.settlements;
       const settlement = settlements[Math.floor(Math.random() * settlements.length)];
-      return settlement.name || settlement;
+      const result = settlement.name || settlement;
+      logDebug(`Generated settlement name: ${result}`);
+      return result;
     } else {
       return this._getRandomFromData(language, species, category);
     }
@@ -280,6 +328,7 @@ export class NamesGeneratorApp extends Application {
       if (settlementData?.settlements) {
         const settlements = settlementData.settlements;
         selectedSettlement = settlements[Math.floor(Math.random() * settlements.length)];
+        logDebug("Selected settlement for title:", selectedSettlement?.name);
       }
     }
 
@@ -289,9 +338,10 @@ export class NamesGeneratorApp extends Application {
         let part = await this._generateNameComponent(language, species, gender, component, selectedSettlement);
         if (part) {
           nameComponents[component] = part;
+          logDebug(`Generated ${component}: ${part}`);
         }
       } catch (error) {
-        globalNamesData._log('console.component-generation-failed', { component }, error);
+        logWarn(`Failed to generate component ${component}`, error);
       }
     }
 
@@ -299,7 +349,9 @@ export class NamesGeneratorApp extends Application {
       throw new Error(game.i18n.localize("names.no-names-generated"));
     }
 
-    return this._formatName(nameFormat, nameComponents);
+    const formattedName = this._formatName(nameFormat, nameComponents);
+    logDebug("Formatted name:", formattedName);
+    return formattedName;
   }
 
   _formatName(format, components) {
@@ -345,6 +397,7 @@ export class NamesGeneratorApp extends Application {
         return nickname ? `"${nickname}"` : null;
 
       default:
+        logWarn(`Unknown name component: ${component}`);
         return null;
     }
   }
@@ -354,15 +407,14 @@ export class NamesGeneratorApp extends Application {
     if (!globalNamesData) return null;
 
     const titleData = globalNamesData.getData(`${language}.${species}.titles`);
-    if (!titleData?.titles) return null;
+    if (!titleData?.titles) {
+      logDebug(`No title data found for ${language}.${species}`);
+      return null;
+    }
 
     const genderTitles = titleData.titles[gender];
     if (!genderTitles || genderTitles.length === 0) {
-      globalNamesData._log('console.no-titles-found', { 
-        gender, 
-        language, 
-        species 
-      });
+      logDebug(`No ${gender} titles found for ${language}.${species}`);
       
       if (gender === 'nonbinary' && titleData.titles.male) {
         const maleTitles = titleData.titles.male;
@@ -370,6 +422,7 @@ export class NamesGeneratorApp extends Application {
         if (settlement && selectedTitle.template) {
           return this._formatTitleWithSettlement(selectedTitle, settlement, language, species);
         }
+        logDebug("Using male title as fallback for nonbinary");
         return selectedTitle.name || selectedTitle;
       }
       return null;
@@ -401,9 +454,12 @@ export class NamesGeneratorApp extends Application {
       }
     }
 
-    return title.template
+    const formattedTitle = title.template
       .replace('{preposition}', article)
       .replace('{settlement}', settlement.name);
+
+    logDebug("Formatted title with settlement:", formattedTitle);
+    return formattedTitle;
   }
 
   _getRandomFromData(language, species, category) {
@@ -414,11 +470,13 @@ export class NamesGeneratorApp extends Application {
     const data = globalNamesData.getData(key);
 
     if (!data?.names || data.names.length === 0) {
-      globalNamesData._log('console.no-data-found', { key });
+      logDebug(`No data found for ${key}`);
       return null;
     }
 
-    return data.names[Math.floor(Math.random() * data.names.length)];
+    const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
+    logDebug(`Selected from ${key}: ${selectedName}`);
+    return selectedName;
   }
 
   _getRandomFromGenderedData(language, species, category, gender) {
@@ -431,21 +489,21 @@ export class NamesGeneratorApp extends Application {
     if (data?.names && typeof data.names === 'object' && data.names[gender]) {
       const genderNames = data.names[gender];
       if (genderNames.length === 0) {
-        globalNamesData._log('console.no-gender-data', { 
-          gender, 
-          category, 
-          key 
-        });
+        logDebug(`No ${gender} names found for ${key}`);
         return null;
       }
-      return genderNames[Math.floor(Math.random() * genderNames.length)];
+      const selectedName = genderNames[Math.floor(Math.random() * genderNames.length)];
+      logDebug(`Selected ${gender} name from ${key}: ${selectedName}`);
+      return selectedName;
     }
 
     if (data?.names && Array.isArray(data.names)) {
-      return data.names[Math.floor(Math.random() * data.names.length)];
+      const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
+      logDebug(`Selected ungendered name from ${key}: ${selectedName}`);
+      return selectedName;
     }
 
-    globalNamesData._log('console.no-data-found', { key });
+    logDebug(`No gendered data found for ${key}`);
     return null;
   }
 
@@ -469,6 +527,8 @@ export class NamesGeneratorApp extends Application {
 
     if (authors.size === 0) return '';
 
+    logDebug(`Collected credits from ${authors.size} authors`);
+
     let creditsHtml = '<div class="names-module-author-credits"><strong>Quellen:</strong><br>';
 
     for (const [key, author] of authors) {
@@ -477,7 +537,7 @@ export class NamesGeneratorApp extends Application {
 
       const links = [];
       if (author.email) links.push(`<a href="mailto:${author.email}" title="E-Mail">✉️</a>`);
-      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌍</a>`);
+      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌐</a>`);
       if (author.github) links.push(`<a href="${author.github}" target="_blank" title="GitHub">💻</a>`);
       if (author.twitter) links.push(`<a href="${author.twitter}" target="_blank" title="Twitter">🐦</a>`);
 
@@ -494,6 +554,7 @@ export class NamesGeneratorApp extends Application {
 
   async _onCopyName(event) {
     event.preventDefault();
+    logDebug("Copy names button clicked");
 
     const form = event.currentTarget.closest('form');
     const nameElements = form.querySelectorAll('.names-module-generated-name');
@@ -504,11 +565,9 @@ export class NamesGeneratorApp extends Application {
     try {
       await navigator.clipboard.writeText(names);
       ui.notifications.info(game.i18n.localize("names.copied"));
+      logInfo(`Copied ${nameElements.length} names to clipboard`);
     } catch (error) {
-      const globalNamesData = getGlobalNamesData();
-      if (globalNamesData) {
-        globalNamesData._log('console.clipboard-fallback');
-      }
+      logWarn("Clipboard copy failed, using fallback", error);
       this._fallbackCopyToClipboard(names);
     }
   }
@@ -523,7 +582,9 @@ export class NamesGeneratorApp extends Application {
     try {
       document.execCommand('copy');
       ui.notifications.info(game.i18n.localize("names.copied"));
+      logInfo("Successfully copied names using fallback method");
     } catch (error) {
+      logError("Fallback copy method failed", error);
       ui.notifications.error(game.i18n.localize("names.copy-error"));
     }
 
@@ -532,6 +593,7 @@ export class NamesGeneratorApp extends Application {
 
   _onClearResult(event) {
     event.preventDefault();
+    logDebug("Clear results button clicked");
 
     const form = event.currentTarget.closest('form');
     const resultDiv = form.querySelector('#names-result-display');
@@ -540,5 +602,7 @@ export class NamesGeneratorApp extends Application {
 
     form.querySelector('#names-copy-btn').disabled = true;
     form.querySelector('#names-clear-btn').disabled = true;
+
+    logDebug("Results cleared and buttons disabled");
   }
 }

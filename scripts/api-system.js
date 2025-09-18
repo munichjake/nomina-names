@@ -8,6 +8,7 @@ import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
 import { hasNamesGeneratorPermission } from './utils/permissions.js';
 import { getSupportedGenders, GENDER_SYMBOLS } from './shared/constants.js';
+import { logDebug, logInfo, logWarn, logError } from './utils/logger.js';
 
 class NamesModuleAPI {
   constructor() {
@@ -39,6 +40,8 @@ class NamesModuleAPI {
       useCustomData = true
     } = options;
 
+    logDebug("Generating name with options:", options);
+
     // Fire beforeGenerate hook
     this._fireHook('names.beforeGenerate', { options });
 
@@ -55,6 +58,7 @@ class NamesModuleAPI {
     // Fire afterGenerate hook
     this._fireHook('names.afterGenerate', { options, result });
 
+    logDebug("Generated name:", result);
     return result;
   }
 
@@ -67,11 +71,14 @@ class NamesModuleAPI {
     const { count = 5, ...otherOptions } = options;
     const names = [];
 
+    logDebug(`Generating ${count} names with options:`, otherOptions);
+
     for (let i = 0; i < count; i++) {
       const name = await this.generateName(otherOptions);
       if (name) names.push(name);
     }
 
+    logDebug(`Generated ${names.length} names:`, names);
     return names;
   }
 
@@ -124,6 +131,7 @@ class NamesModuleAPI {
    * @returns {Application} Generator app instance
    */
   showGenerator() {
+    logDebug("Opening names generator UI");
     return new NamesGeneratorApp().render(true);
   }
 
@@ -133,6 +141,7 @@ class NamesModuleAPI {
    * @returns {Application} Picker app instance
    */
   showPicker(actor) {
+    logDebug("Opening names picker UI for actor:", actor?.name || "Unknown");
     return new NamesPickerApp({ actor }).render(true);
   }
 
@@ -141,6 +150,7 @@ class NamesModuleAPI {
    * @returns {Application} Emergency app instance
    */
   showEmergencyNames() {
+    logDebug("Opening emergency names UI");
     return new EmergencyNamesApp().render(true);
   }
 
@@ -163,7 +173,9 @@ class NamesModuleAPI {
     } = speciesData;
 
     if (!species || !displayName) {
-      throw new Error('Species registration requires species code and displayName');
+      const errorMsg = 'Species registration requires species code and displayName';
+      logError(errorMsg);
+      throw new Error(errorMsg);
     }
 
     const extensionKey = `${moduleId}.species.${species}`;
@@ -190,7 +202,7 @@ class NamesModuleAPI {
       }
     }
 
-    console.log(`Names Module: Registered species '${species}' from module '${moduleId}'`);
+    logInfo(`Registered species '${species}' from module '${moduleId}'`);
   }
 
   /**
@@ -208,7 +220,9 @@ class NamesModuleAPI {
     } = dataConfig;
 
     if (!language || !species || !category || !data) {
-      throw new Error('Name data registration requires language, species, category, and data');
+      const errorMsg = 'Name data registration requires language, species, category, and data';
+      logError(errorMsg);
+      throw new Error(errorMsg);
     }
 
     const extensionKey = `${moduleId}.data.${language}.${species}.${category}`;
@@ -229,7 +243,7 @@ class NamesModuleAPI {
       enabled: true
     });
 
-    console.log(`Names Module: Registered name data '${dataKey}' from module '${moduleId}'`);
+    logInfo(`Registered name data '${dataKey}' from module '${moduleId}'`);
   }
 
   /**
@@ -242,6 +256,7 @@ class NamesModuleAPI {
       this.hooks[hookName] = [];
     }
     this.hooks[hookName].push(callback);
+    logDebug(`Registered hook listener for '${hookName}'`);
   }
 
   /**
@@ -249,10 +264,14 @@ class NamesModuleAPI {
    * @param {string} moduleId - ID of the module to remove extensions for
    */
   unregisterModule(moduleId) {
+    let removedExtensions = 0;
+    let removedDataSources = 0;
+
     // Remove extensions
     for (const [key, extension] of this.registeredExtensions.entries()) {
       if (extension.moduleId === moduleId) {
         this.registeredExtensions.delete(key);
+        removedExtensions++;
       }
     }
 
@@ -260,10 +279,11 @@ class NamesModuleAPI {
     for (const [key, source] of this.customDataSources.entries()) {
       if (source.moduleId === moduleId) {
         this.customDataSources.delete(key);
+        removedDataSources++;
       }
     }
 
-    console.log(`Names Module: Unregistered all extensions from module '${moduleId}'`);
+    logInfo(`Unregistered all extensions from module '${moduleId}' (${removedExtensions} extensions, ${removedDataSources} data sources)`);
   }
 
   /**
@@ -273,7 +293,10 @@ class NamesModuleAPI {
    */
   getRegisteredExtensions(type = null) {
     const extensions = Array.from(this.registeredExtensions.values());
-    return type ? extensions.filter(ext => ext.type === type) : extensions;
+    const filtered = type ? extensions.filter(ext => ext.type === type) : extensions;
+    
+    logDebug(`Retrieved ${filtered.length} extensions` + (type ? ` of type '${type}'` : ''));
+    return filtered;
   }
 
   /**
@@ -283,6 +306,8 @@ class NamesModuleAPI {
   async _loadCustomDataSources(language, species) {
     const dataManager = getGlobalNamesData();
     if (!dataManager) return;
+
+    let loadedSources = 0;
 
     // Load custom data for all categories of this language-species combination
     for (const [dataKey, source] of this.customDataSources.entries()) {
@@ -299,7 +324,12 @@ class NamesModuleAPI {
           const merged = this._mergeNameData(existing, source.data);
           dataManager.nameData.set(dataKey, merged);
         }
+        loadedSources++;
       }
+    }
+
+    if (loadedSources > 0) {
+      logDebug(`Loaded ${loadedSources} custom data sources for ${language}.${species}`);
     }
   }
 
@@ -338,12 +368,18 @@ class NamesModuleAPI {
 
   async _performNameGeneration(language, species, gender, components, format) {
     const dataManager = getGlobalNamesData();
-    if (!dataManager) return null;
+    if (!dataManager) {
+      logError("Data manager not available for name generation");
+      return null;
+    }
 
     // Ensure data is loaded
     for (const component of components) {
       const category = component === 'firstname' ? gender : component;
-      await dataManager.ensureDataLoaded(language, species, category);
+      const hasData = await dataManager.ensureDataLoaded(language, species, category);
+      if (!hasData) {
+        logWarn(`No data available for ${language}.${species}.${category}`);
+      }
     }
 
     // Generate name components
@@ -371,6 +407,7 @@ class NamesModuleAPI {
       case 'title':
         return this._generateTitle(dataManager, language, species, gender);
       default:
+        logWarn(`Unknown name component: ${component}`);
         return null;
     }
   }
@@ -379,7 +416,11 @@ class NamesModuleAPI {
     const key = `${language}.${species}.${category}`;
     const data = dataManager.getData(key);
     
-    if (!data?.names || data.names.length === 0) return null;
+    if (!data?.names || data.names.length === 0) {
+      logDebug(`No data found for ${key}`);
+      return null;
+    }
+    
     return data.names[Math.floor(Math.random() * data.names.length)];
   }
 
@@ -389,7 +430,10 @@ class NamesModuleAPI {
 
     if (data?.names && typeof data.names === 'object' && data.names[gender]) {
       const genderNames = data.names[gender];
-      if (genderNames.length === 0) return null;
+      if (genderNames.length === 0) {
+        logDebug(`No ${gender} names found for ${key}`);
+        return null;
+      }
       return genderNames[Math.floor(Math.random() * genderNames.length)];
     }
 
@@ -397,12 +441,16 @@ class NamesModuleAPI {
       return data.names[Math.floor(Math.random() * data.names.length)];
     }
 
+    logDebug(`No gendered data found for ${key}`);
     return null;
   }
 
   _generateTitle(dataManager, language, species, gender) {
     const titleData = dataManager.getData(`${language}.${species}.titles`);
-    if (!titleData?.titles) return null;
+    if (!titleData?.titles) {
+      logDebug(`No title data found for ${language}.${species}`);
+      return null;
+    }
 
     const genderTitles = titleData.titles[gender];
     if (!genderTitles || genderTitles.length === 0) {
@@ -410,8 +458,10 @@ class NamesModuleAPI {
       if (gender === 'nonbinary' && titleData.titles.male) {
         const maleTitles = titleData.titles.male;
         const selectedTitle = maleTitles[Math.floor(Math.random() * maleTitles.length)];
+        logDebug(`Using male title as fallback for nonbinary: ${selectedTitle.name || selectedTitle}`);
         return selectedTitle.name || selectedTitle;
       }
+      logDebug(`No ${gender} titles found for ${language}.${species}`);
       return null;
     }
 
@@ -448,11 +498,18 @@ class NamesModuleAPI {
 
   _fireHook(hookName, data) {
     const callbacks = this.hooks[hookName] || [];
+    if (callbacks.length === 0) {
+      logDebug(`No listeners registered for hook '${hookName}'`);
+      return;
+    }
+
+    logDebug(`Firing hook '${hookName}' for ${callbacks.length} listeners`);
+    
     for (const callback of callbacks) {
       try {
         callback(data);
       } catch (error) {
-        console.error(`Names Module: Error in hook '${hookName}':`, error);
+        logError(`Error in hook '${hookName}'`, error);
       }
     }
   }

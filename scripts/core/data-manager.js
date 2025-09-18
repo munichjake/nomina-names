@@ -3,6 +3,7 @@
  */
 
 import { NAME_CATEGORIES, DATA_PATHS, MODULE_ID } from '../shared/constants.js';
+import { logDebug, logInfo, logWarn, logError, logInfoL, logWarnL, logErrorL, logDebugL } from '../utils/logger.js';
 
 export class NamesDataManager {
   constructor() {
@@ -109,9 +110,9 @@ export class NamesDataManager {
       await this.loadFallbackData();
     }
 
-    this._log('console.available-languages', null, Array.from(this.availableLanguages));
-    this._log('console.available-species', null, Array.from(this.availableSpecies));
-    this._log('console.available-categories', null, Array.from(this.availableCategories));
+    logDebug("Available languages:", Array.from(this.availableLanguages));
+    logDebug("Available species:", Array.from(this.availableSpecies));
+    logDebug("Available categories:", Array.from(this.availableCategories));
   }
 
   /**
@@ -139,6 +140,7 @@ export class NamesDataManager {
       }
     } catch (error) {
       // Setting might not exist yet during initialization
+      logDebug("Setting 'includeNonbinaryNames' not available during fallback loading");
     }
 
     const loadPromises = knownFiles.map(file => this.loadDataFileFromIndex(file));
@@ -282,6 +284,7 @@ export class NamesDataManager {
     const filename = `${language}.${species}.${category}.json`;
     const fileInfo = { filename, language, species, category };
     
+    logDebug(`Attempting to load specific file: ${filename}`);
     await this.loadDataFileFromIndex(fileInfo);
     return this.nameData.has(key);
   }
@@ -308,6 +311,8 @@ export class NamesDataManager {
     if (language) this.availableLanguages.add(language);
     if (species) this.availableSpecies.add(species);
     if (category) this.availableCategories.add(category);
+    
+    logDebug(`Data set for key: ${key}`);
   }
 
   /**
@@ -324,6 +329,7 @@ export class NamesDataManager {
 
     const merged = this._mergeDataObjects(existing, newData);
     this.setData(key, merged);
+    logDebug(`Data merged for key: ${key}`);
   }
 
   /**
@@ -390,6 +396,7 @@ export class NamesDataManager {
   setGrammarRules(language, species, rules) {
     const key = `${language}.${species}`;
     this.grammarRules.set(key, rules);
+    logDebug(`Grammar rules set for: ${key}`);
   }
 
   /**
@@ -398,34 +405,30 @@ export class NamesDataManager {
   _fireDataLoadedHook() {
     try {
       Hooks.callAll('namesDataLoaded', this);
+      logDebug("Data loaded hook fired for API extensions");
     } catch (error) {
-      console.warn("Names Module: Error firing data loaded hook:", error);
+      logWarn("Error firing data loaded hook", error);
     }
   }
 
   /**
-   * Logs messages with localization support
+   * Logs messages with localization support (updated to use new logger system)
    * @param {string} messageKey - Localization key
    * @param {Object} params - Parameters for formatting
    * @param {Error} error - Optional error object
    */
   _log(messageKey, params = null, error = null) {
-    let message;
-    
-    try {
-      message = params ? 
-        game.i18n.format(`names.${messageKey}`, params) : 
-        game.i18n.localize(`names.${messageKey}`);
-    } catch (e) {
-      message = messageKey;
-    }
-
-    const prefix = "Names Module: ";
-    
     if (error) {
-      console.warn(prefix + message, error);
+      logWarnL(messageKey, error, params);
     } else {
-      console.log(prefix + message);
+      // Determine appropriate log level based on message content
+      if (messageKey.includes('loading') || messageKey.includes('loaded') || messageKey.includes('available')) {
+        logDebugL(messageKey, null, params);
+      } else if (messageKey.includes('error') || messageKey.includes('failed') || messageKey.includes('unavailable')) {
+        logWarnL(messageKey, null, params);
+      } else {
+        logInfoL(messageKey, null, params);
+      }
     }
   }
 }
@@ -439,7 +442,7 @@ let globalNamesData = null;
  */
 export function ensureGlobalNamesData() {
   if (!globalNamesData) {
-    console.log("Names Module: Creating new NamesDataManager instance");
+    logDebug("Creating new NamesDataManager instance");
     globalNamesData = new NamesDataManager();
   }
   return globalNamesData;
@@ -459,4 +462,5 @@ export function getGlobalNamesData() {
  */
 export function setGlobalNamesData(instance) {
   globalNamesData = instance;
+  logDebug("Global NamesDataManager instance set");
 }

@@ -46,6 +46,8 @@
       "later": "Later"
     },
     "settings": {
+      "settings.showEmergencyButton.name": "Show \"Emergency-NPC\"-Button",
+      "settings.showEmergencyButton.hint": "Shows a button below the chat for quick NPC name generation",
       "showInTokenControls": {
         "name": "Show Button in Token Controls",
         "hint": "Shows the name generator button in the left toolbar"
@@ -66,6 +68,14 @@
       "includeNonbinaryNames": {
         "name": "Include Non-binary Names",
         "hint": "Allows selection of non-binary first names if the species supports it"
+      },
+      "logLevel": {
+        "name": "Log Level",
+        "hint": "Set the amount of log output to the console",
+        "error": "Errors only",
+        "warn": "Warnings",
+        "info": "Information",
+        "debug": "All details"
       }
     },
     "roleConfig": {
@@ -130,19 +140,19 @@
       "nicknames": "Nicknames",
       "settlements": "Settlements/Places"
     },
-    "settings.showEmergencyButton.name": "Show \"Emergency-NPC\"-Button",
-    "settings.showEmergencyButton.hint": "Shows a button below the chat for quick NPC name generation",
-    "emergency.title": "Emergency NPC Names",
-    "emergency.button": "Emergency NPC Names",
-    "emergency.tooltip": "Quick NPC names for emergencies",
-    "emergency.reroll": "New Names",
-    "emergency.generating": "Generating...",
-    "emergency.clickToCopy": "Click to copy",
-    "emergency.nameCopied": "'{name}' copied!",
-    "emergency.openGenerator": "Open Name Generator",
-    "emergency.quickNames": "Quick NPC Names",
-    "emergency.description": "Click a name to copy it to your clipboard",
-    "emergency.noNames": "no names available",
-    "emergency.hint": "Names are generated using the default settings of the name generator module"
+    "emergency": {
+      "title": "Emergency NPC Names",
+      "button": "Emergency NPC Names",
+      "tooltip": "Quick NPC names for emergencies",
+      "reroll": "New Names",
+      "generating": "Generating...",
+      "clickToCopy": "Click to copy",
+      "nameCopied": "'{name}' copied!",
+      "openGenerator": "Open Name Generator",
+      "quickNames": "Quick NPC Names",
+      "description": "Click a name to copy it to your clipboard",
+      "noNames": "no names available",
+      "hint": "Names are generated using the default settings of the name generator module"
+    }
   }
 }

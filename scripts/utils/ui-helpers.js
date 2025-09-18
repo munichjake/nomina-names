@@ -4,6 +4,7 @@
 
 import { hasNamesGeneratorPermission } from './permissions.js';
 import { CSS_CLASSES, MODULE_ID } from '../shared/constants.js';
+import { logWarn, logError, logInfo, logDebug } from './logger.js';
 
 /**
  * Shows loading state in a container
@@ -46,7 +47,7 @@ export async function copyToClipboard(text, successMessage = null) {
     await navigator.clipboard.writeText(text);
     ui.notifications.info(message);
   } catch (error) {
-    console.warn("Names Module: Clipboard API failed, using fallback:", error);
+    logWarn("Clipboard API failed, using fallback", error);
     fallbackCopyToClipboard(text, message);
   }
 }
@@ -72,7 +73,7 @@ export function fallbackCopyToClipboard(text, successMessage = null) {
     document.execCommand('copy');
     ui.notifications.info(message);
   } catch (error) {
-    console.error("Names Module: Fallback copy failed:", error);
+    logError("Fallback copy failed", error);
     ui.notifications.error(errorMessage);
   }
 
@@ -122,7 +123,7 @@ export function injectEmergencyButton() {
         ui.notifications.warn(game.i18n.localize("names.no-permission") || "Keine Berechtigung");
       }
     } catch (error) {
-      console.error("Names Module: Failed to open Emergency Names App:", error);
+      logError("Failed to open Emergency Names App", error);
       ui.notifications.error("Fehler beim Öffnen des Namen-Generators");
     }
   });
@@ -133,7 +134,7 @@ export function injectEmergencyButton() {
   // Add CSS if not present
   injectEmergencyButtonCSS();
   
-  console.log("Names Module: Emergency button injected");
+  logInfo("Emergency button injected");
 }
 
 /**
@@ -141,7 +142,7 @@ export function injectEmergencyButton() {
  */
 export function removeEmergencyButton() {
   $('#emergency-names-button').remove();
-  console.log("Names Module: Emergency button removed");
+  logInfo("Emergency button removed");
 }
 
 /**
