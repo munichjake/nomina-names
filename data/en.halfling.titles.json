@@ -7,8 +7,8 @@
       "github": "https://github.com/munichjake"
     }
   ],
-  "description": "English noble titles with grammar rules",
-  "version": "1.0.0",
+  "description": "English noble titles for Halflings with grammar rules",
+  "version": "1.1.0",
   "grammar": {
     "articles": {
       "of": {
@@ -33,76 +33,112 @@
       }
     }
   },
-  "titles": [
-    {
-      "name": "Count",
-      "template": "Count {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Countess",
-      "template": "Countess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duke",
-      "template": "Duke {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duchess",
-      "template": "Duchess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baron",
-      "template": "Baron {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baroness",
-      "template": "Baroness {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lord",
-      "template": "Lord {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lady",
-      "template": "Lady {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Knight",
-      "template": "Knight {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Dame",
-      "template": "Dame {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Prince",
-      "template": "Prince {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Princess",
-      "template": "Princess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marquess",
-      "template": "Marquess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marchioness",
-      "template": "Marchioness {preposition} {settlement}",
-      "preposition": "of"
-    }
-  ]
+  "titles": {
+    "male": [
+      {
+        "name": "Hillord",
+        "template": "Hillord {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Meadowcount",
+        "template": "Meadowcount {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Hearthbaron",
+        "template": "Hearthbaron {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Pipeknight",
+        "template": "Pipeknight {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Breadprince",
+        "template": "Breadprince {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Alecount",
+        "template": "Alecount {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Gardenkeeper",
+        "template": "Gardenkeeper {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "female": [
+      {
+        "name": "Hillady",
+        "template": "Hillady {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Meadowcountess",
+        "template": "Meadowcountess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Hearthbaroness",
+        "template": "Hearthbaroness {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Pipedame",
+        "template": "Pipedame {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Breadprincess",
+        "template": "Breadprincess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Alecountess",
+        "template": "Alecountess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Gardenkeeper",
+        "template": "Gardenkeeper {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "nonbinary": [
+      {
+        "name": "Hillkeeper",
+        "template": "Hillkeeper {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Meadowward",
+        "template": "Meadowward {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Hearthguard",
+        "template": "Hearthguard {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Pipewarden",
+        "template": "Pipewarden {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Breadkeeper",
+        "template": "Breadkeeper {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Aleguard",
+        "template": "Aleguard {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ]
+  }
 }

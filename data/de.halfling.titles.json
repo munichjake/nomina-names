@@ -8,7 +8,7 @@
     }
   ],
   "description": "Deutsche Adelstitel der Halblinge mit Grammatik-Regeln",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "grammar": {
     "articles": {
       "von": {
@@ -33,76 +33,81 @@
       }
     }
   },
-  "titles": [
-    {
-      "name": "Hügelherr",
-      "template": "Hügelherr {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Hügeldame",
-      "template": "Hügeldame {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Feldgraf",
-      "template": "Feldgraf {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Feldgräfin",
-      "template": "Feldgräfin {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Kesselbaron",
-      "template": "Kesselbaron {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Kesselbaronin",
-      "template": "Kesselbaronin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Pfeifenritter",
-      "template": "Pfeifenritter {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Pfeifendame",
-      "template": "Pfeifendame {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Brotfürst",
-      "template": "Brotfürst {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Brotfürstin",
-      "template": "Brotfürstin {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Weinmarkgraf",
-      "template": "Weinmarkgraf {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Weinmarkgräfin",
-      "template": "Weinmarkgräfin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Wiesenhüter",
-      "template": "Wiesenhüter {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Wiesenhüterin",
-      "template": "Wiesenhüterin {preposition} {settlement}",
-      "preposition": "von"
-    }
-  ]
+  "titles": {
+    "male": [
+      {
+        "name": "Hügelherr",
+        "template": "Hügelherr {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Feldgraf",
+        "template": "Feldgraf {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Kesselbaron",
+        "template": "Kesselbaron {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Pfeifenritter",
+        "template": "Pfeifenritter {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Brotfürst",
+        "template": "Brotfürst {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Weinmarkgraf",
+        "template": "Weinmarkgraf {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Wiesenhüter",
+        "template": "Wiesenhüter {preposition} {settlement}",
+        "preposition": "von"
+      }
+    ],
+    "female": [
+      {
+        "name": "Hügeldame",
+        "template": "Hügeldame {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Feldgräfin",
+        "template": "Feldgräfin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Kesselbaronin",
+        "template": "Kesselbaronin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Pfeifendame",
+        "template": "Pfeifendame {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Brotfürstin",
+        "template": "Brotfürstin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Weinmarkgräfin",
+        "template": "Weinmarkgräfin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Wiesenhüterin",
+        "template": "Wiesenhüterin {preposition} {settlement}",
+        "preposition": "von"
+      }
+    ],
+    "nonbinary": []
+  }
 }

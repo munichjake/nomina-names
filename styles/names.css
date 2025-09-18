@@ -5,23 +5,23 @@
 
 /* === WINDOW CONTAINER STYLING === */
 /* Gesamtes Anwendungsfenster dunkel machen */
-.window-app.names-module-app {
+.window-app.names-module-app,.window-app.emergency-names-app {
   background: var(--color-bg, #1e1e1e) !important;
   border: 1px solid var(--color-border-dark, #7a7971) !important;
   border-radius: 10px !important;
 }
 
-.window-app.names-module-app .window-header {
+.window-app.names-module-app .window-header,.window-app.emergency-names-app .window.header {
   background: var(--color-bg, #1e1e1e) !important;
   border-bottom: 1px solid var(--color-border-dark, #7a7971) !important;
   color: var(--color-text-primary, #eee) !important;
 }
 
-.window-app.names-module-app .window-title {
+.window-app.names-module-app .window-title,.window-app.emergency-names-app .window-title {
   color: var(--color-text-primary, #eee) !important;
 }
 
-.window-app.names-module-app .window-content {
+.window-app.names-module-app .window-content,.window-app.emergency-names-app .window-content {
   background: var(--color-bg, #1e1e1e) !important;
   color: var(--color-text-primary, #eee) !important;
   padding: 0 !important;
@@ -101,8 +101,7 @@
 
 /* === SELECT DROPDOWN STYLING === */
 .names-module-form-group select {
-  background: var(--color-bg-option, #2a2a2a) 
-    linear-gradient(45deg, transparent 50%, var(--color-text-primary, #eee) 50%),
+  background: var(--color-bg-option, #2a2a2a) linear-gradient(45deg, transparent 50%, var(--color-text-primary, #eee) 50%),
     linear-gradient(135deg, var(--color-text-primary, #eee) 50%, transparent 50%) !important;
   background-position:
     calc(100% - 16px) 14px, calc(100% - 10px) 14px;
@@ -360,13 +359,107 @@
   .names-module-checkbox-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .names-module-form {
     padding: 12px;
   }
-  
+
   .names-module-section {
     padding: 10px;
     margin-bottom: 10px;
   }
+}
+
+.emergency-names-chat-button {
+  background: linear-gradient(135deg, #ff6400, #e55a00);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 5px 10px;
+  border: 1px solid #d63c00;
+  text-align: center;
+  max-height: 4em;
+}
+
+.emergency-names-chat-button:hover {
+  background: linear-gradient(135deg, #ff8533, #ff6400);
+  box-shadow: 0 3px 8px rgba(255, 100, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.emergency-names-chat-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.emergency-names-chat-button i {
+  font-size: 12px;
+}
+
+/* Chat-Log Anpassung für bessere Integration */
+#chat-log {
+  border-bottom: none;
+}
+
+/* Emergency Names App Styles */
+/* Emergency Names Button Styling */
+#emergency-names-button {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border: 1px solid #e55a00;
+  border-radius: 6px;
+  color: white;
+  padding: 8px 16px;
+  margin: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#emergency-names-button:hover {
+  background: linear-gradient(135deg, #ff8533 0%, #ffaa66 100%);
+  box-shadow: 0 4px 8px rgba(255, 100, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+#emergency-names-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#emergency-names-button i {
+  font-size: 14px;
+}
+
+.emergency-names-chat-button {
+  /* Fallback falls die ID nicht funktioniert */
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border: 1px solid #e55a00;
+  border-radius: 6px;
+  color: white;
+  padding: 8px 16px;
+  margin: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  max-height: 4em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

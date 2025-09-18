@@ -8,7 +8,7 @@
     }
   ],
   "description": "Deutsche Adelstitel der Gnome mit Grammatik-Regeln",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "grammar": {
     "articles": {
       "von": {
@@ -33,76 +33,81 @@
       }
     }
   },
-  "titles": [
-    {
-      "name": "Werkmeister",
-      "template": "Werkmeister {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Werkmeisterin",
-      "template": "Werkmeisterin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Hammerherzog",
-      "template": "Hammerherzog {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Hammerherzogin",
-      "template": "Hammerherzogin {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Zahnradbaron",
-      "template": "Zahnradbaron {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Zahnradbaronin",
-      "template": "Zahnradbaronin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Funkenritter",
-      "template": "Funkenritter {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Funkenritterin",
-      "template": "Funkenritterin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Kupferfürst",
-      "template": "Kupferfürst {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Kupferfürstin",
-      "template": "Kupferfürstin {preposition} {settlement}",
-      "preposition": "zu"
-    },
-    {
-      "name": "Dampfmarkgraf",
-      "template": "Dampfmarkgraf {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Dampfmarkgräfin",
-      "template": "Dampfmarkgräfin {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Eisenweber",
-      "template": "Eisenweber {preposition} {settlement}",
-      "preposition": "von"
-    },
-    {
-      "name": "Eisenweberin",
-      "template": "Eisenweberin {preposition} {settlement}",
-      "preposition": "von"
-    }
-  ]
+  "titles": {
+    "male": [
+      {
+        "name": "Werkmeister",
+        "template": "Werkmeister {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Hammerherzog",
+        "template": "Hammerherzog {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Zahnradbaron",
+        "template": "Zahnradbaron {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Funkenritter",
+        "template": "Funkenritter {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Kupferfürst",
+        "template": "Kupferfürst {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Dampfmarkgraf",
+        "template": "Dampfmarkgraf {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Eisenweber",
+        "template": "Eisenweber {preposition} {settlement}",
+        "preposition": "von"
+      }
+    ],
+    "female": [
+      {
+        "name": "Werkmeisterin",
+        "template": "Werkmeisterin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Hammerherzogin",
+        "template": "Hammerherzogin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Zahnradbaronin",
+        "template": "Zahnradbaronin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Funkenritterin",
+        "template": "Funkenritterin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Kupferfürstin",
+        "template": "Kupferfürstin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Dampfmarkgräfin",
+        "template": "Dampfmarkgräfin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Eisenweberin",
+        "template": "Eisenweberin {preposition} {settlement}",
+        "preposition": "von"
+      }
+    ],
+    "nonbinary": []
+  }
 }

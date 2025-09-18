@@ -2,7 +2,7 @@
   "names": {
     "title": "Names",
     "language": "Sprache",
-    "lbl_species": "Spezies", 
+    "lbl_species": "Spezies",
     "category": "Kategorie",
     "gender": "Geschlecht",
     "male": "Männlich",
@@ -39,21 +39,19 @@
     "copy-error": "Kopieren fehlgeschlagen",
     "no-names-generated": "Keine Namen konnten generiert werden",
     "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
-    
     "permissionChange": {
       "title": "Berechtigung geändert",
       "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
       "reload": "Seite neu laden",
       "later": "Später"
     },
-    
     "settings": {
       "showInTokenControls": {
         "name": "Button in Token Controls anzeigen",
         "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
       },
       "showInCharacterSheet": {
-        "name": "Button im Character Sheet anzeigen", 
+        "name": "Button im Character Sheet anzeigen",
         "hint": "Zeigt einen Namen-Picker Button neben dem Namensfeld im Character Sheet an"
       },
       "showInTokenContextMenu": {
@@ -64,9 +62,12 @@
         "name": "Rollenberechtigungen konfigurieren",
         "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
         "label": "Rollen konfigurieren"
+      },
+      "includeNonbinaryNames": {
+        "name": "Nicht-binäre Namen einbeziehen",
+        "hint": "Ermöglicht die Auswahl von nicht-binären Vornamen, wenn die Spezies dies unterstützt"
       }
     },
-
     "roleConfig": {
       "title": "Namen-Generator Rollenberechtigungen",
       "description": "Wähle aus, welche Benutzerrollen den Namen-Generator verwenden dürfen. Benutzer ohne entsprechende Rolle sehen keine Namen-Generator Buttons und können die Chat-Befehle nicht verwenden.",
@@ -75,12 +76,11 @@
       "reset": "Zurücksetzen",
       "roles": {
         "PLAYER": "Spieler",
-        "TRUSTED": "Vertrauensvoller Spieler", 
+        "TRUSTED": "Vertrauensvoller Spieler",
         "ASSISTANT": "Assistent",
         "GAMEMASTER": "Spielleiter"
       }
     },
-
     "console": {
       "module-init": "Names Modul init",
       "loading-index": "Lade Datenindex...",
@@ -102,7 +102,6 @@
       "name-setting-error": "Fehler beim Setzen des Namens:",
       "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
     },
-
     "languages": {
       "de": "Deutsch",
       "en": "Englisch",
@@ -124,12 +123,26 @@
     },
     "categories": {
       "male": "Männliche Vornamen",
-      "female": "Weibliche Vornamen", 
+      "female": "Weibliche Vornamen",
       "nonbinary": "Nicht-binäre Vornamen",
       "surnames": "Nachnamen",
       "titles": "Titel/Adelstitel",
       "nicknames": "Beinamen",
       "settlements": "Siedlungen/Orte"
-    }
+    },
+    "settings.showEmergencyButton.name": "\"Notfall-NSC\"-Button anzeigen",
+    "settings.showEmergencyButton.hint": "Zeigt einen Button unter dem Chat für schnelle NSC-Namen Generation",
+    "emergency.title": "Emergency NSC Names",
+    "emergency.button": "Emergency NSC Names",
+    "emergency.tooltip": "Schnelle NSC Namen für den Notfall",
+    "emergency.reroll": "Neue Namen",
+    "emergency.generating": "Generiere...",
+    "emergency.clickToCopy": "Klicken zum Kopieren",
+    "emergency.nameCopied": "'{name}' kopiert!",
+    "emergency.openGenerator": "Namen-Generator öffnen",
+    "emergency.quickNames": "Schnelle NPC Namen",
+    "emergency.instructions": "Klicke auf einen Namen um ihn zu kopieren",
+    "emergency.noNames": "Keine Namen verfügbar",
+    "emergency.hint": "Namen basieren auf der aktuellen Foundry-Sprache"
   }
 }

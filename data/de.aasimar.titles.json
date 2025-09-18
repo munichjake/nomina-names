@@ -1,57 +1,48 @@
-  {
-    "authors": [
-      {
-        "name": "munichjake",
-        "email": "munichjake@dnd-session.de",
-        "url": "https://dnd-session.de",
-        "github": "https://github.com/munichjake"
+{
+  "authors": [
+    {
+      "name": "munichjake",
+      "email": "munichjake@dnd-session.de",
+      "url": "https://dnd-session.de",
+      "github": "https://github.com/munichjake"
+    }
+  ],
+  "description": "Deutsche Adelstitel für Aasimar mit Grammatik-Regeln",
+  "version": "1.0.1",
+  "grammar": {
+    "articles": {
+      "von": {
+        "m": "von",
+        "f": "von",
+        "n": "von"
+      },
+      "zu": {
+        "m": "zu",
+        "f": "zu",
+        "n": "zu"
+      },
+      "aus": {
+        "m": "aus",
+        "f": "aus",
+        "n": "aus"
+      },
+      "in": {
+        "m": "in",
+        "f": "in",
+        "n": "in"
       }
-    ],
-    "description": "Deutsche Adelstitel für Aasimar mit Grammatik-Regeln",
-    "version": "1.0.1",
-    "grammar": {
-      "articles": {
-        "von": {
-          "m": "von",
-          "f": "von",
-          "n": "von"
-        },
-        "zu": {
-          "m": "zu",
-          "f": "zu",
-          "n": "zu"
-        },
-        "aus": {
-          "m": "aus",
-          "f": "aus",
-          "n": "aus"
-        },
-        "in": {
-          "m": "in",
-          "f": "in",
-          "n": "in"
-        }
-      }
-    },
-    "titles": [
+    }
+  },
+  "titles": {
+    "male": [
       {
         "name": "Auserwählter",
         "template": "Auserwählter {preposition} {settlement}",
         "preposition": "von"
       },
       {
-        "name": "Auserwählte",
-        "template": "Auserwählte {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Baron",
         "template": "Baron {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Baronin",
-        "template": "Baronin {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -65,18 +56,8 @@
         "preposition": "von"
       },
       {
-        "name": "Edelfrau",
-        "template": "Edelfrau {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Erzherzog",
         "template": "Erzherzog {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
-        "name": "Erzherzogin",
-        "template": "Erzherzogin {preposition} {settlement}",
         "preposition": "zu"
       },
       {
@@ -90,18 +71,8 @@
         "preposition": "zu"
       },
       {
-        "name": "Fürstin",
-        "template": "Fürstin {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
         "name": "Graf",
         "template": "Graf {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Gräfin",
-        "template": "Gräfin {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -110,18 +81,8 @@
         "preposition": "zu"
       },
       {
-        "name": "Großherzogin",
-        "template": "Großherzogin {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
         "name": "Himmelsfürst",
         "template": "Himmelsfürst {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Himmelsfürstin",
-        "template": "Himmelsfürstin {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -130,18 +91,8 @@
         "preposition": "von"
       },
       {
-        "name": "Himmelsdame",
-        "template": "Himmelsdame {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Herr",
         "template": "Herr {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Herrin",
-        "template": "Herrin {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -150,18 +101,8 @@
         "preposition": "zu"
       },
       {
-        "name": "Herzogin",
-        "template": "Herzogin {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
         "name": "Hochfürst",
         "template": "Hochfürst {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
-        "name": "Hochfürstin",
-        "template": "Hochfürstin {preposition} {settlement}",
         "preposition": "zu"
       },
       {
@@ -175,18 +116,8 @@
         "preposition": "von"
       },
       {
-        "name": "Lichtbaronin",
-        "template": "Lichtbaronin {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Lichtfürst",
         "template": "Lichtfürst {preposition} {settlement}",
-        "preposition": "zu"
-      },
-      {
-        "name": "Lichtfürstin",
-        "template": "Lichtfürstin {preposition} {settlement}",
         "preposition": "zu"
       },
       {
@@ -195,18 +126,8 @@
         "preposition": "von"
       },
       {
-        "name": "Markgräfin",
-        "template": "Markgräfin {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Prinz",
         "template": "Prinz {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Prinzessin",
-        "template": "Prinzessin {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -215,18 +136,8 @@
         "preposition": "von"
       },
       {
-        "name": "Reichsfürstin",
-        "template": "Reichsfürstin {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Ritter",
         "template": "Ritter {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
-        "name": "Dame",
-        "template": "Dame {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -235,13 +146,110 @@
         "preposition": "von"
       },
       {
-        "name": "Seraphim-Lady",
-        "template": "Seraphim-Lady {preposition} {settlement}",
+        "name": "Sternenritter",
+        "template": "Sternenritter {preposition} {settlement}",
         "preposition": "von"
       },
       {
-        "name": "Sternenritter",
-        "template": "Sternenritter {preposition} {settlement}",
+        "name": "Wächter",
+        "template": "Wächter {preposition} {settlement}",
+        "preposition": "von"
+      }
+    ],
+    "female": [
+      {
+        "name": "Auserwählte",
+        "template": "Auserwählte {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Baronin",
+        "template": "Baronin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Edelfrau",
+        "template": "Edelfrau {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Erzherzogin",
+        "template": "Erzherzogin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Fürstin",
+        "template": "Fürstin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Gräfin",
+        "template": "Gräfin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Großherzogin",
+        "template": "Großherzogin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Himmelsfürstin",
+        "template": "Himmelsfürstin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Himmelsdame",
+        "template": "Himmelsdame {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Herrin",
+        "template": "Herrin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Herzogin",
+        "template": "Herzogin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Hochfürstin",
+        "template": "Hochfürstin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Lichtbaronin",
+        "template": "Lichtbaronin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Lichtfürstin",
+        "template": "Lichtfürstin {preposition} {settlement}",
+        "preposition": "zu"
+      },
+      {
+        "name": "Markgräfin",
+        "template": "Markgräfin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Prinzessin",
+        "template": "Prinzessin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Reichsfürstin",
+        "template": "Reichsfürstin {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Dame",
+        "template": "Dame {preposition} {settlement}",
+        "preposition": "von"
+      },
+      {
+        "name": "Seraphim-Lady",
+        "template": "Seraphim-Lady {preposition} {settlement}",
         "preposition": "von"
       },
       {
@@ -250,14 +258,11 @@
         "preposition": "von"
       },
       {
-        "name": "Wächter",
-        "template": "Wächter {preposition} {settlement}",
-        "preposition": "von"
-      },
-      {
         "name": "Wächterin",
         "template": "Wächterin {preposition} {settlement}",
         "preposition": "von"
       }
-    ]
+    ],
+    "nonbinary": []
   }
+}

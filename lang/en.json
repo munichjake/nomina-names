@@ -3,13 +3,13 @@
     "title": "Names",
     "language": "Language",
     "lbl_species": "Species",
-    "category": "Category", 
+    "category": "Category",
     "gender": "Gender",
     "male": "Male",
     "female": "Female",
     "nonbinary": "Non-binary",
     "firstname": "First Name",
-    "surname": "Surname", 
+    "surname": "Surname",
     "titles": "Title",
     "nickname": "Nickname",
     "settlements": "Settlements",
@@ -39,14 +39,12 @@
     "copy-error": "Copy failed",
     "no-names-generated": "No names could be generated",
     "permissions-saved": "Role permissions have been saved!",
-
     "permissionChange": {
       "title": "Permission Changed",
       "content": "Your Names Generator permission has been changed by the Game Master. A page reload is required for the changes to take effect.",
       "reload": "Reload Page",
       "later": "Later"
     },
-
     "settings": {
       "showInTokenControls": {
         "name": "Show Button in Token Controls",
@@ -64,9 +62,12 @@
         "name": "Configure Role Permissions",
         "hint": "Determine which user roles can use the name generator",
         "label": "Configure Roles"
+      },
+      "includeNonbinaryNames": {
+        "name": "Include Non-binary Names",
+        "hint": "Allows selection of non-binary first names if the species supports it"
       }
     },
-
     "roleConfig": {
       "title": "Name Generator Role Permissions",
       "description": "Select which user roles are allowed to use the name generator. Users without the appropriate role will not see any name generator buttons and cannot use chat commands.",
@@ -80,7 +81,6 @@
         "GAMEMASTER": "Game Master"
       }
     },
-
     "console": {
       "module-init": "Names Module init",
       "loading-index": "Loading data index...",
@@ -102,7 +102,6 @@
       "name-setting-error": "Error setting name:",
       "clipboard-fallback": "Clipboard API not available, using fallback"
     },
-
     "languages": {
       "de": "German",
       "en": "English",
@@ -125,11 +124,25 @@
     "categories": {
       "male": "Male First Names",
       "female": "Female First Names",
-      "nonbinary": "Non-binary First Names", 
+      "nonbinary": "Non-binary First Names",
       "surnames": "Surnames",
       "titles": "Titles/Noble Titles",
       "nicknames": "Nicknames",
       "settlements": "Settlements/Places"
-    }
+    },
+    "settings.showEmergencyButton.name": "Show \"Emergency-NPC\"-Button",
+    "settings.showEmergencyButton.hint": "Shows a button below the chat for quick NPC name generation",
+    "emergency.title": "Emergency NPC Names",
+    "emergency.button": "Emergency NPC Names",
+    "emergency.tooltip": "Quick NPC names for emergencies",
+    "emergency.reroll": "New Names",
+    "emergency.generating": "Generating...",
+    "emergency.clickToCopy": "Click to copy",
+    "emergency.nameCopied": "'{name}' copied!",
+    "emergency.openGenerator": "Open Name Generator",
+    "emergency.quickNames": "Quick NPC Names",
+    "emergency.description": "Click a name to copy it to your clipboard",
+    "emergency.noNames": "no names available",
+    "emergency.hint": "Names are generated using the default settings of the name generator module"
   }
 }

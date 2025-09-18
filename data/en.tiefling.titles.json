@@ -7,8 +7,8 @@
       "github": "https://github.com/munichjake"
     }
   ],
-  "description": "English noble titles with grammar rules",
-  "version": "1.0.0",
+  "description": "English noble titles for Tieflings with grammar rules",
+  "version": "1.1.0",
   "grammar": {
     "articles": {
       "of": {
@@ -33,76 +33,112 @@
       }
     }
   },
-  "titles": [
-    {
-      "name": "Count",
-      "template": "Count {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Countess",
-      "template": "Countess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duke",
-      "template": "Duke {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duchess",
-      "template": "Duchess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baron",
-      "template": "Baron {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baroness",
-      "template": "Baroness {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lord",
-      "template": "Lord {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lady",
-      "template": "Lady {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Knight",
-      "template": "Knight {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Dame",
-      "template": "Dame {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Prince",
-      "template": "Prince {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Princess",
-      "template": "Princess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marquess",
-      "template": "Marquess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marchioness",
-      "template": "Marchioness {preposition} {settlement}",
-      "preposition": "of"
-    }
-  ]
+  "titles": {
+    "male": [
+      {
+        "name": "Shadowlord",
+        "template": "Shadowlord {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Emberlord",
+        "template": "Emberlord {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Ashprince",
+        "template": "Ashprince {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Brimstonecount",
+        "template": "Brimstonecount {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Darkknight",
+        "template": "Darkknight {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Thornbaron",
+        "template": "Thornbaron {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Smokelord",
+        "template": "Smokelord {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "female": [
+      {
+        "name": "Shadowlady",
+        "template": "Shadowlady {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Emberlady",
+        "template": "Emberlady {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Ashprincess",
+        "template": "Ashprincess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Brimstonecountess",
+        "template": "Brimstonecountess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Darkdame",
+        "template": "Darkdame {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Thornbaroness",
+        "template": "Thornbaroness {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Smokelady",
+        "template": "Smokelady {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "nonbinary": [
+      {
+        "name": "Shadowward",
+        "template": "Shadowward {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Emberkeeper",
+        "template": "Emberkeeper {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Ashwarden",
+        "template": "Ashwarden {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Brimstoneguard",
+        "template": "Brimstoneguard {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Darkward",
+        "template": "Darkward {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Thornkeeper",
+        "template": "Thornkeeper {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ]
+  }
 }

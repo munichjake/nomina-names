@@ -1,0 +1,235 @@
+<form class="names-module-form emergency-names-container">
+  {{#if isLoading}}
+    <div class="names-module-section emergency-loading">
+      <i class="fas fa-spinner fa-spin"></i>
+      <p>{{localize "names.loading-data"}}</p>
+    </div>
+  {{else}}
+    <div class="names-module-section emergency-content">
+      <h3>{{localize "names.emergency.title"}}</h3>
+      <div class="emergency-header">
+        <p>{{localize "names.emergency.description"}}</p>
+      </div>
+      
+      <div class="emergency-names-grid">
+        {{#each emergencyNames}}
+          <div class="emergency-name-pill" data-name="{{this.name}}" title="{{localize 'names.emergency.clickToCopy'}}">
+            <div class="name-text">{{this.name}}</div>
+            <div class="species-text">{{this.displaySpecies}}</div>
+          </div>
+        {{/each}}
+      </div>
+      
+      <div class="emergency-controls">
+        <button type="button" class="emergency-reroll-btn">
+          <i class="fas fa-dice"></i>
+          {{localize "names.emergency.reroll"}}
+        </button>
+        <button type="button" class="emergency-open-generator-btn">
+          <i class="fas fa-cog"></i>
+          {{localize "names.emergency.openGenerator"}}
+        </button>
+      </div>
+    </div>
+  {{/if}}
+</form>
+
+<style>
+.emergency-names-container {
+  padding: 20px;
+}
+
+.emergency-loading {
+  text-align: center;
+  padding: 50px;
+}
+
+.emergency-loading i {
+  font-size: 2em;
+  color: #ff6400;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emergency-loading p {
+  margin-top: 15px;
+  color: #666;
+  font-size: 16px;
+}
+
+.emergency-header {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.emergency-header p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.emergency-names-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.emergency-name-pill {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border-radius: 20px;
+  padding: 20px 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.2);
+  border: 3px solid transparent;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.emergency-name-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+.emergency-name-pill:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 100, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.emergency-name-pill:hover::before {
+  left: 100%;
+}
+
+.emergency-name-pill:active {
+  transform: translateY(-1px) scale(1.0);
+}
+
+.emergency-name-pill.copied {
+  background: linear-gradient(135deg, #28a745 0%, #34ce57 100%);
+  animation: pulseSuccess 0.6s ease-out;
+}
+
+@keyframes pulseSuccess {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+  }
+  100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  }
+}
+
+.name-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.species-text {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.emergency-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.emergency-reroll-btn,
+.emergency-open-generator-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.emergency-reroll-btn {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 100, 0, 0.2);
+}
+
+.emergency-reroll-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 100, 0, 0.3);
+}
+
+.emergency-reroll-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.emergency-open-generator-btn {
+  background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.2);
+}
+
+.emergency-open-generator-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .emergency-names-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  
+  .name-text {
+    font-size: 20px;
+  }
+  
+  .emergency-name-pill {
+    padding: 15px 10px;
+    min-height: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  .emergency-names-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>

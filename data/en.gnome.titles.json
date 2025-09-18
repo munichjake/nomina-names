@@ -7,8 +7,8 @@
       "github": "https://github.com/munichjake"
     }
   ],
-  "description": "English noble titles with grammar rules",
-  "version": "1.0.0",
+  "description": "English noble titles for Gnomes with grammar rules",
+  "version": "1.1.0",
   "grammar": {
     "articles": {
       "of": {
@@ -33,76 +33,112 @@
       }
     }
   },
-  "titles": [
-    {
-      "name": "Count",
-      "template": "Count {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Countess",
-      "template": "Countess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duke",
-      "template": "Duke {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Duchess",
-      "template": "Duchess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baron",
-      "template": "Baron {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Baroness",
-      "template": "Baroness {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lord",
-      "template": "Lord {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Lady",
-      "template": "Lady {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Knight",
-      "template": "Knight {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Dame",
-      "template": "Dame {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Prince",
-      "template": "Prince {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Princess",
-      "template": "Princess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marquess",
-      "template": "Marquess {preposition} {settlement}",
-      "preposition": "of"
-    },
-    {
-      "name": "Marchioness",
-      "template": "Marchioness {preposition} {settlement}",
-      "preposition": "of"
-    }
-  ]
+  "titles": {
+    "male": [
+      {
+        "name": "Gearmaster",
+        "template": "Gearmaster {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Craftlord",
+        "template": "Craftlord {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Inventorprince",
+        "template": "Inventorprince {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Sparkbaron",
+        "template": "Sparkbaron {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Tinkercount",
+        "template": "Tinkercount {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Steamlord",
+        "template": "Steamlord {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Cogknight",
+        "template": "Cogknight {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "female": [
+      {
+        "name": "Gearmistress",
+        "template": "Gearmistress {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Craftlady",
+        "template": "Craftlady {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Inventorprincess",
+        "template": "Inventorprincess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Sparkbaroness",
+        "template": "Sparkbaroness {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Tinkercountess",
+        "template": "Tinkercountess {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Steamlady",
+        "template": "Steamlady {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Cogdame",
+        "template": "Cogdame {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ],
+    "nonbinary": [
+      {
+        "name": "Gearkeeper",
+        "template": "Gearkeeper {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Craftward",
+        "template": "Craftward {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Inventorguard",
+        "template": "Inventorguard {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Sparkwarden",
+        "template": "Sparkwarden {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Tinkerkeeper",
+        "template": "Tinkerkeeper {preposition} {settlement}",
+        "preposition": "of"
+      },
+      {
+        "name": "Steamward",
+        "template": "Steamward {preposition} {settlement}",
+        "preposition": "of"
+      }
+    ]
+  }
 }
