@@ -18,7 +18,7 @@ export class NamesGeneratorApp extends Application {
       title: game.i18n.localize("names.title"),
       template: TEMPLATE_PATHS.generator,
       width: 450,
-      height: 690,
+      height: 750,
       resizable: true,
       classes: [CSS_CLASSES.moduleApp]
     });
