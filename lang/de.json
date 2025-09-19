@@ -1,6 +1,8 @@
 {
   "names": {
     "title": "Names",
+    "names": "Namen",
+    "components": "Komponenten",
     "language": "Sprache",
     "lbl_species": "Spezies",
     "category": "Kategorie",
@@ -16,6 +18,7 @@
     "generate": "Generieren",
     "copy": "Kopieren",
     "clear": "Löschen",
+    "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
     "copied": "Name kopiert!",
     "select-options": "Wähle Optionen und klicke 'Generieren'",
     "no-names-found": "Keine Namen gefunden für",

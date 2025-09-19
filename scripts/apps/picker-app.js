@@ -26,7 +26,7 @@ export class NamesPickerApp extends Application {
       id: "names-picker",
       title: game.i18n.localize("names.title"),
       template: TEMPLATE_PATHS.picker,
-      width: 400,
+      width: 600,
       height: 350,
       resizable: false,
       classes: [CSS_CLASSES.pickerApp]
