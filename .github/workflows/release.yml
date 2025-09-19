@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set VERSION env
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
+
+      - name: Prüfe jq & zip
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y jq zip
+
+      - name: Manifest (module.json) updaten
+        run: |
+          REPO="${{ github.repository }}"
+          TAG="${{ github.ref_name }}"
+          # Passe ggf. den Dateinamen deines Manifests an (module.json / system.json etc.)
+          MANIFEST_FILE="module.json"
+          # Release-URLs nach Foundry-Konvention
+          MANIFEST_URL="https://github.com/${REPO}/releases/download/${TAG}/${MANIFEST_FILE}"
+          ZIP_NAME="module-${{ env.VERSION }}.zip"
+          DOWNLOAD_URL="https://github.com/${REPO}/releases/download/${TAG}/${ZIP_NAME}"
+
+          # version, manifest und download aktualisieren
+          jq --arg v "${{ env.VERSION }}" \
+             --arg manifest "$MANIFEST_URL" \
+             --arg download "$DOWNLOAD_URL" \
+             '.version=$v | .manifest=$manifest | .download=$download' \
+             "$MANIFEST_FILE" > "${MANIFEST_FILE}.tmp"
+          mv "${MANIFEST_FILE}.tmp" "$MANIFEST_FILE"
+
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+          echo "MANIFEST_FILE=$MANIFEST_FILE" >> $GITHUB_ENV
+
+      - name: Paket bauen (ZIP)
+        run: |
+          # Dateien die nicht ins Release sollen, ausschließen
+          zip -r "${ZIP_NAME}" . \
+            -x "*.git*" \
+            -x ".github/*" \
+            -x "node_modules/*" \
+            -x "*.DS_Store"
+
+      - name: GitHub Release erstellen und Assets anhängen
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          body: "Automatisches Release für ${{ github.ref_name }}"
+          files: |
+            ${{ env.ZIP_NAME }}
+            ${{ env.MANIFEST_FILE }}

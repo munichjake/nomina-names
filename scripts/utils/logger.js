@@ -20,7 +20,9 @@ let currentLogLevel = LOG_LEVELS.INFO;
  */
 export function updateLogLevel() {
   try {
-    currentLogLevel = game.settings.get(MODULE_ID, "logLevel") || LOG_LEVELS.INFO;
+    const settingValue = game.settings.get(MODULE_ID, "logLevel");
+    // Parse string to number since setting is now stored as string
+    currentLogLevel = parseInt(settingValue) || LOG_LEVELS.INFO;
   } catch (error) {
     // Fallback if setting doesn't exist yet
     currentLogLevel = LOG_LEVELS.INFO;

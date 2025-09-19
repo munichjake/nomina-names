@@ -191,10 +191,10 @@ function registerModuleSettings() {
   // Function to get log level choices with proper localization
   function getLogLevelChoices() {
     return {
-      [game.i18n.localize("names.settings.logLevel.error") || "Nur Fehler"]: LOG_LEVELS.ERROR,
-      [game.i18n.localize("names.settings.logLevel.warn") || "Warnungen"]: LOG_LEVELS.WARN,
-      [game.i18n.localize("names.settings.logLevel.info") || "Informationen"]: LOG_LEVELS.INFO,
-      [game.i18n.localize("names.settings.logLevel.debug") || "Alle Details"]: LOG_LEVELS.DEBUG
+      [game.i18n.localize("names.settings.logLevel.error") || "Nur Fehler"]: "0",
+      [game.i18n.localize("names.settings.logLevel.warn") || "Warnungen"]: "1",
+      [game.i18n.localize("names.settings.logLevel.info") || "Informationen"]: "2",
+      [game.i18n.localize("names.settings.logLevel.debug") || "Alle Details"]: "3"
     };
   }
 
@@ -204,12 +204,12 @@ function registerModuleSettings() {
     hint: game.i18n.localize("names.settings.logLevel.hint") || "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
     scope: "client",
     config: true,
-    type: Number,
+    type: String,
     choices: getLogLevelChoices(),
-    default: LOG_LEVELS.INFO,
+    default: "2", // LOG_LEVELS.INFO
     onChange: (value) => {
       updateLogLevel();
-      logInfo(`Log level changed to: ${value}`);
+      logInfo(`Log level changed to: ${parseInt(value) || LOG_LEVELS.INFO}`);
     }
   });
 
