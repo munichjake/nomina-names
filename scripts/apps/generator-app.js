@@ -1,5 +1,6 @@
 /**
  * Names Generator App - Main application for generating names
+ * Updated for Enhanced Dropdowns compatibility
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
@@ -11,6 +12,7 @@ export class NamesGeneratorApp extends Application {
   constructor(options = {}) {
     super(options);
     this.supportedGenders = getSupportedGenders();
+    this.enhancedDropdowns = new Map(); // Store Enhanced Dropdown instances
     logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
   }
 
@@ -66,7 +68,9 @@ export class NamesGeneratorApp extends Application {
     html.find('#names-clear-btn').click(this._onClearResult.bind(this));
 
     html.find('input[type="checkbox"]').change(this._onComponentChange.bind(this));
-    html.find('select').change(this._onDropdownChange.bind(this));
+
+    // Store Enhanced Dropdown instances and bind to their change events
+    this._initializeEnhancedDropdowns(html);
 
     const globalNamesData = getGlobalNamesData();
     if (globalNamesData && globalNamesData.isLoading) {
@@ -76,6 +80,37 @@ export class NamesGeneratorApp extends Application {
     } else {
       this._updateUI(html);
     }
+  }
+
+  _initializeEnhancedDropdowns(html) {
+    // Wait for Enhanced Dropdowns to be initialized
+    setTimeout(() => {
+      const languageSelect = html[0].querySelector('#names-language-select');
+      const speciesSelect = html[0].querySelector('#names-species-select');
+      const categorySelect = html[0].querySelector('#names-category-select');
+
+      // Find Enhanced Dropdown instances by checking the next sibling
+      if (languageSelect && languageSelect.nextElementSibling && languageSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
+        this.enhancedDropdowns.set('language', languageSelect.nextElementSibling._enhancedDropdown);
+      }
+      if (speciesSelect && speciesSelect.nextElementSibling && speciesSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
+        this.enhancedDropdowns.set('species', speciesSelect.nextElementSibling._enhancedDropdown);
+      }
+      if (categorySelect && categorySelect.nextElementSibling && categorySelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
+        this.enhancedDropdowns.set('category', categorySelect.nextElementSibling._enhancedDropdown);
+      }
+
+      // If Enhanced Dropdowns aren't ready yet, try again with longer delay
+      if (!this.enhancedDropdowns.has('language')) {
+        setTimeout(() => this._initializeEnhancedDropdowns(html), 200);
+        return;
+      }
+
+      // Bind change events for Enhanced Dropdowns
+      html.find('#names-language-select, #names-species-select, #names-category-select').change(this._onDropdownChange.bind(this));
+
+      logDebug("Enhanced Dropdowns initialized and bound:", Array.from(this.enhancedDropdowns.keys()));
+    }, 100);
   }
 
   async _waitForLoadingComplete(html) {
@@ -123,10 +158,16 @@ export class NamesGeneratorApp extends Application {
     const globalNamesData = getGlobalNamesData();
     if (!globalNamesData) return;
 
-    const categorySelect = html.find('#names-category-select');
-    const currentValue = categorySelect.val();
+    const categoryDropdown = this.enhancedDropdowns.get('category');
+    const categorySelect = html.find('#names-category-select')[0];
+    
+    if (!categoryDropdown || !categorySelect) {
+      logWarn("Category dropdown not found, falling back to jQuery");
+      this._updateCategoryOptionsLegacy(html, language, species);
+      return;
+    }
 
-    categorySelect.find('option:not(:first)').remove();
+    const currentValue = categorySelect.value;
 
     if (language && species) {
       const availableCategories = new Set();
@@ -151,6 +192,57 @@ export class NamesGeneratorApp extends Application {
       for (const category of filteredCategories) {
         const locKey = `names.categories.${category}`;
         localizedCategories.push({
+          value: category,
+          text: game.i18n.localize(locKey) || category
+        });
+      }
+
+      localizedCategories.sort((a, b) => a.text.localeCompare(b.text));
+
+      // Use Enhanced Dropdown API to replace options
+      categoryDropdown.clearOptions();
+      for (const category of localizedCategories) {
+        categoryDropdown.addOption(category.value, category.text, category.value === currentValue);
+      }
+
+      logDebug(`Updated category options for ${language}.${species}:`, filteredCategories);
+    } else {
+      // Clear options if language/species not selected
+      categoryDropdown.clearOptions();
+    }
+  }
+
+  _updateCategoryOptionsLegacy(html, language, species) {
+    // Fallback for when Enhanced Dropdowns aren't available
+    const globalNamesData = getGlobalNamesData();
+    if (!globalNamesData) return;
+
+    const categorySelect = html.find('#names-category-select');
+    const currentValue = categorySelect.val();
+
+    categorySelect.find('option:not(:first)').remove();
+
+    if (language && species) {
+      const availableCategories = new Set();
+      const supportedGenders = getSupportedGenders();
+
+      for (const [key, data] of globalNamesData.nameData.entries()) {
+        const [dataLang, dataSpecies, dataCategory] = key.split('.');
+        if (dataLang === language && dataSpecies === species) {
+          if (!supportedGenders.includes(dataCategory) || supportedGenders.includes(dataCategory)) {
+            availableCategories.add(dataCategory);
+          }
+        }
+      }
+
+      const filteredCategories = Array.from(availableCategories).filter(category => {
+        return !this.supportedGenders || !this.supportedGenders.includes(category) || supportedGenders.includes(category);
+      });
+
+      const localizedCategories = [];
+      for (const category of filteredCategories) {
+        const locKey = `names.categories.${category}`;
+        localizedCategories.push({
           code: category,
           name: game.i18n.localize(locKey) || category
         });
@@ -166,7 +258,7 @@ export class NamesGeneratorApp extends Application {
         categorySelect.val(currentValue);
       }
 
-      logDebug(`Updated category options for ${language}.${species}:`, filteredCategories);
+      logDebug(`Updated category options (legacy) for ${language}.${species}:`, filteredCategories);
     }
   }
 

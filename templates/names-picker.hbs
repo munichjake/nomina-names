@@ -3,7 +3,9 @@
     <div class="names-picker-controls">
       <div class="names-picker-form-group">
         <label for="picker-language">{{localize "names.language"}}:</label>
-        <select id="picker-language" name="language">
+        <select id="picker-language" 
+                name="language"
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": false, "clearable": false, "maxVisible": 6}'>
           {{#each languages}}
           <option value="{{this.code}}" {{#if (eq this.code ../defaultLanguage)}}selected{{/if}}>{{this.name}}</option>
           {{/each}}
@@ -12,7 +14,9 @@
       
       <div class="names-picker-form-group">
         <label for="picker-species">{{localize "names.lbl_species"}}:</label>
-        <select id="picker-species" name="species">
+        <select id="picker-species" 
+                name="species"
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": false, "clearable": false, "maxVisible": 6}'>
           {{#each species}}
           <option value="{{this.code}}" {{#if (eq this.code ../actorSpecies)}}selected{{/if}}>{{this.name}}</option>
           {{/each}}
@@ -21,7 +25,9 @@
       
       <div class="names-picker-form-group">
         <label for="picker-category">{{localize "names.category"}}:</label>
-        <select id="picker-category" name="category">
+        <select id="picker-category" 
+                name="category"
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": false, "clearable": false, "maxVisible": 6}'>
           <option value="male">{{localize "names.categories.male"}}</option>
           <option value="female">{{localize "names.categories.female"}}</option>
           <option value="nonbinary">{{localize "names.categories.nonbinary"}}</option>
@@ -51,3 +57,253 @@
     {{localize "names.click-to-adopt"}}
   </div>
 </form>
+
+<style>
+/* Enhanced styles for names picker */
+.names-picker-form {
+  padding: 20px;
+  max-width: 100%;
+}
+
+.names-picker-options {
+  margin-bottom: 24px;
+}
+
+.names-picker-controls {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.names-picker-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.names-picker-form-group label {
+  font-weight: 600;
+  color: #191813;
+  font-size: 14px;
+}
+
+/* Ensure enhanced dropdowns work well in picker */
+.names-picker-form-group .enhanced-dropdown {
+  width: 100%;
+}
+
+/* Generate button styling */
+.names-picker-generate {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.2);
+}
+
+.names-picker-generate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 100, 0, 0.3);
+}
+
+.names-picker-generate:active {
+  transform: translateY(0);
+}
+
+/* Names section */
+.names-picker-names {
+  margin-bottom: 20px;
+}
+
+.names-picker-names h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #191813;
+  text-align: center;
+}
+
+.names-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 120px;
+}
+
+.names-picker-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  background: #f8f8f7;
+}
+
+.names-picker-placeholder i {
+  font-size: 24px;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+/* Individual name items */
+.names-picker-name {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #191813;
+}
+
+.names-picker-name:hover {
+  border-color: #ff6400;
+  background: rgba(255, 100, 0, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.1);
+}
+
+.names-picker-name:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(255, 100, 0, 0.1);
+}
+
+.names-picker-name i {
+  color: #ff6400;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Help text */
+.names-picker-help {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  padding: 12px;
+  background: rgba(255, 100, 0, 0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 100, 0, 0.1);
+}
+
+/* Loading states */
+.names-picker-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.names-picker-loading i {
+  font-size: 32px;
+  color: #ff6400;
+  margin-bottom: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.names-picker-loading p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 400px) {
+  .names-picker-form {
+    padding: 16px;
+  }
+  
+  .names-picker-controls {
+    gap: 12px;
+  }
+  
+  .names-picker-name {
+    padding: 14px;
+    font-size: 15px;
+  }
+  
+  .names-picker-generate {
+    padding: 14px 18px;
+  }
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .names-picker-placeholder {
+    background: #2a2a2a;
+    border-color: #444;
+    color: #ccc;
+  }
+  
+  .names-picker-name {
+    background: #333;
+    border-color: #555;
+    color: #fff;
+  }
+  
+  .names-picker-name:hover {
+    background: rgba(255, 100, 0, 0.1);
+  }
+  
+  .names-picker-help {
+    background: rgba(255, 100, 0, 0.1);
+    color: #ccc;
+  }
+}
+
+/* Enhanced dropdown positioning for picker */
+.names-picker-form .enhanced-dropdown .dropdown-panel {
+  z-index: 1100; /* Higher than default to ensure visibility in modal */
+}
+
+/* Smooth transitions for better UX */
+.names-picker-list {
+  transition: all 0.3s ease;
+}
+
+.names-picker-name {
+  animation: slideInUp 0.3s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.names-picker-name:nth-child(1) { animation-delay: 0.1s; }
+.names-picker-name:nth-child(2) { animation-delay: 0.2s; }
+.names-picker-name:nth-child(3) { animation-delay: 0.3s; }
+.names-picker-name:nth-child(4) { animation-delay: 0.4s; }
+.names-picker-name:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

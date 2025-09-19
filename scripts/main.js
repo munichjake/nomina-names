@@ -13,6 +13,7 @@ import { injectEmergencyButton, removeEmergencyButton } from './utils/ui-helpers
 import { MODULE_ID } from './shared/constants.js';
 import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
+import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
 
 // ===== MODULE INITIALIZATION =====
 Hooks.once('init', () => {
@@ -60,9 +61,73 @@ Hooks.once('ready', () => {
     logDebug("API registered with Foundry module system");
   }
   
+  // Initialize Enhanced Dropdowns after a short delay to ensure DOM is ready
+  setTimeout(() => {
+    initializeEnhancedDropdownsForModule();
+  }, 200);
+  
   // Fire the data loaded hook for other modules
   Hooks.callAll('namesModuleReady', NamesAPI);
 });
+
+// ===== ENHANCED DROPDOWNS INITIALIZATION =====
+function initializeEnhancedDropdownsForModule() {
+  try {
+    // Initialize any existing enhanced dropdowns
+    initializeEnhancedDropdowns('select[data-enhanced]');
+    logDebug("Enhanced dropdowns initialized");
+  } catch (error) {
+    logError("Failed to initialize enhanced dropdowns", error);
+  }
+}
+
+// Hook into app rendering to replace dropdowns
+Hooks.on('renderApplication', (app, html, data) => {
+  // Only process Names module apps
+  if (!app.constructor.name.includes('Names')) return;
+  
+  setTimeout(() => {
+    replaceDropdownsInElement(html[0]);
+  }, 50);
+});
+
+function replaceDropdownsInElement(element) {
+  try {
+    const selectors = [
+      '#names-language-select',
+      '#names-species-select', 
+      '#names-category-select',
+      '#picker-language',
+      '#picker-species',
+      '#picker-category'
+    ];
+    
+    selectors.forEach(selector => {
+      const selectElement = element.querySelector(selector);
+      if (selectElement && !selectElement.dataset.enhancedInitialized) {
+        // Mark as initialized to prevent double-initialization
+        selectElement.dataset.enhancedInitialized = 'true';
+        
+        // Add enhanced attributes if not present
+        if (!selectElement.dataset.enhanced) {
+          selectElement.dataset.enhanced = JSON.stringify({
+            theme: 'names-orange',
+            searchPlaceholder: 'Suchen...',
+            virtualScroll: true,
+            clearable: false,
+            maxVisible: 8
+          });
+        }
+        
+        // Initialize enhanced dropdown
+        new EnhancedDropdown(selectElement);
+        logDebug(`Enhanced dropdown initialized for ${selector}`);
+      }
+    });
+  } catch (error) {
+    logError("Failed to replace dropdowns in element", error);
+  }
+}
 
 // ===== UI INTEGRATIONS =====
 
@@ -347,5 +412,7 @@ window.NamesModule = {
   hasNamesGeneratorPermission,
   getGlobalNamesData: () => ensureGlobalNamesData(),
   // Expose API for other modules
-  api: NamesAPI
+  api: NamesAPI,
+  // Expose Enhanced Dropdown for external use
+  EnhancedDropdown
 };

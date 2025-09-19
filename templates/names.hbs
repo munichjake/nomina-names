@@ -4,7 +4,10 @@
     
     <div class="names-module-form-group">
       <label for="names-language-select">{{localize "names.language"}}:</label>
-      <select id="names-language-select" name="names-language" required>
+      <select id="names-language-select" 
+              name="names-language" 
+              required
+              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false}'>
         <option value="">-- {{localize "names.select-all"}} --</option>
         {{#each languages}}
         <option value="{{this.code}}">{{this.name}}</option>
@@ -14,7 +17,10 @@
 
     <div class="names-module-form-group">
       <label for="names-species-select">{{localize "names.lbl_species"}}:</label>
-      <select id="names-species-select" name="names-species" required>
+      <select id="names-species-select" 
+              name="names-species" 
+              required
+              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false}'>
         <option value="">-- {{localize "names.select-all"}} --</option>
         {{#each species}}
         <option value="{{this.code}}">{{this.name}}</option>
@@ -24,7 +30,10 @@
 
     <div class="names-module-form-group">
       <label for="names-category-select">{{localize "names.category"}}:</label>
-      <select id="names-category-select" name="names-category" required>
+      <select id="names-category-select" 
+              name="names-category" 
+              required
+              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false}'>
         <option value="">-- {{localize "names.select-all"}} --</option>
         <!-- Optionen werden dynamisch von JavaScript gefüllt -->
       </select>
@@ -66,7 +75,7 @@
 
     <div class="names-module-format-group" style="display: none;">
       <div class="names-module-form-group">
-        <label for="names-format-input">{{localize "nameformat"}}:</label>
+        <label for="names-format-input">{{localize "names.nameformat"}}:</label>
         <input 
           type="text" 
           id="names-format-input" 
@@ -76,8 +85,8 @@
           placeholder="{firstname} {nickname} {surname}, {title}"
         >
         <div class="names-module-format-help">
-          {{localize "placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
-          {{localize "examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
+          {{localize "names.placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
+          {{localize "names.examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
         </div>
       </div>
     </div>
@@ -124,3 +133,229 @@
     </div>
   </div>
 </form>
+
+<style>
+/* Enhanced integration styles for the main generator */
+.names-module-form-group {
+  margin-bottom: 20px;
+}
+
+.names-module-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Ensure enhanced dropdowns integrate well with existing form styling */
+.names-module-form-group .enhanced-dropdown {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+/* Checkbox styling improvements */
+.names-module-checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.names-module-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.names-module-checkbox-item:hover {
+  border-color: #ff6400;
+  background: rgba(255, 100, 0, 0.02);
+}
+
+.names-module-checkbox-item input[type="checkbox"] {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: #ff6400;
+}
+
+.names-module-checkbox-item input[type="checkbox"]:checked + .names-module-checkmark {
+  background: #ff6400;
+}
+
+/* Generate button styling */
+.names-module-generate-btn {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.2);
+  width: 100%;
+  justify-content: center;
+}
+
+.names-module-generate-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 100, 0, 0.3);
+}
+
+.names-module-generate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Format input styling */
+.names-module-format-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.names-module-format-input:focus {
+  outline: none;
+  border-color: #ff6400;
+  box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.1);
+}
+
+/* Count input styling */
+.names-module-count-input {
+  width: 100px;
+  padding: 10px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.names-module-count-input:focus {
+  outline: none;
+  border-color: #ff6400;
+  box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.1);
+}
+
+/* Result section styling */
+.names-module-result-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.names-module-result-display {
+  background: #f8f8f7;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+  min-height: 80px;
+  position: relative;
+}
+
+.names-module-no-result {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+}
+
+.names-module-generated-name {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #191813;
+  transition: all 0.2s ease;
+}
+
+.names-module-generated-name:hover {
+  background: rgba(255, 100, 0, 0.05);
+  border-color: #ff6400;
+}
+
+.names-module-result-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.names-module-action-btn {
+  background: #6c757d;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.names-module-action-btn:hover:not(:disabled) {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.names-module-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Help text styling */
+.names-module-format-help {
+  font-size: 12px;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Section styling */
+.names-module-section {
+  margin-bottom: 32px;
+}
+
+.names-module-section h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid #ff6400;
+  padding-bottom: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .names-module-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .names-module-result-actions {
+    flex-direction: column;
+  }
+  
+  .names-module-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
