@@ -2,7 +2,7 @@
     "id":  "names",
     "title":  "Names",
     "description":  "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
-    "version":  "1.2.5",
+    "version":  "1.2.6",
     "compatibility":  {
                           "minimum":  "11",
                           "verified":  "12"
@@ -43,5 +43,5 @@
                   ],
     "url":  "https://github.com/munichjake/names",
     "manifest":  "https://raw.githubusercontent.com/munichjake/names/main/module.json",
-    "download":  "https://github.com/munichjake/names/releases/download/v1.2.5/module-1.2.5.zip"
+    "download":  "https://github.com/munichjake/names/releases/download/v1.2.6/module-1.2.6.zip"
 }
