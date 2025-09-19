@@ -12,16 +12,13 @@
 
 ## Backupdateien ausschließen
 *.bck
+*.bak
 
-# Bei Bedarf können Sie hier weitere Dateien oder Verzeichnisse
-# hinzufügen, die git ignorieren soll. Beispiele:
-#
-# # Protokolldateien
-# *.log
-#
-# # Temporäre Backupdateien
-# *~
-#
-# # Python‑Bytecode
-# __pycache__/
-# *.py[cod]
+# Release-Artefakte
+*.zip
+module-*.zip
+system-*.zip
+
+# Temporäre Release-Dateien
+temp-*.json
+*.release.*.json
