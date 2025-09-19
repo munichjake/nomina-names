@@ -35,7 +35,8 @@
               required
               data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false}'>
         <option value="">-- {{localize "names.select-all"}} --</option>
-        <!-- Optionen werden dynamisch von JavaScript gefüllt -->
+        <option value="names">{{localize "names.names"}}</option>
+        <option value="settlements">{{localize "names.categories.settlements"}}</option>
       </select>
       <div class="names-module-format-help">
         {{localize "names.select-options"}}
@@ -43,9 +44,21 @@
     </div>
   </div>
 
-  <!-- Namenskomponenten Panel - wird nur für male/female/nonbinary Namen angezeigt -->
+  <!-- Geschlechter-Auswahl Panel - wird nur für "Namen" angezeigt -->
+  <div class="names-module-section names-module-gender-section" style="display: none;">
+    <h3>{{localize "names.gender"}}</h3>
+    
+    <div class="names-module-checkbox-grid" id="gender-checkboxes-container">
+      <!-- Wird dynamisch von JavaScript gefüllt -->
+    </div>
+    <div class="names-module-format-help">
+      {{localize "names.gender-help"}}
+    </div>
+  </div>
+
+  <!-- Namenskomponenten Panel - wird nur für "Namen" angezeigt -->
   <div class="names-module-section names-module-components-section" style="display: none;">
-    <h3>{{localize "names.firstname"}}</h3>
+    <h3>{{localize "names.components"}}</h3>
     
     <div class="names-module-checkbox-grid">
       <label class="names-module-checkbox-item">
@@ -73,7 +86,7 @@
       </label>
     </div>
 
-    <div class="names-module-format-group" style="display: none;">
+    <div class="names-module-format-group">
       <div class="names-module-form-group">
         <label for="names-format-input">{{localize "names.nameformat"}}:</label>
         <input 
@@ -183,8 +196,21 @@
   accent-color: #ff6400;
 }
 
+.names-module-checkbox-item input[type="checkbox"]:checked {
+  background: #ff6400;
+}
+
 .names-module-checkbox-item input[type="checkbox"]:checked + .names-module-checkmark {
   background: #ff6400;
+}
+
+/* Gender and component sections */
+.names-module-gender-section,
+.names-module-components-section {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(255, 100, 0, 0.02);
 }
 
 /* Generate button styling */
