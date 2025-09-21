@@ -110,8 +110,8 @@
       "atmospheric": "Atmospheric"
     },
 
-    "// ===== SUBCATEGORIES =====": "",
-    "subcategories": {
+    "// ===== SUBCATEGORY TRANSLATIONS =====": "",
+    "subcategory-translations": {
       "books": {
         "religious_books": "Religious Books",
         "novels": "Novels & Stories",
@@ -144,6 +144,11 @@
 
     "// ===== SETTINGS =====": "",
     "settings": {
+      "defaultLanguage": {
+        "name": "Default Language",
+        "hint": "The language that is automatically selected when opening the name generator",
+        "auto": "Automatic (Foundry Language)"
+      },
       "showInTokenControls": {
         "name": "Show Button in Token Controls",
         "hint": "Shows the name generator button in the left toolbar"

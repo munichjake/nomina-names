@@ -13,6 +13,7 @@
 ## Backupdateien ausschließen
 *.bck
 *.bak
+*.copy-for-claude.json
 
 # Release-Artefakte
 *.zip

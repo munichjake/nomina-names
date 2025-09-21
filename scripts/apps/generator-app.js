@@ -13,6 +13,9 @@ export class NamesGeneratorApp extends Application {
     super(options);
     this.supportedGenders = getSupportedGenders();
     this.enhancedDropdowns = new Map(); // Store Enhanced Dropdown instances
+    this.autoResize = true; // Enable auto-resize by default
+    this.minHeight = 400; // Minimum window height
+    this.maxHeight = 800; // Maximum window height
     logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
   }
 
@@ -22,7 +25,7 @@ export class NamesGeneratorApp extends Application {
       title: game.i18n.localize("names.title"),
       template: TEMPLATE_PATHS.generator,
       width: 900,
-      height: 800,
+      height: 600, // Reduced initial height for more compact layout
       resizable: true,
       classes: [CSS_CLASSES.moduleApp]
     });
@@ -31,7 +34,7 @@ export class NamesGeneratorApp extends Application {
   async getData() {
     ensureGlobalNamesData();
     const globalNamesData = getGlobalNamesData();
-    
+
     if (globalNamesData) {
       await globalNamesData.initializeData();
     }
@@ -42,7 +45,8 @@ export class NamesGeneratorApp extends Application {
       categories: globalNamesData ? await globalNamesData.getLocalizedCategoriesForGenerator('generator') : [],
       isLoading: globalNamesData ? globalNamesData.isLoading : false,
       isLoaded: globalNamesData ? globalNamesData.isLoaded : false,
-      supportedGenders: getSupportedGenders()
+      supportedGenders: getSupportedGenders(),
+      defaultLanguage: this._getFoundryLanguage()
     };
 
     logDebug("Generator app data prepared:", {
@@ -50,7 +54,8 @@ export class NamesGeneratorApp extends Application {
       species: data.species.length,
       categories: data.categories.length,
       isLoading: data.isLoading,
-      isLoaded: data.isLoaded
+      isLoaded: data.isLoaded,
+      defaultLanguage: data.defaultLanguage
     });
 
     return data;
@@ -80,6 +85,12 @@ export class NamesGeneratorApp extends Application {
     } else {
       this._updateUI(html);
     }
+
+    // Initial resize to fit content
+    setTimeout(() => this._resizeToContent(), 100);
+
+    // Set default language selection after UI is ready
+    setTimeout(() => this._setDefaultLanguage(), 200);
   }
 
   _initializeEnhancedDropdowns(html) {
@@ -150,6 +161,9 @@ export class NamesGeneratorApp extends Application {
     await this._updateSubcategoryCheckboxes($form, language, species, category);
     this._toggleNamesPanels($form, category);
     this._updateGenerateButtonState($form);
+
+    // Resize window after UI updates
+    setTimeout(() => this._resizeToContent(), 100);
   }
 
   async _updateGenderCheckboxes(html, language, species) {
@@ -263,7 +277,7 @@ export class NamesGeneratorApp extends Application {
     const subcategoryDefinitions = getSubcategories(category);
     
     for (const subcategory of availableSubcategories) {
-      const locKey = subcategoryDefinitions[subcategory] || `names.subcategories.${category}.${subcategory}`;
+      const locKey = subcategoryDefinitions[subcategory] || `names.subcategory-translations.${category}.${subcategory}`;
       const subcategoryLabel = game.i18n.localize(locKey) || subcategory.replace(/_/g, ' ');
       const isChecked = availableSubcategories.length === 1 ? 'checked' : ''; // Auto-select if only one option
       
@@ -309,6 +323,9 @@ export class NamesGeneratorApp extends Application {
       subcategoryPanel.hide();
       logDebug(`Hiding all special panels for category: ${category}`);
     }
+
+    // Trigger resize after panel visibility changes
+    setTimeout(() => this._resizeToContent(), 50);
   }
 
   _updateGenerateButtonState(html) {
@@ -427,6 +444,9 @@ export class NamesGeneratorApp extends Application {
       form.querySelector('#names-clear-btn').disabled = false;
 
       logInfo(`Successfully generated ${results.length} names`);
+
+      // Resize window after generating names
+      setTimeout(() => this._resizeToContent(), 100);
 
     } catch (error) {
       logError("Name generation failed", error);
@@ -873,5 +893,148 @@ export class NamesGeneratorApp extends Application {
     form.querySelector('#names-clear-btn').disabled = true;
 
     logDebug("Results cleared and buttons disabled");
+
+    // Resize after clearing results
+    setTimeout(() => this._resizeToContent(), 50);
+  }
+
+  /**
+   * Calculate required height based on visible content
+   */
+  _calculateRequiredHeight() {
+    if (!this.element || !this.element[0]) return this.minHeight;
+
+    const contentElement = this.element.find('.window-content')[0];
+    if (!contentElement) return this.minHeight;
+
+    // Get the natural height of all content
+    const children = Array.from(contentElement.children);
+    let totalHeight = 0;
+
+    // Add padding and margins
+    const computedStyle = window.getComputedStyle(contentElement);
+    const padding = parseInt(computedStyle.paddingTop) + parseInt(computedStyle.paddingBottom);
+    const margin = parseInt(computedStyle.marginTop) + parseInt(computedStyle.marginBottom);
+
+    // Calculate height of all visible content
+    children.forEach(child => {
+      if (child.offsetHeight > 0) {
+        const childStyle = window.getComputedStyle(child);
+        const childMargin = parseInt(childStyle.marginTop) + parseInt(childStyle.marginBottom);
+        totalHeight += child.offsetHeight + childMargin;
+      }
+    });
+
+    // Add window header height (estimated)
+    const headerHeight = 30;
+
+    // Add some buffer for comfortable spacing
+    const buffer = 20;
+
+    const requiredHeight = headerHeight + totalHeight + padding + margin + buffer;
+
+    logDebug(`Calculated required height: ${requiredHeight}px (content: ${totalHeight}px)`);
+
+    // Clamp to min/max values
+    return Math.max(this.minHeight, Math.min(this.maxHeight, requiredHeight));
+  }
+
+  /**
+   * Resize window to fit content with smooth animation
+   */
+  _resizeToContent() {
+    if (!this.autoResize || !this.element || !this.element[0]) return;
+
+    const newHeight = this._calculateRequiredHeight();
+    const currentHeight = this.position.height;
+
+    // Only resize if there's a significant difference (avoid micro-adjustments)
+    if (Math.abs(newHeight - currentHeight) > 10) {
+      logDebug(`Resizing window from ${currentHeight}px to ${newHeight}px`);
+
+      // Add CSS transition for smooth resizing
+      this.element.css('transition', 'height 0.3s ease-out');
+
+      // Perform the resize
+      this.setPosition({ height: newHeight });
+
+      // Remove transition after animation completes
+      setTimeout(() => {
+        if (this.element) {
+          this.element.css('transition', '');
+        }
+      }, 300);
+    }
+  }
+
+  /**
+   * Get the default language from module settings
+   */
+  _getFoundryLanguage() {
+    const defaultLanguageSetting = game.settings.get("names", "defaultLanguage");
+
+    // If set to "auto", use Foundry language
+    if (defaultLanguageSetting === "auto") {
+      const foundryLang = game.settings.get("core", "language");
+
+      const languageMapping = {
+        'en': 'en',
+        'de': 'de',
+        'fr': 'fr',
+        'es': 'es',
+        'it': 'it'
+      };
+
+      const mappedLang = languageMapping[foundryLang] || 'de';
+      logDebug(`Auto mode: Foundry language ${foundryLang} mapped to ${mappedLang}`);
+
+      const globalNamesData = getGlobalNamesData();
+      if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(mappedLang)) {
+        return mappedLang;
+      }
+
+      // Fallback to 'de' if mapped language not available
+      logDebug(`Language ${mappedLang} not available, falling back to 'de'`);
+      return 'de';
+    }
+
+    // Use specific language setting
+    logDebug(`Using module default language setting: ${defaultLanguageSetting}`);
+
+    const globalNamesData = getGlobalNamesData();
+    if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(defaultLanguageSetting)) {
+      return defaultLanguageSetting;
+    }
+
+    // Fallback to 'de' if set language not available
+    logDebug(`Set language ${defaultLanguageSetting} not available, falling back to 'de'`);
+    return 'de';
+  }
+
+  /**
+   * Set the default language selection in the dropdown
+   */
+  _setDefaultLanguage() {
+    if (!this.element || !this.element[0]) return;
+
+    const defaultLang = this._getFoundryLanguage();
+    const languageSelect = this.element[0].querySelector('#names-language-select');
+
+    if (languageSelect && defaultLang) {
+      // Set value for native select
+      languageSelect.value = defaultLang;
+
+      // If Enhanced Dropdown is available, update it too
+      const enhancedDropdown = this.enhancedDropdowns.get('language');
+      if (enhancedDropdown && enhancedDropdown.setValue) {
+        enhancedDropdown.setValue(defaultLang);
+        logDebug(`Set default language to ${defaultLang} via Enhanced Dropdown`);
+      } else {
+        logDebug(`Set default language to ${defaultLang} via native select`);
+      }
+
+      // Trigger change event to update UI
+      $(languageSelect).trigger('change');
+    }
   }
 }

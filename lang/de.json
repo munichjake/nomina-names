@@ -31,7 +31,7 @@
     "subcategories": "Unterkategorien",
     "settlements": "Siedlungen",
     "books": "Bücher",
-    "ships": "Schiffe", 
+    "ships": "Schiffe",
     "shops": "Geschäfte",
     "taverns": "Tavernen",
 
@@ -110,8 +110,8 @@
       "atmospheric": "Atmosphärisch"
     },
 
-    "// ===== SUBCATEGORIES =====": "",
-    "subcategories": {
+    "// ===== SUBCATEGORY TRANSLATIONS =====": "",
+    "subcategory-translations": {
       "books": {
         "religious_books": "Religiöse Bücher",
         "novels": "Romane & Erzählungen",
@@ -121,7 +121,7 @@
       "ships": {
         "merchant_ship": "Handelsschiffe",
         "warship": "Kriegsschiffe",
-        "pirate_ship": "Piratenschiffe", 
+        "pirate_ship": "Piratenschiffe",
         "small_boat": "Kleine Boote",
         "exploration_ship": "Forschungsschiffe",
         "mystical_ship": "Mystische Schiffe"
@@ -131,7 +131,7 @@
         "alchemists": "Alchemisten",
         "general_stores": "Gemischtwarenläden",
         "adventure_supplies": "Abenteurer-Bedarf",
-        "weaponsmiths": "Waffenschmieden", 
+        "weaponsmiths": "Waffenschmieden",
         "armorers": "Rüstungsschmiede"
       },
       "taverns": {
@@ -144,8 +144,13 @@
 
     "// ===== SETTINGS =====": "",
     "settings": {
+      "defaultLanguage": {
+        "name": "Standard-Sprache",
+        "hint": "Die Sprache, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
+        "auto": "Automatisch (Foundry-Sprache)"
+      },
       "showInTokenControls": {
-        "name": "Button in Token Controls anzeigen", 
+        "name": "Button in Token Controls anzeigen",
         "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
       },
       "showInCharacterSheet": {

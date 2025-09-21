@@ -278,6 +278,24 @@ function registerModuleSettings() {
     }
   });
 
+  // Default Language Setting
+  game.settings.register(MODULE_ID, "defaultLanguage", {
+    name: game.i18n.localize("names.settings.defaultLanguage.name") || "Standard-Sprache",
+    hint: game.i18n.localize("names.settings.defaultLanguage.hint") || "Die Sprache, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "auto": game.i18n.localize("names.settings.defaultLanguage.auto") || "Automatisch (Foundry-Sprache)",
+      "de": "Deutsch",
+      "en": "English",
+      "fr": "Français",
+      "es": "Español",
+      "it": "Italiano"
+    },
+    default: "auto"
+  });
+
   // Token Controls Setting
   game.settings.register(MODULE_ID, "showInTokenControls", {
     name: game.i18n.localize("names.settings.showInTokenControls.name"),
