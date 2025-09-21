@@ -9,7 +9,7 @@ export const NONBINARY_GENDER = 'nonbinary';
 // Function to get supported genders based on settings
 export function getSupportedGenders() {
   try {
-    const includeNonbinary = game.settings.get('names', 'includeNonbinaryNames');
+    const includeNonbinary = game.settings.get('nomina-names', 'includeNonbinaryNames');
     return includeNonbinary ? [...BASE_GENDERS, NONBINARY_GENDER] : BASE_GENDERS;
   } catch (error) {
     // Fallback if setting doesn't exist yet
@@ -260,7 +260,7 @@ export function initializeFallbackCategories() {
 // Legacy constants for backwards compatibility
 export const DEFAULT_NAME_FORMAT = '{firstname} {nickname} {surname}, {title}';
 
-export const MODULE_ID = 'names';
+export const MODULE_ID = 'nomina-names';
 
 // Gender symbols for UI display
 export const GENDER_SYMBOLS = {
@@ -279,15 +279,15 @@ export const CSS_CLASSES = {
 };
 
 export const TEMPLATE_PATHS = {
-  generator: 'modules/names/templates/names.hbs',
-  picker: 'modules/names/templates/names-picker.hbs',
-  emergency: 'modules/names/templates/emergency-names.hbs',
-  roleConfig: 'modules/names/templates/role-config.hbs'
+  generator: 'modules/nomina-names/templates/names.hbs',
+  picker: 'modules/nomina-names/templates/names-picker.hbs',
+  emergency: 'modules/nomina-names/templates/emergency-names.hbs',
+  roleConfig: 'modules/nomina-names/templates/role-config.hbs'
 };
 
 export const DATA_PATHS = {
-  base: 'modules/names/data/',
-  index: 'modules/names/data/index.json',
-  langConfig: 'modules/names/lang/_config.json',
-  speciesMapping: 'modules/names/lang/_species-mapping.json'
+  base: 'modules/nomina-names/data/',
+  index: 'modules/nomina-names/data/index.json',
+  langConfig: 'modules/nomina-names/lang/_config.json',
+  speciesMapping: 'modules/nomina-names/lang/_species-mapping.json'
 };
