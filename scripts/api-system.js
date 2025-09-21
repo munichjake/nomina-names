@@ -728,7 +728,7 @@ export const NamesAPI = new NamesModuleAPI();
 // In a third-party module's init hook:
 Hooks.once('init', () => {
   // Register categorized content
-  game.modules.get('names').api.registerCategorizedContent('my-module', {
+  game.modules.get('nomina-names').api.registerCategorizedContent('my-module', {
     language: 'de',
     species: 'human',
     category: 'books',
@@ -740,7 +740,7 @@ Hooks.once('init', () => {
   });
 
   // Generate categorized content
-  const bookName = await game.modules.get('names').api.generateCategorizedContent({
+  const bookName = await game.modules.get('nomina-names').api.generateCategorizedContent({
     language: 'de',
     species: 'human',
     category: 'books',
@@ -748,6 +748,6 @@ Hooks.once('init', () => {
   });
 
   // Get available subcategories
-  const subcategories = await game.modules.get('names').api.getAvailableSubcategories('de', 'human', 'books');
+  const subcategories = await game.modules.get('nomina-names').api.getAvailableSubcategories('de', 'human', 'books');
 });
 */

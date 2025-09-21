@@ -971,7 +971,7 @@ export class NamesGeneratorApp extends Application {
    * Get the default language from module settings
    */
   _getFoundryLanguage() {
-    const defaultLanguageSetting = game.settings.get("names", "defaultLanguage");
+    const defaultLanguageSetting = game.settings.get("nomina-names", "defaultLanguage");
 
     // If set to "auto", use Foundry language
     if (defaultLanguageSetting === "auto") {
