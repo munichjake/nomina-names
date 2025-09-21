@@ -180,13 +180,23 @@ class NamesModuleAPI {
   }
 
   /**
-   * Get available species
-   * @returns {Array} Array of species objects
+   * Get available species (filtered by user settings)
+   * @returns {Array} Array of species objects with code and name
    */
   getAvailableSpecies() {
     const dataManager = getGlobalNamesData();
     if (!dataManager) return [];
     return dataManager.getLocalizedSpecies();
+  }
+
+  /**
+   * Get all species codes (including disabled ones)
+   * @returns {Array} Array of species code strings
+   */
+  getAllSpeciesCodes() {
+    const dataManager = getGlobalNamesData();
+    if (!dataManager) return [];
+    return Array.from(dataManager.availableSpecies);
   }
 
   /**

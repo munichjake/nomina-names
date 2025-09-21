@@ -286,13 +286,19 @@ export class NamesDataManager {
   }
 
   /**
-   * Gets localized species list
+   * Gets localized species list filtered by user settings
    * @returns {Array} Array of species objects with code and name
    */
   getLocalizedSpecies() {
     const species = [];
+    const enabledSpecies = this._getEnabledSpecies();
 
     for (const spec of this.availableSpecies) {
+      // Check if this species is enabled in settings
+      if (!enabledSpecies.includes(spec)) {
+        continue;
+      }
+
       const locKey = `names.species.${spec}`;
       species.push({
         code: spec,
@@ -301,6 +307,32 @@ export class NamesDataManager {
     }
 
     return species.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  /**
+   * Gets enabled species based on user settings
+   * @returns {Array} Array of enabled species codes
+   */
+  _getEnabledSpecies() {
+    try {
+      const speciesSettings = game.settings.get("nomina-names", "availableSpecies");
+
+      // If no settings yet, enable all species by default
+      if (!speciesSettings || Object.keys(speciesSettings).length === 0) {
+        return Array.from(this.availableSpecies);
+      }
+
+      // Return only enabled species
+      return Object.entries(speciesSettings)
+        .filter(([species, enabled]) => enabled)
+        .map(([species, enabled]) => species)
+        .filter(species => this.availableSpecies.has(species)); // Ensure species still exists
+
+    } catch (error) {
+      // Fallback to all species if settings access fails
+      console.warn("Failed to get species settings, enabling all species:", error);
+      return Array.from(this.availableSpecies);
+    }
   }
 
   /**

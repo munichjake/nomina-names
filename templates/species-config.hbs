@@ -1,0 +1,537 @@
+<form class="species-config-container">
+  <!-- Header -->
+  <div class="config-header">
+    <h2>{{localize "names.speciesConfig.title"}}</h2>
+    <p class="config-description">
+      {{localize "names.speciesConfig.description" default="Wähle welche Spezies im Namen-Generator verfügbar sein sollen. Deaktivierte Spezies werden nicht in den Dropdown-Menüs angezeigt."}}
+    </p>
+  </div>
+
+  <!-- Search -->
+  <div class="search-section">
+    <label for="species-search">{{localize "names.speciesConfig.search" default="Suchen:"}}</label>
+    <input type="text" id="species-search" placeholder="{{localize "names.speciesConfig.searchPlaceholder" default="Spezies suchen..."}}" />
+  </div>
+
+  <!-- Global Controls -->
+  <div class="global-controls">
+    <button type="button" name="enable-all" class="control-button enable-all">
+      <i class="fas fa-check-square"></i>
+      {{localize "names.speciesConfig.enableAll" default="Alle aktivieren"}}
+    </button>
+    <button type="button" name="disable-all" class="control-button disable-all">
+      <i class="fas fa-square"></i>
+      {{localize "names.speciesConfig.disableAll" default="Alle deaktivieren"}}
+    </button>
+    <button type="button" name="reset" class="control-button reset">
+      <i class="fas fa-undo"></i>
+      {{localize "names.speciesConfig.reset" default="Zurücksetzen"}}
+    </button>
+  </div>
+
+  <!-- Species Lists -->
+  <div class="species-lists">
+
+    <!-- Core Species -->
+    <div class="species-section core-species">
+      <h3 class="section-title">
+        <i class="fas fa-star"></i>
+        {{localize "names.speciesConfig.coreSpecies" default="Kern-Spezies"}}
+        <span class="species-count">({{coreSpecies.length}})</span>
+      </h3>
+
+      <div class="species-grid">
+        {{#each coreSpecies}}
+        <div class="species-item" data-species="{{species}}">
+          <div class="species-toggle {{#if enabled}}enabled{{else}}disabled{{/if}}">
+            <input type="checkbox" class="species-checkbox" name="{{species}}" data-species="{{species}}" {{#if enabled}}checked{{/if}} />
+            <div class="species-info">
+              <div class="species-name">{{displayName}}</div>
+              <div class="species-description">{{description}}</div>
+              <div class="species-source">
+                <i class="fas fa-home"></i>
+                {{localize "names.speciesConfig.coreModule" default="Kern-Modul"}}
+              </div>
+            </div>
+            <div class="species-status">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Extension Species -->
+    {{#if hasExtensions}}
+    <div class="species-section extension-species">
+      <h3 class="section-title">
+        <i class="fas fa-puzzle-piece"></i>
+        {{localize "names.speciesConfig.extensionSpecies" default="Erweiterungs-Spezies"}}
+        <span class="species-count">({{extensionModules.length}} Module)</span>
+      </h3>
+
+      {{#each extensionModules}}
+      <div class="extension-module" data-module="{{moduleId}}">
+        <div class="module-header">
+          <h4 class="module-name">
+            <i class="fas fa-cube"></i>
+            {{moduleName}}
+          </h4>
+          <div class="module-controls">
+            <button type="button" class="module-enable-all">
+              <i class="fas fa-check"></i>
+              {{localize "names.speciesConfig.enableAllInModule" default="Alle aktivieren"}}
+            </button>
+            <button type="button" class="module-disable-all">
+              <i class="fas fa-times"></i>
+              {{localize "names.speciesConfig.disableAllInModule" default="Alle deaktivieren"}}
+            </button>
+          </div>
+        </div>
+
+        <div class="species-grid">
+          {{#each species}}
+          <div class="species-item" data-species="{{species}}">
+            <div class="species-toggle {{#if enabled}}enabled{{else}}disabled{{/if}}">
+              <input type="checkbox" class="species-checkbox" name="{{species}}" data-species="{{species}}" {{#if enabled}}checked{{/if}} />
+              <div class="species-info">
+                <div class="species-name">{{displayName}}</div>
+                <div class="species-description">{{description}}</div>
+                <div class="species-source">
+                  <i class="fas fa-puzzle-piece"></i>
+                  {{../moduleName}}
+                </div>
+              </div>
+              <div class="species-status">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="no-extensions">
+      <div class="no-extensions-message">
+        <i class="fas fa-info-circle"></i>
+        <p>{{localize "names.speciesConfig.noExtensions" default="Keine Erweiterungs-Module mit zusätzlichen Spezies gefunden."}}</p>
+        <p class="hint">{{localize "names.speciesConfig.extensionHint" default="Installiere Module mit zusätzlichen Spezies, um mehr Auswahl zu haben."}}</p>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- Summary -->
+  <div class="config-summary">
+    <div class="summary-info">
+      <span class="summary-label">{{localize "names.speciesConfig.totalAvailable" default="Verfügbare Spezies:"}} </span>
+      <span class="summary-count">{{totalSpecies}}</span>
+    </div>
+  </div>
+
+  <!-- Form Buttons -->
+  <div class="form-buttons">
+    <button type="submit" class="save-button">
+      <i class="fas fa-save"></i>
+      {{localize "names.speciesConfig.save" default="Speichern"}}
+    </button>
+    <button type="button" class="cancel-button" data-action="close">
+      <i class="fas fa-times"></i>
+      {{localize "names.speciesConfig.cancel" default="Abbrechen"}}
+    </button>
+  </div>
+</form>
+
+<style>
+.species-config-container {
+  padding: 20px;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.config-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ff6400;
+  padding-bottom: 15px;
+}
+
+.config-header h2 {
+  margin: 0 0 10px 0;
+  color: #ff6400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-description {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.search-section {
+  margin-bottom: 20px;
+}
+
+.search-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.search-section input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.global-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.control-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.control-button.enable-all {
+  background: #28a745;
+  color: white;
+}
+
+.control-button.enable-all:hover {
+  background: #218838;
+}
+
+.control-button.disable-all {
+  background: #6c757d;
+  color: white;
+}
+
+.control-button.disable-all:hover {
+  background: #5a6268;
+}
+
+.control-button.reset {
+  background: #ffc107;
+  color: #212529;
+}
+
+.control-button.reset:hover {
+  background: #e0a800;
+}
+
+.species-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 15px 0;
+  padding: 10px;
+  background: linear-gradient(135deg, #ff6400, #e55a00);
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.species-count {
+  margin-left: auto;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.species-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.species-item {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.species-item:hover {
+  border-color: #ff6400;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.1);
+}
+
+.species-toggle {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.species-toggle.enabled {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border-left: 4px solid #28a745;
+}
+
+.species-toggle.disabled {
+  background: linear-gradient(135deg, #f8d7da, #f1b0b7);
+  border-left: 4px solid #dc3545;
+}
+
+.species-checkbox {
+  margin-right: 12px;
+  transform: scale(1.2);
+}
+
+.species-info {
+  flex: 1;
+}
+
+.species-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.species-description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.species-source {
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.species-status {
+  margin-left: 10px;
+  opacity: 0.7;
+}
+
+.species-toggle.enabled .species-status {
+  color: #28a745;
+}
+
+.species-toggle.disabled .species-status {
+  color: #dc3545;
+}
+
+.extension-module {
+  margin-bottom: 25px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.module-name {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #495057;
+}
+
+.module-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.module-controls button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.module-enable-all {
+  background: #28a745;
+  color: white;
+}
+
+.module-enable-all:hover {
+  background: #218838;
+}
+
+.module-disable-all {
+  background: #dc3545;
+  color: white;
+}
+
+.module-disable-all:hover {
+  background: #c82333;
+}
+
+.extension-module .species-grid {
+  padding: 15px;
+}
+
+.no-extensions {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+.no-extensions-message {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.no-extensions-message i {
+  font-size: 48px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.no-extensions-message p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.no-extensions-message .hint {
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.config-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  display: flex;
+  justify-content: center;
+}
+
+.summary-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.summary-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.summary-count {
+  background: #ff6400;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 2px solid #e9ecef;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.save-button {
+  background: linear-gradient(135deg, #28a745, #20963d);
+  color: white;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.save-button:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.4);
+}
+
+.cancel-button {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
+  box-shadow: 0 2px 4px rgba(108, 117, 125, 0.3);
+}
+
+.cancel-button:hover {
+  background: linear-gradient(135deg, #5a6268, #495057);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .species-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .global-controls {
+    flex-direction: column;
+  }
+
+  .module-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .module-controls {
+    justify-content: center;
+  }
+}
+</style>

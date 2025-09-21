@@ -8,6 +8,7 @@ import { NamesGeneratorApp } from './apps/generator-app.js';
 import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
 import { NamesRoleConfig } from './apps/role-config.js';
+import { NamesSpeciesConfig } from './apps/species-config.js';
 import { hasNamesGeneratorPermission, showPermissionChangeDialog } from './utils/permissions.js';
 import { injectEmergencyButton, removeEmergencyButton } from './utils/ui-helpers.js';
 import { MODULE_ID } from './shared/constants.js';
@@ -429,6 +430,26 @@ function registerModuleSettings() {
     config: false,
     type: Array,
     default: [CONST.USER_ROLES.GAMEMASTER]
+  });
+
+  // Available Species Setting
+  game.settings.register(MODULE_ID, "availableSpecies", {
+    name: game.i18n.localize("names.settings.availableSpecies.name") || "Verfügbare Spezies",
+    hint: game.i18n.localize("names.settings.availableSpecies.hint") || "Wähle welche Spezies im Generator verfügbar sein sollen",
+    scope: "world",
+    config: false, // Will be handled by menu
+    type: Object,
+    default: {}
+  });
+
+  // Species Configuration Menu
+  game.settings.registerMenu(MODULE_ID, "speciesConfig", {
+    name: game.i18n.localize("names.settings.speciesConfig.name") || "Spezies verwalten",
+    hint: game.i18n.localize("names.settings.speciesConfig.hint") || "Konfiguriere welche Spezies verfügbar sein sollen",
+    label: game.i18n.localize("names.settings.speciesConfig.label") || "Spezies konfigurieren",
+    icon: "fas fa-dragon",
+    type: NamesSpeciesConfig,
+    restricted: true
   });
 
   // Role Configuration Menu
