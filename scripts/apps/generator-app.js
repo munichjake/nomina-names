@@ -8,7 +8,16 @@ import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT, isCategorizedContent, getSubcategories, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
+/**
+ * Names Generator Application - Main application for generating names
+ * Provides UI for selecting language, species, category and generating various types of names
+ * Supports enhanced dropdowns, auto-resize, and smart defaults
+ */
 export class NamesGeneratorApp extends Application {
+  /**
+   * Creates a new Names Generator App instance
+   * @param {Object} options - Application options
+   */
   constructor(options = {}) {
     super(options);
     this.supportedGenders = getSupportedGenders();
@@ -19,6 +28,10 @@ export class NamesGeneratorApp extends Application {
     logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
   }
 
+  /**
+   * Default application options
+   * @returns {Object} Default options for the Names Generator App
+   */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "names-generator",
@@ -31,6 +44,10 @@ export class NamesGeneratorApp extends Application {
     });
   }
 
+  /**
+   * Prepares data for template rendering
+   * @returns {Promise<Object>} Template data including languages, species, categories, and loading state
+   */
   async getData() {
     ensureGlobalNamesData();
     const globalNamesData = getGlobalNamesData();
@@ -61,6 +78,10 @@ export class NamesGeneratorApp extends Application {
     return data;
   }
 
+  /**
+   * Activates event listeners for the application
+   * @param {jQuery} html - The application's HTML
+   */
   activateListeners(html) {
     super.activateListeners(html);
 
@@ -93,6 +114,10 @@ export class NamesGeneratorApp extends Application {
     setTimeout(() => this._setDefaultLanguage(), 200);
   }
 
+  /**
+   * Initializes enhanced dropdowns and binds change events
+   * @param {jQuery} html - The application's HTML
+   */
   _initializeEnhancedDropdowns(html) {
     // Wait for Enhanced Dropdowns to be initialized
     setTimeout(() => {
@@ -128,6 +153,10 @@ export class NamesGeneratorApp extends Application {
     }, 100);
   }
 
+  /**
+   * Waits for data loading to complete and updates the UI
+   * @param {jQuery} html - The application's HTML
+   */
   async _waitForLoadingComplete(html) {
     const globalNamesData = getGlobalNamesData();
     if (globalNamesData && globalNamesData.loadingPromise) {
@@ -141,12 +170,20 @@ export class NamesGeneratorApp extends Application {
     this.render(false);
   }
 
+  /**
+   * Handles checkbox change events
+   * @param {Event} event - The change event
+   */
   _onCheckboxChange(event) {
     const $form = $(event.currentTarget).closest('form');
     this._updateGenerateButtonState($form);
     logDebug(`Checkbox changed: ${event.currentTarget.name} = ${event.currentTarget.checked}`);
   }
 
+  /**
+   * Handles dropdown change events
+   * @param {Event} event - The change event
+   */
   _onDropdownChange(event) {
     const $form = $(event.currentTarget).closest('form');
     const changedElement = event.currentTarget;
@@ -164,6 +201,10 @@ export class NamesGeneratorApp extends Application {
     this._updateUI($form);
   }
 
+  /**
+   * Updates the entire UI based on current selections
+   * @param {jQuery} $form - The form element
+   */
   async _updateUI($form) {
     const language = $form.find('#names-language-select').val();
     const species = $form.find('#names-species-select').val();
@@ -440,6 +481,10 @@ export class NamesGeneratorApp extends Application {
     setTimeout(() => this._resizeToContent(), 50);
   }
 
+  /**
+   * Updates the state of the generate button based on current selections
+   * @param {jQuery} html - The form element
+   */
   _updateGenerateButtonState(html) {
     const generateBtn = html.find('#names-generate-btn');
     const language = html.find('#names-language-select').val();
@@ -504,6 +549,10 @@ export class NamesGeneratorApp extends Application {
     }
   }
 
+  /**
+   * Handles the generate name button click event
+   * @param {Event} event - The click event
+   */
   async _onGenerateName(event) {
     event.preventDefault();
     logDebug("Generate name button clicked");
@@ -989,6 +1038,10 @@ export class NamesGeneratorApp extends Application {
     return creditsHtml;
   }
 
+  /**
+   * Handles the copy names button click event
+   * @param {Event} event - The click event
+   */
   async _onCopyName(event) {
     event.preventDefault();
     logDebug("Copy names button clicked");

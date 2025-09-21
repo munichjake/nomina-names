@@ -16,6 +16,11 @@ import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } fro
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
 
 // ===== MODULE INITIALIZATION =====
+
+/**
+ * Module initialization hook - runs once during Foundry startup
+ * Sets up the data manager, registers settings, and initializes socket handlers
+ */
 Hooks.once('init', () => {
   logInfoL("console.module-init");
 
@@ -36,6 +41,11 @@ Hooks.once('init', () => {
 });
 
 // ===== BACKGROUND LOADING =====
+
+/**
+ * Ready hook - runs after Foundry is fully loaded
+ * Initializes data loading, emergency button, API registration, and enhanced dropdowns
+ */
 Hooks.once('ready', () => {
   logDebug("Ready hook - initializing data");
   
@@ -71,6 +81,11 @@ Hooks.once('ready', () => {
 });
 
 // ===== ENHANCED DROPDOWNS INITIALIZATION =====
+
+/**
+ * Initializes enhanced dropdowns for the Names module
+ * Wraps the general enhanced dropdown initialization with error handling
+ */
 function initializeEnhancedDropdownsForModule() {
   try {
     // Initialize any existing enhanced dropdowns
@@ -81,7 +96,13 @@ function initializeEnhancedDropdownsForModule() {
   }
 }
 
-// Hook into app rendering to replace dropdowns
+/**
+ * Hook into application rendering to replace dropdowns with enhanced versions
+ * Only processes Names module applications
+ * @param {Application} app - The rendered application
+ * @param {jQuery} html - The application's HTML
+ * @param {Object} data - The application's data
+ */
 Hooks.on('renderApplication', (app, html, data) => {
   // Only process Names module apps
   if (!app.constructor.name.includes('Names')) return;
@@ -91,6 +112,10 @@ Hooks.on('renderApplication', (app, html, data) => {
   }, 50);
 });
 
+/**
+ * Replaces standard dropdowns with enhanced dropdowns in a given element
+ * @param {HTMLElement} element - The DOM element to process
+ */
 function replaceDropdownsInElement(element) {
   try {
     const selectors = [
@@ -131,7 +156,9 @@ function replaceDropdownsInElement(element) {
 
 // ===== UI INTEGRATIONS =====
 
-// Emergency Button after Chat Render
+/**
+ * Emergency Button injection after Chat Log renders
+ */
 Hooks.on('renderChatLog', () => {
   setTimeout(() => {
     if (hasNamesGeneratorPermission() && game.settings.get(MODULE_ID, "showEmergencyButton")) {
@@ -140,7 +167,10 @@ Hooks.on('renderChatLog', () => {
   }, 100);
 });
 
-// Token Controls
+/**
+ * Token Controls integration - adds Names Generator button to token toolbar
+ * @param {Array} controls - Array of control button groups
+ */
 Hooks.on('getSceneControlButtons', (controls) => {
   if (!game.settings.get(MODULE_ID, "showInTokenControls")) return;
   if (!hasNamesGeneratorPermission()) return;
@@ -160,7 +190,12 @@ Hooks.on('getSceneControlButtons', (controls) => {
   });
 });
 
-// Character Sheet Integration
+/**
+ * Character Sheet Integration - adds Names Picker button next to name field
+ * @param {ActorSheet} app - The rendered actor sheet
+ * @param {jQuery} html - The sheet's HTML
+ * @param {Object} data - The sheet's data
+ */
 Hooks.on('renderActorSheet', (app, html, data) => {
   if (!game.settings.get(MODULE_ID, "showInCharacterSheet")) return;
   if (!hasNamesGeneratorPermission()) return;
@@ -184,7 +219,11 @@ Hooks.on('renderActorSheet', (app, html, data) => {
   }
 });
 
-// Token Context Menu
+/**
+ * Token Context Menu integration - adds Names option to token right-click menu
+ * @param {jQuery} html - The context menu HTML
+ * @param {Array} options - Array of context menu options
+ */
 Hooks.on('getTokenContextOptions', (html, options) => {
   if (!game.settings.get(MODULE_ID, "showInTokenContextMenu")) return;
   if (!hasNamesGeneratorPermission()) return;
@@ -201,7 +240,12 @@ Hooks.on('getTokenContextOptions', (html, options) => {
   });
 });
 
-// Token HUD
+/**
+ * Token HUD integration - adds Names button to token HUD
+ * @param {TokenHUD} app - The token HUD application
+ * @param {jQuery} html - The HUD's HTML
+ * @param {Object} data - The HUD's data
+ */
 Hooks.on('renderTokenHUD', (app, html, data) => {
   if (!game.settings.get(MODULE_ID, "showInTokenContextMenu")) return;
   if (!hasNamesGeneratorPermission()) return;
@@ -220,7 +264,12 @@ Hooks.on('renderTokenHUD', (app, html, data) => {
   html.find('.left').append(button);
 });
 
-// Chat Commands
+/**
+ * Chat Commands integration - handles slash commands for Names module
+ * @param {jQuery} html - The chat message HTML
+ * @param {string} content - The message content
+ * @param {Object} msg - The message data
+ */
 Hooks.on('chatMessage', (html, content, msg) => {
   if (!hasNamesGeneratorPermission()) {
     if (content === '/names' || content === '/namen' || content === '/pick-name' || content === '/name-picker' || content === '/emergency-names') {
@@ -252,6 +301,11 @@ Hooks.on('chatMessage', (html, content, msg) => {
 });
 
 // ===== SETTINGS REGISTRATION =====
+
+/**
+ * Registers all module settings with Foundry VTT
+ * Includes log level, language, UI visibility, permissions, and configuration menus
+ */
 function registerModuleSettings() {
   // Direct German choices since localization might not be ready during init
   const logLevelChoices = {
@@ -391,6 +445,11 @@ function registerModuleSettings() {
 }
 
 // ===== SOCKET HANDLING =====
+
+/**
+ * Registers socket handler for inter-client communication
+ * Handles permission change notifications between clients
+ */
 function registerSocketHandler() {
   game.socket.on(`module.${MODULE_ID}`, (data) => {
     if (data.type === "permissionChanged" && data.affectedUsers.includes(game.user.id)) {
@@ -402,6 +461,11 @@ function registerSocketHandler() {
 }
 
 // ===== CSS INJECTION =====
+
+/**
+ * Injects CSS styles for the Names Picker button and other UI elements
+ * Only injects if not already present to avoid duplicates
+ */
 function injectPickerButtonCSS() {
   if (!$('#names-picker-button-style').length) {
     $('head').append(`
