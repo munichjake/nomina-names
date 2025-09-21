@@ -103,12 +103,15 @@ export class NamesGeneratorApp extends Application {
       // Find Enhanced Dropdown instances by checking the next sibling
       if (languageSelect && languageSelect.nextElementSibling && languageSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
         this.enhancedDropdowns.set('language', languageSelect.nextElementSibling._enhancedDropdown);
+        logInfo("Language Enhanced Dropdown found and stored");
       }
       if (speciesSelect && speciesSelect.nextElementSibling && speciesSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
         this.enhancedDropdowns.set('species', speciesSelect.nextElementSibling._enhancedDropdown);
+        logInfo("Species Enhanced Dropdown found and stored");
       }
       if (categorySelect && categorySelect.nextElementSibling && categorySelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
         this.enhancedDropdowns.set('category', categorySelect.nextElementSibling._enhancedDropdown);
+        logInfo("Category Enhanced Dropdown found and stored");
       }
 
       // If Enhanced Dropdowns aren't ready yet, try again with longer delay
@@ -120,7 +123,8 @@ export class NamesGeneratorApp extends Application {
       // Bind change events for Enhanced Dropdowns
       html.find('#names-language-select, #names-species-select, #names-category-select').change(this._onDropdownChange.bind(this));
 
-      logDebug("Enhanced Dropdowns initialized and bound:", Array.from(this.enhancedDropdowns.keys()));
+      logInfo("Enhanced Dropdowns initialized and bound:", Array.from(this.enhancedDropdowns.keys()));
+      logInfo("Event listeners bound to dropdown elements");
     }, 100);
   }
 
@@ -146,24 +150,132 @@ export class NamesGeneratorApp extends Application {
   _onDropdownChange(event) {
     const $form = $(event.currentTarget).closest('form');
     const changedElement = event.currentTarget;
-    logDebug(`Dropdown changed: ${changedElement.name} = ${changedElement.value}`);
+    logInfo(`Dropdown changed: ${changedElement.name} = "${changedElement.value}"`);
+
+    // Debug: Check if Enhanced Dropdown value differs from native select
+    if (changedElement.name === 'names-category') {
+      const enhancedDropdown = this.enhancedDropdowns.get('category');
+      if (enhancedDropdown && enhancedDropdown.getValue) {
+        const enhancedValue = enhancedDropdown.getValue();
+        logInfo(`Enhanced Dropdown value: "${enhancedValue}" vs Native: "${changedElement.value}"`);
+      }
+    }
+
     this._updateUI($form);
   }
 
   async _updateUI($form) {
     const language = $form.find('#names-language-select').val();
     const species = $form.find('#names-species-select').val();
-    const category = $form.find('#names-category-select').val();
+    let category = $form.find('#names-category-select').val();
 
-    logDebug("Updating UI with selection:", { language, species, category });
+    // Check Enhanced Dropdown value if native select is empty
+    if (!category || category === '') {
+      const enhancedDropdown = this.enhancedDropdowns.get('category');
+      if (enhancedDropdown && enhancedDropdown.getValue) {
+        const enhancedValue = enhancedDropdown.getValue();
+        if (enhancedValue && enhancedValue !== '') {
+          category = enhancedValue;
+          logInfo(`Using Enhanced Dropdown value for category: "${enhancedValue}"`);
+          // Sync native select with enhanced dropdown
+          $form.find('#names-category-select').val(enhancedValue);
+        }
+      }
+    }
+
+    logInfo("=== UI UPDATE START ===");
+    logInfo("Updating UI with selection:", { language, species, category });
+
+    await this._updateCategoryOptions($form, language, species);
+    logInfo("Category options updated");
 
     await this._updateGenderCheckboxes($form, language, species);
+    logInfo("Gender checkboxes updated");
+
     await this._updateSubcategoryCheckboxes($form, language, species, category);
+    logInfo("Subcategory checkboxes updated");
+
     this._toggleNamesPanels($form, category);
+    logInfo("Panels toggled");
+
     this._updateGenerateButtonState($form);
+    logInfo("=== UI UPDATE END ===");
 
     // Resize window after UI updates
     setTimeout(() => this._resizeToContent(), 100);
+  }
+
+  async _updateCategoryOptions($form, language, species) {
+    const globalNamesData = getGlobalNamesData();
+    if (!globalNamesData || !language || !species) {
+      logDebug("Cannot update categories - missing data or selection");
+      return;
+    }
+
+    const categorySelect = $form.find('#names-category-select');
+    const currentCategory = categorySelect.val();
+
+    // Get categories available for this specific language/species combination
+    const availableCategories = await globalNamesData.getLocalizedCategoriesForLanguageAndSpecies(language, species, 'generator');
+
+    logDebug(`Updating categories for ${language}.${species}:`, availableCategories);
+
+    // Clear and repopulate the category dropdown
+    categorySelect.empty();
+
+    // Add default option
+    categorySelect.append('<option value="">' + game.i18n.localize("names.ui.choose-category") + '</option>');
+
+    // Add available categories grouped
+    for (const group of availableCategories) {
+      const optgroup = $(`<optgroup label="${group.groupLabel}"></optgroup>`);
+      for (const item of group.items) {
+        optgroup.append(`<option value="${item.code}">${item.name}</option>`);
+      }
+      categorySelect.append(optgroup);
+    }
+
+    // Try to restore previous selection if still available
+    if (currentCategory) {
+      const isStillAvailable = availableCategories.some(group =>
+        group.items.some(item => item.code === currentCategory)
+      );
+      if (isStillAvailable) {
+        categorySelect.val(currentCategory);
+      }
+    }
+
+    // Update Enhanced Dropdown if available
+    const enhancedDropdown = this.enhancedDropdowns.get('category');
+    if (enhancedDropdown && enhancedDropdown.rebuildOptions) {
+      logInfo("Rebuilding Enhanced Dropdown options for category");
+      enhancedDropdown.rebuildOptions();
+      if (categorySelect.val()) {
+        enhancedDropdown.setValue(categorySelect.val());
+        logInfo(`Set Enhanced Dropdown value to: "${categorySelect.val()}"`);
+      }
+    } else {
+      logInfo("Enhanced Dropdown not available for category, rebinding events");
+      // Re-bind change event if Enhanced Dropdown not available
+      categorySelect.off('change.names');
+      categorySelect.on('change.names', this._onDropdownChange.bind(this));
+    }
+
+    logInfo(`Category options updated, current selection: "${categorySelect.val()}"`);
+
+    // Debug: Log all available options
+    const options = [];
+    categorySelect.find('option').each(function() {
+      options.push(`"${this.value}" = "${this.text}"`);
+    });
+    logInfo(`Available category options: ${options.join(', ')}`);
+
+    // Debug: Enhanced dropdown state (reuse variable from above)
+    if (enhancedDropdown) {
+      logInfo(`Enhanced dropdown for category exists: ${!!enhancedDropdown}`);
+    } else {
+      logInfo("No enhanced dropdown found for category");
+    }
   }
 
   async _updateGenderCheckboxes(html, language, species) {
@@ -332,43 +444,63 @@ export class NamesGeneratorApp extends Application {
     const generateBtn = html.find('#names-generate-btn');
     const language = html.find('#names-language-select').val();
     const species = html.find('#names-species-select').val();
-    const category = html.find('#names-category-select').val();
+    let category = html.find('#names-category-select').val();
 
-    let isDisabled = !language || !species || !category;
-
-    if (category === 'names') {
-      // For names, check if at least one gender OR one component is selected
-      // Smart default: if nothing is selected, allow generation (will use all internally)
-      const genderCheckboxes = html.find('input[name^="names-gender-"]:checked');
-      const componentCheckboxes = html.find('input[name^="names-include-"]:checked');
-      
-      // Allow generation if either genders or components are selected, or if none are selected (smart default)
-      const hasGenderSelection = genderCheckboxes.length > 0;
-      const hasComponentSelection = componentCheckboxes.length > 0;
-      const noSelections = genderCheckboxes.length === 0 && componentCheckboxes.length === 0;
-      
-      if (!hasGenderSelection && !hasComponentSelection && !noSelections) {
-        isDisabled = true;
-      }
-    } else if (isCategorizedContent(category)) {
-      // For categorized content, check if at least one subcategory is selected
-      const subcategoryCheckboxes = html.find('input[name^="names-subcategory-"]:checked');
-      if (subcategoryCheckboxes.length === 0) {
-        // Smart default: if no subcategories selected, allow generation (will use all available)
-        const allSubcategoryCheckboxes = html.find('input[name^="names-subcategory-"]');
-        if (allSubcategoryCheckboxes.length > 0) {
-          // Only disable if there are subcategories available but none selected
-          // This allows for auto-generation when data loads
+    // Check Enhanced Dropdown value if native select is empty
+    if (!category || category === '') {
+      const enhancedDropdown = this.enhancedDropdowns.get('category');
+      if (enhancedDropdown && enhancedDropdown.getValue) {
+        const enhancedValue = enhancedDropdown.getValue();
+        if (enhancedValue && enhancedValue !== '') {
+          category = enhancedValue;
+          logInfo(`Button state: Using Enhanced Dropdown value for category: "${enhancedValue}"`);
         }
       }
     }
 
+    logInfo(`Button state check: language="${language}", species="${species}", category="${category}"`);
+
+    // Basic requirements: language and species must be selected
+    let isDisabled = !language || !species;
+    let disabledReason = "";
+
+    if (!language) disabledReason += "No language selected. ";
+    if (!species) disabledReason += "No species selected. ";
+
+    // If no category selected, that's okay - we'll just disable generation temporarily
+    if (!category) {
+      isDisabled = true;
+      disabledReason += "No category selected. ";
+    }
+
+    if (category === 'names') {
+      // For names category, we need either gender OR component checkboxes available
+      const genderCheckboxes = html.find('input[name^="names-gender-"]');
+      const componentCheckboxes = html.find('input[name^="names-include-"]');
+
+      logInfo(`Names category: ${genderCheckboxes.length} gender checkboxes, ${componentCheckboxes.length} component checkboxes available`);
+
+      // If no checkboxes are available yet, that means data is still loading
+      if (genderCheckboxes.length === 0 && componentCheckboxes.length === 0) {
+        isDisabled = true;
+        disabledReason += "Names data still loading. ";
+      }
+      // If we have checkboxes available, generation is possible (smart defaults apply internally)
+    } else if (isCategorizedContent(category)) {
+      // For categorized content, generation is possible once we have the category selected
+      // Subcategory selection is optional (smart defaults apply)
+      logInfo(`Categorized content "${category}" selected - allowing generation`);
+    } else if (category) {
+      // For other categories (like settlements), generation should be possible
+      logInfo(`Simple category "${category}" selected - allowing generation`);
+    }
+
     generateBtn.prop('disabled', isDisabled);
-    
+
     if (isDisabled) {
-      logDebug("Generate button disabled: missing required fields or selections");
+      logInfo(`Generate button DISABLED: ${disabledReason}`);
     } else {
-      logDebug("Generate button enabled");
+      logInfo("Generate button ENABLED");
     }
   }
 
@@ -377,11 +509,26 @@ export class NamesGeneratorApp extends Application {
     logDebug("Generate name button clicked");
 
     const form = event.currentTarget.closest('form');
-    const formData = new FormData(form);
+    const $form = $(form);
 
-    const language = formData.get('names-language');
-    const species = formData.get('names-species');
-    const category = formData.get('names-category');
+    // Get values directly from elements, with Enhanced Dropdown fallback
+    const language = $form.find('#names-language-select').val();
+    const species = $form.find('#names-species-select').val();
+    let category = $form.find('#names-category-select').val();
+
+    // Check Enhanced Dropdown value if native select is empty
+    if (!category || category === '') {
+      const enhancedDropdown = this.enhancedDropdowns.get('category');
+      if (enhancedDropdown && enhancedDropdown.getValue) {
+        const enhancedValue = enhancedDropdown.getValue();
+        if (enhancedValue && enhancedValue !== '') {
+          category = enhancedValue;
+          logInfo(`Generate: Using Enhanced Dropdown value for category: "${enhancedValue}"`);
+        }
+      }
+    }
+
+    const formData = new FormData(form);
     const nameFormat = formData.get('names-format') || DEFAULT_NAME_FORMAT;
     const count = parseInt(formData.get('names-count')) || 1;
 
@@ -389,6 +536,7 @@ export class NamesGeneratorApp extends Application {
 
     if (!language || !species || !category) {
       ui.notifications.warn(game.i18n.localize("names.select-all"));
+      logWarn(`Missing values: language="${language}", species="${species}", category="${category}"`);
       return;
     }
 
