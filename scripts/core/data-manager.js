@@ -311,6 +311,35 @@ export class NamesDataManager {
   }
 
   /**
+   * Gets available categories for a specific language, species, and generator type
+   */
+  async getAvailableCategoriesForLanguageAndSpecies(language, species, generatorType) {
+    const { getCategoriesForGenerator } = await import('../shared/constants.js');
+    const allCategories = getCategoriesForGenerator(generatorType);
+
+    // Filter by actually available data for this specific language/species combination
+    const availableCategories = allCategories.filter(category => {
+      if (category === 'names') {
+        // Special case: 'names' category is available if we have gender-specific data files
+        return ['male', 'female', 'nonbinary'].some(gender =>
+          this.hasDataFile(language, species, gender)
+        );
+      }
+      return this.hasDataFile(language, species, category);
+    });
+
+    return availableCategories;
+  }
+
+  /**
+   * Check if a data file exists for the given language, species, and category
+   */
+  hasDataFile(language, species, category) {
+    const key = `${language}.${species}.${category}`;
+    return this.nameData.has(key) && this.nameData.get(key).length > 0;
+  }
+
+  /**
    * Gets localized categories for a specific generator type
    */
   async getLocalizedCategoriesForGenerator(generatorType) {
@@ -318,6 +347,24 @@ export class NamesDataManager {
     const availableCategories = await this.getAvailableCategoriesForGenerator(generatorType);
     const categoryGroups = getCategoryGroups();
 
+    return this._buildLocalizedCategoryGroups(availableCategories, generatorType, categoryGroups, getLocalizedCategoryName);
+  }
+
+  /**
+   * Gets localized categories for a specific language, species, and generator type
+   */
+  async getLocalizedCategoriesForLanguageAndSpecies(language, species, generatorType) {
+    const { getLocalizedCategoryName, getCategoryGroups } = await import('../shared/constants.js');
+    const availableCategories = await this.getAvailableCategoriesForLanguageAndSpecies(language, species, generatorType);
+    const categoryGroups = getCategoryGroups();
+
+    return this._buildLocalizedCategoryGroups(availableCategories, generatorType, categoryGroups, getLocalizedCategoryName);
+  }
+
+  /**
+   * Helper method to build localized category groups
+   */
+  async _buildLocalizedCategoryGroups(availableCategories, generatorType, categoryGroups, getLocalizedCategoryName) {
     // If we have category groups from index.json, use them
     if (Object.keys(categoryGroups).length > 0) {
       const grouped = [];

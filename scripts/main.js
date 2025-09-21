@@ -253,15 +253,13 @@ Hooks.on('chatMessage', (html, content, msg) => {
 
 // ===== SETTINGS REGISTRATION =====
 function registerModuleSettings() {
-  // Function to get log level choices with proper localization
-  function getLogLevelChoices() {
-    return {
-      [game.i18n.localize("names.settings.logLevel.error") || "Nur Fehler"]: "0",
-      [game.i18n.localize("names.settings.logLevel.warn") || "Warnungen"]: "1",
-      [game.i18n.localize("names.settings.logLevel.info") || "Informationen"]: "2",
-      [game.i18n.localize("names.settings.logLevel.debug") || "Alle Details"]: "3"
-    };
-  }
+  // Direct German choices since localization might not be ready during init
+  const logLevelChoices = {
+    "Nur Fehler": "0",
+    "Warnungen": "1",
+    "Informationen": "2",
+    "Alle Details": "3"
+  };
 
   // Log Level Setting
   game.settings.register(MODULE_ID, "logLevel", {
@@ -270,11 +268,25 @@ function registerModuleSettings() {
     scope: "client",
     config: true,
     type: String,
-    choices: getLogLevelChoices(),
+    choices: logLevelChoices,
     default: "2", // LOG_LEVELS.INFO
     onChange: (value) => {
       updateLogLevel();
-      logInfo(`Log level changed to: ${parseInt(value) || LOG_LEVELS.INFO}`);
+
+      // Map text back to number if needed
+      let newLevel;
+      if (typeof value === 'string') {
+        if (value === "Nur Fehler") newLevel = 0;
+        else if (value === "Warnungen") newLevel = 1;
+        else if (value === "Informationen") newLevel = 2;
+        else if (value === "Alle Details") newLevel = 3;
+        else newLevel = parseInt(value) || LOG_LEVELS.INFO;
+      } else {
+        newLevel = parseInt(value) || LOG_LEVELS.INFO;
+      }
+
+      const levelName = Object.keys(LOG_LEVELS).find(key => LOG_LEVELS[key] === newLevel) || 'UNKNOWN';
+      logInfo(`Log level changed to: ${newLevel} (${levelName})`);
     }
   });
 
