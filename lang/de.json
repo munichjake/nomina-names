@@ -178,10 +178,41 @@
         "name": "Log Level",
         "hint": "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
         "error": "Nur Fehler",
-        "warn": "Warnungen", 
+        "warn": "Warnungen",
         "info": "Informationen",
         "debug": "Alle Details"
+      },
+      "availableSpecies": {
+        "name": "Verfügbare Spezies",
+        "hint": "Wähle welche Spezies im Generator verfügbar sein sollen"
+      },
+      "speciesConfig": {
+        "name": "Spezies verwalten",
+        "hint": "Konfiguriere welche Spezies verfügbar sein sollen",
+        "label": "Spezies konfigurieren"
       }
+    },
+
+    "// ===== SPECIES CONFIG =====": "",
+    "speciesConfig": {
+      "title": "Spezies verwalten",
+      "description": "Wähle welche Spezies im Namen-Generator verfügbar sein sollen. Deaktivierte Spezies werden nicht in den Dropdown-Menüs angezeigt.",
+      "search": "Suchen:",
+      "searchPlaceholder": "Spezies suchen...",
+      "enableAll": "Alle aktivieren",
+      "disableAll": "Alle deaktivieren",
+      "reset": "Zurücksetzen",
+      "coreSpecies": "Kern-Spezies",
+      "extensionSpecies": "Erweiterungs-Spezies",
+      "coreModule": "Kern-Modul",
+      "enableAllInModule": "Alle aktivieren",
+      "disableAllInModule": "Alle deaktivieren",
+      "noExtensions": "Keine Erweiterungs-Module mit zusätzlichen Spezies gefunden.",
+      "extensionHint": "Installiere Module mit zusätzlichen Spezies, um mehr Auswahl zu haben.",
+      "totalAvailable": "Verfügbare Spezies:",
+      "saved": "Spezies-Konfiguration gespeichert: {enabled}/{total} aktiviert",
+      "save": "Speichern",
+      "cancel": "Abbrechen"
     },
 
     "// ===== ROLE CONFIG =====": "",

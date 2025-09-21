@@ -174,25 +174,62 @@ export class EmergencyNamesApp extends Application {
   _generateFallbackNames() {
     logDebug("Using fallback emergency names");
     const supportedGenders = getSupportedGenders();
-    this.emergencyNames = [
-      { name: "Alaric Steinherz", species: "human", gender: "male", displaySpecies: "Mensch" },
-      { name: "Lyra Mondschein", species: "elf", gender: "female", displaySpecies: "Elf" },
-      { name: "Thorin Eisenfaust", species: "dwarf", gender: "male", displaySpecies: "Zwerg" },
-      { name: "Rosie Hügelkind", species: "halfling", gender: "female", displaySpecies: "Halbling" },
-      { name: "Grimjaw der Wilde", species: "orc", gender: "male", displaySpecies: "Ork" }
-    ];
+    const globalNamesData = getGlobalNamesData();
 
-    // Add nonbinary example if supported
-    if (supportedGenders.includes('nonbinary')) {
-      this.emergencyNames.push({ 
-        name: "Raven Sternenwandler", 
-        species: "human", 
-        gender: "nonbinary", 
-        displaySpecies: "Mensch" 
+    // Get enabled species from settings, or use defaults
+    let enabledSpeciesCodes = ['human'];
+    if (globalNamesData) {
+      const enabledSpeciesList = globalNamesData.getLocalizedSpecies();
+      if (enabledSpeciesList.length > 0) {
+        enabledSpeciesCodes = enabledSpeciesList.map(s => s.code);
+      }
+    }
+
+    // Create fallback names only for enabled species
+    const fallbackNames = [];
+    const nameTemplates = {
+      human: { name: "Alaric Steinherz", gender: "male", displaySpecies: "Mensch" },
+      elf: { name: "Lyra Mondschein", gender: "female", displaySpecies: "Elf" },
+      dwarf: { name: "Thorin Eisenfaust", gender: "male", displaySpecies: "Zwerg" },
+      halfling: { name: "Rosie Hügelkind", gender: "female", displaySpecies: "Halbling" },
+      orc: { name: "Grimjaw der Wilde", gender: "male", displaySpecies: "Ork" }
+    };
+
+    // Add fallback names for enabled species
+    for (const species of enabledSpeciesCodes) {
+      if (nameTemplates[species]) {
+        fallbackNames.push({
+          name: nameTemplates[species].name,
+          species: species,
+          gender: nameTemplates[species].gender,
+          displaySpecies: nameTemplates[species].displaySpecies
+        });
+      }
+    }
+
+    // Add nonbinary example if supported and human is enabled
+    if (supportedGenders.includes('nonbinary') && enabledSpeciesCodes.includes('human')) {
+      fallbackNames.push({
+        name: "Raven Sternenwandler",
+        species: "human",
+        gender: "nonbinary",
+        displaySpecies: "Mensch"
       });
       logDebug("Added nonbinary fallback name");
     }
-    
+
+    // Ensure we have at least one fallback name
+    if (fallbackNames.length === 0) {
+      fallbackNames.push({
+        name: "Fallback Name",
+        species: "human",
+        gender: "male",
+        displaySpecies: "Mensch"
+      });
+    }
+
+    this.emergencyNames = fallbackNames;
+    logDebug(`Generated ${fallbackNames.length} fallback names for enabled species:`, enabledSpeciesCodes);
     this._updateNamesDisplay();
   }
 
@@ -225,29 +262,40 @@ export class EmergencyNamesApp extends Application {
   }
 
   _getAvailableSpecies(language) {
-    const speciesWithData = new Set();
     const globalNamesData = getGlobalNamesData();
+
+    // First get species filtered by user settings
+    const enabledSpeciesList = globalNamesData ? globalNamesData.getLocalizedSpecies() : [];
+    const enabledSpeciesCodes = enabledSpeciesList.map(s => s.code);
+
+    if (enabledSpeciesCodes.length === 0) {
+      logWarn("No enabled species found in settings, using fallback");
+      return ['human'];
+    }
+
+    // Then filter by what actually has name data
+    const speciesWithData = new Set();
     const supportedGenders = getSupportedGenders();
-    
+
     if (globalNamesData && globalNamesData.nameData) {
       for (const [key, data] of globalNamesData.nameData.entries()) {
         const [dataLang, dataSpecies, dataCategory] = key.split('.');
-        
-        // Only include traditional categories (genders and basic name categories)
-        // Exclude generator-only categorized content
-        if (dataLang === language && 
+
+        // Only include enabled species AND traditional categories
+        if (dataLang === language &&
+            enabledSpeciesCodes.includes(dataSpecies) &&
             (supportedGenders.includes(dataCategory) || dataCategory === 'surnames') &&
             !isGeneratorOnlyCategory(dataCategory)) {
           speciesWithData.add(dataSpecies);
         }
       }
     }
-    
-    const result = Array.from(speciesWithData).length > 0 ? 
-           Array.from(speciesWithData) : 
-           ['human', 'elf', 'dwarf'];
-           
-    logDebug(`Species with traditional name data for ${language}:`, result);
+
+    const result = Array.from(speciesWithData).length > 0 ?
+           Array.from(speciesWithData) :
+           ['human'];
+
+    logDebug(`Enabled species with traditional name data for ${language}:`, result);
     return result;
   }
 

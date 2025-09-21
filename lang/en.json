@@ -181,7 +181,38 @@
         "warn": "Warnings",
         "info": "Information",
         "debug": "All details"
+      },
+      "availableSpecies": {
+        "name": "Available Species",
+        "hint": "Select which species should be available in the generator"
+      },
+      "speciesConfig": {
+        "name": "Manage Species",
+        "hint": "Configure which species should be available",
+        "label": "Configure Species"
       }
+    },
+
+    "// ===== SPECIES CONFIG =====": "",
+    "speciesConfig": {
+      "title": "Manage Species",
+      "description": "Select which species should be available in the name generator. Disabled species will not appear in the dropdown menus.",
+      "search": "Search:",
+      "searchPlaceholder": "Search species...",
+      "enableAll": "Enable All",
+      "disableAll": "Disable All",
+      "reset": "Reset",
+      "coreSpecies": "Core Species",
+      "extensionSpecies": "Extension Species",
+      "coreModule": "Core Module",
+      "enableAllInModule": "Enable All",
+      "disableAllInModule": "Disable All",
+      "noExtensions": "No extension modules with additional species found.",
+      "extensionHint": "Install modules with additional species to have more choices.",
+      "totalAvailable": "Available Species:",
+      "saved": "Species configuration saved: {enabled}/{total} enabled",
+      "save": "Save",
+      "cancel": "Cancel"
     },
 
     "// ===== ROLE CONFIG =====": "",
