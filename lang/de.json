@@ -1,56 +1,151 @@
 {
   "names": {
     "title": "Names",
+    
+    "// ===== BASIC UI ELEMENTS =====": "",
+    "language": "Sprache",
+    "lbl_species": "Spezies", 
+    "category": "Kategorie",
+    "generate": "Generieren",
+    "copy": "Kopieren",
+    "clear": "Löschen",
+    "copied": "Name kopiert!",
+    "or": "oder",
+
+    "// ===== NAMES & COMPONENTS =====": "",
     "names": "Namen",
     "components": "Komponenten",
-    "language": "Sprache",
-    "lbl_species": "Spezies",
-    "category": "Kategorie",
     "gender": "Geschlecht",
     "male": "Männlich",
-    "female": "Weiblich",
+    "female": "Weiblich", 
     "nonbinary": "Nicht-binär",
     "firstname": "Vorname",
     "surname": "Nachname",
     "titles": "Titel",
     "nickname": "Beiname",
-    "settlements": "Siedlungen",
-    "generate": "Generieren",
-    "copy": "Kopieren",
-    "clear": "Löschen",
-    "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
-    "copied": "Name kopiert!",
-    "select-options": "Wähle Optionen und klicke 'Generieren'",
-    "no-names-found": "Keine Namen gefunden für",
-    "select-all": "Bitte wähle Sprache und Spezies aus",
-    "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
-    "new-names": "Neue Namen",
-    "choose-name": "Namen wählen:",
-    "max-20": "Erstelle 1-20 Namen gleichzeitig",
-    "lbl_amount": "Anzahl Namen",
+    "nameformat": "Namensformat",
     "placeholders": "Verfügbare Platzhalter",
     "examples": "Beispiele",
-    "or": "oder",
-    "nameformat": "Namensformat",
+
+    "// ===== CATEGORIZED CONTENT =====": "",
+    "subcategories": "Unterkategorien",
+    "settlements": "Siedlungen",
+    "books": "Bücher",
+    "ships": "Schiffe", 
+    "shops": "Geschäfte",
+    "taverns": "Tavernen",
+
+    "// ===== GENERATION CONTROLS =====": "",
+    "max-20": "Erstelle 1-20 Namen gleichzeitig",
+    "lbl_amount": "Anzahl Namen",
+    "new-names": "Neue Namen",
+    "choose-name": "Namen wählen:",
+    "select-options": "Wähle Optionen und klicke 'Generieren'",
+    "select-all": "Bitte wähle Sprache und Spezies aus",
+    "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
+    "search-hint": "Tipp: Nutze die Suchfunktion um weitere Optionen zu finden",
+
+    "// ===== HELP & INSTRUCTIONS =====": "",
+    "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
+    "subcategory-help": "Wähle mindestens eine Unterkategorie aus, oder lasse alle unausgewählt für zufällige Auswahl.",
     "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
     "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
-    "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
+
+    "// ===== USER INTERACTION =====": "",
     "name-adopted": "Name \"{name}\" wurde übernommen!",
     "select-one-token": "Bitte wähle genau einen Token aus.",
+    "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
+    "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
+
+    "// ===== ERRORS & WARNINGS =====": "",
+    "no-names-found": "Keine Namen gefunden für",
     "generation-error": "Fehler beim Generieren: {error}",
-    "name-error": "Fehler beim Übernehmen des Namens",
+    "name-error": "Fehler beim Übernehmen des Namens", 
     "copy-error": "Kopieren fehlgeschlagen",
     "no-names-generated": "Keine Namen konnten generiert werden",
-    "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
-    "permissionChange": {
-      "title": "Berechtigung geändert",
-      "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
-      "reload": "Seite neu laden",
-      "later": "Später"
+
+    "// ===== LANGUAGES =====": "",
+    "languages": {
+      "de": "Deutsch",
+      "en": "Englisch",
+      "fr": "Französisch",
+      "es": "Spanisch",
+      "it": "Italienisch"
     },
+
+    "// ===== SPECIES =====": "",
+    "species": {
+      "human": "Mensch",
+      "elf": "Elf",
+      "dwarf": "Zwerg",
+      "halfling": "Halbling",
+      "orc": "Ork",
+      "goblin": "Goblin",
+      "dragonborn": "Drachengeborener",
+      "tiefling": "Tiefling",
+      "aasimar": "Aasimar",
+      "gnome": "Gnom"
+    },
+
+    "// ===== CATEGORIES =====": "",
+    "categories": {
+      "names": "Namen",
+      "male": "Männliche Vornamen",
+      "female": "Weibliche Vornamen",
+      "nonbinary": "Nicht-binäre Vornamen",
+      "surnames": "Nachnamen",
+      "titles": "Titel/Adelstitel",
+      "nicknames": "Beinamen",
+      "settlements": "Siedlungen/Orte",
+      "books": "Bücher & Schriften",
+      "ships": "Schiffe & Boote",
+      "shops": "Geschäfte & Handwerk",
+      "taverns": "Tavernen & Gasthäuser"
+    },
+
+    "// ===== CATEGORY GROUPS =====": "",
+    "category-groups": {
+      "names": "Namen",
+      "places": "Orte",
+      "atmospheric": "Atmosphärisch"
+    },
+
+    "// ===== SUBCATEGORIES =====": "",
+    "subcategories": {
+      "books": {
+        "religious_books": "Religiöse Bücher",
+        "novels": "Romane & Erzählungen",
+        "scientific_treatises": "Wissenschaftliche Abhandlungen",
+        "humorous_books": "Humoristische Bücher"
+      },
+      "ships": {
+        "merchant_ship": "Handelsschiffe",
+        "warship": "Kriegsschiffe",
+        "pirate_ship": "Piratenschiffe", 
+        "small_boat": "Kleine Boote",
+        "exploration_ship": "Forschungsschiffe",
+        "mystical_ship": "Mystische Schiffe"
+      },
+      "shops": {
+        "blacksmiths": "Schmieden",
+        "alchemists": "Alchemisten",
+        "general_stores": "Gemischtwarenläden",
+        "adventure_supplies": "Abenteurer-Bedarf",
+        "weaponsmiths": "Waffenschmieden", 
+        "armorers": "Rüstungsschmiede"
+      },
+      "taverns": {
+        "upscale_inns": "Gehobene Gasthäuser",
+        "common_taverns": "Gewöhnliche Tavernen",
+        "harbor_taverns": "Hafentavernen",
+        "adventurer_taverns": "Abenteurer-Tavernen"
+      }
+    },
+
+    "// ===== SETTINGS =====": "",
     "settings": {
       "showInTokenControls": {
-        "name": "Button in Token Controls anzeigen",
+        "name": "Button in Token Controls anzeigen", 
         "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
       },
       "showInCharacterSheet": {
@@ -61,24 +156,30 @@
         "name": "Token HUD & Kontextmenü",
         "hint": "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu"
       },
-      "roleConfig": {
-        "name": "Rollenberechtigungen konfigurieren",
-        "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
-        "label": "Rollen konfigurieren"
+      "showEmergencyButton": {
+        "name": "\"Notfall-NSC\"-Button anzeigen",
+        "hint": "Zeigt einen Button unter dem Chat für schnelle NSC-Namen Generation"
       },
       "includeNonbinaryNames": {
         "name": "Nicht-binäre Namen einbeziehen",
         "hint": "Ermöglicht die Auswahl von nicht-binären Vornamen, wenn die Spezies dies unterstützt"
       },
+      "roleConfig": {
+        "name": "Rollenberechtigungen konfigurieren",
+        "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
+        "label": "Rollen konfigurieren"
+      },
       "logLevel": {
         "name": "Log Level",
         "hint": "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
         "error": "Nur Fehler",
-        "warn": "Warnungen",
-        "info": "Informationen", 
+        "warn": "Warnungen", 
+        "info": "Informationen",
         "debug": "Alle Details"
       }
     },
+
+    "// ===== ROLE CONFIG =====": "",
     "roleConfig": {
       "title": "Namen-Generator Rollenberechtigungen",
       "description": "Wähle aus, welche Benutzerrollen den Namen-Generator verwenden dürfen. Benutzer ohne entsprechende Rolle sehen keine Namen-Generator Buttons und können die Chat-Befehle nicht verwenden.",
@@ -92,6 +193,32 @@
         "GAMEMASTER": "Spielleiter"
       }
     },
+
+    "// ===== PERMISSION CHANGE =====": "",
+    "permissionChange": {
+      "title": "Berechtigung geändert", 
+      "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
+      "reload": "Seite neu laden",
+      "later": "Später"
+    },
+
+    "// ===== EMERGENCY NAMES =====": "",
+    "emergency": {
+      "title": "Emergency NSC Names",
+      "button": "Emergency NSC Names",
+      "tooltip": "Schnelle NSC Namen für den Notfall",
+      "reroll": "Neue Namen",
+      "generating": "Generiere...",
+      "clickToCopy": "Klicken zum Kopieren",
+      "nameCopied": "'{name}' kopiert!",
+      "openGenerator": "Namen-Generator öffnen",
+      "quickNames": "Schnelle NPC Namen",
+      "instructions": "Klicke auf einen Namen um ihn zu kopieren",
+      "noNames": "Keine Namen verfügbar",
+      "hint": "Namen basieren auf der aktuellen Foundry-Sprache"
+    },
+
+    "// ===== CONSOLE MESSAGES =====": "",
     "console": {
       "module-init": "Names Modul init",
       "loading-index": "Lade Datenindex...",
@@ -112,48 +239,6 @@
       "generation-error": "Fehler beim Generieren:",
       "name-setting-error": "Fehler beim Setzen des Namens:",
       "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
-    },
-    "languages": {
-      "de": "Deutsch",
-      "en": "Englisch",
-      "fr": "Französisch",
-      "es": "Spanisch",
-      "it": "Italienisch"
-    },
-    "species": {
-      "human": "Mensch",
-      "elf": "Elf",
-      "dwarf": "Zwerg",
-      "halfling": "Halbling",
-      "orc": "Ork",
-      "goblin": "Goblin",
-      "dragonborn": "Drachengeborener",
-      "tiefling": "Tiefling",
-      "aasimar": "Aasimar",
-      "gnome": "Gnom"
-    },
-    "categories": {
-      "male": "Männliche Vornamen",
-      "female": "Weibliche Vornamen",
-      "nonbinary": "Nicht-binäre Vornamen",
-      "surnames": "Nachnamen",
-      "titles": "Titel/Adelstitel",
-      "nicknames": "Beinamen",
-      "settlements": "Siedlungen/Orte"
-    },
-    "settings.showEmergencyButton.name": "\"Notfall-NSC\"-Button anzeigen",
-    "settings.showEmergencyButton.hint": "Zeigt einen Button unter dem Chat für schnelle NSC-Namen Generation",
-    "emergency.title": "Emergency NSC Names",
-    "emergency.button": "Emergency NSC Names",
-    "emergency.tooltip": "Schnelle NSC Namen für den Notfall",
-    "emergency.reroll": "Neue Namen",
-    "emergency.generating": "Generiere...",
-    "emergency.clickToCopy": "Klicken zum Kopieren",
-    "emergency.nameCopied": "'{name}' kopiert!",
-    "emergency.openGenerator": "Namen-Generator öffnen",
-    "emergency.quickNames": "Schnelle NPC Namen",
-    "emergency.instructions": "Klicke auf einen Namen um ihn zu kopieren",
-    "emergency.noNames": "Keine Namen verfügbar",
-    "emergency.hint": "Namen basieren auf der aktuellen Foundry-Sprache"
+    }
   }
 }

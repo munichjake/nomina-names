@@ -1,0 +1,68 @@
+{
+    "authors": [
+        {
+            "name": "munichjake",
+            "email": "munichjake@dnd-session.de",
+            "url": "https://dnd-session.de",
+            "github": "https://github.com/munichjake"
+        }
+    ],
+    "description": "Deutsche Tavernen, Gasthäuser und Schenken nach Typ kategorisiert",
+    "version": "1.0.0",
+    "taverns": {
+        "upscale_inns": [
+            "Zum Goldenen Greifen",
+            "Der Silberne Hirsch",
+            "Gasthaus Zur Blauen Rose",
+            "Unwissen Drachen Gasthaus",
+            "Erinnerung Drachen Residenz",
+            "Vergessen Drachen Palast",
+            "Vergangenheit Drachen Hof",
+            "Zukunft Drachen Gasthaus"
+        ],
+        "common_taverns": [
+            "Zum Braunen Bären",
+            "Gasthaus Zum Sägenden Sägewerk",
+            "Zur Mahlenden Getreidemühle",
+            "Der Pressende Ölmühle",
+            "Die Stampfende Walkmühle",
+            "Gasthaus Zur Färbenden Färberei",
+            "Zum Gerbenden Gerberei",
+            "Der Flechtende Korbmacher",
+            "Die Bindende Buchbinderei"
+        ],
+        "harbor_taverns": [
+            "Zum Anker",
+            "Gasthaus Zum Giftigen Kugelfisch",
+            "Zur Riesigen Tintenfisch",
+            "Der Schleimige Aal",
+            "Die Stachelige Seeigel",
+            "Gasthaus Zur Bunten Korallenfisch",
+            "Zum Durchsichtigen Qualle",
+            "Der Leuchtende Tiefseefisch",
+            "Die Bizarre Seeteufel",
+            "Gasthaus Zum Langnasen Schwertfisch",
+            "Zur Fliegenden Fisch",
+            "Der Große Thunfisch",
+            "Die Silberne Sardine",
+            "Gasthaus Zur Goldenen Makrele",
+            "Zum Roten Schnapper",
+            "Der Blaue Marlin",
+            "Die Schwarze Meeräsche"
+        ],
+        "adventurer_taverns": [
+            "Zum Rostigen Schwert",
+            "Chauntea's Ernte",
+            "Eldath's Stille",
+            "Mielikki's Wald",
+            "Silvanus' Natur",
+            "Lurue's Einhorn",
+            "Nobanion's Stolz",
+            "Gwaeron's Spur",
+            "Shiallia's Tanz",
+            "Thard Harr's Dschungel",
+            "Anhur's Speer",
+            "Horus-Re's Falke"
+        ]
+    }
+}

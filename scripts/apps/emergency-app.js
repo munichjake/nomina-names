@@ -1,10 +1,11 @@
 /**
  * Emergency Names App - Quick NPC name generator
+ * Updated to exclude categorized content (books, ships, shops, taverns)
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
 import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClipboard } from '../utils/ui-helpers.js';
-import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders } from '../shared/constants.js';
+import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 export class EmergencyNamesApp extends Application {
@@ -114,7 +115,7 @@ export class EmergencyNamesApp extends Application {
         return;
       }
 
-      // Determine available species
+      // Determine available species (only those with traditional name data)
       const availableSpecies = this._getAvailableSpecies(language);
       logDebug("Available species:", availableSpecies);
       
@@ -131,6 +132,12 @@ export class EmergencyNamesApp extends Application {
         try {
           const species = availableSpecies[Math.floor(Math.random() * availableSpecies.length)];
           const gender = this._getRandomGender();
+          
+          // Skip generator-only categories - emergency only uses traditional name generation
+          if (isGeneratorOnlyCategory(gender)) {
+            attempts++;
+            continue;
+          }
           
           const name = await this._generateSingleName(language, species, gender);
           if (name) {
@@ -225,7 +232,12 @@ export class EmergencyNamesApp extends Application {
     if (globalNamesData && globalNamesData.nameData) {
       for (const [key, data] of globalNamesData.nameData.entries()) {
         const [dataLang, dataSpecies, dataCategory] = key.split('.');
-        if (dataLang === language && supportedGenders.includes(dataCategory)) {
+        
+        // Only include traditional categories (genders and basic name categories)
+        // Exclude generator-only categorized content
+        if (dataLang === language && 
+            (supportedGenders.includes(dataCategory) || dataCategory === 'surnames') &&
+            !isGeneratorOnlyCategory(dataCategory)) {
           speciesWithData.add(dataSpecies);
         }
       }
@@ -235,13 +247,22 @@ export class EmergencyNamesApp extends Application {
            Array.from(speciesWithData) : 
            ['human', 'elf', 'dwarf'];
            
-    logDebug(`Species with data for ${language}:`, result);
+    logDebug(`Species with traditional name data for ${language}:`, result);
     return result;
   }
 
   _getRandomGender() {
     const supportedGenders = getSupportedGenders();
-    const selectedGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+    
+    // Filter out any generator-only categories (though genders shouldn't be)
+    const validGenders = supportedGenders.filter(gender => !isGeneratorOnlyCategory(gender));
+    
+    if (validGenders.length === 0) {
+      // Fallback to basic genders if something went wrong
+      return 'male';
+    }
+    
+    const selectedGender = validGenders[Math.floor(Math.random() * validGenders.length)];
     logDebug(`Selected random gender: ${selectedGender}`);
     return selectedGender;
   }

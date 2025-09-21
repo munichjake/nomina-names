@@ -2,7 +2,7 @@
  * Names Data Manager - Handles loading and caching of name data
  */
 
-import { NAME_CATEGORIES, DATA_PATHS, MODULE_ID } from '../shared/constants.js';
+import { isCategorizedContent, DATA_PATHS, MODULE_ID } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError, logInfoL, logWarnL, logErrorL, logDebugL } from '../utils/logger.js';
 
 export class NamesDataManager {
@@ -17,7 +17,6 @@ export class NamesDataManager {
     this.isLoading = false;
     this.isLoaded = false;
     this.loadingPromise = null;
-    this.nameCategories = NAME_CATEGORIES;
   }
 
   /**
@@ -32,12 +31,12 @@ export class NamesDataManager {
     this._log('console.background-loading-started');
 
     this.loadingPromise = this._loadAllData();
-    
+
     try {
       await this.loadingPromise;
       this.isLoaded = true;
       this._log('console.background-loading-completed');
-      
+
       // Fire hook for API extensions
       this._fireDataLoadedHook();
     } catch (error) {
@@ -97,6 +96,20 @@ export class NamesDataManager {
       }
 
       const indexData = await indexResponse.json();
+
+      // Load category definitions if available
+      if (indexData.categoryGroups) {
+        // Import and set category definitions from new grouped structure
+        const { setCategoryDefinitionsFromGroups } = await import('../shared/constants.js');
+        setCategoryDefinitionsFromGroups(indexData.categoryGroups);
+        logDebug("Category groups loaded from index:", Object.keys(indexData.categoryGroups));
+      } else if (indexData.categories) {
+        // Fallback to old structure
+        const { setCategoryDefinitions } = await import('../shared/constants.js');
+        setCategoryDefinitions(indexData.categories);
+        logDebug("Category definitions loaded from index:", Object.keys(indexData.categories));
+      }
+
       this._log('console.index-loaded', { count: indexData.files.length });
 
       const loadPromises = indexData.files
@@ -109,7 +122,6 @@ export class NamesDataManager {
       this._log('console.index-error', null, error);
       await this.loadFallbackData();
     }
-
     logDebug("Available languages:", Array.from(this.availableLanguages));
     logDebug("Available species:", Array.from(this.availableSpecies));
     logDebug("Available categories:", Array.from(this.availableCategories));
@@ -126,7 +138,12 @@ export class NamesDataManager {
       { filename: 'de.human.titles.json', language: 'de', species: 'human', category: 'titles' },
       { filename: 'de.human.nicknames.json', language: 'de', species: 'human', category: 'nicknames' },
       { filename: 'de.human.settlements.json', language: 'de', species: 'human', category: 'settlements' },
-      { filename: 'de.elf.male.json', language: 'de', species: 'elf', category: 'male' }
+      { filename: 'de.elf.male.json', language: 'de', species: 'elf', category: 'male' },
+      // Add categorized content fallbacks
+      { filename: 'de.human.books.json', language: 'de', species: 'human', category: 'books' },
+      { filename: 'de.human.ships.json', language: 'de', species: 'human', category: 'ships' },
+      { filename: 'de.human.shops.json', language: 'de', species: 'human', category: 'shops' },
+      { filename: 'de.human.taverns.json', language: 'de', species: 'human', category: 'taverns' }
     ];
 
     // Add nonbinary data if supported
@@ -155,9 +172,9 @@ export class NamesDataManager {
     try {
       const response = await fetch(`${DATA_PATHS.base}${fileInfo.filename}`);
       if (!response.ok) {
-        this._log('console.file-unavailable', { 
-          filename: fileInfo.filename, 
-          status: response.status 
+        this._log('console.file-unavailable', {
+          filename: fileInfo.filename,
+          status: response.status
         });
         return;
       }
@@ -178,15 +195,15 @@ export class NamesDataManager {
       }
 
       const entryCount = this._getDataEntryCount(data, fileInfo.category);
-      this._log('console.file-loaded', { 
-        filename: fileInfo.filename, 
-        count: entryCount 
+      this._log('console.file-loaded', {
+        filename: fileInfo.filename,
+        count: entryCount
       });
 
     } catch (error) {
-      this._log('console.file-failed', { 
-        filename: fileInfo.filename, 
-        error: error.message 
+      this._log('console.file-failed', {
+        filename: fileInfo.filename,
+        error: error.message
       });
     }
   }
@@ -204,6 +221,24 @@ export class NamesDataManager {
     if (category === 'nicknames' && data.names) {
       return (data.names.male?.length || 0) + (data.names.female?.length || 0) + (data.names.nonbinary?.length || 0);
     }
+
+    // Handle categorized content (books, ships, shops, taverns)
+    if (isCategorizedContent(category)) {
+      let totalCount = 0;
+      const contentKey = Object.keys(data).find(key =>
+        key === 'books' || key === 'ships' || key === 'shops' || key === 'taverns'
+      );
+
+      if (contentKey && data[contentKey]) {
+        for (const subcategory of Object.values(data[contentKey])) {
+          if (Array.isArray(subcategory)) {
+            totalCount += subcategory.length;
+          }
+        }
+      }
+      return totalCount;
+    }
+
     return data.names?.length || data.settlements?.length || data.titles?.length || 0;
   }
 
@@ -213,7 +248,7 @@ export class NamesDataManager {
    */
   getLocalizedLanguages() {
     const languages = [];
-    
+
     if (this.languageConfig) {
       for (const [code, config] of Object.entries(this.languageConfig.supportedLanguages)) {
         if (config.enabled && this.availableLanguages.has(code)) {
@@ -242,7 +277,7 @@ export class NamesDataManager {
    */
   getLocalizedSpecies() {
     const species = [];
-    
+
     for (const spec of this.availableSpecies) {
       const locKey = `names.species.${spec}`;
       species.push({
@@ -252,6 +287,178 @@ export class NamesDataManager {
     }
 
     return species.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  /**
+   * Gets available categories for a specific generator type
+   */
+  async getAvailableCategoriesForGenerator(generatorType) {
+    const { getCategoriesForGenerator } = await import('../shared/constants.js');
+    const allCategories = getCategoriesForGenerator(generatorType);
+
+    // Filter by actually available data
+    const availableCategories = allCategories.filter(category => {
+      if (category === 'names') {
+        // Special case: 'names' category is available if we have gender-specific data files
+        return Array.from(this.availableCategories).some(cat =>
+          cat === 'male' || cat === 'female' || cat === 'nonbinary'
+        );
+      }
+      return Array.from(this.availableCategories).includes(category);
+    });
+
+    return availableCategories;
+  }
+
+  /**
+   * Gets localized categories for a specific generator type
+   */
+  async getLocalizedCategoriesForGenerator(generatorType) {
+    const { getLocalizedCategoryName, getCategoryGroups } = await import('../shared/constants.js');
+    const availableCategories = await this.getAvailableCategoriesForGenerator(generatorType);
+    const categoryGroups = getCategoryGroups();
+
+    // If we have category groups from index.json, use them
+    if (Object.keys(categoryGroups).length > 0) {
+      const grouped = [];
+
+      for (const [groupKey, groupData] of Object.entries(categoryGroups)) {
+        const groupItems = [];
+
+        if (groupData.categories) {
+          for (const [categoryKey, categoryData] of Object.entries(groupData.categories)) {
+            // Only include if available and supports this generator
+            if (availableCategories.includes(categoryKey) &&
+                (!categoryData.generators || categoryData.generators.includes(generatorType))) {
+
+              groupItems.push({
+                code: categoryKey,
+                name: getLocalizedCategoryName(categoryKey)
+              });
+            }
+          }
+        }
+
+        // Only add group if it has items
+        if (groupItems.length > 0) {
+          grouped.push({
+            groupLabel: game.i18n.localize(groupData.localization) || groupKey,
+            items: groupItems,
+            length: groupItems.length
+          });
+        }
+      }
+
+      return grouped;
+    } else {
+      // Fallback to old grouping logic
+      const { getCategoryType } = await import('../shared/constants.js');
+      const tempGrouped = {
+        traditional: [],
+        simple: [],
+        categorized: []
+      };
+
+      for (const category of availableCategories) {
+        const categoryType = getCategoryType(category);
+        const localizedName = getLocalizedCategoryName(category);
+
+        tempGrouped[categoryType].push({
+          code: category,
+          name: localizedName
+        });
+      }
+
+      // Convert to new format
+      const grouped = [];
+      if (tempGrouped.traditional.length > 0) {
+        grouped.push({
+          groupLabel: game.i18n.localize("names.category-groups.traditional") || "Traditional",
+          items: tempGrouped.traditional,
+          length: tempGrouped.traditional.length
+        });
+      }
+      if (tempGrouped.simple.length > 0) {
+        grouped.push({
+          groupLabel: game.i18n.localize("names.category-groups.simple") || "Simple",
+          items: tempGrouped.simple,
+          length: tempGrouped.simple.length
+        });
+      }
+      if (tempGrouped.categorized.length > 0) {
+        grouped.push({
+          groupLabel: game.i18n.localize("names.category-groups.categorized") || "Categorized",
+          items: tempGrouped.categorized,
+          length: tempGrouped.categorized.length
+        });
+      }
+
+      return grouped;
+    }
+  }
+
+  /**
+   * Gets available subcategories for a categorized content type
+   * @param {string} language - Language code
+   * @param {string} species - Species code  
+   * @param {string} category - Category code (books, ships, shops, taverns)
+   * @returns {Array} Array of available subcategories
+   */
+  getAvailableSubcategories(language, species, category) {
+    if (!isCategorizedContent(category)) {
+      return [];
+    }
+
+    const key = `${language}.${species}.${category}`;
+    const data = this.getData(key);
+
+    if (!data) {
+      return [];
+    }
+
+    const contentKey = Object.keys(data).find(key =>
+      key === 'books' || key === 'ships' || key === 'shops' || key === 'taverns'
+    );
+
+    if (!contentKey || !data[contentKey]) {
+      return [];
+    }
+
+    return Object.keys(data[contentKey]).filter(subcategory => {
+      const subcategoryData = data[contentKey][subcategory];
+      return Array.isArray(subcategoryData) && subcategoryData.length > 0;
+    });
+  }
+
+  /**
+   * Gets data from a specific subcategory of categorized content
+   * @param {string} language - Language code
+   * @param {string} species - Species code
+   * @param {string} category - Category code (books, ships, shops, taverns)
+   * @param {string} subcategory - Subcategory code
+   * @returns {Array|null} Array of entries or null
+   */
+  getSubcategoryData(language, species, category, subcategory) {
+    if (!isCategorizedContent(category)) {
+      return null;
+    }
+
+    const key = `${language}.${species}.${category}`;
+    const data = this.getData(key);
+
+    if (!data) {
+      return null;
+    }
+
+    const contentKey = Object.keys(data).find(key =>
+      key === 'books' || key === 'ships' || key === 'shops' || key === 'taverns'
+    );
+
+    if (!contentKey || !data[contentKey] || !data[contentKey][subcategory]) {
+      return null;
+    }
+
+    return data[contentKey][subcategory];
   }
 
   /**
@@ -275,7 +482,7 @@ export class NamesDataManager {
    */
   async ensureDataLoaded(language, species, category) {
     const key = `${language}.${species}.${category}`;
-    
+
     if (this.nameData.has(key)) {
       return true;
     }
@@ -283,7 +490,7 @@ export class NamesDataManager {
     // Try to load the specific file
     const filename = `${language}.${species}.${category}.json`;
     const fileInfo = { filename, language, species, category };
-    
+
     logDebug(`Attempting to load specific file: ${filename}`);
     await this.loadDataFileFromIndex(fileInfo);
     return this.nameData.has(key);
@@ -305,13 +512,13 @@ export class NamesDataManager {
    */
   setData(key, data) {
     this.nameData.set(key, data);
-    
+
     // Update available sets
     const [language, species, category] = key.split('.');
     if (language) this.availableLanguages.add(language);
     if (species) this.availableSpecies.add(species);
     if (category) this.availableCategories.add(category);
-    
+
     logDebug(`Data set for key: ${key}`);
   }
 
@@ -340,7 +547,7 @@ export class NamesDataManager {
    */
   _mergeDataObjects(existing, newData) {
     const merged = { ...existing };
-    
+
     if (newData.names) {
       if (Array.isArray(newData.names)) {
         merged.names = [...(merged.names || []), ...newData.names];
@@ -360,6 +567,19 @@ export class NamesDataManager {
       merged.titles = merged.titles || {};
       for (const [gender, titles] of Object.entries(newData.titles)) {
         merged.titles[gender] = [...(merged.titles[gender] || []), ...titles];
+      }
+    }
+
+    // Merge categorized content (books, ships, shops, taverns)
+    for (const contentType of ['books', 'ships', 'shops', 'taverns']) {
+      if (newData[contentType]) {
+        merged[contentType] = merged[contentType] || {};
+        for (const [subcategory, items] of Object.entries(newData[contentType])) {
+          merged[contentType][subcategory] = [
+            ...(merged[contentType][subcategory] || []),
+            ...items
+          ];
+        }
       }
     }
 
