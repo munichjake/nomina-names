@@ -2,7 +2,7 @@
     "id":  "nomina-names",
     "title":  "Names",
     "description":  "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
-    "version":  "1.2.9",
+    "version":  "1.2.10",
     "compatibility":  {
                           "minimum":  "11",
                           "verified":  "12"
@@ -43,5 +43,5 @@
                   ],
     "url":  "https://github.com/munichjake/nomina-names",
     "manifest":  "https://raw.githubusercontent.com/munichjake/nomina-names/main/module.json",
-    "download":  "https://github.com/munichjake/nomina-names/releases/download/v1.2.9/module-1.2.9.zip"
+    "download":  "https://github.com/munichjake/nomina-names/releases/download/v1.2.10/module-1.2.10.zip"
 }
