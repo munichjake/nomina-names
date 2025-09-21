@@ -11,7 +11,14 @@ import { hasNamesGeneratorPermission } from './utils/permissions.js';
 import { getSupportedGenders, GENDER_SYMBOLS, isCategorizedContent, getSubcategories } from './shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from './utils/logger.js';
 
+/**
+ * Names Module API - Public interface for other modules
+ * Provides methods for generating names, accessing data, and extending functionality
+ */
 class NamesModuleAPI {
+  /**
+   * Creates a new Names Module API instance
+   */
   constructor() {
     this.registeredExtensions = new Map();
     this.customDataSources = new Map();
@@ -718,10 +725,309 @@ class NamesModuleAPI {
       }
     }
   }
+
+  // ===== CONVENIENCE FUNCTIONS FOR EASY USAGE =====
+
+  /**
+   * Generates a random name with minimal configuration
+   * @param {string} [species='human'] - Species: 'human', 'elf', 'dwarf', 'halfling', etc.
+   * @param {string} [gender='random'] - Gender: 'male', 'female', 'nonbinary', 'random'
+   * @param {string} [language='auto'] - Language: 'de', 'en', 'fr', 'es', 'it', 'auto'
+   * @returns {Promise<string>} Generated name
+   *
+   * @example
+   * const name = await api.randomName(); // Random human name
+   * const elfName = await api.randomName('elf'); // Random elf name
+   * const dwarfFemale = await api.randomName('dwarf', 'female'); // Female dwarf name
+   */
+  async randomName(species = 'human', gender = 'random', language = 'auto') {
+    try {
+      // Handle 'auto' language
+      if (language === 'auto') {
+        language = this._getAutoLanguage();
+      }
+
+      // Handle 'random' gender
+      if (gender === 'random') {
+        gender = this._getRandomGender(species);
+      }
+
+      const result = await this.generateName({
+        language,
+        species,
+        gender,
+        category: 'names',
+        components: ['firstname', 'surname'],
+        format: '{firstname} {surname}'
+      });
+
+      logDebug(`Generated random name "${result}" for ${species}/${gender}`);
+      return result;
+    } catch (error) {
+      logWarn('Failed to generate random name, using fallback', error);
+      return this._getFallbackName(species, gender);
+    }
+  }
+
+  /**
+   * Generates only a first name
+   * @param {string} [species='human'] - Species
+   * @param {string} [gender='random'] - Gender
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} First name only
+   */
+  async firstName(species = 'human', gender = 'random', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+      if (gender === 'random') gender = this._getRandomGender(species);
+
+      return await this.generateName({
+        language,
+        species,
+        gender,
+        category: 'names',
+        components: ['firstname'],
+        format: '{firstname}'
+      });
+    } catch (error) {
+      logWarn('Failed to generate first name', error);
+      return this._getFallbackFirstName(gender);
+    }
+  }
+
+  /**
+   * Generates only a surname
+   * @param {string} [species='human'] - Species
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} Surname only
+   */
+  async surname(species = 'human', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+
+      return await this.generateName({
+        language,
+        species,
+        category: 'surnames'
+      });
+    } catch (error) {
+      logWarn('Failed to generate surname', error);
+      return 'Unbekannt';
+    }
+  }
+
+  /**
+   * Generates a settlement name
+   * @param {string} [species='human'] - Species
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} Settlement name
+   */
+  async settlement(species = 'human', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+
+      return await this.generateName({
+        language,
+        species,
+        category: 'settlements'
+      });
+    } catch (error) {
+      logWarn('Failed to generate settlement', error);
+      return 'Namenlose Stadt';
+    }
+  }
+
+  /**
+   * Generates a tavern name
+   * @param {string} [species='human'] - Species
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} Tavern name
+   */
+  async tavern(species = 'human', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+
+      return await this.generateName({
+        language,
+        species,
+        category: 'taverns'
+      });
+    } catch (error) {
+      logWarn('Failed to generate tavern', error);
+      return 'Zur Goldenen Krone';
+    }
+  }
+
+  /**
+   * Generates a shop name
+   * @param {string} [species='human'] - Species
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} Shop name
+   */
+  async shop(species = 'human', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+
+      return await this.generateName({
+        language,
+        species,
+        category: 'shops'
+      });
+    } catch (error) {
+      logWarn('Failed to generate shop', error);
+      return 'Allgemeiner Handel';
+    }
+  }
+
+  /**
+   * Generates a book title
+   * @param {string} [species='human'] - Species
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<string>} Book title
+   */
+  async book(species = 'human', language = 'auto') {
+    try {
+      if (language === 'auto') language = this._getAutoLanguage();
+
+      return await this.generateName({
+        language,
+        species,
+        category: 'books'
+      });
+    } catch (error) {
+      logWarn('Failed to generate book', error);
+      return 'Das Buch der Geheimnisse';
+    }
+  }
+
+  /**
+   * Generates multiple names at once
+   * @param {number} count - Number of names to generate
+   * @param {string} [species='human'] - Species
+   * @param {string} [gender='random'] - Gender (can be 'mixed' for variety)
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<Array<string>>} Array of generated names
+   */
+  async multipleNames(count = 5, species = 'human', gender = 'random', language = 'auto') {
+    const names = [];
+
+    for (let i = 0; i < count; i++) {
+      const useGender = gender === 'mixed' ? 'random' : gender;
+      try {
+        const name = await this.randomName(species, useGender, language);
+        names.push(name);
+      } catch (error) {
+        logWarn(`Failed to generate name ${i + 1}/${count}`, error);
+        names.push(this._getFallbackName(species, useGender));
+      }
+    }
+
+    return names;
+  }
+
+  /**
+   * Quick NPC generator with name and basic info
+   * @param {string} [species='human'] - Species
+   * @param {string} [gender='random'] - Gender
+   * @param {string} [language='auto'] - Language
+   * @returns {Promise<Object>} NPC object with name, species, gender
+   */
+  async quickNPC(species = 'human', gender = 'random', language = 'auto') {
+    if (gender === 'random') gender = this._getRandomGender(species);
+
+    const name = await this.randomName(species, gender, language);
+
+    return {
+      name,
+      species,
+      gender,
+      fullName: name,
+      firstName: name.split(' ')[0] || name,
+      lastName: name.split(' ').slice(1).join(' ') || ''
+    };
+  }
+
+  // ===== HELPER METHODS =====
+
+  /**
+   * Gets automatic language based on Foundry settings
+   * @private
+   */
+  _getAutoLanguage() {
+    const foundryLang = game.settings.get("core", "language");
+    const mapping = {
+      'en': 'en',
+      'de': 'de',
+      'fr': 'fr',
+      'es': 'es',
+      'it': 'it'
+    };
+    return mapping[foundryLang] || 'de';
+  }
+
+  /**
+   * Gets a random gender for the species
+   * @private
+   */
+  _getRandomGender(species) {
+    // Most species support male/female, some also nonbinary
+    const genders = ['male', 'female'];
+
+    // Add nonbinary for species that support it
+    if (['human', 'elf'].includes(species)) {
+      genders.push('nonbinary');
+    }
+
+    return genders[Math.floor(Math.random() * genders.length)];
+  }
+
+  /**
+   * Provides fallback names when generation fails
+   * @private
+   */
+  _getFallbackName(species, gender) {
+    const fallbacks = {
+      human: {
+        male: ['Johann Müller', 'Hans Weber', 'Klaus Schmidt'],
+        female: ['Anna Müller', 'Maria Weber', 'Elisabeth Schmidt'],
+        nonbinary: ['Alex Müller', 'Sam Weber', 'Robin Schmidt']
+      },
+      elf: {
+        male: ['Legolas Waldläufer', 'Elrond Sterndeuter', 'Thranduil Blattflüsterer'],
+        female: ['Galadriel Mondschein', 'Arwen Sternenlicht', 'Tauriel Waldtänzerin'],
+        nonbinary: ['Rivendell Dämmerlicht', 'Lothlórien Waldgeist', 'Mirkwood Sternenwanderer']
+      },
+      dwarf: {
+        male: ['Thorin Steinhammer', 'Gimli Axtschwinger', 'Balin Goldgräber'],
+        female: ['Daina Steinhammer', 'Nori Axtschwinger', 'Dwalin Goldgräber']
+      }
+    };
+
+    const speciesFallbacks = fallbacks[species] || fallbacks.human;
+    const genderFallbacks = speciesFallbacks[gender] || speciesFallbacks.male || ['Unbekannt Unbekannt'];
+
+    return genderFallbacks[Math.floor(Math.random() * genderFallbacks.length)];
+  }
+
+  /**
+   * Provides fallback first names
+   * @private
+   */
+  _getFallbackFirstName(gender) {
+    const fallbacks = {
+      male: ['Johann', 'Hans', 'Klaus', 'Peter', 'Wolfgang'],
+      female: ['Anna', 'Maria', 'Elisabeth', 'Ursula', 'Ingrid'],
+      nonbinary: ['Alex', 'Sam', 'Robin', 'Jordan', 'Casey']
+    };
+
+    const names = fallbacks[gender] || fallbacks.male;
+    return names[Math.floor(Math.random() * names.length)];
+  }
 }
 
 // Create and export the API instance
 export const NamesAPI = new NamesModuleAPI();
+
 
 // Example usage for third-party modules:
 /*
@@ -749,5 +1055,32 @@ Hooks.once('init', () => {
 
   // Get available subcategories
   const subcategories = await game.modules.get('nomina-names').api.getAvailableSubcategories('de', 'human', 'books');
+
+  // ==== SIMPLIFIED API FUNCTIONS ====
+  // New convenience functions for easy usage:
+
+  // Generate a random name (human by default)
+  const simpleName = await game.modules.get('nomina-names').api.randomName();
+
+  // Generate specific types
+  const elfName = await game.modules.get('nomina-names').api.randomName('elf');
+  const dwarfFemale = await game.modules.get('nomina-names').api.randomName('dwarf', 'female');
+
+  // Generate other content types
+  const tavernName = await game.modules.get('nomina-names').api.tavern();
+  const settlement = await game.modules.get('nomina-names').api.settlement('elf');
+  const shopName = await game.modules.get('nomina-names').api.shop();
+  const bookTitle = await game.modules.get('nomina-names').api.book();
+
+  // Component functions
+  const firstName = await game.modules.get('nomina-names').api.firstName('elf', 'female');
+  const surname = await game.modules.get('nomina-names').api.surname('dwarf');
+
+  // Generate multiple names
+  const npcNames = await game.modules.get('nomina-names').api.multipleNames(5, 'human', 'mixed');
+
+  // Quick NPC generation
+  const npc = await game.modules.get('nomina-names').api.quickNPC('halfling', 'female');
+  // Returns: { name: "...", species: "halfling", gender: "female", firstName: "...", lastName: "..." }
 });
 */

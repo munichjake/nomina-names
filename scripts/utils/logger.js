@@ -17,6 +17,7 @@ let currentLogLevel = LOG_LEVELS.INFO;
 
 /**
  * Updates the cached log level from settings
+ * Should be called when log level setting changes
  */
 export function updateLogLevel() {
   try {
@@ -118,6 +119,7 @@ export function log(level, message, data = null, options = {}) {
 
 /**
  * Convenience functions for different log levels
+ * These functions provide easier access to logging without specifying level constants
  */
 
 export function logError(message, error = null, options = {}) {
@@ -138,6 +140,7 @@ export function logDebug(message, data = null, options = {}) {
 
 /**
  * Localized logging functions (automatically set localize option)
+ * These functions automatically translate message keys using game.i18n
  */
 
 export function logErrorL(messageKey, error = null, params = null, modulePrefix = null) {
@@ -158,6 +161,9 @@ export function logDebugL(messageKey, data = null, params = null, modulePrefix =
 
 /**
  * API functions for external modules - includes module prefix automatically
+ * Creates a logger instance with a specific module prefix for external modules
+ * @param {string} modulePrefix - The prefix to use for log messages
+ * @returns {Object} Logger instance with all logging functions
  */
 
 export function createModuleLogger(modulePrefix) {

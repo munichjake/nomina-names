@@ -23,7 +23,7 @@ export function hasNamesGeneratorPermission() {
 
 /**
  * Gets all available user roles for configuration
- * @returns {Array} Array of role objects
+ * @returns {Array} Array of role objects with level, name, and key properties
  */
 export function getAllUserRoles() {
   return [

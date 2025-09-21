@@ -5,7 +5,14 @@
 import { isCategorizedContent, DATA_PATHS, MODULE_ID } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError, logInfoL, logWarnL, logErrorL, logDebugL } from '../utils/logger.js';
 
+/**
+ * Names Data Manager - Central management for name data loading, caching, and access
+ * Handles loading of name files, grammar rules, and provides API for name generation
+ */
 export class NamesDataManager {
+  /**
+   * Creates a new Names Data Manager instance
+   */
   constructor() {
     this.nameData = new Map();
     this.availableLanguages = new Set();
@@ -21,6 +28,8 @@ export class NamesDataManager {
 
   /**
    * Starts loading data in the background
+   * Loads index file first, then loads available name data files
+   * @returns {Promise} Promise that resolves when all data is loaded
    */
   async initializeData() {
     if (this.isLoaded || this.isLoading) {
@@ -128,7 +137,8 @@ export class NamesDataManager {
   }
 
   /**
-   * Loads known fallback data files
+   * Loads known fallback data files when index.json is not available
+   * Uses hardcoded list of known data files as backup
    */
   async loadFallbackData() {
     const knownFiles = [
@@ -165,8 +175,12 @@ export class NamesDataManager {
   }
 
   /**
-   * Loads a specific data file
-   * @param {Object} fileInfo - File information with filename, language, species, category
+   * Loads a single data file based on index information
+   * @param {Object} fileInfo - File information from index.json
+   * @param {string} fileInfo.filename - Name of the file to load
+   * @param {string} fileInfo.language - Language code
+   * @param {string} fileInfo.species - Species code
+   * @param {string} fileInfo.category - Category code
    */
   async loadDataFileFromIndex(fileInfo) {
     try {
@@ -522,10 +536,11 @@ export class NamesDataManager {
 
   /**
    * Ensures data is loaded for a specific combination (lazy loading)
+   * Attempts to load the data file if not already cached
    * @param {string} language - Language code
    * @param {string} species - Species code
    * @param {string} category - Category code
-   * @returns {boolean} True if data was loaded successfully
+   * @returns {Promise<boolean>} True if data was loaded successfully
    */
   async ensureDataLoaded(language, species, category) {
     const key = `${language}.${species}.${category}`;
