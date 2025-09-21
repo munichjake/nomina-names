@@ -202,10 +202,10 @@ const FALLBACK_CATEGORIES = {
     'generators': ['generator'],
     'localization': 'names.categories.books',
     'subcategories': {
-      'religious_books': 'names.subcategories.books.religious_books',
-      'novels': 'names.subcategories.books.novels',
-      'scientific_treatises': 'names.subcategories.books.scientific_treatises',
-      'humorous_books': 'names.subcategories.books.humorous_books'
+      'religious_books': 'names.subcategory-translations.books.religious_books',
+      'novels': 'names.subcategory-translations.books.novels',
+      'scientific_treatises': 'names.subcategory-translations.books.scientific_treatises',
+      'humorous_books': 'names.subcategory-translations.books.humorous_books'
     }
   },
   'taverns': {
@@ -213,10 +213,10 @@ const FALLBACK_CATEGORIES = {
     'generators': ['generator'],
     'localization': 'names.categories.taverns',
     'subcategories': {
-      'upscale_inns': 'names.subcategories.taverns.upscale_inns',
-      'common_taverns': 'names.subcategories.taverns.common_taverns',
-      'harbor_taverns': 'names.subcategories.taverns.harbor_taverns',
-      'adventurer_taverns': 'names.subcategories.taverns.adventurer_taverns'
+      'upscale_inns': 'names.subcategory-translations.taverns.upscale_inns',
+      'common_taverns': 'names.subcategory-translations.taverns.common_taverns',
+      'harbor_taverns': 'names.subcategory-translations.taverns.harbor_taverns',
+      'adventurer_taverns': 'names.subcategory-translations.taverns.adventurer_taverns'
     }
   },
   'ships': {
@@ -224,12 +224,12 @@ const FALLBACK_CATEGORIES = {
     'generators': ['generator'],
     'localization': 'names.categories.ships',
     'subcategories': {
-      'merchant_ship': 'names.subcategories.ships.merchant_ship',
-      'warship': 'names.subcategories.ships.warship',
-      'pirate_ship': 'names.subcategories.ships.pirate_ship',
-      'small_boat': 'names.subcategories.ships.small_boat',
-      'exploration_ship': 'names.subcategories.ships.exploration_ship',
-      'mystical_ship': 'names.subcategories.ships.mystical_ship'
+      'merchant_ship': 'names.subcategory-translations.ships.merchant_ship',
+      'warship': 'names.subcategory-translations.ships.warship',
+      'pirate_ship': 'names.subcategory-translations.ships.pirate_ship',
+      'small_boat': 'names.subcategory-translations.ships.small_boat',
+      'exploration_ship': 'names.subcategory-translations.ships.exploration_ship',
+      'mystical_ship': 'names.subcategory-translations.ships.mystical_ship'
     }
   },
   'shops': {
@@ -237,12 +237,12 @@ const FALLBACK_CATEGORIES = {
     'generators': ['generator'],
     'localization': 'names.categories.shops',
     'subcategories': {
-      'blacksmiths': 'names.subcategories.shops.blacksmiths',
-      'alchemists': 'names.subcategories.shops.alchemists',
-      'general_stores': 'names.subcategories.shops.general_stores',
-      'adventure_supplies': 'names.subcategories.shops.adventure_supplies',
-      'weaponsmiths': 'names.subcategories.shops.weaponsmiths',
-      'armorers': 'names.subcategories.shops.armorers'
+      'blacksmiths': 'names.subcategory-translations.shops.blacksmiths',
+      'alchemists': 'names.subcategory-translations.shops.alchemists',
+      'general_stores': 'names.subcategory-translations.shops.general_stores',
+      'adventure_supplies': 'names.subcategory-translations.shops.adventure_supplies',
+      'weaponsmiths': 'names.subcategory-translations.shops.weaponsmiths',
+      'armorers': 'names.subcategory-translations.shops.armorers'
     }
   }
 };
