@@ -1,0 +1,64 @@
+{
+    "authors": [
+        {
+            "name": "munichjake",
+            "email": "munichjake@dnd-session.de",
+            "url": "https://dnd-session.de",
+            "github": "https://github.com/munichjake"
+        }
+    ],
+    "description": "Deutsche Buchtitel nach Kategorie für Menschen",
+    "version": "1.0.0",
+    "books": {
+        "religious_books": [
+            "Der Morgengruß des Lathander",
+            "Mystras Silberne Flamme",
+            "Offenbarungen der Seelenesser",
+            "Der Mitternachtsgesang",
+            "Die Verderbnis: Litanei"
+        ],
+        "novels": [
+            "Purpurne Drachen",
+            "Die Allianz der Narren",
+            "Blutsbruderschaft",
+            "Das Erwachen der Alten",
+            "Mondscheinjäger",
+            "Die Pest von Tethyr",
+            "Knochenweg",
+            "Der Pakt mit dem Teufel",
+            "Die Ritter von Cormyr",
+            "Seelenjäger"
+        ],
+        "scientific_treatises": [
+            "Die Prinzipien der Arkanen Mechanik: Eine mathematische Herleitung der Interdependenz von Kausalität und magischem Flux",
+            "Die Geopolitik des Seelenhandels zwischen den unteren Ebenen und ihre Auswirkungen auf sterbliche Realitäten",
+            "Mikroskopische Analyse der Weave-Struktur in Gebieten extremer magischer Verdünnung",
+            "Zur Synthesegeschwindigkeit alchemistischer Transmutationen unter Verwendung katalytischer Beschwörungsmagie",
+            "Die Psychosozialen Auswirkungen langfristiger Illusionsmagie-Exposition auf Gesellschaftsstrukturen",
+            "Optimierungsalgorithmen für die Effizienzsteigerung von Teleportationsnetzwerken in kontinentalen Transportsystemen",
+            "Die Spektralanalyse von Seelenenergie bei verschiedenen Graden der dämonischen Korruption",
+            "Über die Selbstreparatur-Eigenschaften von Golems mit integrierter adaptiver Intelligenz-Matrix",
+            "Feldtheoretische Beschreibung der Interaktion zwischen positiver und negativer Energie in neutralen Zonen",
+            "Die Dynamik von Realitätsstürmen in Limbo und ihre modellierten Auswirkungen auf angrenzende Stabilebenen",
+            "Biomimetische Ansätze zur Reproduktion natürlicher Formwandlungs-Fähigkeiten in künstlichen Konstrukten",
+            "Die Informationstheorie der Gedankenübertragung zwischen telepathisch begabten Individuen verschiedener Spezies",
+            "Zur Energiedichte-Verteilung in Artefakten unterschiedlicher magischer Potenz und historischer Bedeutung",
+            "Probabilistische Modelle für die Erfolgswahrscheinlichkeit von Resurrection-Ritualen unter variablen Umweltbedingungen",
+            "Die Molekularbiologie der Regeneration bei Trollen und ihre mögliche Übertragung auf andere Spezies durch Transmutation"
+        ],
+        "humorous_books": [
+            "Drachenzähmung für Dummies: Warum 'Sitz!' nicht funktioniert",
+            "Mein Familiar hat einen besseren Job als ich",
+            "Verlegte Schätze: Der zerstreute Abenteurer",
+            "Der Ritter, der sein Schwert verlegte",
+            "101 ungenießbare Rezepte von Kobolden",
+            "Lliiras Leitfaden für fröhliche Feiertage",
+            "Abhandlung über Mystra und ihre Launen",
+            "Wann es Zeit ist, den Zauberstab zu schwingen",
+            "Diplomatie und ihre Grenzen: Wann ein Schwert überzeugt",
+            "Savras' Schicksalsdeutung für Anfänger",
+            "Tyr der Richter: Ein Leitfaden für Gerechtigkeit",
+            "Illusionen im Alltag: Tricks für den Hausgebrauch"
+        ]
+    }
+}

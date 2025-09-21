@@ -1,11 +1,11 @@
 /**
  * Names Generator App - Main application for generating names
- * Updated for simplified UI with gender and component checkboxes
+ * Updated for simplified UI with gender and component checkboxes + categorized content subcategories
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
 import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
-import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT } from '../shared/constants.js';
+import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT, isCategorizedContent, getSubcategories, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 export class NamesGeneratorApp extends Application {
@@ -21,8 +21,8 @@ export class NamesGeneratorApp extends Application {
       id: "names-generator",
       title: game.i18n.localize("names.title"),
       template: TEMPLATE_PATHS.generator,
-      width: 450,
-      height: 750,
+      width: 900,
+      height: 800,
       resizable: true,
       classes: [CSS_CLASSES.moduleApp]
     });
@@ -39,6 +39,7 @@ export class NamesGeneratorApp extends Application {
     const data = {
       languages: globalNamesData ? globalNamesData.getLocalizedLanguages() : [],
       species: globalNamesData ? globalNamesData.getLocalizedSpecies() : [],
+      categories: globalNamesData ? await globalNamesData.getLocalizedCategoriesForGenerator('generator') : [],
       isLoading: globalNamesData ? globalNamesData.isLoading : false,
       isLoaded: globalNamesData ? globalNamesData.isLoaded : false,
       supportedGenders: getSupportedGenders()
@@ -47,6 +48,7 @@ export class NamesGeneratorApp extends Application {
     logDebug("Generator app data prepared:", {
       languages: data.languages.length,
       species: data.species.length,
+      categories: data.categories.length,
       isLoading: data.isLoading,
       isLoaded: data.isLoaded
     });
@@ -145,6 +147,7 @@ export class NamesGeneratorApp extends Application {
     logDebug("Updating UI with selection:", { language, species, category });
 
     await this._updateGenderCheckboxes($form, language, species);
+    await this._updateSubcategoryCheckboxes($form, language, species, category);
     this._toggleNamesPanels($form, category);
     this._updateGenerateButtonState($form);
   }
@@ -170,7 +173,7 @@ export class NamesGeneratorApp extends Application {
       const key = `${language}.${species}.${gender}`;
       
       // First check if data exists
-      let hasData = globalNamesData.hasData(key);
+      let hasData = globalNamesData.hasData(language, species, gender);
       
       // If not, try to load it
       if (!hasData) {
@@ -220,21 +223,91 @@ export class NamesGeneratorApp extends Application {
     logDebug(`Updated gender checkboxes for ${language}.${species}:`, availableGenders);
   }
 
+  async _updateSubcategoryCheckboxes(html, language, species, category) {
+    const globalNamesData = getGlobalNamesData();
+    const container = html.find('#subcategory-checkboxes-container');
+    
+    // Clear container first
+    container.empty();
+
+    if (!globalNamesData || !language || !species || !category) {
+      logDebug("Clearing subcategory checkboxes - missing data");
+      return;
+    }
+
+    // Only show subcategories for categorized content
+    if (!isCategorizedContent(category)) {
+      logDebug(`Category ${category} is not categorized content, no subcategories needed`);
+      return;
+    }
+
+    // Ensure data is loaded for this category
+    const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
+    if (!hasData) {
+      logDebug(`No data available for ${language}.${species}.${category}`);
+      return;
+    }
+
+    // Get available subcategories from data
+    const availableSubcategories = globalNamesData.getAvailableSubcategories(language, species, category);
+    
+    if (availableSubcategories.length === 0) {
+      logDebug(`No subcategories available for ${language}.${species}.${category}`);
+      return;
+    }
+
+    logDebug(`Available subcategories for ${language}.${species}.${category}:`, availableSubcategories);
+
+    // Generate subcategory checkboxes
+    let checkboxesHtml = '';
+    const subcategoryDefinitions = getSubcategories(category);
+    
+    for (const subcategory of availableSubcategories) {
+      const locKey = subcategoryDefinitions[subcategory] || `names.subcategories.${category}.${subcategory}`;
+      const subcategoryLabel = game.i18n.localize(locKey) || subcategory.replace(/_/g, ' ');
+      const isChecked = availableSubcategories.length === 1 ? 'checked' : ''; // Auto-select if only one option
+      
+      checkboxesHtml += `
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-subcategory-${subcategory}" ${isChecked}>
+          <span class="names-module-checkmark"></span>
+          ${subcategoryLabel}
+        </label>
+      `;
+    }
+
+    container.html(checkboxesHtml);
+    
+    // Bind change events to new checkboxes
+    container.find('input[type="checkbox"]').change(this._onCheckboxChange.bind(this));
+
+    logDebug(`Updated subcategory checkboxes for ${language}.${species}.${category}:`, availableSubcategories);
+  }
+
   _toggleNamesPanels(html, category) {
     const genderPanel = html.find('.names-module-gender-section');
     const componentsPanel = html.find('.names-module-components-section');
     const formatGroup = html.find('.names-module-format-group');
+    const subcategoryPanel = html.find('.names-module-subcategory-section');
 
     if (category === 'names') {
       genderPanel.show();
       componentsPanel.show();
       formatGroup.show();
+      subcategoryPanel.hide();
       logDebug("Showing names panels for name generation");
+    } else if (isCategorizedContent(category)) {
+      genderPanel.hide();
+      componentsPanel.hide();
+      formatGroup.hide();
+      subcategoryPanel.show();
+      logDebug(`Showing subcategory panel for categorized content: ${category}`);
     } else {
       genderPanel.hide();
       componentsPanel.hide();
       formatGroup.hide();
-      logDebug(`Hiding names panels for category: ${category}`);
+      subcategoryPanel.hide();
+      logDebug(`Hiding all special panels for category: ${category}`);
     }
   }
 
@@ -259,6 +332,17 @@ export class NamesGeneratorApp extends Application {
       
       if (!hasGenderSelection && !hasComponentSelection && !noSelections) {
         isDisabled = true;
+      }
+    } else if (isCategorizedContent(category)) {
+      // For categorized content, check if at least one subcategory is selected
+      const subcategoryCheckboxes = html.find('input[name^="names-subcategory-"]:checked');
+      if (subcategoryCheckboxes.length === 0) {
+        // Smart default: if no subcategories selected, allow generation (will use all available)
+        const allSubcategoryCheckboxes = html.find('input[name^="names-subcategory-"]');
+        if (allSubcategoryCheckboxes.length > 0) {
+          // Only disable if there are subcategories available but none selected
+          // This allows for auto-generation when data loads
+        }
       }
     }
 
@@ -304,15 +388,25 @@ export class NamesGeneratorApp extends Application {
       for (let i = 0; i < count; i++) {
         let generatedName;
 
-        if (category === 'names') {
-          generatedName = await this._generateNameWithSelections(form, language, species, nameFormat);
-        } else {
-          generatedName = await this._generateSimpleName(language, species, category);
-        }
+        try {
+          if (category === 'names') {
+            generatedName = await this._generateNameWithSelections(form, language, species, nameFormat);
+          } else if (isCategorizedContent(category)) {
+            logDebug(`Attempting to generate categorized content for: ${language}.${species}.${category}`);
+            generatedName = await this._generateCategorizedContent(form, language, species, category);
+          } else {
+            generatedName = await this._generateSimpleName(language, species, category);
+          }
 
-        if (generatedName) {
-          results.push(generatedName);
-          logDebug(`Generated name ${i + 1}/${count}: ${generatedName}`);
+          if (generatedName) {
+            results.push(generatedName);
+            logDebug(`Generated name ${i + 1}/${count}: ${generatedName}`);
+          } else {
+            logError(`No name generated for iteration ${i + 1}, category: ${category}`);
+          }
+        } catch (innerError) {
+          logError(`Error generating name for iteration ${i + 1}:`, innerError);
+          // Continue with next iteration instead of failing completely
         }
       }
 
@@ -339,6 +433,54 @@ export class NamesGeneratorApp extends Application {
       const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
       ui.notifications.error(errorMsg);
     }
+  }
+
+  async _generateCategorizedContent(form, language, species, category) {
+    const $form = $(form);
+    const globalNamesData = getGlobalNamesData();
+
+    logDebug(`_generateCategorizedContent called with: ${language}.${species}.${category}`);
+
+    // Ensure data is loaded before accessing it
+    const dataLoaded = await globalNamesData.ensureDataLoaded(language, species, category);
+    logDebug(`Data loaded result for ${language}.${species}.${category}: ${dataLoaded}`);
+    if (!dataLoaded) {
+      throw new Error(`No data file available for ${language}.${species}.${category}`);
+    }
+
+    // Get selected subcategories (with smart default)
+    const selectedSubcategories = [];
+    $form.find('input[name^="names-subcategory-"]:checked').each(function() {
+      const subcategoryName = this.name.replace('names-subcategory-', '');
+      selectedSubcategories.push(subcategoryName);
+    });
+
+    // Smart default: if no subcategories selected, use all available subcategories
+    let subcategoriesToUse = selectedSubcategories;
+    if (selectedSubcategories.length === 0) {
+      subcategoriesToUse = globalNamesData.getAvailableSubcategories(language, species, category);
+      logDebug("No subcategories selected, using all available:", subcategoriesToUse);
+    }
+
+    if (subcategoriesToUse.length === 0) {
+      throw new Error(`No subcategories available for ${language}.${species}.${category}`);
+    }
+
+    // Randomly select a subcategory for this generation
+    const randomSubcategory = subcategoriesToUse[Math.floor(Math.random() * subcategoriesToUse.length)];
+    
+    // Get data from the selected subcategory
+    const subcategoryData = globalNamesData.getSubcategoryData(language, species, category, randomSubcategory);
+    
+    if (!subcategoryData || subcategoryData.length === 0) {
+      throw new Error(`No data available for subcategory ${randomSubcategory}`);
+    }
+
+    // Select a random item from the subcategory
+    const randomItem = subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
+    
+    logDebug(`Generated categorized content from ${category}.${randomSubcategory}: ${randomItem}`);
+    return randomItem;
   }
 
   async _generateNameWithSelections(form, language, species, nameFormat) {
@@ -407,6 +549,19 @@ export class NamesGeneratorApp extends Application {
       const result = settlement.name || settlement;
       logDebug(`Generated settlement name: ${result}`);
       return result;
+    } else if (category === 'nicknames') {
+      // Special handling for nicknames - they have gendered structure
+      const { getSupportedGenders } = await import('../shared/constants.js');
+      const supportedGenders = getSupportedGenders();
+      const randomGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+      const nickname = this._getRandomFromGenderedData(language, species, 'nicknames', randomGender);
+      return nickname ? `"${nickname}"` : null;
+    } else if (category === 'titles') {
+      // Special handling for titles - they have gendered structure and need settlements
+      const { getSupportedGenders } = await import('../shared/constants.js');
+      const supportedGenders = getSupportedGenders();
+      const randomGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+      return this._generateTitle(language, species, randomGender, null);
     } else {
       return this._getRandomFromData(language, species, category);
     }

@@ -1,5 +1,6 @@
 /**
  * Names Module API - Public interface for other modules
+ * Updated to support categorized content (books, ships, shops, taverns)
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from './core/data-manager.js';
@@ -7,7 +8,7 @@ import { NamesGeneratorApp } from './apps/generator-app.js';
 import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
 import { hasNamesGeneratorPermission } from './utils/permissions.js';
-import { getSupportedGenders, GENDER_SYMBOLS } from './shared/constants.js';
+import { getSupportedGenders, GENDER_SYMBOLS, isCategorizedContent, getSubcategories } from './shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from './utils/logger.js';
 
 class NamesModuleAPI {
@@ -26,15 +27,17 @@ class NamesModuleAPI {
    */
 
   /**
-   * Generate a single name
+   * Generate a single name or categorized content
    * @param {Object} options - Generation options
-   * @returns {Promise<string>} Generated name
+   * @returns {Promise<string>} Generated name or content
    */
   async generateName(options = {}) {
     const {
       language = 'de',
       species = 'human',
       gender = 'male',
+      category = null,
+      subcategory = null,
       components = ['firstname', 'surname'],
       format = '{firstname} {surname}',
       useCustomData = true
@@ -53,19 +56,30 @@ class NamesModuleAPI {
       await this._loadCustomDataSources(language, species);
     }
 
-    const result = await this._performNameGeneration(language, species, gender, components, format);
+    let result;
+
+    // Determine generation type based on category
+    if (category && isCategorizedContent(category)) {
+      result = await this._generateCategorizedContent(language, species, category, subcategory);
+    } else if (category === 'names' || (!category && components.length > 0)) {
+      result = await this._performNameGeneration(language, species, gender, components, format);
+    } else if (category) {
+      result = await this._generateSimpleContent(language, species, category);
+    } else {
+      result = await this._performNameGeneration(language, species, gender, components, format);
+    }
     
     // Fire afterGenerate hook
     this._fireHook('names.afterGenerate', { options, result });
 
-    logDebug("Generated name:", result);
+    logDebug("Generated name/content:", result);
     return result;
   }
 
   /**
-   * Generate multiple names
+   * Generate multiple names or categorized content
    * @param {Object} options - Generation options
-   * @returns {Promise<Array>} Array of generated names
+   * @returns {Promise<Array>} Array of generated names/content
    */
   async generateNames(options = {}) {
     const { count = 5, ...otherOptions } = options;
@@ -80,6 +94,72 @@ class NamesModuleAPI {
 
     logDebug(`Generated ${names.length} names:`, names);
     return names;
+  }
+
+  /**
+   * Generate categorized content (books, ships, shops, taverns)
+   * @param {Object} options - Generation options
+   * @returns {Promise<string>} Generated content
+   */
+  async generateCategorizedContent(options = {}) {
+    const {
+      language = 'de',
+      species = 'human',
+      category,
+      subcategory = null,
+      useCustomData = true
+    } = options;
+
+    if (!category || !isCategorizedContent(category)) {
+      throw new Error(`Invalid categorized content category: ${category}`);
+    }
+
+    logDebug("Generating categorized content with options:", options);
+
+    const dataManager = ensureGlobalNamesData();
+    await dataManager.initializeData();
+
+    if (useCustomData) {
+      await this._loadCustomDataSources(language, species);
+    }
+
+    return await this._generateCategorizedContent(language, species, category, subcategory);
+  }
+
+  /**
+   * Get available subcategories for a categorized content type
+   * @param {string} language - Language code
+   * @param {string} species - Species code
+   * @param {string} category - Category code (books, ships, shops, taverns)
+   * @returns {Promise<Array>} Array of available subcategories
+   */
+  async getAvailableSubcategories(language, species, category) {
+    if (!isCategorizedContent(category)) {
+      return [];
+    }
+
+    const dataManager = ensureGlobalNamesData();
+    await dataManager.initializeData();
+    
+    return dataManager.getAvailableSubcategories(language, species, category);
+  }
+
+  /**
+   * Get all defined subcategories for a content type (from constants)
+   * @param {string} category - Category code (books, ships, shops, taverns)
+   * @returns {Object} Object with subcategory codes and localization keys
+   */
+  getDefinedSubcategories(category) {
+    return getSubcategories(category);
+  }
+
+  /**
+   * Check if a category is categorized content
+   * @param {string} category - Category to check
+   * @returns {boolean} True if categorized content
+   */
+  isCategorizedContent(category) {
+    return isCategorizedContent(category);
   }
 
   /**
@@ -247,6 +327,51 @@ class NamesModuleAPI {
   }
 
   /**
+   * Register categorized content data
+   * @param {string} moduleId - ID of the registering module
+   * @param {Object} contentConfig - Content configuration
+   */
+  registerCategorizedContent(moduleId, contentConfig) {
+    const {
+      language,
+      species,
+      category,
+      subcategories = {},
+      displayName
+    } = contentConfig;
+
+    if (!language || !species || !category || !isCategorizedContent(category)) {
+      const errorMsg = 'Categorized content registration requires language, species, valid category, and subcategories';
+      logError(errorMsg);
+      throw new Error(errorMsg);
+    }
+
+    const extensionKey = `${moduleId}.categorized.${language}.${species}.${category}`;
+    this.registeredExtensions.set(extensionKey, {
+      type: 'categorized',
+      moduleId,
+      language,
+      species,
+      category,
+      displayName: displayName || `${species} ${category}`,
+      enabled: true
+    });
+
+    // Structure data for categorized content
+    const structuredData = {};
+    structuredData[category] = subcategories;
+
+    const dataKey = `${language}.${species}.${category}`;
+    this.customDataSources.set(dataKey, {
+      moduleId,
+      data: structuredData,
+      enabled: true
+    });
+
+    logInfo(`Registered categorized content '${dataKey}' from module '${moduleId}'`);
+  }
+
+  /**
    * Register a hook listener
    * @param {string} hookName - Name of the hook
    * @param {Function} callback - Callback function
@@ -288,7 +413,7 @@ class NamesModuleAPI {
 
   /**
    * Get all registered extensions
-   * @param {string} type - Optional type filter ('species', 'namedata')
+   * @param {string} type - Optional type filter ('species', 'namedata', 'categorized')
    * @returns {Array} Array of extension objects
    */
   getRegisteredExtensions(type = null) {
@@ -358,12 +483,92 @@ class NamesModuleAPI {
       }
     }
 
+    // Merge categorized content (books, ships, shops, taverns)
+    for (const contentType of ['books', 'ships', 'shops', 'taverns']) {
+      if (custom[contentType]) {
+        merged[contentType] = merged[contentType] || {};
+        for (const [subcategory, items] of Object.entries(custom[contentType])) {
+          merged[contentType][subcategory] = [
+            ...(merged[contentType][subcategory] || []), 
+            ...items
+          ];
+        }
+      }
+    }
+
     // Merge authors
     if (custom.authors) {
       merged.authors = [...(merged.authors || []), ...custom.authors];
     }
 
     return merged;
+  }
+
+  async _generateCategorizedContent(language, species, category, subcategory) {
+    const dataManager = getGlobalNamesData();
+    if (!dataManager) {
+      logError("Data manager not available for categorized content generation");
+      return null;
+    }
+
+    // Ensure data is loaded
+    const hasData = await dataManager.ensureDataLoaded(language, species, category);
+    if (!hasData) {
+      logWarn(`No data available for ${language}.${species}.${category}`);
+      return null;
+    }
+
+    // If specific subcategory requested, use it
+    if (subcategory) {
+      const subcategoryData = dataManager.getSubcategoryData(language, species, category, subcategory);
+      if (!subcategoryData || subcategoryData.length === 0) {
+        logWarn(`No data available for subcategory ${subcategory}`);
+        return null;
+      }
+      return subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
+    }
+
+    // Otherwise, pick random subcategory and random item
+    const availableSubcategories = dataManager.getAvailableSubcategories(language, species, category);
+    if (availableSubcategories.length === 0) {
+      logWarn(`No subcategories available for ${language}.${species}.${category}`);
+      return null;
+    }
+
+    const randomSubcategory = availableSubcategories[Math.floor(Math.random() * availableSubcategories.length)];
+    const subcategoryData = dataManager.getSubcategoryData(language, species, category, randomSubcategory);
+    
+    if (!subcategoryData || subcategoryData.length === 0) {
+      logWarn(`No data in randomly selected subcategory ${randomSubcategory}`);
+      return null;
+    }
+
+    const result = subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
+    logDebug(`Generated categorized content from ${category}.${randomSubcategory}: ${result}`);
+    return result;
+  }
+
+  async _generateSimpleContent(language, species, category) {
+    const dataManager = getGlobalNamesData();
+    if (!dataManager) return null;
+
+    const hasData = await dataManager.ensureDataLoaded(language, species, category);
+    if (!hasData) {
+      logWarn(`No data available for ${language}.${species}.${category}`);
+      return null;
+    }
+
+    if (category === 'settlements') {
+      const settlementData = dataManager.getData(`${language}.${species}.settlements`);
+      if (!settlementData?.settlements) {
+        return null;
+      }
+      const settlements = settlementData.settlements;
+      const settlement = settlements[Math.floor(Math.random() * settlements.length)];
+      return settlement.name || settlement;
+    } else {
+      return this._getRandomFromData(dataManager, language, species, category);
+    }
   }
 
   async _performNameGeneration(language, species, gender, components, format) {
@@ -522,66 +727,27 @@ export const NamesAPI = new NamesModuleAPI();
 /*
 // In a third-party module's init hook:
 Hooks.once('init', () => {
-  // Register a new species
-  game.modules.get('names').api.registerSpecies('my-module', {
-    species: 'dragon',
-    displayName: 'Drache',
-    languages: ['de', 'en'],
-    keywords: ['dragon', 'drache', 'wyrm'],
-    data: {
-      male: {
-        names: ['Smaug', 'Ancalagon', 'Glaurung'],
-        authors: [{ name: 'My Module', url: 'https://example.com' }]
-      },
-      female: {
-        names: ['Scatha', 'Chrysophylax', 'Tiamat'],
-        authors: [{ name: 'My Module', url: 'https://example.com' }]
-      },
-      surnames: {
-        names: ['der Goldene', 'der Mächtige', 'Schatzwächter'],
-        authors: [{ name: 'My Module', url: 'https://example.com' }]
-      }
-    }
-  });
-
-  // Register additional data for existing species
-  game.modules.get('names').api.registerNameData('my-module', {
+  // Register categorized content
+  game.modules.get('names').api.registerCategorizedContent('my-module', {
     language: 'de',
     species: 'human',
-    category: 'titles',
-    displayName: 'Adelige Titel',
-    data: {
-      titles: {
-        male: [
-          { name: 'Herzog von Rabenstein', template: 'Herzog {preposition} {settlement}', preposition: 'von' }
-        ],
-        female: [
-          { name: 'Herzogin von Rabenstein', template: 'Herzogin {preposition} {settlement}', preposition: 'von' }
-        ]
-      },
-      authors: [{ name: 'My Module', url: 'https://example.com' }]
+    category: 'books',
+    displayName: 'Custom Books',
+    subcategories: {
+      magic_books: ['Das große Buch der Zauber', 'Elementare Magie für Anfänger'],
+      history_books: ['Die Kriege von Cormyr', 'Chroniken des Nordens']
     }
   });
 
-  // Register hook listeners
-  game.modules.get('names').api.registerHook('names.afterGenerate', (data) => {
-    console.log('Name generated:', data.result);
+  // Generate categorized content
+  const bookName = await game.modules.get('names').api.generateCategorizedContent({
+    language: 'de',
+    species: 'human',
+    category: 'books',
+    subcategory: 'magic_books' // optional - will pick random if not specified
   });
-});
 
-// Generate names programmatically:
-const name = await game.modules.get('names').api.generateName({
-  language: 'de',
-  species: 'dragon',
-  gender: 'male',
-  components: ['firstname', 'surname'],
-  format: '{firstname} {surname}'
-});
-
-const multipleNames = await game.modules.get('names').api.generateNames({
-  count: 5,
-  language: 'de',
-  species: 'human',
-  gender: 'female'
+  // Get available subcategories
+  const subcategories = await game.modules.get('names').api.getAvailableSubcategories('de', 'human', 'books');
 });
 */

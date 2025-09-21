@@ -1,10 +1,11 @@
 /**
  * Names Picker App - Compact name picker for actors
+ * Updated to exclude categorized content (books, ships, shops, taverns)
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
 import { showLoadingState, hideLoadingState, getActorSpecies, updateActorName } from '../utils/ui-helpers.js';
-import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES } from '../shared/constants.js';
+import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 export class NamesPickerApp extends Application {
@@ -47,7 +48,8 @@ export class NamesPickerApp extends Application {
         defaultLanguage: 'de',
         isLoading: false,
         isLoaded: false,
-        supportedGenders: getSupportedGenders()
+        supportedGenders: getSupportedGenders(),
+        pickerCategories: this._getPickerCategories()
       };
     }
 
@@ -64,7 +66,8 @@ export class NamesPickerApp extends Application {
       defaultLanguage: defaultLanguage,
       isLoading: globalNamesData.isLoading,
       isLoaded: globalNamesData.isLoaded,
-      supportedGenders: getSupportedGenders()
+      supportedGenders: getSupportedGenders(),
+      pickerCategories: this._getPickerCategories()
     };
 
     logDebug("Picker app data prepared", {
@@ -72,10 +75,46 @@ export class NamesPickerApp extends Application {
       species: data.species.length,
       actorSpecies: actorSpecies,
       defaultLanguage: defaultLanguage,
-      currentNamesCount: this.currentNames.length
+      currentNamesCount: this.currentNames.length,
+      pickerCategories: data.pickerCategories.length
     });
 
     return data;
+  }
+
+  /**
+   * Gets categories available for the picker (excludes generator-only categories)
+   * @returns {Array} Array of category objects suitable for picker
+   */
+  _getPickerCategories() {
+    const categories = [];
+    
+    // Add gender-based categories (for name generation)
+    const supportedGenders = getSupportedGenders();
+    for (const gender of supportedGenders) {
+      const locKey = `names.categories.${gender}`;
+      categories.push({
+        code: gender,
+        name: game.i18n.localize(locKey) || gender,
+        type: 'gender'
+      });
+    }
+    
+    // Add simple non-gender categories (excluding generator-only categories)
+    const simpleCategories = ['settlements'];
+    for (const category of simpleCategories) {
+      if (!isGeneratorOnlyCategory(category)) {
+        const locKey = `names.categories.${category}`;
+        categories.push({
+          code: category,
+          name: game.i18n.localize(locKey) || category,
+          type: 'simple'
+        });
+      }
+    }
+
+    logDebug("Picker categories prepared:", categories);
+    return categories;
   }
 
   _getActorSpecies() {
@@ -145,10 +184,17 @@ export class NamesPickerApp extends Application {
 
     logDebug("Generating names for picker", { language, species, category });
 
+    // Ensure the selected category is supported and not generator-only
+    if (isGeneratorOnlyCategory(category)) {
+      logWarn(`Category ${category} is generator-only, falling back to male`);
+      category = 'male';
+      html.find('#picker-category').val(category);
+    }
+
     // Ensure the selected category is supported
-    if (!this.supportedGenders.includes(category) && this.supportedGenders.length > 0) {
-      // Fall back to first supported gender
-      const fallbackCategory = this.supportedGenders[0];
+    if (!this.supportedGenders.includes(category) && category !== 'settlements') {
+      // Fall back to first supported gender or settlements
+      const fallbackCategory = this.supportedGenders.length > 0 ? this.supportedGenders[0] : 'settlements';
       html.find('#picker-category').val(fallbackCategory);
       logDebug(`Category ${category} not supported, falling back to ${fallbackCategory}`);
       category = fallbackCategory;

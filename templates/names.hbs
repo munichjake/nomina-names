@@ -1,45 +1,56 @@
 <form class="names-module-form">
-  <div class="names-module-section">
+  <!-- Hauptauswahl-Reihe: Language, Species, Category -->
+  <div class="names-module-section names-module-main-selection">
     <h3>{{localize "names.title"}}</h3>
-    
-    <div class="names-module-form-group">
-      <label for="names-language-select">{{localize "names.language"}}:</label>
-      <select id="names-language-select" 
-              name="names-language" 
-              required
-              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false}'>
-        <option value="">-- {{localize "names.select-all"}} --</option>
-        {{#each languages}}
-        <option value="{{this.code}}">{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
 
-    <div class="names-module-form-group">
-      <label for="names-species-select">{{localize "names.lbl_species"}}:</label>
-      <select id="names-species-select" 
-              name="names-species" 
-              required
-              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false}'>
-        <option value="">-- {{localize "names.select-all"}} --</option>
-        {{#each species}}
-        <option value="{{this.code}}">{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
+    <div class="names-module-selection-grid">
+      <div class="names-module-form-group">
+        <label for="names-language-select">{{localize "names.language"}}:</label>
+        <select id="names-language-select"
+                name="names-language"
+                required
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 20}'>
+          <option value="">-- {{localize "names.select-all"}} --</option>
+          {{#each languages}}
+          <option value="{{this.code}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
 
-    <div class="names-module-form-group">
-      <label for="names-category-select">{{localize "names.category"}}:</label>
-      <select id="names-category-select" 
-              name="names-category" 
-              required
-              data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false}'>
-        <option value="">-- {{localize "names.select-all"}} --</option>
-        <option value="names">{{localize "names.names"}}</option>
-        <option value="settlements">{{localize "names.categories.settlements"}}</option>
-      </select>
-      <div class="names-module-format-help">
-        {{localize "names.select-options"}}
+      <div class="names-module-form-group">
+        <label for="names-species-select">{{localize "names.lbl_species"}}:</label>
+        <select id="names-species-select"
+                name="names-species"
+                required
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 20}'>
+          <option value="">-- {{localize "names.select-all"}} --</option>
+          {{#each species}}
+          <option value="{{this.code}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="names-module-form-group">
+        <label for="names-category-select">{{localize "names.category"}}:</label>
+        <select id="names-category-select"
+                name="names-category"
+                required
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 20}'>
+          <option value="">-- {{localize "names.select-all"}} --</option>
+          {{#each categories}}
+          {{#if this.length}}
+          <!-- Group separator -->
+          <option value="" disabled class="names-category-group-header">── {{this.groupLabel}} ──</option>
+          {{#each this.items}}
+          <option value="{{this.code}}" class="names-category-item">{{this.name}}</option>
+          {{/each}}
+          {{/if}}
+          {{/each}}
+        </select>
+        <div class="names-module-format-help">
+          {{localize "names.select-options"}}
+          <span class="names-search-hint">{{localize "names.search-hint"}}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +64,18 @@
     </div>
     <div class="names-module-format-help">
       {{localize "names.gender-help"}}
+    </div>
+  </div>
+
+  <!-- Unterkategorien-Auswahl Panel - wird nur für kategorisierte Inhalte angezeigt -->
+  <div class="names-module-section names-module-subcategory-section" style="display: none;">
+    <h3>{{localize "names.subcategories"}}</h3>
+    
+    <div class="names-module-checkbox-grid" id="subcategory-checkboxes-container">
+      <!-- Wird dynamisch von JavaScript gefüllt -->
+    </div>
+    <div class="names-module-format-help">
+      {{localize "names.subcategory-help"}}
     </div>
   </div>
 
@@ -105,59 +128,120 @@
     </div>
   </div>
 
-  <div class="names-module-section">
-    <h3>{{localize "names.generate"}}</h3>
-    
-    <div class="names-module-form-group">
-      <label for="names-count-input">{{localize "names.lbl_amount"}}:</label>
-      <input 
-        type="number" 
-        id="names-count-input" 
-        name="names-count"
-        min="1" 
-        max="20" 
-        value="1"
-        class="names-module-count-input"
-      >
-      <div class="names-module-format-help">
-        {{localize "names.max-20"}} 
+  <!-- Generate und Results Sektion: horizontal angeordnet -->
+  <div class="names-module-section names-module-action-section">
+    <div class="names-module-action-grid">
+      <!-- Generate Panel -->
+      <div class="names-module-generate-panel">
+        <h3>{{localize "names.generate"}}</h3>
+
+        <div class="names-module-form-group">
+          <label for="names-count-input">{{localize "names.lbl_amount"}}:</label>
+          <input
+            type="number"
+            id="names-count-input"
+            name="names-count"
+            min="1"
+            max="20"
+            value="1"
+            class="names-module-count-input"
+          >
+          <div class="names-module-format-help">
+            {{localize "names.max-20"}}
+          </div>
+        </div>
+
+        <div class="names-module-form-group">
+          <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
+            <i class="fas fa-dice"></i> {{localize "names.generate"}}
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="names-module-form-group">
-      <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
-        <i class="fas fa-dice"></i> {{localize "names.generate"}}
-      </button>
-    </div>
-  </div>
+      <!-- Results Panel -->
+      <div class="names-module-result-panel">
+        <h3>{{localize "names.names"}}</h3>
 
-  <div class="names-module-result-section">
-    <div id="names-result-display" class="names-module-result-display">
-      <div class="names-module-no-result">{{localize "names.select-options"}}</div>
-    </div>
-    
-    <div class="names-module-result-actions">
-      <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
-        <i class="fas fa-copy"></i> {{localize "names.copy"}}
-      </button>
-      <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
-        <i class="fas fa-trash"></i> {{localize "names.clear"}}
-      </button>
+        <div id="names-result-display" class="names-module-result-display">
+          <div class="names-module-no-result">{{localize "names.select-options"}}</div>
+        </div>
+
+        <div class="names-module-result-actions">
+          <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
+            <i class="fas fa-copy"></i> {{localize "names.copy"}}
+          </button>
+          <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
+            <i class="fas fa-trash"></i> {{localize "names.clear"}}
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </form>
 
 <style>
-/* Enhanced integration styles for the main generator */
+/* ===== LAYOUT SYSTEM ===== */
+
+/* Hauptauswahl-Grid: Language, Species, Category horizontal */
+.names-module-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+/* Action-Grid: Generate und Results nebeneinander */
+.names-module-action-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.names-module-generate-panel {
+  background: rgba(255, 100, 0, 0.03);
+  border: 2px solid rgba(255, 100, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.names-module-result-panel {
+  background: rgba(255, 100, 0, 0.02);
+  border: 2px solid rgba(255, 100, 0, 0.15);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Responsive anpassungen */
+@media (max-width: 900px) {
+  .names-module-action-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .names-module-selection-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .names-module-selection-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ===== ENHANCED FORM ELEMENTS ===== */
 .names-module-form-group {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .names-module-form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 /* Ensure enhanced dropdowns integrate well with existing form styling */
@@ -204,13 +288,25 @@
   background: #ff6400;
 }
 
-/* Gender and component sections */
+/* Gender, component and subcategory sections */
 .names-module-gender-section,
-.names-module-components-section {
+.names-module-components-section,
+.names-module-subcategory-section {
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   padding: 20px;
   background: rgba(255, 100, 0, 0.02);
+}
+
+/* Subcategory section styling - similar to gender section but distinct */
+.names-module-subcategory-section {
+  border-color: #4a90e2;
+  background: rgba(74, 144, 226, 0.02);
+}
+
+.names-module-subcategory-section h3 {
+  color: #4a90e2;
+  border-bottom-color: #4a90e2;
 }
 
 /* Generate button styling */
@@ -275,21 +371,17 @@
   box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.1);
 }
 
-/* Result section styling */
-.names-module-result-section {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 2px solid #e0e0e0;
-}
-
+/* Result section styling - angepasst für neues Layout */
 .names-module-result-display {
   background: #f8f8f7;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 16px;
-  min-height: 80px;
+  padding: 16px;
+  margin-bottom: 12px;
+  min-height: 120px;
   position: relative;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .names-module-no-result {
@@ -356,32 +448,163 @@
   line-height: 1.4;
 }
 
-/* Section styling */
+.names-search-hint {
+  display: block;
+  font-style: italic;
+  color: #888;
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+/* Section styling - kompaktere Abstände */
 .names-module-section {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .names-module-section h3 {
-  margin: 0 0 20px 0;
-  font-size: 18px;
+  margin: 0 0 15px 0;
+  font-size: 16px;
   font-weight: 600;
   border-bottom: 2px solid #ff6400;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
-/* Responsive design */
+.names-module-main-selection h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.names-module-generate-panel h3,
+.names-module-result-panel h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Author credits styling */
+.names-module-author-credits {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 100, 0, 0.05);
+  border-radius: 6px;
+  font-size: 12px;
+  color: #666;
+}
+
+.names-module-author-entry {
+  margin: 5px 0;
+}
+
+.names-module-author-name {
+  font-weight: 600;
+}
+
+.names-module-author-links {
+  margin-left: 8px;
+}
+
+.names-module-author-links a {
+  text-decoration: none;
+  margin: 0 3px;
+}
+
+/* Category group styling */
+.names-category-group-header {
+  font-weight: bold !important;
+  font-style: italic !important;
+  color: #333 !important;
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%) !important;
+  color: white !important;
+  text-align: center !important;
+  border: none !important;
+  cursor: default !important;
+  user-select: none !important;
+  pointer-events: none !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  padding: 8px 12px !important;
+  margin: 2px 0 !important;
+  border-radius: 4px !important;
+}
+
+.names-category-item {
+  padding-left: 20px !important;
+  border-left: 3px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.names-category-item:hover {
+  border-left-color: #ff6400 !important;
+  background-color: rgba(255, 100, 0, 0.05) !important;
+}
+
+/* Enhanced dropdown group styling */
+.enhanced-dropdown .names-category-group-header {
+  font-weight: bold;
+  font-style: italic;
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  color: white;
+  text-align: center;
+  cursor: default;
+  user-select: none;
+  pointer-events: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  margin: 2px 0;
+  border-radius: 4px;
+  border: none;
+}
+
+.enhanced-dropdown .names-category-item {
+  padding-left: 20px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.enhanced-dropdown .names-category-item:hover {
+  border-left-color: #ff6400;
+  background-color: rgba(255, 100, 0, 0.05);
+}
+
+/* Ensure group headers are not selectable */
+.names-category-group-header:focus {
+  outline: none !important;
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%) !important;
+}
+
+/* Enhanced dropdown specific adjustments */
+.enhanced-dropdown .dropdown-menu .names-category-group-header {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Responsive design - erweitert für neues Layout */
 @media (max-width: 600px) {
   .names-module-checkbox-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .names-module-result-actions {
     flex-direction: column;
   }
-  
+
   .names-module-action-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .names-module-generate-panel,
+  .names-module-result-panel {
+    padding: 16px;
+  }
+
+  .names-module-main-selection h3 {
+    text-align: center;
+    margin-bottom: 15px;
   }
 }
 </style>
