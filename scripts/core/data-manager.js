@@ -293,19 +293,43 @@ export class NamesDataManager {
     const species = [];
     const enabledSpecies = this._getEnabledSpecies();
 
+    // Collect all species from nameData keys (includes externally registered species)
+    const allSpecies = new Set();
+    for (const key of this.nameData.keys()) {
+      const [language, speciesCode, category] = key.split('.');
+      if (speciesCode) {
+        allSpecies.add(speciesCode);
+      }
+    }
+
+    // Also include species from availableSpecies for completeness
     for (const spec of this.availableSpecies) {
+      allSpecies.add(spec);
+    }
+
+    console.log("DEBUG getLocalizedSpecies:");
+    console.log("  nameData keys:", Array.from(this.nameData.keys()));
+    console.log("  availableSpecies:", Array.from(this.availableSpecies));
+    console.log("  allSpecies collected:", Array.from(allSpecies));
+    console.log("  enabledSpecies:", enabledSpecies);
+
+    for (const spec of allSpecies) {
       // Check if this species is enabled in settings
       if (!enabledSpecies.includes(spec)) {
+        console.log(`  SKIPPING species '${spec}' - not in enabled list`);
         continue;
       }
 
       const locKey = `names.species.${spec}`;
+      const localizedName = game.i18n.localize(locKey) || spec.charAt(0).toUpperCase() + spec.slice(1);
+      console.log(`  ADDING species '${spec}' as '${localizedName}'`);
       species.push({
         code: spec,
-        name: game.i18n.localize(locKey) || spec.charAt(0).toUpperCase() + spec.slice(1)
+        name: localizedName
       });
     }
 
+    console.log("  FINAL species list:", species);
     return species.sort((a, b) => a.name.localeCompare(b.name));
   }
 
@@ -315,23 +339,69 @@ export class NamesDataManager {
    */
   _getEnabledSpecies() {
     try {
+      // Collect all species from nameData keys (includes externally registered species)
+      const allAvailableSpecies = new Set();
+      for (const key of this.nameData.keys()) {
+        const [language, speciesCode, category] = key.split('.');
+        if (speciesCode) {
+          allAvailableSpecies.add(speciesCode);
+        }
+      }
+
+      // Also include species from availableSpecies for completeness
+      for (const spec of this.availableSpecies) {
+        allAvailableSpecies.add(spec);
+      }
+
       const speciesSettings = game.settings.get("nomina-names", "availableSpecies");
+
+      console.log("DEBUG _getEnabledSpecies:");
+      console.log("  allAvailableSpecies:", Array.from(allAvailableSpecies));
+      console.log("  speciesSettings:", speciesSettings);
 
       // If no settings yet, enable all species by default
       if (!speciesSettings || Object.keys(speciesSettings).length === 0) {
-        return Array.from(this.availableSpecies);
+        console.log("  No settings found, enabling all species");
+        return Array.from(allAvailableSpecies);
       }
 
-      // Return only enabled species
-      return Object.entries(speciesSettings)
-        .filter(([species, enabled]) => enabled)
-        .map(([species, enabled]) => species)
-        .filter(species => this.availableSpecies.has(species)); // Ensure species still exists
+      // For species not in settings (newly registered), enable them by default
+      const enabledSpecies = [];
+      for (const species of allAvailableSpecies) {
+        if (speciesSettings.hasOwnProperty(species)) {
+          // Use explicit setting
+          if (speciesSettings[species]) {
+            console.log(`  ENABLED: ${species} (explicit setting: true)`);
+            enabledSpecies.push(species);
+          } else {
+            console.log(`  DISABLED: ${species} (explicit setting: false)`);
+          }
+        } else {
+          // New species not in settings - enable by default
+          console.log(`  ENABLED: ${species} (new species, default enabled)`);
+          enabledSpecies.push(species);
+        }
+      }
+
+      console.log("  FINAL enabledSpecies:", enabledSpecies);
+      return enabledSpecies;
 
     } catch (error) {
       // Fallback to all species if settings access fails
       console.warn("Failed to get species settings, enabling all species:", error);
-      return Array.from(this.availableSpecies);
+
+      // Collect all species as fallback
+      const allAvailableSpecies = new Set();
+      for (const key of this.nameData.keys()) {
+        const [language, speciesCode, category] = key.split('.');
+        if (speciesCode) {
+          allAvailableSpecies.add(speciesCode);
+        }
+      }
+      for (const spec of this.availableSpecies) {
+        allAvailableSpecies.add(spec);
+      }
+      return Array.from(allAvailableSpecies);
     }
   }
 
@@ -581,6 +651,17 @@ export class NamesDataManager {
       return true;
     }
 
+    // For API-loaded species, check if we have a 'names' category that can be used for all traditional categories
+    const traditionalCategories = ['male', 'female', 'nonbinary', 'surnames', 'nicknames', 'titles', 'settlements'];
+    if (traditionalCategories.includes(category)) {
+      const namesKey = `${language}.${species}.names`;
+      if (this.nameData.has(namesKey)) {
+        // API-loaded species use combined 'names' data, not separate category files
+        logDebug(`Using existing 'names' data for ${key} (API-loaded species)`);
+        return true;
+      }
+    }
+
     // Try to load the specific file
     const filename = `${language}.${species}.${category}.json`;
     const fileInfo = { filename, language, species, category };
@@ -596,7 +677,24 @@ export class NamesDataManager {
    * @returns {Object|null} Data object or null if not found
    */
   getData(key) {
-    return this.nameData.get(key) || null;
+    // First try to get the exact key
+    const data = this.nameData.get(key);
+    if (data) {
+      return data;
+    }
+
+    // For API-loaded species, fall back to 'names' data for traditional categories
+    const parts = key.split('.');
+    if (parts.length === 3) {
+      const [language, species, category] = parts;
+      const traditionalCategories = ['male', 'female', 'nonbinary', 'surnames', 'nicknames', 'titles', 'settlements'];
+      if (traditionalCategories.includes(category)) {
+        const namesKey = `${language}.${species}.names`;
+        return this.nameData.get(namesKey) || null;
+      }
+    }
+
+    return null;
   }
 
   /**
