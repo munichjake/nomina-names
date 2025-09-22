@@ -287,16 +287,38 @@ class NamesModuleAPI {
       enabled: true
     });
 
-    // Register custom data sources
-    for (const language of languages) {
-      for (const [category, categoryData] of Object.entries(data)) {
-        const dataKey = `${language}.${species}.${category}`;
-        this.customDataSources.set(dataKey, {
-          moduleId,
-          data: categoryData,
-          enabled: true
-        });
+    // Register custom data sources AND immediately add to DataManager
+    const dataManager = getGlobalNamesData();
+    if (dataManager) {
+      for (const language of languages) {
+        for (const [category, categoryData] of Object.entries(data)) {
+          const dataKey = `${language}.${species}.${category}`;
+
+          // Store in custom sources for API usage
+          this.customDataSources.set(dataKey, {
+            moduleId,
+            data: categoryData,
+            enabled: true
+          });
+
+          // Immediately add to DataManager so it appears in dropdowns
+          dataManager.setData(dataKey, categoryData);
+          logDebug(`Added data to DataManager for key: ${dataKey}`);
+        }
       }
+    } else {
+      // Fallback: just store in custom sources
+      for (const language of languages) {
+        for (const [category, categoryData] of Object.entries(data)) {
+          const dataKey = `${language}.${species}.${category}`;
+          this.customDataSources.set(dataKey, {
+            moduleId,
+            data: categoryData,
+            enabled: true
+          });
+        }
+      }
+      logWarn(`DataManager not available during species registration for '${species}'`);
     }
 
     logInfo(`Registered species '${species}' from module '${moduleId}'`);

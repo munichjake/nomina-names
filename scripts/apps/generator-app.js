@@ -38,7 +38,7 @@ export class NamesGeneratorApp extends Application {
       title: game.i18n.localize("names.title"),
       template: TEMPLATE_PATHS.generator,
       width: 900,
-      height: 600, // Reduced initial height for more compact layout
+      height: 800, // Reduced initial height for more compact layout
       resizable: true,
       classes: [CSS_CLASSES.moduleApp]
     });
@@ -56,9 +56,20 @@ export class NamesGeneratorApp extends Application {
       await globalNamesData.initializeData();
     }
 
+    const species = globalNamesData ? globalNamesData.getLocalizedSpecies() : [];
+
+    console.log("DEBUG generator-app getData:");
+    console.log("  globalNamesData exists:", !!globalNamesData);
+    if (globalNamesData) {
+      console.log("  globalNamesData.isLoaded:", globalNamesData.isLoaded);
+      console.log("  globalNamesData.isLoading:", globalNamesData.isLoading);
+      console.log("  globalNamesData.nameData size:", globalNamesData.nameData?.size || 0);
+    }
+    console.log("  species from getLocalizedSpecies():", species);
+
     const data = {
       languages: globalNamesData ? globalNamesData.getLocalizedLanguages() : [],
-      species: globalNamesData ? globalNamesData.getLocalizedSpecies() : [],
+      species: species,
       categories: globalNamesData ? await globalNamesData.getLocalizedCategoriesForGenerator('generator') : [],
       isLoading: globalNamesData ? globalNamesData.isLoading : false,
       isLoaded: globalNamesData ? globalNamesData.isLoaded : false,
@@ -966,12 +977,79 @@ export class NamesGeneratorApp extends Application {
     const key = `${language}.${species}.${category}`;
     const data = globalNamesData.getData(key);
 
-    if (!data?.names || data.names.length === 0) {
+    if (!data) {
       logDebug(`No data found for ${key}`);
       return null;
     }
 
-    const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
+    // Handle different data structures
+    let namesList = null;
+
+    // Traditional structure: data.names
+    if (data.names && Array.isArray(data.names) && data.names.length > 0) {
+      namesList = data.names;
+    }
+    // API structure: data might be a direct array or have category-specific arrays
+    else if (Array.isArray(data) && data.length > 0) {
+      namesList = data;
+    }
+    // API structure: check for gender-specific arrays in combined data
+    else if (category === 'male' && data.male && Array.isArray(data.male)) {
+      namesList = data.male;
+    }
+    else if (category === 'female' && data.female && Array.isArray(data.female)) {
+      namesList = data.female;
+    }
+    else if (category === 'nonbinary' && data.nonbinary && Array.isArray(data.nonbinary)) {
+      namesList = data.nonbinary;
+    }
+    // API structure: nested gender-component structure (data.gender.component)
+    else if (['male', 'female', 'nonbinary'].includes(category) && data[category]) {
+      // For firstname, try to find a names array or default to firstname
+      if (data[category].firstname && Array.isArray(data[category].firstname)) {
+        namesList = data[category].firstname;
+      }
+    }
+    // API structure: check for other category arrays
+    else if (data[category] && Array.isArray(data[category])) {
+      namesList = data[category];
+    }
+    // API structure: nested category-component structure for surnames etc
+    else if (category === 'surnames') {
+      // Look for surname arrays in any gender section
+      for (const gender of ['male', 'female', 'nonbinary']) {
+        if (data[gender]?.surname && Array.isArray(data[gender].surname)) {
+          namesList = data[gender].surname;
+          break;
+        }
+      }
+    }
+
+    if (!namesList || namesList.length === 0) {
+      // Detailed debug logging for API species
+      if (['genasi', 'tabaxi'].includes(species)) {
+        console.log(`DEBUG API SPECIES ${key}:`, {
+          dataExists: !!data,
+          dataType: typeof data,
+          dataIsArray: Array.isArray(data),
+          dataKeys: data ? Object.keys(data) : 'no data',
+          dataFirstLevelStructure: data ? Object.keys(data).reduce((acc, k) => {
+            acc[k] = { type: typeof data[k], isArray: Array.isArray(data[k]), length: data[k]?.length };
+            return acc;
+          }, {}) : 'no data'
+        });
+        // Also log the actual content
+        if (data && Object.keys(data).length > 0) {
+          Object.keys(data).forEach(k => {
+            console.log(`  ${key}.${k}:`, data[k]);
+          });
+        }
+      }
+      logDebug(`No valid names array found for ${key}, data structure:`, data);
+      return null;
+    }
+
+    const selectedName = namesList[Math.floor(Math.random() * namesList.length)];
     logDebug(`Selected from ${key}: ${selectedName}`);
     return selectedName;
   }
@@ -983,25 +1061,60 @@ export class NamesGeneratorApp extends Application {
     const key = `${language}.${species}.${category}`;
     const data = globalNamesData.getData(key);
 
+    if (!data) {
+      logDebug(`No data found for ${key}`);
+      return null;
+    }
+
+    // Handle different data structures
+    let genderNames = null;
+
+    // Traditional structure: data.names[gender]
     if (data?.names && typeof data.names === 'object' && data.names[gender]) {
-      const genderNames = data.names[gender];
-      if (genderNames.length === 0) {
-        logDebug(`No ${gender} names found for ${key}`);
-        return null;
+      genderNames = data.names[gender];
+    }
+    // Traditional structure: data.names as array (ungendered)
+    else if (data?.names && Array.isArray(data.names)) {
+      genderNames = data.names;
+    }
+    // API structure: data[gender] directly
+    else if (data[gender] && Array.isArray(data[gender])) {
+      genderNames = data[gender];
+    }
+    // API structure: nested gender-category structure (data.gender.category)
+    else if (data[gender] && typeof data[gender] === 'object') {
+      // For nicknames, surnames, etc., look in the gender-specific object
+      if (data[gender][category] && Array.isArray(data[gender][category])) {
+        genderNames = data[gender][category];
       }
-      const selectedName = genderNames[Math.floor(Math.random() * genderNames.length)];
-      logDebug(`Selected ${gender} name from ${key}: ${selectedName}`);
-      return selectedName;
+      // For general names, try common name fields
+      else if (data[gender].firstname && Array.isArray(data[gender].firstname)) {
+        genderNames = data[gender].firstname;
+      }
+    }
+    // API structure: data as direct array (ungendered)
+    else if (Array.isArray(data)) {
+      genderNames = data;
     }
 
-    if (data?.names && Array.isArray(data.names)) {
-      const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
-      logDebug(`Selected ungendered name from ${key}: ${selectedName}`);
-      return selectedName;
+    if (!genderNames || genderNames.length === 0) {
+      // Detailed debug logging for API species
+      if (['genasi', 'tabaxi'].includes(species)) {
+        console.log(`DEBUG API SPECIES GENDERED ${key} (${gender}):`, {
+          dataExists: !!data,
+          dataType: typeof data,
+          dataIsArray: Array.isArray(data),
+          dataKeys: data ? Object.keys(data) : 'no data',
+          fullData: data
+        });
+      }
+      logDebug(`No ${gender} names found for ${key}, data structure:`, data);
+      return null;
     }
 
-    logDebug(`No gendered data found for ${key}`);
-    return null;
+    const selectedName = genderNames[Math.floor(Math.random() * genderNames.length)];
+    logDebug(`Selected ${gender} name from ${key}: ${selectedName}`);
+    return selectedName;
   }
 
   _collectAuthorCredits(language, species, components) {
