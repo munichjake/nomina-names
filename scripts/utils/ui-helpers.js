@@ -82,6 +82,7 @@ export function fallbackCopyToClipboard(text, successMessage = null) {
 
 /**
  * Injects the emergency names button into the chat
+ * Compatible with both Foundry VTT v12 and v13
  */
 export function injectEmergencyButton() {
   // Check settings
@@ -95,11 +96,22 @@ export function injectEmergencyButton() {
     return;
   }
 
-  // Find chat elements
-  const chatLog = $('#chat-log');
+  // Find chat elements - try multiple selectors for v13 compatibility
+  let chatContainer = $('#chat-log');
+  if (chatContainer.length === 0) {
+    chatContainer = $('#sidebar-tabs .tab[data-tab="chat"]');
+  }
+  if (chatContainer.length === 0) {
+    chatContainer = $('#chat');
+  }
+  if (chatContainer.length === 0) {
+    chatContainer = $('.sidebar .tab.chat');
+  }
+
   const chatForm = $('#chat-form');
-  
-  if (chatLog.length === 0 || chatForm.length === 0) {
+
+  if (chatContainer.length === 0) {
+    logWarn("Could not find chat container for emergency button");
     return;
   }
 
@@ -111,13 +123,20 @@ export function injectEmergencyButton() {
     </div>
   `);
 
-  // Add click handler
-  emergencyButton.click(() => {
+  // Add click handler with multiple event types for v13 compatibility
+  emergencyButton.on('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    logDebug("Emergency button clicked");
+
     try {
       if (hasNamesGeneratorPermission()) {
         // Import and create app dynamically
         import('../apps/emergency-app.js').then(({ EmergencyNamesApp }) => {
           new EmergencyNamesApp().render(true);
+        }).catch(error => {
+          logError("Failed to import EmergencyNamesApp", error);
+          ui.notifications.error("Fehler beim Laden des Namen-Generators");
         });
       } else {
         ui.notifications.warn(game.i18n.localize("names.no-permission") || "Keine Berechtigung");
@@ -128,12 +147,22 @@ export function injectEmergencyButton() {
     }
   });
 
-  // Insert button
-  chatLog.after(emergencyButton);
-  
+  // Additional event handlers for better compatibility
+  emergencyButton.on('mousedown', (event) => {
+    event.preventDefault();
+    logDebug("Emergency button mousedown");
+  });
+
+  // Try different insertion points for v13 compatibility
+  if (chatForm.length > 0) {
+    chatForm.after(emergencyButton);
+  } else {
+    chatContainer.append(emergencyButton);
+  }
+
   // Add CSS if not present
   injectEmergencyButtonCSS();
-  
+
   logInfo("Emergency button injected");
 }
 
@@ -167,21 +196,30 @@ function injectEmergencyButtonCSS() {
           gap: 6px;
           transition: all 0.2s ease;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          position: relative;
+          z-index: 100;
+          user-select: none;
+          pointer-events: auto;
         }
-        
+
         #emergency-names-button:hover, .${CSS_CLASSES.emergencyButton}:hover {
           background: linear-gradient(135deg, #ff8533 0%, #ffaa66 100%);
           box-shadow: 0 4px 8px rgba(255, 100, 0, 0.3);
           transform: translateY(-1px);
         }
-        
+
         #emergency-names-button:active, .${CSS_CLASSES.emergencyButton}:active {
           transform: translateY(0);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
+
         #emergency-names-button i, .${CSS_CLASSES.emergencyButton} i {
           font-size: 14px;
+          pointer-events: none;
+        }
+
+        #emergency-names-button span, .${CSS_CLASSES.emergencyButton} span {
+          pointer-events: none;
         }
       </style>
     `);

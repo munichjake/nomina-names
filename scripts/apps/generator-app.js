@@ -631,11 +631,22 @@ export class NamesGeneratorApp extends Application {
       const resultDiv = form.querySelector('#names-result-display');
       const authorCredits = this._collectAuthorCredits(language, species, [category]);
 
-      let resultsHtml = results.map(name =>
-        `<div class="${CSS_CLASSES.generatedName}">${name}</div>`
-      ).join('');
+      // Add updating class for shimmer effect
+      resultDiv.classList.add('updating');
 
-      resultDiv.innerHTML = resultsHtml + authorCredits;
+      // Clear previous results with a short delay
+      setTimeout(() => {
+        let resultsHtml = results.map(name =>
+          `<div class="${CSS_CLASSES.generatedName}">${name}</div>`
+        ).join('');
+
+        resultDiv.innerHTML = resultsHtml + authorCredits;
+
+        // Remove updating class after animation starts
+        setTimeout(() => {
+          resultDiv.classList.remove('updating');
+        }, 300);
+      }, 100);
 
       form.querySelector('#names-copy-btn').disabled = false;
       form.querySelector('#names-clear-btn').disabled = false;
@@ -1088,15 +1099,25 @@ export class NamesGeneratorApp extends Application {
     const form = event.currentTarget.closest('form');
     const resultDiv = form.querySelector('#names-result-display');
 
-    resultDiv.innerHTML = `<div class="names-module-no-result">${game.i18n.localize("names.select-options")}</div>`;
+    // Add updating class for shimmer effect during clear
+    resultDiv.classList.add('updating');
 
-    form.querySelector('#names-copy-btn').disabled = true;
-    form.querySelector('#names-clear-btn').disabled = true;
+    setTimeout(() => {
+      resultDiv.innerHTML = `<div class="names-module-no-result">${game.i18n.localize("names.select-options")}</div>`;
 
-    logDebug("Results cleared and buttons disabled");
+      form.querySelector('#names-copy-btn').disabled = true;
+      form.querySelector('#names-clear-btn').disabled = true;
 
-    // Resize after clearing results
-    setTimeout(() => this._resizeToContent(), 50);
+      // Remove updating class
+      setTimeout(() => {
+        resultDiv.classList.remove('updating');
+      }, 300);
+
+      logDebug("Results cleared and buttons disabled");
+
+      // Resize after clearing results
+      this._resizeToContent();
+    }, 100);
   }
 
   /**
