@@ -1,6 +1,7 @@
 /* ===============================
    Names Module – Dunkles Theme (Vollständiges Fenster-Styling)
    Farbschema & States an importer_styles.css angelehnt
+   Compatible with Foundry VTT v12 and v13
    =============================== */
 
 /* === WINDOW CONTAINER STYLING === */
@@ -58,7 +59,7 @@
 .names-module-section h3 {
   font-size: 1.1rem;
   margin: 0 0 8px;
-  /*color: var(--color-text-primary, #eee);*/
+  color: var(--color-text-primary, #eee) !important;
   border-bottom: 1px solid var(--color-border-dark, #7a7971);
   padding-bottom: 4px;
 }
@@ -73,7 +74,7 @@
 .names-module-form-group label {
   margin-bottom: 4px;
   font-weight: 700;
-  /*color: var(--color-text-primary, #eee);*/
+  color: var(--color-text-primary, #eee) !important;
 }
 
 /* === INPUTS & SELECTS === */
@@ -85,13 +86,14 @@
   padding: 6px 10px;
   font-size: 14px;
   line-height: 22px;
-  background: var(--color-bg-option, #2a2a2a) !important;
+  background: #1a1a1a !important;
   border: 1px solid var(--color-border-dark, #7a7971);
   border-radius: 6px;
-  color: var(--color-text-primary, #eee) !important;
+  color: #ffffff !important;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
+  font-weight: 500;
 }
 
 .names-module-form-group input[type="number"]::-webkit-outer-spin-button,
@@ -101,8 +103,8 @@
 
 /* === SELECT DROPDOWN STYLING === */
 .names-module-form-group select {
-  background: var(--color-bg-option, #2a2a2a) linear-gradient(45deg, transparent 50%, var(--color-text-primary, #eee) 50%),
-    linear-gradient(135deg, var(--color-text-primary, #eee) 50%, transparent 50%) !important;
+  background: #1a1a1a linear-gradient(45deg, transparent 50%, #ffffff 50%),
+    linear-gradient(135deg, #ffffff 50%, transparent 50%) !important;
   background-position:
     calc(100% - 16px) 14px, calc(100% - 10px) 14px;
   background-size: 6px 6px, 6px 6px;
@@ -113,8 +115,8 @@
 
 /* Select Optionen */
 .names-module-form-group select option {
-  background: var(--color-bg-option, #2a2a2a) !important;
-  color: var(--color-text-primary, #eee) !important;
+  background: #1a1a1a !important;
+  color: #ffffff !important;
   padding: 6px 10px;
 }
 
@@ -255,14 +257,14 @@
 
 /* === ERGEBNISSE === */
 .names-module-result-section {
-  background: var(--color-bg-option, #2a2a2a);
+  background: #1a1a1a;
   border: 1px solid var(--color-border-dark, #7a7971);
   border-radius: 8px;
   padding: 12px;
 }
 
 .names-module-result-display {
-  background: var(--color-bg, #333);
+  background: #0f0f0f;
   border: 1px solid var(--color-border-dark, #7a7971);
   border-radius: 6px;
   padding: 10px;
@@ -270,7 +272,7 @@
   max-height: 220px;
   overflow-y: auto;
   margin-bottom: 10px;
-  color: var(--color-text-primary, #eee);
+  color: #ffffff;
 }
 
 .names-module-no-result {
@@ -281,8 +283,8 @@
 
 .names-module-generated-name {
   padding: 4px 0;
-  border-bottom: 1px solid var(--color-border-dark, #555);
-  color: var(--color-text-primary, #eee);
+  border-bottom: 1px solid #333;
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -462,4 +464,146 @@
   gap: 6px;
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* === FOUNDRY VTT V13 COMPATIBILITY FIXES === */
+/* Force light text colors for better visibility in v13 */
+.names-module-app *,
+.emergency-names-app * {
+  color: #ffffff !important;
+}
+
+.names-module-app input,
+.names-module-app select,
+.names-module-app textarea,
+.emergency-names-app input,
+.emergency-names-app select,
+.emergency-names-app textarea {
+  color: #ffffff !important;
+  background: #1a1a1a !important;
+  border-color: #7a7971 !important;
+  font-weight: 500 !important;
+}
+
+.names-module-app input[type="number"],
+.emergency-names-app input[type="number"] {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-opacity: 1 !important;
+}
+
+.names-module-app h1,
+.names-module-app h2,
+.names-module-app h3,
+.names-module-app h4,
+.names-module-app h5,
+.names-module-app h6,
+.emergency-names-app h1,
+.emergency-names-app h2,
+.emergency-names-app h3,
+.emergency-names-app h4,
+.emergency-names-app h5,
+.emergency-names-app h6 {
+  color: #ffffff !important;
+}
+
+.names-module-app label,
+.emergency-names-app label {
+  color: #ffffff !important;
+}
+
+.names-module-app .window-content,
+.emergency-names-app .window-content {
+  color: #ffffff !important;
+  background: #1e1e1e !important;
+}
+
+/* Extra contrast for problematic number inputs */
+.names-module-app input[type="number"]::-webkit-input-placeholder,
+.emergency-names-app input[type="number"]::-webkit-input-placeholder {
+  color: #cccccc !important;
+}
+
+.names-module-app input[type="number"]::-moz-placeholder,
+.emergency-names-app input[type="number"]::-moz-placeholder {
+  color: #cccccc !important;
+  opacity: 1 !important;
+}
+
+.names-module-app input[type="number"]::placeholder,
+.emergency-names-app input[type="number"]::placeholder {
+  color: #cccccc !important;
+}
+
+/* === RESULT ANIMATIONS === */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Animation classes for generated names */
+.names-module-generated-name {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.names-module-generated-name:nth-child(1) { animation-delay: 0.1s; }
+.names-module-generated-name:nth-child(2) { animation-delay: 0.2s; }
+.names-module-generated-name:nth-child(3) { animation-delay: 0.3s; }
+.names-module-generated-name:nth-child(4) { animation-delay: 0.4s; }
+.names-module-generated-name:nth-child(5) { animation-delay: 0.5s; }
+.names-module-generated-name:nth-child(6) { animation-delay: 0.6s; }
+.names-module-generated-name:nth-child(7) { animation-delay: 0.7s; }
+.names-module-generated-name:nth-child(8) { animation-delay: 0.8s; }
+.names-module-generated-name:nth-child(9) { animation-delay: 0.9s; }
+.names-module-generated-name:nth-child(10) { animation-delay: 1.0s; }
+
+/* Special animation for result container when clearing/filling */
+.names-module-result-display.updating {
+  position: relative;
+  overflow: hidden;
+}
+
+.names-module-result-display.updating::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.1), transparent);
+  animation: shimmer 1.5s ease-in-out;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Hover effects enhancement */
+.names-module-generated-name:hover {
+  transform: translateX(5px) scale(1.02);
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.3);
+  border-left: 3px solid #ff6400;
 }
