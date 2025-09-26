@@ -1,0 +1,117 @@
+{
+  "format": "3.0.0",
+  "code": "elf",
+  "displayName": {
+    "de": "Elfen",
+    "en": "Elf"
+  },
+  "languages": ["de", "en"],
+  "categories": ["names"],
+  "data": {
+    "names": {
+      "subcategories": [
+        {
+          "key": "firstnames",
+          "displayName": {
+            "de": "Vornamen",
+            "en": "First Names"
+          },
+          "entries": {
+            "de": {
+              "male": [
+                "Illian", "Morred", "Giler", "Faelor", "Erlith", "Illorin", "Haldandir", "Finion", "Talgar", "Eldorin",
+                "Elendire", "Aeramir", "Darrandir", "Vorlith", "Finanor", "Cardor", "Tharon", "Bireth", "Arirandir", "Birhiel",
+                "Hirlith", "Galwald", "Moror", "Aergorn", "Ardor", "Norion", "Aeldor", "Talwald", "Eldlith", "Carer",
+                "Biranor", "Darthin", "Lormar", "Aelarin", "Haldorn", "Darhiel", "Hirer", "Almar", "Erdir", "Tharion",
+                "Voreth", "Taler", "Mithon", "Gorarin", "Lothomir", "Aelhain", "Aelion", "Talhain", "Siliel", "Elandir",
+                "Galdor", "Elomir", "Birmar", "Illamira", "Mithien", "Mithmar", "Lothrandir", "Itharin", "Tharorin", "Moreth",
+                "Erlior", "Eron", "Silgorn", "Haldhiel", "Elsor", "Finthin", "Caramir", "Morlith", "Darmar", "Aelgorn",
+                "Aerred", "Darien", "Hirsor", "Aellioru", "Silian", "Aeldir", "Rilgar", "Ariomir", "Aelieni", "Belgar",
+                "Arianor", "Haldarin", "Morarin", "Argorn", "Morer", "Biron", "Tharian", "Ariian", "Birwald", "Haldgar"
+              ],
+              "female": [
+                "Loraadis", "Eriila", "Miraia", "Saelwyn", "Eriluna", "Velaesa", "Aramiriel", "Odaiao", "Erinara", "Serivara",
+                "Ariadis", "Thiaadis", "Elaessa", "Arawen", "Talaara", "Ilaessa", "Naernara", "Odawyn", "Miraiel", "Elaele",
+                "Naerora", "Saelwyna", "Velaora", "Seriluna", "Sarilothe", "Faenwen", "Velavara", "Hilalunai", "Araona", "Odaira",
+                "Sarithiel", "Ariele", "Sarinara", "Erilinde", "Arimira", "Naeretta", "Taelara", "Aeladis", "Iridora", "Thialoth",
+                "Anethine", "Naerila", "Ylaia", "Linidel", "Hilaara", "Felaineu", "Rosarith", "Elaloth", "Ariine", "Velaara",
+                "Taelene", "Liniwen", "Ariarau", "Saelwen", "Linithiel", "Linitriel", "Anethvara", "Iladel", "Liawyn", "Mirawen",
+                "Ziraenee", "Araesa", "Linithiele", "Elenthiel", "Elenmiriel", "Elaara", "Odadel", "Miratriel", "Talaessa", "Arionau",
+                "Seritriel", "Ziraetta", "Felarune", "Liniira", "Naerele", "Faendel", "Erirune", "Velahild", "Aeldel", "Rosaruneo"
+              ]
+            },
+            "en": {
+              "male": [
+                "Illian", "Morred", "Giler", "Faelor", "Erlith", "Illorin", "Haldandir", "Finion", "Talgar", "Eldorin",
+                "Elendire", "Aeramir", "Darrandir", "Vorlith", "Finanor", "Cardor", "Tharon", "Bireth", "Arirandir", "Birhiel",
+                "Hirlith", "Galwald", "Moror", "Aergorn", "Ardor", "Norion", "Aeldor", "Talwald", "Eldlith", "Carer",
+                "Biranor", "Darthin", "Lormar", "Aelarin", "Haldorn", "Darhiel", "Hirer", "Almar", "Erdir", "Tharion",
+                "Voreth", "Taler", "Mithon", "Gorarin", "Lothomir", "Aelhain", "Aelion", "Talhain", "Siliel", "Elandir",
+                "Galdor", "Elomir", "Birmar", "Illamira", "Mithien", "Mithmar", "Lothrandir", "Itharin", "Tharorin", "Moreth",
+                "Erlior", "Eron", "Silgorn", "Haldhiel", "Elsor", "Finthin", "Caramir", "Morlith", "Darmar", "Aelgorn",
+                "Aerred", "Darien", "Hirsor", "Aellioru", "Silian", "Aeldir", "Rilgar", "Ariomir", "Aelieni", "Belgar",
+                "Arianor", "Haldarin", "Morarin", "Argorn", "Morer", "Biron", "Tharian", "Ariian", "Birwald", "Haldgar"
+              ],
+              "female": [
+                "Loraadis", "Eriila", "Miraia", "Saelwyn", "Eriluna", "Velaesa", "Aramiriel", "Odaiao", "Erinara", "Serivara",
+                "Ariadis", "Thiaadis", "Elaessa", "Arawen", "Talaara", "Ilaessa", "Naernara", "Odawyn", "Miraiel", "Elaele",
+                "Naerora", "Saelwyna", "Velaora", "Seriluna", "Sarilothe", "Faenwen", "Velavara", "Hilalunai", "Araona", "Odaira",
+                "Sarithiel", "Ariele", "Sarinara", "Erilinde", "Arimira", "Naeretta", "Taelara", "Aeladis", "Iridora", "Thialoth",
+                "Anethine", "Naerila", "Ylaia", "Linidel", "Hilaara", "Felaineu", "Rosarith", "Elaloth", "Ariine", "Velaara",
+                "Taelene", "Liniwen", "Ariarau", "Saelwen", "Linithiel", "Linitriel", "Anethvara", "Iladel", "Liawyn", "Mirawen",
+                "Ziraenee", "Araesa", "Linithiele", "Elenthiel", "Elenmiriel", "Elaara", "Odadel", "Miratriel", "Talaessa", "Arionau",
+                "Seritriel", "Ziraetta", "Felarune", "Liniira", "Naerele", "Faendel", "Erirune", "Velahild", "Aeldel", "Rosaruneo"
+              ]
+            }
+          }
+        },
+        {
+          "key": "surnames",
+          "displayName": {
+            "de": "Nachnamen",
+            "en": "Surnames"
+          },
+          "entries": {
+            "de": [
+              "Mondschatten", "Schattenwald", "Silberblatt", "Eichenglanz", "Dunkelstrom", "Sternenläufer", "Sonnensänger", "Wassertanz", "Windflüster", "Morgenstern",
+              "Lichtseele", "Flusslied", "Bergklinge", "Wolkenläufer", "Feuerherz", "Waldläufer", "Traumweber", "Nebelklinge", "Sternenstaub", "Blütenblatt",
+              "Schattenmond", "Mondlicht", "Silberstrom", "Dämmerlicht", "Morgenwind", "Eisenseele", "Steinschritt", "Nachtlied", "Schattenflügel", "Rauhreif",
+              "Silberschritt", "Mondlied", "Lichtschritt", "Sternenflamme", "Wolkenlied", "Schattenhauch", "Flussmond", "Silbersang", "Windklinge", "Sonnenfrost",
+              "Morgenflamme", "Feuerflügel", "Traumwald", "Nebelhauch", "Sternenwind", "Blütenweber", "Mondsegel", "Lichtstrom", "Stahlherz", "Schattenruf"
+            ],
+            "en": [
+              "Moonshadow", "Shadowwood", "Silverleaf", "Oakgleam", "Darkstream", "Starrunner", "Sunsinger", "Waterdance", "Windwhisper", "Morningstar",
+              "Lightsoul", "Riversong", "Mountainblade", "Cloudrunner", "Fireheart", "Forestwalker", "Dreamweaver", "Mistblade", "Stardust", "Petalleaf",
+              "Shadowmoon", "Moonlight", "Silverstream", "Dusklight", "Morningwind", "Ironsoul", "Stonestep", "Nightsong", "Shadowwing", "Frostrime",
+              "Silverstep", "Moonsong", "Lightstep", "Starflame", "Cloudsong", "Shadowbreath", "Rivermoon", "Silversong", "Windblade", "Sunfrost",
+              "Morningflame", "Firewing", "Dreamwood", "Mistbreath", "Starwind", "Blossomweaver", "Moonsail", "Lightstream", "Steelheart", "Shadowcall"
+            ]
+          }
+        },
+        {
+          "key": "nicknames",
+          "displayName": {
+            "de": "Beinamen",
+            "en": "Nicknames"
+          },
+          "entries": {
+            "de": [
+              "der Blattblüte", "der ewige Feind", "der Frühlingsschützer", "die Mondpirscherin", "der Windflüsterer", "die Wintergeist", "die Frostdame", "der dämmernde Hüter", "die heitere Tänzerin", "die singende Tänzerin",
+              "die versteckte Blüte", "der strahlende Wind", "der flüsternde Flüsterer", "die versteckte Träumerin", "die freie Wald", "der strahlende Feind", "der Frostmeister", "die mutige Läuferin", "die Lichtmeisterin", "der Glanzbogen",
+              "der dämmernde Sänger", "die Glanzblume", "der Lichtbogen", "das Herbstschwert", "der Waldträumer", "die versteckte Klinge", "die Windblüte", "die zeitlose Gleiterin", "die Silberblume", "der Sommerläufer",
+              "der liebende Stern", "der Herbstwald", "die Frühlingsdame", "der liebende Bogen", "der goldene Bogen", "die freie Königin", "das ruhige Licht", "der Flammenritter", "der flüsternde Weber", "die Silbergleiterin",
+              "der Lichtmond", "der freie Flüsterer", "die Mondläuferin", "die dämmernde Hüterin", "der strahlende Pfeil", "der weise Wald", "die versteckte Herrin", "der singende Pirscher", "der strahlende Meister", "der sanfte Schatten"
+            ],
+            "en": [
+              "the Leafblossom", "the Eternal Foe", "the Springguard", "the Moonhunter", "the Windwhisperer", "the Winterspirit", "the Frostlady", "the Twilight Guardian", "the Cheerful Dancer", "the Singing Dancer",
+              "the Hidden Blossom", "the Radiant Wind", "the Whispering Whisperer", "the Hidden Dreamer", "the Free Forest", "the Radiant Foe", "the Frostmaster", "the Brave Runner", "the Lightmaster", "the Gleaming Bow",
+              "the Twilight Singer", "the Gleaming Flower", "the Lightbow", "the Autumn Sword", "the Forest Dreamer", "the Hidden Blade", "the Windblossom", "the Timeless Glider", "the Silver Flower", "the Summer Runner",
+              "the Loving Star", "the Autumn Forest", "the Spring Lady", "the Loving Bow", "the Golden Bow", "the Free Queen", "the Quiet Light", "the Flame Knight", "the Whispering Weaver", "the Silver Glider",
+              "the Light Moon", "the Free Whisperer", "the Moon Runner", "the Twilight Guardian", "the Radiant Arrow", "the Wise Forest", "the Hidden Mistress", "the Singing Stalker", "the Radiant Master", "the Gentle Shadow"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

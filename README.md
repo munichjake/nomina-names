@@ -32,6 +32,7 @@ A flexible and extensible name generator for FoundryVTT with configurable JSON d
 - **Third-party Extensions**: API for other modules to add content
 
 ### 📊 Advanced Features
+- **JSON Format 3.1.0**: Self-contained files with integrated translations
 - **Category Groups**: Organized categories (Names, Places, Objects, etc.)
 - **Dynamic Categories**: Categories loaded from index.json with fallback support
 - **Permission System**: Control access based on user roles
@@ -246,9 +247,49 @@ namesAPI.registerHook('names.afterGenerate', (data) => {
 }
 ```
 
-### Data File Format
+### Data File Formats
 
-#### Simple Categories (surnames, titles, etc.)
+#### JSON Format 3.1.0 (Recommended)
+Self-contained files with integrated category translations:
+
+```json
+{
+  "format": "3.1.0",
+  "fileVersion": "1.0.0",
+  "code": "human",
+  "displayName": {
+    "de": "Menschen",
+    "en": "Human"
+  },
+  "languages": ["de", "en"],
+  "categories": ["pets"],
+  "data": {
+    "pets": {
+      "displayName": {
+        "de": "Haustiere & Begleiter",
+        "en": "Pets & Companions"
+      },
+      "subcategories": [
+        {
+          "key": "dogs",
+          "displayName": {
+            "de": "Hunde",
+            "en": "Dogs"
+          },
+          "entries": {
+            "de": ["Rex", "Luna", "Bello"],
+            "en": ["Buddy", "Bella", "Charlie"]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Legacy Data File Formats
+
+##### Simple Categories (surnames, titles, etc.)
 ```json
 {
   "version": "1.0.0",
@@ -262,21 +303,7 @@ namesAPI.registerHook('names.afterGenerate', (data) => {
 }
 ```
 
-#### Traditional Names (first names)
-```json
-{
-  "version": "1.0.0",
-  "author": "Your Name",
-  "description": "First names data",
-  "data": [
-    "Name 1",
-    "Name 2",
-    "Name 3"
-  ]
-}
-```
-
-#### Categorized Content (books, ships, etc.)
+##### Categorized Content (books, ships, etc.)
 ```json
 {
   "version": "1.0.0",

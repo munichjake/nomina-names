@@ -1,0 +1,291 @@
+{
+    "format": "3.1.0",
+    "fileVersion": "1.0.0",
+    "code": "human",
+    "displayName": {
+        "de": "Menschen",
+        "en": "Human"
+    },
+    "languages": [
+        "de",
+        "en"
+    ],
+    "categories": [
+        "pets"
+    ],
+    "data": {
+        "pets": {
+            "displayName": {
+                "de": "Haustiere & Begleiter",
+                "en": "Pets & Companions"
+            },
+            "subcategories": [
+                {
+                    "key": "hunde",
+                    "displayName": {
+                        "de": "Hunde",
+                        "en": "Dogs"
+                    },
+                    "entries": {
+                        "de": [
+                            "Bello",
+                            "Rex",
+                            "Luna",
+                            "Sammy",
+                            "Max",
+                            "Bruno",
+                            "Molly",
+                            "Rocky",
+                            "Kira",
+                            "Leo",
+                            "Nala",
+                            "Charly",
+                            "Flocke",
+                            "Odin",
+                            "Maja",
+                            "Spike",
+                            "Paula",
+                            "Balou",
+                            "Snoopy",
+                            "Emma"
+                        ],
+                        "en": [
+                            "Buddy",
+                            "Bella",
+                            "Charlie",
+                            "Daisy",
+                            "Max",
+                            "Luna",
+                            "Rocky",
+                            "Molly",
+                            "Bailey",
+                            "Sadie",
+                            "Cooper",
+                            "Lucy",
+                            "Duke",
+                            "Zoe",
+                            "Milo",
+                            "Stella",
+                            "Toby",
+                            "Rosie",
+                            "Jack",
+                            "Ruby"
+                        ]
+                    }
+                },
+                {
+                    "key": "katzen",
+                    "displayName": {
+                        "de": "Katzen",
+                        "en": "Cats"
+                    },
+                    "entries": {
+                        "de": [
+                            "Minka",
+                            "Felix",
+                            "Lilly",
+                            "Tiger",
+                            "Mauzi",
+                            "Simba",
+                            "Neko",
+                            "Susi",
+                            "Momo",
+                            "Whisky",
+                            "Luna",
+                            "Mieze",
+                            "Nala",
+                            "Moritz",
+                            "Keks",
+                            "Tinka",
+                            "Shadow",
+                            "Cleo",
+                            "Leo",
+                            "Garfield"
+                        ],
+                        "en": [
+                            "Whiskers",
+                            "Mittens",
+                            "Shadow",
+                            "Luna",
+                            "Simba",
+                            "Cleo",
+                            "Oliver",
+                            "Nala",
+                            "Milo",
+                            "Chloe",
+                            "Leo",
+                            "Socks",
+                            "Willow",
+                            "Smokey",
+                            "Ziggy",
+                            "Jasper",
+                            "Tigger",
+                            "Oreo",
+                            "Pumpkin",
+                            "Midnight"
+                        ]
+                    }
+                },
+                {
+                    "key": "voegel",
+                    "displayName": {
+                        "de": "Vögel",
+                        "en": "Birds"
+                    },
+                    "entries": {
+                        "de": [
+                            "Hansi",
+                            "Kiki",
+                            "Coco",
+                            "Lora",
+                            "Piepser",
+                            "Tweety",
+                            "Nico",
+                            "Sunny",
+                            "Maxi",
+                            "Paco",
+                            "Bubi",
+                            "Sissi",
+                            "Koko",
+                            "Rudi",
+                            "Pauli",
+                            "Lilly",
+                            "Chico",
+                            "Mimi",
+                            "Piri",
+                            "Flori"
+                        ],
+                        "en": [
+                            "Tweety",
+                            "Sunny",
+                            "Coco",
+                            "Kiwi",
+                            "Sky",
+                            "Rio",
+                            "Blue",
+                            "Lemon",
+                            "Peppy",
+                            "Mango",
+                            "Chirpy",
+                            "Tango",
+                            "Feathers",
+                            "Pico",
+                            "Angel",
+                            "Buddy",
+                            "Snowy",
+                            "Pepper",
+                            "Lucky",
+                            "Star"
+                        ]
+                    }
+                },
+                {
+                    "key": "fische",
+                    "displayName": {
+                        "de": "Fische",
+                        "en": "Fish"
+                    },
+                    "entries": {
+                        "de": [
+                            "Goldi",
+                            "Bubbles",
+                            "Nemo",
+                            "Blubbi",
+                            "Silva",
+                            "Koi",
+                            "Flosse",
+                            "Finni",
+                            "Saphira",
+                            "Glitzer",
+                            "Sunny",
+                            "Coral",
+                            "Schuppi",
+                            "Aqua",
+                            "Perla",
+                            "Marlin",
+                            "Funky",
+                            "Ocean",
+                            "Stella",
+                            "Blue"
+                        ],
+                        "en": [
+                            "Goldie",
+                            "Bubbles",
+                            "Nemo",
+                            "Dory",
+                            "Coral",
+                            "Splash",
+                            "Finn",
+                            "Sunny",
+                            "Blue",
+                            "Pearl",
+                            "Marlin",
+                            "Shadow",
+                            "Aqua",
+                            "Flame",
+                            "Sparkle",
+                            "Crystal",
+                            "Jelly",
+                            "Sushi",
+                            "Flash",
+                            "Bubblegum"
+                        ]
+                    }
+                },
+                {
+                    "key": "tressym",
+                    "displayName": {
+                        "de": "Tressym",
+                        "en": "Tressym"
+                    },
+                    "entries": {
+                        "de": [
+                            "Schwinge",
+                            "Mondpfote",
+                            "Luftikus",
+                            "Samtflügel",
+                            "Wolkenherz",
+                            "Flauschi",
+                            "Himmelsschweif",
+                            "Mondschnurr",
+                            "Silbersamt",
+                            "Windspiel",
+                            "Dämmerflügel",
+                            "Nachtpfote",
+                            "Glanzfell",
+                            "Federchen",
+                            "Sturmbart",
+                            "Nebelklaue",
+                            "Traumauge",
+                            "Komet",
+                            "Zauberschweif",
+                            "Lichtfang"
+                        ],
+                        "en": [
+                            "Moonpaw",
+                            "Skysong",
+                            "Featherwhisker",
+                            "Starlight",
+                            "Cloudtail",
+                            "Silverwing",
+                            "Dreamfur",
+                            "Stormclaw",
+                            "Whisperpaw",
+                            "Glimmer",
+                            "Twilight",
+                            "Sunshadow",
+                            "Windwhisker",
+                            "Sparkpaw",
+                            "Mystic",
+                            "Shadowfeather",
+                            "Aurora",
+                            "Starfur",
+                            "Lunaris",
+                            "Zephyr"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

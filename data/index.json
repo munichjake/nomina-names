@@ -1,856 +1,325 @@
 {
-  "version": "1.0.0",
-  "description": "Index aller verfügbaren Namensdateien",
-  "categoryGroups": {
-    "names": {
-      "localization": "names.category-groups.names",
-      "categories": {
-        "names": {
-          "type": "traditional",
-          "generators": [
-            "generator",
-            "picker"
-          ],
-          "localization": "names.categories.names"
-        },
-        "surnames": {
-          "type": "simple",
-          "generators": [
-            "generator",
-            "picker",
-            "emergency"
-          ],
-          "localization": "names.categories.surnames"
-        },
-        "titles": {
-          "type": "simple",
-          "generators": [
-            "generator",
-            "picker"
-          ],
-          "localization": "names.categories.titles"
-        },
-        "nicknames": {
-          "type": "simple",
-          "generators": [
-            "generator",
-            "picker"
-          ],
-          "localization": "names.categories.nicknames"
-        }
-      }
-    },
-    "places": {
-      "localization": "names.category-groups.places",
-      "categories": {
-        "settlements": {
-          "type": "simple",
-          "generators": [
-            "generator",
-            "picker",
-            "emergency"
-          ],
-          "localization": "names.categories.settlements"
-        },
-        "taverns": {
-          "type": "categorized",
-          "generators": [
-            "generator"
-          ],
-          "localization": "names.categories.taverns",
-          "subcategories": {
-            "upscale_inns": "names.subcategory-translations.taverns.upscale_inns",
-            "common_taverns": "names.subcategory-translations.taverns.common_taverns",
-            "harbor_taverns": "names.subcategory-translations.taverns.harbor_taverns",
-            "adventurer_taverns": "names.subcategory-translations.taverns.adventurer_taverns"
-          }
-        },
-        "shops": {
-          "type": "categorized",
-          "generators": [
-            "generator"
-          ],
-          "localization": "names.categories.shops",
-          "subcategories": {
-            "blacksmiths": "names.subcategory-translations.shops.blacksmiths",
-            "alchemists": "names.subcategory-translations.shops.alchemists",
-            "general_stores": "names.subcategory-translations.shops.general_stores",
-            "adventure_supplies": "names.subcategory-translations.shops.adventure_supplies",
-            "weaponsmiths": "names.subcategory-translations.shops.weaponsmiths",
-            "armorers": "names.subcategory-translations.shops.armorers"
-          }
-        }
-      }
-    },
-    "atmospheric": {
-      "localization": "names.category-groups.atmospheric",
-      "categories": {
-        "ships": {
-          "type": "categorized",
-          "generators": [
-            "generator"
-          ],
-          "localization": "names.categories.ships",
-          "subcategories": {
-            "merchant_ship": "names.subcategory-translations.ships.merchant_ship",
-            "warship": "names.subcategory-translations.ships.warship",
-            "pirate_ship": "names.subcategory-translations.ships.pirate_ship",
-            "small_boat": "names.subcategory-translations.ships.small_boat",
-            "exploration_ship": "names.subcategory-translations.ships.exploration_ship",
-            "mystical_ship": "names.subcategory-translations.ships.mystical_ship"
-          }
-        },
-        "books": {
-          "type": "categorized",
-          "generators": [
-            "generator"
-          ],
-          "localization": "names.categories.books",
-          "subcategories": {
-            "religious_books": "names.subcategory-translations.books.religious_books",
-            "novels": "names.subcategory-translations.books.novels",
-            "scientific_treatises": "names.subcategory-translations.books.scientific_treatises",
-            "humorous_books": "names.subcategory-translations.books.humorous_books"
-          }
-        }
-      }
-    }
-  },
+  "format": "3.0.0",
+  "version": "3.0.0",
+  "description": "Data files for nomina-names module",
   "files": [
     {
-      "filename": "de.aasimar.female.json",
+      "filename": "de.aasimar.names.json",
       "language": "de",
       "species": "aasimar",
-      "category": "female",
-      "description": "aasimar und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.aasimar.male.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "male",
-      "description": "aasimar und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.aasimar.nicknames.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "nicknames",
-      "description": "aasimar und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.aasimar.settlements.json",
       "language": "de",
       "species": "aasimar",
       "category": "settlements",
-      "description": "aasimar und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.aasimar.surnames.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "surnames",
-      "description": "aasimar und Nachnamen"
-    },
-    {
-      "filename": "de.aasimar.titles.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "titles",
-      "description": "aasimar und Adelstitel"
-    },
-    {
-      "filename": "de.dragonborn.female.json",
+      "filename": "de.dragonborn.names.json",
       "language": "de",
       "species": "dragonborn",
-      "category": "female",
-      "description": "dragonborn und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.dragonborn.male.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "male",
-      "description": "dragonborn und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.dragonborn.nicknames.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "nicknames",
-      "description": "dragonborn und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.dragonborn.settlements.json",
       "language": "de",
       "species": "dragonborn",
       "category": "settlements",
-      "description": "dragonborn und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.dragonborn.surnames.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "surnames",
-      "description": "dragonborn und Nachnamen"
-    },
-    {
-      "filename": "de.dragonborn.titles.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "titles",
-      "description": "dragonborn und Adelstitel"
-    },
-    {
-      "filename": "de.dwarf.female.json",
+      "filename": "de.dwarf.names.json",
       "language": "de",
       "species": "dwarf",
-      "category": "female",
-      "description": "Zwerge und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.dwarf.male.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "male",
-      "description": "Zwerge und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.dwarf.nicknames.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "nicknames",
-      "description": "Zwerge und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.dwarf.settlements.json",
       "language": "de",
       "species": "dwarf",
       "category": "settlements",
-      "description": "Zwerge und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.dwarf.surnames.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "surnames",
-      "description": "Zwerge und Nachnamen"
-    },
-    {
-      "filename": "de.dwarf.titles.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "titles",
-      "description": "Zwerge und Adelstitel"
-    },
-    {
-      "filename": "de.elf.female.json",
+      "filename": "de.elf.names.json",
       "language": "de",
       "species": "elf",
-      "category": "female",
-      "description": "Elfen und Vornamen (weiblich)"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "de.elf.male.json",
+      "filename": "de.elf.books.json",
       "language": "de",
       "species": "elf",
-      "category": "male",
-      "description": "Elfen und Vornamen (männlich)"
+      "category": "books",
+      "enabled": true
     },
     {
-      "filename": "de.elf.nicknames.json",
+      "filename": "de.elf.taverns.json",
       "language": "de",
       "species": "elf",
-      "category": "nicknames",
-      "description": "Elfen und Beinamen"
+      "category": "taverns",
+      "enabled": true
+    },
+    {
+      "filename": "de.elf.shops.json",
+      "language": "de",
+      "species": "elf",
+      "category": "shops",
+      "enabled": true
+    },
+    {
+      "filename": "de.elf.ships.json",
+      "language": "de",
+      "species": "elf",
+      "category": "ships",
+      "enabled": true
     },
     {
       "filename": "de.elf.settlements.json",
       "language": "de",
       "species": "elf",
       "category": "settlements",
-      "description": "Elfen und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.elf.surnames.json",
-      "language": "de",
-      "species": "elf",
-      "category": "surnames",
-      "description": "Elfen und Nachnamen"
-    },
-    {
-      "filename": "de.elf.titles.json",
-      "language": "de",
-      "species": "elf",
-      "category": "titles",
-      "description": "Elfen und Adelstitel"
-    },
-    {
-      "filename": "de.gnome.female.json",
+      "filename": "de.gnome.names.json",
       "language": "de",
       "species": "gnome",
-      "category": "female",
-      "description": "Gnome und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.gnome.male.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "male",
-      "description": "Gnome und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.gnome.nicknames.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "nicknames",
-      "description": "Gnome und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.gnome.settlements.json",
       "language": "de",
       "species": "gnome",
       "category": "settlements",
-      "description": "Gnome und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.gnome.surnames.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "surnames",
-      "description": "Gnome und Nachnamen"
-    },
-    {
-      "filename": "de.gnome.titles.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "titles",
-      "description": "Gnome und Adelstitel"
-    },
-    {
-      "filename": "de.halfling.female.json",
+      "filename": "de.halfling.names.json",
       "language": "de",
       "species": "halfling",
-      "category": "female",
-      "description": "Halblinge und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.halfling.male.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "male",
-      "description": "Halblinge und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.halfling.nicknames.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "nicknames",
-      "description": "Halblinge und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.halfling.settlements.json",
       "language": "de",
       "species": "halfling",
       "category": "settlements",
-      "description": "Halblinge und Städte und Siedlungen"
-    },
-    {
-      "filename": "de.halfling.surnames.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "surnames",
-      "description": "Halblinge und Nachnamen"
-    },
-    {
-      "filename": "de.halfling.titles.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "titles",
-      "description": "Halblinge und Adelstitel"
-    },
-    {
-      "filename": "de.human.female.json",
-      "language": "de",
-      "species": "human",
-      "category": "female",
-      "description": "menschlich und Vornamen (weiblich)"
-    },
-    {
-      "filename": "de.human.male.json",
-      "language": "de",
-      "species": "human",
-      "category": "male",
-      "description": "menschlich und Vornamen (männlich)"
-    },
-    {
-      "filename": "de.human.nonbinary.json",
-      "language": "de",
-      "species": "human",
-      "category": "nonbinary",
-      "description": "menschliche Vornamen (non-binär)"
-    },
-    {
-      "filename": "de.human.nicknames.json",
-      "language": "de",
-      "species": "human",
-      "category": "nicknames",
-      "description": "menschlich und Beinamen"
-    },
-    {
-      "filename": "de.human.settlements.json",
-      "language": "de",
-      "species": "human",
-      "category": "settlements",
-      "description": "menschlich und Städte und Siedlungen"
-    },
-    {
-      "filename": "de.human.surnames.json",
-      "language": "de",
-      "species": "human",
-      "category": "surnames",
-      "description": "menschlich und Nachnamen"
-    },
-    {
-      "filename": "de.human.titles.json",
-      "language": "de",
-      "species": "human",
-      "category": "titles",
-      "description": "menschlich und Adelstitel"
-    },
-    {
-      "filename": "de.human.taverns.json",
-      "language": "de",
-      "species": "human",
-      "category": "taverns",
-      "description": "menschliche Tavernen und Gasthäuser"
+      "enabled": true
     },
     {
       "filename": "de.human.books.json",
       "language": "de",
       "species": "human",
       "category": "books",
-      "description": "menschliche Bücher"
+      "enabled": true
     },
     {
-      "filename": "de.human.ships.json",
+      "filename": "de.human.names.json",
       "language": "de",
       "species": "human",
-      "category": "ships",
-      "description": "menschliche Schiffe"
+      "category": "names",
+      "enabled": true
+    },
+    {
+      "filename": "human.pets.json",
+      "language": "de",
+      "species": "human",
+      "category": "pets",
+      "enabled": true
+    },
+    {
+      "filename": "human.weapons.json",
+      "language": "de",
+      "species": "human",
+      "category": "weapons",
+      "enabled": true
+    },
+    {
+      "filename": "de.human.taverns.json",
+      "language": "de",
+      "species": "human",
+      "category": "taverns",
+      "enabled": true
     },
     {
       "filename": "de.human.shops.json",
       "language": "de",
       "species": "human",
       "category": "shops",
-      "description": "menschliche Geschäfte"
+      "enabled": true
     },
     {
-      "filename": "de.tiefling.female.json",
+      "filename": "de.human.ships.json",
       "language": "de",
-      "species": "tiefling",
-      "category": "female",
-      "description": "tiefling und Vornamen (weiblich)"
+      "species": "human",
+      "category": "ships",
+      "enabled": true
     },
     {
-      "filename": "de.tiefling.male.json",
+      "filename": "de.human.settlements.json",
       "language": "de",
-      "species": "tiefling",
-      "category": "male",
-      "description": "tiefling und Vornamen (männlich)"
+      "species": "human",
+      "category": "settlements",
+      "enabled": true
     },
     {
-      "filename": "de.tiefling.nicknames.json",
+      "filename": "de.tiefling.names.json",
       "language": "de",
       "species": "tiefling",
-      "category": "nicknames",
-      "description": "tiefling und Beinamen"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "de.tiefling.settlements.json",
       "language": "de",
       "species": "tiefling",
       "category": "settlements",
-      "description": "tiefling und Städte und Siedlungen"
+      "enabled": true
     },
     {
-      "filename": "de.tiefling.surnames.json",
-      "language": "de",
-      "species": "tiefling",
-      "category": "surnames",
-      "description": "tiefling und Nachnamen"
-    },
-    {
-      "filename": "de.tiefling.titles.json",
-      "language": "de",
-      "species": "tiefling",
-      "category": "titles",
-      "description": "tiefling und Adelstitel"
-    },
-    {
-      "filename": "en.aasimar.female.json",
+      "filename": "en.aasimar.names.json",
       "language": "en",
       "species": "aasimar",
-      "category": "female",
-      "description": "aasimar female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.aasimar.male.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "male",
-      "description": "aasimar male names"
-    },
-    {
-      "filename": "en.aasimar.nicknames.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "nicknames",
-      "description": "aasimar nicknames"
-    },
-    {
-      "filename": "en.aasimar.settlements.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "settlements",
-      "description": "aasimar settlements"
-    },
-    {
-      "filename": "en.aasimar.surnames.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "surnames",
-      "description": "aasimar surnames"
-    },
-    {
-      "filename": "en.aasimar.titles.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "titles",
-      "description": "aasimar titles"
-    },
-    {
-      "filename": "en.dragonborn.female.json",
+      "filename": "en.dragonborn.names.json",
       "language": "en",
       "species": "dragonborn",
-      "category": "female",
-      "description": "dragonborn female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.dragonborn.male.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "male",
-      "description": "dragonborn male names"
-    },
-    {
-      "filename": "en.dragonborn.nicknames.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "nicknames",
-      "description": "dragonborn nicknames"
-    },
-    {
-      "filename": "en.dragonborn.settlements.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "settlements",
-      "description": "dragonborn settlements"
-    },
-    {
-      "filename": "en.dragonborn.surnames.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "surnames",
-      "description": "dragonborn surnames"
-    },
-    {
-      "filename": "en.dragonborn.titles.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "titles",
-      "description": "dragonborn titles"
-    },
-    {
-      "filename": "en.dwarf.female.json",
+      "filename": "en.dwarf.names.json",
       "language": "en",
       "species": "dwarf",
-      "category": "female",
-      "description": "dwarf female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.dwarf.male.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "male",
-      "description": "dwarf male names"
-    },
-    {
-      "filename": "en.dwarf.nicknames.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "nicknames",
-      "description": "dwarf nicknames"
-    },
-    {
-      "filename": "en.dwarf.settlements.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "settlements",
-      "description": "dwarf settlements"
-    },
-    {
-      "filename": "en.dwarf.surnames.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "surnames",
-      "description": "dwarf surnames"
-    },
-    {
-      "filename": "en.dwarf.titles.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "titles",
-      "description": "dwarf titles"
-    },
-    {
-      "filename": "en.elf.female.json",
+      "filename": "en.elf.names.json",
       "language": "en",
       "species": "elf",
-      "category": "female",
-      "description": "elf female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.elf.male.json",
-      "language": "en",
-      "species": "elf",
-      "category": "male",
-      "description": "elf male names"
-    },
-    {
-      "filename": "en.elf.nicknames.json",
-      "language": "en",
-      "species": "elf",
-      "category": "nicknames",
-      "description": "elf nicknames"
-    },
-    {
-      "filename": "en.elf.settlements.json",
-      "language": "en",
-      "species": "elf",
-      "category": "settlements",
-      "description": "elf settlements"
-    },
-    {
-      "filename": "en.elf.surnames.json",
-      "language": "en",
-      "species": "elf",
-      "category": "surnames",
-      "description": "elf surnames"
-    },
-    {
-      "filename": "en.elf.titles.json",
-      "language": "en",
-      "species": "elf",
-      "category": "titles",
-      "description": "elf titles"
-    },
-    {
-      "filename": "en.gnome.female.json",
+      "filename": "en.gnome.names.json",
       "language": "en",
       "species": "gnome",
-      "category": "female",
-      "description": "gnome female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.gnome.male.json",
-      "language": "en",
-      "species": "gnome",
-      "category": "male",
-      "description": "gnome male names"
-    },
-    {
-      "filename": "en.gnome.nicknames.json",
-      "language": "en",
-      "species": "gnome",
-      "category": "nicknames",
-      "description": "gnome nicknames"
-    },
-    {
-      "filename": "en.gnome.settlements.json",
-      "language": "en",
-      "species": "gnome",
-      "category": "settlements",
-      "description": "gnome settlements"
-    },
-    {
-      "filename": "en.gnome.surnames.json",
-      "language": "en",
-      "species": "gnome",
-      "category": "surnames",
-      "description": "gnome surnames"
-    },
-    {
-      "filename": "en.gnome.titles.json",
-      "language": "en",
-      "species": "gnome",
-      "category": "titles",
-      "description": "gnome titles"
-    },
-    {
-      "filename": "en.halfling.female.json",
+      "filename": "en.halfling.names.json",
       "language": "en",
       "species": "halfling",
-      "category": "female",
-      "description": "halfling female names"
+      "category": "names",
+      "enabled": true
     },
     {
-      "filename": "en.halfling.male.json",
-      "language": "en",
-      "species": "halfling",
-      "category": "male",
-      "description": "halfling male names"
-    },
-    {
-      "filename": "en.halfling.nicknames.json",
-      "language": "en",
-      "species": "halfling",
-      "category": "nicknames",
-      "description": "halfling nicknames"
-    },
-    {
-      "filename": "en.halfling.settlements.json",
-      "language": "en",
-      "species": "halfling",
-      "category": "settlements",
-      "description": "halfling settlements"
-    },
-    {
-      "filename": "en.halfling.surnames.json",
-      "language": "en",
-      "species": "halfling",
-      "category": "surnames",
-      "description": "halfling surnames"
-    },
-    {
-      "filename": "en.halfling.titles.json",
-      "language": "en",
-      "species": "halfling",
-      "category": "titles",
-      "description": "halfling titles"
-    },
-    {
-      "filename": "en.human.female.json",
+      "filename": "en.human.names.json",
       "language": "en",
       "species": "human",
-      "category": "female",
-      "description": "human female names"
-    },
-    {
-      "filename": "en.human.male.json",
-      "language": "en",
-      "species": "human",
-      "category": "male",
-      "description": "human male names"
-    },
-    {
-      "filename": "en.human.nicknames.json",
-      "language": "en",
-      "species": "human",
-      "category": "nicknames",
-      "description": "human nicknames"
-    },
-    {
-      "filename": "en.human.settlements.json",
-      "language": "en",
-      "species": "human",
-      "category": "settlements",
-      "description": "human settlements"
-    },
-    {
-      "filename": "en.human.surnames.json",
-      "language": "en",
-      "species": "human",
-      "category": "surnames",
-      "description": "human surnames"
-    },
-    {
-      "filename": "en.human.titles.json",
-      "language": "en",
-      "species": "human",
-      "category": "titles",
-      "description": "human titles"
+      "category": "names",
+      "enabled": true
     },
     {
       "filename": "en.human.books.json",
       "language": "en",
       "species": "human",
       "category": "books",
-      "description": "human books"
-    },
-    {
-      "filename": "en.human.ships.json",
-      "language": "en",
-      "species": "human",
-      "category": "ships",
-      "description": "human ships"
-    },
-    {
-      "filename": "en.human.shops.json",
-      "language": "en",
-      "species": "human",
-      "category": "shops",
-      "description": "human shops"
+      "enabled": true
     },
     {
       "filename": "en.human.taverns.json",
       "language": "en",
       "species": "human",
       "category": "taverns",
-      "description": "human taverns"
+      "enabled": true
     },
     {
-      "filename": "en.tiefling.female.json",
+      "filename": "en.human.shops.json",
       "language": "en",
-      "species": "tiefling",
-      "category": "female",
-      "description": "tiefling female names"
+      "species": "human",
+      "category": "shops",
+      "enabled": true
     },
     {
-      "filename": "en.tiefling.male.json",
+      "filename": "en.human.ships.json",
       "language": "en",
-      "species": "tiefling",
-      "category": "male",
-      "description": "tiefling male names"
+      "species": "human",
+      "category": "ships",
+      "enabled": true
     },
     {
-      "filename": "en.tiefling.nicknames.json",
+      "filename": "en.tiefling.names.json",
       "language": "en",
       "species": "tiefling",
-      "category": "nicknames",
-      "description": "tiefling nicknames"
-    },
-    {
-      "filename": "en.tiefling.settlements.json",
-      "language": "en",
-      "species": "tiefling",
-      "category": "settlements",
-      "description": "tiefling settlements"
-    },
-    {
-      "filename": "en.tiefling.surnames.json",
-      "language": "en",
-      "species": "tiefling",
-      "category": "surnames",
-      "description": "tiefling surnames"
-    },
-    {
-      "filename": "en.tiefling.titles.json",
-      "language": "en",
-      "species": "tiefling",
-      "category": "titles",
-      "description": "tiefling titles"
+      "category": "names",
+      "enabled": true
     }
-  ]
+  ],
+  "categories": {
+    "names": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "books": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "taverns": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "shops": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "ships": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "settlements": {
+      "type": "dynamic",
+      "format": "3.0.0"
+    },
+    "weapons": {
+      "type": "categorized",
+      "generators": [
+        "generator"
+      ],
+      "localization": "names.categories.weapons",
+      "subcategories": {
+        "hunde": "names.subcategory-translations.weapons.schwerter",
+        "katzen": "names.subcategory-translations.weapons.bögen",
+        "voegel": "names.subcategory-translations.weapons.äxte"
+      }
+    },
+    "pets": {
+      "type": "categorized",
+      "generators": [
+        "generator"
+      ],
+      "localization": "names.categories.pets",
+      "subcategories": {
+        "hunde": "names.subcategory-translations.pets.hunde",
+        "katzen": "names.subcategory-translations.pets.katzen",
+        "voegel": "names.subcategory-translations.pets.voegel",
+        "fische": "names.subcategory-translations.pets.fische",
+        "tressym": "names.subcategory-translations.pets.tressym"
+      }
+    }
+  }
 }

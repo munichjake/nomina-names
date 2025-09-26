@@ -1,8 +1,33 @@
-# Nomina Names - Developer Integration Guide
+# Nomina Names Developer Guide
+
+<details open>
+<summary><strong>🇬🇧 English Documentation</strong></summary>
+
+## Overview
+
+This comprehensive developer guide provides everything you need to integrate with, extend, and contribute to the Nomina Names module. Whether you're building external modules, creating custom content, or contributing to the core system, this guide covers all aspects of development with the Nomina Names API.
+
+## Table of Contents
+
+1. [Quick Start](#quick-start)
+2. [Architecture Overview](#architecture-overview)
+3. [API Reference](#api-reference)
+4. [External Module Integration](#external-module-integration)
+5. [Custom Content Creation](#custom-content-creation)
+6. [Performance Optimization](#performance-optimization)
+7. [Testing and Validation](#testing-and-validation)
+8. [Contribution Guidelines](#contribution-guidelines)
+
+## Introduction
 
 This guide shows practical examples of how to integrate the Nomina Names API into your Foundry VTT modules.
 
-## Quick Setup
+## Quick Start
+
+### Prerequisites
+- Foundry VTT v11 or later
+- Basic JavaScript/ES6 knowledge
+- Understanding of Foundry VTT module development
 
 ### Basic Integration
 
@@ -634,6 +659,96 @@ async function testNominaIntegration() {
 testNominaIntegration();
 ```
 
+## Content Creation with Format 3.1.0
+
+### Creating Self-Contained Categories
+
+The new 3.1.0 format allows you to create fully self-contained JSON files with integrated translations:
+
+```javascript
+// Example: Creating a new "vehicles" category
+{
+  "format": "3.1.0",
+  "fileVersion": "1.0.0",
+  "code": "human",
+  "displayName": {
+    "de": "Menschen",
+    "en": "Human"
+  },
+  "languages": ["de", "en"],
+  "categories": ["vehicles"],
+  "data": {
+    "vehicles": {
+      "displayName": {
+        "de": "Fahrzeuge",
+        "en": "Vehicles"
+      },
+      "subcategories": [
+        {
+          "key": "carriages",
+          "displayName": {
+            "de": "Kutschen",
+            "en": "Carriages"
+          },
+          "entries": {
+            "de": ["Windschnell", "Königskutsche", "Mondreiter"],
+            "en": ["Windswift", "Royal Coach", "Moonrider"]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+### Dynamic Category Registration
+
+With 3.1.0, categories are automatically detected and their translations loaded:
+
+```javascript
+// No additional code changes needed!
+// Just add your JSON file and update index.json:
+
+{
+  "files": [
+    {
+      "filename": "human.vehicles.json",
+      "language": "de",
+      "species": "human",
+      "category": "vehicles",
+      "enabled": true
+    }
+  ]
+}
+```
+
+### Benefits for Module Developers
+
+- **Self-contained**: No need to modify language files
+- **Dynamic**: Categories work immediately after adding JSON
+- **Maintainable**: All translations in one place
+- **Backwards Compatible**: Existing setups continue working
+
+### Migration from 3.0.1 to 3.1.0
+
+1. Update `format` field to "3.1.0"
+2. Add `displayName` to category level:
+   ```json
+   "data": {
+     "pets": {
+       "displayName": {
+         "de": "Haustiere",
+         "en": "Pets"
+       },
+       "subcategories": [...]
+     }
+   }
+   ```
+3. Test in your module
+4. Optionally remove old language file entries
+
 ---
 
 This guide provides practical examples for integrating the Nomina Names API into your modules. Remember to always check for module availability and provide fallbacks for a robust user experience.
+
+*For more detailed information about data formats and API methods, see the [API Documentation](api-documentation.md) and [JSON Format Specification](json-format-specification.md).*

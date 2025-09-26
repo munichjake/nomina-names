@@ -6,52 +6,10 @@
     "de": "Schiffe"
   },
   "languages": [
-    "de"
+    "de",
+    "en"
   ],
-  "categories": [
-    {
-      "code": "merchant_ship",
-      "displayName": {
-        "en": "Merchant ship",
-        "de": "Merchant ship"
-      }
-    },
-    {
-      "code": "warship",
-      "displayName": {
-        "en": "Warship",
-        "de": "Warship"
-      }
-    },
-    {
-      "code": "pirate_ship",
-      "displayName": {
-        "en": "Pirate ship",
-        "de": "Pirate ship"
-      }
-    },
-    {
-      "code": "small_boat",
-      "displayName": {
-        "en": "Small boat",
-        "de": "Small boat"
-      }
-    },
-    {
-      "code": "exploration_ship",
-      "displayName": {
-        "en": "Exploration ship",
-        "de": "Exploration ship"
-      }
-    },
-    {
-      "code": "mystical_ship",
-      "displayName": {
-        "en": "Mystical ship",
-        "de": "Mystical ship"
-      }
-    }
-  ],
+  "categories": [],
   "data": {
     "merchant_ship": [
       "Goldener Delphin",

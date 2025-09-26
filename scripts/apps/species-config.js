@@ -45,7 +45,8 @@ export class NamesSpeciesConfig extends FormApplication {
 
     // Get all available species (including disabled ones)
     const allSpecies = api.getAllSpeciesCodes();
-    const registeredExtensions = api.registeredExtensions || new Map();
+    const dataManager = api.dataManager;
+    const apiSpecies = dataManager.apiSpecies || new Map();
 
     // Separate core species from extensions
     const coreSpecies = [];
@@ -72,36 +73,45 @@ export class NamesSpeciesConfig extends FormApplication {
       }
     }
 
-    // Process extension species
-    for (const [key, extension] of registeredExtensions) {
-      if (extension.type === 'species') {
-        const species = extension.species;
-        const moduleId = extension.moduleId;
+    // Process API species (external species)
+    for (const [speciesCode, speciesData] of apiSpecies) {
+      const moduleId = speciesData.callingModule || 'external-species';
+      const moduleName = moduleId !== 'external-species'
+        ? this._getModuleName(moduleId)
+        : 'External Species (API)';
 
-        if (!extensionsByModule.has(moduleId)) {
-          extensionsByModule.set(moduleId, {
-            moduleId,
-            moduleName: this._getModuleName(moduleId),
-            species: []
-          });
-        }
-
-        const enabled = currentSettings[species] !== false; // Default enabled
-        extensionsByModule.get(moduleId).species.push({
-          species,
-          displayName: extension.displayName || species,
-          enabled,
-          source: 'extension',
+      if (!extensionsByModule.has(moduleId)) {
+        extensionsByModule.set(moduleId, {
           moduleId,
-          description: this._getExtensionDescription(extension)
+          moduleName,
+          species: []
         });
       }
+
+      const enabled = currentSettings[speciesCode] !== false; // Default enabled
+      const displayName = typeof speciesData.displayName === 'object'
+        ? (speciesData.displayName['de'] || speciesData.displayName['en'] || speciesCode)
+        : (speciesData.displayName || speciesCode);
+
+      extensionsByModule.get(moduleId).species.push({
+        species: speciesCode,
+        displayName,
+        enabled,
+        source: 'api',
+        moduleId
+      });
     }
 
     // Convert extension map to array
     const extensionModules = Array.from(extensionsByModule.values());
 
-    logDebug(`Species config data: ${coreSpecies.length} core, ${extensionModules.length} extension modules`);
+    logDebug(`Species config data: ${coreSpecies.length} core, ${extensionModules.length} extension modules`, {
+      extensionModules: extensionModules.map(mod => ({
+        moduleId: mod.moduleId,
+        moduleName: mod.moduleName,
+        speciesCount: mod.species.length
+      }))
+    });
 
     return {
       coreSpecies,

@@ -1,15 +1,12 @@
 {
-  "authors": [
-    {
-      "name": "munichjake",
-      "email": "munichjake@dnd-session.de",
-      "url": "https://dnd-session.de",
-      "github": "https://github.com/munichjake"
+  "category": {
+    "code": "settlements",
+    "i18n": {
+      "en": "Settlements",
+      "de": "Siedlungen"
     }
-  ],
-  "description": "Deutsche Elfen-Siedlungsnamen mit grammatischem Geschlecht",
-  "version": "1.0.0",
-  "settlements": [
+  },
+  "items": [
     {
       "name": "Seelenhorst",
       "gender": "n"
@@ -36,7 +33,7 @@
     },
     {
       "name": "Sternbrücke",
-      "gender": "n"
+      "gender": "f"
     },
     {
       "name": "Windtrutz",
@@ -3282,7 +3279,7 @@
       "name": "Hainkliff",
       "gender": "n"
     },
-        {
+    {
       "name": "Aelindor",
       "gender": "n"
     },
@@ -4082,7 +4079,7 @@
       "name": "Thandrelmor",
       "gender": "n"
     },
-        {
+    {
       "name": "Quenasilion",
       "gender": "n"
     },
@@ -5282,5 +5279,10 @@
       "name": "Vallasgalilion",
       "gender": "n"
     }
-  ]
+  ],
+  "metadata": {
+    "version": "2.0.0",
+    "converted": "2025-09-22T20:47:43.662Z",
+    "originalFile": "de.elf.settlements.json"
+  }
 }

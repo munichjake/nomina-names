@@ -1,0 +1,125 @@
+{
+    "format": "3.1.0",
+    "fileVersion": "1.0.0",
+    "code": "human",
+    "displayName": {
+        "de": "Menschen",
+        "en": "Human"
+    },
+    "languages": [
+        "de",
+        "en"
+    ],
+    "categories": [
+        "weapons"
+    ],
+    "data": {
+        "weapons": {
+            "displayName": {
+                "de": "Waffen",
+                "en": "Weapons"
+            },
+            "subcategories": [
+                {
+                    "key": "schwerter",
+                    "displayName": {
+                        "de": "Schwerter",
+                        "en": "Swords"
+                    },
+                    "entries": {
+                        "de": [
+                            "Drachenzahn",
+                            "Mondschneide",
+                            "Blutklinge",
+                            "Schattenhieb",
+                            "Sonnenschwert",
+                            "Frostschneide",
+                            "Sturmbringer",
+                            "Glanzstahl",
+                            "Eisenfaust",
+                            "Runenklinge"
+                        ],
+                        "en": [
+                            "Dragonfang",
+                            "Moonblade",
+                            "Bloodsword",
+                            "Shadowstrike",
+                            "Sunblade",
+                            "Frostedge",
+                            "Stormbringer",
+                            "Brightsteel",
+                            "Ironfist",
+                            "Runeblade"
+                        ]
+                    }
+                },
+                {
+                    "key": "bögen",
+                    "displayName": {
+                        "de": "Bögen",
+                        "en": "Bows"
+                    },
+                    "entries": {
+                        "de": [
+                            "Eibenbogen",
+                            "Sturmbogen",
+                            "Mondjäger",
+                            "Seelenpfeil",
+                            "Nachtwind",
+                            "Waldschatten",
+                            "Himmelsblick",
+                            "Falkenschuss",
+                            "Sonnenbogen",
+                            "Frostpfeil"
+                        ],
+                        "en": [
+                            "Yewbow",
+                            "Stormbow",
+                            "Moonhunter",
+                            "Soularrow",
+                            "Nightwind",
+                            "Forestshadow",
+                            "Skygaze",
+                            "Hawkshot",
+                            "Sunbow",
+                            "Frostarrow"
+                        ]
+                    }
+                },
+                {
+                    "key": "äxte",
+                    "displayName": {
+                        "de": "Äxte",
+                        "en": "Axes"
+                    },
+                    "entries": {
+                        "de": [
+                            "Knochenspalter",
+                            "Donnerhieb",
+                            "Blutbeil",
+                            "Sturmbrecher",
+                            "Felsenschneider",
+                            "Runenspalter",
+                            "Frostbeil",
+                            "Kriegsschlag",
+                            "Schädelspalter",
+                            "Schattenaxt"
+                        ],
+                        "en": [
+                            "Bonesplitter",
+                            "Thunderstrike",
+                            "Bloodaxe",
+                            "Stormbreaker",
+                            "Rockcleaver",
+                            "Runesplitter",
+                            "Frostaxe",
+                            "Warstrike",
+                            "Skullsplitter",
+                            "Shadowaxe"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

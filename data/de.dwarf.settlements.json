@@ -1,15 +1,12 @@
 {
-  "authors": [
-    {
-      "name": "munichjake",
-      "email": "munichjake@dnd-session.de",
-      "url": "https://dnd-session.de",
-      "github": "https://github.com/munichjake"
+  "category": {
+    "code": "settlements",
+    "i18n": {
+      "en": "Settlements",
+      "de": "Siedlungen"
     }
-  ],
-  "description": "Fiktive Siedlungen der Dwarf",
-  "version": "1.0.0",
-  "settlements": [
+  },
+  "items": [
     {
       "name": "Durak-Tor",
       "gender": "n"
@@ -2726,5 +2723,10 @@
       "name": "Eisenhall",
       "gender": "f"
     }
-  ]
+  ],
+  "metadata": {
+    "version": "2.0.0",
+    "converted": "2025-09-22T20:47:43.653Z",
+    "originalFile": "de.dwarf.settlements.json"
+  }
 }

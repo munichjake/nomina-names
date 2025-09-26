@@ -1,15 +1,12 @@
 {
-  "authors": [
-    {
-      "name": "munichjake",
-      "email": "munichjake@dnd-session.de",
-      "url": "https://dnd-session.de",
-      "github": "https://github.com/munichjake"
+  "category": {
+    "code": "settlements",
+    "i18n": {
+      "en": "Settlements",
+      "de": "Siedlungen"
     }
-  ],
-  "description": "Deutsche Gnome-Siedlungsnamen mit grammatischem Geschlecht",
-  "version": "1.0.0",
-  "settlements": [
+  },
+  "items": [
     {
       "name": "Hammerstadt",
       "gender": "f"
@@ -3282,5 +3279,10 @@
       "name": "Räderschmiede",
       "gender": "n"
     }
-  ]
+  ],
+  "metadata": {
+    "version": "2.0.0",
+    "converted": "2025-09-22T20:47:43.669Z",
+    "originalFile": "de.gnome.settlements.json"
+  }
 }

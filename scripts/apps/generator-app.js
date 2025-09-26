@@ -7,6 +7,7 @@ import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.
 import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT, isCategorizedContent, getSubcategories, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+import { NamesAPI } from '../api-system.js';
 
 /**
  * Names Generator Application - Main application for generating names
@@ -56,24 +57,41 @@ export class NamesGeneratorApp extends Application {
       await globalNamesData.initializeData();
     }
 
-    const species = globalNamesData ? globalNamesData.getLocalizedSpecies() : [];
+    // Safely get data with proper fallbacks
+    let languages = [];
+    let species = [];
+    let categories = [];
+    let isLoading = false;
+    let isLoaded = false;
 
-    console.log("DEBUG generator-app getData:");
-    console.log("  globalNamesData exists:", !!globalNamesData);
     if (globalNamesData) {
-      console.log("  globalNamesData.isLoaded:", globalNamesData.isLoaded);
-      console.log("  globalNamesData.isLoading:", globalNamesData.isLoading);
-      console.log("  globalNamesData.nameData size:", globalNamesData.nameData?.size || 0);
+      try {
+        languages = globalNamesData.getLocalizedLanguages() || [];
+        species = globalNamesData.getLocalizedSpecies() || [];
+        categories = await globalNamesData.getLocalizedCategoriesForGenerator('generator') || [];
+        isLoading = globalNamesData.isLoading;
+        isLoaded = globalNamesData.isLoaded;
+      } catch (error) {
+        logError("Error getting data in generator-app getData:", error);
+        // Keep default empty arrays
+      }
     }
-    console.log("  species from getLocalizedSpecies():", species);
+
+    logDebug("generator-app getData analysis:", {
+      globalNamesDataExists: !!globalNamesData,
+      isLoaded: globalNamesData?.isLoaded,
+      isLoading: globalNamesData?.isLoading,
+      nameDataSize: globalNamesData?.nameData?.size || 0,
+      localizedSpecies: species
+    });
 
     const data = {
-      languages: globalNamesData ? globalNamesData.getLocalizedLanguages() : [],
+      languages: languages,
       species: species,
-      categories: globalNamesData ? await globalNamesData.getLocalizedCategoriesForGenerator('generator') : [],
-      isLoading: globalNamesData ? globalNamesData.isLoading : false,
-      isLoaded: globalNamesData ? globalNamesData.isLoaded : false,
-      supportedGenders: getSupportedGenders(),
+      categories: categories,
+      isLoading: isLoading,
+      isLoaded: isLoaded,
+      supportedGenders: getSupportedGenders() || [],
       defaultLanguage: this._getFoundryLanguage()
     };
 
@@ -192,7 +210,7 @@ export class NamesGeneratorApp extends Application {
   }
 
   /**
-   * Handles dropdown change events
+   * Handles dropdown change events with cascading behavior
    * @param {Event} event - The change event
    */
   _onDropdownChange(event) {
@@ -200,13 +218,19 @@ export class NamesGeneratorApp extends Application {
     const changedElement = event.currentTarget;
     logInfo(`Dropdown changed: ${changedElement.name} = "${changedElement.value}"`);
 
-    // Debug: Check if Enhanced Dropdown value differs from native select
-    if (changedElement.name === 'names-category') {
-      const enhancedDropdown = this.enhancedDropdowns.get('category');
-      if (enhancedDropdown && enhancedDropdown.getValue) {
-        const enhancedValue = enhancedDropdown.getValue();
-        logInfo(`Enhanced Dropdown value: "${enhancedValue}" vs Native: "${changedElement.value}"`);
-      }
+    // Implement cascading behavior
+    if (changedElement.name === 'names-language') {
+      // When language changes, reset species and category
+      $form.find('#names-species-select').val('');
+      $form.find('#names-category-select').val('');
+      this._updateEnhancedDropdownValue('species', '');
+      this._updateEnhancedDropdownValue('category', '');
+      logInfo('Language changed - reset species and category');
+    } else if (changedElement.name === 'names-species') {
+      // When species changes, reset category
+      $form.find('#names-category-select').val('');
+      this._updateEnhancedDropdownValue('category', '');
+      logInfo('Species changed - reset category');
     }
 
     this._updateUI($form);
@@ -238,6 +262,10 @@ export class NamesGeneratorApp extends Application {
     logInfo("=== UI UPDATE START ===");
     logInfo("Updating UI with selection:", { language, species, category });
 
+    // Update species options based on language (cascading)
+    await this._updateSpeciesOptions($form, language);
+    logInfo("Species options updated");
+
     await this._updateCategoryOptions($form, language, species);
     logInfo("Category options updated");
 
@@ -257,18 +285,90 @@ export class NamesGeneratorApp extends Application {
     setTimeout(() => this._resizeToContent(), 100);
   }
 
-  async _updateCategoryOptions($form, language, species) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData || !language || !species) {
-      logDebug("Cannot update categories - missing data or selection");
+  /**
+   * Updates species dropdown options based on current language selection
+   * @param {jQuery} $form - The form element
+   * @param {string} language - Selected language
+   */
+  async _updateSpeciesOptions($form, language) {
+    if (!language) {
+      logDebug("No language selected, clearing species options");
+      const speciesSelect = $form.find('#names-species-select');
+      speciesSelect.empty();
+      speciesSelect.append('<option value="">' + game.i18n.localize("names.ui.choose-species") + '</option>');
+      this._updateEnhancedDropdownOptions('species');
       return;
     }
 
+    const globalNamesData = getGlobalNamesData();
+    if (!globalNamesData) return;
+
+    let allSpecies = [];
+    try {
+      allSpecies = globalNamesData.getLocalizedSpecies() || [];
+    } catch (error) {
+      logError("Error getting localized species:", error);
+      allSpecies = [];
+    }
+
+    const speciesSelect = $form.find('#names-species-select');
+    const currentSpecies = speciesSelect.val();
+
+    // Filter species that have data for the selected language
+    const availableSpecies = [];
+    if (Array.isArray(allSpecies)) {
+      for (const species of allSpecies) {
+        if (species && species.code && (
+            globalNamesData.hasData(language, species.code, 'names') ||
+            globalNamesData.hasData(language, species.code, 'male') ||
+            globalNamesData.hasData(language, species.code, 'female'))) {
+          availableSpecies.push(species);
+        }
+      }
+    }
+
+    // Rebuild options
+    speciesSelect.empty();
+    speciesSelect.append('<option value="">' + game.i18n.localize("names.ui.choose-species") + '</option>');
+
+    for (const species of availableSpecies) {
+      speciesSelect.append(`<option value="${species.code}">${species.name}</option>`);
+    }
+
+    // Try to restore previous selection if still available
+    if (currentSpecies && availableSpecies.some(s => s.code === currentSpecies)) {
+      speciesSelect.val(currentSpecies);
+    } else {
+      // Current species not available for this language, clear selection
+      speciesSelect.val('');
+    }
+
+    this._updateEnhancedDropdownOptions('species');
+    logDebug(`Updated species options for language ${language}, ${availableSpecies.length} available`);
+  }
+
+  async _updateCategoryOptions($form, language, species) {
+    const globalNamesData = getGlobalNamesData();
     const categorySelect = $form.find('#names-category-select');
+
+    if (!globalNamesData || !language || !species) {
+      logDebug("Cannot update categories - missing data or selection, clearing options");
+      categorySelect.empty();
+      categorySelect.append('<option value="">' + game.i18n.localize("names.ui.choose-category") + '</option>');
+      this._updateEnhancedDropdownOptions('category');
+      return;
+    }
+
     const currentCategory = categorySelect.val();
 
     // Get categories available for this specific language/species combination
-    const availableCategories = await globalNamesData.getLocalizedCategoriesForLanguageAndSpecies(language, species, 'generator');
+    let availableCategories = [];
+    try {
+      availableCategories = await globalNamesData.getLocalizedCategoriesForLanguageAndSpecies(language, species, 'generator') || [];
+    } catch (error) {
+      logError(`Error getting categories for ${language}.${species}:`, error);
+      availableCategories = [];
+    }
 
     logDebug(`Updating categories for ${language}.${species}:`, availableCategories);
 
@@ -278,19 +378,25 @@ export class NamesGeneratorApp extends Application {
     // Add default option
     categorySelect.append('<option value="">' + game.i18n.localize("names.ui.choose-category") + '</option>');
 
-    // Add available categories grouped
-    for (const group of availableCategories) {
-      const optgroup = $(`<optgroup label="${group.groupLabel}"></optgroup>`);
-      for (const item of group.items) {
-        optgroup.append(`<option value="${item.code}">${item.name}</option>`);
+    // Add available categories grouped - ensure availableCategories is an array
+    if (Array.isArray(availableCategories)) {
+      for (const group of availableCategories) {
+        if (group && Array.isArray(group.items)) {
+          const optgroup = $(`<optgroup label="${group.groupLabel || 'Categories'}"></optgroup>`);
+          for (const item of group.items) {
+            if (item && item.code && item.name) {
+              optgroup.append(`<option value="${item.code}">${item.name}</option>`);
+            }
+          }
+          categorySelect.append(optgroup);
+        }
       }
-      categorySelect.append(optgroup);
     }
 
     // Try to restore previous selection if still available
-    if (currentCategory) {
+    if (currentCategory && Array.isArray(availableCategories)) {
       const isStillAvailable = availableCategories.some(group =>
-        group.items.some(item => item.code === currentCategory)
+        group && Array.isArray(group.items) && group.items.some(item => item && item.code === currentCategory)
       );
       if (isStillAvailable) {
         categorySelect.val(currentCategory);
@@ -299,9 +405,9 @@ export class NamesGeneratorApp extends Application {
 
     // Update Enhanced Dropdown if available
     const enhancedDropdown = this.enhancedDropdowns.get('category');
-    if (enhancedDropdown && enhancedDropdown.rebuildOptions) {
-      logInfo("Rebuilding Enhanced Dropdown options for category");
-      enhancedDropdown.rebuildOptions();
+    if (enhancedDropdown && enhancedDropdown.loadItems) {
+      logInfo("Reloading Enhanced Dropdown options for category");
+      enhancedDropdown.loadItems(); // Lädt Items vom ursprünglichen select neu
       if (categorySelect.val()) {
         enhancedDropdown.setValue(categorySelect.val());
         logInfo(`Set Enhanced Dropdown value to: "${categorySelect.val()}"`);
@@ -341,13 +447,14 @@ export class NamesGeneratorApp extends Application {
       return;
     }
 
-    const supportedGenders = getSupportedGenders();
+    const supportedGenders = getSupportedGenders() || [];
     const availableGenders = [];
 
     logDebug(`Checking gender data availability for ${language}.${species}`, { supportedGenders });
 
     // Check which genders have data available - try to load if not present
-    for (const gender of supportedGenders) {
+    if (Array.isArray(supportedGenders)) {
+      for (const gender of supportedGenders) {
       const key = `${language}.${species}.${gender}`;
       
       // First check if data exists
@@ -363,9 +470,10 @@ export class NamesGeneratorApp extends Application {
         }
       }
       
-      if (hasData) {
-        availableGenders.push(gender);
-        logDebug(`Gender ${gender} has data available`);
+        if (hasData) {
+          availableGenders.push(gender);
+          logDebug(`Gender ${gender} has data available`);
+        }
       }
     }
 
@@ -420,16 +528,37 @@ export class NamesGeneratorApp extends Application {
     }
 
     // Ensure data is loaded for this category
+    logInfo(`DEBUG: Calling ensureDataLoaded for ${language}.${species}.${category}`);
     const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
+    logInfo(`DEBUG: ensureDataLoaded returned: ${hasData}`);
     if (!hasData) {
       logDebug(`No data available for ${language}.${species}.${category}`);
       return;
     }
 
     // Get available subcategories from data
-    const availableSubcategories = globalNamesData.getAvailableSubcategories(language, species, category);
-    
-    if (availableSubcategories.length === 0) {
+    let availableSubcategories = [];
+    try {
+      logInfo(`DEBUG: Getting subcategories for ${language}.${species}.${category}`);
+      logInfo(`DEBUG: globalNamesData constructor:`, globalNamesData.constructor.name);
+      logInfo(`DEBUG: globalNamesData.getAvailableSubcategories exists:`, typeof globalNamesData.getAvailableSubcategories);
+      logInfo(`DEBUG: globalNamesData.apiSpecies keys:`, Array.from(globalNamesData.apiSpecies?.keys() || []));
+      logInfo(`DEBUG: globalNamesData has species ${species}:`, globalNamesData.apiSpecies?.has(species));
+
+      if (globalNamesData.apiSpecies?.has(species)) {
+        const apiSpecies = globalNamesData.apiSpecies.get(species);
+        logInfo(`DEBUG: API species ${species} data:`, apiSpecies);
+        logInfo(`DEBUG: API species ${species} dataFiles keys:`, Array.from(apiSpecies.dataFiles?.keys() || []));
+      }
+
+      availableSubcategories = globalNamesData.getAvailableSubcategories(language, species, category) || [];
+      logInfo(`DEBUG: getAvailableSubcategories returned:`, availableSubcategories);
+    } catch (error) {
+      logError(`Error getting subcategories for ${language}.${species}.${category}:`, error);
+      availableSubcategories = [];
+    }
+
+    if (!Array.isArray(availableSubcategories) || availableSubcategories.length === 0) {
       logDebug(`No subcategories available for ${language}.${species}.${category}`);
       return;
     }
@@ -439,15 +568,28 @@ export class NamesGeneratorApp extends Application {
     // Generate subcategory checkboxes
     let checkboxesHtml = '';
     const subcategoryDefinitions = getSubcategories(category);
-    
+
     for (const subcategory of availableSubcategories) {
-      const locKey = subcategoryDefinitions[subcategory] || `names.subcategory-translations.${category}.${subcategory}`;
-      const subcategoryLabel = game.i18n.localize(locKey) || subcategory.replace(/_/g, ' ');
-      const isChecked = availableSubcategories.length === 1 ? 'checked' : ''; // Auto-select if only one option
-      
+      let subcategoryKey, subcategoryLabel;
+
+      // Handle 3.0.0 format with display names
+      if (typeof subcategory === 'object' && subcategory.key && subcategory.displayName) {
+        subcategoryKey = subcategory.key;
+        const currentLanguage = this._getFoundryLanguage();
+        subcategoryLabel = subcategory.displayName[currentLanguage] || subcategory.displayName.en || subcategory.displayName.de || subcategoryKey;
+      } else {
+        // Handle legacy format
+        subcategoryKey = subcategory;
+        const locKey = subcategoryDefinitions[subcategory] || `names.subcategory-translations.${category}.${subcategory}`;
+        subcategoryLabel = game.i18n.localize(locKey) || subcategory.replace(/_/g, ' ');
+      }
+
+      // Auto-check all subcategories by default to ensure generation works
+      const isChecked = 'checked';
+
       checkboxesHtml += `
         <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-subcategory-${subcategory}" ${isChecked}>
+          <input type="checkbox" name="names-subcategory-${subcategoryKey}" ${isChecked}>
           <span class="names-module-checkmark"></span>
           ${subcategoryLabel}
         </label>
@@ -562,6 +704,7 @@ export class NamesGeneratorApp extends Application {
 
   /**
    * Handles the generate name button click event
+   * Now simplified to use the central API
    * @param {Event} event - The click event
    */
   async _onGenerateName(event) {
@@ -571,7 +714,44 @@ export class NamesGeneratorApp extends Application {
     const form = event.currentTarget.closest('form');
     const $form = $(form);
 
-    // Get values directly from elements, with Enhanced Dropdown fallback
+    // Get form values
+    const options = this._getGenerationOptions($form);
+
+    if (!options.language || !options.species || !options.category) {
+      ui.notifications.warn(game.i18n.localize("names.select-all"));
+      logWarn(`Missing values: language="${options.language}", species="${options.species}", category="${options.category}"`);
+      return;
+    }
+
+    logInfo(`Generating ${options.count} names: ${options.language}.${options.species}.${options.category}`);
+
+    try {
+      // Use the simplified API for all generation
+      const results = await NamesAPI.generateNames(options);
+
+      if (results.length === 0) {
+        throw new Error(game.i18n.localize("names.no-names-generated"));
+      }
+
+      // Display results
+      this._displayResults(form, results, options);
+
+      logInfo(`Successfully generated ${results.length} names`);
+
+    } catch (error) {
+      logError("Name generation failed", error);
+      const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
+      ui.notifications.error(errorMsg);
+    }
+  }
+
+  /**
+   * Extract generation options from form
+   * @param {jQuery} $form - The form element
+   * @returns {Object} Generation options
+   */
+  _getGenerationOptions($form) {
+    // Get basic values
     const language = $form.find('#names-language-select').val();
     const species = $form.find('#names-species-select').val();
     let category = $form.find('#names-category-select').val();
@@ -583,149 +763,62 @@ export class NamesGeneratorApp extends Application {
         const enhancedValue = enhancedDropdown.getValue();
         if (enhancedValue && enhancedValue !== '') {
           category = enhancedValue;
-          logInfo(`Generate: Using Enhanced Dropdown value for category: "${enhancedValue}"`);
+          logInfo(`Using Enhanced Dropdown value for category: "${enhancedValue}"`);
         }
       }
     }
 
-    const formData = new FormData(form);
+    const formData = new FormData($form[0]);
     const nameFormat = formData.get('names-format') || DEFAULT_NAME_FORMAT;
     const count = parseInt(formData.get('names-count')) || 1;
 
-    logInfo(`Generating ${count} names: ${language}.${species}.${category}`);
+    const options = {
+      language,
+      species,
+      category,
+      format: nameFormat,
+      count
+    };
 
-    if (!language || !species || !category) {
-      ui.notifications.warn(game.i18n.localize("names.select-all"));
-      logWarn(`Missing values: language="${language}", species="${species}", category="${category}"`);
-      return;
+    // Handle names category with components and gender
+    if (category === 'names') {
+      options.components = this._getSelectedComponents($form);
+      options.gender = this._getSelectedGender($form);
     }
 
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) {
-      logError("Data manager not available for name generation");
-      ui.notifications.error("Names data manager not available");
-      return;
-    }
-
-    try {
-      const results = [];
-
-      for (let i = 0; i < count; i++) {
-        let generatedName;
-
-        try {
-          if (category === 'names') {
-            generatedName = await this._generateNameWithSelections(form, language, species, nameFormat);
-          } else if (isCategorizedContent(category)) {
-            logDebug(`Attempting to generate categorized content for: ${language}.${species}.${category}`);
-            generatedName = await this._generateCategorizedContent(form, language, species, category);
-          } else {
-            generatedName = await this._generateSimpleName(language, species, category);
-          }
-
-          if (generatedName) {
-            results.push(generatedName);
-            logDebug(`Generated name ${i + 1}/${count}: ${generatedName}`);
-          } else {
-            logError(`No name generated for iteration ${i + 1}, category: ${category}`);
-          }
-        } catch (innerError) {
-          logError(`Error generating name for iteration ${i + 1}:`, innerError);
-          // Continue with next iteration instead of failing completely
-        }
+    // Handle categorized content with subcategories
+    if (isCategorizedContent(category)) {
+      const selectedSubcategories = this._getSelectedSubcategories($form);
+      if (selectedSubcategories.length > 0) {
+        // Pick random subcategory from selected ones
+        options.subcategory = selectedSubcategories[Math.floor(Math.random() * selectedSubcategories.length)];
+      } else {
+        // No subcategory selected - let the generator pick automatically
+        options.subcategory = null;
       }
-
-      if (results.length === 0) {
-        throw new Error(game.i18n.localize("names.no-names-generated"));
-      }
-
-      const resultDiv = form.querySelector('#names-result-display');
-      const authorCredits = this._collectAuthorCredits(language, species, [category]);
-
-      // Add updating class for shimmer effect
-      resultDiv.classList.add('updating');
-
-      // Clear previous results with a short delay
-      setTimeout(() => {
-        let resultsHtml = results.map(name =>
-          `<div class="${CSS_CLASSES.generatedName}">${name}</div>`
-        ).join('');
-
-        resultDiv.innerHTML = resultsHtml + authorCredits;
-
-        // Remove updating class after animation starts
-        setTimeout(() => {
-          resultDiv.classList.remove('updating');
-        }, 300);
-      }, 100);
-
-      form.querySelector('#names-copy-btn').disabled = false;
-      form.querySelector('#names-clear-btn').disabled = false;
-
-      logInfo(`Successfully generated ${results.length} names`);
-
-      // Resize window after generating names
-      setTimeout(() => this._resizeToContent(), 100);
-
-    } catch (error) {
-      logError("Name generation failed", error);
-      const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
-      ui.notifications.error(errorMsg);
     }
+
+    return options;
   }
 
-  async _generateCategorizedContent(form, language, species, category) {
-    const $form = $(form);
-    const globalNamesData = getGlobalNamesData();
+  /**
+   * Get selected name components from form
+   */
+  _getSelectedComponents($form) {
+    const components = [];
+    if ($form.find('input[name="names-include-firstname"]:checked').length) components.push('firstname');
+    if ($form.find('input[name="names-include-surname"]:checked').length) components.push('surname');
+    if ($form.find('input[name="names-include-title"]:checked').length) components.push('title');
+    if ($form.find('input[name="names-include-nickname"]:checked').length) components.push('nickname');
 
-    logDebug(`_generateCategorizedContent called with: ${language}.${species}.${category}`);
-
-    // Ensure data is loaded before accessing it
-    const dataLoaded = await globalNamesData.ensureDataLoaded(language, species, category);
-    logDebug(`Data loaded result for ${language}.${species}.${category}: ${dataLoaded}`);
-    if (!dataLoaded) {
-      throw new Error(`No data file available for ${language}.${species}.${category}`);
-    }
-
-    // Get selected subcategories (with smart default)
-    const selectedSubcategories = [];
-    $form.find('input[name^="names-subcategory-"]:checked').each(function() {
-      const subcategoryName = this.name.replace('names-subcategory-', '');
-      selectedSubcategories.push(subcategoryName);
-    });
-
-    // Smart default: if no subcategories selected, use all available subcategories
-    let subcategoriesToUse = selectedSubcategories;
-    if (selectedSubcategories.length === 0) {
-      subcategoriesToUse = globalNamesData.getAvailableSubcategories(language, species, category);
-      logDebug("No subcategories selected, using all available:", subcategoriesToUse);
-    }
-
-    if (subcategoriesToUse.length === 0) {
-      throw new Error(`No subcategories available for ${language}.${species}.${category}`);
-    }
-
-    // Randomly select a subcategory for this generation
-    const randomSubcategory = subcategoriesToUse[Math.floor(Math.random() * subcategoriesToUse.length)];
-    
-    // Get data from the selected subcategory
-    const subcategoryData = globalNamesData.getSubcategoryData(language, species, category, randomSubcategory);
-    
-    if (!subcategoryData || subcategoryData.length === 0) {
-      throw new Error(`No data available for subcategory ${randomSubcategory}`);
-    }
-
-    // Select a random item from the subcategory
-    const randomItem = subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
-    
-    logDebug(`Generated categorized content from ${category}.${randomSubcategory}: ${randomItem}`);
-    return randomItem;
+    // Smart default: if no components selected, use firstname and surname
+    return components.length > 0 ? components : ['firstname', 'surname'];
   }
 
-  async _generateNameWithSelections(form, language, species, nameFormat) {
-    const $form = $(form);
-    
-    // Get selected genders (with smart default)
+  /**
+   * Get selected gender from form
+   */
+  _getSelectedGender($form) {
     const selectedGenders = [];
     $form.find('input[name^="names-gender-"]:checked').each(function() {
       const genderName = this.name.replace('names-gender-', '');
@@ -733,389 +826,64 @@ export class NamesGeneratorApp extends Application {
     });
 
     // Smart default: if no genders selected, use all available genders
-    let gendersToUse = selectedGenders;
     if (selectedGenders.length === 0) {
-      gendersToUse = [];
       $form.find('input[name^="names-gender-"]').each(function() {
         const genderName = this.name.replace('names-gender-', '');
-        gendersToUse.push(genderName);
+        selectedGenders.push(genderName);
       });
-      logDebug("No genders selected, using all available:", gendersToUse);
     }
 
-    if (gendersToUse.length === 0) {
-      throw new Error("No gender data available for name generation");
-    }
-
-    // Get selected components (with smart default)
-    const selectedComponents = [];
-    if ($form.find('input[name="names-include-firstname"]:checked').length) selectedComponents.push('firstname');
-    if ($form.find('input[name="names-include-surname"]:checked').length) selectedComponents.push('surname');
-    if ($form.find('input[name="names-include-title"]:checked').length) selectedComponents.push('title');
-    if ($form.find('input[name="names-include-nickname"]:checked').length) selectedComponents.push('nickname');
-
-    // Smart default: if no components selected, use firstname and surname
-    let componentsToUse = selectedComponents;
-    if (selectedComponents.length === 0) {
-      componentsToUse = ['firstname', 'surname'];
-      logDebug("No components selected, using default:", componentsToUse);
-    }
-
-    // Randomly select a gender for this generation
-    const randomGender = gendersToUse[Math.floor(Math.random() * gendersToUse.length)];
-    
-    logDebug(`Generating formatted name with gender: ${randomGender}, components:`, componentsToUse);
-    return await this._generateFormattedName(language, species, randomGender, componentsToUse, nameFormat);
+    // Return random gender from selected ones
+    return selectedGenders.length > 0 ?
+      selectedGenders[Math.floor(Math.random() * selectedGenders.length)] : 'male';
   }
 
-  async _generateSimpleName(language, species, category) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return null;
-
-    const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
-    if (!hasData) {
-      logWarn(`No data available for ${language}.${species}.${category}`);
-      throw new Error(game.i18n.localize("names.data-not-available"));
-    }
-
-    if (category === 'settlements') {
-      const settlementData = globalNamesData.getData(`${language}.${species}.settlements`);
-      if (!settlementData?.settlements) {
-        throw new Error(`Keine Siedlungsdaten für ${language}.${species}`);
-      }
-      const settlements = settlementData.settlements;
-      const settlement = settlements[Math.floor(Math.random() * settlements.length)];
-      const result = settlement.name || settlement;
-      logDebug(`Generated settlement name: ${result}`);
-      return result;
-    } else if (category === 'nicknames') {
-      // Special handling for nicknames - they have gendered structure
-      const { getSupportedGenders } = await import('../shared/constants.js');
-      const supportedGenders = getSupportedGenders();
-      const randomGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
-      const nickname = this._getRandomFromGenderedData(language, species, 'nicknames', randomGender);
-      return nickname ? `"${nickname}"` : null;
-    } else if (category === 'titles') {
-      // Special handling for titles - they have gendered structure and need settlements
-      const { getSupportedGenders } = await import('../shared/constants.js');
-      const supportedGenders = getSupportedGenders();
-      const randomGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
-      return this._generateTitle(language, species, randomGender, null);
-    } else {
-      return this._getRandomFromData(language, species, category);
-    }
+  /**
+   * Get selected subcategories from form
+   */
+  _getSelectedSubcategories($form) {
+    const subcategories = [];
+    $form.find('input[name^="names-subcategory-"]:checked').each(function() {
+      const subcategoryName = this.name.replace('names-subcategory-', '');
+      subcategories.push(subcategoryName);
+    });
+    return subcategories;
   }
 
-  async _generateFormattedName(language, species, gender, components, nameFormat) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return null;
+  /**
+   * Display generation results
+   */
+  _displayResults(form, results, options) {
+    const resultDiv = form.querySelector('#names-result-display');
+    const authorCredits = this._collectAuthorCredits(options.language, options.species, [options.category]);
 
-    // Map components to correct data categories
-    const componentToCategoryMap = {
-      'firstname': gender,
-      'surname': 'surnames',
-      'title': 'titles', 
-      'nickname': 'nicknames'
-    };
+    // Add updating class for shimmer effect
+    resultDiv.classList.add('updating');
 
-    // Ensure all required data is loaded
-    for (const component of components) {
-      const category = componentToCategoryMap[component];
-      if (category) {
-        const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
-        if (!hasData) {
-          logWarn(`No data available for ${language}.${species}.${category}`);
-        }
-      }
-    }
+    // Clear previous results with a short delay
+    setTimeout(() => {
+      let resultsHtml = results.map(name =>
+        `<div class="${CSS_CLASSES.generatedName}">${name}</div>`
+      ).join('');
 
-    let selectedSettlement = null;
+      resultDiv.innerHTML = resultsHtml + authorCredits;
 
-    if (components.includes('title')) {
-      const settlementData = globalNamesData.getData(`${language}.${species}.settlements`);
-      if (settlementData?.settlements) {
-        const settlements = settlementData.settlements;
-        selectedSettlement = settlements[Math.floor(Math.random() * settlements.length)];
-        logDebug("Selected settlement for title:", selectedSettlement?.name);
-      }
-    }
+      // Remove updating class after animation starts
+      setTimeout(() => {
+        resultDiv.classList.remove('updating');
+      }, 300);
+    }, 100);
 
-    const nameComponents = {};
-    for (const component of components) {
-      try {
-        let part = await this._generateNameComponent(language, species, gender, component, selectedSettlement);
-        if (part) {
-          nameComponents[component] = part;
-          logDebug(`Generated ${component}: ${part}`);
-        }
-      } catch (error) {
-        logWarn(`Failed to generate component ${component}`, error);
-      }
-    }
+    form.querySelector('#names-copy-btn').disabled = false;
+    form.querySelector('#names-clear-btn').disabled = false;
 
-    if (Object.keys(nameComponents).length === 0) {
-      throw new Error(game.i18n.localize("names.no-names-generated"));
-    }
-
-    const formattedName = this._formatName(nameFormat, nameComponents);
-    logDebug("Formatted name:", formattedName);
-    return formattedName;
+    // Resize window after generating names
+    setTimeout(() => this._resizeToContent(), 100);
   }
 
-  _formatName(format, components) {
-    let result = format;
 
-    const placeholders = {
-      '{firstname}': components.firstname || '',
-      '{surname}': components.surname || '',
-      '{title}': components.title || '',
-      '{nickname}': components.nickname || ''
-    };
 
-    for (const [placeholder, value] of Object.entries(placeholders)) {
-      result = result.replace(new RegExp(placeholder.replace(/[{}]/g, '\\$&'), 'g'), value);
-    }
 
-    result = result
-      .replace(/\s+/g, ' ')
-      .replace(/\s*,\s*,/g, ',')
-      .replace(/^[,\s]+|[,\s]+$/g, '')
-      .replace(/,\s*$/g, '')
-      .replace(/^\s*,/g, '')
-      .replace(/\s+,/g, ',')
-      .replace(/,\s*/g, ', ')
-      .trim();
-
-    return result;
-  }
-
-  async _generateNameComponent(language, species, gender, component, settlement) {
-    switch (component) {
-      case 'firstname':
-        return this._getRandomFromData(language, species, gender);
-
-      case 'surname':
-        return this._getRandomFromData(language, species, 'surnames'); // Correct: plural
-
-      case 'title':
-        return this._generateTitle(language, species, gender, settlement);
-
-      case 'nickname':
-        const nickname = this._getRandomFromGenderedData(language, species, 'nicknames', gender); // Correct: plural
-        return nickname ? `"${nickname}"` : null;
-
-      default:
-        logWarn(`Unknown name component: ${component}`);
-        return null;
-    }
-  }
-
-  _generateTitle(language, species, gender, settlement) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return null;
-
-    const titleData = globalNamesData.getData(`${language}.${species}.titles`);
-    if (!titleData?.titles) {
-      logDebug(`No title data found for ${language}.${species}`);
-      return null;
-    }
-
-    const genderTitles = titleData.titles[gender];
-    if (!genderTitles || genderTitles.length === 0) {
-      logDebug(`No ${gender} titles found for ${language}.${species}`);
-      
-      if (gender === 'nonbinary' && titleData.titles.male) {
-        const maleTitles = titleData.titles.male;
-        const selectedTitle = maleTitles[Math.floor(Math.random() * maleTitles.length)];
-        if (settlement && selectedTitle.template) {
-          return this._formatTitleWithSettlement(selectedTitle, settlement, language, species);
-        }
-        logDebug("Using male title as fallback for nonbinary");
-        return selectedTitle.name || selectedTitle;
-      }
-      return null;
-    }
-
-    const selectedTitle = genderTitles[Math.floor(Math.random() * genderTitles.length)];
-
-    if (settlement && selectedTitle.template) {
-      return this._formatTitleWithSettlement(selectedTitle, settlement, language, species);
-    }
-
-    return selectedTitle.name || selectedTitle;
-  }
-
-  _formatTitleWithSettlement(title, settlement, language, species) {
-    if (!title.template) return title.name || title;
-
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return title.name || title;
-
-    const grammarRules = globalNamesData.getGrammarRules(language, species);
-    let article = title.preposition || 'von';
-
-    if (grammarRules?.articles && title.preposition) {
-      const prepositionRules = grammarRules.articles[title.preposition];
-      if (prepositionRules) {
-        const gender = settlement.gender || 'n';
-        article = prepositionRules[gender] || title.preposition;
-      }
-    }
-
-    const formattedTitle = title.template
-      .replace('{preposition}', article)
-      .replace('{settlement}', settlement.name);
-
-    logDebug("Formatted title with settlement:", formattedTitle);
-    return formattedTitle;
-  }
-
-  _getRandomFromData(language, species, category) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return null;
-
-    const key = `${language}.${species}.${category}`;
-    const data = globalNamesData.getData(key);
-
-    if (!data) {
-      logDebug(`No data found for ${key}`);
-      return null;
-    }
-
-    // Handle different data structures
-    let namesList = null;
-
-    // Traditional structure: data.names
-    if (data.names && Array.isArray(data.names) && data.names.length > 0) {
-      namesList = data.names;
-    }
-    // API structure: data might be a direct array or have category-specific arrays
-    else if (Array.isArray(data) && data.length > 0) {
-      namesList = data;
-    }
-    // API structure: check for gender-specific arrays in combined data
-    else if (category === 'male' && data.male && Array.isArray(data.male)) {
-      namesList = data.male;
-    }
-    else if (category === 'female' && data.female && Array.isArray(data.female)) {
-      namesList = data.female;
-    }
-    else if (category === 'nonbinary' && data.nonbinary && Array.isArray(data.nonbinary)) {
-      namesList = data.nonbinary;
-    }
-    // API structure: nested gender-component structure (data.gender.component)
-    else if (['male', 'female', 'nonbinary'].includes(category) && data[category]) {
-      // For firstname, try to find a names array or default to firstname
-      if (data[category].firstname && Array.isArray(data[category].firstname)) {
-        namesList = data[category].firstname;
-      }
-    }
-    // API structure: check for other category arrays
-    else if (data[category] && Array.isArray(data[category])) {
-      namesList = data[category];
-    }
-    // API structure: nested category-component structure for surnames etc
-    else if (category === 'surnames') {
-      // Look for surname arrays in any gender section
-      for (const gender of ['male', 'female', 'nonbinary']) {
-        if (data[gender]?.surname && Array.isArray(data[gender].surname)) {
-          namesList = data[gender].surname;
-          break;
-        }
-      }
-    }
-
-    if (!namesList || namesList.length === 0) {
-      // Detailed debug logging for API species
-      if (['genasi', 'tabaxi'].includes(species)) {
-        console.log(`DEBUG API SPECIES ${key}:`, {
-          dataExists: !!data,
-          dataType: typeof data,
-          dataIsArray: Array.isArray(data),
-          dataKeys: data ? Object.keys(data) : 'no data',
-          dataFirstLevelStructure: data ? Object.keys(data).reduce((acc, k) => {
-            acc[k] = { type: typeof data[k], isArray: Array.isArray(data[k]), length: data[k]?.length };
-            return acc;
-          }, {}) : 'no data'
-        });
-        // Also log the actual content
-        if (data && Object.keys(data).length > 0) {
-          Object.keys(data).forEach(k => {
-            console.log(`  ${key}.${k}:`, data[k]);
-          });
-        }
-      }
-      logDebug(`No valid names array found for ${key}, data structure:`, data);
-      return null;
-    }
-
-    const selectedName = namesList[Math.floor(Math.random() * namesList.length)];
-    logDebug(`Selected from ${key}: ${selectedName}`);
-    return selectedName;
-  }
-
-  _getRandomFromGenderedData(language, species, category, gender) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return null;
-
-    const key = `${language}.${species}.${category}`;
-    const data = globalNamesData.getData(key);
-
-    if (!data) {
-      logDebug(`No data found for ${key}`);
-      return null;
-    }
-
-    // Handle different data structures
-    let genderNames = null;
-
-    // Traditional structure: data.names[gender]
-    if (data?.names && typeof data.names === 'object' && data.names[gender]) {
-      genderNames = data.names[gender];
-    }
-    // Traditional structure: data.names as array (ungendered)
-    else if (data?.names && Array.isArray(data.names)) {
-      genderNames = data.names;
-    }
-    // API structure: data[gender] directly
-    else if (data[gender] && Array.isArray(data[gender])) {
-      genderNames = data[gender];
-    }
-    // API structure: nested gender-category structure (data.gender.category)
-    else if (data[gender] && typeof data[gender] === 'object') {
-      // For nicknames, surnames, etc., look in the gender-specific object
-      if (data[gender][category] && Array.isArray(data[gender][category])) {
-        genderNames = data[gender][category];
-      }
-      // For general names, try common name fields
-      else if (data[gender].firstname && Array.isArray(data[gender].firstname)) {
-        genderNames = data[gender].firstname;
-      }
-    }
-    // API structure: data as direct array (ungendered)
-    else if (Array.isArray(data)) {
-      genderNames = data;
-    }
-
-    if (!genderNames || genderNames.length === 0) {
-      // Detailed debug logging for API species
-      if (['genasi', 'tabaxi'].includes(species)) {
-        console.log(`DEBUG API SPECIES GENDERED ${key} (${gender}):`, {
-          dataExists: !!data,
-          dataType: typeof data,
-          dataIsArray: Array.isArray(data),
-          dataKeys: data ? Object.keys(data) : 'no data',
-          fullData: data
-        });
-      }
-      logDebug(`No ${gender} names found for ${key}, data structure:`, data);
-      return null;
-    }
-
-    const selectedName = genderNames[Math.floor(Math.random() * genderNames.length)];
-    logDebug(`Selected ${gender} name from ${key}: ${selectedName}`);
-    return selectedName;
-  }
 
   _collectAuthorCredits(language, species, components) {
     const globalNamesData = getGlobalNamesData();
@@ -1299,6 +1067,31 @@ export class NamesGeneratorApp extends Application {
           this.element.css('transition', '');
         }
       }, 300);
+    }
+  }
+
+  /**
+   * Updates an Enhanced Dropdown value
+   * @param {string} dropdownName - Name of the dropdown (language, species, category)
+   * @param {string} value - Value to set
+   */
+  _updateEnhancedDropdownValue(dropdownName, value) {
+    const enhancedDropdown = this.enhancedDropdowns.get(dropdownName);
+    if (enhancedDropdown && enhancedDropdown.setValue) {
+      enhancedDropdown.setValue(value);
+      logDebug(`Updated ${dropdownName} Enhanced Dropdown to: "${value}"`);
+    }
+  }
+
+  /**
+   * Updates Enhanced Dropdown options after rebuilding select options
+   * @param {string} dropdownName - Name of the dropdown to update
+   */
+  _updateEnhancedDropdownOptions(dropdownName) {
+    const enhancedDropdown = this.enhancedDropdowns.get(dropdownName);
+    if (enhancedDropdown && enhancedDropdown.loadItems) {
+      enhancedDropdown.loadItems();
+      logDebug(`Reloaded Enhanced Dropdown options for ${dropdownName}`);
     }
   }
 
