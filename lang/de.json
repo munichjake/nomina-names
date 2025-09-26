@@ -1,23 +1,26 @@
 {
   "names": {
     "title": "Names",
-    
     "// ===== BASIC UI ELEMENTS =====": "",
     "language": "Sprache",
-    "lbl_species": "Spezies", 
+    "lbl_species": "Spezies",
     "category": "Kategorie",
     "generate": "Generieren",
     "copy": "Kopieren",
     "clear": "Löschen",
     "copied": "Name kopiert!",
     "or": "oder",
-
+    "// ===== UI DROPDOWN LABELS =====": "",
+    "ui": {
+      "choose-species": "Spezies wählen...",
+      "choose-category": "Kategorie wählen..."
+    },
     "// ===== NAMES & COMPONENTS =====": "",
     "names": "Namen",
     "components": "Komponenten",
     "gender": "Geschlecht",
     "male": "Männlich",
-    "female": "Weiblich", 
+    "female": "Weiblich",
     "nonbinary": "Nicht-binär",
     "firstname": "Vorname",
     "surname": "Nachname",
@@ -26,7 +29,6 @@
     "nameformat": "Namensformat",
     "placeholders": "Verfügbare Platzhalter",
     "examples": "Beispiele",
-
     "// ===== CATEGORIZED CONTENT =====": "",
     "subcategories": "Unterkategorien",
     "settlements": "Siedlungen",
@@ -34,7 +36,6 @@
     "ships": "Schiffe",
     "shops": "Geschäfte",
     "taverns": "Tavernen",
-
     "// ===== GENERATION CONTROLS =====": "",
     "max-20": "Erstelle 1-20 Namen gleichzeitig",
     "lbl_amount": "Anzahl Namen",
@@ -44,26 +45,22 @@
     "select-all": "Bitte wähle Sprache und Spezies aus",
     "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
     "search-hint": "Tipp: Nutze die Suchfunktion um weitere Optionen zu finden",
-
     "// ===== HELP & INSTRUCTIONS =====": "",
     "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
     "subcategory-help": "Wähle mindestens eine Unterkategorie aus, oder lasse alle unausgewählt für zufällige Auswahl.",
     "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
     "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
-
     "// ===== USER INTERACTION =====": "",
     "name-adopted": "Name \"{name}\" wurde übernommen!",
     "select-one-token": "Bitte wähle genau einen Token aus.",
     "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
     "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
-
     "// ===== ERRORS & WARNINGS =====": "",
     "no-names-found": "Keine Namen gefunden für",
     "generation-error": "Fehler beim Generieren: {error}",
-    "name-error": "Fehler beim Übernehmen des Namens", 
+    "name-error": "Fehler beim Übernehmen des Namens",
     "copy-error": "Kopieren fehlgeschlagen",
     "no-names-generated": "Keine Namen konnten generiert werden",
-
     "// ===== LANGUAGES =====": "",
     "languages": {
       "de": "Deutsch",
@@ -72,7 +69,6 @@
       "es": "Spanisch",
       "it": "Italienisch"
     },
-
     "// ===== SPECIES =====": "",
     "species": {
       "human": "Mensch",
@@ -86,7 +82,6 @@
       "aasimar": "Aasimar",
       "gnome": "Gnom"
     },
-
     "// ===== CATEGORIES =====": "",
     "categories": {
       "names": "Namen",
@@ -102,14 +97,12 @@
       "shops": "Geschäfte & Handwerk",
       "taverns": "Tavernen & Gasthäuser"
     },
-
     "// ===== CATEGORY GROUPS =====": "",
     "category-groups": {
       "names": "Namen",
       "places": "Orte",
       "atmospheric": "Atmosphärisch"
     },
-
     "// ===== SUBCATEGORY TRANSLATIONS =====": "",
     "subcategory-translations": {
       "books": {
@@ -139,9 +132,15 @@
         "common_taverns": "Gewöhnliche Tavernen",
         "harbor_taverns": "Hafentavernen",
         "adventurer_taverns": "Abenteurer-Tavernen"
+      },
+      "pets": {
+        "hunde": "Hunde",
+        "katzen": "Katzen",
+        "voegel": "Vögel",
+        "fische": "Fische",
+        "tressym": "Tressym"
       }
     },
-
     "// ===== SETTINGS =====": "",
     "settings": {
       "defaultLanguage": {
@@ -192,7 +191,6 @@
         "label": "Spezies konfigurieren"
       }
     },
-
     "// ===== SPECIES CONFIG =====": "",
     "speciesConfig": {
       "title": "Spezies verwalten",
@@ -214,7 +212,6 @@
       "save": "Speichern",
       "cancel": "Abbrechen"
     },
-
     "// ===== ROLE CONFIG =====": "",
     "roleConfig": {
       "title": "Namen-Generator Rollenberechtigungen",
@@ -229,15 +226,13 @@
         "GAMEMASTER": "Spielleiter"
       }
     },
-
     "// ===== PERMISSION CHANGE =====": "",
     "permissionChange": {
-      "title": "Berechtigung geändert", 
+      "title": "Berechtigung geändert",
       "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
       "reload": "Seite neu laden",
       "later": "Später"
     },
-
     "// ===== EMERGENCY NAMES =====": "",
     "emergency": {
       "title": "Emergency NSC Names",
@@ -253,7 +248,6 @@
       "noNames": "Keine Namen verfügbar",
       "hint": "Namen basieren auf der aktuellen Foundry-Sprache"
     },
-
     "// ===== CONSOLE MESSAGES =====": "",
     "console": {
       "module-init": "Names Modul init",

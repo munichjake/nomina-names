@@ -12,6 +12,12 @@
     "copied": "Name copied!",
     "or": "or",
 
+    "// ===== UI DROPDOWN LABELS =====": "",
+    "ui": {
+      "choose-species": "Choose species...",
+      "choose-category": "Choose category..."
+    },
+
     "// ===== NAMES & COMPONENTS =====": "",
     "names": "Names",
     "components": "Components",
@@ -100,7 +106,8 @@
       "books": "Books & Writings",
       "ships": "Ships & Boats",
       "shops": "Shops & Crafts",
-      "taverns": "Taverns & Inns"
+      "taverns": "Taverns & Inns",
+      "pets": "Pets & Companions"
     },
 
     "// ===== CATEGORY GROUPS =====": "",
@@ -139,6 +146,13 @@
         "common_taverns": "Common Taverns",
         "harbor_taverns": "Harbor Taverns",
         "adventurer_taverns": "Adventurer Taverns"
+      },
+      "pets": {
+        "hunde": "Dogs",
+        "katzen": "Cats",
+        "voegel": "Birds",
+        "fische": "Fish",
+        "tressym": "Tressym"
       }
     },
 

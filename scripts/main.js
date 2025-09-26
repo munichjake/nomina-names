@@ -16,6 +16,32 @@ import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
 
+/**
+ * Central function to handle Names Generator opening
+ * Prevents multiple instances from opening simultaneously
+ */
+let isGeneratorOpening = false;
+function openNamesGenerator() {
+  if (isGeneratorOpening) {
+    logDebug("Names generator already opening, ignoring duplicate request");
+    return;
+  }
+
+  isGeneratorOpening = true;
+
+  try {
+    logDebug("Opening Names Generator");
+    new NamesGeneratorApp().render(true);
+  } catch (error) {
+    logError("Error opening Names Generator:", error);
+  } finally {
+    // Reset flag after a short delay
+    setTimeout(() => {
+      isGeneratorOpening = false;
+    }, 500);
+  }
+}
+
 // ===== MODULE INITIALIZATION =====
 
 /**
@@ -56,9 +82,15 @@ Hooks.once('ready', () => {
   // Ensure globalNamesData exists and start loading
   const dataManager = ensureGlobalNamesData();
   if (dataManager) {
-    dataManager.initializeData();
+    dataManager.initializeData().then(() => {
+      // Setup API after DataManager is ready
+      NamesAPI.setup();
+      logDebug("API setup completed after DataManager initialization");
+    }).catch(error => {
+      logError("Failed to initialize DataManager", error);
+    });
   }
-  
+
   // Add emergency button after delay (only if enabled and permitted)
   setTimeout(() => {
     if (hasNamesGeneratorPermission() && game.settings.get(MODULE_ID, "showEmergencyButton")) {
@@ -79,6 +111,31 @@ Hooks.once('ready', () => {
   
   // Fire the data loaded hook for other modules
   Hooks.callAll('namesModuleReady', NamesAPI);
+});
+
+// ===== EVENT SYSTEM FOR API EXTENSIONS =====
+
+/**
+ * Hook for external modules to register species data
+ * This hook is fired by the DataManager after core species are loaded
+ */
+Hooks.on('nomina-names:coreLoaded', (dataManager) => {
+  logDebug("Core species loaded - external modules can now register species");
+
+  // Example for external modules:
+  // Hooks.on('nomina-names:coreLoaded', (dataManager) => {
+  //   dataManager.addApiSpecies({
+  //     code: 'genasi',
+  //     displayName: 'Genasi',
+  //     languages: ['de', 'en'],
+  //     categories: ['male', 'female', 'surnames'],
+  //     data: {
+  //       'de.male': ['Aqualius', 'Brenn', 'Hydro'],
+  //       'de.female': ['Aquila', 'Flamina', 'Terra'],
+  //       'de.surnames': ['Wasserlauf', 'Glutwind', 'Steinfels']
+  //     }
+  //   });
+  // });
 });
 
 // ===== ENHANCED DROPDOWNS INITIALIZATION =====
@@ -273,7 +330,7 @@ function injectTokenControlsButtonDirectly() {
     event.preventDefault();
     event.stopPropagation();
     logDebug("Names tool button clicked via DOM injection into token tools");
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
   });
 
   // Additional event delegation for v13 compatibility
@@ -281,7 +338,7 @@ function injectTokenControlsButtonDirectly() {
     event.preventDefault();
     event.stopPropagation();
     logDebug("Names tool button pressed via DOM injection into token tools");
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
   });
 
   // Insert into token tools container
@@ -316,7 +373,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
       icon: 'fas fa-user-tag',
       button: true,
       visible: () => hasNamesGeneratorPermission(),
-      onClick: () => new NamesGeneratorApp().render(true)
+      onClick: () => openNamesGenerator()
     });
 
     logDebug("Names generator tool added to token controls (v12)");
@@ -332,7 +389,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
         visible: true,
         onClick: () => {
           logDebug("Names generator clicked via v13 token controls");
-          new NamesGeneratorApp().render(true);
+          openNamesGenerator();
         }
       };
 
@@ -368,7 +425,7 @@ function setupGlobalEventDelegation() {
       dataControl: $(this).attr('data-control'),
       dataTool: $(this).attr('data-tool')
     });
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
   });
 
   logDebug("Global event delegation setup for Names controls");
@@ -386,12 +443,12 @@ function setupV13EventHandling() {
   });
 
   // Hook into control tool activation for v13
-  Hooks.off('controlTool', 'names-generator'); // Remove existing handler
-  Hooks.on('controlTool', (tool, active) => {
+  // Use once() to avoid duplicate handlers
+  Hooks.once('controlTool', function namesControlToolHandler(tool, active) {
     logDebug("controlTool hook called", { tool, active });
     if (tool === 'names-generator' && active) {
       logDebug("Names generator activated via controlTool hook");
-      new NamesGeneratorApp().render(true);
+      openNamesGenerator();
     }
   });
 
@@ -405,7 +462,7 @@ function setupV13EventHandling() {
       currentTarget: event.currentTarget.tagName,
       dataTool: $(this).attr('data-tool')
     });
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
   });
 
   // Also try direct click handler on existing tools
@@ -413,7 +470,7 @@ function setupV13EventHandling() {
     event.preventDefault();
     event.stopPropagation();
     logDebug("Names tool clicked via direct handler");
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
   });
 
   logDebug("v13 event handling setup completed", {
@@ -517,7 +574,7 @@ Hooks.on('renderSceneControls', (sceneControls, html, data) => {
         namesButton.click((event) => {
           event.preventDefault();
           event.stopPropagation();
-          new NamesGeneratorApp().render(true);
+          openNamesGenerator();
         });
 
         controlsContainer.append(namesButton);
@@ -542,7 +599,7 @@ Hooks.on('renderSceneControls', (sceneControls, html, data) => {
     namesButton.click((event) => {
       event.preventDefault();
       event.stopPropagation();
-      new NamesGeneratorApp().render(true);
+      openNamesGenerator();
     });
 
     // Add the button to the token tools
@@ -671,7 +728,7 @@ Hooks.on('chatMessage', (html, content, msg) => {
   }
 
   if (content === '/names' || content === '/namen') {
-    new NamesGeneratorApp().render(true);
+    openNamesGenerator();
     return false;
   }
 

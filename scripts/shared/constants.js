@@ -28,6 +28,21 @@ let INDEX_LOADED = false;
  */
 export function setCategoryDefinitions(categories) {
   CATEGORY_DEFINITIONS = categories || {};
+
+  // Merge with fallback definitions to ensure all necessary properties exist
+  for (const [category, fallbackDef] of Object.entries(FALLBACK_CATEGORIES)) {
+    if (CATEGORY_DEFINITIONS[category]) {
+      // Merge fallback properties that are missing
+      CATEGORY_DEFINITIONS[category] = {
+        ...fallbackDef,
+        ...CATEGORY_DEFINITIONS[category]
+      };
+    } else {
+      // Use fallback definition if category is missing entirely
+      CATEGORY_DEFINITIONS[category] = { ...fallbackDef };
+    }
+  }
+
   CATEGORY_GROUPS = {};
   INDEX_LOADED = true;
   console.debug("Names | Category definitions updated:", Object.keys(CATEGORY_DEFINITIONS));
@@ -45,6 +60,20 @@ export function setCategoryDefinitionsFromGroups(categoryGroups) {
   for (const [groupKey, groupData] of Object.entries(CATEGORY_GROUPS)) {
     if (groupData.categories) {
       Object.assign(CATEGORY_DEFINITIONS, groupData.categories);
+    }
+  }
+
+  // Merge with fallback definitions to ensure all necessary properties exist
+  for (const [category, fallbackDef] of Object.entries(FALLBACK_CATEGORIES)) {
+    if (CATEGORY_DEFINITIONS[category]) {
+      // Merge fallback properties that are missing
+      CATEGORY_DEFINITIONS[category] = {
+        ...fallbackDef,
+        ...CATEGORY_DEFINITIONS[category]
+      };
+    } else {
+      // Use fallback definition if category is missing entirely
+      CATEGORY_DEFINITIONS[category] = { ...fallbackDef };
     }
   }
 
@@ -78,13 +107,21 @@ export function getAvailableCategories() {
 }
 
 /**
- * Check if a category has subcategories (categorized content)
+ * Check if a category has subcategories (categorized content) - 3.0.0 format only
  * @param {string} category - Category to check
  * @returns {boolean} True if category has subcategories
  */
 export function isCategorizedContent(category) {
+  // Check if category is defined in CATEGORY_DEFINITIONS and has type 'categorized'
   const categoryDef = CATEGORY_DEFINITIONS[category];
-  return categoryDef?.type === 'categorized';
+  if (categoryDef && categoryDef.type === 'categorized') {
+    return true;
+  }
+
+  // Fallback: assume non-names categories are categorized content by default
+  // This allows dynamic addition of new categories without code changes
+  return category !== 'names' &&
+         !['male', 'female', 'nonbinary', 'surnames', 'nicknames', 'titles'].includes(category);
 }
 
 /**
@@ -149,9 +186,30 @@ export function getCategoryType(category) {
 /**
  * Get localized category name
  * @param {string} category - Category to get name for
+ * @param {Object} [context] - Optional context for 3.1.0 format lookups
+ * @param {string} [context.language] - Language code for displayName lookup
+ * @param {string} [context.species] - Species code for displayName lookup
+ * @param {Function} [context.getCategoryDisplayName] - Function to get cached displayName
  * @returns {string} Localized category name
  */
-export function getLocalizedCategoryName(category) {
+export function getLocalizedCategoryName(category, context = null) {
+  // Try 3.1.0 format displayName from cache first (if context provided)
+  if (context && context.language && context.species && context.getCategoryDisplayName) {
+    const displayName = context.getCategoryDisplayName(context.language, context.species, category);
+    if (displayName) {
+      // Priority: current language -> English -> German -> first available -> fallback
+      const currentLang = context.language;
+      const langOptions = [currentLang, 'en', 'de', ...Object.keys(displayName)];
+
+      for (const lang of langOptions) {
+        if (displayName[lang]) {
+          return displayName[lang];
+        }
+      }
+    }
+  }
+
+  // Fallback to traditional i18n system
   const locKey = getCategoryLocalization(category);
   try {
     return game.i18n.localize(locKey) || category.charAt(0).toUpperCase() + category.slice(1);

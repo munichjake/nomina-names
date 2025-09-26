@@ -1,2126 +1,2128 @@
 {
-  "authors": [
+  "category": {
+    "code": "settlements",
+    "i18n": {
+      "en": "Settlements",
+      "de": "Siedlungen"
+    }
+  },
+  "items": [
     {
-      "name": "munichjake",
-      "email": "munichjake@dnd-session.de",
-      "url": "https://dnd-session.de",
-      "github": "https://github.com/munichjake"
+      "name": "Aschefall",
+      "gender": "m"
+    },
+    {
+      "name": "Flammengrund",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenschmiede",
+      "gender": "f"
+    },
+    {
+      "name": "Pechhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Klagetal",
+      "gender": "n"
+    },
+    {
+      "name": "Höllenpforte",
+      "gender": "f"
+    },
+    {
+      "name": "Schicksalswacht",
+      "gender": "f"
+    },
+    {
+      "name": "Blutstein",
+      "gender": "m"
+    },
+    {
+      "name": "Grausiedel",
+      "gender": "m"
+    },
+    {
+      "name": "Finsterschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schwefelquell",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenklaue",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenland",
+      "gender": "n"
+    },
+    {
+      "name": "Grollenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Teufelszunge",
+      "gender": "f"
+    },
+    {
+      "name": "Rabenspitze",
+      "gender": "f"
+    },
+    {
+      "name": "Dämonenwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Lügenhain",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzfeld",
+      "gender": "n"
+    },
+    {
+      "name": "Zornberg",
+      "gender": "m"
+    },
+    {
+      "name": "Glutloch",
+      "gender": "n"
+    },
+    {
+      "name": "Verderbenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Flammenfestung",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Leidfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Dornengrund",
+      "gender": "m"
+    },
+    {
+      "name": "Blutfall",
+      "gender": "m"
+    },
+    {
+      "name": "Schandehorst",
+      "gender": "m"
+    },
+    {
+      "name": "Fluchthal",
+      "gender": "n"
+    },
+    {
+      "name": "Totenpfuhl",
+      "gender": "m"
+    },
+    {
+      "name": "Schwarzwasser",
+      "gender": "n"
+    },
+    {
+      "name": "Fackelheim",
+      "gender": "n"
+    },
+    {
+      "name": "Nachtschatten",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafels",
+      "gender": "m"
+    },
+    {
+      "name": "Grolltal",
+      "gender": "n"
+    },
+    {
+      "name": "Eisenmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Tiefengrund",
+      "gender": "m"
+    },
+    {
+      "name": "Sündenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenblick",
+      "gender": "m"
+    },
+    {
+      "name": "Glutstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Schicksalsberg",
+      "gender": "m"
+    },
+    {
+      "name": "Klagestein",
+      "gender": "m"
+    },
+    {
+      "name": "Blutmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Dämonenstolz",
+      "gender": "m"
+    },
+    {
+      "name": "Ewigkeitshafen",
+      "gender": "m"
+    },
+    {
+      "name": "Peinigtal",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenheim",
+      "gender": "n"
+    },
+    {
+      "name": "Verdammnisburg",
+      "gender": "f"
+    },
+    {
+      "name": "Fluchwald",
+      "gender": "m"
+    },
+    {
+      "name": "Dunkelwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Seelenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Glimmerhöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenland",
+      "gender": "n"
+    },
+    {
+      "name": "Schattensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelsee",
+      "gender": "m"
+    },
+    {
+      "name": "Rauchhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Brandfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Aschental",
+      "gender": "n"
+    },
+    {
+      "name": "Rostmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Blutsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Grimmling",
+      "gender": "m"
+    },
+    {
+      "name": "Glutstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Dämonenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Schindergrat",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenburg",
+      "gender": "f"
+    },
+    {
+      "name": "Flammenwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Fluchthain",
+      "gender": "m"
+    },
+    {
+      "name": "Zornfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtschleier",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafluss",
+      "gender": "m"
+    },
+    {
+      "name": "Rostmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Klagensee",
+      "gender": "m"
+    },
+    {
+      "name": "Dämonenfall",
+      "gender": "m"
+    },
+    {
+      "name": "Pechsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Glutgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Höllensee",
+      "gender": "m"
+    },
+    {
+      "name": "Seelenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Dunkelpass",
+      "gender": "m"
+    },
+    {
+      "name": "Schandefurt",
+      "gender": "f"
+    },
+    {
+      "name": "Grauwind",
+      "gender": "m"
+    },
+    {
+      "name": "Ascheburg",
+      "gender": "f"
+    },
+    {
+      "name": "Zornkamm",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Grollenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Blutpfad",
+      "gender": "m"
+    },
+    {
+      "name": "Flammenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Rostfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Totenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenburg",
+      "gender": "f"
+    },
+    {
+      "name": "Finsterschmiede",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenring",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Verzweiflungstal",
+      "gender": "n"
+    },
+    {
+      "name": "Glutdorn",
+      "gender": "m"
+    },
+    {
+      "name": "Lügenfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzhorn",
+      "gender": "n"
+    },
+    {
+      "name": "Dornenhorst",
+      "gender": "m"
+    },
+    {
+      "name": "Blutmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Pechfels",
+      "gender": "m"
+    },
+    {
+      "name": "Rabenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Dämonenfall",
+      "gender": "m"
+    },
+    {
+      "name": "Klagewald",
+      "gender": "m"
+    },
+    {
+      "name": "Zornklinge",
+      "gender": "f"
+    },
+    {
+      "name": "Aschegrat",
+      "gender": "m"
+    },
+    {
+      "name": "Grollfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Schwefelhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenhorst",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Wutbach",
+      "gender": "m"
+    },
+    {
+      "name": "Blutstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Schattendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Leidhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisburg",
+      "gender": "f"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Glutgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Grolltal",
+      "gender": "n"
+    },
+    {
+      "name": "Eisenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Rabenschild",
+      "gender": "m"
+    },
+    {
+      "name": "Lügenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzthal",
+      "gender": "n"
+    },
+    {
+      "name": "Dämonenhorst",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Brandtal",
+      "gender": "n"
+    },
+    {
+      "name": "Blutmond",
+      "gender": "m"
+    },
+    {
+      "name": "Schandberg",
+      "gender": "m"
+    },
+    {
+      "name": "Flammenfeld",
+      "gender": "n"
+    },
+    {
+      "name": "Zornfels",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Schattengrat",
+      "gender": "m"
+    },
+    {
+      "name": "Leidendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Klagestein",
+      "gender": "m"
+    },
+    {
+      "name": "Peinigtal",
+      "gender": "n"
+    },
+    {
+      "name": "Totenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Schwefelschmiede",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenhain",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtfels",
+      "gender": "m"
+    },
+    {
+      "name": "Sündenfestung",
+      "gender": "f"
+    },
+    {
+      "name": "Blutklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Grollstein",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Aschenberg",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenturm",
+      "gender": "m"
+    },
+    {
+      "name": "Wuthorst",
+      "gender": "m"
+    },
+    {
+      "name": "Lügenhain",
+      "gender": "m"
+    },
+    {
+      "name": "Leidwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Flammenhorn",
+      "gender": "n"
+    },
+    {
+      "name": "Rabenteich",
+      "gender": "m"
+    },
+    {
+      "name": "Dämonenschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Aschefluss",
+      "gender": "m"
+    },
+    {
+      "name": "Rostfels",
+      "gender": "m"
+    },
+    {
+      "name": "Glutsee",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenfels",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelberg",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Narbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Zornklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Blutsee",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Lavafeld",
+      "gender": "n"
+    },
+    {
+      "name": "Grollfels",
+      "gender": "m"
+    },
+    {
+      "name": "Blutschmiede",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Dornensee",
+      "gender": "m"
+    },
+    {
+      "name": "Aschesee",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenfeld",
+      "gender": "n"
+    },
+    {
+      "name": "Leidberg",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisthal",
+      "gender": "n"
+    },
+    {
+      "name": "Schmerzfels",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenberg",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsburg",
+      "gender": "f"
+    },
+    {
+      "name": "Zornental",
+      "gender": "n"
+    },
+    {
+      "name": "Blutpfuhl",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtwind",
+      "gender": "m"
+    },
+    {
+      "name": "Lavatal",
+      "gender": "n"
+    },
+    {
+      "name": "Grollbach",
+      "gender": "m"
+    },
+    {
+      "name": "Blutschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Dornenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Aschefeste",
+      "gender": "f"
+    },
+    {
+      "name": "Höllental",
+      "gender": "n"
+    },
+    {
+      "name": "Leidland",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternismond",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzwald",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Zornsee",
+      "gender": "m"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhügel",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Lavagrat",
+      "gender": "m"
+    },
+    {
+      "name": "Grollbach",
+      "gender": "m"
+    },
+    {
+      "name": "Blutfall",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Aschewald",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Leidhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisklaue",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzenshügel",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenfels",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Zornfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Bluthafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenquell",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Lavahöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Grollfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Dornenwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Aschegrat",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenkamm",
+      "gender": "m"
+    },
+    {
+      "name": "Leidstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Finsterniswacht",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Schwefelbach",
+      "gender": "m"
+    },
+    {
+      "name": "Eisendorn",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenhain",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Zornberg",
+      "gender": "m"
+    },
+    {
+      "name": "Blutberg",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Lavastadt",
+      "gender": "f"
+    },
+    {
+      "name": "Grollhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Bluthafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schattensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenfels",
+      "gender": "m"
+    },
+    {
+      "name": "Aschenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Höllengrat",
+      "gender": "m"
+    },
+    {
+      "name": "Leidtal",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternisfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensfels",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenland",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelsnase",
+      "gender": "f"
+    },
+    {
+      "name": "Zornesklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Lavatiefen",
+      "gender": "f"
+    },
+    {
+      "name": "Grollschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Blutmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenfall",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Ascheklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Leidwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Finsternisstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensklage",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenhort",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenspitze",
+      "gender": "f"
+    },
+    {
+      "name": "Teufelsmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Zorneshain",
+      "gender": "m"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafels",
+      "gender": "m"
+    },
+    {
+      "name": "Grollfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Blutflamm",
+      "gender": "m"
+    },
+    {
+      "name": "Schattendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Dornenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Aschenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Leidmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternisfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzenshafen",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenfeld",
+      "gender": "n"
+    },
+    {
+      "name": "Schwefelsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenberg",
+      "gender": "m"
+    },
+    {
+      "name": "Narbental",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelshafen",
+      "gender": "m"
+    },
+    {
+      "name": "Zornesgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenwiese",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafluss",
+      "gender": "m"
+    },
+    {
+      "name": "Grollklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattengrat",
+      "gender": "m"
+    },
+    {
+      "name": "Dornensee",
+      "gender": "m"
+    },
+    {
+      "name": "Ascheschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Höllendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Leidstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Finsternisklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbental",
+      "gender": "n"
+    },
+    {
+      "name": "Schwefelquell",
+      "gender": "f"
+    },
+    {
+      "name": "Eisental",
+      "gender": "n"
+    },
+    {
+      "name": "Narbenmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelsfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Zorneshöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Blutmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtfestung",
+      "gender": "f"
+    },
+    {
+      "name": "Lavagrube",
+      "gender": "f"
+    },
+    {
+      "name": "Grollwald",
+      "gender": "m"
+    },
+    {
+      "name": "Blutwald",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenhöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Dornental",
+      "gender": "n"
+    },
+    {
+      "name": "Ascheflamme",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenhorst",
+      "gender": "m"
+    },
+    {
+      "name": "Leidsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternistal",
+      "gender": "n"
+    },
+    {
+      "name": "Schmerzenssee",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Eisenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Narbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Zornesbrücke",
+      "gender": "f"
+    },
+    {
+      "name": "Blutberg",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtwiese",
+      "gender": "f"
+    },
+    {
+      "name": "Lavagrund",
+      "gender": "m"
+    },
+    {
+      "name": "Grollhügel",
+      "gender": "m"
+    },
+    {
+      "name": "Blutfall",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenschild",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenklinge",
+      "gender": "f"
+    },
+    {
+      "name": "Aschegrat",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenfestung",
+      "gender": "f"
+    },
+    {
+      "name": "Leidwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Finsternissee",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzensfall",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Narbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Zornesstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Blutströmung",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenspitze",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtfels",
+      "gender": "m"
+    },
+    {
+      "name": "Lavakessel",
+      "gender": "m"
+    },
+    {
+      "name": "Grollmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Blutmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Schattensee",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Aschefluss",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenblick",
+      "gender": "m"
+    },
+    {
+      "name": "Leidbach",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisbach",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzenswacht",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenburg",
+      "gender": "f"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Zornesfels",
+      "gender": "m"
+    },
+    {
+      "name": "Blutwasser",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenfall",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafels",
+      "gender": "m"
+    },
+    {
+      "name": "Grollbach",
+      "gender": "m"
+    },
+    {
+      "name": "Blutschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Dornenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Aschefeste",
+      "gender": "f"
+    },
+    {
+      "name": "Höllental",
+      "gender": "n"
+    },
+    {
+      "name": "Leidland",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternismond",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzwald",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Zornsee",
+      "gender": "m"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhügel",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Lavagrat",
+      "gender": "m"
+    },
+    {
+      "name": "Grollbach",
+      "gender": "m"
+    },
+    {
+      "name": "Blutfall",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Aschewald",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenstein",
+      "gender": "m"
+    },
+    {
+      "name": "Leidhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternisklaue",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzenshügel",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenfels",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Zornfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Bluthafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenquell",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Lavahöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Grollfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Dornenwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Aschegrat",
+      "gender": "m"
+    },
+    {
+      "name": "Höllenkamm",
+      "gender": "m"
+    },
+    {
+      "name": "Leidstrom",
+      "gender": "m"
+    },
+    {
+      "name": "Finsterniswacht",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Schwefelbach",
+      "gender": "m"
+    },
+    {
+      "name": "Eisendorn",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenhain",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Zornberg",
+      "gender": "m"
+    },
+    {
+      "name": "Blutberg",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Lavastadt",
+      "gender": "f"
+    },
+    {
+      "name": "Grollhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Bluthafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schattensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenfels",
+      "gender": "m"
+    },
+    {
+      "name": "Aschenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Höllengrat",
+      "gender": "m"
+    },
+    {
+      "name": "Leidtal",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternisfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensfels",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenschwärze",
+      "gender": "f"
+    },
+    {
+      "name": "Narbenland",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelsnase",
+      "gender": "f"
+    },
+    {
+      "name": "Zornesklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtgrat",
+      "gender": "m"
+    },
+    {
+      "name": "Lavatiefen",
+      "gender": "f"
+    },
+    {
+      "name": "Grollschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Blutmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenfall",
+      "gender": "m"
+    },
+    {
+      "name": "Dornenschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Ascheklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Leidwacht",
+      "gender": "f"
+    },
+    {
+      "name": "Finsternisstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensklage",
+      "gender": "f"
+    },
+    {
+      "name": "Verderbenhort",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Eisenfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Narbenspitze",
+      "gender": "f"
+    },
+    {
+      "name": "Teufelsmoor",
+      "gender": "n"
+    },
+    {
+      "name": "Zorneshain",
+      "gender": "m"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenhafen",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtschlund",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafels",
+      "gender": "m"
+    },
+    {
+      "name": "Grollfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Blutflamm",
+      "gender": "m"
+    },
+    {
+      "name": "Schattendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Dornenpass",
+      "gender": "m"
+    },
+    {
+      "name": "Aschenstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenfurt",
+      "gender": "f"
+    },
+    {
+      "name": "Leidmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Finsternisfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Schmerzenshafen",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbenfeld",
+      "gender": "n"
+    },
+    {
+      "name": "Schwefelsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Eisenberg",
+      "gender": "m"
+    },
+    {
+      "name": "Narbental",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelshafen",
+      "gender": "m"
+    },
+    {
+      "name": "Zornesgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Blutquell",
+      "gender": "f"
+    },
+    {
+      "name": "Schattenwiese",
+      "gender": "f"
+    },
+    {
+      "name": "Nachtgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Lavafluss",
+      "gender": "m"
+    },
+    {
+      "name": "Grollklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Blutschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Schattengrat",
+      "gender": "m"
+    },
+    {
+      "name": "Dornensee",
+      "gender": "m"
+    },
+    {
+      "name": "Ascheschlucht",
+      "gender": "f"
+    },
+    {
+      "name": "Höllendorf",
+      "gender": "n"
+    },
+    {
+      "name": "Leidstadt",
+      "gender": "f"
+    },
+    {
+      "name": "Finsternisklamm",
+      "gender": "f"
+    },
+    {
+      "name": "Schmerzensfluss",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbental",
+      "gender": "n"
+    },
+    {
+      "name": "Schwefelquell",
+      "gender": "f"
+    },
+    {
+      "name": "Eisental",
+      "gender": "n"
+    },
+    {
+      "name": "Narbenmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Teufelsfeste",
+      "gender": "f"
+    },
+    {
+      "name": "Zorneshöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Blutmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Schattenbach",
+      "gender": "m"
+    },
+    {
+      "name": "Nachtfestung",
+      "gender": "f"
+    },
+    {
+      "name": "Lavagrube",
+      "gender": "f"
+    },
+    {
+      "name": "Grollwald",
+      "gender": "m"
+    },
+    {
+      "name": "Blutwald",
+      "gender": "m"
+    },
+    {
+      "name": "Schattenhöhle",
+      "gender": "f"
+    },
+    {
+      "name": "Dornental",
+      "gender": "n"
+    },
+    {
+      "name": "Ascheflamme",
+      "gender": "f"
+    },
+    {
+      "name": "Höllenhorst",
+      "gender": "m"
+    },
+    {
+      "name": "Leidsumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Finsternistal",
+      "gender": "n"
+    },
+    {
+      "name": "Schmerzenssee",
+      "gender": "m"
+    },
+    {
+      "name": "Verderbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Schwefelmoos",
+      "gender": "n"
+    },
+    {
+      "name": "Eisenwald",
+      "gender": "m"
+    },
+    {
+      "name": "Narbensumpf",
+      "gender": "m"
+    },
+    {
+      "name": "Teufelsgrund",
+      "gender": "m"
+    },
+    {
+      "name": "Zornesbrücke",
+      "gender": "f"
     }
   ],
-  "description": "Fiktive Siedlungen der Tieflinge mit grammatikalischen Geschlechtern",
-  "version": "1.0.1",
-  "settlements": [
-  {
-    "name": "Aschefall",
-    "gender": "m"
-  },
-  {
-    "name": "Flammengrund",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenschmiede",
-    "gender": "f"
-  },
-  {
-    "name": "Pechhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Klagetal",
-    "gender": "n"
-  },
-  {
-    "name": "Höllenpforte",
-    "gender": "f"
-  },
-  {
-    "name": "Schicksalswacht",
-    "gender": "f"
-  },
-  {
-    "name": "Blutstein",
-    "gender": "m"
-  },
-  {
-    "name": "Grausiedel",
-    "gender": "m"
-  },
-  {
-    "name": "Finsterschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schwefelquell",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenklaue",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenland",
-    "gender": "n"
-  },
-  {
-    "name": "Grollenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Teufelszunge",
-    "gender": "f"
-  },
-  {
-    "name": "Rabenspitze",
-    "gender": "f"
-  },
-  {
-    "name": "Dämonenwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Lügenhain",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzfeld",
-    "gender": "n"
-  },
-  {
-    "name": "Zornberg",
-    "gender": "m"
-  },
-  {
-    "name": "Glutloch",
-    "gender": "n"
-  },
-  {
-    "name": "Verderbenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Flammenfestung",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Leidfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Dornengrund",
-    "gender": "m"
-  },
-  {
-    "name": "Blutfall",
-    "gender": "m"
-  },
-  {
-    "name": "Schandehorst",
-    "gender": "m"
-  },
-  {
-    "name": "Fluchthal",
-    "gender": "n"
-  },
-  {
-    "name": "Totenpfuhl",
-    "gender": "m"
-  },
-  {
-    "name": "Schwarzwasser",
-    "gender": "n"
-  },
-  {
-    "name": "Fackelheim",
-    "gender": "n"
-  },
-  {
-    "name": "Nachtschatten",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafels",
-    "gender": "m"
-  },
-  {
-    "name": "Grolltal",
-    "gender": "n"
-  },
-  {
-    "name": "Eisenmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Tiefengrund",
-    "gender": "m"
-  },
-  {
-    "name": "Sündenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenblick",
-    "gender": "m"
-  },
-  {
-    "name": "Glutstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Schicksalsberg",
-    "gender": "m"
-  },
-  {
-    "name": "Klagestein",
-    "gender": "m"
-  },
-  {
-    "name": "Blutmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Dämonenstolz",
-    "gender": "m"
-  },
-  {
-    "name": "Ewigkeitshafen",
-    "gender": "m"
-  },
-  {
-    "name": "Peinigtal",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenheim",
-    "gender": "n"
-  },
-  {
-    "name": "Verdammnisburg",
-    "gender": "f"
-  },
-  {
-    "name": "Fluchwald",
-    "gender": "m"
-  },
-  {
-    "name": "Dunkelwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Seelenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Glimmerhöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenland",
-    "gender": "n"
-  },
-  {
-    "name": "Schattensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelsee",
-    "gender": "m"
-  },
-  {
-    "name": "Rauchhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Brandfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Aschental",
-    "gender": "n"
-  },
-  {
-    "name": "Rostmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Blutsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Grimmling",
-    "gender": "m"
-  },
-  {
-    "name": "Glutstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Dämonenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Schindergrat",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenburg",
-    "gender": "f"
-  },
-  {
-    "name": "Flammenwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Fluchthain",
-    "gender": "m"
-  },
-  {
-    "name": "Zornfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtschleier",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafluss",
-    "gender": "m"
-  },
-  {
-    "name": "Rostmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Klagensee",
-    "gender": "m"
-  },
-  {
-    "name": "Dämonenfall",
-    "gender": "m"
-  },
-  {
-    "name": "Pechsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Glutgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Höllensee",
-    "gender": "m"
-  },
-  {
-    "name": "Seelenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Dunkelpass",
-    "gender": "m"
-  },
-  {
-    "name": "Schandefurt",
-    "gender": "f"
-  },
-  {
-    "name": "Grauwind",
-    "gender": "m"
-  },
-  {
-    "name": "Ascheburg",
-    "gender": "f"
-  },
-  {
-    "name": "Zornkamm",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Grollenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Blutpfad",
-    "gender": "m"
-  },
-  {
-    "name": "Flammenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Rostfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Totenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenburg",
-    "gender": "f"
-  },
-  {
-    "name": "Finsterschmiede",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenring",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Verzweiflungstal",
-    "gender": "n"
-  },
-  {
-    "name": "Glutdorn",
-    "gender": "m"
-  },
-  {
-    "name": "Lügenfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzhorn",
-    "gender": "n"
-  },
-  {
-    "name": "Dornenhorst",
-    "gender": "m"
-  },
-  {
-    "name": "Blutmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Pechfels",
-    "gender": "m"
-  },
-  {
-    "name": "Rabenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Dämonenfall",
-    "gender": "m"
-  },
-  {
-    "name": "Klagewald",
-    "gender": "m"
-  },
-  {
-    "name": "Zornklinge",
-    "gender": "f"
-  },
-  {
-    "name": "Aschegrat",
-    "gender": "m"
-  },
-  {
-    "name": "Grollfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Schwefelhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenhorst",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Wutbach",
-    "gender": "m"
-  },
-  {
-    "name": "Blutstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Schattendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Leidhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisburg",
-    "gender": "f"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Glutgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Grolltal",
-    "gender": "n"
-  },
-  {
-    "name": "Eisenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Rabenschild",
-    "gender": "m"
-  },
-  {
-    "name": "Lügenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzthal",
-    "gender": "n"
-  },
-  {
-    "name": "Dämonenhorst",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Brandtal",
-    "gender": "n"
-  },
-  {
-    "name": "Blutmond",
-    "gender": "m"
-  },
-  {
-    "name": "Schandberg",
-    "gender": "m"
-  },
-  {
-    "name": "Flammenfeld",
-    "gender": "n"
-  },
-  {
-    "name": "Zornfels",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Schattengrat",
-    "gender": "m"
-  },
-  {
-    "name": "Leidendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Klagestein",
-    "gender": "m"
-  },
-  {
-    "name": "Peinigtal",
-    "gender": "n"
-  },
-  {
-    "name": "Totenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Schwefelschmiede",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenhain",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtfels",
-    "gender": "m"
-  },
-  {
-    "name": "Sündenfestung",
-    "gender": "f"
-  },
-  {
-    "name": "Blutklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Grollstein",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Aschenberg",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenturm",
-    "gender": "m"
-  },
-  {
-    "name": "Wuthorst",
-    "gender": "m"
-  },
-  {
-    "name": "Lügenhain",
-    "gender": "m"
-  },
-  {
-    "name": "Leidwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Flammenhorn",
-    "gender": "n"
-  },
-  {
-    "name": "Rabenteich",
-    "gender": "m"
-  },
-  {
-    "name": "Dämonenschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Aschefluss",
-    "gender": "m"
-  },
-  {
-    "name": "Rostfels",
-    "gender": "m"
-  },
-  {
-    "name": "Glutsee",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenfels",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelberg",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Narbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Zornklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Blutsee",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Lavafeld",
-    "gender": "n"
-  },
-  {
-    "name": "Grollfels",
-    "gender": "m"
-  },
-  {
-    "name": "Blutschmiede",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Dornensee",
-    "gender": "m"
-  },
-  {
-    "name": "Aschesee",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenfeld",
-    "gender": "n"
-  },
-  {
-    "name": "Leidberg",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisthal",
-    "gender": "n"
-  },
-  {
-    "name": "Schmerzfels",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenberg",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsburg",
-    "gender": "f"
-  },
-  {
-    "name": "Zornental",
-    "gender": "n"
-  },
-  {
-    "name": "Blutpfuhl",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtwind",
-    "gender": "m"
-  },
-  {
-    "name": "Lavatal",
-    "gender": "n"
-  },
-  {
-    "name": "Grollbach",
-    "gender": "m"
-  },
-  {
-    "name": "Blutschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Dornenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Aschefeste",
-    "gender": "f"
-  },
-  {
-    "name": "Höllental",
-    "gender": "n"
-  },
-  {
-    "name": "Leidland",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternismond",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzwald",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Zornsee",
-    "gender": "m"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhügel",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Lavagrat",
-    "gender": "m"
-  },
-  {
-    "name": "Grollbach",
-    "gender": "m"
-  },
-  {
-    "name": "Blutfall",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Aschewald",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Leidhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisklaue",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzenshügel",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenfels",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Zornfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Bluthafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenquell",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Lavahöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Grollfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Dornenwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Aschegrat",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenkamm",
-    "gender": "m"
-  },
-  {
-    "name": "Leidstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Finsterniswacht",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Schwefelbach",
-    "gender": "m"
-  },
-  {
-    "name": "Eisendorn",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenhain",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Zornberg",
-    "gender": "m"
-  },
-  {
-    "name": "Blutberg",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Lavastadt",
-    "gender": "f"
-  },
-  {
-    "name": "Grollhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Bluthafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schattensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenfels",
-    "gender": "m"
-  },
-  {
-    "name": "Aschenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Höllengrat",
-    "gender": "m"
-  },
-  {
-    "name": "Leidtal",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternisfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensfels",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenland",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelsnase",
-    "gender": "f"
-  },
-  {
-    "name": "Zornesklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Lavatiefen",
-    "gender": "f"
-  },
-  {
-    "name": "Grollschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Blutmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenfall",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Ascheklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Leidwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Finsternisstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensklage",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenhort",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenspitze",
-    "gender": "f"
-  },
-  {
-    "name": "Teufelsmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Zorneshain",
-    "gender": "m"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafels",
-    "gender": "m"
-  },
-  {
-    "name": "Grollfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Blutflamm",
-    "gender": "m"
-  },
-  {
-    "name": "Schattendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Dornenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Aschenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Leidmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternisfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzenshafen",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenfeld",
-    "gender": "n"
-  },
-  {
-    "name": "Schwefelsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenberg",
-    "gender": "m"
-  },
-  {
-    "name": "Narbental",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelshafen",
-    "gender": "m"
-  },
-  {
-    "name": "Zornesgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenwiese",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafluss",
-    "gender": "m"
-  },
-  {
-    "name": "Grollklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattengrat",
-    "gender": "m"
-  },
-  {
-    "name": "Dornensee",
-    "gender": "m"
-  },
-  {
-    "name": "Ascheschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Höllendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Leidstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Finsternisklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbental",
-    "gender": "n"
-  },
-  {
-    "name": "Schwefelquell",
-    "gender": "f"
-  },
-  {
-    "name": "Eisental",
-    "gender": "n"
-  },
-  {
-    "name": "Narbenmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelsfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Zorneshöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Blutmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtfestung",
-    "gender": "f"
-  },
-  {
-    "name": "Lavagrube",
-    "gender": "f"
-  },
-  {
-    "name": "Grollwald",
-    "gender": "m"
-  },
-  {
-    "name": "Blutwald",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenhöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Dornental",
-    "gender": "n"
-  },
-  {
-    "name": "Ascheflamme",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenhorst",
-    "gender": "m"
-  },
-  {
-    "name": "Leidsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternistal",
-    "gender": "n"
-  },
-  {
-    "name": "Schmerzenssee",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Eisenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Narbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Zornesbrücke",
-    "gender": "f"
-  },
-  {
-    "name": "Blutberg",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtwiese",
-    "gender": "f"
-  },
-  {
-    "name": "Lavagrund",
-    "gender": "m"
-  },
-  {
-    "name": "Grollhügel",
-    "gender": "m"
-  },
-  {
-    "name": "Blutfall",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenschild",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenklinge",
-    "gender": "f"
-  },
-  {
-    "name": "Aschegrat",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenfestung",
-    "gender": "f"
-  },
-  {
-    "name": "Leidwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Finsternissee",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzensfall",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Narbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Zornesstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Blutströmung",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenspitze",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtfels",
-    "gender": "m"
-  },
-  {
-    "name": "Lavakessel",
-    "gender": "m"
-  },
-  {
-    "name": "Grollmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Blutmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Schattensee",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Aschefluss",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenblick",
-    "gender": "m"
-  },
-  {
-    "name": "Leidbach",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisbach",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzenswacht",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenburg",
-    "gender": "f"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Zornesfels",
-    "gender": "m"
-  },
-  {
-    "name": "Blutwasser",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenfall",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafels",
-    "gender": "m"
-  },
-  {
-    "name": "Grollbach",
-    "gender": "m"
-  },
-  {
-    "name": "Blutschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Dornenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Aschefeste",
-    "gender": "f"
-  },
-  {
-    "name": "Höllental",
-    "gender": "n"
-  },
-  {
-    "name": "Leidland",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternismond",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzwald",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Zornsee",
-    "gender": "m"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhügel",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Lavagrat",
-    "gender": "m"
-  },
-  {
-    "name": "Grollbach",
-    "gender": "m"
-  },
-  {
-    "name": "Blutfall",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Aschewald",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenstein",
-    "gender": "m"
-  },
-  {
-    "name": "Leidhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternisklaue",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzenshügel",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenfels",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Zornfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Bluthafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenquell",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Lavahöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Grollfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Dornenwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Aschegrat",
-    "gender": "m"
-  },
-  {
-    "name": "Höllenkamm",
-    "gender": "m"
-  },
-  {
-    "name": "Leidstrom",
-    "gender": "m"
-  },
-  {
-    "name": "Finsterniswacht",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Schwefelbach",
-    "gender": "m"
-  },
-  {
-    "name": "Eisendorn",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenhain",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Zornberg",
-    "gender": "m"
-  },
-  {
-    "name": "Blutberg",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Lavastadt",
-    "gender": "f"
-  },
-  {
-    "name": "Grollhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Bluthafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schattensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenfels",
-    "gender": "m"
-  },
-  {
-    "name": "Aschenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Höllengrat",
-    "gender": "m"
-  },
-  {
-    "name": "Leidtal",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternisfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensfels",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenschwärze",
-    "gender": "f"
-  },
-  {
-    "name": "Narbenland",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelsnase",
-    "gender": "f"
-  },
-  {
-    "name": "Zornesklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtgrat",
-    "gender": "m"
-  },
-  {
-    "name": "Lavatiefen",
-    "gender": "f"
-  },
-  {
-    "name": "Grollschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Blutmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenfall",
-    "gender": "m"
-  },
-  {
-    "name": "Dornenschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Ascheklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Leidwacht",
-    "gender": "f"
-  },
-  {
-    "name": "Finsternisstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensklage",
-    "gender": "f"
-  },
-  {
-    "name": "Verderbenhort",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Eisenfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Narbenspitze",
-    "gender": "f"
-  },
-  {
-    "name": "Teufelsmoor",
-    "gender": "n"
-  },
-  {
-    "name": "Zorneshain",
-    "gender": "m"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenhafen",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtschlund",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafels",
-    "gender": "m"
-  },
-  {
-    "name": "Grollfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Blutflamm",
-    "gender": "m"
-  },
-  {
-    "name": "Schattendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Dornenpass",
-    "gender": "m"
-  },
-  {
-    "name": "Aschenstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenfurt",
-    "gender": "f"
-  },
-  {
-    "name": "Leidmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Finsternisfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Schmerzenshafen",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbenfeld",
-    "gender": "n"
-  },
-  {
-    "name": "Schwefelsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Eisenberg",
-    "gender": "m"
-  },
-  {
-    "name": "Narbental",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelshafen",
-    "gender": "m"
-  },
-  {
-    "name": "Zornesgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Blutquell",
-    "gender": "f"
-  },
-  {
-    "name": "Schattenwiese",
-    "gender": "f"
-  },
-  {
-    "name": "Nachtgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Lavafluss",
-    "gender": "m"
-  },
-  {
-    "name": "Grollklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Blutschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Schattengrat",
-    "gender": "m"
-  },
-  {
-    "name": "Dornensee",
-    "gender": "m"
-  },
-  {
-    "name": "Ascheschlucht",
-    "gender": "f"
-  },
-  {
-    "name": "Höllendorf",
-    "gender": "n"
-  },
-  {
-    "name": "Leidstadt",
-    "gender": "f"
-  },
-  {
-    "name": "Finsternisklamm",
-    "gender": "f"
-  },
-  {
-    "name": "Schmerzensfluss",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbental",
-    "gender": "n"
-  },
-  {
-    "name": "Schwefelquell",
-    "gender": "f"
-  },
-  {
-    "name": "Eisental",
-    "gender": "n"
-  },
-  {
-    "name": "Narbenmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Teufelsfeste",
-    "gender": "f"
-  },
-  {
-    "name": "Zorneshöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Blutmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Schattenbach",
-    "gender": "m"
-  },
-  {
-    "name": "Nachtfestung",
-    "gender": "f"
-  },
-  {
-    "name": "Lavagrube",
-    "gender": "f"
-  },
-  {
-    "name": "Grollwald",
-    "gender": "m"
-  },
-  {
-    "name": "Blutwald",
-    "gender": "m"
-  },
-  {
-    "name": "Schattenhöhle",
-    "gender": "f"
-  },
-  {
-    "name": "Dornental",
-    "gender": "n"
-  },
-  {
-    "name": "Ascheflamme",
-    "gender": "f"
-  },
-  {
-    "name": "Höllenhorst",
-    "gender": "m"
-  },
-  {
-    "name": "Leidsumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Finsternistal",
-    "gender": "n"
-  },
-  {
-    "name": "Schmerzenssee",
-    "gender": "m"
-  },
-  {
-    "name": "Verderbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Schwefelmoos",
-    "gender": "n"
-  },
-  {
-    "name": "Eisenwald",
-    "gender": "m"
-  },
-  {
-    "name": "Narbensumpf",
-    "gender": "m"
-  },
-  {
-    "name": "Teufelsgrund",
-    "gender": "m"
-  },
-  {
-    "name": "Zornesbrücke",
-    "gender": "f"
+  "metadata": {
+    "version": "2.0.0",
+    "converted": "2025-09-22T20:47:43.684Z",
+    "originalFile": "de.tiefling.settlements.json"
   }
-]
 }

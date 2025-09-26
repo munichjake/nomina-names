@@ -1,15 +1,17 @@
 /**
  * Names Module API - Public interface for other modules
- * Updated to support categorized content (books, ships, shops, taverns)
+ * Simplified to use unified DataManager system
  */
 
 import { ensureGlobalNamesData, getGlobalNamesData } from './core/data-manager.js';
+import { NameGenerator } from './core/name-generator.js';
 import { NamesGeneratorApp } from './apps/generator-app.js';
 import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
 import { hasNamesGeneratorPermission } from './utils/permissions.js';
 import { getSupportedGenders, GENDER_SYMBOLS, isCategorizedContent, getSubcategories } from './shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from './utils/logger.js';
+import { validateAndSanitizeSpeciesData } from './utils/species-validator.js';
 
 /**
  * Names Module API - Public interface for other modules
@@ -20,13 +22,46 @@ class NamesModuleAPI {
    * Creates a new Names Module API instance
    */
   constructor() {
+    // Extension tracking
     this.registeredExtensions = new Map();
-    this.customDataSources = new Map();
     this.hooks = {
       'names.beforeGenerate': [],
       'names.afterGenerate': [],
       'names.dataLoaded': []
     };
+
+    // Initialize unified system
+    this.dataManager = null;
+    this.nameGenerator = new NameGenerator();
+
+    // Setup will be called after DataManager is ready
+    this._isSetup = false;
+  }
+
+  /**
+   * Setup the API with the DataManager instance
+   */
+  setup() {
+    if (this._isSetup) return;
+
+    this.dataManager = getGlobalNamesData();
+    if (this.dataManager) {
+      this.nameGenerator = new NameGenerator(this.dataManager);
+      this._isSetup = true;
+      logDebug("NamesModuleAPI setup completed with unified DataManager");
+    }
+  }
+
+  /**
+   * Ensure API is setup before use
+   */
+  _ensureSetup() {
+    if (!this._isSetup) {
+      this.setup();
+    }
+    if (!this.dataManager) {
+      throw new Error("DataManager not available - ensure nomina-names module is initialized");
+    }
   }
 
   /**
@@ -36,46 +71,28 @@ class NamesModuleAPI {
   /**
    * Generate a single name or categorized content
    * @param {Object} options - Generation options
-   * @returns {Promise<string>} Generated name or content
+   * @param {string} options.language - Language code (default: 'de')
+   * @param {string} options.species - Species code (default: 'human')
+   * @param {string} options.category - Category (default: 'names')
+   * @param {string} options.gender - Gender for names (default: 'male')
+   * @param {string} options.subcategory - Specific subcategory
+   * @param {Array} options.components - Name components for names category
+   * @param {string} options.format - Name format for names category
+   * @param {Object} options.filters - Metadata filters (3.0.1 format)
+   * @param {boolean} options.returnWithMetadata - Return entry with metadata
+   * @returns {Promise<string|Object>} Generated name/content or object with metadata
    */
   async generateName(options = {}) {
-    const {
-      language = 'de',
-      species = 'human',
-      gender = 'male',
-      category = null,
-      subcategory = null,
-      components = ['firstname', 'surname'],
-      format = '{firstname} {surname}',
-      useCustomData = true
-    } = options;
+    this._ensureSetup();
 
     logDebug("Generating name with options:", options);
 
     // Fire beforeGenerate hook
     this._fireHook('names.beforeGenerate', { options });
 
-    const dataManager = ensureGlobalNamesData();
-    await dataManager.initializeData();
+    // Use the unified name generator
+    const result = await this.nameGenerator.generateName(options);
 
-    // Include custom data sources if requested
-    if (useCustomData) {
-      await this._loadCustomDataSources(language, species);
-    }
-
-    let result;
-
-    // Determine generation type based on category
-    if (category && isCategorizedContent(category)) {
-      result = await this._generateCategorizedContent(language, species, category, subcategory);
-    } else if (category === 'names' || (!category && components.length > 0)) {
-      result = await this._performNameGeneration(language, species, gender, components, format);
-    } else if (category) {
-      result = await this._generateSimpleContent(language, species, category);
-    } else {
-      result = await this._performNameGeneration(language, species, gender, components, format);
-    }
-    
     // Fire afterGenerate hook
     this._fireHook('names.afterGenerate', { options, result });
 
@@ -89,15 +106,20 @@ class NamesModuleAPI {
    * @returns {Promise<Array>} Array of generated names/content
    */
   async generateNames(options = {}) {
+    this._ensureSetup();
+
     const { count = 5, ...otherOptions } = options;
-    const names = [];
 
     logDebug(`Generating ${count} names with options:`, otherOptions);
 
-    for (let i = 0; i < count; i++) {
-      const name = await this.generateName(otherOptions);
-      if (name) names.push(name);
-    }
+    // Use the unified name generator with count parameter
+    const result = await this.nameGenerator.generateName({
+      ...otherOptions,
+      count
+    });
+
+    // Ensure we always return an array
+    const names = Array.isArray(result) ? result : [result];
 
     logDebug(`Generated ${names.length} names:`, names);
     return names;
@@ -134,21 +156,99 @@ class NamesModuleAPI {
   }
 
   /**
-   * Get available subcategories for a categorized content type
-   * @param {string} language - Language code
-   * @param {string} species - Species code
-   * @param {string} category - Category code (books, ships, shops, taverns)
-   * @returns {Promise<Array>} Array of available subcategories
+   * Generate content from a specific subcategory (supports 3.0.0 format)
+   * @param {Object} options - Generation options
+   * @returns {Promise<string>} Generated content
    */
-  async getAvailableSubcategories(language, species, category) {
-    if (!isCategorizedContent(category)) {
-      return [];
+  async generateFromSubcategory(options = {}) {
+    const {
+      language = 'de',
+      species = 'human',
+      category,
+      subcategory,
+      gender = null // For names subcategories
+    } = options;
+
+    if (!category || !subcategory) {
+      throw new Error('Both category and subcategory are required');
     }
+
+    logDebug("Generating from subcategory with options:", options);
 
     const dataManager = ensureGlobalNamesData();
     await dataManager.initializeData();
-    
+
+    const subcategoryData = dataManager.getSubcategoryData(language, species, category, subcategory);
+    if (!subcategoryData) {
+      throw new Error(`No data found for ${language}.${species}.${category}.${subcategory}`);
+    }
+
+    // Handle different data structures
+    if (Array.isArray(subcategoryData)) {
+      // Simple array of entries
+      const randomIndex = Math.floor(Math.random() * subcategoryData.length);
+      return subcategoryData[randomIndex];
+    } else if (typeof subcategoryData === 'object') {
+      // Handle gender-specific entries (for names)
+      if (gender && subcategoryData[gender] && Array.isArray(subcategoryData[gender])) {
+        const genderEntries = subcategoryData[gender];
+        const randomIndex = Math.floor(Math.random() * genderEntries.length);
+        return genderEntries[randomIndex];
+      } else {
+        // Pick a random gender
+        const genders = Object.keys(subcategoryData).filter(key => Array.isArray(subcategoryData[key]));
+        if (genders.length > 0) {
+          const randomGender = genders[Math.floor(Math.random() * genders.length)];
+          const genderEntries = subcategoryData[randomGender];
+          const randomIndex = Math.floor(Math.random() * genderEntries.length);
+          return genderEntries[randomIndex];
+        }
+      }
+    }
+
+    throw new Error(`Unable to generate content from subcategory data structure`);
+  }
+
+  /**
+   * Get available subcategories for a categorized content type
+   * @param {string} language - Language code
+   * @param {string} species - Species code
+   * @param {string} category - Category code (books, ships, shops, taverns, names)
+   * @returns {Promise<Array>} Array of available subcategories
+   */
+  async getAvailableSubcategories(language, species, category) {
+    const dataManager = ensureGlobalNamesData();
+    await dataManager.initializeData();
+
     return dataManager.getAvailableSubcategories(language, species, category);
+  }
+
+  /**
+   * Get available subcategories with display names for dynamic UI generation
+   * @param {string} language - Language code
+   * @param {string} species - Species code
+   * @param {string} category - Category code (books, ships, shops, taverns, names)
+   * @returns {Promise<Array>} Array of subcategory objects with key and displayName
+   */
+  async getSubcategoriesWithDisplayNames(language, species, category) {
+    const dataManager = ensureGlobalNamesData();
+    await dataManager.initializeData();
+
+    const subcategories = dataManager.getAvailableSubcategories(language, species, category);
+
+    // If subcategories already have display names (3.0.0 format), return them
+    if (subcategories.length > 0 && typeof subcategories[0] === 'object' && subcategories[0].displayName) {
+      return subcategories;
+    }
+
+    // For legacy format, return with basic structure
+    return subcategories.map(key => ({
+      key: key,
+      displayName: {
+        de: key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '),
+        en: key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')
+      }
+    }));
   }
 
   /**
@@ -174,9 +274,8 @@ class NamesModuleAPI {
    * @returns {Array} Array of language objects
    */
   getAvailableLanguages() {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) return [];
-    return dataManager.getLocalizedLanguages();
+    this._ensureSetup();
+    return this.dataManager.getLocalizedLanguages();
   }
 
   /**
@@ -184,9 +283,8 @@ class NamesModuleAPI {
    * @returns {Array} Array of species objects with code and name
    */
   getAvailableSpecies() {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) return [];
-    return dataManager.getLocalizedSpecies();
+    this._ensureSetup();
+    return this.dataManager.getLocalizedSpecies();
   }
 
   /**
@@ -194,9 +292,76 @@ class NamesModuleAPI {
    * @returns {Array} Array of species code strings
    */
   getAllSpeciesCodes() {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) return [];
-    return Array.from(dataManager.availableSpecies);
+    this._ensureSetup();
+    return Array.from(this.dataManager.availableSpecies);
+  }
+
+  /**
+   * Register a new species for use in name generation
+   * ONLY supports 3.0.1 format - external modules must use this format
+   * @param {Object} speciesConfig - 3.0.1 format species configuration
+   */
+  registerSpecies(speciesConfig) {
+    this._ensureSetup();
+
+    if (!speciesConfig || typeof speciesConfig !== 'object') {
+      logError("registerSpecies: Invalid species configuration - must be a 3.0.1 format object");
+      throw new Error("Invalid species configuration - must be a 3.0.1 format object");
+    }
+
+    if (!speciesConfig.code || typeof speciesConfig.code !== 'string') {
+      logError("registerSpecies: Species code is required and must be a string", speciesConfig);
+      throw new Error("Species code is required and must be a string");
+    }
+
+    logInfo(`Registering API species: ${speciesConfig.code}`);
+
+    // Validate and sanitize species data
+    const validation = validateAndSanitizeSpeciesData(speciesConfig.code, speciesConfig);
+    if (!validation.isValid) {
+      logError(`Species validation failed for '${speciesConfig.code}':`, validation.errors);
+      throw new Error(`Invalid species data: ${validation.errors.join(', ')}`);
+    }
+
+    if (validation.warnings && validation.warnings.length > 0) {
+      logWarn(`Species data sanitized for '${speciesConfig.code}':`, validation.warnings);
+    }
+
+    // Try to determine the calling module
+    let callingModule = null;
+    try {
+      const stack = new Error().stack;
+      const moduleMatch = stack.match(/\/modules\/([^\/]+)\//);
+      if (moduleMatch) {
+        callingModule = moduleMatch[1];
+      }
+    } catch (e) {
+      // Fallback - can't determine calling module
+    }
+
+    try {
+      this.dataManager.registerApiSpecies(validation.sanitizedData, callingModule);
+      logInfo(`Successfully registered API species: ${speciesConfig.code}`);
+    } catch (error) {
+      logError(`Failed to register species ${speciesConfig.code}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Convenience method for registering species from 3.0.1 JSON files
+   * Ideal for external modules that load JSON data files
+   * @param {Object|Array} jsonData - 3.0.1 format JSON data (single species object or array of species)
+   */
+  registerSpeciesFromJSON(jsonData) {
+    this._ensureSetup();
+
+    try {
+      this.dataManager.registerSpeciesFromJSON(jsonData);
+    } catch (error) {
+      logError("Failed to register species from JSON:", error);
+      throw error;
+    }
   }
 
   /**
@@ -256,11 +421,17 @@ class NamesModuleAPI {
    */
 
   /**
-   * Register a new species with name data
+   * Legacy species registration method (redirected to new registerSpecies)
    * @param {string} moduleId - ID of the registering module
    * @param {Object} speciesData - Species configuration and data
    */
-  registerSpecies(moduleId, speciesData) {
+  async registerSpeciesLegacy(moduleId, speciesData) {
+    if (!speciesData || typeof speciesData !== 'object') {
+      const errorMsg = 'Invalid species data - must be an object';
+      logError(errorMsg, { moduleId, speciesData });
+      throw new Error(errorMsg);
+    }
+
     const {
       species,
       languages = ['de', 'en'],
@@ -269,12 +440,42 @@ class NamesModuleAPI {
       keywords = []
     } = speciesData;
 
-    if (!species || !displayName) {
-      const errorMsg = 'Species registration requires species code and displayName';
-      logError(errorMsg);
+    if (!species || typeof species !== 'string') {
+      const errorMsg = 'Species registration requires a valid species code string';
+      logError(errorMsg, { moduleId, species, speciesData });
       throw new Error(errorMsg);
     }
 
+    if (!displayName || typeof displayName !== 'string') {
+      const errorMsg = 'Species registration requires a valid displayName string';
+      logError(errorMsg, { moduleId, species, displayName, speciesData });
+      throw new Error(errorMsg);
+    }
+
+    // Convert to new format and call registerSpecies
+    const dataMapping = {};
+    for (const language of languages) {
+      for (const [category, categoryData] of Object.entries(data)) {
+        dataMapping[`${language}.${category}`] = categoryData;
+      }
+    }
+
+    try {
+      this.registerSpecies({
+        code: species,
+        displayName,
+        languages,
+        categories: Object.keys(data),
+        data: dataMapping,
+        moduleId,
+        metadata: { keywords }
+      });
+    } catch (error) {
+      logError(`Legacy registration failed for module ${moduleId}:`, error);
+      throw error;
+    }
+
+    // Legacy tracking for compatibility
     const extensionKey = `${moduleId}.species.${species}`;
     this.registeredExtensions.set(extensionKey, {
       type: 'species',
@@ -287,41 +488,7 @@ class NamesModuleAPI {
       enabled: true
     });
 
-    // Register custom data sources AND immediately add to DataManager
-    const dataManager = getGlobalNamesData();
-    if (dataManager) {
-      for (const language of languages) {
-        for (const [category, categoryData] of Object.entries(data)) {
-          const dataKey = `${language}.${species}.${category}`;
-
-          // Store in custom sources for API usage
-          this.customDataSources.set(dataKey, {
-            moduleId,
-            data: categoryData,
-            enabled: true
-          });
-
-          // Immediately add to DataManager so it appears in dropdowns
-          dataManager.setData(dataKey, categoryData);
-          logDebug(`Added data to DataManager for key: ${dataKey}`);
-        }
-      }
-    } else {
-      // Fallback: just store in custom sources
-      for (const language of languages) {
-        for (const [category, categoryData] of Object.entries(data)) {
-          const dataKey = `${language}.${species}.${category}`;
-          this.customDataSources.set(dataKey, {
-            moduleId,
-            data: categoryData,
-            enabled: true
-          });
-        }
-      }
-      logWarn(`DataManager not available during species registration for '${species}'`);
-    }
-
-    logInfo(`Registered species '${species}' from module '${moduleId}'`);
+    logInfo(`Registered species '${species}' from module '${moduleId}' via SpeciesManager`);
   }
 
   /**
@@ -464,281 +631,8 @@ class NamesModuleAPI {
   }
 
   /**
-   * Internal methods
+   * Internal methods (simplified)
    */
-
-  async _loadCustomDataSources(language, species) {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) return;
-
-    let loadedSources = 0;
-
-    // Load custom data for all categories of this language-species combination
-    for (const [dataKey, source] of this.customDataSources.entries()) {
-      if (!source.enabled) continue;
-      
-      const [dataLang, dataSpecies] = dataKey.split('.');
-      if (dataLang === language && dataSpecies === species) {
-        // Inject custom data into the data manager
-        if (!dataManager.nameData.has(dataKey)) {
-          dataManager.nameData.set(dataKey, source.data);
-        } else {
-          // Merge with existing data
-          const existing = dataManager.nameData.get(dataKey);
-          const merged = this._mergeNameData(existing, source.data);
-          dataManager.nameData.set(dataKey, merged);
-        }
-        loadedSources++;
-      }
-    }
-
-    if (loadedSources > 0) {
-      logDebug(`Loaded ${loadedSources} custom data sources for ${language}.${species}`);
-    }
-  }
-
-  _mergeNameData(existing, custom) {
-    const merged = { ...existing };
-    
-    if (custom.names) {
-      if (Array.isArray(custom.names)) {
-        merged.names = [...(merged.names || []), ...custom.names];
-      } else if (typeof custom.names === 'object') {
-        merged.names = merged.names || {};
-        for (const [gender, names] of Object.entries(custom.names)) {
-          merged.names[gender] = [...(merged.names[gender] || []), ...names];
-        }
-      }
-    }
-
-    if (custom.settlements) {
-      merged.settlements = [...(merged.settlements || []), ...custom.settlements];
-    }
-
-    if (custom.titles) {
-      merged.titles = merged.titles || {};
-      for (const [gender, titles] of Object.entries(custom.titles)) {
-        merged.titles[gender] = [...(merged.titles[gender] || []), ...titles];
-      }
-    }
-
-    // Merge categorized content (books, ships, shops, taverns)
-    for (const contentType of ['books', 'ships', 'shops', 'taverns']) {
-      if (custom[contentType]) {
-        merged[contentType] = merged[contentType] || {};
-        for (const [subcategory, items] of Object.entries(custom[contentType])) {
-          merged[contentType][subcategory] = [
-            ...(merged[contentType][subcategory] || []), 
-            ...items
-          ];
-        }
-      }
-    }
-
-    // Merge authors
-    if (custom.authors) {
-      merged.authors = [...(merged.authors || []), ...custom.authors];
-    }
-
-    return merged;
-  }
-
-  async _generateCategorizedContent(language, species, category, subcategory) {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) {
-      logError("Data manager not available for categorized content generation");
-      return null;
-    }
-
-    // Ensure data is loaded
-    const hasData = await dataManager.ensureDataLoaded(language, species, category);
-    if (!hasData) {
-      logWarn(`No data available for ${language}.${species}.${category}`);
-      return null;
-    }
-
-    // If specific subcategory requested, use it
-    if (subcategory) {
-      const subcategoryData = dataManager.getSubcategoryData(language, species, category, subcategory);
-      if (!subcategoryData || subcategoryData.length === 0) {
-        logWarn(`No data available for subcategory ${subcategory}`);
-        return null;
-      }
-      return subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
-    }
-
-    // Otherwise, pick random subcategory and random item
-    const availableSubcategories = dataManager.getAvailableSubcategories(language, species, category);
-    if (availableSubcategories.length === 0) {
-      logWarn(`No subcategories available for ${language}.${species}.${category}`);
-      return null;
-    }
-
-    const randomSubcategory = availableSubcategories[Math.floor(Math.random() * availableSubcategories.length)];
-    const subcategoryData = dataManager.getSubcategoryData(language, species, category, randomSubcategory);
-    
-    if (!subcategoryData || subcategoryData.length === 0) {
-      logWarn(`No data in randomly selected subcategory ${randomSubcategory}`);
-      return null;
-    }
-
-    const result = subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
-    logDebug(`Generated categorized content from ${category}.${randomSubcategory}: ${result}`);
-    return result;
-  }
-
-  async _generateSimpleContent(language, species, category) {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) return null;
-
-    const hasData = await dataManager.ensureDataLoaded(language, species, category);
-    if (!hasData) {
-      logWarn(`No data available for ${language}.${species}.${category}`);
-      return null;
-    }
-
-    if (category === 'settlements') {
-      const settlementData = dataManager.getData(`${language}.${species}.settlements`);
-      if (!settlementData?.settlements) {
-        return null;
-      }
-      const settlements = settlementData.settlements;
-      const settlement = settlements[Math.floor(Math.random() * settlements.length)];
-      return settlement.name || settlement;
-    } else {
-      return this._getRandomFromData(dataManager, language, species, category);
-    }
-  }
-
-  async _performNameGeneration(language, species, gender, components, format) {
-    const dataManager = getGlobalNamesData();
-    if (!dataManager) {
-      logError("Data manager not available for name generation");
-      return null;
-    }
-
-    // Ensure data is loaded
-    for (const component of components) {
-      const category = component === 'firstname' ? gender : component;
-      const hasData = await dataManager.ensureDataLoaded(language, species, category);
-      if (!hasData) {
-        logWarn(`No data available for ${language}.${species}.${category}`);
-      }
-    }
-
-    // Generate name components
-    const nameComponents = {};
-    for (const component of components) {
-      const part = await this._generateNameComponent(dataManager, language, species, gender, component);
-      if (part) {
-        nameComponents[component] = part;
-      }
-    }
-
-    // Format the name
-    return this._formatName(format, nameComponents);
-  }
-
-  async _generateNameComponent(dataManager, language, species, gender, component) {
-    switch (component) {
-      case 'firstname':
-        return this._getRandomFromData(dataManager, language, species, gender);
-      case 'surname':
-        return this._getRandomFromData(dataManager, language, species, 'surnames');
-      case 'nickname':
-        const nickname = this._getRandomFromGenderedData(dataManager, language, species, 'nicknames', gender);
-        return nickname ? `"${nickname}"` : null;
-      case 'title':
-        return this._generateTitle(dataManager, language, species, gender);
-      default:
-        logWarn(`Unknown name component: ${component}`);
-        return null;
-    }
-  }
-
-  _getRandomFromData(dataManager, language, species, category) {
-    const key = `${language}.${species}.${category}`;
-    const data = dataManager.getData(key);
-    
-    if (!data?.names || data.names.length === 0) {
-      logDebug(`No data found for ${key}`);
-      return null;
-    }
-    
-    return data.names[Math.floor(Math.random() * data.names.length)];
-  }
-
-  _getRandomFromGenderedData(dataManager, language, species, category, gender) {
-    const key = `${language}.${species}.${category}`;
-    const data = dataManager.getData(key);
-
-    if (data?.names && typeof data.names === 'object' && data.names[gender]) {
-      const genderNames = data.names[gender];
-      if (genderNames.length === 0) {
-        logDebug(`No ${gender} names found for ${key}`);
-        return null;
-      }
-      return genderNames[Math.floor(Math.random() * genderNames.length)];
-    }
-
-    if (data?.names && Array.isArray(data.names)) {
-      return data.names[Math.floor(Math.random() * data.names.length)];
-    }
-
-    logDebug(`No gendered data found for ${key}`);
-    return null;
-  }
-
-  _generateTitle(dataManager, language, species, gender) {
-    const titleData = dataManager.getData(`${language}.${species}.titles`);
-    if (!titleData?.titles) {
-      logDebug(`No title data found for ${language}.${species}`);
-      return null;
-    }
-
-    const genderTitles = titleData.titles[gender];
-    if (!genderTitles || genderTitles.length === 0) {
-      // Fallback to male titles for nonbinary if available
-      if (gender === 'nonbinary' && titleData.titles.male) {
-        const maleTitles = titleData.titles.male;
-        const selectedTitle = maleTitles[Math.floor(Math.random() * maleTitles.length)];
-        logDebug(`Using male title as fallback for nonbinary: ${selectedTitle.name || selectedTitle}`);
-        return selectedTitle.name || selectedTitle;
-      }
-      logDebug(`No ${gender} titles found for ${language}.${species}`);
-      return null;
-    }
-
-    const selectedTitle = genderTitles[Math.floor(Math.random() * genderTitles.length)];
-    return selectedTitle.name || selectedTitle;
-  }
-
-  _formatName(format, components) {
-    let result = format;
-
-    const placeholders = {
-      '{firstname}': components.firstname || '',
-      '{surname}': components.surname || '',
-      '{title}': components.title || '',
-      '{nickname}': components.nickname || ''
-    };
-
-    for (const [placeholder, value] of Object.entries(placeholders)) {
-      result = result.replace(new RegExp(placeholder.replace(/[{}]/g, '\\$&'), 'g'), value);
-    }
-
-    result = result
-      .replace(/\s+/g, ' ')
-      .replace(/\s*,\s*,/g, ',')
-      .replace(/^[,\s]+|[,\s]+$/g, '')
-      .replace(/,\s*$/g, '')
-      .replace(/^\s*,/g, '')
-      .replace(/\s+,/g, ',')
-      .replace(/,\s*/g, ', ')
-      .trim();
-
-    return result;
-  }
 
   _fireHook(hookName, data) {
     const callbacks = this.hooks[hookName] || [];
@@ -1042,6 +936,28 @@ class NamesModuleAPI {
   }
 
   /**
+   * Generate name with metadata (3.0.1 format support)
+   * @param {Object} options - Generation options (same as generateName)
+   * @returns {Promise<Object>} Generated entry with name and metadata
+   */
+  async generateNameWithMetadata(options = {}) {
+    return this.generateName({ ...options, returnWithMetadata: true });
+  }
+
+  /**
+   * Generate names with metadata filters (3.0.1 format)
+   * @param {Object} options - Generation options with filters
+   * @param {Object} options.filters - Metadata filter criteria
+   * @param {string|Array} options.filters.style - Style filter(s)
+   * @param {string|Array} options.filters.rarity - Rarity filter(s)
+   * @param {string|Array} options.filters.region - Region filter(s)
+   * @returns {Promise<Array>} Array of filtered generated names/content
+   */
+  async generateNamesWithFilters(options = {}) {
+    return this.generateNames(options);
+  }
+
+  /**
    * Provides fallback first names
    * @private
    */
@@ -1114,5 +1030,44 @@ Hooks.once('init', () => {
   // Quick NPC generation
   const npc = await game.modules.get('nomina-names').api.quickNPC('halfling', 'female');
   // Returns: { name: "...", species: "halfling", gender: "female", firstName: "...", lastName: "..." }
+
+  // ==== 3.0.1 FORMAT WITH METADATA ====
+
+  // Generate with metadata
+  const nameWithMeta = await game.modules.get('nomina-names').api.generateNameWithMetadata({
+    language: 'de',
+    species: 'elf',
+    category: 'names',
+    subcategory: 'firstnames',
+    gender: 'male'
+  });
+  // Returns: { name: "Thalion", meta: { style: "ancient", rarity: "uncommon" } }
+
+  // Generate with filters
+  const ancientNames = await game.modules.get('nomina-names').api.generateNames({
+    language: 'de',
+    species: 'elf',
+    category: 'names',
+    subcategory: 'firstnames',
+    gender: 'male',
+    count: 5,
+    filters: {
+      style: 'ancient',
+      rarity: ['uncommon', 'rare']
+    }
+  });
+
+  // Generate taverns with specific atmosphere
+  const cozyTaverns = await game.modules.get('nomina-names').api.generateNames({
+    language: 'de',
+    species: 'human',
+    category: 'taverns',
+    subcategory: 'upscale',
+    count: 3,
+    filters: {
+      atmosphere: 'cozy',
+      region: ['urban', 'coastal']
+    }
+  });
 });
 */
