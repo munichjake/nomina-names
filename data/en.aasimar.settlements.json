@@ -1,0 +1,26 @@
+﻿{
+    "format":  "3.1.0",
+    "fileVersion":  "1.0.0",
+    "code":  "aasimar",
+    "displayName":  {
+                        "de":  "Aasimar",
+                        "en":  "Aasimar"
+                    },
+    "languages":  [
+                      "en"
+                  ],
+    "categories":  [
+                       "settlements"
+                   ],
+    "data":  {
+                 "settlements":  {
+                                     "displayName":  {
+                                                         "de":  "Siedlungen",
+                                                         "en":  "Settlements"
+                                                     },
+                                     "subcategories":  [
+
+                                                       ]
+                                 }
+             }
+}

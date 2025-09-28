@@ -1,126 +1,436 @@
-{
-  "format": "3.0.1",
-  "fileVersion": "1.1.0",
-  "code": "dragonborn",
-  "displayName": {
-    "de": "Dragonborn"
-  },
-  "languages": ["de"],
-  "categories": ["settlements"],
-  "data": {
-    "settlements": {
-      "subcategories": [
-        {
-          "key": "general",
-          "displayName": {
-            "de": "Allgemeine Siedlungen"
-          },
-          "entries": {
-            "de": [
-              "Aschenfall",
-              "Atemburg",
-              "Atemtal",
-              "Drachenzahnpass",
-              "Eisenschuppe",
-              "Flammenhort",
-              "Flammenstieg",
-              "Flammenwacht",
-              "Grolltal",
-              "Himmelsglut",
-              "Himmelswacht",
-              "Kupferhort",
-              "Kupferfeste",
-              "Kupferfall",
-              "Lavaschmiede",
-              "Löwenschuppe",
-              "Meteoritenfall",
-              "Schuppenstein",
-              "Schuppenwald",
-              "Schwertfeste",
-              "Silberschwingen",
-              "Sonnenhorst",
-              "Sonnenfeuer",
-              "Stahlklaue",
-              "Stahlgrat",
-              "Stahlstadt",
-              "Stahlwacht",
-              "Steinatem",
-              "Steinfaust",
-              "Sturmzorn",
-              "Titanenklaue",
-              "Vulkanschild",
-              "Zornkamm",
-              "Zornklamm",
-              "Adlerkamm",
-              "Adlerschild",
-              "Blutfeuer",
-              "Blutgrat",
-              "Bronzestrom",
-              "Donnerfeste",
-              "Donnerruf",
-              "Donnerstieg",
-              "Drachenblut",
-              "Drachenruf",
-              "Echsenhain",
-              "Eisodem",
-              "Eisschuppe",
-              "Eiswacht",
-              "Flammenherz",
-              "Felsengrat",
-              "Geisterfall",
-              "Gletschertor",
-              "Goldkamm",
-              "Goldstrom",
-              "Graustein",
-              "Grimmdorn",
-              "Hügelschild",
-              "Kesselfeste",
-              "Kupferruf",
-              "Kupferschmiede",
-              "Loderfels",
-              "Mondschein",
-              "Mondzahn",
-              "Mondklaue",
-              "Obsidiangrat",
-              "Obsidianschmiede",
-              "Rabenfels",
-              "Raucharche",
-              "Rauchtal",
-              "Rotschuppe",
-              "Rotzahn",
-              "Schattenhort",
-              "Schmiedegrat",
-              "Schuppenturm",
-              "Silberstrom",
-              "Sonnenzahn",
-              "Spitzkamm",
-              "Stahlfall",
-              "Sturmkamm",
-              "Sturmschmiede",
-              "Sumpfodem",
-              "Todesgrat",
-              "Titanenhort",
-              "Totenklamm",
-              "Weißenfels",
-              "Wellenfall",
-              "Wolfsgrat",
-              "Zahntal",
-              "Zornkluft",
-              "Zornsteig",
-              "Aschenodem",
-              "Donnerkessel",
-              "Drachenfaust",
-              "Drachenfels",
-              "Drachenhauch",
-              "Flammenborn",
-              "Kupfertal",
-              "Rauchgrat",
-              "Silberborn",
-              "Sturmfaust"
+﻿{
+    "format": "3.1.0",
+    "fileVersion": "1.0.0",
+    "code": "dragonborn",
+    "displayName": {
+        "de": "Drachengeborene",
+        "en": "Dragonborn"
+    },
+    "languages": [
+        "de"
+    ],
+    "categories": [
+        "settlements"
+    ],
+    "data": {
+        "settlements": {
+            "displayName": {
+                "de": "Siedlungen",
+                "en": "Settlements"
+            },
+            "subcategories": [
+                {
+                    "key": "general",
+                    "displayName": {
+                        "de": "Allgemeine Siedlungen",
+                        "en": "General Settlements"
+                    },
+                    "entries": {
+                        "de": [
+                            {
+                                "name": "Aschenfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Atemburg",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Atemtal",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Drachenzahnpass",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Eisenschuppe",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Flammenhort",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Flammenstieg",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Flammenwacht",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Grolltal",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Himmelsglut",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Himmelswacht",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Kupferhort",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Kupferfeste",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Kupferfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Lavaschmiede",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Löwenschuppe",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Meteoritenfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schuppenstein",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schuppenwald",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schwertfeste",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Silberschwingen",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Sonnenhorst",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Sonnenfeuer",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Stahlklaue",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Stahlgrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Stahlstadt",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Stahlwacht",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Steinatem",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Steinfaust",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Sturmzorn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Titanenklaue",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Vulkanschild",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Zornkamm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Zornklamm",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Adlerkamm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Adlerschild",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Blutfeuer",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Blutgrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Bronzestrom",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Donnerfeste",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Donnerruf",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Donnerstieg",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Drachenblut",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Drachenruf",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Echsenhain",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Eisodem",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Eisschuppe",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Eiswacht",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Flammenherz",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Felsengrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Geisterfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Gletschertor",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Goldkamm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Goldstrom",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Graustein",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Grimmdorn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Hügelschild",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Kesselfeste",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Kupferruf",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Kupferschmiede",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Loderfels",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Mondschein",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Mondzahn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Mondklaue",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Obsidiangrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Obsidianschmiede",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Rabenfels",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Raucharche",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Rauchtal",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Rotschuppe",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Rotzahn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schattenhort",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schmiedegrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Schuppenturm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Silberstrom",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Sonnenzahn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Spitzkamm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Stahlfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Sturmkamm",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Sturmschmiede",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Sumpfodem",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Todesgrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Titanenhort",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Totenklamm",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Weißenfels",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Wellenfall",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Wolfsgrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Zahntal",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Zornkluft",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Zornsteig",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Aschenodem",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Donnerkessel",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Drachenfaust",
+                                "gender": "f"
+                            },
+                            {
+                                "name": "Drachenfels",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Drachenhauch",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Flammenborn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Kupfertal",
+                                "gender": "n"
+                            },
+                            {
+                                "name": "Rauchgrat",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Silberborn",
+                                "gender": "m"
+                            },
+                            {
+                                "name": "Sturmfaust",
+                                "gender": "f"
+                            }
+                        ]
+                    }
+                }
             ]
-          }
         }
-      ]
     }
-  }
 }

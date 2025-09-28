@@ -32,10 +32,6 @@
     "// ===== CATEGORIZED CONTENT =====": "",
     "subcategories": "Unterkategorien",
     "settlements": "Siedlungen",
-    "books": "Bücher",
-    "ships": "Schiffe",
-    "shops": "Geschäfte",
-    "taverns": "Tavernen",
     "// ===== GENERATION CONTROLS =====": "",
     "max-20": "Erstelle 1-20 Namen gleichzeitig",
     "lbl_amount": "Anzahl Namen",
@@ -84,55 +80,20 @@
     },
     "// ===== CATEGORIES =====": "",
     "categories": {
-      "names": "Namen",
       "male": "Männliche Vornamen",
       "female": "Weibliche Vornamen",
       "nonbinary": "Nicht-binäre Vornamen",
       "surnames": "Nachnamen",
       "titles": "Titel/Adelstitel",
-      "nicknames": "Beinamen",
-      "settlements": "Siedlungen/Orte",
-      "books": "Bücher & Schriften",
-      "ships": "Schiffe & Boote",
-      "shops": "Geschäfte & Handwerk",
-      "taverns": "Tavernen & Gasthäuser"
+      "nicknames": "Beinamen"
     },
     "// ===== CATEGORY GROUPS =====": "",
     "category-groups": {
-      "names": "Namen",
       "places": "Orte",
       "atmospheric": "Atmosphärisch"
     },
     "// ===== SUBCATEGORY TRANSLATIONS =====": "",
     "subcategory-translations": {
-      "books": {
-        "religious_books": "Religiöse Bücher",
-        "novels": "Romane & Erzählungen",
-        "scientific_treatises": "Wissenschaftliche Abhandlungen",
-        "humorous_books": "Humoristische Bücher"
-      },
-      "ships": {
-        "merchant_ship": "Handelsschiffe",
-        "warship": "Kriegsschiffe",
-        "pirate_ship": "Piratenschiffe",
-        "small_boat": "Kleine Boote",
-        "exploration_ship": "Forschungsschiffe",
-        "mystical_ship": "Mystische Schiffe"
-      },
-      "shops": {
-        "blacksmiths": "Schmieden",
-        "alchemists": "Alchemisten",
-        "general_stores": "Gemischtwarenläden",
-        "adventure_supplies": "Abenteurer-Bedarf",
-        "weaponsmiths": "Waffenschmieden",
-        "armorers": "Rüstungsschmiede"
-      },
-      "taverns": {
-        "upscale_inns": "Gehobene Gasthäuser",
-        "common_taverns": "Gewöhnliche Tavernen",
-        "harbor_taverns": "Hafentavernen",
-        "adventurer_taverns": "Abenteurer-Tavernen"
-      },
       "pets": {
         "hunde": "Hunde",
         "katzen": "Katzen",
