@@ -4,6 +4,7 @@ convert-json-format.js
 test-unified-system.js
 test-simplified-system.js
 scripts/tests/
+*.py
 
 # Backup and temporary data
 data-old/
@@ -24,6 +25,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+.claude/
 
 # Node modules (if any)
 node_modules/

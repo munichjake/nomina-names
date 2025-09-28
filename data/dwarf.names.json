@@ -1,6 +1,6 @@
 {
-    "format": "3.0.1",
-    "fileVersion": "1.0.0",
+    "format": "3.1.0",
+    "fileVersion": "2.0.0",
     "code": "dwarf",
     "displayName": {
         "de": "Zwerge",
@@ -15,6 +15,10 @@
     ],
     "data": {
         "names": {
+            "displayName": {
+                "de": "Namen",
+                "en": "Names"
+            },
             "subcategories": [
                 {
                     "key": "firstnames",

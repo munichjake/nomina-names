@@ -36,10 +36,6 @@
     "// ===== CATEGORIZED CONTENT =====": "",
     "subcategories": "Subcategories",
     "settlements": "Settlements",
-    "books": "Books",
-    "ships": "Ships",
-    "shops": "Shops",
-    "taverns": "Taverns",
 
     "// ===== GENERATION CONTROLS =====": "",
     "max-20": "Generate 1-20 names at once",
@@ -95,58 +91,23 @@
 
     "// ===== CATEGORIES =====": "",
     "categories": {
-      "names": "Names",
       "male": "Male First Names",
       "female": "Female First Names",
       "nonbinary": "Non-binary First Names",
       "surnames": "Surnames",
       "titles": "Titles/Noble Titles",
       "nicknames": "Nicknames",
-      "settlements": "Settlements/Places",
-      "books": "Books & Writings",
-      "ships": "Ships & Boats",
-      "shops": "Shops & Crafts",
-      "taverns": "Taverns & Inns",
       "pets": "Pets & Companions"
     },
 
     "// ===== CATEGORY GROUPS =====": "",
     "category-groups": {
-      "names": "Names",
       "places": "Places",
       "atmospheric": "Atmospheric"
     },
 
     "// ===== SUBCATEGORY TRANSLATIONS =====": "",
     "subcategory-translations": {
-      "books": {
-        "religious_books": "Religious Books",
-        "novels": "Novels & Stories",
-        "scientific_treatises": "Scientific Treatises",
-        "humorous_books": "Humorous Books"
-      },
-      "ships": {
-        "merchant_ship": "Merchant Ships",
-        "warship": "Warships",
-        "pirate_ship": "Pirate Ships",
-        "small_boat": "Small Boats",
-        "exploration_ship": "Exploration Ships",
-        "mystical_ship": "Mystical Ships"
-      },
-      "shops": {
-        "blacksmiths": "Blacksmiths",
-        "alchemists": "Alchemists",
-        "general_stores": "General Stores",
-        "adventure_supplies": "Adventure Supplies",
-        "weaponsmiths": "Weaponsmiths",
-        "armorers": "Armorers"
-      },
-      "taverns": {
-        "upscale_inns": "Upscale Inns",
-        "common_taverns": "Common Taverns",
-        "harbor_taverns": "Harbor Taverns",
-        "adventurer_taverns": "Adventurer Taverns"
-      },
       "pets": {
         "hunde": "Dogs",
         "katzen": "Cats",

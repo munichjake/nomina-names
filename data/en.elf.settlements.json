@@ -1,0 +1,26 @@
+﻿{
+    "format":  "3.1.0",
+    "fileVersion":  "1.0.0",
+    "code":  "elf",
+    "displayName":  {
+                        "de":  "Elfen",
+                        "en":  "Elves"
+                    },
+    "languages":  [
+                      "en"
+                  ],
+    "categories":  [
+                       "settlements"
+                   ],
+    "data":  {
+                 "settlements":  {
+                                     "displayName":  {
+                                                         "de":  "Siedlungen",
+                                                         "en":  "Settlements"
+                                                     },
+                                     "subcategories":  [
+
+                                                       ]
+                                 }
+             }
+}

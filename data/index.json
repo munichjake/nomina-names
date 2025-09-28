@@ -1,325 +1,491 @@
-{
-  "format": "3.0.0",
-  "version": "3.0.0",
-  "description": "Data files for nomina-names module",
+﻿{
   "files": [
     {
-      "filename": "de.aasimar.names.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.aasimar.settlements.json",
-      "language": "de",
-      "species": "aasimar",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.dragonborn.names.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.dragonborn.settlements.json",
-      "language": "de",
-      "species": "dragonborn",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.dwarf.names.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.dwarf.settlements.json",
-      "language": "de",
-      "species": "dwarf",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.names.json",
-      "language": "de",
       "species": "elf",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.books.json",
-      "language": "de",
-      "species": "elf",
-      "category": "books",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.taverns.json",
-      "language": "de",
-      "species": "elf",
-      "category": "taverns",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.shops.json",
-      "language": "de",
-      "species": "elf",
-      "category": "shops",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.ships.json",
-      "language": "de",
-      "species": "elf",
-      "category": "ships",
-      "enabled": true
-    },
-    {
-      "filename": "de.elf.settlements.json",
-      "language": "de",
-      "species": "elf",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.gnome.names.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.gnome.settlements.json",
-      "language": "de",
-      "species": "gnome",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.halfling.names.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.halfling.settlements.json",
-      "language": "de",
-      "species": "halfling",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.books.json",
-      "language": "de",
-      "species": "human",
-      "category": "books",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.names.json",
-      "language": "de",
-      "species": "human",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "human.pets.json",
-      "language": "de",
-      "species": "human",
-      "category": "pets",
-      "enabled": true
-    },
-    {
-      "filename": "human.weapons.json",
-      "language": "de",
-      "species": "human",
-      "category": "weapons",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.taverns.json",
-      "language": "de",
-      "species": "human",
-      "category": "taverns",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.shops.json",
-      "language": "de",
-      "species": "human",
-      "category": "shops",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.ships.json",
-      "language": "de",
-      "species": "human",
-      "category": "ships",
-      "enabled": true
-    },
-    {
-      "filename": "de.human.settlements.json",
-      "language": "de",
-      "species": "human",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "de.tiefling.names.json",
-      "language": "de",
-      "species": "tiefling",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "de.tiefling.settlements.json",
-      "language": "de",
-      "species": "tiefling",
-      "category": "settlements",
-      "enabled": true
-    },
-    {
-      "filename": "en.aasimar.names.json",
-      "language": "en",
-      "species": "aasimar",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "en.dragonborn.names.json",
-      "language": "en",
-      "species": "dragonborn",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "en.dwarf.names.json",
-      "language": "en",
-      "species": "dwarf",
-      "category": "names",
-      "enabled": true
-    },
-    {
       "filename": "en.elf.names.json",
-      "language": "en",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "dwarf",
+      "filename": "en.dwarf.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
       "species": "elf",
-      "category": "names",
-      "enabled": true
+      "filename": "en.elf.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
     },
     {
-      "filename": "en.gnome.names.json",
-      "language": "en",
       "species": "gnome",
-      "category": "names",
-      "enabled": true
+      "filename": "en.gnome.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
     },
     {
-      "filename": "en.halfling.names.json",
-      "language": "en",
+      "species": "gnome",
+      "filename": "en.gnome.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "dwarf",
+      "filename": "en.dwarf.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "aasimar",
+      "filename": "en.aasimar.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "dwarf",
+      "filename": "dwarf.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "2.0.0",
+      "language": "de"
+    },
+    {
+      "species": "aasimar",
+      "filename": "en.aasimar.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "dragonborn",
+      "filename": "en.dragonborn.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "dragonborn",
+      "filename": "en.dragonborn.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
       "species": "halfling",
+      "filename": "en.halfling.names.json",
+      "enabled": true,
       "category": "names",
-      "enabled": true
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
     },
     {
-      "filename": "en.human.names.json",
-      "language": "en",
-      "species": "human",
-      "category": "names",
-      "enabled": true
-    },
-    {
-      "filename": "en.human.books.json",
-      "language": "en",
-      "species": "human",
-      "category": "books",
-      "enabled": true
-    },
-    {
-      "filename": "en.human.taverns.json",
-      "language": "en",
-      "species": "human",
+      "species": "halfling",
+      "filename": "de.halfling.taverns.json",
+      "enabled": true,
       "category": "taverns",
-      "enabled": true
+      "format": "3.1.0",
+      "fileVersion": "2.0.0",
+      "language": "de"
     },
     {
-      "filename": "en.human.shops.json",
-      "language": "en",
-      "species": "human",
-      "category": "shops",
-      "enabled": true
-    },
-    {
-      "filename": "en.human.ships.json",
-      "language": "en",
-      "species": "human",
-      "category": "ships",
-      "enabled": true
-    },
-    {
-      "filename": "en.tiefling.names.json",
-      "language": "en",
       "species": "tiefling",
+      "filename": "en.tiefling.names.json",
+      "enabled": true,
       "category": "names",
-      "enabled": true
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.taverns.json",
+      "enabled": true,
+      "category": "taverns",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "tiefling",
+      "filename": "en.tiefling.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "human.weapons.json",
+      "enabled": true,
+      "category": "weapons",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "human.weapons.json",
+      "enabled": true,
+      "category": "weapons",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "human.pets.json",
+      "enabled": true,
+      "category": "pets",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "human.pets.json",
+      "enabled": true,
+      "category": "pets",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.shops.json",
+      "enabled": true,
+      "category": "shops",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.books.json",
+      "enabled": true,
+      "category": "books",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "halfling",
+      "filename": "en.halfling.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.ships.json",
+      "enabled": true,
+      "category": "ships",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "human",
+      "filename": "en.human.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "en"
+    },
+    {
+      "species": "tiefling",
+      "filename": "de.tiefling.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.books.json",
+      "enabled": true,
+      "category": "books",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.shops.json",
+      "enabled": true,
+      "category": "shops",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.ships.json",
+      "enabled": true,
+      "category": "ships",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "dwarf",
+      "filename": "de.dwarf.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "aasimar",
+      "filename": "de.aasimar.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "aasimar",
+      "filename": "de.aasimar.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "dragonborn",
+      "filename": "de.dragonborn.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "dwarf",
+      "filename": "de.dwarf.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "dragonborn",
+      "filename": "de.dragonborn.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "elf",
+      "filename": "de.elf.taverns.json",
+      "enabled": true,
+      "category": "taverns",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.ships.json",
+      "enabled": true,
+      "category": "ships",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.shops.json",
+      "enabled": true,
+      "category": "shops",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "tiefling",
+      "filename": "de.tiefling.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.taverns.json",
+      "enabled": true,
+      "category": "taverns",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "gnome",
+      "filename": "de.gnome.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "gnome",
+      "filename": "de.gnome.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "halfling",
+      "filename": "de.halfling.names.json",
+      "enabled": true,
+      "category": "names",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "human",
+      "filename": "de.human.books.json",
+      "enabled": true,
+      "category": "books",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
+    },
+    {
+      "species": "halfling",
+      "filename": "de.halfling.settlements.json",
+      "enabled": true,
+      "category": "settlements",
+      "format": "3.1.0",
+      "fileVersion": "1.0.0",
+      "language": "de"
     }
   ],
+  "format": "3.1.0",
+  "description": "Data files for nomina-names module",
+  "version": "3.1.0",
   "categories": {
-    "names": {
-      "type": "dynamic",
-      "format": "3.0.0"
-    },
-    "books": {
-      "type": "dynamic",
-      "format": "3.0.0"
-    },
-    "taverns": {
-      "type": "dynamic",
-      "format": "3.0.0"
+    "settlements": {
+      "en": "Settlements",
+      "de": "Siedlungen"
     },
     "shops": {
-      "type": "dynamic",
-      "format": "3.0.0"
-    },
-    "ships": {
-      "type": "dynamic",
-      "format": "3.0.0"
-    },
-    "settlements": {
-      "type": "dynamic",
-      "format": "3.0.0"
-    },
-    "weapons": {
-      "type": "categorized",
-      "generators": [
-        "generator"
-      ],
-      "localization": "names.categories.weapons",
-      "subcategories": {
-        "hunde": "names.subcategory-translations.weapons.schwerter",
-        "katzen": "names.subcategory-translations.weapons.bögen",
-        "voegel": "names.subcategory-translations.weapons.äxte"
-      }
+      "en": "Shops",
+      "de": "Geschäfte"
     },
     "pets": {
-      "type": "categorized",
-      "generators": [
-        "generator"
-      ],
-      "localization": "names.categories.pets",
-      "subcategories": {
-        "hunde": "names.subcategory-translations.pets.hunde",
-        "katzen": "names.subcategory-translations.pets.katzen",
-        "voegel": "names.subcategory-translations.pets.voegel",
-        "fische": "names.subcategory-translations.pets.fische",
-        "tressym": "names.subcategory-translations.pets.tressym"
-      }
+      "de": "Haustiere & Begleiter",
+      "en": "Pets & Companions"
+    },
+    "ships": {
+      "en": "Ships",
+      "de": "Schiffe"
+    },
+    "taverns": {
+      "en": "Taverns",
+      "de": "Gasthäuser"
+    },
+    "books": {
+      "en": "Books",
+      "de": "Bücher"
+    },
+    "weapons": {
+            "de": "Waffen",
+            "en": "Weapons"
+    },
+    "names": {
+      "en": "Names",
+      "de": "Namen"
     }
   }
 }
