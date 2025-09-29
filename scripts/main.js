@@ -74,10 +74,10 @@ Hooks.once('init', () => {
  * Initializes data loading, emergency button, API registration, and enhanced dropdowns
  */
 Hooks.once('ready', () => {
-  logDebug("Ready hook - initializing data");
-  
-  // Initialize log level
+  // Initialize log level FIRST before any logging
   updateLogLevel();
+
+  logDebug("Ready hook - initializing data");
   
   // Ensure globalNamesData exists and start loading
   const dataManager = ensureGlobalNamesData();
@@ -752,55 +752,61 @@ Hooks.on('chatMessage', (html, content, msg) => {
 
 /**
  * Registers all module settings with Foundry VTT
- * Includes log level, language, UI visibility, permissions, and configuration menus
+ * Settings are organized logically: Client preferences, World configuration, UI integration
  */
 function registerModuleSettings() {
-  // Direct German choices since localization might not be ready during init
+  // Use numeric values directly to avoid string parsing issues
   const logLevelChoices = {
-    "Nur Fehler": "0",
-    "Warnungen": "1",
-    "Informationen": "2",
-    "Alle Details": "3"
+    "Nur Fehler": 0,
+    "Warnungen": 1,
+    "Informationen": 2,
+    "Alle Details": 3
   };
 
-  // Log Level Setting
-  game.settings.register(MODULE_ID, "logLevel", {
-    name: game.i18n.localize("names.settings.logLevel.name") || "Log Level",
-    hint: game.i18n.localize("names.settings.logLevel.hint") || "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
-    scope: "client",
-    config: true,
-    type: String,
-    choices: logLevelChoices,
-    default: "2", // LOG_LEVELS.INFO
-    onChange: (value) => {
-      updateLogLevel();
+  // ===== CLIENT SETTINGS (Benutzer-spezifische Einstellungen) =====
 
-      // Map text back to number if needed
-      let newLevel;
-      if (typeof value === 'string') {
-        if (value === "Nur Fehler") newLevel = 0;
-        else if (value === "Warnungen") newLevel = 1;
-        else if (value === "Informationen") newLevel = 2;
-        else if (value === "Alle Details") newLevel = 3;
-        else newLevel = parseInt(value) || LOG_LEVELS.INFO;
-      } else {
-        newLevel = parseInt(value) || LOG_LEVELS.INFO;
+  // Legacy migration: migrate defaultLanguage to new settings
+  try {
+    const legacyDefaultLanguage = game.settings.get(MODULE_ID, "defaultLanguage");
+    if (legacyDefaultLanguage !== undefined) {
+      // Migrate to new settings
+      if (!game.settings.settings.has(`${MODULE_ID}.defaultContentLanguage`)) {
+        game.settings.set(MODULE_ID, "defaultContentLanguage", legacyDefaultLanguage);
       }
-
-      const levelName = Object.keys(LOG_LEVELS).find(key => LOG_LEVELS[key] === newLevel) || 'UNKNOWN';
-      logInfo(`Log level changed to: ${newLevel} (${levelName})`);
+      if (!game.settings.settings.has(`${MODULE_ID}.interfaceLanguage`)) {
+        game.settings.set(MODULE_ID, "interfaceLanguage", "auto");
+      }
+      logInfo(`Migrated legacy defaultLanguage setting: ${legacyDefaultLanguage}`);
     }
-  });
+  } catch (error) {
+    // Setting doesn't exist yet, which is fine
+  }
 
-  // Default Language Setting
-  game.settings.register(MODULE_ID, "defaultLanguage", {
-    name: game.i18n.localize("names.settings.defaultLanguage.name") || "Standard-Sprache",
-    hint: game.i18n.localize("names.settings.defaultLanguage.hint") || "Die Sprache, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
+  // Interface Language Setting - wichtigste persönliche Präferenz
+  game.settings.register(MODULE_ID, "interfaceLanguage", {
+    name: game.i18n.localize("names.settings.interfaceLanguage.name") || "Interface-Sprache",
+    hint: game.i18n.localize("names.settings.interfaceLanguage.hint") || "Die Sprache der Benutzeroberfläche (unabhängig von der Inhaltssprache)",
     scope: "client",
     config: true,
     type: String,
     choices: {
-      "auto": game.i18n.localize("names.settings.defaultLanguage.auto") || "Automatisch (Foundry-Sprache)",
+      "auto": game.i18n.localize("names.settings.interfaceLanguage.auto") || "Automatisch (Foundry-Sprache)",
+      "de": "Deutsch",
+      "en": "English"
+    },
+    default: "auto",
+    requiresReload: true
+  });
+
+  // Default Content Language Setting - für Sprachklang der Namen
+  game.settings.register(MODULE_ID, "defaultContentLanguage", {
+    name: game.i18n.localize("names.settings.defaultContentLanguage.name") || "Standard-Sprachklang",
+    hint: game.i18n.localize("names.settings.defaultContentLanguage.hint") || "Die Standard-Sprache für generierte Namen (Sprachklang)",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "auto": game.i18n.localize("names.settings.defaultContentLanguage.auto") || "Automatisch (Interface-Sprache)",
       "de": "Deutsch",
       "en": "English",
       "fr": "Français",
@@ -810,7 +816,92 @@ function registerModuleSettings() {
     default: "auto"
   });
 
-  // Token Controls Setting
+  // Default Name Count Setting - häufiger genutzt als Anzeigeformat
+  game.settings.register(MODULE_ID, "defaultNameCount", {
+    name: game.i18n.localize("names.settings.defaultNameCount.name") || "Standard-Anzahl Namen",
+    hint: game.i18n.localize("names.settings.defaultNameCount.hint") || "Die Anzahl der Namen, die standardmäßig generiert werden sollen (1-20)",
+    scope: "client",
+    config: true,
+    type: Number,
+    range: {
+      min: 1,
+      max: 20,
+      step: 1
+    },
+    default: 5
+  });
+
+  // Default View Setting - Anzeigeformat
+  game.settings.register(MODULE_ID, "defaultView", {
+    name: game.i18n.localize("names.settings.defaultView.name") || "Standard-Ansicht",
+    hint: game.i18n.localize("names.settings.defaultView.hint") || "Die Ansicht, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "detailed": game.i18n.localize("names.settings.defaultView.detailed") || "Detailliert",
+      "simple": game.i18n.localize("names.settings.defaultView.simple") || "Kompakt"
+    },
+    default: "detailed"
+  });
+
+  // Log Level Setting - für Entwicklung/Debugging am Ende der Client-Settings
+  game.settings.register(MODULE_ID, "logLevel", {
+    name: game.i18n.localize("names.settings.logLevel.name") || "Log Level",
+    hint: game.i18n.localize("names.settings.logLevel.hint") || "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
+    scope: "client",
+    config: true,
+    type: Number,
+    choices: logLevelChoices,
+    default: 2, // LOG_LEVELS.INFO
+    onChange: (value) => {
+      updateLogLevel();
+    }
+  });
+
+  // ===== WORLD SETTINGS (Spiel-weite Konfiguration) =====
+
+  // Role Configuration Menu - wichtigste Berechtigung zuerst
+  game.settings.registerMenu(MODULE_ID, "roleConfig", {
+    name: game.i18n.localize("names.settings.roleConfig.name"),
+    hint: game.i18n.localize("names.settings.roleConfig.hint"),
+    label: game.i18n.localize("names.settings.roleConfig.label"),
+    icon: "fas fa-users-cog",
+    type: NamesRoleConfig,
+    restricted: true
+  });
+
+  // Species Configuration Menu - wichtigste Inhaltskonfiguration
+  game.settings.registerMenu(MODULE_ID, "speciesConfig", {
+    name: game.i18n.localize("names.settings.speciesConfig.name") || "Spezies verwalten",
+    hint: game.i18n.localize("names.settings.speciesConfig.hint") || "Konfiguriere welche Spezies verfügbar sein sollen",
+    label: game.i18n.localize("names.settings.speciesConfig.label") || "Spezies konfigurieren",
+    icon: "fas fa-dragon",
+    type: NamesSpeciesConfig,
+    restricted: true
+  });
+
+  // Content and Feature Settings - Features die das Verhalten beeinflussen
+  game.settings.register(MODULE_ID, "enableMetadata", {
+    name: game.i18n.localize("names.settings.enableMetadata.name") || "Erweiterte Metadaten anzeigen",
+    hint: game.i18n.localize("names.settings.enableMetadata.hint") || "Zeigt zusätzliche Informationen wie Inhaber, Lage und Spezialitäten bei generierten Orten und Gebäuden an",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true
+  });
+
+  game.settings.register(MODULE_ID, "includeNonbinaryNames", {
+    name: game.i18n.localize("names.settings.includeNonbinaryNames.name") || "Non-binäre Namen einbeziehen",
+    hint: game.i18n.localize("names.settings.includeNonbinaryNames.hint") || "Ermöglicht die Generierung von non-binären Namen",
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true,
+    requiresReload: true
+  });
+
+  // UI Integration Settings - wo der Generator verfügbar ist
   game.settings.register(MODULE_ID, "showInTokenControls", {
     name: game.i18n.localize("names.settings.showInTokenControls.name"),
     hint: game.i18n.localize("names.settings.showInTokenControls.hint"),
@@ -820,7 +911,6 @@ function registerModuleSettings() {
     default: true
   });
 
-  // Character Sheet Setting
   game.settings.register(MODULE_ID, "showInCharacterSheet", {
     name: game.i18n.localize("names.settings.showInCharacterSheet.name"),
     hint: game.i18n.localize("names.settings.showInCharacterSheet.hint"),
@@ -830,7 +920,6 @@ function registerModuleSettings() {
     default: true
   });
 
-  // Token Context Menu Setting
   game.settings.register(MODULE_ID, "showInTokenContextMenu", {
     name: game.i18n.localize("names.settings.showInTokenContextMenu.name"),
     hint: game.i18n.localize("names.settings.showInTokenContextMenu.hint"),
@@ -840,7 +929,6 @@ function registerModuleSettings() {
     default: true
   });
 
-  // Emergency Button Setting
   game.settings.register(MODULE_ID, "showEmergencyButton", {
     name: game.i18n.localize("names.settings.showEmergencyButton.name") || "Emergency Button anzeigen",
     hint: game.i18n.localize("names.settings.showEmergencyButton.hint") || "Zeigt einen Emergency Button im Chat an",
@@ -858,16 +946,7 @@ function registerModuleSettings() {
     }
   });
 
-  // Non-binary Names Setting
-  game.settings.register(MODULE_ID, "includeNonbinaryNames", {
-    name: game.i18n.localize("names.settings.includeNonbinaryNames.name") || "Non-binäre Namen einbeziehen",
-    hint: game.i18n.localize("names.settings.includeNonbinaryNames.hint") || "Ermöglicht die Generierung von non-binären Namen",
-    scope: "world",
-    config: true,
-    type: Boolean,
-    default: true,
-    requiresReload: true
-  });
+  // ===== HIDDEN SETTINGS (nicht in der Konfiguration sichtbar) =====
 
   // User Roles Setting (hidden from config UI)
   game.settings.register(MODULE_ID, "allowedUserRoles", {
@@ -887,26 +966,6 @@ function registerModuleSettings() {
     config: false, // Will be handled by menu
     type: Object,
     default: {}
-  });
-
-  // Species Configuration Menu
-  game.settings.registerMenu(MODULE_ID, "speciesConfig", {
-    name: game.i18n.localize("names.settings.speciesConfig.name") || "Spezies verwalten",
-    hint: game.i18n.localize("names.settings.speciesConfig.hint") || "Konfiguriere welche Spezies verfügbar sein sollen",
-    label: game.i18n.localize("names.settings.speciesConfig.label") || "Spezies konfigurieren",
-    icon: "fas fa-dragon",
-    type: NamesSpeciesConfig,
-    restricted: true
-  });
-
-  // Role Configuration Menu
-  game.settings.registerMenu(MODULE_ID, "roleConfig", {
-    name: game.i18n.localize("names.settings.roleConfig.name"),
-    hint: game.i18n.localize("names.settings.roleConfig.hint"),
-    label: game.i18n.localize("names.settings.roleConfig.label"),
-    icon: "fas fa-users-cog",
-    type: NamesRoleConfig,
-    restricted: true
   });
 
   logDebug("Module settings registered");

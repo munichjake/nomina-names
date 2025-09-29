@@ -5,7 +5,7 @@ A flexible and extensible name generator for FoundryVTT with configurable JSON d
 ## 🚀 Features
 
 ### 🎭 Versatile Name Generation
-- **Multiple Species**: Humans, Elves, Gnomes (easily extensible)
+- **Multiple Species**: Humans, Elves, Dwarves, Aasimar, Dragonborn, Halflings, Gnomes, Tieflings (easily extensible)
 - **Various Categories**: First names (male/female/nonbinary), surnames, titles, nicknames, settlements
 - **Categorized Content**: Books, taverns, ships, shops with subcategories
 - **Complex Names**: Combine first name, surname, title, and nickname with customizable formats
@@ -32,12 +32,14 @@ A flexible and extensible name generator for FoundryVTT with configurable JSON d
 - **Third-party Extensions**: API for other modules to add content
 
 ### 📊 Advanced Features
-- **JSON Format 3.1.0**: Self-contained files with integrated translations
+- **JSON Format 3.1.2**: Self-contained files with rich metadata support, localized field definitions, and individual entry translation
+- **Enhanced Metadata**: Localized field labels, icons, and value mappings directly in data files
 - **Category Groups**: Organized categories (Names, Places, Objects, etc.)
 - **Dynamic Categories**: Categories loaded from index.json with fallback support
 - **Permission System**: Control access based on user roles
 - **Modern UI**: Enhanced dropdowns and responsive design
 - **Nonbinary Support**: Optional nonbinary names (configurable)
+- **Metadata Toggle**: Enable/disable metadata features in module settings
 
 ## 📦 Installation
 
@@ -55,6 +57,8 @@ A flexible and extensible name generator for FoundryVTT with configurable JSON d
 
 ## ⚙️ Configuration
 
+**[📸 SCREENSHOT NEEDED: Complete module settings panel]**
+
 After installation, find the following options under **Game Settings → Configure Settings → Module Settings → Names**:
 
 - **Show Button in Token Controls**: Adds button to the left toolbar
@@ -69,11 +73,14 @@ After installation, find the following options under **Game Settings → Configu
 ## 🎮 Usage
 
 ### Basic Name Generation
+**[📸 SCREENSHOT NEEDED: Main generator interface with filled dropdowns and generated results]**
+
 - **Toolbar Button**: Click the names button in the left toolbar
 - **Chat Command**: Type `/names` or `/namen` in chat
 - **Token Selection**: Select a token and use the HUD button or right-click menu
 
 ### Quick Names for Tokens
+**[🎬 GIF NEEDED: Complete token naming workflow]**
 1. Select one or more tokens
 2. Right-click → "Change Name" or use the HUD button
 3. Choose language, species, gender, and categories
@@ -83,12 +90,20 @@ After installation, find the following options under **Game Settings → Configu
 - Use `/emergency-names` chat command for instant random names
 - Perfect for NPCs that need quick naming during play
 
-### Categorized Content
-Generate books, taverns, ships, and shops with themed subcategories:
-- **Books**: Religious texts, novels, scientific treatises, humorous books
-- **Taverns**: Upscale inns, common taverns, harbor taverns, adventurer taverns
-- **Ships**: Merchant ships, warships, pirate ships, exploration vessels
-- **Shops**: Blacksmiths, alchemists, general stores, weapon/armor smiths
+### Categorized Content with Rich Metadata
+**[📸 SCREENSHOT NEEDED: Tavern with detailed metadata display]**
+
+Generate books, taverns, ships, and shops with detailed information:
+- **Books**: Religious texts, novels, scientific treatises with authors and descriptions
+- **Taverns**: Complete with owner names, locations, quality ratings, atmosphere, and specialties
+- **Ships**: Detailed vessel information with captain, purpose, and characteristics
+- **Shops**: Full shop details including proprietors, specializations, and inventory focus
+
+### Advanced Search & Filtering
+**[🎬 GIF NEEDED: Live search demonstration]**
+- **Live Search**: Instantly filter generated results as you type
+- **Smart Filtering**: Search names, metadata, categories, and descriptions
+- **View Modes**: Toggle between simple name lists and detailed metadata views
 
 ## 🔧 API for Developers
 
@@ -249,7 +264,7 @@ namesAPI.registerHook('names.afterGenerate', (data) => {
 
 ### Data File Formats
 
-#### JSON Format 3.1.0 (Recommended)
+#### JSON Format 3.1.2 (Latest)
 Self-contained files with integrated category translations:
 
 ```json
@@ -286,6 +301,100 @@ Self-contained files with integrated category translations:
   }
 }
 ```
+
+#### JSON Format 3.1.2 (Latest)
+Enhanced format with rich metadata support and localized field definitions:
+
+```json
+{
+  "format": "3.1.2",
+  "fileVersion": "1.0.0",
+  "code": "human",
+  "displayName": {
+    "de": "Menschen",
+    "en": "Human"
+  },
+  "languages": ["de", "en"],
+  "categories": ["taverns"],
+  "data": {
+    "taverns": {
+      "displayName": {
+        "de": "Gasthäuser",
+        "en": "Taverns"
+      },
+      "entry_metadata": {
+        "type": {
+          "de": "Typ",
+          "en": "Type",
+          "icon": {
+            "type": "unicode",
+            "value": "🏨"
+          },
+          "values": {
+            "de": {
+              "inn": "Gasthaus",
+              "tavern": "Taverne"
+            },
+            "en": {
+              "inn": "Inn",
+              "tavern": "Tavern"
+            }
+          }
+        },
+        "quality": {
+          "de": "Qualität",
+          "en": "Quality",
+          "icon": {
+            "type": "unicode",
+            "value": "⭐"
+          }
+        }
+      },
+      "subcategories": [
+        {
+          "key": "upscale_inns",
+          "displayName": {
+            "de": "Luxuriöse Gasthäuser",
+            "en": "Upscale Inns"
+          },
+          "entries": {
+            "de": [
+              {
+                "name": "Gasthof Kronprinz",
+                "meta": {
+                  "type": "inn",
+                  "quality": "luxury",
+                  "location": "Tiefwasser (Oberstadt)",
+                  "owner": "Belindra Hügelfeld"
+                }
+              }
+            ],
+            "en": [
+              {
+                "name": "The Crown Prince Inn",
+                "meta": {
+                  "type": "inn",
+                  "quality": "luxury",
+                  "location": "Waterdeep (Castle Ward)",
+                  "owner": "Belindra Hillfield"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+**Key Features of 3.1.2:**
+- **entry_metadata**: Define localized labels, icons, and value mappings for metadata fields (3.1.1)
+- **Individual Entry Translation**: Localize dynamic content within entries like names, locations, and descriptions (3.1.2)
+- **Rich Icons**: Unicode emoji support for visual field identification
+- **Value Localization**: Map raw values to localized display text
+- **Backward Compatibility**: Works alongside 3.1.0, 3.0.x, and legacy formats
+- **Settings Integration**: Can be toggled via module settings
 
 #### Legacy Data File Formats
 
@@ -386,13 +495,14 @@ This module is licensed under the MIT License. See the LICENSE file for details.
 
 ## 📈 Changelog
 
-### Version 1.2.6
-- Enhanced category system with groups
-- Added categorized content support (books, ships, shops, taverns)
-- Improved UI with modern dropdowns
-- Extended API for third-party modules
-- Added nonbinary name support
-- Performance improvements
+### Version 2.0.0+
+- JSON Format 3.1.2 with rich metadata and individual entry translation
+- Enhanced localization system with fallback chains
+- Dynamic category system - add categories without code changes
+- Improved performance with intelligent caching
+- Modern UI with enhanced dropdowns and responsive design
+- Live search and filtering in results
+- Advanced metadata display with icons and localized field labels
 
 ### Previous Versions
 See [CHANGELOG.md](CHANGELOG.md) for complete version history.

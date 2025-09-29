@@ -7,12 +7,14 @@ import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.
 import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClipboard } from '../utils/ui-helpers.js';
 import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+import { NamesAPI } from '../api-system.js';
 
 export class EmergencyNamesApp extends Application {
   constructor(options = {}) {
     super(options);
     this.emergencyNames = [];
     this.availableSpecies = ['human', 'elf', 'dwarf', 'halfling', 'orc'];
+    this._initialized = false;
   }
 
   static get defaultOptions() {
@@ -64,9 +66,15 @@ export class EmergencyNamesApp extends Application {
   }
 
   async _initializeApp(html) {
+    // Prevent multiple initialization
+    if (this._initialized) {
+      logDebug("App already initialized, skipping");
+      return;
+    }
+
     try {
       const globalNamesData = getGlobalNamesData();
-      
+
       if (globalNamesData && globalNamesData.isLoading) {
         logDebug("Data still loading, showing loading state");
         showLoadingState(html);
@@ -75,10 +83,13 @@ export class EmergencyNamesApp extends Application {
         logDebug("Data ready, generating emergency names");
         await this._generateEmergencyNames();
       }
+
+      this._initialized = true;
     } catch (error) {
       logError("Emergency app initialization failed", error);
       this._generateFallbackNames();
       this._updateNamesDisplay();
+      this._initialized = true;
     }
   }
 
@@ -317,43 +328,29 @@ export class EmergencyNamesApp extends Application {
 
   async _generateSingleName(language, species, gender) {
     try {
-      const firstName = this._getRandomFromData(language, species, gender);
-      const lastName = this._getRandomFromData(language, species, 'surnames');
-      
-      if (firstName && lastName) {
-        const fullName = `${firstName} ${lastName}`;
+      // Use the new NamesAPI for proper person name generation
+      const options = {
+        language: language,
+        species: species,
+        category: 'names',  // Use names category for person names
+        gender: gender,     // Specify gender for name generation
+        components: ['firstname', 'surname'],  // Generate both components
+        count: 1
+      };
+
+      const results = await NamesAPI.generateNames(options);
+      if (results.length > 0) {
+        const fullName = typeof results[0] === 'string' ? results[0] : results[0].name;
         logDebug(`Generated full name: ${fullName} (${species}, ${gender})`);
         return fullName;
-      } else if (firstName) {
-        logDebug(`Generated first name only: ${firstName} (${species}, ${gender})`);
-        return firstName;
       }
-      
+
       logDebug(`Failed to generate name for ${species} ${gender}`);
       return null;
     } catch (error) {
       logWarn(`Failed to generate name for ${language}.${species}.${gender}`, error);
       return null;
     }
-  }
-
-  _getRandomFromData(language, species, category) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData || !globalNamesData.nameData) {
-      return null;
-    }
-
-    const key = `${language}.${species}.${category}`;
-    const data = globalNamesData.getData(key);
-
-    if (!data?.names || data.names.length === 0) {
-      logDebug(`No data found for key: ${key}`);
-      return null;
-    }
-
-    const selectedName = data.names[Math.floor(Math.random() * data.names.length)];
-    logDebug(`Selected name from ${key}: ${selectedName}`);
-    return selectedName;
   }
 
   _getLocalizedSpecies(species) {

@@ -3,6 +3,8 @@
  * Updated for dynamic category management
  */
 
+import { logWarn } from '../utils/logger.js';
+
 export const BASE_GENDERS = ['male', 'female'];
 export const NONBINARY_GENDER = 'nonbinary';
 
@@ -311,7 +313,7 @@ const FALLBACK_CATEGORIES = {
 export function initializeFallbackCategories() {
   if (!INDEX_LOADED) {
     setCategoryDefinitions(FALLBACK_CATEGORIES);
-    console.warn("Names | Using fallback category definitions");
+    logWarn("Names | Using fallback category definitions");
   }
 }
 

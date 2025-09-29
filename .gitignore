@@ -1,16 +1,16 @@
+# Development folder (contains tests, roadmap, todos, etc.)
+_dev/
+
 # Test files and scripts
 test-*.js
 convert-json-format.js
 test-unified-system.js
 test-simplified-system.js
-scripts/tests/
 *.py
 
 # Backup and temporary data
 data-old/
 data-new/
-test/
-scripts/tests
 
 # Development files
 *.tmp

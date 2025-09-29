@@ -19,7 +19,8 @@ export class NamesDataManager {
     this.coreSpecies = new Map(); // speciesCode → SpeciesData
     this.apiSpecies = new Map(); // speciesCode → SpeciesData from external modules
     this.consolidatedData = new Map(); // "language.species.category" → data (for legacy compatibility)
-    this.categoryDisplayNames = new Map(); // "language.species.category" → displayName object (3.1.0 format)
+    this.categoryDisplayNames = new Map(); // "language.species.category" → displayName object (3.1.0+ format)
+    this.entryMetadata = new Map(); // "language.species.category" → entry_metadata object (3.1.1 format)
 
     // Available data tracking
     this.availableLanguages = new Set();
@@ -222,10 +223,16 @@ export class NamesDataManager {
           speciesData.categories.add(file.category);
           this.availableCategories.add(file.category);
 
-          // Extract and cache category displayNames for 3.1.0 format
-          if (data.format === "3.1.0" && data.data && data.data[file.category] && data.data[file.category].displayName) {
+          // Extract and cache category displayNames for 3.1.0+ format
+          if ((data.format === "3.1.0" || data.format === "3.1.1" || data.format === "3.1.2") && data.data && data.data[file.category] && data.data[file.category].displayName) {
             const displayNameCacheKey = `${file.language}.${speciesGroup.code}.${file.category}`;
             this.categoryDisplayNames.set(displayNameCacheKey, data.data[file.category].displayName);
+          }
+
+          // Extract and cache entry metadata for 3.1.1+ format
+          if ((data.format === "3.1.1" || data.format === "3.1.2") && data.data && data.data[file.category] && data.data[file.category].entry_metadata) {
+            const metadataCacheKey = `${file.language}.${speciesGroup.code}.${file.category}`;
+            this._cacheEntryMetadata(metadataCacheKey, data.data[file.category].entry_metadata);
           }
 
           // Process data structure for subcategories
@@ -395,7 +402,7 @@ export class NamesDataManager {
    * @returns {boolean} True if 3.0+ format
    */
   _isModernFormat(data) {
-    return data && (data.format === "3.0.0" || data.format === "3.0.1" || data.format === "3.1.0");
+    return data && (data.format === "3.0.0" || data.format === "3.0.1" || data.format === "3.1.0" || data.format === "3.1.1" || data.format === "3.1.2");
   }
 
   /**
@@ -497,21 +504,29 @@ export class NamesDataManager {
   getLocalizedLanguages() {
     const languages = [];
 
+    // Fixed language display names (independent of interface language)
+    const languageDisplayNames = {
+      'de': 'Deutsch',
+      'en': 'English',
+      'fr': 'Français',
+      'es': 'Español',
+      'it': 'Italiano'
+    };
+
     if (this.languageConfig) {
       for (const [code, config] of Object.entries(this.languageConfig.supportedLanguages)) {
         if (config.enabled && this.availableLanguages.has(code)) {
           languages.push({
             code: code,
-            name: game.i18n.localize(config.name) || config.nativeName || code.toUpperCase()
+            name: languageDisplayNames[code] || config.nativeName || code.toUpperCase()
           });
         }
       }
     } else {
       for (const lang of this.availableLanguages) {
-        const locKey = `names.languages.${lang}`;
         languages.push({
           code: lang,
-          name: game.i18n.localize(locKey) || lang.toUpperCase()
+          name: languageDisplayNames[lang] || lang.toUpperCase()
         });
       }
     }
@@ -688,13 +703,20 @@ export class NamesDataManager {
     const { getCategoriesForGenerator } = await import('../shared/constants.js');
     const allCategories = getCategoriesForGenerator(generatorType);
 
+    // Names subcategories that should not be shown as separate categories
+    const nameSubcategories = ['titles', 'nicknames', 'firstnames', 'surnames'];
+
     // Filter by actually available data
     const availableCategories = allCategories.filter(category => {
       if (category === 'names') {
-        // Special case: 'names' category is available if we have gender-specific data files
+        // Special case: 'names' category is available if we have gender-specific data files OR name subcategories
         return Array.from(this.availableCategories).some(cat =>
-          cat === 'male' || cat === 'female' || cat === 'nonbinary'
+          cat === 'male' || cat === 'female' || cat === 'nonbinary' || nameSubcategories.includes(cat)
         );
+      }
+      // Don't show name subcategories as separate top-level categories
+      if (nameSubcategories.includes(category)) {
+        return false;
       }
       return Array.from(this.availableCategories).includes(category);
     });
@@ -709,14 +731,24 @@ export class NamesDataManager {
     const { getCategoriesForGenerator } = await import('../shared/constants.js');
     const allCategories = getCategoriesForGenerator(generatorType);
 
+    // Names subcategories that should not be shown as separate categories
+    const nameSubcategories = ['titles', 'nicknames', 'firstnames', 'surnames'];
+
     // Filter by actually available data for this specific language/species combination
     const availableCategories = allCategories.filter(category => {
       if (category === 'names') {
-        // For names category, check if we have consolidated names data OR individual gender files
+        // For names category, check if we have consolidated names data OR individual gender files OR name subcategories
         return this.hasDataFile(language, species, 'names') ||
                ['male', 'female', 'nonbinary'].some(gender =>
                  this.hasDataFile(language, species, gender)
+               ) ||
+               nameSubcategories.some(subcat =>
+                 this.hasDataFile(language, species, subcat)
                );
+      }
+      // Don't show name subcategories as separate top-level categories
+      if (nameSubcategories.includes(category)) {
+        return false;
       }
       return this.hasDataFile(language, species, category);
     });
@@ -728,13 +760,77 @@ export class NamesDataManager {
    * Check if a data file exists for the given language, species, and category
    */
   hasDataFile(language, species, category) {
+
     // Check core species
     const coreSpecies = this.coreSpecies.get(species);
     if (coreSpecies) {
+      // Map singular forms from generator app to plural forms used in data files
+      const categoryMap = {
+        'title': 'titles',
+        'nickname': 'nicknames',
+        'firstname': 'firstnames',
+        'surname': 'surnames'
+      };
+
+      // Convert category to the data file form (singular -> plural if needed)
+      const dataCategory = categoryMap[category] || category;
+
+      // For names subcategories (titles, nicknames, firstnames, surnames), check in the names file
+      const nameSubcategories = ['titles', 'nicknames', 'firstnames', 'surnames'];
+      if (nameSubcategories.includes(dataCategory)) {
+        const namesKey = `${language}.names`;
+        if (coreSpecies.dataFiles.has(namesKey)) {
+          const data = coreSpecies.dataFiles.get(namesKey);
+          if (this._isModernFormat(data) && data.data && data.data.names && data.data.names.subcategories) {
+            const subcategory = data.data.names.subcategories.find(sub => sub.key === dataCategory);
+            if (subcategory && subcategory.entries) {
+              // Check if this subcategory has entries for any language
+              for (const [lang, langEntries] of Object.entries(subcategory.entries)) {
+                if (Array.isArray(langEntries) && langEntries.length > 0) {
+                  // For simple arrays (like nicknames: ["name1", "name2"])
+                  return true;
+                }
+                // Handle gender-specific entries (like firstnames: {male: [...], female: [...]})
+                if (typeof langEntries === 'object' && langEntries !== null && !Array.isArray(langEntries)) {
+                  for (const genderEntries of Object.values(langEntries)) {
+                    if (Array.isArray(genderEntries) && genderEntries.length > 0) {
+                      return true;
+                    }
+                    // Handle complex structures like titles: [{male: [...], female: [...]}]
+                    if (typeof genderEntries === 'object' && genderEntries !== null && !Array.isArray(genderEntries)) {
+                      for (const nestedEntries of Object.values(genderEntries)) {
+                        if (Array.isArray(nestedEntries) && nestedEntries.length > 0) {
+                          return true;
+                        }
+                      }
+                    }
+                  }
+                }
+                // Handle mixed array structures (like halfling titles: [{ male: [...], female: [...] }])
+                if (Array.isArray(langEntries)) {
+                  for (const entry of langEntries) {
+                    if (typeof entry === 'object' && entry !== null) {
+                      // Check if this is a gender-based object
+                      for (const [genderKey, genderArray] of Object.entries(entry)) {
+                        if (['male', 'female', 'nonbinary'].includes(genderKey) && Array.isArray(genderArray) && genderArray.length > 0) {
+                          return true;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return false;
+        }
+      }
+
+      // For other categories, check the direct file
       const key = `${language}.${category}`;
       if (coreSpecies.dataFiles.has(key)) {
         const data = coreSpecies.dataFiles.get(key);
-        // Handle 3.0.0 and 3.0.1 formats
+        // Handle 3.0.0+ formats
         if (this._isModernFormat(data)) {
           if (data.data && data.data[category]) {
             return true;
@@ -800,7 +896,7 @@ export class NamesDataManager {
     // Create enhanced wrapper that supports 3.1.0 displayNames
     const enhancedGetLocalizedCategoryName = (category) => {
       const context = {
-        language,
+        language: game.i18n.lang, // Use interface language for category names, not content language
         species,
         getCategoryDisplayName: this.getCategoryDisplayName.bind(this)
       };
@@ -1157,7 +1253,7 @@ export class NamesDataManager {
     const genderCategories = ['male', 'female', 'nonbinary'];
     if (genderCategories.includes(category)) {
       const namesData = this.getData(`${language}.${species}.names`);
-      if (namesData && (namesData.format === "3.0.0" || namesData.format === "3.0.1")) {
+      if (namesData && (namesData.format === "3.0.0" || namesData.format === "3.0.1" || namesData.format === "3.1.0" || namesData.format === "3.1.1" || namesData.format === "3.1.2")) {
         logDebug(`Using ${namesData.format} 'names' data for gender category ${language}.${species}.${category}`);
         return true;
       }
@@ -1172,7 +1268,7 @@ export class NamesDataManager {
     const nameSubcategories = ['surnames', 'nicknames', 'titles'];
     if (nameSubcategories.includes(category)) {
       const namesData = this.getData(`${language}.${species}.names`);
-      if (namesData && (namesData.format === "3.0.0" || namesData.format === "3.0.1")) {
+      if (namesData && (namesData.format === "3.0.0" || namesData.format === "3.0.1" || namesData.format === "3.1.0" || namesData.format === "3.1.1" || namesData.format === "3.1.2")) {
         // Check if this subcategory exists in the 3.0+ structure
         if (namesData.data && namesData.data.names && namesData.data.names.subcategories) {
           const subcategoryExists = namesData.data.names.subcategories.some(sub => sub.key === category);
@@ -1230,7 +1326,7 @@ export class NamesDataManager {
       const namesKey = `${language}.names`;
       const namesData = coreSpecies.dataFiles.get(namesKey);
       if (namesData) {
-        if (namesData.format === "3.0.0" || namesData.format === "3.0.1") {
+        if (namesData.format === "3.0.0" || namesData.format === "3.0.1" || namesData.format === "3.1.0" || namesData.format === "3.1.1" || namesData.format === "3.1.2") {
           // For 3.0+ format, check if this category is a subcategory
           if (namesData.data && namesData.data.names && namesData.data.names.subcategories) {
             const subcategoryData = namesData.data.names.subcategories.find(sub => sub.key === category);
@@ -1702,6 +1798,38 @@ NamesDataManager.prototype.extractEntryMetadata = function(entry) {
 };
 
 /**
+ * Extracts and localizes metadata values for display (3.1.2 format)
+ * @param {Object} entry - Entry object with metadata
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @returns {Object|null} Localized metadata object or null
+ */
+NamesDataManager.prototype.extractLocalizedMetadata = function(entry, language, species, category) {
+  if (typeof entry !== 'object' || !entry.meta) {
+    return null;
+  }
+
+  const rawMeta = entry.meta;
+  const localizedMeta = {};
+
+  // Localize each metadata field
+  for (const [fieldName, fieldValue] of Object.entries(rawMeta)) {
+    // First, try individual entry translation (3.1.2)
+    const localizedValue = this.getLocalizedEntryValue(fieldValue);
+
+    // Then, try predefined value mapping (3.1.1)
+    if (typeof localizedValue === 'string') {
+      localizedMeta[fieldName] = this.getLocalizedValue(language, species, category, fieldName, localizedValue);
+    } else {
+      localizedMeta[fieldName] = localizedValue;
+    }
+  }
+
+  return localizedMeta;
+};
+
+/**
  * Gets cached category displayName from 3.1.0 format files
  * @param {string} language - Language code
  * @param {string} species - Species code
@@ -1711,4 +1839,173 @@ NamesDataManager.prototype.extractEntryMetadata = function(entry) {
 NamesDataManager.prototype.getCategoryDisplayName = function(language, species, category) {
   const cacheKey = `${language}.${species}.${category}`;
   return this.categoryDisplayNames.get(cacheKey) || null;
+};
+
+/**
+ * Cache entry metadata from 3.1.1 format files
+ * @param {string} cacheKey - Cache key in format "language.species.category"
+ * @param {Object} metadata - Entry metadata object
+ */
+NamesDataManager.prototype._cacheEntryMetadata = function(cacheKey, metadata) {
+  this.entryMetadata.set(cacheKey, metadata);
+  logDebug(`Cached entry metadata for ${cacheKey}`, Object.keys(metadata));
+};
+
+/**
+ * Gets cached entry metadata from 3.1.1 format files
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @returns {Object|null} Entry metadata object, or null if not found
+ */
+NamesDataManager.prototype.getEntryMetadata = function(language, species, category) {
+  const cacheKey = `${language}.${species}.${category}`;
+  return this.entryMetadata.get(cacheKey) || null;
+};
+
+/**
+ * Gets localized field label from entry metadata (3.1.1 format)
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @param {string} fieldName - Field name
+ * @returns {string|null} Localized field label, or null if not found
+ */
+NamesDataManager.prototype.getFieldLabel = function(language, species, category, fieldName) {
+  const metadata = this.getEntryMetadata(language, species, category);
+  if (!metadata || !metadata[fieldName]) {
+    return null;
+  }
+
+  const fieldDef = metadata[fieldName];
+  const currentLang = game.i18n.lang || 'en';
+
+  // Return localized label for current language, with fallbacks
+  return fieldDef[currentLang] || fieldDef.en || fieldDef.de || Object.values(fieldDef).find(val => typeof val === 'string') || null;
+};
+
+/**
+ * Gets field icon from entry metadata (3.1.1 format)
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @param {string} fieldName - Field name
+ * @returns {string|null} Unicode icon, or null if not found
+ */
+NamesDataManager.prototype.getFieldIcon = function(language, species, category, fieldName) {
+  const metadata = this.getEntryMetadata(language, species, category);
+  if (!metadata || !metadata[fieldName] || !metadata[fieldName].icon) {
+    return null;
+  }
+
+  const icon = metadata[fieldName].icon;
+  if (icon.type === 'unicode' && icon.value) {
+    return icon.value;
+  }
+
+  return null;
+};
+
+/**
+ * Gets localized value mapping from entry metadata (3.1.1 format)
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @param {string} fieldName - Field name
+ * @param {string} value - Raw value to map
+ * @returns {string} Localized value or original value if no mapping found
+ */
+NamesDataManager.prototype.getLocalizedValue = function(language, species, category, fieldName, value) {
+  const metadata = this.getEntryMetadata(language, species, category);
+  if (!metadata || !metadata[fieldName] || !metadata[fieldName].values) {
+    return value;
+  }
+
+  const values = metadata[fieldName].values;
+  const currentLang = game.i18n.lang || 'en';
+
+  // Check for localized value mapping
+  if (values[currentLang] && values[currentLang][value]) {
+    return values[currentLang][value];
+  }
+
+  // Fallback to English or German
+  if (values.en && values.en[value]) {
+    return values.en[value];
+  }
+
+  if (values.de && values.de[value]) {
+    return values.de[value];
+  }
+
+  // Return original value if no mapping found
+  return value;
+};
+
+/**
+ * Gets localized individual entry value (3.1.2 format)
+ * Handles both string values and localized objects within entry metadata
+ * @param {any} value - Value to localize (can be string or object with language keys)
+ * @param {string} fallbackLang - Fallback language if current language not available
+ * @returns {string} Localized value or original value
+ */
+NamesDataManager.prototype.getLocalizedEntryValue = function(value, fallbackLang = 'en') {
+  // If it's not an object, return as-is
+  if (typeof value !== 'object' || value === null) {
+    return value;
+  }
+
+  const currentLang = game.i18n.lang || fallbackLang;
+
+  // Check for current language
+  if (value[currentLang]) {
+    return value[currentLang];
+  }
+
+  // Fallback to specified fallback language
+  if (value[fallbackLang]) {
+    return value[fallbackLang];
+  }
+
+  // Fallback to German if not English
+  if (fallbackLang !== 'de' && value.de) {
+    return value.de;
+  }
+
+  // Fallback to English if not already tried
+  if (fallbackLang !== 'en' && value.en) {
+    return value.en;
+  }
+
+  // Fallback to first available value
+  const firstValue = Object.values(value).find(v => typeof v === 'string');
+  if (firstValue) {
+    return firstValue;
+  }
+
+  // Return original object if no string values found
+  return value;
+};
+
+/**
+ * Gets all available metadata fields for a category (3.1.1 format)
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @returns {Array} Array of field names that have metadata definitions
+ */
+NamesDataManager.prototype.getMetadataFields = function(language, species, category) {
+  const metadata = this.getEntryMetadata(language, species, category);
+  return metadata ? Object.keys(metadata) : [];
+};
+
+/**
+ * Checks if a category has entry metadata (3.1.1 format)
+ * @param {string} language - Language code
+ * @param {string} species - Species code
+ * @param {string} category - Category name
+ * @returns {boolean} True if category has entry metadata definitions
+ */
+NamesDataManager.prototype.hasEntryMetadata = function(language, species, category) {
+  return this.getEntryMetadata(language, species, category) !== null;
 };

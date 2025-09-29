@@ -1,235 +1,292 @@
 {
-  "names": {
-    "title": "Names",
-    "// ===== BASIC UI ELEMENTS =====": "",
-    "language": "Sprache",
-    "lbl_species": "Spezies",
-    "category": "Kategorie",
-    "generate": "Generieren",
-    "copy": "Kopieren",
-    "clear": "Löschen",
-    "copied": "Name kopiert!",
-    "or": "oder",
-    "// ===== UI DROPDOWN LABELS =====": "",
-    "ui": {
-      "choose-species": "Spezies wählen...",
-      "choose-category": "Kategorie wählen..."
-    },
-    "// ===== NAMES & COMPONENTS =====": "",
-    "names": "Namen",
-    "components": "Komponenten",
-    "gender": "Geschlecht",
-    "male": "Männlich",
-    "female": "Weiblich",
-    "nonbinary": "Nicht-binär",
-    "firstname": "Vorname",
-    "surname": "Nachname",
-    "titles": "Titel",
-    "nickname": "Beiname",
-    "nameformat": "Namensformat",
-    "placeholders": "Verfügbare Platzhalter",
-    "examples": "Beispiele",
-    "// ===== CATEGORIZED CONTENT =====": "",
-    "subcategories": "Unterkategorien",
-    "settlements": "Siedlungen",
-    "// ===== GENERATION CONTROLS =====": "",
-    "max-20": "Erstelle 1-20 Namen gleichzeitig",
-    "lbl_amount": "Anzahl Namen",
-    "new-names": "Neue Namen",
-    "choose-name": "Namen wählen:",
-    "select-options": "Wähle Optionen und klicke 'Generieren'",
-    "select-all": "Bitte wähle Sprache und Spezies aus",
-    "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
-    "search-hint": "Tipp: Nutze die Suchfunktion um weitere Optionen zu finden",
-    "// ===== HELP & INSTRUCTIONS =====": "",
-    "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
-    "subcategory-help": "Wähle mindestens eine Unterkategorie aus, oder lasse alle unausgewählt für zufällige Auswahl.",
-    "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
-    "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
-    "// ===== USER INTERACTION =====": "",
-    "name-adopted": "Name \"{name}\" wurde übernommen!",
-    "select-one-token": "Bitte wähle genau einen Token aus.",
-    "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
-    "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
-    "// ===== ERRORS & WARNINGS =====": "",
-    "no-names-found": "Keine Namen gefunden für",
-    "generation-error": "Fehler beim Generieren: {error}",
-    "name-error": "Fehler beim Übernehmen des Namens",
-    "copy-error": "Kopieren fehlgeschlagen",
-    "no-names-generated": "Keine Namen konnten generiert werden",
-    "// ===== LANGUAGES =====": "",
-    "languages": {
-      "de": "Deutsch",
-      "en": "Englisch",
-      "fr": "Französisch",
-      "es": "Spanisch",
-      "it": "Italienisch"
-    },
-    "// ===== SPECIES =====": "",
-    "species": {
-      "human": "Mensch",
-      "elf": "Elf",
-      "dwarf": "Zwerg",
-      "halfling": "Halbling",
-      "orc": "Ork",
-      "goblin": "Goblin",
-      "dragonborn": "Drachengeborener",
-      "tiefling": "Tiefling",
-      "aasimar": "Aasimar",
-      "gnome": "Gnom"
-    },
-    "// ===== CATEGORIES =====": "",
-    "categories": {
-      "male": "Männliche Vornamen",
-      "female": "Weibliche Vornamen",
-      "nonbinary": "Nicht-binäre Vornamen",
-      "surnames": "Nachnamen",
-      "titles": "Titel/Adelstitel",
-      "nicknames": "Beinamen"
-    },
-    "// ===== CATEGORY GROUPS =====": "",
-    "category-groups": {
-      "places": "Orte",
-      "atmospheric": "Atmosphärisch"
-    },
-    "// ===== SUBCATEGORY TRANSLATIONS =====": "",
-    "subcategory-translations": {
-      "pets": {
-        "hunde": "Hunde",
-        "katzen": "Katzen",
-        "voegel": "Vögel",
-        "fische": "Fische",
-        "tressym": "Tressym"
-      }
-    },
-    "// ===== SETTINGS =====": "",
-    "settings": {
-      "defaultLanguage": {
-        "name": "Standard-Sprache",
-        "hint": "Die Sprache, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
-        "auto": "Automatisch (Foundry-Sprache)"
-      },
-      "showInTokenControls": {
-        "name": "Button in Token Controls anzeigen",
-        "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
-      },
-      "showInCharacterSheet": {
-        "name": "Button im Character Sheet anzeigen",
-        "hint": "Zeigt einen Namen-Picker Button neben dem Namensfeld im Character Sheet an"
-      },
-      "showInTokenContextMenu": {
-        "name": "Token HUD & Kontextmenü",
-        "hint": "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu"
-      },
-      "showEmergencyButton": {
-        "name": "\"Notfall-NSC\"-Button anzeigen",
-        "hint": "Zeigt einen Button unter dem Chat für schnelle NSC-Namen Generation"
-      },
-      "includeNonbinaryNames": {
-        "name": "Nicht-binäre Namen einbeziehen",
-        "hint": "Ermöglicht die Auswahl von nicht-binären Vornamen, wenn die Spezies dies unterstützt"
-      },
-      "roleConfig": {
-        "name": "Rollenberechtigungen konfigurieren",
-        "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
-        "label": "Rollen konfigurieren"
-      },
-      "logLevel": {
-        "name": "Log Level",
-        "hint": "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
-        "error": "Nur Fehler",
-        "warn": "Warnungen",
-        "info": "Informationen",
-        "debug": "Alle Details"
-      },
-      "availableSpecies": {
-        "name": "Verfügbare Spezies",
-        "hint": "Wähle welche Spezies im Generator verfügbar sein sollen"
-      },
-      "speciesConfig": {
-        "name": "Spezies verwalten",
-        "hint": "Konfiguriere welche Spezies verfügbar sein sollen",
-        "label": "Spezies konfigurieren"
-      }
-    },
-    "// ===== SPECIES CONFIG =====": "",
-    "speciesConfig": {
-      "title": "Spezies verwalten",
-      "description": "Wähle welche Spezies im Namen-Generator verfügbar sein sollen. Deaktivierte Spezies werden nicht in den Dropdown-Menüs angezeigt.",
-      "search": "Suchen:",
-      "searchPlaceholder": "Spezies suchen...",
-      "enableAll": "Alle aktivieren",
-      "disableAll": "Alle deaktivieren",
-      "reset": "Zurücksetzen",
-      "coreSpecies": "Kern-Spezies",
-      "extensionSpecies": "Erweiterungs-Spezies",
-      "coreModule": "Kern-Modul",
-      "enableAllInModule": "Alle aktivieren",
-      "disableAllInModule": "Alle deaktivieren",
-      "noExtensions": "Keine Erweiterungs-Module mit zusätzlichen Spezies gefunden.",
-      "extensionHint": "Installiere Module mit zusätzlichen Spezies, um mehr Auswahl zu haben.",
-      "totalAvailable": "Verfügbare Spezies:",
-      "saved": "Spezies-Konfiguration gespeichert: {enabled}/{total} aktiviert",
-      "save": "Speichern",
-      "cancel": "Abbrechen"
-    },
-    "// ===== ROLE CONFIG =====": "",
-    "roleConfig": {
-      "title": "Namen-Generator Rollenberechtigungen",
-      "description": "Wähle aus, welche Benutzerrollen den Namen-Generator verwenden dürfen. Benutzer ohne entsprechende Rolle sehen keine Namen-Generator Buttons und können die Chat-Befehle nicht verwenden.",
-      "allowedRoles": "Erlaubte Rollen:",
-      "save": "Speichern",
-      "reset": "Zurücksetzen",
-      "roles": {
-        "PLAYER": "Spieler",
-        "TRUSTED": "Vertrauensvoller Spieler",
-        "ASSISTANT": "Assistent",
-        "GAMEMASTER": "Spielleiter"
-      }
-    },
-    "// ===== PERMISSION CHANGE =====": "",
-    "permissionChange": {
-      "title": "Berechtigung geändert",
-      "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
-      "reload": "Seite neu laden",
-      "later": "Später"
-    },
-    "// ===== EMERGENCY NAMES =====": "",
-    "emergency": {
-      "title": "Emergency NSC Names",
-      "button": "Emergency NSC Names",
-      "tooltip": "Schnelle NSC Namen für den Notfall",
-      "reroll": "Neue Namen",
-      "generating": "Generiere...",
-      "clickToCopy": "Klicken zum Kopieren",
-      "nameCopied": "'{name}' kopiert!",
-      "openGenerator": "Namen-Generator öffnen",
-      "quickNames": "Schnelle NPC Namen",
-      "instructions": "Klicke auf einen Namen um ihn zu kopieren",
-      "noNames": "Keine Namen verfügbar",
-      "hint": "Namen basieren auf der aktuellen Foundry-Sprache"
-    },
-    "// ===== CONSOLE MESSAGES =====": "",
-    "console": {
-      "module-init": "Names Modul init",
-      "loading-index": "Lade Datenindex...",
-      "index-not-found": "index.json nicht gefunden, verwende Fallback",
-      "index-loaded": "Index geladen, {count} Dateien gefunden",
-      "index-error": "Fehler beim Laden der Index-Datei:",
-      "available-languages": "Verfügbare Sprachen:",
-      "available-species": "Verfügbare Spezies:",
-      "available-categories": "Verfügbare Kategorien:",
-      "file-unavailable": "{filename} nicht verfügbar ({status})",
-      "grammar-loaded": "Grammatik-Regeln geladen für {key}",
-      "file-loaded": "✓ {filename} ({count} Einträge)",
-      "file-failed": "✗ {filename} - {error}",
-      "no-data-found": "Keine Daten gefunden für {key}",
-      "no-gender-data": "Keine {gender} {category} gefunden für {key}",
-      "no-titles-found": "Keine {gender} Titel gefunden für {language}.{species}",
-      "component-generation-failed": "Konnte {component} nicht generieren:",
-      "generation-error": "Fehler beim Generieren:",
-      "name-setting-error": "Fehler beim Setzen des Namens:",
-      "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
+    "names": {
+        "title": "Nomina Names",
+        "window-title": "Nomina Names - Namen Generator",
+        "picker-window-title": "Nomina Names - Namen Picker",
+        "// ===== BASIC UI ELEMENTS =====": "",
+        "language": "Sprache",
+        "lbl_language": "Sprachklang",
+        "lbl_species": "Spezies",
+        "category": "Kategorie",
+        "generate": "Generieren",
+        "btn-copy": "Kopieren",
+        "clear": "Löschen",
+        "copied": "Name kopiert!",
+        "or": "oder",
+        "// ===== UI DROPDOWN LABELS =====": "",
+        "ui": {
+            "choose-species": "Spezies wählen...",
+            "choose-category": "Kategorie wählen..."
+        },
+        "// ===== NAMES & COMPONENTS =====": "",
+        "names": "Namen",
+        "components": "Komponenten",
+        "gender": "Geschlecht",
+        "male": "Männlich",
+        "female": "Weiblich",
+        "nonbinary": "Nicht-binär",
+        "firstname": "Vorname",
+        "surname": "Nachname",
+        "titles": "Titel",
+        "nickname": "Beiname",
+        "nameformat": "Namensformat",
+        "placeholders": "Verfügbare Platzhalter",
+        "examples": "Beispiele",
+        "// ===== CATEGORIZED CONTENT =====": "",
+        "subcategories": "Unterkategorien",
+        "settlements": "Siedlungen",
+        "// ===== GENERATION CONTROLS =====": "",
+        "max-20": "Erstelle 1-20 Namen gleichzeitig",
+        "lbl_amount": "Anzahl Namen",
+        "new-names": "Neue Namen",
+        "choose-name": "Namen wählen:",
+        "select-options": "Wähle Optionen und klicke 'Generieren'",
+        "select-all": "Bitte wähle Sprache und Spezies aus",
+        "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
+        "search-hint": "Tipp: Nutze die Suchfunktion um weitere Optionen zu finden",
+        "// ===== HELP & INSTRUCTIONS =====": "",
+        "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
+        "subcategory-help": "Wähle mindestens eine Unterkategorie aus, oder lasse alle unausgewählt für zufällige Auswahl.",
+        "click-for-suggestions": "Klicke \"Neue Namen\" um 3 Vorschläge zu erhalten",
+        "click-to-adopt": "Klicke auf einen Namen um ihn für den Charakter zu übernehmen",
+        "// ===== NEW UI ELEMENTS =====": "",
+        "section": {
+            "basic": "Grundeinstellungen"
+        },
+        "results": {
+            "title": "Generierte Namen",
+            "count": "{count} Ergebnisse",
+            "count-zero": "0 Ergebnisse"
+        },
+        "view": {
+            "detailed": "Detailliert",
+            "simple": "Kompakt"
+        },
+        "type": {
+            "name": "Name"
+        },
+        "copy": {
+            "hint": "Klick zum Kopieren"
+        },
+        "// ===== USER INTERACTION =====": "",
+        "name-adopted": "Name \"{name}\" wurde übernommen!",
+        "select-one-token": "Bitte wähle genau einen Token aus.",
+        "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
+        "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
+        "// ===== ERRORS & WARNINGS =====": "",
+        "no-names-found": "Keine Namen gefunden für",
+        "generation-error": "Fehler beim Generieren: {error}",
+        "name-error": "Fehler beim Übernehmen des Namens",
+        "copy-error": "Kopieren fehlgeschlagen",
+        "no-names-generated": "Keine Namen konnten generiert werden",
+        "// ===== LANGUAGES =====": "",
+        "languages": {
+            "de": "Deutsch",
+            "en": "Englisch",
+            "fr": "Französisch",
+            "es": "Spanisch",
+            "it": "Italienisch"
+        },
+        "// ===== SPECIES =====": "",
+        "species": {
+            "human": "Mensch",
+            "elf": "Elf",
+            "dwarf": "Zwerg",
+            "halfling": "Halbling",
+            "orc": "Ork",
+            "goblin": "Goblin",
+            "dragonborn": "Drachengeborener",
+            "tiefling": "Tiefling",
+            "aasimar": "Aasimar",
+            "gnome": "Gnom"
+        },
+        "// ===== CATEGORIES =====": "",
+        "categories": {
+            "male": "Männliche Vornamen",
+            "female": "Weibliche Vornamen",
+            "nonbinary": "Nicht-binäre Vornamen",
+            "surnames": "Nachnamen",
+            "titles": "Titel/Adelstitel",
+            "nicknames": "Beinamen"
+        },
+        "// ===== CATEGORY GROUPS =====": "",
+        "category-groups": {
+            "places": "Orte",
+            "atmospheric": "Atmosphärisch"
+        },
+        "// ===== SUBCATEGORY TRANSLATIONS =====": "",
+        "subcategory-translations": {
+            "pets": {
+                "hunde": "Hunde",
+                "katzen": "Katzen",
+                "voegel": "Vögel",
+                "fische": "Fische",
+                "tressym": "Tressym"
+            }
+        },
+        "// ===== SETTINGS =====": "",
+        "settings": {
+            "interfaceLanguage": {
+                "name": "Interface-Sprache",
+                "hint": "Die Sprache der Benutzeroberfläche (unabhängig vom Sprachklang der Namen)",
+                "auto": "Automatisch (Foundry-Sprache)"
+            },
+            "defaultContentLanguage": {
+                "name": "Standard-Sprachklang",
+                "hint": "Der Standard-Sprachklang für generierte Namen (deutsch, englisch, etc.)",
+                "auto": "Automatisch (Interface-Sprache)"
+            },
+            "showInTokenControls": {
+                "name": "Button in Token Controls anzeigen",
+                "hint": "Zeigt den Namen-Generator Button in der linken Toolbar an"
+            },
+            "showInCharacterSheet": {
+                "name": "Button im Character Sheet anzeigen",
+                "hint": "Zeigt einen Namen-Picker Button neben dem Namensfeld im Character Sheet an"
+            },
+            "showInTokenContextMenu": {
+                "name": "Token HUD & Kontextmenü",
+                "hint": "Zeigt einen Namen-Button im Token HUD und fügt eine 'Name ändern' Option zum Rechtsklick-Menü hinzu"
+            },
+            "showEmergencyButton": {
+                "name": "\"Notfall-NSC\"-Button anzeigen",
+                "hint": "Zeigt einen Button unter dem Chat für schnelle NSC-Namen Generation"
+            },
+            "includeNonbinaryNames": {
+                "name": "Nicht-binäre Namen einbeziehen",
+                "hint": "Ermöglicht die Auswahl von nicht-binären Vornamen, wenn die Spezies dies unterstützt"
+            },
+            "roleConfig": {
+                "name": "Rollenberechtigungen konfigurieren",
+                "hint": "Bestimme, welche Benutzerrollen den Namen-Generator verwenden dürfen",
+                "label": "Rollen konfigurieren"
+            },
+            "logLevel": {
+                "name": "Log Level",
+                "hint": "Bestimmt wie viele Konsolen-Meldungen angezeigt werden. Debug zeigt alle Meldungen, Error nur Fehler.",
+                "error": "Nur Fehler",
+                "warn": "Warnungen",
+                "info": "Informationen",
+                "debug": "Alle Details"
+            },
+            "availableSpecies": {
+                "name": "Verfügbare Spezies",
+                "hint": "Wähle welche Spezies im Generator verfügbar sein sollen"
+            },
+            "speciesConfig": {
+                "name": "Spezies verwalten",
+                "hint": "Konfiguriere welche Spezies verfügbar sein sollen",
+                "label": "Spezies konfigurieren"
+            },
+            "defaultView": {
+                "name": "Standard-Ansicht",
+                "hint": "Die Ansicht, die beim Öffnen des Namen-Generators automatisch ausgewählt wird",
+                "detailed": "Detailliert",
+                "simple": "Kompakt"
+            },
+            "defaultNameCount": {
+                "name": "Standard-Anzahl Namen",
+                "hint": "Die Anzahl der Namen, die standardmäßig generiert werden sollen (1-20)"
+            },
+            "enableMetadata": {
+                "name": "Erweiterte Metadaten anzeigen",
+                "hint": "Zeigt zusätzliche Informationen wie Inhaber, Lage und Spezialitäten bei generierten Orten und Gebäuden an"
+            }
+        },
+        "// ===== SPECIES CONFIG =====": "",
+        "speciesConfig": {
+            "title": "Spezies verwalten",
+            "description": "Wähle welche Spezies im Namen-Generator verfügbar sein sollen. Deaktivierte Spezies werden nicht in den Dropdown-Menüs angezeigt.",
+            "search": "Suchen:",
+            "searchPlaceholder": "Spezies suchen...",
+            "enableAll": "Alle aktivieren",
+            "disableAll": "Alle deaktivieren",
+            "reset": "Zurücksetzen",
+            "coreSpecies": "Kern-Spezies",
+            "extensionSpecies": "Erweiterungs-Spezies",
+            "coreModule": "Kern-Modul",
+            "enableAllInModule": "Alle aktivieren",
+            "disableAllInModule": "Alle deaktivieren",
+            "noExtensions": "Keine Erweiterungs-Module mit zusätzlichen Spezies gefunden.",
+            "extensionHint": "Installiere Module mit zusätzlichen Spezies, um mehr Auswahl zu haben.",
+            "totalAvailable": "Verfügbare Spezies:",
+            "saved": "Spezies-Konfiguration gespeichert: {enabled}/{total} aktiviert",
+            "save": "Speichern",
+            "cancel": "Abbrechen"
+        },
+        "// ===== ROLE CONFIG =====": "",
+        "roleConfig": {
+            "title": "Namen-Generator Rollenberechtigungen",
+            "description": "Wähle aus, welche Benutzerrollen den Namen-Generator verwenden dürfen. Benutzer ohne entsprechende Rolle sehen keine Namen-Generator Buttons und können die Chat-Befehle nicht verwenden.",
+            "allowedRoles": "Erlaubte Rollen:",
+            "save": "Speichern",
+            "reset": "Zurücksetzen",
+            "roles": {
+                "PLAYER": "Spieler",
+                "TRUSTED": "Vertrauensvoller Spieler",
+                "ASSISTANT": "Assistent",
+                "GAMEMASTER": "Spielleiter"
+            }
+        },
+        "// ===== PERMISSION CHANGE =====": "",
+        "permissionChange": {
+            "title": "Berechtigung geändert",
+            "content": "Deine Namen-Generator Berechtigung wurde vom Spielleiter geändert. Ein Reload der Seite ist erforderlich, damit die Änderungen wirksam werden.",
+            "reload": "Seite neu laden",
+            "later": "Später"
+        },
+        "// ===== EMERGENCY NAMES =====": "",
+        "emergency": {
+            "title": "Emergency NSC Names",
+            "button": "Emergency NSC Names",
+            "tooltip": "Schnelle NSC Namen für den Notfall",
+            "reroll": "Neue Namen",
+            "generating": "Generiere...",
+            "clickToCopy": "Klicken zum Kopieren",
+            "nameCopied": "'{name}' kopiert!",
+            "openGenerator": "Namen-Generator öffnen",
+            "quickNames": "Schnelle NPC Namen",
+            "instructions": "Klicke auf einen Namen um ihn zu kopieren",
+            "noNames": "Keine Namen verfügbar",
+            "hint": "Namen basieren auf der aktuellen Foundry-Sprache"
+        },
+        "// ===== META DATA LABELS =====": "",
+        "meta": {
+            "owner": "Inhaber/in",
+            "location": "Lage",
+            "price": "Preis",
+            "specialization": "Spezialisierung",
+            "atmosphere": "Atmosphäre",
+            "clientele": "Klientel",
+            "features": "Besonderheiten",
+            "services": "Dienste",
+            "quality": "Qualität",
+            "size": "Größe",
+            "age": "Alter",
+            "type": "Art",
+            "description": "Beschreibung"
+        },
+        "// ===== CONSOLE MESSAGES =====": "",
+        "console": {
+            "module-init": "Names Modul init",
+            "loading-index": "Lade Datenindex...",
+            "index-not-found": "index.json nicht gefunden, verwende Fallback",
+            "index-loaded": "Index geladen, {count} Dateien gefunden",
+            "index-error": "Fehler beim Laden der Index-Datei:",
+            "available-languages": "Verfügbare Sprachen:",
+            "available-species": "Verfügbare Spezies:",
+            "available-categories": "Verfügbare Kategorien:",
+            "file-unavailable": "{filename} nicht verfügbar ({status})",
+            "grammar-loaded": "Grammatik-Regeln geladen für {key}",
+            "file-loaded": "✓ {filename} ({count} Einträge)",
+            "file-failed": "✗ {filename} - {error}",
+            "no-data-found": "Keine Daten gefunden für {key}",
+            "no-gender-data": "Keine {gender} {category} gefunden für {key}",
+            "no-titles-found": "Keine {gender} Titel gefunden für {language}.{species}",
+            "component-generation-failed": "Konnte {component} nicht generieren:",
+            "generation-error": "Fehler beim Generieren:",
+            "name-setting-error": "Fehler beim Setzen des Namens:",
+            "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
+        }
     }
-  }
 }

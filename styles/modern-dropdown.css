@@ -142,13 +142,13 @@
 .modern-dropdown-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 8px;
+  padding: 8px 12px;
   cursor: pointer;
   transition: all 0.2s ease;
   border-bottom: 1px solid rgba(122, 121, 113, 0.1);
   color: var(--color-text-primary, #eee);
-  min-height: 40px;
+  min-height: 32px;
   box-sizing: border-box;
 }
 
