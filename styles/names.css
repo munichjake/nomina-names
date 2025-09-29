@@ -733,19 +733,21 @@
 .emergency-names-chat-button {
   background: linear-gradient(135deg, #e67e22, #d35400);
   color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin: 8px;
+  gap: 4px;
+  margin: 4px;
   border: none;
+  max-height: 24px;
+  line-height: 1;
 }
 
 .emergency-names-chat-button:hover {
@@ -932,18 +934,20 @@
 #emergency-names-button {
   background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   color: white;
-  padding: 12px 20px;
-  margin: 12px;
+  padding: 4px 8px;
+  margin: 4px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 14px;
-  display: flex;
+  font-size: 11px;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-height: 24px;
+  line-height: 1;
 }
 
 #emergency-names-button:hover {
