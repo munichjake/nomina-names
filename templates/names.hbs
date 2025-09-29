@@ -1,15 +1,16 @@
 <form class="names-module-form">
-  <!-- Hauptauswahl-Reihe: Language, Species, Category -->
-  <div class="names-module-section names-module-main-selection">
-    <h3>{{localize "names.title"}}</h3>
+  <!-- Left Controls Panel -->
+  <div class="names-module-controls-panel">
+    <!-- Grundeinstellungen Section -->
+    <div class="names-module-section">
+      <h3>{{localize "names.section.basic"}}</h3>
 
-    <div class="names-module-selection-grid">
       <div class="names-module-form-group">
-        <label for="names-language-select">{{localize "names.language"}}:</label>
+        <label for="names-language-select">{{localize "names.lbl_language"}}:</label>
         <select id="names-language-select"
                 name="names-language"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 20}'>
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
           <option value="">-- {{localize "names.select-all"}} --</option>
           {{#each languages}}
           <option value="{{this.code}}" {{#if (eq this.code ../defaultLanguage)}}selected{{/if}}>{{this.name}}</option>
@@ -22,7 +23,7 @@
         <select id="names-species-select"
                 name="names-species"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 20}'>
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
           <option value="">-- {{localize "names.select-all"}} --</option>
           {{#each species}}
           <option value="{{this.code}}">{{this.name}}</option>
@@ -35,7 +36,7 @@
         <select id="names-category-select"
                 name="names-category"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 40}'>
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 12, "itemHeight": 32}'>
           <option value="">-- {{localize "names.select-all"}} --</option>
           {{#each categories}}
           {{#if this.length}}
@@ -47,565 +48,138 @@
           {{/if}}
           {{/each}}
         </select>
-        <div class="names-module-format-help">
-          {{localize "names.select-options"}}
-          <span class="names-search-hint">{{localize "names.search-hint"}}</span>
-        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Geschlechter-Auswahl Panel - wird nur für "Namen" angezeigt -->
-  <div class="names-module-section names-module-gender-section" style="display: none;">
-    <h3>{{localize "names.gender"}}</h3>
-    
-    <div class="names-module-checkbox-grid" id="gender-checkboxes-container">
-      <!-- Wird dynamisch von JavaScript gefüllt -->
-    </div>
-    <div class="names-module-format-help">
-      {{localize "names.gender-help"}}
-    </div>
-  </div>
+    <!-- Geschlechter-Auswahl Panel - wird nur für "Namen" angezeigt -->
+    <div class="names-module-section names-module-gender-section" style="display: none;">
+      <h3>{{localize "names.gender"}}</h3>
 
-  <!-- Unterkategorien-Auswahl Panel - wird nur für kategorisierte Inhalte angezeigt -->
-  <div class="names-module-section names-module-subcategory-section" style="display: none;">
-    <h3>{{localize "names.subcategories"}}</h3>
-    
-    <div class="names-module-checkbox-grid" id="subcategory-checkboxes-container">
-      <!-- Wird dynamisch von JavaScript gefüllt -->
-    </div>
-    <div class="names-module-format-help">
-      {{localize "names.subcategory-help"}}
-    </div>
-  </div>
-
-  <!-- Namenskomponenten Panel - wird nur für "Namen" angezeigt -->
-  <div class="names-module-section names-module-components-section" style="display: none;">
-    <h3>{{localize "names.components"}}</h3>
-    
-    <div class="names-module-checkbox-grid">
-      <label class="names-module-checkbox-item">
-        <input type="checkbox" name="names-include-firstname" checked>
-        <span class="names-module-checkmark"></span>
-        {{localize "names.firstname"}}
-      </label>
-      
-      <label class="names-module-checkbox-item">
-        <input type="checkbox" name="names-include-surname">
-        <span class="names-module-checkmark"></span>
-        {{localize "names.surname"}}
-      </label>
-      
-      <label class="names-module-checkbox-item">
-        <input type="checkbox" name="names-include-title">
-        <span class="names-module-checkmark"></span>
-        {{localize "names.titles"}}
-      </label>
-      
-      <label class="names-module-checkbox-item">
-        <input type="checkbox" name="names-include-nickname">
-        <span class="names-module-checkmark"></span>
-        {{localize "names.nickname"}}
-      </label>
-    </div>
-
-    <div class="names-module-format-group">
-      <div class="names-module-form-group">
-        <label for="names-format-input">{{localize "names.nameformat"}}:</label>
-        <input 
-          type="text" 
-          id="names-format-input" 
-          name="names-format"
-          class="names-module-format-input"
-          value="{firstname} {nickname} {surname}, {title}"
-          placeholder="{firstname} {nickname} {surname}, {title}"
-        >
-        <div class="names-module-format-help">
-          {{localize "names.placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
-          {{localize "names.examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
-        </div>
+      <div class="names-module-checkbox-grid" id="gender-checkboxes-container">
+        <!-- Wird dynamisch von JavaScript gefüllt -->
+      </div>
+      <div class="names-module-format-help">
+        {{localize "names.gender-help"}}
       </div>
     </div>
-  </div>
 
-  <!-- Generate und Results Sektion: horizontal angeordnet -->
-  <div class="names-module-section names-module-action-section">
-    <div class="names-module-action-grid">
-      <!-- Generate Panel -->
-      <div class="names-module-generate-panel">
-        <h3>{{localize "names.generate"}}</h3>
+    <!-- Unterkategorien-Auswahl Panel - wird nur für kategorisierte Inhalte angezeigt -->
+    <div class="names-module-section names-module-subcategory-section" style="display: none;">
+      <h3>{{localize "names.subcategories"}}</h3>
 
+      <div class="names-module-checkbox-grid" id="subcategory-checkboxes-container">
+        <!-- Wird dynamisch von JavaScript gefüllt -->
+      </div>
+      <div class="names-module-format-help">
+        {{localize "names.subcategory-help"}}
+      </div>
+    </div>
+
+    <!-- Namenskomponenten Panel - wird nur für "Namen" angezeigt -->
+    <div class="names-module-section names-module-components-section" style="display: none;">
+      <h3>{{localize "names.components"}}</h3>
+
+      <div class="names-module-checkbox-grid">
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-include-firstname" checked>
+          <span class="names-module-checkmark"></span>
+          {{localize "names.firstname"}}
+        </label>
+
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-include-surname">
+          <span class="names-module-checkmark"></span>
+          {{localize "names.surname"}}
+        </label>
+
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-include-title">
+          <span class="names-module-checkmark"></span>
+          {{localize "names.titles"}}
+        </label>
+
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-include-nickname">
+          <span class="names-module-checkmark"></span>
+          {{localize "names.nickname"}}
+        </label>
+      </div>
+
+      <div class="names-module-format-group">
         <div class="names-module-form-group">
-          <label for="names-count-input">{{localize "names.lbl_amount"}}:</label>
+          <label for="names-format-input">{{localize "names.nameformat"}}:</label>
           <input
-            type="number"
-            id="names-count-input"
-            name="names-count"
-            min="1"
-            max="20"
-            value="1"
-            class="names-module-count-input"
+            type="text"
+            id="names-format-input"
+            name="names-format"
+            class="names-module-format-input"
+            value="{firstname} {nickname} {surname}, {title}"
+            placeholder="{firstname} {nickname} {surname}, {title}"
           >
           <div class="names-module-format-help">
-            {{localize "names.max-20"}}
+            {{localize "names.placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
+            {{localize "names.examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="names-module-form-group">
-          <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
-            <i class="fas fa-dice"></i> {{localize "names.generate"}}
-          </button>
+    <!-- Generierung Section -->
+    <div class="names-module-section">
+      <h3>{{localize "names.generate"}}</h3>
+
+      <div class="names-module-form-group">
+        <label for="names-count-input">{{localize "names.lbl_amount"}}:</label>
+        <input
+          type="number"
+          id="names-count-input"
+          name="names-count"
+          min="1"
+          max="20"
+          value="5"
+          class="names-module-count-input"
+        >
+        <div class="names-module-format-help">
+          {{localize "names.max-20"}}
         </div>
       </div>
 
-      <!-- Results Panel -->
-      <div class="names-module-result-panel">
-        <h3>{{localize "names.names"}}</h3>
+      <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
+        <i class="fas fa-dice"></i> {{localize "names.generate"}}
+      </button>
+    </div>
+  </div>
 
-        <div id="names-result-display" class="names-module-result-display">
-          <div class="names-module-no-result">{{localize "names.select-options"}}</div>
-        </div>
+  <!-- Right Results Panel -->
+  <div class="names-module-results-panel">
+    <div class="names-module-results-header">
+      <h2 class="names-module-results-title">{{localize "names.results.title"}}</h2>
+      <span class="names-module-results-count" id="resultsCount">{{localize "names.results.count-zero"}}</span>
+    </div>
 
-        <div class="names-module-result-actions">
-          <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
-            <i class="fas fa-copy"></i> {{localize "names.copy"}}
-          </button>
-          <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
-            <i class="fas fa-trash"></i> {{localize "names.clear"}}
-          </button>
-        </div>
+    <div class="names-module-search-section">
+      <div class="names-module-search-container">
+        <input type="text" class="names-module-search-input" id="searchInput" placeholder="🔍 Namen durchsuchen...">
+        <div class="names-module-search-results-info" id="searchInfo"></div>
       </div>
+    </div>
+
+    <div class="names-module-view-toggle">
+      <button class="names-module-toggle-btn active" data-view="detailed"><span>📋 {{localize "names.view.detailed"}}</span></button>
+      <button class="names-module-toggle-btn" data-view="simple"><span>📝 {{localize "names.view.simple"}}</span></button>
+    </div>
+
+    <div id="names-result-display" class="names-module-result-display">
+      <div class="names-module-no-result">{{localize "names.select-options"}}</div>
+    </div>
+
+    <div class="names-module-result-actions">
+      <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
+        <i class="fas fa-copy"></i> {{localize "names.btn-copy"}}
+      </button>
+      <button type="button" id="names-clear-btn" class="names-module-action-btn" disabled>
+        <i class="fas fa-trash"></i> {{localize "names.clear"}}
+      </button>
     </div>
   </div>
 </form>
-
-<style>
-/* ===== LAYOUT SYSTEM ===== */
-
-/* Hauptauswahl-Grid: Language, Species, Category horizontal */
-.names-module-selection-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-
-/* Action-Grid: Generate und Results nebeneinander */
-.names-module-action-grid {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.names-module-generate-panel {
-  background: rgba(255, 100, 0, 0.03);
-  border: 2px solid rgba(255, 100, 0, 0.2);
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.names-module-result-panel {
-  background: rgba(255, 100, 0, 0.02);
-  border: 2px solid rgba(255, 100, 0, 0.15);
-  border-radius: 8px;
-  padding: 20px;
-}
-
-/* Responsive anpassungen */
-@media (max-width: 900px) {
-  .names-module-action-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .names-module-selection-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-  }
-}
-
-@media (max-width: 600px) {
-  .names-module-selection-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-/* ===== ENHANCED FORM ELEMENTS ===== */
-.names-module-form-group {
-  margin-bottom: 16px;
-}
-
-.names-module-form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-/* Ensure enhanced dropdowns integrate well with existing form styling */
-.names-module-form-group .enhanced-dropdown {
-  width: 100%;
-  margin-bottom: 4px;
-}
-
-/* Checkbox styling improvements */
-.names-module-checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.names-module-checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.names-module-checkbox-item:hover {
-  border-color: #ff6400;
-  background: rgba(255, 100, 0, 0.02);
-}
-
-.names-module-checkbox-item input[type="checkbox"] {
-  margin: 0;
-  width: 18px;
-  height: 18px;
-  accent-color: #ff6400;
-}
-
-.names-module-checkbox-item input[type="checkbox"]:checked {
-  background: #ff6400;
-}
-
-.names-module-checkbox-item input[type="checkbox"]:checked + .names-module-checkmark {
-  background: #ff6400;
-}
-
-/* Gender, component and subcategory sections */
-.names-module-gender-section,
-.names-module-components-section,
-.names-module-subcategory-section {
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 20px;
-  background: rgba(255, 100, 0, 0.02);
-}
-
-/* Subcategory section styling - similar to gender section but distinct */
-.names-module-subcategory-section {
-  border-color: #4a90e2;
-  background: rgba(74, 144, 226, 0.02);
-}
-
-.names-module-subcategory-section h3 {
-  color: #4a90e2;
-  border-bottom-color: #4a90e2;
-}
-
-/* Generate button styling */
-.names-module-generate-btn {
-  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
-  border: none;
-  border-radius: 8px;
-  color: white;
-  padding: 14px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.2);
-  width: 100%;
-  justify-content: center;
-}
-
-.names-module-generate-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 100, 0, 0.3);
-}
-
-.names-module-generate-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Format input styling */
-.names-module-format-input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border-color 0.2s ease;
-}
-
-.names-module-format-input:focus {
-  outline: none;
-  border-color: #ff6400;
-  box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.1);
-}
-
-/* Count input styling */
-.names-module-count-input {
-  width: 100px;
-  padding: 10px 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border-color 0.2s ease;
-}
-
-.names-module-count-input:focus {
-  outline: none;
-  border-color: #ff6400;
-  box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.1);
-}
-
-/* Result section styling - angepasst für neues Layout */
-.names-module-result-display {
-  background: #2f3136;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 12px;
-  min-height: 120px;
-  position: relative;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.names-module-no-result {
-  text-align: center;
-  color: #666;
-  font-style: italic;
-  padding: 20px;
-}
-
-.names-module-generated-name {
-  background: #2a2a2a;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin: 8px 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #e0e0e0 !important;
-  transition: all 0.2s ease;
-}
-
-.names-module-generated-name:hover {
-  background: rgba(255, 100, 0, 0.05);
-  border-color: #ff6400;
-}
-
-.names-module-result-actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.names-module-action-btn {
-  background: #6c757d;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.names-module-action-btn:hover:not(:disabled) {
-  background: #5a6268;
-  transform: translateY(-1px);
-}
-
-.names-module-action-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Help text styling */
-.names-module-format-help {
-  font-size: 12px;
-  color: #666;
-  margin-top: 6px;
-  line-height: 1.4;
-}
-
-.names-search-hint {
-  display: block;
-  font-style: italic;
-  color: #888;
-  margin-top: 4px;
-  font-size: 11px;
-}
-
-/* Section styling - kompaktere Abstände */
-.names-module-section {
-  margin-bottom: 20px;
-}
-
-.names-module-section h3 {
-  margin: 0 0 15px 0;
-  font-size: 16px;
-  font-weight: 600;
-  border-bottom: 2px solid #ff6400;
-  padding-bottom: 6px;
-}
-
-.names-module-main-selection h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.names-module-generate-panel h3,
-.names-module-result-panel h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 16px;
-}
-
-/* Author credits styling */
-.names-module-author-credits {
-  margin-top: 20px;
-  padding: 15px;
-  background: rgba(255, 100, 0, 0.05);
-  border-radius: 6px;
-  font-size: 12px;
-  color: #666;
-  border-color: #ff6400;
-}
-
-.names-module-author-entry {
-  margin: 5px 0;
-}
-
-.names-module-author-name {
-  font-weight: 600;
-}
-
-.names-module-author-links {
-  margin-left: 8px;
-}
-
-.names-module-author-links a {
-  text-decoration: none;
-  margin: 0 3px;
-}
-
-/* Category group styling */
-.names-category-group-header {
-  font-weight: bold !important;
-  font-style: italic !important;
-  color: #333 !important;
-  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%) !important;
-  color: white !important;
-  text-align: center !important;
-  border: none !important;
-  cursor: default !important;
-  user-select: none !important;
-  pointer-events: none !important;
-  font-size: 12px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  padding: 8px 12px !important;
-  margin: 2px 0 !important;
-  border-radius: 4px !important;
-}
-
-.names-category-item {
-  padding-left: 20px !important;
-  border-left: 3px solid transparent !important;
-  transition: all 0.2s ease !important;
-}
-
-.names-category-item:hover {
-  border-left-color: #ff6400 !important;
-  background-color: rgba(255, 100, 0, 0.05) !important;
-}
-
-/* Enhanced dropdown group styling */
-.enhanced-dropdown .names-category-group-header {
-  font-weight: bold;
-  font-style: italic;
-  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
-  color: white;
-  text-align: center;
-  cursor: default;
-  user-select: none;
-  pointer-events: none;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 8px 12px;
-  margin: 2px 0;
-  border-radius: 4px;
-  border: none;
-}
-
-.enhanced-dropdown .names-category-item {
-  padding-left: 20px;
-  border-left: 3px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.enhanced-dropdown .names-category-item:hover {
-  border-left-color: #ff6400;
-  background-color: rgba(255, 100, 0, 0.05);
-}
-
-/* Ensure group headers are not selectable */
-.names-category-group-header:focus {
-  outline: none !important;
-  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%) !important;
-}
-
-/* Enhanced dropdown specific adjustments */
-.enhanced-dropdown .dropdown-menu .names-category-group-header {
-  display: block !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Responsive design - erweitert für neues Layout */
-@media (max-width: 600px) {
-  .names-module-checkbox-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .names-module-result-actions {
-    flex-direction: column;
-  }
-
-  .names-module-action-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .names-module-generate-panel,
-  .names-module-result-panel {
-    padding: 16px;
-  }
-
-  .names-module-main-selection h3 {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-}
-</style>

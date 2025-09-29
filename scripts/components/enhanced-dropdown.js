@@ -3,23 +3,43 @@
  * Features: Search, Virtual Scrolling, Modern Design, Accessibility
  */
 
+import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+
 export class EnhancedDropdown {
   constructor(element, options = {}) {
     this.element = element;
+
+    // Parse data-enhanced attribute if it exists
+    let dataEnhanced = {};
+    try {
+      if (element.dataset.enhanced) {
+        dataEnhanced = JSON.parse(element.dataset.enhanced);
+      }
+    } catch (error) {
+      logWarn('Failed to parse data-enhanced attribute:', error);
+    }
+
     this.options = {
       placeholder: "Wählen Sie eine Option...",
       searchPlaceholder: "Suchen...",
       multiSelect: false,
       virtualScroll: true,
-      itemHeight: 44,
+      itemHeight: 32, // Reduced from 44 to 32 for slimmer entries
       maxVisible: 8,
+      maxVisibleItems: 8, // Alternative name
       clearable: true,
       disabled: false,
       allowCustomValue: false,
       groupBy: null,
       theme: 'names-orange', // names-orange, names-dark, names-light
-      ...options
+      ...dataEnhanced, // Apply data-enhanced first
+      ...options // Then apply constructor options
     };
+
+    // Handle both maxVisible and maxVisibleItems
+    if (this.options.maxVisibleItems && !options.maxVisible) {
+      this.options.maxVisible = this.options.maxVisibleItems;
+    }
     
     this.isOpen = false;
     this.selectedValues = this.options.multiSelect ? [] : null;
@@ -39,14 +59,96 @@ export class EnhancedDropdown {
     this.bindEvents();
     this.updateDisplay();
     this.loadItems();
-    
+
     // Store reference on container for external access
     this.container._enhancedDropdown = this;
   }
 
+  findBestPanelContainer() {
+    // Priority list of containers to try (from best to fallback)
+    const containerSelectors = [
+      // Foundry application window content (highest priority for names picker)
+      '.names-picker-app .window-content',
+      '.window-app .window-content',
+      '.application .window-content',
+
+      // Foundry dialog content
+      '.dialog .window-content',
+
+      // General window content
+      '.window-content',
+
+      // Application wrapper
+      '.application',
+
+      // Window app wrapper
+      '.window-app',
+
+      // Form content (for picker forms)
+      '.names-picker-form',
+      'form'
+    ];
+
+    // Start from the dropdown element and traverse up
+    let current = this.element;
+
+    // First, try to find a matching container by traversing up the DOM
+    while (current && current !== document.body) {
+      for (const selector of containerSelectors) {
+        if (current.matches && current.matches(selector)) {
+          // Ensure the container has proper positioning for absolute children
+          const computedStyle = window.getComputedStyle(current);
+          if (computedStyle.position === 'static') {
+            current.style.position = 'relative';
+          }
+          logDebug(`Found container using selector: ${selector}`, current);
+          return current;
+        }
+      }
+      current = current.parentElement;
+    }
+
+    // If traversal didn't work, try global queries within reasonable scope
+    const app = this.element.closest('.window-app, .application, .dialog, .names-picker-app');
+    if (app) {
+      for (const selector of containerSelectors) {
+        const found = app.querySelector(selector);
+        if (found) {
+          // Ensure proper positioning
+          const computedStyle = window.getComputedStyle(found);
+          if (computedStyle.position === 'static') {
+            found.style.position = 'relative';
+          }
+          logDebug(`Found container via query in app: ${selector}`, found);
+          return found;
+        }
+      }
+      // If no specific container found, use the app itself
+      const computedStyle = window.getComputedStyle(app);
+      if (computedStyle.position === 'static') {
+        app.style.position = 'relative';
+      }
+      logDebug('Using application container', app);
+      return app;
+    }
+
+    // Ultimate fallback - use document.body for global positioning
+    logDebug('Using document.body as fallback container');
+    return document.body;
+  }
+
   createStructure() {
-    // Hide original select
+    // Ensure we don't create duplicates
+    if (this.element.nextSibling && this.element.nextSibling.classList && this.element.nextSibling.classList.contains('enhanced-dropdown')) {
+      logWarn('Enhanced dropdown already exists for this element');
+      return;
+    }
+
+    // Hide original select completely
     this.element.style.display = 'none';
+    this.element.style.visibility = 'hidden';
+    this.element.style.position = 'absolute';
+    this.element.style.left = '-9999px';
     
     // Create dropdown container
     this.container = document.createElement('div');
@@ -117,13 +219,32 @@ export class EnhancedDropdown {
     this.panel.appendChild(this.searchBox);
     this.panel.appendChild(this.itemsWrapper);
     this.panel.appendChild(this.emptyState);
-    
+
     this.container.appendChild(this.trigger);
     this.container.appendChild(this.panel);
-    
+
     // Insert after original element
     this.element.parentNode.insertBefore(this.container, this.element.nextSibling);
-    
+
+    // Ensure the container has proper positioning context for z-index
+    this.container.style.position = 'relative';
+    this.container.style.zIndex = '10';
+
+    // Fix stacking context issues with parent sections
+    const parentSection = this.element.closest('.names-module-section');
+    if (parentSection) {
+      parentSection.style.position = 'relative';
+      parentSection.style.zIndex = '1';
+    }
+
+    // Re-position panel if window is resized while open
+    this.resizeHandler = () => {
+      if (this.isOpen) {
+        this.positionPanel();
+      }
+    };
+    window.addEventListener('resize', this.resizeHandler);
+
     // Inject styles
     this.injectStyles();
   }
@@ -186,6 +307,7 @@ export class EnhancedDropdown {
     // Trigger events
     this.trigger.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       if (!this.options.disabled) {
         this.toggle();
       }
@@ -219,6 +341,7 @@ export class EnhancedDropdown {
     
     // Item selection
     this.itemsContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
       const item = e.target.closest('.dropdown-item');
       if (item && !item.classList.contains('disabled')) {
         const value = item.dataset.value;
@@ -238,7 +361,7 @@ export class EnhancedDropdown {
       if (!this.container.contains(e.target)) {
         this.close();
       }
-    });
+    }, { capture: true });
     
     // Window resize
     window.addEventListener('resize', () => {
@@ -246,6 +369,13 @@ export class EnhancedDropdown {
         this.positionPanel();
       }
     });
+
+    // Window scroll - reposition dropdown when page scrolls
+    window.addEventListener('scroll', () => {
+      if (this.isOpen) {
+        this.positionPanel();
+      }
+    }, { passive: true });
   }
 
   toggle() {
@@ -254,9 +384,18 @@ export class EnhancedDropdown {
 
   open() {
     if (this.isOpen || this.options.disabled) return;
-    
+
     this.isOpen = true;
     this.panel.style.display = 'block';
+    this.panel.style.zIndex = '999';
+    this.container.style.zIndex = '999';
+
+    // Ensure parent section has higher z-index when dropdown is open
+    const parentSection = this.element.closest('.names-module-section');
+    if (parentSection) {
+      parentSection.style.zIndex = '500';
+    }
+
     this.container.classList.add('open');
     this.container.setAttribute('aria-expanded', 'true');
     
@@ -267,8 +406,12 @@ export class EnhancedDropdown {
     this.focusedIndex = -1;
     
     this.renderItems();
-    this.positionPanel();
-    
+
+    // Position panel after a brief delay to ensure DOM is ready
+    setTimeout(() => {
+      this.positionPanel();
+    }, 10);
+
     // Focus search with slight delay for smoother animation
     setTimeout(() => {
       this.searchBox.focus();
@@ -277,37 +420,63 @@ export class EnhancedDropdown {
 
   close() {
     if (!this.isOpen) return;
-    
+
     this.isOpen = false;
     this.panel.style.display = 'none';
+    this.container.style.zIndex = '10'; // Reset to normal level
+
+    // Reset parent section z-index
+    const parentSection = this.element.closest('.names-module-section');
+    if (parentSection) {
+      parentSection.style.zIndex = '1';
+    }
+
     this.container.classList.remove('open');
     this.container.setAttribute('aria-expanded', 'false');
     this.focusedIndex = -1;
-    
+
     // Return focus to trigger
     this.container.focus();
   }
 
   positionPanel() {
-    const rect = this.container.getBoundingClientRect();
-    const spaceBelow = window.innerHeight - rect.bottom - 10;
-    const spaceAbove = rect.top - 10;
-    const panelHeight = Math.min(400, this.panel.scrollHeight);
-    
-    if (spaceBelow < panelHeight && spaceAbove > spaceBelow) {
-      // Show above
-      this.panel.style.bottom = '100%';
-      this.panel.style.top = 'auto';
-      this.panel.style.marginBottom = '4px';
-      this.panel.style.marginTop = '0';
-      this.container.classList.add('dropup');
-    } else {
-      // Show below
+    // Ensure panel is visible for measurements
+    if (!this.panel || this.panel.style.display === 'none') {
+      return;
+    }
+
+    const containerRect = this.container.getBoundingClientRect();
+    const triggerRect = this.trigger.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const spaceBelow = viewportHeight - triggerRect.bottom - 10;
+    const spaceAbove = triggerRect.top - 10;
+    const panelHeight = Math.min(300, this.panel.scrollHeight);
+
+    // Panel width should match the trigger width
+    const panelWidth = Math.max(triggerRect.width, 200);
+
+    // Position relative to the container (simple approach)
+    this.panel.style.position = 'absolute';
+    this.panel.style.left = '0px';
+    this.panel.style.width = panelWidth + 'px';
+    this.panel.style.zIndex = '999';
+    this.panel.style.right = 'auto';
+    this.panel.style.marginTop = '0';
+    this.panel.style.marginBottom = '0';
+
+    // Position vertically
+    if (spaceBelow >= panelHeight || spaceBelow > spaceAbove) {
+      // Show below trigger
       this.panel.style.top = '100%';
+      this.panel.style.transform = 'none';
       this.panel.style.bottom = 'auto';
-      this.panel.style.marginTop = '4px';
-      this.panel.style.marginBottom = '0';
       this.container.classList.remove('dropup');
+    } else {
+      // Show above trigger
+      this.panel.style.top = 'auto';
+      this.panel.style.bottom = '100%';
+      this.panel.style.transform = 'none';
+      this.container.classList.add('dropup');
     }
   }
 
@@ -672,6 +841,14 @@ export class EnhancedDropdown {
 
   destroy() {
     this.container.remove();
+    // Remove panel from body
+    if (this.panel && this.panel.parentNode) {
+      this.panel.remove();
+    }
+    // Clean up resize handler
+    if (this.resizeHandler) {
+      window.removeEventListener('resize', this.resizeHandler);
+    }
     this.element.style.display = '';
   }
 
@@ -781,6 +958,7 @@ export class EnhancedDropdown {
       /* Panel - matching Foundry VTT dropdown style */
       .dropdown-panel {
         position: absolute;
+        top: 100%;
         left: 0;
         right: 0;
         background: #2f3136;
@@ -788,7 +966,7 @@ export class EnhancedDropdown {
         border-top: none;
         border-radius: 0 0 3px 3px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        z-index: 1000;
+        z-index: 999;
         max-height: 300px;
         display: flex;
         flex-direction: column;
@@ -796,6 +974,8 @@ export class EnhancedDropdown {
       }
 
       .enhanced-dropdown.dropup .dropdown-panel {
+        top: auto;
+        bottom: 100%;
         border-top: 1px solid var(--color-border-highlight-1, #ff6400);
         border-bottom: none;
         border-radius: 3px 3px 0 0;
@@ -848,6 +1028,7 @@ export class EnhancedDropdown {
         display: flex;
         align-items: center;
         background: #2f3136;
+        color: #dcddde;
       }
 
       .dropdown-item:last-child {
@@ -1068,18 +1249,27 @@ export class EnhancedDropdown {
 export function initializeEnhancedDropdowns(selector = 'select[data-enhanced]') {
   const dropdowns = document.querySelectorAll(selector);
   const instances = [];
-  
+
   dropdowns.forEach(select => {
+    // Skip if already enhanced
+    if (select._enhancedDropdown || (select.nextSibling && select.nextSibling.classList && select.nextSibling.classList.contains('enhanced-dropdown'))) {
+      logDebug('Dropdown already enhanced, skipping:', select);
+      return;
+    }
+
     try {
-      const options = select.dataset.enhanced ? 
+      const options = select.dataset.enhanced ?
         JSON.parse(select.dataset.enhanced) : {};
       const instance = new EnhancedDropdown(select, options);
       instances.push(instance);
+
+      // Store reference to prevent double initialization
+      select._enhancedDropdown = instance;
     } catch (error) {
-      console.warn('Failed to initialize enhanced dropdown:', error);
+      logWarn('Failed to initialize enhanced dropdown:', error);
     }
   });
-  
+
   return instances;
 }
 

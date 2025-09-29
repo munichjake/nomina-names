@@ -2,7 +2,7 @@
   <div class="names-picker-options">
     <div class="names-picker-controls">
       <div class="names-picker-form-group">
-        <label for="picker-language">{{localize "names.language"}}:</label>
+        <label for="picker-language">{{localize "names.lbl_language"}}:</label>
         <select id="picker-language" 
                 name="language"
                 data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": false, "clearable": false, "maxVisible": 6}'>
@@ -129,7 +129,7 @@
   margin: 0 0 16px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #191813;
+  color: #ff6400;
   text-align: center;
 }
 
@@ -280,7 +280,7 @@
 
 /* Enhanced dropdown positioning for picker */
 .names-picker-form .enhanced-dropdown .dropdown-panel {
-  z-index: 1100; /* Higher than default to ensure visibility in modal */
+  z-index: 9999999 !important; /* Maximum z-index to ensure visibility above all UI elements */
 }
 
 /* Smooth transitions for better UX */

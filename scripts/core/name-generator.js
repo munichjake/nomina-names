@@ -35,6 +35,7 @@ export class NameGenerator {
       category = 'names',
       gender = 'male',
       subcategory = null,
+      subcategories = null,
       components = ['firstname', 'surname'],
       format = DEFAULT_NAME_FORMAT,
       count = 1,
@@ -59,7 +60,7 @@ export class NameGenerator {
         if (category === 'names') {
           result = await this._generatePersonName(language, species, gender, components, format, filters, returnWithMetadata);
         } else if (isCategorizedContent(category)) {
-          result = await this._generateCategorizedContent(language, species, category, subcategory, filters, returnWithMetadata);
+          result = await this._generateCategorizedContent(language, species, category, subcategory, subcategories, filters, returnWithMetadata);
         } else {
           result = await this._generateSimpleContent(language, species, category);
         }
@@ -104,12 +105,18 @@ export class NameGenerator {
       selectedSettlement = await this._selectRandomSettlement(language, species);
     }
 
+    logDebug(`Generating components: ${components.join(', ')} for ${language}.${species}.${gender}`);
+
     for (const component of components) {
       try {
+        logDebug(`Attempting to generate component: ${component}`);
         const part = await this._generateNameComponent(language, species, gender, component, selectedSettlement);
+        logDebug(`Generated component ${component} result:`, part);
         if (part) {
           nameComponents[component] = part;
-          logDebug(`Generated ${component}: ${part}`);
+          logDebug(`Successfully generated ${component}: ${part}`);
+        } else {
+          logDebug(`Component ${component} generated null/empty result`);
         }
       } catch (error) {
         logWarn(`Failed to generate component ${component}:`, error);
@@ -152,22 +159,29 @@ export class NameGenerator {
   /**
    * Generate categorized content (books, ships, shops, taverns) - 3.0.1 format with metadata support
    */
-  async _generateCategorizedContent(language, species, category, specificSubcategory = null, filters = null, returnWithMetadata = false) {
+  async _generateCategorizedContent(language, species, category, specificSubcategory = null, availableSubcategories = null, filters = null, returnWithMetadata = false) {
     logDebug(`Generating categorized content: ${species}/${language}/${category}/${specificSubcategory || 'random'}`);
 
-    // Get available subcategories using DataManager
-    const availableSubcategories = this._getAvailableSubcategories(language, species, category);
-    logDebug(`Available subcategories:`, availableSubcategories);
+    // Get available subcategories - use provided list or fetch from data
+    let subcategoriesToUse;
+    if (availableSubcategories && Array.isArray(availableSubcategories) && availableSubcategories.length > 0) {
+      subcategoriesToUse = availableSubcategories;
+      logDebug(`Using provided subcategories:`, subcategoriesToUse);
+    } else {
+      subcategoriesToUse = this._getAvailableSubcategories(language, species, category);
+      logDebug(`Fetched available subcategories:`, subcategoriesToUse);
+    }
 
-    if (availableSubcategories.length === 0) {
+    if (subcategoriesToUse.length === 0) {
       throw new Error(`No subcategories available for ${language}.${species}.${category}`);
     }
 
     // Select subcategory
     let subcategory = specificSubcategory;
-    if (!subcategory || !availableSubcategories.includes(subcategory)) {
-      subcategory = availableSubcategories[Math.floor(Math.random() * availableSubcategories.length)];
-      logDebug(`Selected random subcategory: ${subcategory}`);
+    if (!subcategory || !subcategoriesToUse.includes(subcategory)) {
+      // For multiple subcategories, randomly select one each time
+      subcategory = subcategoriesToUse[Math.floor(Math.random() * subcategoriesToUse.length)];
+      logDebug(`Selected random subcategory: ${subcategory} from ${subcategoriesToUse.length} options`);
     } else {
       logDebug(`Using specified subcategory: ${subcategory}`);
     }
@@ -189,17 +203,28 @@ export class NameGenerator {
     // Select random item
     const entry = subcategoryData[Math.floor(Math.random() * subcategoryData.length)];
 
+    const entryName = this.dataSource.extractEntryName(entry);
+
     if (returnWithMetadata) {
       // Return entry with metadata if requested
       return {
-        name: this.dataSource.extractEntryName(entry),
+        name: entryName,
+        subcategory: subcategory,
         meta: this.dataSource.extractEntryMetadata(entry)
       };
     } else {
-      // Return just the name for backward compatibility
-      const result = this.dataSource.extractEntryName(entry);
-      logDebug(`Generated categorized content from ${category}.${subcategory}: ${result}`);
-      return result;
+      // For categorized content, always return with subcategory info for display purposes
+      if (availableSubcategories && availableSubcategories.length > 1) {
+        logDebug(`Generated categorized content from ${category}.${subcategory}: ${entryName}`);
+        return {
+          name: entryName,
+          subcategory: subcategory
+        };
+      } else {
+        // Return just the name for backward compatibility when only one subcategory
+        logDebug(`Generated categorized content from ${category}.${subcategory}: ${entryName}`);
+        return entryName;
+      }
     }
   }
 
@@ -301,14 +326,25 @@ export class NameGenerator {
   async _generateTitle(language, species, gender, settlement = null) {
     // Try to get titles from consolidated 'names' format first
     const titlesSubcatData = this.dataSource.getSubcategoryData(language, species, 'names', 'titles');
+    logDebug(`getSubcategoryData result for titles:`, titlesSubcatData);
 
     let titleData;
-    if (titlesSubcatData && titlesSubcatData.titles) {
-      titleData = { titles: titlesSubcatData.titles };
+    if (titlesSubcatData) {
+      // Handle the complex nested structure from 3.1.0+ format
+      // titlesSubcatData is the raw entries array: [{male: [...], female: [...], nonbinary: [...]}]
+      if (Array.isArray(titlesSubcatData) && titlesSubcatData.length > 0) {
+        const genderData = titlesSubcatData[0]; // Get the first (and likely only) gender structure
+        logDebug(`Gender data structure:`, genderData);
+        titleData = { titles: genderData };
+      } else {
+        titleData = { titles: titlesSubcatData };
+      }
     } else {
       // Fallback to traditional format
       titleData = await this._getData(`${language}.${species}.titles`);
     }
+
+    logDebug(`Final titleData:`, titleData);
 
     if (!titleData?.titles) {
       logDebug(`No title data found for ${language}.${species}`);
@@ -340,16 +376,7 @@ export class NameGenerator {
       return title.name || title;
     }
 
-    const grammarRules = this.speciesManager.getSpeciesGrammarRules(species, language);
     let article = title.preposition || 'von';
-
-    if (grammarRules?.articles && title.preposition) {
-      const prepositionRules = grammarRules.articles[title.preposition];
-      if (prepositionRules) {
-        const gender = settlement.gender || 'n';
-        article = prepositionRules[gender] || title.preposition;
-      }
-    }
 
     const formattedTitle = title.template
       .replace('{preposition}', article)

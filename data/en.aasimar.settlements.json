@@ -1,26 +1,1740 @@
-﻿{
-    "format":  "3.1.0",
-    "fileVersion":  "1.0.0",
-    "code":  "aasimar",
-    "displayName":  {
-                        "de":  "Aasimar",
-                        "en":  "Aasimar"
+{
+    "format": "3.1.2",
+    "fileVersion": "1.0.0",
+    "code": "aasimar",
+    "displayName": {
+        "de": "Aasimar",
+        "en": "Aasimar"
+    },
+    "languages": [
+        "en"
+    ],
+    "categories": [
+        "settlements"
+    ],
+    "data": {
+        "settlements": {
+            "displayName": {
+                "de": "Siedlungen",
+                "en": "Settlements"
+            },
+            "subcategories": [
+                {
+                    "key": "general",
+                    "displayName": {
+                        "de": "Allgemein",
+                        "en": "General"
                     },
-    "languages":  [
-                      "en"
-                  ],
-    "categories":  [
-                       "settlements"
-                   ],
-    "data":  {
-                 "settlements":  {
-                                     "displayName":  {
-                                                         "de":  "Siedlungen",
-                                                         "en":  "Settlements"
-                                                     },
-                                     "subcategories":  [
-
-                                                       ]
-                                 }
-             }
+                    "entries": {
+                        "en": [
+                            {
+                                "gender": "n",
+                                "name": "Aethelgard"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelstan"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Alabaster Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Altaris"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Altarus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Amnos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Angel's Crest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Angelus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Auriel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Avendell"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Axon"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Belenus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Beloved's Gate"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Blessed Harbor"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Calestis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Castiel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Chryseos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Daelon"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Daybreak Citadel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Davin"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Dawn's Embrace"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Dawn's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Daylight's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Divine Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elara"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysian Fields"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysium"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Empyrean"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Exalted Haven"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Fairhaven"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Glorian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Gloriana"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Haelen"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Hallowed Grove"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Haven of Light"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Heliopolis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Icarus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ignatius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Innocence"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Jubilee"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Justitia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Luminos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Luminous Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lux"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lyra"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Maelor"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Marcellus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Michael's Hope"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Morningstar"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nebula"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nova"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Olympia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Orion"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phaedra"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phoenix's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Purity's Peak"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Radiant Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Radiant's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ramiel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Raphael's Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Raziel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Remiel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sanctum of Souls"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sandalphon"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sanctum of Light"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Seraphim"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Seraphina"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Seraphinus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solana"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solaris"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solemn"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Starhaven"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Starfall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Starlight"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Anointed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Blessed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Dawn"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Exalted"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Gilded"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Hallowed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Luminous"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Radiant"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Righteous"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sacred"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sanctified"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Silver Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Star-Touched"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sun-Kissed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sun-Sourced"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unburnt"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unbroken"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unflinching"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tiriel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Uriel's Watch"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Uriel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valerius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Vesper"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Vespertine"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virtue"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zadkiel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zephyra"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zosimus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Caelia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Caelum"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestina"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Gloriana"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Luxembourg"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Raelia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Saelos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aetheria"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelric"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelwulf"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelwynn"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Alabastria"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Argentia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Auralia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Baelora"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cassia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Chryseis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Corinthia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Delphina"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Gloriel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Hadriana"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Helia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ignacia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Junia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lyrae"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nerea"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Olympia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Persephone"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phoebe"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Rhea"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sabina"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Serenata"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solara"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stellara"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tarquinia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theodora"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valentina"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virgilia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zosima"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Adonis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Alaric"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ambrose"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Anteros"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Asterion"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Bede"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cuthbert"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cyrus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Demetrios"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Dorian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elias"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Evander"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ferdinand"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Horatio"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ignatius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Julius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Laertes"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lazarus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Leander"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lucian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Maelor"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Marcellus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Marius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Mirt"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Mithras"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nereus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Octavius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Oswald"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Pericles"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phineas"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Publius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Quintus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Remus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Silvanus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sirius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solanus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tarquin"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tiberius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Titus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ulric"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Urbanus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valerian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virgil"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Vitus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Xanthus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zephyr"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aether"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Argentum"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurora"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cadmus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cassian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Chara"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Darius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Eleos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Faelar"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Faelan"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Haelen"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Icarus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lysander"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Metatron"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Odysseus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Pollux"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Saelos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sirian"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Soleil"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stella"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stellara"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theophilus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Urielis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zaphkiel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Abyssal Harbor"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ashenwood"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Broken Angel"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Corrupted Glade"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Crimson Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Dread's Reach"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Duskholm"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Emberfell"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Fallen's Folly"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Fallen's Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Gloom Hollow"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Grim's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lost Soul's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lost Souls"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lost Wing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Malice's Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Midnight Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Necropolis"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nightfall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Shadowed Keep"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Shadow's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Silent Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Silent Watch"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Skeletal Bridge"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Skeletal Tower"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sorrow's Peak"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Soul-less Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Soulrend"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Damned"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Forsaken"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unspoken"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tiriel's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tomb of Angels"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Twisted Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Twilight's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Whisper's Hold"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Wyrm's Gate"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zadkiel's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zephyra's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zosimus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelric's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aethelwulf's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Alabaster's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Argentum's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelian's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Baelora's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cassia's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Chryseis's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Corinthia's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Demetrios's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysian's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Hadriana's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Helia's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ignacia's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Icarus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Junia's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lyrae's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Maelor's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Michael's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nerea's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Persephone's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phoebe's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Rhea's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sabina's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Serenata's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solara's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stellara's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tarquinia's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theodora's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valentina's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virgilia's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zosima's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Adonis's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Alaric's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ambrose's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Anteros's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Bede's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cuthbert's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cyrus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Dorian's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elias's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Evander's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ferdinand's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Horatio's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ignatius's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Julius's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Laertes's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lazarus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Leander's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lucian's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Maelor's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Marcellus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Marius's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Mirt's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Mithras's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Nereus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Octavius's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Orion's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Oswald's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Pericles's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Phineas's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Publius's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Quintus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Remus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Silvanus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sirius's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Solanus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tarquin's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tiberius's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Titus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Ulric's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Urbanus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valerian's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virgil's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Vitus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Xanthus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zephyr's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aether's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Argentum's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurora's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cadmus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Cassian's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Chara's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Darius's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Eleos's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Faelar's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Faelan's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Haelen's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Icarus's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lysander's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Metatron's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Odysseus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Pollux's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Saelos's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sirian's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Soleil's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stella's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Stellara's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theia's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Theophilus's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Urielis's End"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Zaphkiel's Fall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Angel's Landing"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Angelus"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Aurelius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Avarice"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Benediction"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Celestius"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Daybreak"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Elysian Fields"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Empyrean"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Everbright"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Fairhaven"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Glorious Gate"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Glorious Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Graceland"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Harmonia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Hope's Harbor"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Innocence"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Jubilee"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Justitia"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Justice's Gate"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Luminos"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Lux"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Mercy's Watch"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Oasis of Light"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Paragon's Perch"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Purity's Peak"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Radiant's Rest"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sancrosanct"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sanctum of Souls"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sanctuary"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Seraphim's Embrace"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Serenity"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Starlight"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Starfall"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sun-Crowned"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Sunspire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Anointed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Beacon"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Blessed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Divine"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Exalted"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Gilded"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Hallowed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Luminous"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Radiant"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Righteous"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sacred"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sanctified"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Silver Spire"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Star-Touched"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sun-Kissed"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Sun-Sourced"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unburnt"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unbroken"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Unflinching"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "The Vigilant"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Tranquility"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Uriel's Watch"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Valhalla"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Virtue"
+                            },
+                            {
+                                "gender": "n",
+                                "name": "Wisdom's End"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
 }
