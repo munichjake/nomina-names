@@ -5,9 +5,59 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2025-01-30
+
+### Fixed
+- **Emergency Button UI**: Fixed oversized emergency name button in Foundry VTT v12 chat window
+  - Reduced button padding from 8-12px to 4px 8px
+  - Reduced font size from 12-14px to 11px
+  - Added max-height constraint (24px) for consistent sizing
+  - Changed to inline-flex display for better integration
+  - Button now properly fits in chat window without taking excessive vertical space
+
 ## [2.0.0] - 2025-01-21
 
-### Added
+### 🎉 Major Update - Complete Redesign
+
+This is a massive update that completely overhauls the Nomina Names module with a brand new interface, improved flexibility, and better translations!
+
+### ✨ What's New for Users
+
+- **🎨 Completely Redesigned Interface**
+  - Modern, professional design with smooth animations
+  - Better organized controls and clearer layout
+  - Improved visual feedback and hover effects
+  - More intuitive user experience
+
+- **🌍 Improved Translations & Localization**
+  - Better German and English translations throughout the module
+  - More consistent naming across all categories
+  - Cleaner language file structure
+
+- **📦 New Content Categories**
+  - Added new category types: Pets & Companions, Weapons
+  - More diverse name generation options
+  - Expanded settlement and location names
+
+- **🎯 Enhanced Name Generation**
+  - More flexible name combinations
+  - Better quality and variety of generated names
+  - Improved formatting options
+
+- **🔌 New API for Module Integration**
+  - Third-party modules can now easily add their own name lists and categories
+  - External content integration without modifying core files
+  - Simplified workflow for content creators and module developers
+  - Better interoperability with other Foundry VTT modules
+
+- **🐛 Bug Fixes & Stability**
+  - Fixed various UI glitches and display issues
+  - Improved compatibility with Foundry VTT v12 and v13
+  - Better error handling and performance
+  - Fixed design inconsistencies
+
+### 🔧 Technical Improvements (for Developers)
+
 - **JSON Format 3.1.0**: Revolutionary self-contained translation system
   - Category-level `displayName` objects for integrated translations
   - Self-contained JSON files that don't require language file modifications
@@ -24,28 +74,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - No code modifications required for new categories like "pets", "weapons", "vehicles", etc.
   - Automatic category type detection and UI integration
 
-### Changed
-- **Format Support**: Extended `_isModernFormat()` to support 3.1.0
-- **Species Validator**: Updated to validate 3.1.0 format files
-- **Constants System**: Enhanced `getLocalizedCategoryName()` with context-aware translation lookup
-- **Data Manager**: Improved `_buildLocalizedCategoryGroups()` with 3.1.0 display name support
+- **Code Architecture**
+  - New modular structure with `name-generator.js` and `species-manager.js`
+  - Enhanced data manager with improved caching
+  - New validation system for data files
+  - Better API integration and extensibility
 
-### Technical Improvements
-- **Caching System**: New `categoryDisplayNames` cache for 3.1.0 format translations
-- **Performance**: Optimized translation lookup with intelligent fallbacks
-- **Extensibility**: Simplified addition of new categories without touching core code
-- **Developer Experience**: Enhanced API with context-aware localization
-
-### Documentation
+### 📚 Documentation
 - **JSON Format Specification**: Complete 3.1.0 format documentation with examples
 - **Developer Guide**: New section on creating self-contained categories
 - **Migration Guide**: Step-by-step instructions for upgrading from 3.0.1 to 3.1.0
 - **API Documentation**: Updated with new 3.1.0 features and capabilities
-
-### Examples Updated
-- **Human Pets**: Upgraded to 3.1.0 format with integrated German/English translations
-- **Human Weapons**: Upgraded to 3.1.0 format with category-level displayNames
-- **Language Files**: Cleaned up with new dynamic category support
 
 ## [1.2.11] - Previous Release
 
