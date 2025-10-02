@@ -1122,3 +1122,7 @@
 .enhanced-dropdown .dropdown-panel {
   z-index: 999 !important;
 }
+
+.items-wrapper .virtual-viewport {
+  max-height: 256px !important;
+}
