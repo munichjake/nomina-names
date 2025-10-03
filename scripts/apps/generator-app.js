@@ -26,6 +26,7 @@ export class NamesGeneratorApp extends Application {
     this.autoResize = true; // Enable auto-resize by default
     this.minHeight = 400; // Minimum window height
     this.maxHeight = 800; // Maximum window height
+    this.favoriteNames = new Set(); // Store favorited names
     logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
   }
 
@@ -129,6 +130,9 @@ export class NamesGeneratorApp extends Application {
 
     // Copy name on click (event delegation)
     html.find('#names-result-display').on('click', '.names-module-generated-name', this._onNameClick.bind(this));
+
+    // Favorite toggle on click (event delegation)
+    html.find('#names-result-display').on('click', '.favorite-toggle', this._onFavoriteToggle.bind(this));
 
     // Store Enhanced Dropdown instances and bind to their change events
     this._initializeEnhancedDropdowns(html);
@@ -268,6 +272,11 @@ export class NamesGeneratorApp extends Application {
    * @param {Event} event - The click event
    */
   async _onNameClick(event) {
+    // Don't copy if clicking on the favorite toggle
+    if (event.target.closest('.favorite-toggle')) {
+      return;
+    }
+
     event.preventDefault();
     event.stopPropagation();
 
@@ -279,16 +288,43 @@ export class NamesGeneratorApp extends Application {
     try {
       await navigator.clipboard.writeText(name);
 
-      // Success animation
+      // Success animation - simple bounce
       nameElement.classList.add('copied');
       setTimeout(() => {
         nameElement.classList.remove('copied');
-      }, 600);
+      }, 800);
 
       ui.notifications.info(`"${name}" wurde kopiert!`);
     } catch (error) {
       logWarn('Clipboard copy failed:', error);
       ui.notifications.warn('Kopieren fehlgeschlagen');
+    }
+  }
+
+  /**
+   * Handles favorite toggle button click
+   * @param {Event} event - The click event
+   */
+  _onFavoriteToggle(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const toggleButton = event.currentTarget;
+    const nameElement = toggleButton.closest('.names-module-generated-name');
+    const name = nameElement.dataset.name;
+
+    if (!name) return;
+
+    if (this.favoriteNames.has(name)) {
+      this.favoriteNames.delete(name);
+      toggleButton.classList.remove('active');
+      nameElement.classList.remove('favorited');
+      logDebug(`Removed favorite: ${name}`);
+    } else {
+      this.favoriteNames.add(name);
+      toggleButton.classList.add('active');
+      nameElement.classList.add('favorited');
+      logDebug(`Added favorite: ${name}`);
     }
   }
 
@@ -1121,6 +1157,9 @@ export class NamesGeneratorApp extends Application {
 
     // Clear previous results with a short delay
     setTimeout(() => {
+      // Collect favorite names before clearing
+      const favoritedResults = [];
+
       let resultsHtml = results.map((nameResult, index) => {
         // Handle both string results and object results with subcategory info
         const name = typeof nameResult === 'string' ? nameResult : nameResult.name;
@@ -1184,17 +1223,58 @@ export class NamesGeneratorApp extends Application {
 
         const metaHtml = metaData ? this._generateMetaDataHtml(metaData, options.language, options.species, options.category) : '';
 
+        // Check if this name is favorited
+        const isFavorited = this.favoriteNames.has(name);
+        const favoritedClass = isFavorited ? 'favorited' : '';
+        const favoriteActiveClass = isFavorited ? 'active' : '';
+
         return `
-          <div class="${CSS_CLASSES.generatedName}" style="animation-delay: ${index * 0.1}s" data-name="${name.replace(/"/g, '&quot;')}">
-            <div class="copy-hint">💾 ${game.i18n.localize("names.copy.hint")}</div>
-            <div class="name-header">
-              <div class="name-title">${name}</div>
-              <div class="name-type">${typeDisplay}</div>
+          <div class="${CSS_CLASSES.generatedName} ${favoritedClass}" style="animation-delay: ${index * 0.1}s" data-name="${name.replace(/"/g, '&quot;')}">
+            <div class="name-content-wrapper">
+              <button class="favorite-toggle ${favoriteActiveClass}" title="Favorit markieren">⭐</button>
+              <div class="name-content">
+                <div class="name-header">
+                  <div class="name-title">${name}</div>
+                  <div class="name-type">${typeDisplay}</div>
+                </div>
+                ${metaHtml}
+              </div>
             </div>
-            ${metaHtml}
           </div>
         `;
       }).join('');
+
+      // Prepend favorited names
+      const favoriteNamesArray = Array.from(this.favoriteNames);
+      if (favoriteNamesArray.length > 0) {
+        const favoritesHtml = favoriteNamesArray.map((name, index) => {
+          // Check if this favorite is already in the new results
+          const alreadyInResults = results.some(r => {
+            const resultName = typeof r === 'string' ? r : r.name;
+            return resultName === name;
+          });
+
+          if (alreadyInResults) {
+            return ''; // Skip duplicates
+          }
+
+          return `
+            <div class="${CSS_CLASSES.generatedName} favorited" style="animation-delay: ${index * 0.1}s" data-name="${name.replace(/"/g, '&quot;')}">
+              <div class="name-content-wrapper">
+                <button class="favorite-toggle active" title="Favorit markieren">⭐</button>
+                <div class="name-content">
+                  <div class="name-header">
+                    <div class="name-title">${name}</div>
+                    <div class="name-type">📝 ${game.i18n.localize("names.type.name")}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        resultsHtml = favoritesHtml + resultsHtml;
+      }
 
       resultDiv.innerHTML = resultsHtml + authorCredits;
 

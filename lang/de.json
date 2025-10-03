@@ -68,7 +68,8 @@
             "name": "Name"
         },
         "copy": {
-            "hint": "Klick zum Kopieren"
+            "hint": "Klick zum Kopieren",
+            "help": "💡 Klicke auf einen Namen um ihn zu kopieren"
         },
         "// ===== USER INTERACTION =====": "",
         "name-adopted": "Name \"{name}\" wurde übernommen!",
