@@ -68,7 +68,8 @@
             "name": "Name"
         },
         "copy": {
-            "hint": "Click to copy"
+            "hint": "Click to copy",
+            "help": "💡 Click on a name to copy it"
         },
         "// ===== USER INTERACTION =====": "",
         "name-adopted": "Name \"{name}\" has been adopted!",

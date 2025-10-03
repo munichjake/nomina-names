@@ -548,7 +548,7 @@
   border: 1px solid #4a4a4a;
   border-radius: 8px;
   padding: 1.25rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -580,6 +580,7 @@
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  z-index: 1;
 }
 
 .names-module-generated-name:hover {
@@ -598,14 +599,14 @@
   transition: transform 0.1s ease;
 }
 
+/* Simple success animation with transitions only */
 .names-module-generated-name.copied {
-  animation: successPulse 0.6s ease-out;
-}
-
-@keyframes successPulse {
-  0% { transform: translateY(-2px) scale(1); }
-  50% { transform: translateY(-4px) scale(1.02); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3); border-color: #27ae60; }
-  100% { transform: translateY(-2px) scale(1); }
+  transform: translateY(-6px) scale(1.03);
+  border-color: #27ae60;
+  box-shadow: 0 8px 24px rgba(39, 174, 96, 0.4), 0 0 0 2px rgba(39, 174, 96, 0.5);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
 }
 
 .names-module-result-actions {
@@ -762,27 +763,16 @@
   max-width: 450px !important;
 }
 
-/* === COPY HINT STYLING === */
-.names-module-generated-name .copy-hint {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  color: #777;
-  font-size: 0.75rem;
-  opacity: 0;
-  transition: all 0.3s ease;
-  background: rgba(58, 58, 58, 0.95);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  backdrop-filter: blur(4px);
-  z-index: 2;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.names-module-generated-name:hover .copy-hint {
-  opacity: 1;
-  transform: translateY(-2px);
+/* === COPY HELP TEXT STYLING === */
+.names-module-copy-help {
+  text-align: center;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  color: #999;
+  font-size: 0.85rem;
+  background: rgba(58, 58, 58, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(74, 74, 74, 0.5);
 }
 
 /* === META DATA STYLING === */
@@ -906,11 +896,12 @@
   color: #e0e0e0;
   font-size: 1.3rem;
   line-height: 1.3;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .names-module-generated-name:hover .name-title {
   color: #f39c12;
+  text-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
 .names-module-generated-name .name-type {
@@ -929,6 +920,70 @@
   box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
 }
 
+/* === FAVORITE TOGGLE STYLING === */
+.names-module-generated-name .name-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.names-module-generated-name .name-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.names-module-generated-name .favorite-toggle {
+  background: rgba(58, 58, 58, 0.8);
+  margin-left: -0.5em;
+  margin-right:-0.5em;
+  border: 1px solid #4a4a4a;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  z-index: 3;
+  padding: 0;
+  color: #777;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+
+.names-module-generated-name .favorite-toggle:hover {
+  background: rgba(58, 58, 58, 0.95);
+  border-color: #f39c12;
+  transform: scale(1.1);
+  color: #f39c12;
+}
+
+.names-module-generated-name .favorite-toggle.active {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  border-color: #f39c12;
+  color: white;
+  box-shadow: 0 2px 12px rgba(243, 156, 18, 0.4);
+}
+
+.names-module-generated-name .favorite-toggle.active:hover {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  transform: scale(1.15) rotate(72deg);
+}
+
+.names-module-generated-name.favorited {
+  border-color: #f39c12;
+  box-shadow: 0 2px 12px rgba(243, 156, 18, 0.2);
+}
+
+.names-module-generated-name.favorited::before {
+  background: linear-gradient(180deg, #f39c12, #e67e22);
+  transform: scaleY(1);
+}
+
 /* Emergency Names App Styles */
 /* Emergency Names Button Styling */
 #emergency-names-button {
@@ -936,7 +991,7 @@
   border: none;
   border-radius: 4px;
   color: white;
-  padding: 4px 8px;
+  padding: 2em;
   margin: 4px;
   cursor: pointer;
   font-weight: bold;
