@@ -7,7 +7,6 @@ import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.
 import { showLoadingState, hideLoadingState, getActorSpecies, updateActorName } from '../utils/ui-helpers.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, isGeneratorOnlyCategory, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
-import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
 import { NamesAPI } from '../api-system.js';
 
 export class NamesPickerApp extends Application {
@@ -40,7 +39,7 @@ export class NamesPickerApp extends Application {
   async getData() {
     ensureGlobalNamesData();
     const globalNamesData = getGlobalNamesData();
-    
+
     if (!globalNamesData) {
       logWarn("Global names data not available, returning empty data");
       return {
@@ -51,8 +50,7 @@ export class NamesPickerApp extends Application {
         defaultLanguage: 'de',
         isLoading: false,
         isLoaded: false,
-        supportedGenders: getSupportedGenders(),
-        pickerCategories: this._getPickerCategories()
+        supportedGenders: getSupportedGenders()
       };
     }
 
@@ -69,8 +67,7 @@ export class NamesPickerApp extends Application {
       defaultLanguage: defaultLanguage,
       isLoading: globalNamesData.isLoading,
       isLoaded: globalNamesData.isLoaded,
-      supportedGenders: getSupportedGenders(),
-      pickerCategories: this._getPickerCategories()
+      supportedGenders: getSupportedGenders()
     };
 
     logDebug("Picker app data prepared", {
@@ -79,135 +76,12 @@ export class NamesPickerApp extends Application {
       actorSpecies: actorSpecies,
       defaultLanguage: defaultLanguage,
       currentNamesCount: this.currentNames.length,
-      pickerCategories: data.pickerCategories.length
+      supportedGenders: data.supportedGenders
     });
 
     return data;
   }
 
-  /**
-   * Gets categories available for the picker (only gender categories for person names)
-   * @returns {Array} Array of category objects suitable for picker
-   */
-  _getPickerCategories() {
-    const categories = [];
-
-    // Add gender-based categories (for name generation)
-    const supportedGenders = getSupportedGenders();
-    for (const gender of supportedGenders) {
-      const locKey = `names.categories.${gender}`;
-      categories.push({
-        code: gender,
-        name: game.i18n.localize(locKey) || gender,
-        type: 'gender'
-      });
-    }
-
-    logDebug("Picker categories prepared (genders only):", categories);
-    return categories;
-  }
-
-  /**
-   * Updates category options based on current language and species selection
-   */
-  async _updateCategoryOptions() {
-    const html = this.element;
-    const globalNamesData = getGlobalNamesData();
-
-    if (!globalNamesData || !html) {
-      logDebug("Cannot update category options - missing data or HTML");
-      return;
-    }
-
-    const language = html.find('#picker-language').val() || this._getDefaultContentLanguage();
-    const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
-
-    if (!language || !species) {
-      logDebug("Cannot update category options - missing language or species");
-      return;
-    }
-
-    const categorySelect = html.find('#picker-category');
-    const currentValue = categorySelect.val();
-    const availableCategories = [];
-
-    // Check each gender-based category
-    const supportedGenders = getSupportedGenders();
-    for (const gender of supportedGenders) {
-      try {
-        // Check if we have either names data or specific gender data
-        const hasNamesData = globalNamesData.hasData(language, species, 'names');
-        const hasGenderData = globalNamesData.hasDataFile(language, species, gender);
-
-        if (hasNamesData || hasGenderData) {
-          // For names data, we need to check if this gender actually has entries
-          if (hasNamesData) {
-            try {
-              const namesData = await globalNamesData.generate(language, species, 'names', { gender: gender });
-              if (namesData && namesData.length > 0) {
-                // Use the centralized localization function
-                const displayName = getLocalizedCategoryName(gender, {
-                  language,
-                  species,
-                  getCategoryDisplayName: globalNamesData.getCategoryDisplayName.bind(globalNamesData)
-                });
-
-                availableCategories.push({
-                  code: gender,
-                  name: displayName,
-                  type: 'gender'
-                });
-                logDebug(`Gender ${gender} has data for ${language}.${species}`);
-              } else {
-                logDebug(`Gender ${gender} has no entries for ${language}.${species}`);
-              }
-            } catch (error) {
-              logDebug(`Gender ${gender} failed to generate for ${language}.${species}:`, error.message);
-            }
-          } else if (hasGenderData) {
-            // Use the centralized localization function
-            const displayName = getLocalizedCategoryName(gender, {
-              language,
-              species,
-              getCategoryDisplayName: globalNamesData.getCategoryDisplayName.bind(globalNamesData)
-            });
-
-            availableCategories.push({
-              code: gender,
-              name: displayName,
-              type: 'gender'
-            });
-            logDebug(`Gender ${gender} has dedicated data file for ${language}.${species}`);
-          }
-        } else {
-          logDebug(`Gender ${gender} has no data for ${language}.${species}`);
-        }
-      } catch (error) {
-        logDebug(`Failed to check gender ${gender} for ${language}.${species}:`, error.message);
-      }
-    }
-
-    // Picker only shows gender categories for person names - no other categories needed
-
-    // Update the select options
-    let optionsHtml = '';
-    for (const category of availableCategories) {
-      const selected = category.code === currentValue ? 'selected' : '';
-      optionsHtml += `<option value="${category.code}" ${selected}>${category.name}</option>`;
-    }
-
-    categorySelect.html(optionsHtml);
-
-    // If current value is not available anymore, select the first available option
-    if (currentValue && !availableCategories.find(cat => cat.code === currentValue)) {
-      if (availableCategories.length > 0) {
-        categorySelect.val(availableCategories[0].code);
-        logDebug(`Selected fallback category: ${availableCategories[0].code}`);
-      }
-    }
-
-    logDebug(`Updated category options for ${language}.${species}:`, availableCategories.map(cat => cat.code));
-  }
 
   _getActorSpecies() {
     const globalNamesData = getGlobalNamesData();
@@ -217,6 +91,83 @@ export class NamesPickerApp extends Application {
       actorRace: this.actor?.system?.details?.race || this.actor?.system?.race || "Unknown"
     });
     return detectedSpecies;
+  }
+
+  /**
+   * Update category dropdown options based on available data and settings
+   */
+  async _updateCategoryOptions(html) {
+    const globalNamesData = getGlobalNamesData();
+    if (!globalNamesData) return;
+
+    const language = html.find('#picker-language').val() || this._getDefaultContentLanguage();
+    const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
+    const categorySelect = html.find('#picker-category');
+
+    logDebug(`Updating category options for ${language}.${species}`);
+
+    // Get available genders for this species/language
+    const availableGenders = [];
+    const supportedGenders = getSupportedGenders();
+
+    for (const gender of supportedGenders) {
+      // Check if we have data for this gender
+      const hasData = await this._hasGenderData(language, species, gender);
+      if (hasData) {
+        availableGenders.push(gender);
+      }
+    }
+
+    logDebug(`Available genders for ${language}.${species}:`, availableGenders);
+
+    // Build new options HTML
+    let optionsHtml = '<option value="">' + game.i18n.localize("names.ui.all-genders") + '</option>';
+    for (const gender of availableGenders) {
+      const locKey = `names.${gender}`;
+      const genderName = game.i18n.localize(locKey);
+      optionsHtml += `<option value="${gender}">${genderName}</option>`;
+    }
+
+    // Update the select element
+    categorySelect.html(optionsHtml);
+    categorySelect.val(''); // Reset to "All Genders"
+
+    // Update the enhanced dropdown if it exists
+    const enhancedContainer = categorySelect.next('.enhanced-dropdown');
+    if (enhancedContainer.length > 0) {
+      const enhancedDropdown = enhancedContainer[0]._enhancedDropdown;
+      if (enhancedDropdown) {
+        enhancedDropdown.loadItems();
+        enhancedDropdown.updateDisplay();
+        logDebug('Enhanced dropdown updated with available genders');
+      }
+    }
+  }
+
+  /**
+   * Check if gender data is available for language/species
+   */
+  async _hasGenderData(language, species, gender) {
+    const globalNamesData = getGlobalNamesData();
+    if (!globalNamesData) return false;
+
+    try {
+      // Try to generate a test name
+      const options = {
+        language: language,
+        species: species,
+        category: 'names',
+        gender: gender,
+        components: ['firstname'],
+        count: 1
+      };
+
+      const result = await NamesAPI.generateNames(options);
+      return result && result.length > 0;
+    } catch (error) {
+      logDebug(`No data for ${language}.${species}.${gender}:`, error.message);
+      return false;
+    }
   }
 
   activateListeners(html) {
@@ -230,12 +181,10 @@ export class NamesPickerApp extends Application {
     html.find('.names-picker-name').click(this._onSelectName.bind(this));
     html.find('select').change(this._onOptionChange.bind(this));
 
-    // Initialize Enhanced Dropdowns and update category options
-    setTimeout(async () => {
-      initializeEnhancedDropdowns('select[data-enhanced]');
-      await this._updateCategoryOptions();
-      logDebug("Enhanced dropdowns initialized and category options updated for picker");
-    }, 100);
+    // Update category options when species changes
+    html.find('#picker-species').change(async (event) => {
+      await this._updateCategoryOptions(html);
+    });
 
     // Prevent multiple initialization
     if (this._initialized) {
@@ -273,18 +222,14 @@ export class NamesPickerApp extends Application {
     const changedElement = event.currentTarget;
     logDebug(`Picker option changed: ${changedElement.name} = ${changedElement.value}`);
 
-    // Update category options if language or species changed
-    if (changedElement.name === 'language' || changedElement.name === 'species') {
-      await this._updateCategoryOptions();
-    }
-
-    this._onGenerateNames();
+    // Always regenerate names when any option changes
+    await this._onGenerateNames();
   }
 
   async _onGenerateNames() {
     const html = this.element;
     const globalNamesData = getGlobalNamesData();
-    
+
     if (!globalNamesData) {
       logError("Data manager not available for name generation");
       ui.notifications.error("Names data manager not available");
@@ -293,51 +238,53 @@ export class NamesPickerApp extends Application {
 
     const language = html.find('#picker-language').val() || this._getDefaultContentLanguage();
     const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
-    let category = html.find('#picker-category').val() || 'male';
+    let category = html.find('#picker-category').val(); // Can be empty for "all genders"
 
-    logDebug("Generating names for picker", { language, species, category });
-
-    // Ensure the selected category is supported and not generator-only
-    if (isGeneratorOnlyCategory(category)) {
-      logWarn(`Category ${category} is generator-only, falling back to male`);
-      category = 'male';
-      html.find('#picker-category').val(category);
-    }
-
-    // Ensure the selected category is a supported gender (picker only shows genders now)
-    if (!this.supportedGenders.includes(category)) {
-      // Fall back to first supported gender
-      const fallbackCategory = this.supportedGenders.length > 0 ? this.supportedGenders[0] : 'male';
-      html.find('#picker-category').val(fallbackCategory);
-      logDebug(`Category ${category} not supported, falling back to ${fallbackCategory}`);
-      category = fallbackCategory;
-    }
+    logDebug("Generating names for picker", { language, species, category: category || 'random' });
 
     try {
       const names = [];
       const nameCount = 3;
-      
-      for (let i = 0; i < nameCount; i++) {
-        let name;
-        if (this.supportedGenders.includes(category)) {
-          name = await this._generateFormattedName(
-            language, species, category, 
-            ['firstname', 'surname'], 
-            '{firstname} {surname}'
-          );
-        } else {
-          name = await this._generateSimpleName(language, species, category);
+
+      // If no category selected, get available genders for random selection
+      let availableGenders = [];
+      if (!category) {
+        const supportedGenders = getSupportedGenders();
+        for (const gender of supportedGenders) {
+          const hasData = await this._hasGenderData(language, species, gender);
+          if (hasData) {
+            availableGenders.push(gender);
+          }
         }
-        
+        logDebug(`Available genders for random selection:`, availableGenders);
+      }
+
+      for (let i = 0; i < nameCount; i++) {
+        // Select random gender if no category specified
+        let genderToUse = category;
+        if (!category && availableGenders.length > 0) {
+          genderToUse = availableGenders[Math.floor(Math.random() * availableGenders.length)];
+          logDebug(`Randomly selected gender: ${genderToUse}`);
+        } else if (!category) {
+          // Fallback to male if no available genders
+          genderToUse = 'male';
+        }
+
+        const name = await this._generateFormattedName(
+          language, species, genderToUse,
+          ['firstname', 'surname'],
+          '{firstname} {surname}'
+        );
+
         if (name) {
           names.push(name);
-          logDebug(`Generated picker name ${i + 1}/${nameCount}: ${name}`);
+          logDebug(`Generated picker name ${i + 1}/${nameCount}: ${name} (${genderToUse})`);
         }
       }
 
       this.currentNames = names;
       this._updateNamesDisplay(html);
-      
+
       logInfo(`Successfully generated ${names.length} names for picker`);
 
     } catch (error) {

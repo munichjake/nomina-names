@@ -24,15 +24,14 @@
       </div>
       
       <div class="names-picker-form-group">
-        <label for="picker-category">{{localize "names.category"}}:</label>
-        <select id="picker-category" 
+        <label for="picker-category">{{localize "names.lbl_gender"}}:</label>
+        <select id="picker-category"
                 name="category"
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": false, "clearable": false, "maxVisible": 6}'>
-          <option value="male">{{localize "names.categories.male"}}</option>
-          <option value="female">{{localize "names.categories.female"}}</option>
-          <option value="nonbinary">{{localize "names.categories.nonbinary"}}</option>
-          <option value="surnames">{{localize "names.categories.surnames"}}</option>
-          <option value="settlements">{{localize "names.categories.settlements"}}</option>
+                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": false, "clearable": true, "maxVisible": 6}'>
+          <option value="">{{localize "names.ui.all-genders"}}</option>
+          {{#each supportedGenders}}
+          <option value="{{this}}">{{localize (concat "names." this)}}</option>
+          {{/each}}
         </select>
       </div>
     </div>
