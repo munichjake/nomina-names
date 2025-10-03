@@ -1,42 +1,48 @@
 {
-    "id": "nomina-names",
-    "title": "Names",
-    "description": "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
-    "version": "2.0.2",
-    "compatibility": {
-        "minimum": "12",
-        "verified": "13"
-    },
-    "authors": [
-        {
-            "name": "munichjake",
-            "email": "munichjake@dnd-session.de",
-            "flags": {}
-        }
-    ],
-    "esmodules": [
-        "scripts/main.js"
-    ],
-    "styles": [
-        "styles/names.css",
-        "styles/names-picker.css",
-        "styles/history-app.css"
-    ],
-    "languages": [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "lang/en.json",
-            "flags": {}
-        },
-        {
-            "lang": "de",
-            "name": "Deutsch",
-            "path": "lang/de.json",
-            "flags": {}
-        }
-    ],
-    "url": "https://github.com/munichjake/nomina-names",
-    "manifest": "https://raw.githubusercontent.com/munichjake/nomina-names/main/module.json",
-    "download": "https://github.com/munichjake/nomina-names/releases/download/v2.0.2/module-2.0.2.zip"
+    "id":  "nomina-names",
+    "title":  "Names",
+    "description":  "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
+    "version":  "2.1.0",
+    "compatibility":  {
+                          "minimum":  "12",
+                          "verified":  "13"
+                      },
+    "authors":  [
+                    {
+                        "name":  "munichjake",
+                        "email":  "munichjake@dnd-session.de",
+                        "flags":  {
+
+                                  }
+                    }
+                ],
+    "esmodules":  [
+                      "scripts/main.js"
+                  ],
+    "styles":  [
+                   "styles/names.css",
+                   "styles/names-picker.css",
+                   "styles/history-app.css"
+               ],
+    "languages":  [
+                      {
+                          "lang":  "en",
+                          "name":  "English",
+                          "path":  "lang/en.json",
+                          "flags":  {
+
+                                    }
+                      },
+                      {
+                          "lang":  "de",
+                          "name":  "Deutsch",
+                          "path":  "lang/de.json",
+                          "flags":  {
+
+                                    }
+                      }
+                  ],
+    "url":  "https://github.com/munichjake/nomina-names",
+    "manifest":  "https://raw.githubusercontent.com/munichjake/nomina-names/main/module.json",
+    "download":  "https://github.com/munichjake/nomina-names/releases/download/v2.1.0/module-2.1.0.zip"
 }
