@@ -8,6 +8,8 @@ import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT, isCategorizedContent, getSubcategories, isGeneratorOnlyCategory, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesAPI } from '../api-system.js';
+import { getHistoryManager } from '../core/history-manager.js';
+import { NamesHistoryApp } from './history-app.js';
 
 /**
  * Names Generator Application - Main application for generating names
@@ -122,6 +124,7 @@ export class NamesGeneratorApp extends Application {
     html.find('#names-generate-btn').click(this._onGenerateName.bind(this));
     html.find('#names-copy-btn').click(this._onCopyName.bind(this));
     html.find('#names-clear-btn').click(this._onClearResult.bind(this));
+    html.find('#names-history-btn').click(this._onOpenHistory.bind(this));
 
     html.find('input[type="checkbox"]').change(this._onCheckboxChange.bind(this));
 
@@ -1022,6 +1025,9 @@ export class NamesGeneratorApp extends Application {
       // Display results
       this._displayResults(form, results, options);
 
+      // Add to history
+      this._addToHistory(results, options);
+
       logInfo(`Successfully generated ${results.length} names`);
 
     } catch (error) {
@@ -1348,6 +1354,59 @@ export class NamesGeneratorApp extends Application {
 
     creditsHtml += '</div>';
     return creditsHtml;
+  }
+
+  /**
+   * Opens the History App
+   * @param {Event} event - The click event
+   */
+  _onOpenHistory(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    logDebug("Opening history from generator app");
+
+    new NamesHistoryApp().render(true);
+  }
+
+  /**
+   * Add generated names to history
+   * @param {Array} results - Array of generated names (strings or objects)
+   * @param {Object} options - Generation options
+   */
+  _addToHistory(results, options) {
+    const historyManager = getHistoryManager();
+
+    const entries = results.map(result => {
+      const name = typeof result === 'string' ? result : result.name;
+
+      // For names category: use gender as subcategory (for display purposes)
+      // For other categories: use actual subcategory
+      let displaySubcategory = '';
+      if (options.category === 'names' && options.gender) {
+        displaySubcategory = options.gender;
+      } else if (typeof result === 'object' && result.subcategory) {
+        displaySubcategory = result.subcategory;
+      } else if (options.subcategory) {
+        displaySubcategory = options.subcategory;
+      }
+
+      return {
+        name: name,
+        source: 'generator',
+        metadata: {
+          language: options.language,
+          species: options.species,
+          category: options.category,
+          subcategory: displaySubcategory || '',
+          gender: options.gender || '',
+          format: options.format || ''
+        }
+      };
+    });
+
+    historyManager.addEntries(entries);
+
+    logDebug(`Added ${entries.length} names to history from generator`);
   }
 
   /**

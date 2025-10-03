@@ -8,6 +8,8 @@ import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClip
 import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, isGeneratorOnlyCategory } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesAPI } from '../api-system.js';
+import { getHistoryManager } from '../core/history-manager.js';
+import { NamesHistoryApp } from './history-app.js';
 
 export class EmergencyNamesApp extends Application {
   constructor(options = {}) {
@@ -61,6 +63,7 @@ export class EmergencyNamesApp extends Application {
     html.find('.emergency-reroll-btn').off('click').on('click', this._onRerollNames.bind(this));
     html.find('.emergency-open-generator-btn').off('click').on('click', this._onOpenGenerator.bind(this));
     html.find('.emergency-name-pill').off('click').on('click', this._onCopyName.bind(this));
+    html.find('#emergency-history-btn').off('click').on('click', this._onOpenHistory.bind(this));
 
     this._initializeApp(html);
   }
@@ -174,6 +177,9 @@ export class EmergencyNamesApp extends Application {
         this.emergencyNames = names;
         logInfo(`Generated ${names.length} emergency names`);
         this._updateNamesDisplay();
+
+        // Add to history
+        this._addToHistory(names, language);
       }
 
     } catch (error) {
@@ -451,5 +457,47 @@ export class EmergencyNamesApp extends Application {
       logWarn("Clipboard copy failed, using fallback", error);
       fallbackCopyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
     }
+  }
+
+  /**
+   * Opens the History App
+   * @param {Event} event - The click event
+   */
+  _onOpenHistory(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    logDebug("Opening history from emergency app");
+
+    new NamesHistoryApp().render(true);
+  }
+
+  /**
+   * Add generated names to history
+   * @param {Array} names - Array of name objects with name, species, gender
+   * @param {string} language - Language code
+   */
+  _addToHistory(names, language) {
+    const historyManager = getHistoryManager();
+
+    const entries = names.map(nameObj => {
+      const gender = nameObj.gender || '';
+
+      return {
+        name: nameObj.name,
+        source: 'emergency',
+        metadata: {
+          language: language,
+          species: nameObj.species,
+          category: 'names',
+          subcategory: gender, // Store gender as subcategory for names
+          gender: gender,
+          format: '{firstname} {surname}'
+        }
+      };
+    });
+
+    historyManager.addEntries(entries);
+
+    logDebug(`Added ${entries.length} names to history from emergency app`);
   }
 }
