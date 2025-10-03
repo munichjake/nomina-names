@@ -5,6 +5,66 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-10-04
+
+### Added
+- **Generation History Feature**: Track all generated names in a dedicated history window
+  - Displays last 100 generated names (configurable 10-200 in settings)
+  - Accessible from all three apps (Generator, Picker, Emergency) via history button
+  - **Search and Filter**: Real-time search and filter by source (Generator/Picker/Emergency/All)
+  - **Multi-select**: Select multiple names with checkboxes for batch operations
+  - **Quick Actions**:
+    - Single-click on name to copy
+    - Copy selected names
+    - Copy all visible names
+    - Export history to JSON
+    - Clear history
+  - **Rich Display**: Shows name, 
+  - **Gender Display**: For names category, displays gender (male/female/neutral/random) in subcategory column
+
+### Changed
+- **i18n Structure**: Refactored gender localization keys to `names.gender.*` format
+  - Added support for: male, female, nonbinary, neutral, random
+  - Applies to both German and English translations
+
+### Fixed
+- **History Display**: Empty search results no longer break the UI
+  - Search field and filters remain functional when no results found
+  - Empty state message displayed within table instead of replacing entire content area
+
+## [2.0.3] - 2025-10-03
+
+### Added
+- **Favourite/Pin Feature**: Names can now be pinned/favourited in the generator app
+  - Pin button for each generated name
+  - Visual indicator for favourited names
+  - Improved user experience for tracking preferred names
+
+### Fixed
+- **Log Level Settings**: Module log level setting now works correctly
+- **Picker App Gender Selection**:
+  - Fixed gender selection bug (const → let variable fix)
+  - Smart category filtering shows only available genders based on species/language data
+  - Added "All Genders (random)" option for varied name generation
+  - Auto-reset category when species changes
+  - Respects nonbinary setting from user preferences
+- **Critical Bug Fixes**:
+  - Removed duplicate _getData() method in name-generator.js that could cause unpredictable behavior
+  - Fixed hook-listener memory leak in main.js (added v13HooksRegistered flag)
+  - Optimized language validation with compiled regex pattern
+  - Improved debug logging (DEBUG-prefixed calls now use proper logDebug())
+  - Added defensive null checks for better error handling
+- **Emergency App Localization**: Removed hardcoded German text, now fully supports both German and English
+- **CSS Fixes**:
+  - Fixed emergency button padding
+  - Fixed scroll behavior in generator app categories dropdown
+- **Content**: Fixed incorrect label for 'Humorous books' subcategory and extended list of humorous book titles
+
+## [2.0.2] - 2025-10-03
+
+### Changed
+- Version bump for release
+
 ## [2.0.1] - 2025-01-30
 
 ### Fixed

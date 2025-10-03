@@ -43,7 +43,12 @@
   </div>
 
   <div class="names-picker-names">
-    <h3>{{localize "names.choose-name"}}</h3>
+    <div class="names-picker-names-header">
+      <h3>{{localize "names.choose-name"}}</h3>
+      <button type="button" id="picker-history-btn" class="names-picker-history-icon" title="{{localize 'names.history.open'}}">
+        <i class="fas fa-history"></i>
+      </button>
+    </div>
     <div class="names-picker-list">
       <div class="names-picker-placeholder">
         <i class="fas fa-dice"></i>
@@ -91,6 +96,47 @@
   width: 100%;
 }
 
+/* Names section header with history icon */
+.names-picker-names-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.names-picker-names-header h3 {
+  margin: 0;
+  flex: 1;
+}
+
+.names-picker-history-icon {
+  width:auto;
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 0.75em;
+  cursor: pointer;
+  padding: 0.15em;
+  transition: all 0.2s;
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5em;
+}
+
+.names-picker-history-icon:hover {
+  color: #ff6400;
+  opacity: 1;
+  transform: scale(1.15);
+  box-shadow:none;
+}
+
+.names-picker-history-icon:active {
+  box-shadow:none;
+}
+
 /* Generate button styling */
 .names-picker-generate {
   background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
@@ -125,11 +171,10 @@
 }
 
 .names-picker-names h3 {
-  margin: 0 0 16px 0;
+  margin: 0;
   font-size: 16px;
   font-weight: 600;
   color: #ff6400;
-  text-align: center;
 }
 
 .names-picker-list {

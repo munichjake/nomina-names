@@ -7,6 +7,7 @@ import { ensureGlobalNamesData, setGlobalNamesData, NamesDataManager } from './c
 import { NamesGeneratorApp } from './apps/generator-app.js';
 import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
+import { NamesHistoryApp } from './apps/history-app.js';
 import { NamesRoleConfig } from './apps/role-config.js';
 import { NamesSpeciesConfig } from './apps/species-config.js';
 import { hasNamesGeneratorPermission, showPermissionChangeDialog } from './utils/permissions.js';
@@ -15,6 +16,7 @@ import { MODULE_ID } from './shared/constants.js';
 import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
+import { getHistoryManager } from './core/history-manager.js';
 
 /**
  * Central function to handle Names Generator opening
@@ -78,7 +80,7 @@ Hooks.once('ready', () => {
   updateLogLevel();
 
   logDebug("Ready hook - initializing data");
-  
+
   // Ensure globalNamesData exists and start loading
   const dataManager = ensureGlobalNamesData();
   if (dataManager) {
@@ -90,6 +92,12 @@ Hooks.once('ready', () => {
       logError("Failed to initialize DataManager", error);
     });
   }
+
+  // Initialize History Manager and apply setting
+  const historyManager = getHistoryManager();
+  const maxEntries = game.settings.get(MODULE_ID, "historyMaxEntries");
+  historyManager.setMaxEntries(maxEntries);
+  logDebug(`History Manager initialized with max entries: ${maxEntries}`);
 
   // Add emergency button after delay (only if enabled and permitted)
   setTimeout(() => {
@@ -752,6 +760,11 @@ Hooks.on('chatMessage', (html, content, msg) => {
     new EmergencyNamesApp().render(true);
     return false;
   }
+
+  if (content === '/history' || content === '/namen-history') {
+    new NamesHistoryApp().render(true);
+    return false;
+  }
 });
 
 // ===== SETTINGS REGISTRATION =====
@@ -849,6 +862,27 @@ function registerModuleSettings() {
       "simple": game.i18n.localize("names.settings.defaultView.simple") || "Kompakt"
     },
     default: "detailed"
+  });
+
+  // History Max Entries Setting - Anzahl der gespeicherten Namen
+  game.settings.register(MODULE_ID, "historyMaxEntries", {
+    name: game.i18n.localize("names.settings.historyMaxEntries.name") || "Maximale History-Einträge",
+    hint: game.i18n.localize("names.settings.historyMaxEntries.hint") || "Die maximale Anzahl generierter Namen, die in der History gespeichert werden (10-200)",
+    scope: "client",
+    config: true,
+    type: Number,
+    range: {
+      min: 10,
+      max: 200,
+      step: 10
+    },
+    default: 100,
+    onChange: (value) => {
+      // Update history manager when setting changes
+      const historyManager = getHistoryManager();
+      historyManager.setMaxEntries(value);
+      logDebug(`History max entries updated to: ${value}`);
+    }
   });
 
   // Log Level Setting - für Entwicklung/Debugging am Ende der Client-Settings
@@ -1035,9 +1069,11 @@ window.NamesModule = {
   NamesGeneratorApp,
   NamesPickerApp,
   EmergencyNamesApp,
+  NamesHistoryApp,
   NamesRoleConfig,
   hasNamesGeneratorPermission,
   getGlobalNamesData: () => ensureGlobalNamesData(),
+  getHistoryManager: () => getHistoryManager(),
   // Expose API for other modules
   api: NamesAPI,
   // Expose Enhanced Dropdown for external use

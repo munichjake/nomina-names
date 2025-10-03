@@ -6,7 +6,12 @@
     </div>
   {{else}}
     <div class="names-module-section emergency-content">
-      <h3>{{localize "names.emergency.title"}}</h3>
+      <div class="emergency-title-header">
+        <h3>{{localize "names.emergency.title"}}</h3>
+        <button type="button" id="emergency-history-btn" class="emergency-history-icon" title="{{localize 'names.history.open'}}">
+          <i class="fas fa-history"></i>
+        </button>
+      </div>
       <div class="emergency-header">
         <p>{{localize "names.emergency.description"}}</p>
       </div>
@@ -64,6 +69,46 @@
 .emergency-header {
   margin-bottom: 25px;
   text-align: center;
+}
+
+.emergency-title-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.emergency-title-header h3 {
+  margin: 0;
+}
+
+.emergency-history-icon {
+  width:auto;
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 0.75em;
+  cursor: pointer;
+  padding: 0.15em;
+  transition: all 0.2s;
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5em;
+}
+
+.emergency-history-icon:active {
+  box-shadow:none;
+}
+
+.emergency-history-icon:hover {
+  color: #ff6400 !important;
+  opacity: 1;
+  transform: scale(1.15);
+  box-shadow:none;
 }
 
 .emergency-header p {
@@ -164,6 +209,7 @@
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .emergency-reroll-btn,
