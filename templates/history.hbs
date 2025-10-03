@@ -1,0 +1,218 @@
+<form class="names-history-form">
+  <!-- Header Section -->
+  <div class="names-history-header">
+    <div class="names-history-stats">
+      <span class="stat-item">
+        <i class="fas fa-list"></i>
+        <strong>{{totalCount}}</strong> / {{maxCount}}
+        {{localize "names.history.entries"}}
+      </span>
+      {{#if stats.sources.generator}}
+      <span class="stat-item">
+        <span>🎲</span> {{stats.sources.generator}}
+      </span>
+      {{/if}}
+      {{#if stats.sources.picker}}
+      <span class="stat-item">
+        <span>🎯</span> {{stats.sources.picker}}
+      </span>
+      {{/if}}
+      {{#if stats.sources.emergency}}
+      <span class="stat-item">
+        <span>🆘</span> {{stats.sources.emergency}}
+      </span>
+      {{/if}}
+    </div>
+  </div>
+
+  <!-- Toolbar Section -->
+  <div class="names-history-toolbar">
+    <!-- Search -->
+    <div class="history-search-container">
+      <input
+        type="text"
+        id="history-search"
+        class="history-search-input"
+        placeholder="🔍 {{localize 'names.history.search-placeholder'}}"
+        value="{{currentFilter.search}}"
+      >
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="history-filter-group">
+      <button
+        type="button"
+        class="history-filter-btn {{#unless currentFilter.source}}active{{/unless}}"
+        data-source="all"
+        title="{{localize 'names.history.filter.all'}}"
+      >
+        <i class="fas fa-globe"></i>
+        {{localize "names.history.filter.all"}}
+      </button>
+      <button
+        type="button"
+        class="history-filter-btn {{#if (eq currentFilter.source 'generator')}}active{{/if}}"
+        data-source="generator"
+        title="{{localize 'names.history.filter.generator'}}"
+      >
+        🎲 {{localize "names.history.source.generator"}}
+      </button>
+      <button
+        type="button"
+        class="history-filter-btn {{#if (eq currentFilter.source 'picker')}}active{{/if}}"
+        data-source="picker"
+        title="{{localize 'names.history.filter.picker'}}"
+      >
+        🎯 {{localize "names.history.source.picker"}}
+      </button>
+      <button
+        type="button"
+        class="history-filter-btn {{#if (eq currentFilter.source 'emergency')}}active{{/if}}"
+        data-source="emergency"
+        title="{{localize 'names.history.filter.emergency'}}"
+      >
+        🆘 {{localize "names.history.source.emergency"}}
+      </button>
+    </div>
+  </div>
+
+  <!-- History Table -->
+  <div class="names-history-content">
+    {{#if hasEntries}}
+    <div class="history-table-wrapper">
+      <table class="names-history-table">
+        <thead>
+          <tr>
+            <th class="col-checkbox">
+              <input type="checkbox" id="select-all" title="{{localize 'names.history.select-all'}}">
+            </th>
+            <th class="col-name">{{localize "names.history.column.name"}}</th>
+            <th class="col-species">{{localize "names.history.column.species"}}</th>
+            <th class="col-category">{{localize "names.history.column.category"}}</th>
+            <th class="col-subcategory">{{localize "names.history.column.subcategory"}}</th>
+            <th class="col-source">{{localize "names.history.column.source"}}</th>
+            <th class="col-time">{{localize "names.history.column.time"}}</th>
+          </tr>
+        </thead>
+        <tbody class="history-scroll-container">
+          {{#each entries}}
+          <tr
+            class="history-entry"
+            data-entry-id="{{this.id}}"
+            data-name="{{this.name}}"
+            title="{{localize 'names.history.click-to-copy'}}"
+          >
+            <td class="col-checkbox">
+              <input
+                type="checkbox"
+                class="history-entry-checkbox"
+                data-entry-id="{{this.id}}"
+              >
+            </td>
+            <td class="col-name">
+              <span class="name-text">{{this.name}}</span>
+            </td>
+            <td class="col-species">
+              {{#if this.displaySpecies}}
+              <span class="species-badge">{{this.displaySpecies}}</span>
+              {{else}}
+              <span class="empty-badge">—</span>
+              {{/if}}
+            </td>
+            <td class="col-category">
+              {{#if this.displayCategory}}
+              <span class="category-badge">{{this.displayCategory}}</span>
+              {{else}}
+              <span class="empty-badge">—</span>
+              {{/if}}
+            </td>
+            <td class="col-subcategory">
+              {{#if this.displaySubcategory}}
+              <span class="subcategory-badge">{{this.displaySubcategory}}</span>
+              {{else}}
+              <span class="empty-badge">—</span>
+              {{/if}}
+            </td>
+            <td class="col-source">
+              {{#if (eq this.source 'generator')}}
+              <span class="source-badge source-generator" title="{{localize 'names.history.source.generator'}}">
+                🎲
+              </span>
+              {{else if (eq this.source 'picker')}}
+              <span class="source-badge source-picker" title="{{localize 'names.history.source.picker'}}">
+                🎯
+              </span>
+              {{else if (eq this.source 'emergency')}}
+              <span class="source-badge source-emergency" title="{{localize 'names.history.source.emergency'}}">
+                🆘
+              </span>
+              {{else}}
+              <span class="source-badge">📝</span>
+              {{/if}}
+            </td>
+            <td class="col-time">
+              <span class="time-text">{{this.displayTime}}</span>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+    <div class="names-history-empty">
+      <div class="empty-icon">📋</div>
+      <h3>{{localize "names.history.empty"}}</h3>
+      <p>{{localize "names.history.empty-hint"}}</p>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- Actions Section -->
+  <div class="names-history-actions">
+    <button
+      type="button"
+      id="copy-selected-btn"
+      class="history-action-btn"
+      disabled
+      title="{{localize 'names.history.copy-selected'}}"
+    >
+      <i class="fas fa-copy"></i>
+      {{localize "names.history.copy-selected"}}
+    </button>
+    <button
+      type="button"
+      id="copy-all-btn"
+      class="history-action-btn"
+      {{#unless hasEntries}}disabled{{/unless}}
+      title="{{localize 'names.history.copy-all'}}"
+    >
+      <i class="fas fa-clipboard"></i>
+      {{localize "names.history.copy-all"}}
+    </button>
+    <button
+      type="button"
+      id="export-history-btn"
+      class="history-action-btn secondary"
+      {{#unless hasEntries}}disabled{{/unless}}
+      title="{{localize 'names.history.export'}}"
+    >
+      <i class="fas fa-download"></i>
+      {{localize "names.history.export"}}
+    </button>
+    <button
+      type="button"
+      id="clear-history-btn"
+      class="history-action-btn danger"
+      {{#unless hasEntries}}disabled{{/unless}}
+      title="{{localize 'names.history.clear'}}"
+    >
+      <i class="fas fa-trash"></i>
+      {{localize "names.history.clear"}}
+    </button>
+  </div>
+
+  <!-- Help Text -->
+  <div class="names-history-help">
+    {{localize "names.history.help"}}
+  </div>
+</form>

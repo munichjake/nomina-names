@@ -1181,3 +1181,39 @@
 .items-wrapper .virtual-viewport {
   max-height: 256px !important;
 }
+
+/* History Icon Button - small and unobtrusive in header */
+.names-module-history-icon-btn {
+  background: transparent;
+  width: auto !important;
+  border: none;
+  color: #999;
+  font-size: 0.75em;
+  cursor: pointer;
+  padding: 0.15em;
+  transition: all 0.2s;
+  opacity: 0.5;
+  margin-left: 0.5em;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.names-module-history-icon-btn:active {
+  box-shadow: none;
+}
+
+.names-module-history-icon-btn:hover {
+  color: #ff6400 !important;
+  opacity: 1;
+  transform: scale(1.15);
+  box-shadow: none;
+}
+
+.names-module-results-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}

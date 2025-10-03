@@ -333,6 +333,7 @@ export const CSS_CLASSES = {
   moduleApp: 'names-module-app',
   pickerApp: 'names-picker-app',
   emergencyApp: 'emergency-names-app',
+  historyApp: 'names-history-app',
   loadingIndicator: 'names-loading-indicator',
   generatedName: 'names-module-generated-name',
   emergencyButton: 'emergency-names-chat-button'
@@ -342,6 +343,7 @@ export const TEMPLATE_PATHS = {
   generator: 'modules/nomina-names/templates/names.hbs',
   picker: 'modules/nomina-names/templates/names-picker.hbs',
   emergency: 'modules/nomina-names/templates/emergency-names.hbs',
+  history: 'modules/nomina-names/templates/history.hbs',
   roleConfig: 'modules/nomina-names/templates/role-config.hbs'
 };
 

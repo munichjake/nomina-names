@@ -8,6 +8,8 @@ import { showLoadingState, hideLoadingState, getActorSpecies, updateActorName } 
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, isGeneratorOnlyCategory, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesAPI } from '../api-system.js';
+import { getHistoryManager } from '../core/history-manager.js';
+import { NamesHistoryApp } from './history-app.js';
 
 export class NamesPickerApp extends Application {
   constructor(options = {}) {
@@ -180,6 +182,7 @@ export class NamesPickerApp extends Application {
     html.find('.names-picker-generate').click(this._onGenerateNames.bind(this));
     html.find('.names-picker-name').click(this._onSelectName.bind(this));
     html.find('select').change(this._onOptionChange.bind(this));
+    html.find('#picker-history-btn').click(this._onOpenHistory.bind(this));
 
     // Update category options when species changes
     html.find('#picker-species').change(async (event) => {
@@ -284,6 +287,9 @@ export class NamesPickerApp extends Application {
 
       this.currentNames = names;
       this._updateNamesDisplay(html);
+
+      // Add to history
+      this._addToHistory(names, language, species, category);
 
       logInfo(`Successfully generated ${names.length} names for picker`);
 
@@ -489,5 +495,49 @@ export class NamesPickerApp extends Application {
 
     // Fallback to 'de' if set language not available
     return 'de';
+  }
+
+  /**
+   * Opens the History App
+   * @param {Event} event - The click event
+   */
+  _onOpenHistory(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    logDebug("Opening history from picker app");
+
+    new NamesHistoryApp().render(true);
+  }
+
+  /**
+   * Add generated names to history
+   * @param {Array} names - Array of generated name strings
+   * @param {string} language - Language code
+   * @param {string} species - Species code
+   * @param {string} category - Category/gender code
+   */
+  _addToHistory(names, language, species, category) {
+    const historyManager = getHistoryManager();
+
+    const entries = names.map(name => {
+      const gender = category || 'random';
+
+      return {
+        name: name,
+        source: 'picker',
+        metadata: {
+          language: language,
+          species: species,
+          category: 'names',
+          subcategory: gender, // Store gender as subcategory for names
+          gender: gender,
+          format: '{firstname} {surname}'
+        }
+      };
+    });
+
+    historyManager.addEntries(entries);
+
+    logDebug(`Added ${entries.length} names to history from picker`);
   }
 }
