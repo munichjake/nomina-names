@@ -763,10 +763,10 @@ Hooks.on('chatMessage', (html, content, msg) => {
 function registerModuleSettings() {
   // Use numeric values directly to avoid string parsing issues
   const logLevelChoices = {
-    "Nur Fehler": 0,
-    "Warnungen": 1,
-    "Informationen": 2,
-    "Alle Details": 3
+    0: game.i18n.localize("names.settings.logLevel.error") || "Nur Fehler",
+    1: game.i18n.localize("names.settings.logLevel.warn") || "Warnungen und Fehler",
+    2: game.i18n.localize("names.settings.logLevel.info") || "Alle Infos",
+    3: game.i18n.localize("names.settings.logLevel.debug") || "Debug (alle Meldungen)"
   };
 
   // ===== CLIENT SETTINGS (Benutzer-spezifische Einstellungen) =====
@@ -788,7 +788,7 @@ function registerModuleSettings() {
     // Setting doesn't exist yet, which is fine
   }
 
-  // Interface Language Setting - wichtigste persönliche Präferenz
+  // Interface Language Setting
   game.settings.register(MODULE_ID, "interfaceLanguage", {
     name: game.i18n.localize("names.settings.interfaceLanguage.name") || "Interface-Sprache",
     hint: game.i18n.localize("names.settings.interfaceLanguage.hint") || "Die Sprache der Benutzeroberfläche (unabhängig von der Inhaltssprache)",
