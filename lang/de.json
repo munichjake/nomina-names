@@ -237,8 +237,9 @@
         },
         "// ===== EMERGENCY NAMES =====": "",
         "emergency": {
-            "title": "Emergency NSC Names",
-            "button": "Emergency NSC Names",
+            "title": "Emergency NSC Namen",
+            "button": "Emergency NSC Namen",
+            "description": "Klicke auf einen Namen um ihn zu kopieren.",
             "tooltip": "Schnelle NSC Namen für den Notfall",
             "reroll": "Neue Namen",
             "generating": "Generiere...",
@@ -248,7 +249,9 @@
             "quickNames": "Schnelle NPC Namen",
             "instructions": "Klicke auf einen Namen um ihn zu kopieren",
             "noNames": "Keine Namen verfügbar",
-            "hint": "Namen basieren auf der aktuellen Foundry-Sprache"
+            "hint": "Namen basieren auf der aktuellen Foundry-Sprache",
+            "error": "Fehler beim Generieren der Namen",
+            "errorOpenGenerator": "Fehler beim Öffnen des Haupt-Generators"
         },
         "// ===== META DATA LABELS =====": "",
         "meta": {

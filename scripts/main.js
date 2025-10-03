@@ -431,6 +431,9 @@ function setupGlobalEventDelegation() {
   logDebug("Global event delegation setup for Names controls");
 }
 
+// Track if v13 hooks are already registered
+let v13HooksRegistered = false;
+
 /**
  * Setup v13 specific event handling for token controls
  */
@@ -442,15 +445,18 @@ function setupV13EventHandling() {
     tools: existingTools.map((i, el) => $(el).attr('data-tool')).get()
   });
 
-  // Hook into control tool activation for v13
-  // Use once() to avoid duplicate handlers
-  Hooks.once('controlTool', function namesControlToolHandler(tool, active) {
-    logDebug("controlTool hook called", { tool, active });
-    if (tool === 'names-generator' && active) {
-      logDebug("Names generator activated via controlTool hook");
-      openNamesGenerator();
-    }
-  });
+  // Hook into control tool activation for v13 - only register once
+  if (!v13HooksRegistered) {
+    Hooks.on('controlTool', function namesControlToolHandler(tool, active) {
+      logDebug("controlTool hook called", { tool, active });
+      if (tool === 'names-generator' && active) {
+        logDebug("Names generator activated via controlTool hook");
+        openNamesGenerator();
+      }
+    });
+    v13HooksRegistered = true;
+    logDebug("Registered controlTool hook for v13");
+  }
 
   // Additional event delegation specifically for v13 token tools
   $(document).off('click.names-v13');

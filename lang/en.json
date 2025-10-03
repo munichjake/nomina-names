@@ -249,7 +249,9 @@
             "quickNames": "Quick NPC Names",
             "description": "Click a name to copy it to your clipboard",
             "noNames": "no names available",
-            "hint": "Names are generated using the default settings of the name generator module"
+            "hint": "Names are generated using the default settings of the name generator module",
+            "error": "Error generating names",
+            "errorOpenGenerator": "Error opening the main generator"
         },
         "// ===== META DATA LABELS =====": "",
         "meta": {

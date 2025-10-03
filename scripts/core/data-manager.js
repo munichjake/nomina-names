@@ -6,6 +6,18 @@
 import { isCategorizedContent, DATA_PATHS, MODULE_ID } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError, logInfoL, logWarnL, logErrorL, logDebugL } from '../utils/logger.js';
 
+// Language code validation regex - compiled once for performance
+const LANGUAGE_CODE_REGEX = /^[a-z]{2}$/;
+
+/**
+ * Validates if a string is a valid 2-letter language code
+ * @param {string} code - Language code to validate
+ * @returns {boolean} True if valid
+ */
+function isValidLanguageCode(code) {
+  return code && code.length === 2 && LANGUAGE_CODE_REGEX.test(code);
+}
+
 /**
  * Names Data Manager - Unified management for all species data
  * Handles both core species (from consolidated JSON files) and API species (from external modules)
@@ -271,7 +283,7 @@ export class NamesDataManager {
         }
 
         // Only add valid language codes (2-letter codes)
-        if (file.language && file.language.length === 2 && /^[a-z]{2}$/.test(file.language)) {
+        if (isValidLanguageCode(file.language)) {
           this.availableLanguages.add(file.language);
         }
 
@@ -367,7 +379,7 @@ export class NamesDataManager {
       const data = await response.json();
 
       // Only add valid language codes (2-letter codes)
-      if (fileInfo.language && fileInfo.language.length === 2 && /^[a-z]{2}$/.test(fileInfo.language)) {
+      if (isValidLanguageCode(fileInfo.language)) {
         this.availableLanguages.add(fileInfo.language);
       }
       this.availableSpecies.add(fileInfo.species);
@@ -1534,7 +1546,7 @@ export class NamesDataManager {
       speciesData.dataFiles.set(langCat, entryData);
       const [language, category] = langCat.split('.');
       // Only add valid language codes (2-letter codes)
-      if (language && language.length === 2 && /^[a-z]{2}$/.test(language)) {
+      if (isValidLanguageCode(language)) {
         this.availableLanguages.add(language);
       }
       if (category) {
@@ -1563,7 +1575,7 @@ export class NamesDataManager {
     // Update available sets
     const [language, species, category] = key.split('.');
     // Only add valid language codes (2-letter codes)
-    if (language && language.length === 2 && /^[a-z]{2}$/.test(language)) {
+    if (isValidLanguageCode(language)) {
       this.availableLanguages.add(language);
     }
     if (species) this.availableSpecies.add(species);
