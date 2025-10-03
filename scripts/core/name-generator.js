@@ -663,24 +663,6 @@ export class NameGenerator {
     return allDataAvailable;
   }
 
-  /**
-   * Get data through data source or species manager (with load-on-demand)
-   */
-  async _getData(key) {
-    // Try data source first (DataManager or async data source)
-    if (this.dataSource && this.dataSource.getData) {
-      const data = await this.dataSource.getData(key);
-      if (data) return data;
-    }
-
-    // Fallback to species manager with automatic load-on-demand
-    const [language, species, category] = key.split('.');
-    if (language && species && category) {
-      return await this.speciesManager.getSpeciesData(species, language, category);
-    }
-
-    return null;
-  }
 
   /**
    * Set data source (DataManager or compatible)

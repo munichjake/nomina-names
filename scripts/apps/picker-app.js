@@ -86,12 +86,12 @@ export class NamesPickerApp extends Application {
   }
 
   /**
-   * Gets categories available for the picker (excludes generator-only categories)
+   * Gets categories available for the picker (only gender categories for person names)
    * @returns {Array} Array of category objects suitable for picker
    */
   _getPickerCategories() {
     const categories = [];
-    
+
     // Add gender-based categories (for name generation)
     const supportedGenders = getSupportedGenders();
     for (const gender of supportedGenders) {
@@ -102,21 +102,8 @@ export class NamesPickerApp extends Application {
         type: 'gender'
       });
     }
-    
-    // Add simple non-gender categories (excluding generator-only categories)
-    const simpleCategories = ['settlements'];
-    for (const category of simpleCategories) {
-      if (!isGeneratorOnlyCategory(category)) {
-        const locKey = `names.categories.${category}`;
-        categories.push({
-          code: category,
-          name: game.i18n.localize(locKey) || category,
-          type: 'simple'
-        });
-      }
-    }
 
-    logDebug("Picker categories prepared:", categories);
+    logDebug("Picker categories prepared (genders only):", categories);
     return categories;
   }
 
@@ -200,34 +187,7 @@ export class NamesPickerApp extends Application {
       }
     }
 
-    // Add simple categories that are available
-    const simpleCategories = ['settlements'];
-    for (const category of simpleCategories) {
-      if (!isGeneratorOnlyCategory(category)) {
-        try {
-          const hasData = globalNamesData.hasDataFile(language, species, category);
-          if (hasData) {
-            // Use the centralized localization function
-            const displayName = getLocalizedCategoryName(category, {
-              language,
-              species,
-              getCategoryDisplayName: globalNamesData.getCategoryDisplayName.bind(globalNamesData)
-            });
-
-            availableCategories.push({
-              code: category,
-              name: displayName,
-              type: 'simple'
-            });
-            logDebug(`Category ${category} has data for ${language}.${species}`);
-          } else {
-            logDebug(`Category ${category} has no data for ${language}.${species}`);
-          }
-        } catch (error) {
-          logDebug(`Failed to check category ${category} for ${language}.${species}:`, error.message);
-        }
-      }
-    }
+    // Picker only shows gender categories for person names - no other categories needed
 
     // Update the select options
     let optionsHtml = '';
@@ -333,7 +293,7 @@ export class NamesPickerApp extends Application {
 
     const language = html.find('#picker-language').val() || this._getDefaultContentLanguage();
     const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
-    const category = html.find('#picker-category').val() || 'male';
+    let category = html.find('#picker-category').val() || 'male';
 
     logDebug("Generating names for picker", { language, species, category });
 
@@ -344,10 +304,10 @@ export class NamesPickerApp extends Application {
       html.find('#picker-category').val(category);
     }
 
-    // Ensure the selected category is supported
-    if (!this.supportedGenders.includes(category) && category !== 'settlements') {
-      // Fall back to first supported gender or settlements
-      const fallbackCategory = this.supportedGenders.length > 0 ? this.supportedGenders[0] : 'settlements';
+    // Ensure the selected category is a supported gender (picker only shows genders now)
+    if (!this.supportedGenders.includes(category)) {
+      // Fall back to first supported gender
+      const fallbackCategory = this.supportedGenders.length > 0 ? this.supportedGenders[0] : 'male';
       html.find('#picker-category').val(fallbackCategory);
       logDebug(`Category ${category} not supported, falling back to ${fallbackCategory}`);
       category = fallbackCategory;

@@ -752,9 +752,9 @@ export class NamesGeneratorApp extends Application {
     }
 
     // Ensure data is loaded for this category
-    logInfo(`DEBUG: Calling ensureDataLoaded for ${language}.${species}.${category}`);
+    logDebug(`Calling ensureDataLoaded for ${language}.${species}.${category}`);
     const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
-    logInfo(`DEBUG: ensureDataLoaded returned: ${hasData}`);
+    logDebug(`ensureDataLoaded returned: ${hasData}`);
     if (!hasData) {
       logDebug(`No data available for ${language}.${species}.${category}`);
       return;
@@ -763,20 +763,20 @@ export class NamesGeneratorApp extends Application {
     // Get available subcategories from data
     let availableSubcategories = [];
     try {
-      logInfo(`DEBUG: Getting subcategories for ${language}.${species}.${category}`);
-      logInfo(`DEBUG: globalNamesData constructor:`, globalNamesData.constructor.name);
-      logInfo(`DEBUG: globalNamesData.getAvailableSubcategories exists:`, typeof globalNamesData.getAvailableSubcategories);
-      logInfo(`DEBUG: globalNamesData.apiSpecies keys:`, Array.from(globalNamesData.apiSpecies?.keys() || []));
-      logInfo(`DEBUG: globalNamesData has species ${species}:`, globalNamesData.apiSpecies?.has(species));
+      logDebug(`Getting subcategories for ${language}.${species}.${category}`);
+      logDebug(`globalNamesData constructor:`, globalNamesData.constructor.name);
+      logDebug(`globalNamesData.getAvailableSubcategories exists:`, typeof globalNamesData.getAvailableSubcategories);
+      logDebug(`globalNamesData.apiSpecies keys:`, Array.from(globalNamesData.apiSpecies?.keys() || []));
+      logDebug(`globalNamesData has species ${species}:`, globalNamesData.apiSpecies?.has(species));
 
       if (globalNamesData.apiSpecies?.has(species)) {
         const apiSpecies = globalNamesData.apiSpecies.get(species);
-        logInfo(`DEBUG: API species ${species} data:`, apiSpecies);
-        logInfo(`DEBUG: API species ${species} dataFiles keys:`, Array.from(apiSpecies.dataFiles?.keys() || []));
+        logDebug(`API species ${species} data:`, apiSpecies);
+        logDebug(`API species ${species} dataFiles keys:`, Array.from(apiSpecies.dataFiles?.keys() || []));
       }
 
       availableSubcategories = globalNamesData.getAvailableSubcategories(language, species, category) || [];
-      logInfo(`DEBUG: getAvailableSubcategories returned:`, availableSubcategories);
+      logDebug(`getAvailableSubcategories returned:`, availableSubcategories);
     } catch (error) {
       logError(`Error getting subcategories for ${language}.${species}.${category}:`, error);
       availableSubcategories = [];
@@ -1131,7 +1131,7 @@ export class NamesGeneratorApp extends Application {
         if (subcategory) {
           // Try to get localized subcategory name
           const globalNamesData = getGlobalNamesData();
-          if (globalNamesData) {
+          if (globalNamesData && globalNamesData.getAvailableSubcategories) {
             try {
               const availableSubcats = globalNamesData.getAvailableSubcategories(options.language, options.species, options.category);
               logDebug('Debug subcategory display:', {
@@ -1140,15 +1140,16 @@ export class NamesGeneratorApp extends Application {
                 category: options.category
               });
               if (availableSubcats && Array.isArray(availableSubcats)) {
-                const subcatInfo = availableSubcats.find(sub => sub.key === subcategory);
+                const subcatInfo = availableSubcats.find(sub => sub && sub.key === subcategory);
                 logDebug('Found subcatInfo:', subcatInfo);
                 if (subcatInfo && subcatInfo.displayName) {
                   // Get the appropriate display name for current language
                   const currentLanguage = this._getFoundryLanguage();
-                  const displayName = subcatInfo.displayName[currentLanguage] ||
+                  const displayName = (typeof subcatInfo.displayName === 'object') ?
+                                    (subcatInfo.displayName[currentLanguage] ||
                                     subcatInfo.displayName.en ||
                                     subcatInfo.displayName.de ||
-                                    subcategory;
+                                    subcategory) : subcatInfo.displayName;
                   logDebug('Using display name:', displayName);
                   typeDisplay = `📝 ${displayName}`;
                 } else {
@@ -1158,6 +1159,7 @@ export class NamesGeneratorApp extends Application {
                 typeDisplay = `📝 ${subcategory}`;
               }
             } catch (error) {
+              logDebug('Error getting subcategory display name:', error);
               typeDisplay = `📝 ${subcategory}`;
             }
           } else {

@@ -199,11 +199,11 @@ export class EmergencyNamesApp extends Application {
     // Create fallback names only for enabled species
     const fallbackNames = [];
     const nameTemplates = {
-      human: { name: "Alaric Steinherz", gender: "male", displaySpecies: "Mensch" },
-      elf: { name: "Lyra Mondschein", gender: "female", displaySpecies: "Elf" },
-      dwarf: { name: "Thorin Eisenfaust", gender: "male", displaySpecies: "Zwerg" },
-      halfling: { name: "Rosie Hügelkind", gender: "female", displaySpecies: "Halbling" },
-      orc: { name: "Grimjaw der Wilde", gender: "male", displaySpecies: "Ork" }
+      human: { name: "Alaric Steinherz", gender: "male", displaySpecies: game.i18n.localize("names.species.human") },
+      elf: { name: "Lyra Mondschein", gender: "female", displaySpecies: game.i18n.localize("names.species.elf") },
+      dwarf: { name: "Thorin Eisenfaust", gender: "male", displaySpecies: game.i18n.localize("names.species.dwarf") },
+      halfling: { name: "Rosie Hügelkind", gender: "female", displaySpecies: game.i18n.localize("names.species.halfling") },
+      orc: { name: "Grimjaw der Wilde", gender: "male", displaySpecies: game.i18n.localize("names.species.orc") }
     };
 
     // Add fallback names for enabled species
@@ -224,7 +224,7 @@ export class EmergencyNamesApp extends Application {
         name: "Raven Sternenwandler",
         species: "human",
         gender: "nonbinary",
-        displaySpecies: "Mensch"
+        displaySpecies: game.i18n.localize("names.species.human")
       });
       logDebug("Added nonbinary fallback name");
     }
@@ -235,7 +235,7 @@ export class EmergencyNamesApp extends Application {
         name: "Fallback Name",
         species: "human",
         gender: "male",
-        displaySpecies: "Mensch"
+        displaySpecies: game.i18n.localize("names.species.human")
       });
     }
 
@@ -405,7 +405,7 @@ export class EmergencyNamesApp extends Application {
       logInfo("Successfully rerolled emergency names");
     } catch (error) {
       logError("Reroll failed", error);
-      ui.notifications.error("Fehler beim Generieren der Namen");
+      ui.notifications.error(game.i18n.localize("names.emergency.error") || game.i18n.localize("names.generation-error"));
     } finally {
       rerollBtn.prop('disabled', false);
       rerollBtn.html('<i class="fas fa-dice"></i> ' + (game.i18n.localize("names.emergency.reroll") || "Neue Namen"));
@@ -420,7 +420,7 @@ export class EmergencyNamesApp extends Application {
       logDebug("Main generator opened successfully");
     }).catch(error => {
       logError("Failed to open main generator", error);
-      ui.notifications.error("Fehler beim Öffnen des Haupt-Generators");
+      ui.notifications.error(game.i18n.localize("names.emergency.errorOpenGenerator") || game.i18n.localize("names.generation-error"));
     });
     this.close();
   }
