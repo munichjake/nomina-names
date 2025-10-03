@@ -7,6 +7,7 @@
         "language": "Sprache",
         "lbl_language": "Sprachklang",
         "lbl_species": "Spezies",
+        "lbl_gender": "Geschlecht",
         "category": "Kategorie",
         "generate": "Generieren",
         "btn-copy": "Kopieren",
@@ -16,7 +17,8 @@
         "// ===== UI DROPDOWN LABELS =====": "",
         "ui": {
             "choose-species": "Spezies wählen...",
-            "choose-category": "Kategorie wählen..."
+            "choose-category": "Kategorie wählen...",
+            "all-genders": "Alle Geschlechter (zufällig)"
         },
         "// ===== NAMES & COMPONENTS =====": "",
         "names": "Namen",
