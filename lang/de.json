@@ -23,10 +23,14 @@
         "// ===== NAMES & COMPONENTS =====": "",
         "names": "Namen",
         "components": "Komponenten",
-        "gender": "Geschlecht",
-        "male": "Männlich",
-        "female": "Weiblich",
-        "nonbinary": "Nicht-binär",
+        "gender": {
+            "label": "Geschlecht",
+            "male": "Männlich",
+            "female": "Weiblich",
+            "nonbinary": "Nicht-binär",
+            "neutral": "Neutral",
+            "random": "Zufällig"
+        },
         "firstname": "Vorname",
         "surname": "Nachname",
         "titles": "Titel",
@@ -191,6 +195,10 @@
                 "name": "Standard-Anzahl Namen",
                 "hint": "Die Anzahl der Namen, die standardmäßig generiert werden sollen (1-20)"
             },
+            "historyMaxEntries": {
+                "name": "Maximale History-Einträge",
+                "hint": "Die maximale Anzahl generierter Namen, die in der Historie gespeichert werden (10-200)"
+            },
             "enableMetadata": {
                 "name": "Erweiterte Metadaten anzeigen",
                 "hint": "Zeigt zusätzliche Informationen wie Inhaber, Lage und Spezialitäten bei generierten Orten und Gebäuden an"
@@ -271,6 +279,55 @@
             "age": "Alter",
             "type": "Art",
             "description": "Beschreibung"
+        },
+        "// ===== HISTORY =====": "",
+        "history": {
+            "title": "Namen-Historie",
+            "open": "Historie öffnen",
+            "entries": "Einträge",
+            "empty": "Keine Namen in der Historie",
+            "empty-hint": "Generiere Namen in einer der Apps, um sie hier zu sehen.",
+            "already-empty": "Die Historie ist bereits leer",
+            "search-placeholder": "Namen durchsuchen...",
+            "select-all": "Alle auswählen",
+            "no-selection": "Keine Namen ausgewählt",
+            "click-to-copy": "Klicken zum Kopieren",
+            "name-copied": "\"{name}\" wurde kopiert!",
+            "copied-selected": "{count} Namen kopiert",
+            "copied-all": "{count} Namen kopiert",
+            "clear": "Historie löschen",
+            "clear-title": "Historie löschen?",
+            "clear-confirm": "Möchtest du wirklich alle {count} Einträge aus der Historie löschen? Dies kann nicht rückgängig gemacht werden.",
+            "cleared": "Historie wurde gelöscht",
+            "export": "Exportieren",
+            "exported": "Historie als JSON exportiert",
+            "copy-selected": "Ausgewählte kopieren",
+            "copy-all": "Alle kopieren",
+            "help": "Klicke auf einen Namen zum Kopieren. Nutze Checkboxen für Mehrfachauswahl.",
+            "filter": {
+                "all": "Alle",
+                "generator": "Generator",
+                "picker": "Picker",
+                "emergency": "Emergency"
+            },
+            "source": {
+                "generator": "Generator",
+                "picker": "Picker",
+                "emergency": "Emergency"
+            },
+            "column": {
+                "name": "Name",
+                "species": "Spezies",
+                "category": "Kategorie",
+                "subcategory": "Unterkategorie",
+                "source": "Quelle",
+                "time": "Zeit"
+            },
+            "time": {
+                "just-now": "Gerade eben",
+                "minutes-ago": "vor {minutes} Min.",
+                "hours-ago": "vor {hours} Std."
+            }
         },
         "// ===== CONSOLE MESSAGES =====": "",
         "console": {

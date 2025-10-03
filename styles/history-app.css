@@ -1,0 +1,500 @@
+/**
+ * History App Styles
+ * Compact table layout for displaying up to 100+ generated names
+ */
+
+.names-history-app {
+  font-family: "Signika", sans-serif;
+}
+
+.names-history-app .window-content {
+  background: #2a2a2a;
+  color: #eee;
+}
+
+.names-history-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Header Section */
+.names-history-header {
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  color: white;
+  border-bottom: 2px solid #e55a00;
+}
+
+.names-history-stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.stat-item i {
+  font-size: 16px;
+}
+
+/* Toolbar Section */
+.names-history-toolbar {
+  padding: 12px 20px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #444;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.history-search-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.history-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Signika", sans-serif;
+  transition: border-color 0.2s;
+  background: #333;
+  color: #fff !important;
+}
+
+.history-search-input:focus {
+  outline: none;
+  border-color: #ff6400;
+  box-shadow: 0 0 0 2px rgba(255, 100, 0, 0.1);
+}
+
+.history-filter-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.history-filter-btn {
+  padding: 6px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #333;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: "Signika", sans-serif;
+}
+
+.history-filter-btn:hover {
+  border-color: #ff6400;
+  color: #ff6400;
+  background: rgba(255, 100, 0, 0.05);
+}
+
+.history-filter-btn.active {
+  background: #ff6400;
+  color: white;
+  border-color: #ff6400;
+}
+
+/* Content Section */
+.names-history-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-table-wrapper {
+  flex: 1;
+  overflow: auto;
+}
+
+.names-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.names-history-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #333;
+  border-bottom: 2px solid #444;
+}
+
+.names-history-table th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #eee;
+  white-space: nowrap;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.names-history-table tbody {
+  background: #2a2a2a;
+}
+
+.history-entry {
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.history-entry:hover {
+  background: rgba(255, 100, 0, 0.05);
+}
+
+.history-entry.selected,
+.history-entry.selected:nth-child(even) {
+  background: rgba(255, 100, 0, 0.1) !important;
+}
+
+.history-entry.copied {
+  background-color: #4CAF50 !important;
+  color: white;
+  transition: background-color 0.1s;
+}
+
+.history-entry.copied .name-text,
+.history-entry.copied .species-badge,
+.history-entry.copied .category-badge,
+.history-entry.copied .subcategory-badge,
+.history-entry.copied .time-text {
+  color: white !important;
+}
+
+.names-history-table td {
+  padding: 4px 8px;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.history-entry > * > .name-text {
+  font-size: 14px;
+  font-weight: normal;
+  color: #eee;
+}
+
+/* Column widths */
+.col-checkbox {
+  width: 40px;
+  text-align: center;
+}
+
+.col-name {
+  min-width: 180px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.col-species {
+  width: 120px;
+}
+
+.col-category {
+  width: 120px;
+}
+
+.col-subcategory {
+  width: 140px;
+}
+
+.col-source {
+  width: 60px;
+  text-align: center;
+}
+
+.col-time {
+  width: 140px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+/* Badges */
+.species-badge,
+.category-badge,
+.subcategory-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #444;
+  color: #eee;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.species-badge {
+  background: #1e4d7a;
+  color: #64b5f6;
+}
+
+.category-badge {
+  background: #7a4d1e;
+  color: #ffb74d;
+}
+
+.subcategory-badge {
+  background: #5e1e6e;
+  color: #ce93d8;
+}
+
+.empty-badge {
+  color: #ccc;
+  font-style: italic;
+}
+
+.source-badge {
+  font-size: 18px;
+  display: inline-block;
+}
+
+/* Checkbox styling */
+.names-history-table input[type="checkbox"] {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Empty state */
+.names-history-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+  color: #666;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+.names-history-empty h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.names-history-empty p {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Actions Section */
+.names-history-actions {
+  padding: 16px 20px;
+  background: #2a2a2a;
+  border-top: 1px solid #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.history-action-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: "Signika", sans-serif;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  color: white;
+  border: 1px solid #e55a00;
+}
+
+.history-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.history-action-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 100, 0, 0.3);
+}
+
+.history-action-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Secondary action buttons */
+.history-action-btn.secondary {
+  background: #333;
+  color: #aaa;
+  border: 1px solid #444;
+}
+
+.history-action-btn.secondary:not(:disabled):hover {
+  border-color: #ff6400;
+  color: #ff6400;
+}
+
+/* Danger action buttons */
+.history-action-btn.danger {
+  background: #333;
+  color: #ef5350;
+  border: 1px solid #d32f2f;
+}
+
+.history-action-btn.danger:not(:disabled):hover {
+  background: #d32f2f;
+  color: white;
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+}
+
+/* Help text */
+.names-history-help {
+  padding: 8px 20px;
+  background: rgba(255, 100, 0, 0.05);
+  border-top: 1px solid rgba(255, 100, 0, 0.1);
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Zebra striping for better readability */
+.history-entry:nth-child(even) {
+  background: #333;
+}
+
+.history-entry:nth-child(even):hover {
+  background: rgba(255, 100, 0, 0.1);
+}
+
+/* Scrollbar styling */
+.history-table-wrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.history-table-wrapper::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.history-table-wrapper::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+.history-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive design */
+@media (max-width: 800px) {
+  .col-subcategory {
+    display: none;
+  }
+
+  .col-time {
+    width: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .names-history-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .history-filter-group {
+    justify-content: center;
+  }
+
+  .col-category {
+    display: none;
+  }
+
+  .names-history-actions {
+    flex-direction: column;
+  }
+
+  .action-group {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Button fixes */
+.names-history-form * button {
+  width: auto;
+}
+.history-filter-btn {
+  width: auto;
+}
+
+.history-action-btn .active {
+  background-color: #e55a00;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .names-history-table tbody {
+    background: #2a2a2a;
+  }
+
+  .history-entry {
+    border-color: #444;
+  }
+
+  .history-entry:nth-child(even) {
+    background: #333;
+  }
+
+  .history-entry:hover {
+    background: rgba(255, 100, 0, 0.1);
+  }
+
+  .names-history-table th {
+    background: #333;
+    color: #eee;
+  }
+
+  .species-badge,
+  .category-badge,
+  .subcategory-badge {
+    background: #444;
+    color: #eee;
+  }
+
+  .col-name {
+    color: #fff;
+  }
+
+  .col-time {
+    color: #aaa;
+  }
+}
