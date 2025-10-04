@@ -5,6 +5,37 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [2.2.0] - 2025-10-04
+
+### Added
+- **Template-based Procedural Name Generation**: Implemented a new template system for generating names dynamically using placeholders and component libraries
+  - Supports simple placeholder syntax like `{metal}{building}` that gets replaced with random values from component lists
+  - Added support for filter syntax `{placeholder|filter}` to prepare for future grammar features (declensions, cases, etc.)
+  - Three generation modes supported: static entries only, procedural templates only, or hybrid mode (randomly picks between static and generated)
+  - Fully backward compatible with all existing JSON formats (2.x, 3.0.x, 3.1.x)
+- Added new template parser utility (`scripts/utils/template-parser.js`) that handles placeholder replacement and validation
+- Created comprehensive documentation for the template system in Format Specification 3.2.0
+- **Dwarf Settlements: Procedural Beta**: Added experimental procedural generation for dwarf settlements
+  - New "Prozedural (Beta)" subcategory in German dwarf settlements with 9 different template patterns
+  - Includes component libraries with 60+ building blocks: metals, stones, building types, clan names, and location suffixes
+  - Generates authentic-sounding names like "Eisenschmiede", "Goldhalle der Steinklaue", "Steinburg", "Festung Mithrilgrube"
+  - All existing static settlement entries remain unchanged
+
+### Changed
+- Updated `NamesDataManager.getSubcategoryData()` to return full subcategory objects when templates are present (instead of just entries array)
+- Extended name generator with template support in both categorized content and subcategory selection
+- Added template validation to prevent generation errors from missing components
+
+### Fixed
+- Data manager now correctly handles subcategories that use templates instead of static entries
+
+## [2.1.1] - 2025-10-04
+
+### Fixed
+- **Module Loading**: Fixed critical loading error in published version that prevented module initialization
+
 ## [2.1.0] - 2025-10-04
 
 ### Added

@@ -1,10 +1,12 @@
 /**
  * Name Generator - Enhanced generator for names with 3.0.0 format support
+ * Extended with 3.2.0 template-based generation
  */
 
 import { ensureGlobalNamesData } from './data-manager.js';
 import { isCategorizedContent, getSubcategories, getSupportedGenders, DEFAULT_NAME_FORMAT } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+import { parseTemplate, validateTemplate } from '../utils/template-parser.js';
 
 /**
  * Unified Name Generator - Handles all types of name generation
@@ -158,6 +160,7 @@ export class NameGenerator {
 
   /**
    * Generate categorized content (books, ships, shops, taverns) - 3.0.1 format with metadata support
+   * Extended with 3.2.0 template support
    */
   async _generateCategorizedContent(language, species, category, specificSubcategory = null, availableSubcategories = null, filters = null, returnWithMetadata = false) {
     logDebug(`Generating categorized content: ${species}/${language}/${category}/${specificSubcategory || 'random'}`);
@@ -193,6 +196,34 @@ export class NameGenerator {
     if (!subcategoryData) {
       throw new Error(`No data available for subcategory ${subcategory}`);
     }
+
+    // === 3.2.0 TEMPLATE SUPPORT ===
+    // Check if this subcategory uses templates
+    const hasTemplates = subcategoryData?.templates && Array.isArray(subcategoryData.templates) && subcategoryData.templates.length > 0;
+    const hasComponents = subcategoryData?.components && typeof subcategoryData.components === 'object';
+
+    if (hasTemplates && hasComponents) {
+      // Use template-based generation
+      const entryName = this._generateFromTemplate(subcategoryData, language);
+
+      if (returnWithMetadata) {
+        return {
+          name: entryName,
+          subcategory: subcategory,
+          meta: {} // Templates don't have metadata (yet)
+        };
+      } else {
+        if (availableSubcategories && availableSubcategories.length > 1) {
+          return {
+            name: entryName,
+            subcategory: subcategory
+          };
+        } else {
+          return entryName;
+        }
+      }
+    }
+    // === END 3.2.0 TEMPLATE SUPPORT ===
 
     // The DataManager returns the array for the specific language (potentially filtered)
     if (!Array.isArray(subcategoryData) || subcategoryData.length === 0) {
@@ -262,6 +293,7 @@ export class NameGenerator {
 
   /**
    * Select random entry from a subcategory in the new consolidated format
+   * Extended with 3.2.0 template support
    */
   async _selectRandomFromSubcategory(language, species, category, subcategory) {
     // For gender subcategories (male, female, nonbinary), look in firstnames
@@ -276,6 +308,38 @@ export class NameGenerator {
 
     // Try to get subcategory data directly from consolidated format
     const subcatData = this.dataSource.getSubcategoryData(language, species, category, subcategory);
+
+    // === 3.2.0 TEMPLATE SUPPORT ===
+    // Check if this subcategory has templates
+    const hasTemplates = subcatData?.templates && Array.isArray(subcatData.templates) && subcatData.templates.length > 0;
+    const hasComponents = subcatData?.components && typeof subcatData.components === 'object';
+    const hasEntries = subcatData?.entries && subcatData.entries[language] && Array.isArray(subcatData.entries[language]) && subcatData.entries[language].length > 0;
+
+    // If both templates and entries exist, randomly choose between them (50/50)
+    if (hasTemplates && hasComponents && hasEntries) {
+      if (Math.random() < 0.5) {
+        logDebug(`Using template-based generation for ${category}/${subcategory}`);
+        return this._generateFromTemplate(subcatData, language);
+      } else {
+        logDebug(`Using static entries for ${category}/${subcategory}`);
+        const entries = subcatData.entries[language];
+        return entries[Math.floor(Math.random() * entries.length)];
+      }
+    }
+
+    // If only templates exist, use template generation
+    if (hasTemplates && hasComponents) {
+      logDebug(`Using template-only generation for ${category}/${subcategory}`);
+      return this._generateFromTemplate(subcatData, language);
+    }
+
+    // If only entries exist, use traditional selection
+    if (hasEntries) {
+      logDebug(`Using entries-only generation for ${category}/${subcategory}`);
+      const entries = subcatData.entries[language];
+      return entries[Math.floor(Math.random() * entries.length)];
+    }
+    // === END 3.2.0 TEMPLATE SUPPORT ===
 
     if (subcatData && Array.isArray(subcatData) && subcatData.length > 0) {
       const randomIndex = Math.floor(Math.random() * subcatData.length);
@@ -318,6 +382,45 @@ export class NameGenerator {
     await this.dataSource.ensureDataLoaded(language, species, category);
 
     return this.dataSource.getData(key);
+  }
+
+  /**
+   * Generate a name from a template (3.2.0 feature)
+   *
+   * @param {Object} subcatData - Subcategory data with templates and components
+   * @param {string} language - Target language
+   * @returns {string} Generated name
+   * @private
+   */
+  _generateFromTemplate(subcatData, language) {
+    if (!subcatData.templates || !Array.isArray(subcatData.templates) || subcatData.templates.length === 0) {
+      throw new Error('No templates available for generation');
+    }
+
+    if (!subcatData.components || typeof subcatData.components !== 'object') {
+      throw new Error('No components available for template generation');
+    }
+
+    // Pick a random template
+    const template = subcatData.templates[Math.floor(Math.random() * subcatData.templates.length)];
+    logDebug(`Selected template: "${template}"`);
+
+    // Validate template has all required components
+    const validation = validateTemplate(template, subcatData.components, language);
+    if (!validation.isValid) {
+      logWarn(`Template "${template}" is missing components: ${validation.missing.join(', ')}`);
+      throw new Error(`Template validation failed: missing components ${validation.missing.join(', ')}`);
+    }
+
+    // Generate name from template
+    try {
+      const generatedName = parseTemplate(template, subcatData.components, language);
+      logDebug(`Generated name from template: "${generatedName}"`);
+      return generatedName;
+    } catch (error) {
+      logError(`Failed to generate from template "${template}":`, error);
+      throw error;
+    }
   }
 
   /**
