@@ -1131,7 +1131,7 @@ export class NamesDataManager {
    * @param {string} species - Species code
    * @param {string} category - Category code (books, ships, shops, taverns, names)
    * @param {string} subcategory - Subcategory code
-   * @returns {Array|Object|null} Array of entries, object with titles, or null
+   * @returns {Array|Object|null} Array of entries, object with titles/templates/components, or null
    */
   getSubcategoryData(language, species, category, subcategory, options = {}) {
     // Check API species first
@@ -1142,18 +1142,26 @@ export class NamesDataManager {
       if (apiSpecies.dataFiles && apiSpecies.dataFiles.has(langCatKey)) {
         const categoryData = apiSpecies.dataFiles.get(langCatKey);
         if (categoryData && categoryData.subcategories) {
-          // Handle 3.0.1 format with array structure
+          // Handle 3.0.1+ format with array structure
           if (Array.isArray(categoryData.subcategories)) {
             const subcategoryData = categoryData.subcategories.find(sub => sub.key === subcategory);
-            if (subcategoryData && subcategoryData.entries) {
-              let entries = subcategoryData.entries[language] || null;
-
-              // Apply metadata filters if provided
-              if (entries && options.filters) {
-                entries = this._filterEntriesByMetadata(entries, options.filters);
+            if (subcategoryData) {
+              // 3.2.0: Check for templates (return full subcategory object)
+              if (subcategoryData.templates && subcategoryData.components) {
+                return subcategoryData;
               }
 
-              return entries;
+              // Otherwise return entries only
+              if (subcategoryData.entries) {
+                let entries = subcategoryData.entries[language] || null;
+
+                // Apply metadata filters if provided
+                if (entries && options.filters) {
+                  entries = this._filterEntriesByMetadata(entries, options.filters);
+                }
+
+                return entries;
+              }
             }
           }
           // Handle legacy format with object structure
@@ -1178,18 +1186,26 @@ export class NamesDataManager {
       return null;
     }
 
-    // Handle 3.0.0 and 3.0.1 formats
+    // Handle 3.0.0+ formats
     if ((this._isModernFormat(data)) && data.data && data.data[category] && data.data[category].subcategories) {
       const subcategoryData = data.data[category].subcategories.find(sub => sub.key === subcategory);
-      if (subcategoryData && subcategoryData.entries) {
-        let entries = subcategoryData.entries[language] || null;
-
-        // Apply metadata filters if provided
-        if (entries && options.filters) {
-          entries = this._filterEntriesByMetadata(entries, options.filters);
+      if (subcategoryData) {
+        // 3.2.0: Check for templates (return full subcategory object)
+        if (subcategoryData.templates && subcategoryData.components) {
+          return subcategoryData;
         }
 
-        return entries;
+        // Otherwise return entries only
+        if (subcategoryData.entries) {
+          let entries = subcategoryData.entries[language] || null;
+
+          // Apply metadata filters if provided
+          if (entries && options.filters) {
+            entries = this._filterEntriesByMetadata(entries, options.filters);
+          }
+
+          return entries;
+        }
       }
     }
 
