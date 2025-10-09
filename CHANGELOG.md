@@ -7,6 +7,157 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-10-09
+
+### Major Update - JSON Format 4.0.0 Migration
+
+Diese Version führt eine grundlegende Neustrukturierung der Datenarchitektur ein mit dem neuen JSON Format 4.0.0, das die Grundlage für erweiterte Features und bessere Performance bildet.
+
+### Added
+
+- **JSON Format 4.0.0 Support**: Komplett neues Datenformat mit modernen Features
+  - **Unified Package Structure**: Alle Spezies-Daten (male, female, nicknames, surnames, titles, etc.) in einer einzigen Datei pro Sprache
+  - **Catalogs System**: Kategorisierung von Daten in `catalogs` (z.B. "names", "settlements", "taverns")
+  - **Tag-based Filtering**: Items können mit `tags` versehen werden für flexible Filterung und Kategorisierung
+  - **Item Attributes**: `attrs` Feld für zusätzliche Metadaten (z.B. `gender`, `rarity`, etc.)
+  - **Weighted Items**: Gewichtung von Items über `w` (weight) für unterschiedliche Häufigkeiten
+  - **Recipe System**: Vorbereitete Template-Rezepte für komplexe Namensgenerierung
+  - **Output Transforms**: Konfigurierbare Text-Transformationen (TrimSpaces, CollapseSpaces, etc.)
+  - **Language Rules**: Grammatik-Regeln für sprachspezifische Transformationen
+  - **Vocab System**: Zentrale Übersetzungen und Icons für Tags
+  - **Collections**: Vordefinierte Filter-Sets für häufige Anwendungsfälle
+  - Siehe vollständige Spezifikation in [docs/json_v_4_spec.md](docs/json_v_4_spec.md)
+
+- **Neue Core-Architektur**: Modulares System für bessere Wartbarkeit
+  - **Engine (`scripts/core/engine.js`)**: Zentrale Generator-Engine mit Tag-Filtering und Weighted Selection
+  - **Composer (`scripts/core/composer.js`)**: Komponiert komplexe Namen aus mehreren Katalogen
+  - **Selector (`scripts/core/selector.js`)**: Intelligente Item-Auswahl mit Gewichtung und Filtering
+  - Klare Trennung von Daten-Layer, Business-Logic und UI-Layer
+
+- **Verbesserte Index-Struktur**: Neues `data/index.json` Format
+  - Packages statt einzelner Files: Gruppierung von Dateien nach Spezies und Kategorie
+  - Multi-Language Support pro Package
+  - Flexible Enable/Disable-Optionen pro Datei
+  - Zentrale Spezies-Übersetzungen
+  - Locale-Fallback-Konfiguration
+
+- **Granulare Namen-Dateien**: Aufspaltung der monolithischen `*.names.json` Dateien
+  - Separate Dateien für: `female`, `male`, `nonbinary`, `nicknames`, `surnames`, `titles`
+  - Bessere Organisation und Performance
+  - Einfacheres Bearbeiten und Erweitern einzelner Kategorien
+  - Alle Spezies migriert: Aasimar, Dragonborn, Dwarf, Elf, Gnome, Halfling, Human, Tiefling
+  - Für beide Sprachen: Deutsch (`de`) und English (`en`)
+
+- **Enhanced Data Manager**: Komplett überarbeiteter `scripts/core/data-manager.js`
+  - Format 4.0.0/4.0.1 Support mit Abwärtskompatibilität zu 3.x Formaten
+  - Package-basiertes Loading statt File-basiert
+  - Intelligentes Caching für bessere Performance
+  - Tag-basierte Queries und Filtering
+  - Catalog-System für strukturierte Datenabfrage
+
+- **API-System für Externe Module**: Neues Public API in `scripts/api/`
+  - `generator.js`: Öffentliche API für externe Module zur Namensgenerierung
+  - `registerPackage()`: Runtime-Registrierung von benutzerdefinierten Spezies und Content-Paketen
+  - `registerPackages()`: Batch-Registrierung mehrerer Pakete
+  - Dokumentierte Schnittstellen für Integration in andere Foundry-Module
+  - Ermöglicht Third-Party-Erweiterungen ohne Code-Modifikationen oder manuelle File-Installation
+
+### Changed
+
+- **Data Structure Migration**: Alle Datendateien zu JSON Format 4.0.0 migriert
+  - Alte `*.names.json` Dateien entfernt und durch granulare Files ersetzt
+  - Settlement-Dateien zu Format 4.0.0 konvertiert mit Tags und Catalogs
+  - Books, Ships, Shops, Taverns zu Format 4.0.0 mit vocab und collections
+  - Pets und Weapons zu Format 4.0.0 migriert
+
+- **Generator App Überarbeitung**: `scripts/apps/generator-app.js` für Format 4.0.0
+  - Unterstützung für Catalog-basierte Auswahl
+  - Tag-Filtering in der UI
+  - Integration mit neuem Engine/Composer/Selector System
+  - Verbesserte Fehlerbehandlung
+
+- **Picker App Modernisierung**: `scripts/apps/picker-app.js` für neue Architektur
+  - Package-basierte Datenabfrage
+  - Bessere Integration mit Data Manager
+  - Optimierte Rendering-Performance
+
+- **Emergency App**: `scripts/apps/emergency-app.js` an neue Struktur angepasst
+
+- **History Manager**: `scripts/apps/history-app.js` für neue Datenformate aktualisiert
+
+- **API System**: `scripts/api-system.js` komplett überarbeitet für Format 4.0.0
+
+- **Localization Updates**: `lang/de.json` und `lang/en.json` erweitert
+  - Neue Übersetzungen für Catalog-Namen und UI-Elemente
+  - Verbesserte Konsistenz zwischen Sprachen
+
+- **UI Styling**: CSS-Dateien optimiert für neue Features
+  - `styles/names.css`: Erweitert für Tag-Anzeige und Filtering
+  - `styles/modern-dropdown.css`: Verbesserte Dropdown-Komponenten
+  - `styles/emergency-app.css`, `styles/history-app.css`: Kleinere Anpassungen
+
+- **Templates**: Handlebars-Templates aktualisiert
+  - `templates/names.hbs`: Unterstützung für neue Datenstruktur
+  - `templates/history.hbs`: Angepasst an Format 4.0.0
+
+### Deprecated
+
+- **Legacy JSON Formats**: Format 3.x wird weiterhin unterstützt, aber sollte zu 4.0.0 migriert werden
+  - Alte `*.names.json` Dateien (einzelne Dateien statt unified packages) sind deprecated
+  - Migration zu unified package structure empfohlen
+
+### Fixed
+
+- **Performance**: Deutlich schnelleres Laden durch Package-basiertes Caching
+- **Memory Usage**: Reduzierter Speicherverbrauch durch optimierte Datenstrukturen
+- **Code Quality**: Refactoring für bessere Wartbarkeit und Erweiterbarkeit
+
+### Developer Notes
+
+#### Breaking Changes
+
+- **Data File Structure**: Alte Dateien in `data/` wurden umbenannt/verschoben
+  - `*.names.json` → aufgeteilt in `*.female.json`, `*.male.json`, etc.
+  - Alte Dateien sind disabled in `index.json`, können aber reaktiviert werden
+
+- **API Changes**: Data Manager API wurde komplett überarbeitet
+  - `loadSpeciesData()` → jetzt package-basiert statt file-basiert
+  - Neue Methoden: `getCatalog()`, `queryItems()`, `getPackages()`, `registerPackage()`
+  - **Runtime Package Registration**: Externe Module können Pakete zur Laufzeit registrieren
+
+#### Migration Path
+
+1. **Für Content Creators**: Siehe [docs/json_v_4_spec.md](docs/json_v_4_spec.md) für Format-Details
+2. **Für Module Developers**: Nutze die neue API in `scripts/api/generator.js`
+
+#### Testing
+
+- Alle 8 Spezies getestet (Aasimar, Dragonborn, Dwarf, Elf, Gnome, Halfling, Human, Tiefling)
+- Beide Sprachen verifiziert (Deutsch, English)
+- Abwärtskompatibilität zu Format 3.x geprüft
+- Performance-Tests mit großen Datensätzen durchgeführt
+
+### Technical Details
+
+**Neue Dateien:**
+- `scripts/core/engine.js` - Generator Engine
+- `scripts/core/composer.js` - Name Composer
+- `scripts/core/selector.js` - Item Selector
+- `scripts/api/generator.js` - Public API
+- `docs/json_v_4_spec.md` - Format 4.0.0 Specification (includes vocab and collections)
+
+**Geänderte Core Files:**
+- `scripts/core/data-manager.js` - Komplett überarbeitet (~60% weniger Code)
+- `scripts/apps/generator-app.js` - Refactored für neue Architektur
+- `scripts/main.js` - Initialisierung angepasst
+- `data/index.json` - Neues Package-basiertes Format
+
+**Daten-Migration:**
+- 67 Dateien geändert
+- ~78,000 Zeilen gelöscht (Konsolidierung)
+- ~27,000 Zeilen hinzugefügt (neue Struktur + Features)
+- Netto: ~50,000 Zeilen weniger (durch Deduplizierung)
+
 ## [2.2.0] - 2025-10-04
 
 ### Added
@@ -236,4 +387,4 @@ This is a massive update that completely overhauls the Nomina Names module with 
 
 ---
 
-*This changelog documents the evolution of the Nomina Names module. For detailed technical specifications, see the [JSON Format Specification](docs/json-format-specification.md) and [Developer Guide](docs/developer-guide.md).*
+*This changelog documents the evolution of the Nomina Names module. For detailed technical specifications, see the [JSON Format 4.0.0 Specification](docs/json_v_4_spec.md) and [API Documentation](docs/api-documentation.md).*

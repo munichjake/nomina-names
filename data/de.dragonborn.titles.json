@@ -1,0 +1,84 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Drachengeborene Titel",
+      "en": "Drachengeborene Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Freiherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Freifrau" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Weiblich"
+          },
+          "male": {
+            "de": "Männlich"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          },
+          "titles": {
+            "de": "Titles"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

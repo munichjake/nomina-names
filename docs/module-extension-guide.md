@@ -1,855 +1,1139 @@
-# Nomina Names Module Extension Guide
+# Nomina Names - Module Extension Guide
 
-## Overview
+**Version 3.0.0+ | JSON Format 4.0.0**
 
-This guide provides comprehensive instructions for extending the Nomina Names module with custom content and creating external modules that integrate with the Nomina Names API. Whether you're adding new species, creating themed content packs, or building complex generators, this guide will help you get started.
+> This complete guide teaches you how to extend Nomina Names with your own content. Whether you're a beginner or experienced developer, you'll find step-by-step instructions with working examples.
 
-## Table of Contents
+---
 
-1. [Extension Types](#extension-types)
-2. [Getting Started](#getting-started)
-3. [Species Registration](#species-registration)
-4. [Content Creation](#content-creation)
-5. [Advanced Features](#advanced-features)
-6. [Testing and Validation](#testing-and-validation)
-7. [Best Practices](#best-practices)
-8. [Publishing Guidelines](#publishing-guidelines)
+## 📚 Table of Contents
 
-## Extension Types
+1. [What You Can Create](#what-you-can-create)
+2. [Quick Start (5 Minutes)](#quick-start-5-minutes)
+3. [Complete Tutorial](#complete-tutorial)
+4. [Understanding JSON Format 4.0.0](#understanding-json-format-400)
+5. [Advanced Topics](#advanced-topics)
+6. [Troubleshooting](#troubleshooting)
+7. [Publishing Your Module](#publishing-your-module)
 
-### 1. Content Extension Modules
-Add new species, languages, or content categories to the base system.
+---
 
-**Examples:**
-- Monster species (Goblin, Orc, Dragon)
-- Historical cultures (Roman, Norse, Celtic)
-- Sci-fi species (Android, Alien, Cyborg)
-- Additional languages (French, Spanish, Italian)
+## What You Can Create
 
-### 2. Generator Modules
-Build specialized generators using the Nomina Names API.
+### 🎭 New Species
+Add entirely new species (races) with their own names, settlements, and culture:
+- **Fantasy**: Goblins, Orcs, Dragons, Fey
+- **Sci-Fi**: Androids, Aliens, Cyborgs
+- **Historical**: Vikings, Romans, Samurai
+- **Custom**: Your own unique creations
 
-**Examples:**
-- Settlement generators with complete demographics
-- Adventure hook generators
-- NPC personality generators
-- World-building assistants
+### 🌍 New Languages
+Translate existing content or add new language support:
+- French, Spanish, Italian, Portuguese
+- Japanese, Chinese, Korean
+- Constructed languages (Elvish, Klingon, etc.)
 
-### 3. Integration Modules
-Connect Nomina Names with other systems and modules.
+### 📦 Content Packs
+Themed collections of names and content:
+- Pirate names and ship names
+- Noble houses and family names
+- Merchant guilds and businesses
+- Military ranks and titles
 
-**Examples:**
-- Character sheet auto-population
-- Journal entry generators
-- Chat command extensions
-- Macro collections
+---
 
-## Getting Started
+## Quick Start (5 Minutes)
 
-### Prerequisites
+Let's create your first extension that adds Goblin names to Nomina Names!
 
-1. **Foundry VTT Development Environment**
-   - Foundry VTT v11 or later
-   - Basic understanding of module development
-   - Node.js and npm (for advanced features)
+### Step 1: Create Your Module Folder
 
-2. **Nomina Names Knowledge**
-   - Familiarity with the API
-   - Understanding of JSON Format 3.0.1
-   - Knowledge of species registration process
-
-### Basic Module Structure
-
+Create a new folder in your Foundry modules directory:
 ```
-my-nomina-extension/
-├── module.json
-├── scripts/
-│   ├── main.js
-│   ├── species-data.js
-│   └── generators/
-├── data/
-│   ├── species1.json
-│   ├── species2.json
-│   └── index.json
-├── lang/
-│   ├── en.json
-│   └── de.json
-└── README.md
+FoundryVTT/Data/modules/my-goblin-names/
 ```
 
-### Module Manifest (module.json)
+### Step 2: Create module.json
+
+Create `module.json` in your folder:
 
 ```json
 {
-  "id": "my-nomina-extension",
-  "title": "My Nomina Extension",
-  "description": "Custom species and generators for Nomina Names",
+  "id": "my-goblin-names",
+  "title": "Goblin Names for Nomina",
+  "description": "Adds goblin names with German and English support",
   "version": "1.0.0",
-  "authors": [{
-    "name": "Your Name",
-    "email": "your.email@example.com"
-  }],
   "compatibility": {
     "minimum": "11",
     "verified": "12"
   },
-  "dependencies": [{
-    "id": "nomina-names",
-    "type": "module",
-    "compatibility": {}
-  }],
-  "esmodules": [
-    "scripts/main.js"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ]
-}
-```
-
-## Species Registration
-
-### Method 1: JSON File Registration
-
-Create species data files in JSON Format 3.0.1:
-
-```javascript
-// scripts/main.js
-Hooks.once('nomina-names:coreLoaded', async () => {
-  const api = game.modules.get('nomina-names').api;
-
-  try {
-    // Load species data from JSON file
-    const response = await fetch('modules/my-nomina-extension/data/goblin.json');
-    const speciesData = await response.json();
-
-    // Register the species
-    await api.registerSpecies(speciesData);
-
-    console.log('Goblin species registered successfully');
-  } catch (error) {
-    console.error('Failed to register species:', error);
-  }
-});
-```
-
-### Method 2: Programmatic Registration
-
-```javascript
-// scripts/species-data.js
-export const GOBLIN_SPECIES = {
-  code: 'goblin',
-  displayName: {
-    en: 'Goblin',
-    de: 'Goblin'
-  },
-  languages: ['en', 'de'],
-  categories: ['names', 'settlements', 'nicknames'],
-  data: {
-    'en.names': {
-      subcategories: [{
-        key: 'firstnames',
-        displayName: { en: 'First Names' },
-        entries: {
-          male: [
-            'Grax', 'Snarl', 'Vex', 'Grimjaw', 'Skreech',
-            { name: 'Bloodfang', meta: { rarity: 'uncommon', type: 'fierce' } }
-          ],
-          female: [
-            'Vyx', 'Shiv', 'Hex', 'Razorclaw', 'Sneer',
-            { name: 'Poisontooth', meta: { rarity: 'rare', type: 'cunning' } }
-          ]
-        }
-      }, {
-        key: 'surnames',
-        displayName: { en: 'Clan Names' },
-        entries: [
-          'Skullcrusher', 'Ratbiter', 'Mudfoot', 'Ironteeth',
-          { name: 'Shadowblade', meta: { rarity: 'legendary', reputation: 'feared' } }
-        ]
-      }]
-    },
-    'en.settlements': {
-      subcategories: [{
-        key: 'camps',
-        displayName: { en: 'Camps & Lairs' },
-        entries: [
-          'Rotting Hollow', 'Skull Rock', 'The Bone Pit',
-          { name: 'Shadowmere Depths', meta: { size: 'large', danger: 'high' } }
-        ]
-      }]
-    }
-  }
-};
-
-// scripts/main.js
-import { GOBLIN_SPECIES } from './species-data.js';
-
-Hooks.once('nomina-names:coreLoaded', async () => {
-  const api = game.modules.get('nomina-names').api;
-
-  try {
-    await api.registerSpecies(GOBLIN_SPECIES);
-    console.log('Goblin species registered');
-  } catch (error) {
-    console.error('Registration failed:', error);
-  }
-});
-```
-
-### Method 3: Batch Registration from JSON Files
-
-```javascript
-// Load multiple species from a directory
-Hooks.once('nomina-names:coreLoaded', async () => {
-  const api = game.modules.get('nomina-names').api;
-
-  const speciesFiles = [
-    'goblin.json',
-    'orc.json',
-    'troll.json',
-    'kobold.json'
-  ];
-
-  for (const filename of speciesFiles) {
-    try {
-      const response = await fetch(`modules/my-nomina-extension/data/${filename}`);
-      const speciesData = await response.json();
-
-      await api.registerSpecies(speciesData);
-      console.log(`Registered species from ${filename}`);
-    } catch (error) {
-      console.error(`Failed to register ${filename}:`, error);
-    }
-  }
-});
-```
-
-## Content Creation
-
-### Creating Quality Content
-
-#### 1. Research and Planning
-
-```javascript
-// Example: Creating Orcish names based on linguistic patterns
-const ORCISH_LINGUISTICS = {
-  // Common syllables and patterns
-  maleStarts: ['Grax', 'Thok', 'Murg', 'Skar', 'Drak'],
-  maleEnds: ['ul', 'ak', 'og', 'ur', 'ash'],
-
-  femaleStarts: ['Yaz', 'Shak', 'Mex', 'Vor', 'Lash'],
-  femaleEnds: ['a', 'ia', 'ul', 'ek', 'ath'],
-
-  // Cultural elements
-  clanWords: ['blood', 'iron', 'bone', 'skull', 'fang'],
-  honorifics: ['the Mighty', 'Skullcrusher', 'Ironjaw']
-};
-
-function generateOrcishNames() {
-  // Use linguistic patterns to create authentic-sounding names
-  // This helps ensure consistency and immersion
-}
-```
-
-#### 2. Cultural Consistency
-
-```json
-{
-  "format": "3.0.1",
-  "code": "viking",
-  "displayName": {
-    "en": "Viking"
-  },
-  "languages": ["en"],
-  "categories": ["names", "settlements", "ships"],
-  "data": {
-    "en.names": {
-      "subcategories": [{
-        "key": "firstnames",
-        "displayName": { "en": "Given Names" },
-        "entries": {
-          "male": [
-            "Ragnar", "Bjorn", "Erik", "Olaf", "Magnus",
-            { "name": "Thorvald", "meta": { "meaning": "Thor's ruler", "rarity": "uncommon" } }
-          ],
-          "female": [
-            "Astrid", "Ingrid", "Sigrid", "Freydis", "Helga",
-            { "name": "Brunhilde", "meta": { "meaning": "armor battle", "rarity": "rare" } }
-          ]
-        }
-      }]
-    },
-    "en.settlements": {
-      "subcategories": [{
-        "key": "villages",
-        "displayName": { "en": "Villages" },
-        "entries": [
-          "Ironholm", "Ravensfjord", "Wolfsburg", "Dragonhaven",
-          { "name": "Valhalla's Gate", "meta": { "significance": "sacred", "size": "large" } }
-        ]
-      }]
-    }
-  }
-}
-```
-
-#### 3. Metadata Usage for Rich Content
-
-```json
-{
-  "entries": {
-    "en": [
-      {
-        "name": "The Kraken's Rest",
-        "meta": {
-          "type": "tavern",
-          "quality": "poor",
-          "atmosphere": "dangerous",
-          "clientele": "pirates",
-          "location": "harbor",
-          "reputation": "questionable",
-          "specialties": ["grog", "sea_shanties", "illegal_goods"],
-          "rumors": ["hidden_treasure", "cursed_captain"]
-        }
-      },
-      {
-        "name": "The Golden Anchor",
-        "meta": {
-          "type": "inn",
-          "quality": "excellent",
-          "atmosphere": "elegant",
-          "clientele": "merchants",
-          "location": "harbor",
-          "reputation": "renowned",
-          "services": ["luxury_rooms", "fine_dining", "secure_storage"]
-        }
-      }
-    ]
-  }
-}
-```
-
-### Advanced Content Features
-
-#### 1. Dynamic Content Generation
-
-```javascript
-class DynamicSpeciesGenerator {
-  constructor(api) {
-    this.api = api;
-    this.templates = new Map();
-  }
-
-  // Create procedural species based on templates
-  async generateHybridSpecies(parent1, parent2) {
-    const species1Data = await this.getSpeciesData(parent1);
-    const species2Data = await this.getSpeciesData(parent2);
-
-    const hybridSpecies = {
-      code: `${parent1}_${parent2}`,
-      displayName: {
-        en: `${parent1.charAt(0).toUpperCase() + parent1.slice(1)}-${parent2}`
-      },
-      languages: ['en'],
-      categories: ['names'],
-      data: this.mergeSpeciesData(species1Data, species2Data)
-    };
-
-    await this.api.registerSpecies(hybridSpecies);
-    return hybridSpecies;
-  }
-
-  mergeSpeciesData(data1, data2) {
-    // Combine names from both species
-    // Apply transformation rules
-    // Return merged data structure
-  }
-}
-```
-
-#### 2. Conditional Content
-
-```javascript
-// Register content based on other modules or settings
-Hooks.once('nomina-names:coreLoaded', async () => {
-  const api = game.modules.get('nomina-names').api;
-
-  // Check for other modules
-  if (game.modules.get('pf2e-bestiary')?.active) {
-    await registerPF2ESpecies(api);
-  }
-
-  if (game.modules.get('dnd5e-monsters')?.active) {
-    await registerD5ESpecies(api);
-  }
-
-  // Check world settings
-  const worldType = game.settings.get('core', 'worldType');
-  if (worldType === 'sci-fi') {
-    await registerSciFiSpecies(api);
-  }
-});
-```
-
-## Advanced Features
-
-### Custom Generators
-
-```javascript
-// Advanced settlement generator with economic simulation
-class EconomicSettlementGenerator {
-  constructor() {
-    this.api = game.modules.get('nomina-names').api;
-    this.economicModels = {
-      agricultural: {
-        primaryIndustries: ['farming', 'livestock'],
-        commonBuildings: ['granary', 'mill', 'stable'],
-        tradeGoods: ['grain', 'meat', 'wool']
-      },
-      maritime: {
-        primaryIndustries: ['fishing', 'shipbuilding', 'trade'],
-        commonBuildings: ['harbor', 'shipyard', 'lighthouse'],
-        tradeGoods: ['fish', 'ships', 'exotic_goods']
-      }
-    };
-  }
-
-  async generateSettlement(options = {}) {
-    const {
-      species = 'human',
-      economicModel = 'agricultural',
-      size = 'village',
-      language = 'en'
-    } = options;
-
-    const model = this.economicModels[economicModel];
-    const settlement = {
-      name: await this.api.generateName({
-        species,
-        category: 'settlements',
-        language
-      }),
-      species,
-      size,
-      economicModel,
-      population: this.calculatePopulation(size),
-      industries: model.primaryIndustries,
-      buildings: await this.generateBuildings(species, model, language),
-      npcs: await this.generateNPCs(species, model, language),
-      tradeGoods: model.tradeGoods
-    };
-
-    return settlement;
-  }
-
-  async generateBuildings(species, model, language) {
-    const buildings = {};
-
-    for (const buildingType of model.commonBuildings) {
-      buildings[buildingType] = await this.api.generateName({
-        species,
-        category: 'shops', // or appropriate category
-        subcategory: buildingType,
-        language
-      });
-    }
-
-    return buildings;
-  }
-}
-```
-
-### Integration with Other Systems
-
-```javascript
-// Integration with D&D 5e character creation
-Hooks.on('dnd5e.preCreateActor', async (actor, data, options, userId) => {
-  if (actor.type !== 'character') return;
-
-  const api = game.modules.get('nomina-names')?.api;
-  if (!api) return;
-
-  try {
-    // Get race from character data
-    const race = data.system?.details?.race?.value?.toLowerCase() || 'human';
-
-    // Map D&D races to Nomina species
-    const speciesMapping = {
-      'human': 'human',
-      'elf': 'elf',
-      'dwarf': 'dwarf',
-      'halfling': 'halfling',
-      'dragonborn': 'dragonborn',
-      'tiefling': 'tiefling'
-    };
-
-    const species = speciesMapping[race] || 'human';
-
-    // Generate name if not provided
-    if (!data.name || data.name === 'New Actor') {
-      const gender = data.system?.details?.gender || 'random';
-      const generatedName = await api.randomName(species, gender, 'en');
-
-      foundry.utils.setProperty(data, 'name', generatedName);
-    }
-
-    // Generate background elements
-    const hometown = await api.settlement(species, 'en');
-    foundry.utils.setProperty(data, 'system.details.hometown', hometown);
-
-  } catch (error) {
-    console.error('Failed to generate character details:', error);
-  }
-});
-```
-
-### Custom UI Components
-
-```javascript
-// Custom application for species management
-class SpeciesManagerApp extends Application {
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      id: 'species-manager',
-      title: 'Species Manager',
-      template: 'modules/my-extension/templates/species-manager.hbs',
-      width: 600,
-      height: 400,
-      tabs: [
-        { navSelector: '.tabs', contentSelector: '.content', initial: 'species' }
-      ]
-    });
-  }
-
-  async getData() {
-    const api = game.modules.get('nomina-names').api;
-
-    return {
-      availableSpecies: api.getAllSpeciesCodes(),
-      registeredSpecies: this.getRegisteredSpecies(),
-      canManage: game.user.isGM
-    };
-  }
-
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    html.find('.register-species').click(this._onRegisterSpecies.bind(this));
-    html.find('.unregister-species').click(this._onUnregisterSpecies.bind(this));
-    html.find('.test-species').click(this._onTestSpecies.bind(this));
-  }
-
-  async _onRegisterSpecies(event) {
-    const speciesCode = event.target.dataset.species;
-    // Handle species registration
-  }
-}
-```
-
-## Testing and Validation
-
-### Automated Testing
-
-```javascript
-// Test suite for your extension
-class ExtensionTester {
-  constructor() {
-    this.api = game.modules.get('nomina-names').api;
-    this.results = [];
-  }
-
-  async runAllTests() {
-    console.log('Starting extension tests...');
-
-    await this.testSpeciesRegistration();
-    await this.testNameGeneration();
-    await this.testMetadataFiltering();
-    await this.testErrorHandling();
-
-    this.printResults();
-  }
-
-  async testSpeciesRegistration() {
-    try {
-      // Test species registration
-      await this.api.registerSpecies(TEST_SPECIES);
-
-      // Verify species is available
-      const species = this.api.getAllSpeciesCodes();
-      const isRegistered = species.includes(TEST_SPECIES.code);
-
-      this.results.push({
-        test: 'Species Registration',
-        passed: isRegistered,
-        message: isRegistered ? 'Species registered successfully' : 'Species not found after registration'
-      });
-    } catch (error) {
-      this.results.push({
-        test: 'Species Registration',
-        passed: false,
-        message: `Registration failed: ${error.message}`
-      });
-    }
-  }
-
-  async testNameGeneration() {
-    try {
-      const name = await this.api.generateName({
-        species: TEST_SPECIES.code,
-        gender: 'male',
-        language: 'en'
-      });
-
-      this.results.push({
-        test: 'Name Generation',
-        passed: typeof name === 'string' && name.length > 0,
-        message: `Generated name: ${name}`
-      });
-    } catch (error) {
-      this.results.push({
-        test: 'Name Generation',
-        passed: false,
-        message: `Generation failed: ${error.message}`
-      });
-    }
-  }
-
-  printResults() {
-    console.log('=== Extension Test Results ===');
-    this.results.forEach(result => {
-      const status = result.passed ? '✅' : '❌';
-      console.log(`${status} ${result.test}: ${result.message}`);
-    });
-  }
-}
-
-// Run tests when ready
-Hooks.once('ready', () => {
-  if (game.user.isGM && game.modules.get('my-nomina-extension')?.active) {
-    const tester = new ExtensionTester();
-    tester.runAllTests();
-  }
-});
-```
-
-### Manual Validation
-
-```javascript
-// Developer utilities for manual testing
-window.NominaExtensionUtils = {
-  // Test species registration
-  async testSpecies(speciesCode) {
-    const api = game.modules.get('nomina-names').api;
-
-    console.log(`Testing species: ${speciesCode}`);
-
-    // Test name generation
-    const maleName = await api.generateName({ species: speciesCode, gender: 'male' });
-    const femaleName = await api.generateName({ species: speciesCode, gender: 'female' });
-
-    console.log(`Male name: ${maleName}`);
-    console.log(`Female name: ${femaleName}`);
-
-    // Test other categories if available
-    try {
-      const settlement = await api.generateName({ species: speciesCode, category: 'settlements' });
-      console.log(`Settlement: ${settlement}`);
-    } catch (error) {
-      console.log('No settlement data available');
-    }
-  },
-
-  // Generate sample content for review
-  async generateSamples(speciesCode, count = 5) {
-    const api = game.modules.get('nomina-names').api;
-
-    const samples = {
-      maleNames: await api.generateNames({ species: speciesCode, gender: 'male', count }),
-      femaleNames: await api.generateNames({ species: speciesCode, gender: 'female', count }),
-    };
-
-    console.table(samples);
-    return samples;
-  }
-};
-```
-
-## Best Practices
-
-### 1. Code Organization
-
-```javascript
-// Good: Modular structure
-// scripts/species/goblin.js
-export const GoblinSpecies = { /* ... */ };
-
-// scripts/species/orc.js
-export const OrcSpecies = { /* ... */ };
-
-// scripts/main.js
-import { GoblinSpecies } from './species/goblin.js';
-import { OrcSpecies } from './species/orc.js';
-
-// Bad: Everything in main.js
-// This makes maintenance difficult
-```
-
-### 2. Error Handling
-
-```javascript
-// Good: Comprehensive error handling
-async function registerSpecies(speciesData) {
-  try {
-    // Validate data first
-    if (!speciesData.code) {
-      throw new Error('Species code is required');
-    }
-
-    // Check for conflicts
-    const existingSpecies = api.getAllSpeciesCodes();
-    if (existingSpecies.includes(speciesData.code)) {
-      console.warn(`Species ${speciesData.code} already exists, skipping`);
-      return;
-    }
-
-    await api.registerSpecies(speciesData);
-    console.log(`Successfully registered ${speciesData.code}`);
-
-  } catch (error) {
-    console.error(`Failed to register ${speciesData.code}:`, error);
-    ui.notifications.error(`Species registration failed: ${error.message}`);
-  }
-}
-```
-
-### 3. Performance Considerations
-
-```javascript
-// Good: Lazy loading
-const speciesCache = new Map();
-
-async function getSpeciesData(code) {
-  if (speciesCache.has(code)) {
-    return speciesCache.get(code);
-  }
-
-  const response = await fetch(`modules/my-extension/data/${code}.json`);
-  const data = await response.json();
-  speciesCache.set(code, data);
-
-  return data;
-}
-
-// Good: Batch operations
-async function registerAllSpecies() {
-  const registrationPromises = SPECIES_LIST.map(species =>
-    api.registerSpecies(species)
-  );
-
-  await Promise.all(registrationPromises);
-}
-```
-
-### 4. User Experience
-
-```javascript
-// Provide feedback during long operations
-async function registerSpeciesWithFeedback(speciesData) {
-  ui.notifications.info(`Registering ${speciesData.displayName.en}...`);
-
-  try {
-    await api.registerSpecies(speciesData);
-    ui.notifications.info(`${speciesData.displayName.en} registered successfully!`);
-  } catch (error) {
-    ui.notifications.error(`Failed to register ${speciesData.displayName.en}: ${error.message}`);
-  }
-}
-
-// Allow users to disable features
-Hooks.once('init', () => {
-  game.settings.register('my-extension', 'enableAutoGeneration', {
-    name: 'Enable Automatic Name Generation',
-    hint: 'Automatically generate names for new characters',
-    scope: 'world',
-    config: true,
-    type: Boolean,
-    default: true
-  });
-});
-```
-
-## Publishing Guidelines
-
-### 1. Documentation
-
-Create comprehensive documentation:
-
-```markdown
-# My Nomina Extension
-
-## Features
-- Adds 5 new monster species (Goblin, Orc, Troll, Kobold, Ogre)
-- Over 500 unique names per species
-- Metadata support for enhanced generation
-- Custom settlement generator
-
-## Installation
-1. Install the Nomina Names module
-2. Install this extension
-3. Restart Foundry VTT
-
-## Usage
-The new species will automatically be available in the Nomina Names interface.
-
-## API Usage
-```javascript
-// Generate goblin names
-const goblinName = await game.modules.get('nomina-names').api.randomName('goblin');
-
-// Generate orc settlement
-const orcSettlement = await game.modules.get('nomina-names').api.settlement('orc');
-```
-
-## Changelog
-### v1.0.0
-- Initial release
-```
-
-### 2. Manifest Requirements
-
-```json
-{
   "relationships": {
     "requires": [{
       "id": "nomina-names",
       "type": "module",
       "compatibility": {
-        "minimum": "1.2.0"
+        "minimum": "3.0.0"
       }
     }]
   },
-  "bugs": "https://github.com/username/my-extension/issues",
-  "changelog": "https://github.com/username/my-extension/blob/main/CHANGELOG.md",
-  "readme": "https://github.com/username/my-extension/blob/main/README.md"
+  "esmodules": ["main.js"]
 }
 ```
 
-### 3. Quality Checklist
+**What this means:**
+- `id`: Unique identifier for your module (use lowercase, no spaces)
+- `title`: Display name users will see
+- `relationships.requires`: Tells Foundry your module needs Nomina Names installed
+- `esmodules`: JavaScript files to load
 
-- [ ] All species have consistent naming conventions
-- [ ] Content is culturally appropriate and well-researched
-- [ ] Metadata is meaningful and consistent
-- [ ] Error handling is comprehensive
-- [ ] Documentation is complete and accurate
-- [ ] Testing has been performed
-- [ ] Performance impact is minimal
-- [ ] Compatible with latest Nomina Names version
+### Step 3: Create main.js
+
+Create `main.js` in your folder:
+
+```javascript
+// Wait for Foundry to be ready
+Hooks.once('ready', async () => {
+  console.log('Goblin Names | Loading...');
+
+  // Get the Nomina Names API
+  const nominaAPI = game.modules.get('nomina-names')?.api;
+
+  // Check if Nomina Names is installed
+  if (!nominaAPI) {
+    console.error('Goblin Names | Nomina Names module not found!');
+    return;
+  }
+
+  // Define our goblin data
+  const goblinData = {
+    format: "4.0.0",
+    package: {
+      code: "goblin-de",
+      displayName: {
+        de: "Goblins",
+        en: "Goblins"
+      },
+      languages: ["de"],
+      phoneticLanguage: "de"
+    },
+    catalogs: {
+      names: {
+        displayName: {
+          de: "Namen",
+          en: "Names"
+        },
+        items: [
+          // Male first names
+          { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Snarl" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Vex" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Grimjaw" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Skreech" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+
+          // Female first names
+          { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Shiv" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Hex" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Razorclaw" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Sneer" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+
+          // Surnames (clan names)
+          { t: { de: "Skullcrusher" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Ratbiter" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Mudfoot" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Ironteeth" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Shadowblade" }, tags: ["surnames"], w: 1 }
+        ]
+      }
+    },
+    recipes: [
+      {
+        id: "fullname",
+        displayName: { de: "Voller Name", en: "Full Name" },
+        pattern: [
+          { select: { from: "catalog", key: "names", where: { tags: ["firstnames"] } } },
+          { literal: " " },
+          { select: { from: "catalog", key: "names", where: { tags: ["surnames"] } } }
+        ],
+        post: ["TrimSpaces", "CollapseSpaces"]
+      }
+    ]
+  };
+
+  try {
+    // Register the goblin package with Nomina Names
+    await nominaAPI.registerPackage({
+      code: 'goblin-de',
+      data: goblinData
+    });
+
+    console.log('Goblin Names | Successfully registered!');
+    ui.notifications.info('Goblin names are now available!');
+
+  } catch (error) {
+    console.error('Goblin Names | Failed to register:', error);
+    ui.notifications.error('Failed to load goblin names');
+  }
+});
+```
+
+**What this code does:**
+1. **Waits for Foundry**: The `Hooks.once('ready', ...)` waits until Foundry is fully loaded
+2. **Gets the API**: Retrieves the Nomina Names API to communicate with it
+3. **Checks if available**: Makes sure Nomina Names is installed and active
+4. **Defines data**: Creates the goblin names in JSON Format 4.0.0
+5. **Registers**: Adds the goblins to Nomina Names
+6. **Shows feedback**: Notifies user if successful or if there's an error
+
+### Step 4: Test It!
+
+1. Restart Foundry VTT
+2. Go to **Add-on Modules**
+3. Enable both **Nomina Names** and **Goblin Names for Nomina**
+4. Open a world
+5. Open the Nomina Names dialog (`/names` in chat)
+6. You should now see "Goblins" in the species dropdown!
+7. Generate some goblin names like "Grax Skullcrusher"!
+
+**🎉 Congratulations!** You've created your first Nomina Names extension!
 
 ---
 
-*This guide provides the foundation for creating high-quality extensions to the Nomina Names module. Remember to test thoroughly and provide good documentation for your users.*
+## Complete Tutorial
+
+Now let's build a more complete module with multiple features.
+
+### Project: "Monster Names Pack"
+
+We'll create a module that adds three monster species: Goblins, Orcs, and Trolls, each with names and settlements.
+
+### File Structure
+
+```
+my-monster-names/
+├── module.json
+├── main.js
+├── data/
+│   ├── goblin-de.js
+│   ├── orc-de.js
+│   └── troll-de.js
+└── README.md
+```
+
+### 1. Enhanced module.json
+
+```json
+{
+  "id": "monster-names-pack",
+  "title": "Monster Names Pack",
+  "description": "Adds goblins, orcs, and trolls with names and settlements",
+  "version": "1.0.0",
+  "authors": [{
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://your-website.com"
+  }],
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "relationships": {
+    "requires": [{
+      "id": "nomina-names",
+      "type": "module",
+      "compatibility": {
+        "minimum": "3.0.0"
+      }
+    }]
+  },
+  "esmodules": ["main.js"],
+  "url": "https://github.com/yourusername/monster-names-pack",
+  "manifest": "https://github.com/yourusername/monster-names-pack/releases/latest/download/module.json",
+  "download": "https://github.com/yourusername/monster-names-pack/releases/latest/download/monster-names-pack.zip"
+}
+```
+
+### 2. Create data/goblin-de.js
+
+```javascript
+export const GOBLIN_DE = {
+  format: "4.0.0",
+  package: {
+    code: "goblin-de",
+    displayName: {
+      de: "Goblins",
+      en: "Goblins"
+    },
+    languages: ["de"],
+    phoneticLanguage: "de"
+  },
+  catalogs: {
+    names: {
+      displayName: { de: "Namen", en: "Names" },
+      items: [
+        // More male names with weights (higher w = more common)
+        { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 2, attrs: { gender: "m" } },
+        { t: { de: "Snarl" }, tags: ["male", "firstnames"], w: 2, attrs: { gender: "m" } },
+        { t: { de: "Vex" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+        { t: { de: "Grimjaw" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+        { t: { de: "Skreech" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+        { t: { de: "Bloodfang" }, tags: ["male", "firstnames", "rare"], w: 0.5, attrs: { gender: "m", rarity: "rare" } },
+
+        // Female names
+        { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 2, attrs: { gender: "f" } },
+        { t: { de: "Shiv" }, tags: ["female", "firstnames"], w: 2, attrs: { gender: "f" } },
+        { t: { de: "Hex" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+        { t: { de: "Razorclaw" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+        { t: { de: "Sneer" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+        { t: { de: "Poisontooth" }, tags: ["female", "firstnames", "rare"], w: 0.5, attrs: { gender: "f", rarity: "rare" } },
+
+        // Clan names
+        { t: { de: "Skullcrusher" }, tags: ["surnames"], w: 1 },
+        { t: { de: "Ratbiter" }, tags: ["surnames"], w: 1 },
+        { t: { de: "Mudfoot" }, tags: ["surnames"], w: 1 },
+        { t: { de: "Ironteeth" }, tags: ["surnames"], w: 1 },
+        { t: { de: "Shadowblade" }, tags: ["surnames", "rare"], w: 0.5, attrs: { rarity: "rare" } }
+      ]
+    },
+    settlements: {
+      displayName: { de: "Siedlungen", en: "Settlements" },
+      items: [
+        { t: { de: "Knochenfels" }, tags: ["camp", "mountain"], w: 1 },
+        { t: { de: "Schädelhöhle" }, tags: ["cave", "underground"], w: 1 },
+        { t: { de: "Faulhügel" }, tags: ["camp", "forest"], w: 1 },
+        { t: { de: "Rattennest" }, tags: ["cave", "urban"], w: 1 },
+        { t: { de: "Dunkelschlucht" }, tags: ["canyon", "wilderness"], w: 1 }
+      ]
+    }
+  },
+  vocab: {
+    fields: {
+      rarity: {
+        labels: { de: "Seltenheit", en: "Rarity" },
+        values: {
+          common: { de: "Gewöhnlich", en: "Common" },
+          rare: { de: "Selten", en: "Rare" }
+        }
+      },
+      location: {
+        labels: { de: "Ort", en: "Location" },
+        values: {
+          mountain: { de: "Gebirge", en: "Mountain" },
+          cave: { de: "Höhle", en: "Cave" },
+          forest: { de: "Wald", en: "Forest" }
+        }
+      }
+    },
+    icons: {
+      rare: "⭐",
+      mountain: "⛰️",
+      cave: "🕳️",
+      forest: "🌲"
+    }
+  },
+  collections: [
+    {
+      key: "common_names",
+      labels: { de: "Häufige Namen", en: "Common Names" },
+      description: { de: "Die gebräuchlichsten Goblin-Namen", en: "Most common goblin names" },
+      query: {
+        category: "names",
+        tags: ["firstnames"]
+      }
+    },
+    {
+      key: "rare_names",
+      labels: { de: "Seltene Namen", en: "Rare Names" },
+      description: { de: "Seltene und besondere Goblin-Namen", en: "Rare and special goblin names" },
+      query: {
+        category: "names",
+        tags: ["firstnames", "rare"]
+      }
+    }
+  ],
+  recipes: [
+    {
+      id: "fullname",
+      displayName: { de: "Voller Name", en: "Full Name" },
+      pattern: [
+        { select: { from: "catalog", key: "names", where: { tags: ["firstnames"] } } },
+        { literal: " " },
+        { select: { from: "catalog", key: "names", where: { tags: ["surnames"] } } }
+      ],
+      post: ["TrimSpaces", "CollapseSpaces"]
+    },
+    {
+      id: "settlement_full",
+      displayName: { de: "Siedlung mit Beschreibung", en: "Settlement with Description" },
+      pattern: [
+        { select: { from: "catalog", key: "settlements" } }
+      ],
+      post: ["TrimSpaces"]
+    }
+  ]
+};
+```
+
+**Understanding the structure:**
+
+- **`format`**: Always "4.0.0" for current version
+- **`package`**: Metadata about your content
+  - `code`: Unique ID (species-language format)
+  - `displayName`: Names in different languages
+  - `languages`: Which languages are included
+  - `phoneticLanguage`: How the names "sound"
+- **`catalogs`**: Collections of items (names, settlements, etc.)
+  - Each catalog has a `displayName` and `items` array
+  - Items have `t` (text), `tags` (for filtering), `w` (weight), `attrs` (attributes)
+- **`vocab`**: Translations for UI elements
+  - Makes tags readable in different languages
+  - Adds icons for visual recognition
+- **`collections`**: Predefined filter sets
+  - Quick access to common queries (like "rare names")
+- **`recipes`**: Templates for combining items
+  - Defines how to create full names from parts
+
+### 3. Create main.js (Loader)
+
+```javascript
+// Import all species data
+import { GOBLIN_DE } from './data/goblin-de.js';
+import { ORC_DE } from './data/orc-de.js';
+import { TROLL_DE } from './data/troll-de.js';
+
+// List of all packages to register
+const PACKAGES = [
+  { code: 'goblin-de', data: GOBLIN_DE, name: 'Goblins' },
+  { code: 'orc-de', data: ORC_DE, name: 'Orcs' },
+  { code: 'troll-de', data: TROLL_DE, name: 'Trolls' }
+];
+
+// Wait for Foundry to be ready
+Hooks.once('ready', async () => {
+  console.log('Monster Names Pack | Initializing...');
+
+  // Get Nomina Names API
+  const nominaAPI = game.modules.get('nomina-names')?.api;
+
+  if (!nominaAPI) {
+    console.error('Monster Names Pack | Nomina Names not found!');
+    ui.notifications.error('Monster Names Pack requires Nomina Names module');
+    return;
+  }
+
+  // Register all packages
+  let successCount = 0;
+  let failCount = 0;
+
+  for (const pkg of PACKAGES) {
+    try {
+      await nominaAPI.registerPackage({
+        code: pkg.code,
+        data: pkg.data
+      });
+
+      console.log(`Monster Names Pack | ✓ Registered ${pkg.name}`);
+      successCount++;
+
+    } catch (error) {
+      console.error(`Monster Names Pack | ✗ Failed to register ${pkg.name}:`, error);
+      failCount++;
+    }
+  }
+
+  // Show summary notification
+  if (successCount > 0) {
+    ui.notifications.info(`Monster Names: Loaded ${successCount} species!`);
+  }
+
+  if (failCount > 0) {
+    ui.notifications.warn(`Monster Names: Failed to load ${failCount} species`);
+  }
+
+  console.log(`Monster Names Pack | Ready! (${successCount} loaded, ${failCount} failed)`);
+});
+```
+
+**What this does:**
+- Imports all your species data files
+- Creates a list of packages to register
+- Waits for Foundry to load
+- Registers each package one by one
+- Keeps track of successes and failures
+- Shows user-friendly notifications
+
+---
+
+## Understanding JSON Format 4.0.0
+
+Let's break down each part of the format in detail.
+
+### The Item Structure
+
+Every item (name, settlement, etc.) follows this structure:
+
+```javascript
+{
+  t: { de: "Grax", en: "Grax" },  // Text in different languages
+  tags: ["male", "firstnames"],    // Tags for filtering
+  w: 1,                            // Weight (probability)
+  attrs: { gender: "m" },          // Custom attributes
+  gram: {},                        // Grammar rules (optional)
+  ext: {}                          // Extension data (optional)
+}
+```
+
+**Fields explained:**
+
+#### `t` (text) - Required
+The actual content in different languages:
+```javascript
+t: {
+  de: "Grimjaw",    // German text
+  en: "Grimjaw"     // English text
+}
+```
+- At least one language must be present
+- Language codes: `de` (German), `en` (English), `fr` (French), etc.
+
+#### `tags` (tags) - Optional but recommended
+Array of strings for filtering and organization:
+```javascript
+tags: ["male", "firstnames", "rare"]
+```
+- Common tags: `male`, `female`, `nonbinary`, `firstnames`, `surnames`, `nicknames`
+- Location tags: `mountain`, `forest`, `cave`, `urban`
+- Custom tags: Anything you want!
+
+#### `w` (weight) - Optional, default: 1
+Controls how often an item appears:
+```javascript
+w: 2      // Twice as common
+w: 1      // Normal frequency
+w: 0.5    // Half as common
+w: 0.1    // Rare (10% chance)
+```
+
+#### `attrs` (attributes) - Optional
+Custom metadata you can use:
+```javascript
+attrs: {
+  gender: "m",
+  rarity: "legendary",
+  culture: "forest_goblins",
+  personality: "aggressive"
+}
+```
+
+### Catalogs
+
+Catalogs are named collections of items:
+
+```javascript
+catalogs: {
+  names: {
+    displayName: { de: "Namen", en: "Names" },
+    items: [
+      /* items here */
+    ]
+  },
+  settlements: {
+    displayName: { de: "Siedlungen", en: "Settlements" },
+    items: [
+      /* items here */
+    ]
+  }
+}
+```
+
+**Common catalog types:**
+- `names` - Character names
+- `settlements` - Place names
+- `taverns` - Inn and tavern names
+- `shops` - Business names
+- `ships` - Vessel names
+- `books` - Book titles
+
+You can create any catalog name you want!
+
+### Recipes
+
+Recipes combine items from catalogs:
+
+```javascript
+recipes: [
+  {
+    id: "fullname",
+    displayName: { de: "Voller Name", en: "Full Name" },
+    pattern: [
+      // Step 1: Select a first name
+      {
+        select: {
+          from: "catalog",
+          key: "names",
+          where: { tags: ["firstnames"] }
+        }
+      },
+      // Step 2: Add a space
+      { literal: " " },
+      // Step 3: Select a surname
+      {
+        select: {
+          from: "catalog",
+          key: "names",
+          where: { tags: ["surnames"] }
+        }
+      }
+    ],
+    post: ["TrimSpaces", "CollapseSpaces"]
+  }
+]
+```
+
+**Pattern elements:**
+
+1. **select**: Pick an item from a catalog
+   ```javascript
+   { select: { from: "catalog", key: "names", where: { tags: ["male"] } } }
+   ```
+
+2. **literal**: Add fixed text
+   ```javascript
+   { literal: " the " }
+   ```
+
+3. **pp**: Add prepositions (German grammar)
+   ```javascript
+   { pp: { prep: "von", ref: { select: { ... } } } }
+   ```
+
+**Post-processing:**
+- `TrimSpaces` - Remove leading/trailing spaces
+- `CollapseSpaces` - Replace multiple spaces with one
+- `TitleCase` - Capitalize words
+- `Uppercase` - ALL CAPS
+- `Lowercase` - all lowercase
+
+### Vocab (Vocabulary)
+
+Makes tags readable in the UI:
+
+```javascript
+vocab: {
+  fields: {
+    rarity: {
+      labels: { de: "Seltenheit", en: "Rarity" },
+      values: {
+        common: { de: "Gewöhnlich", en: "Common" },
+        rare: { de: "Selten", en: "Rare" },
+        legendary: { de: "Legendär", en: "Legendary" }
+      }
+    }
+  },
+  icons: {
+    common: "⚪",
+    rare: "⭐",
+    legendary: "💎"
+  }
+}
+```
+
+This makes `{ attrs: { rarity: "rare" } }` display as "⭐ Selten" in German!
+
+### Collections
+
+Predefined filter sets for quick access:
+
+```javascript
+collections: [
+  {
+    key: "warrior_names",
+    labels: { de: "Kriegernamen", en: "Warrior Names" },
+    description: { de: "Namen für Krieger", en: "Names for warriors" },
+    query: {
+      category: "names",
+      tags: ["male", "fierce"],
+      limit: 50
+    }
+  }
+]
+```
+
+Users can select "Warrior Names" in the UI instead of manually filtering!
+
+---
+
+## Advanced Topics
+
+### Multiple Languages
+
+Create packages for different languages:
+
+```javascript
+// data/goblin-de.js (German)
+export const GOBLIN_DE = {
+  format: "4.0.0",
+  package: {
+    code: "goblin-de",
+    displayName: { de: "Goblins", en: "Goblins" },
+    languages: ["de"],
+    phoneticLanguage: "de"
+  },
+  catalogs: {
+    names: {
+      displayName: { de: "Namen", en: "Names" },
+      items: [
+        { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1 }
+      ]
+    }
+  }
+};
+
+// data/goblin-en.js (English)
+export const GOBLIN_EN = {
+  format: "4.0.0",
+  package: {
+    code: "goblin-en",
+    displayName: { de: "Goblins", en: "Goblins" },
+    languages: ["en"],
+    phoneticLanguage: "en"
+  },
+  catalogs: {
+    names: {
+      displayName: { de: "Namen", en: "Names" },
+      items: [
+        { t: { en: "Grax" }, tags: ["male", "firstnames"], w: 1 }
+      ]
+    }
+  }
+};
+```
+
+Then register both:
+```javascript
+await nominaAPI.registerPackage({ code: 'goblin-de', data: GOBLIN_DE });
+await nominaAPI.registerPackage({ code: 'goblin-en', data: GOBLIN_EN });
+```
+
+### Loading from JSON Files
+
+Instead of JS files, use JSON:
+
+**data/goblin-de.json:**
+```json
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "goblin-de",
+    "displayName": { "de": "Goblins" },
+    "languages": ["de"]
+  },
+  "catalogs": {
+    "names": {
+      "displayName": { "de": "Namen" },
+      "items": [
+        { "t": { "de": "Grax" }, "tags": ["male", "firstnames"], "w": 1 }
+      ]
+    }
+  }
+}
+```
+
+**main.js:**
+```javascript
+Hooks.once('ready', async () => {
+  const nominaAPI = game.modules.get('nomina-names')?.api;
+  if (!nominaAPI) return;
+
+  try {
+    const response = await fetch('modules/my-goblin-names/data/goblin-de.json');
+    const data = await response.json();
+
+    await nominaAPI.registerPackage({
+      code: 'goblin-de',
+      data: data
+    });
+
+    ui.notifications.info('Goblins loaded!');
+  } catch (error) {
+    console.error('Failed to load goblins:', error);
+  }
+});
+```
+
+### Settings and Configuration
+
+Add user settings:
+
+```javascript
+Hooks.once('init', () => {
+  // Register a setting
+  game.settings.register('monster-names-pack', 'enableRareNames', {
+    name: 'Enable Rare Names',
+    hint: 'Include rare and legendary names in generation',
+    scope: 'world',      // 'world' or 'client'
+    config: true,        // Show in module settings
+    type: Boolean,
+    default: true,
+    onChange: value => {
+      console.log('Rare names setting changed to:', value);
+    }
+  });
+});
+
+// Use the setting
+Hooks.once('ready', async () => {
+  const enableRare = game.settings.get('monster-names-pack', 'enableRareNames');
+
+  if (!enableRare) {
+    // Filter out rare items before registering
+    GOBLIN_DE.catalogs.names.items = GOBLIN_DE.catalogs.names.items.filter(
+      item => !item.tags.includes('rare')
+    );
+  }
+
+  await nominaAPI.registerPackage({ code: 'goblin-de', data: GOBLIN_DE });
+});
+```
+
+### Error Handling Best Practices
+
+```javascript
+Hooks.once('ready', async () => {
+  console.log('Monster Names | Starting...');
+
+  // Check for Nomina Names
+  const nominaAPI = game.modules.get('nomina-names')?.api;
+  if (!nominaAPI) {
+    console.error('Monster Names | Nomina Names not found');
+    ui.notifications.error('Monster Names requires Nomina Names module');
+    return;
+  }
+
+  // Register packages with detailed error handling
+  for (const pkg of PACKAGES) {
+    try {
+      // Validate data before registering
+      if (!pkg.data.format || pkg.data.format !== '4.0.0') {
+        throw new Error(`Invalid format: ${pkg.data.format}`);
+      }
+
+      if (!pkg.data.package || !pkg.data.package.code) {
+        throw new Error('Missing package code');
+      }
+
+      if (!pkg.data.catalogs || Object.keys(pkg.data.catalogs).length === 0) {
+        throw new Error('No catalogs defined');
+      }
+
+      // Register
+      await nominaAPI.registerPackage({
+        code: pkg.code,
+        data: pkg.data
+      });
+
+      console.log(`Monster Names | ✓ ${pkg.name} registered successfully`);
+
+    } catch (error) {
+      console.error(`Monster Names | ✗ Failed to register ${pkg.name}:`, error);
+
+      // Show user-friendly error
+      ui.notifications.error(
+        `Failed to load ${pkg.name}: ${error.message}`,
+        { permanent: false }
+      );
+    }
+  }
+
+  console.log('Monster Names | Initialization complete');
+});
+```
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+#### "Module not found" error
+**Problem:** Nomina Names API is not available
+
+**Solution:**
+```javascript
+const nominaAPI = game.modules.get('nomina-names')?.api;
+if (!nominaAPI) {
+  console.error('Nomina Names not found!');
+  return;  // Stop here
+}
+```
+
+Make sure:
+- Nomina Names is installed
+- Nomina Names is enabled in your world
+- Nomina Names version is 3.0.0 or higher
+
+#### "Invalid format" error
+**Problem:** JSON structure is incorrect
+
+**Solution:** Check your JSON structure:
+- `format` must be exactly `"4.0.0"`
+- `package.code` must exist
+- `catalogs` must have at least one catalog
+- All JSON must be valid (use a validator)
+
+#### Names not appearing
+**Problem:** Package registered but names don't show up
+
+**Solution:**
+1. Check the console for errors (`F12` in browser)
+2. Verify your package code matches registration:
+   ```javascript
+   code: "goblin-de"  // Must match everywhere!
+   ```
+3. Check that items have the required structure:
+   ```javascript
+   { t: { de: "Name" }, tags: ["male"], w: 1 }
+   ```
+
+#### Wrong language shown
+**Problem:** UI shows wrong language
+
+**Solution:**
+- Ensure `package.languages` includes the language
+- Check `displayName` has the language key
+- Verify item `t` objects have the language
+
+### Debugging Tips
+
+Add detailed logging:
+
+```javascript
+Hooks.once('ready', async () => {
+  console.group('Monster Names Pack Debug');
+
+  const nominaAPI = game.modules.get('nomina-names')?.api;
+  console.log('API available:', !!nominaAPI);
+
+  if (nominaAPI) {
+    console.log('Available languages:', await nominaAPI.getAvailableLanguages());
+    console.log('Available species:', await nominaAPI.getAvailableSpecies('de'));
+  }
+
+  for (const pkg of PACKAGES) {
+    console.group(pkg.name);
+    console.log('Package code:', pkg.code);
+    console.log('Format:', pkg.data.format);
+    console.log('Catalogs:', Object.keys(pkg.data.catalogs));
+    console.log('Item count:', pkg.data.catalogs.names?.items?.length || 0);
+
+    try {
+      await nominaAPI.registerPackage({ code: pkg.code, data: pkg.data });
+      console.log('✓ Registration successful');
+    } catch (error) {
+      console.error('✗ Registration failed:', error);
+    }
+
+    console.groupEnd();
+  }
+
+  console.groupEnd();
+});
+```
+
+---
+
+## Publishing Your Module
+
+### Preparation Checklist
+
+- [ ] **Test thoroughly**: Generate at least 100 names without errors
+- [ ] **Check all languages**: Verify all language variants work
+- [ ] **Validate JSON**: Use online validator for all JSON files
+- [ ] **Write README**: Clear installation and usage instructions
+- [ ] **Add LICENSE**: Choose appropriate license (MIT, CC, etc.)
+- [ ] **Version control**: Use Git for tracking changes
+- [ ] **Create manifest**: Proper module.json with all fields
+
+### README.md Example
+
+```markdown
+# Monster Names Pack for Nomina Names
+
+Adds three monster species to Nomina Names: Goblins, Orcs, and Trolls.
+
+## Features
+- 🧟 3 monster species with unique naming conventions
+- 🌍 German language support
+- 📍 Settlement names for each species
+- ⭐ Rare and legendary names
+- 🎨 Themed collections
+
+## Installation
+
+### Method 1: Module Browser
+1. Open Foundry VTT
+2. Go to "Add-on Modules"
+3. Search for "Monster Names Pack"
+4. Click "Install"
+
+### Method 2: Manifest URL
+Use this URL: `https://github.com/yourusername/monster-names/releases/latest/download/module.json`
+
+## Requirements
+- Foundry VTT v11 or higher
+- Nomina Names module v3.0.0 or higher
+
+## Usage
+1. Enable "Monster Names Pack" in your world
+2. Open Nomina Names dialog (`/names` in chat)
+3. Select "Goblins", "Orcs", or "Trolls" from species dropdown
+4. Generate names!
+
+## Content Overview
+
+### Goblins
+- 12 male first names
+- 12 female first names
+- 8 clan names
+- 5 settlement types
+
+### Orcs
+- 15 male first names
+- 15 female first names
+- 10 clan names
+- 8 settlement types
+
+### Trolls
+- 10 male first names
+- 10 female first names
+- 6 clan names
+- 4 settlement types
+
+## API Usage
+
+Generate names programmatically:
+
+\`\`\`javascript
+const api = game.modules.get('nomina-names').api;
+
+// Generate goblin name
+const goblinName = await api.generateName({
+  species: 'goblin',
+  gender: 'male',
+  language: 'de'
+});
+
+// Generate orc settlement
+const orcSettlement = await api.generateFromCatalog({
+  species: 'orc',
+  catalog: 'settlements',
+  language: 'de',
+  count: 1
+});
+\`\`\`
+
+## Credits
+- Names inspired by traditional fantasy literature
+- Created by [Your Name]
+
+## License
+This module is licensed under [MIT License](LICENSE).
+
+## Support
+- Report issues: https://github.com/yourusername/monster-names/issues
+- Discussions: https://github.com/yourusername/monster-names/discussions
+
+## Changelog
+
+### v1.0.0 (2025-01-15)
+- Initial release
+- Added Goblins, Orcs, and Trolls
+- German language support
+```
+
+### GitHub Repository Structure
+
+```
+monster-names-pack/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── CHANGELOG.md
+├── module.json
+├── main.js
+├── data/
+│   ├── goblin-de.js
+│   ├── orc-de.js
+│   └── troll-de.js
+└── .github/
+    └── workflows/
+        └── release.yml
+```
+
+### .gitignore
+
+```gitignore
+# Development
+node_modules/
+*.log
+.DS_Store
+*.swp
+
+# Build artifacts
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+```
+
+### Creating a Release
+
+1. **Update version** in module.json
+2. **Update CHANGELOG.md** with changes
+3. **Commit and tag**:
+   ```bash
+   git add .
+   git commit -m "Release v1.0.0"
+   git tag v1.0.0
+   git push origin main --tags
+   ```
+4. **Create release on GitHub**:
+   - Go to Releases
+   - Click "Create new release"
+   - Select your tag
+   - Add release notes
+   - Upload a zip of your module
+
+### Submitting to Foundry Package Browser
+
+1. Create a manifest URL (from your GitHub release)
+2. Submit to https://foundryvtt.com/packages/submit
+3. Fill out the form with:
+   - Module title
+   - Short description
+   - Manifest URL
+   - Categories/tags
+4. Wait for approval
+
+---
+
+## Need Help?
+
+### Resources
+- **Nomina Names API Docs**: [api-documentation.md](api-documentation.md)
+- **JSON Format Spec**: [json_v_4_spec.md](json_v_4_spec.md)
+- **Foundry Docs**: https://foundryvtt.com/api/
+- **Discord**: Join the Foundry VTT Discord for support
+
+### Community
+- Share your modules on r/FoundryVTT
+- Post in Foundry Discord #module-development
+- Create a discussion on GitHub
+
+---
+
+**🎉 You're Ready!**
+
+You now have everything you need to create amazing extensions for Nomina Names. Start simple, test often, and gradually add more features. The community is excited to see what you create!

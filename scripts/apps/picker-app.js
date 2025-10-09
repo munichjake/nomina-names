@@ -1,13 +1,12 @@
 /**
  * Names Picker App - Compact name picker for actors
- * Updated to exclude categorized content (books, ships, shops, taverns)
+ * Updated to use V4 API internally while maintaining the same UI
  */
 
-import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
+import { getGlobalGenerator } from '../api/generator.js';
 import { showLoadingState, hideLoadingState, getActorSpecies, updateActorName } from '../utils/ui-helpers.js';
-import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, isGeneratorOnlyCategory, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
+import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
-import { NamesAPI } from '../api-system.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
 
@@ -18,7 +17,8 @@ export class NamesPickerApp extends Application {
     this.currentNames = [];
     this.supportedGenders = getSupportedGenders();
     this._initialized = false;
-    
+    this.generator = null;
+
     logDebug("NamesPickerApp initialized", {
       actorName: this.actor?.name || "No actor",
       actorType: this.actor?.type || "Unknown",
@@ -39,36 +39,40 @@ export class NamesPickerApp extends Application {
   }
 
   async getData() {
-    ensureGlobalNamesData();
-    const globalNamesData = getGlobalNamesData();
-
-    if (!globalNamesData) {
-      logWarn("Global names data not available, returning empty data");
-      return {
-        languages: [],
-        species: [],
-        currentNames: this.currentNames,
-        actorSpecies: null,
-        defaultLanguage: 'de',
-        isLoading: false,
-        isLoaded: false,
-        supportedGenders: getSupportedGenders()
-      };
+    if (!this.generator) {
+      this.generator = getGlobalGenerator();
+      await this.generator.initialize();
     }
-
-    await globalNamesData.initializeData();
 
     const actorSpecies = this._getActorSpecies();
     const defaultLanguage = this._getDefaultContentLanguage();
 
+    const languages = await this.generator.getAvailableLanguages();
+    const species = await this.generator.getAvailableSpecies(defaultLanguage);
+
+    // Get UI language
+    const uiLanguage = game.i18n.lang || 'de';
+    logDebug(`UI Language from game.i18n.lang: ${uiLanguage}`);
+
+    // Get species metadata for localized names
+    const speciesMetadata = this.generator.dataManager.getSpeciesMetadata();
+    logDebug('Species metadata:', speciesMetadata);
+
     const data = {
-      languages: globalNamesData.getLocalizedLanguages(),
-      species: globalNamesData.getLocalizedSpecies(),
+      languages: languages.map(code => ({ code, name: code.toUpperCase() })),
+      species: species.map(speciesObj => {
+        const code = speciesObj.code;
+        const localizedName = speciesMetadata[code]?.[uiLanguage] ||
+                             speciesMetadata[code]?.['en'] ||
+                             this._capitalizeSpecies(code);
+        logDebug(`Species ${code}: uiLanguage=${uiLanguage}, localizedName=${localizedName}`);
+        return { code, name: localizedName };
+      }),
       currentNames: this.currentNames,
       actorSpecies: actorSpecies,
       defaultLanguage: defaultLanguage,
-      isLoading: globalNamesData.isLoading,
-      isLoaded: globalNamesData.isLoaded,
+      isLoading: false,
+      isLoaded: true,
       supportedGenders: getSupportedGenders()
     };
 
@@ -84,39 +88,54 @@ export class NamesPickerApp extends Application {
     return data;
   }
 
+  _capitalizeSpecies(species) {
+    return species.charAt(0).toUpperCase() + species.slice(1);
+  }
 
   _getActorSpecies() {
-    const globalNamesData = getGlobalNamesData();
-    const detectedSpecies = getActorSpecies(this.actor, globalNamesData?.speciesConfig);
-    logDebug(`Detected actor species: ${detectedSpecies}`, {
-      actorName: this.actor?.name,
-      actorRace: this.actor?.system?.details?.race || this.actor?.system?.race || "Unknown"
-    });
-    return detectedSpecies;
+    // Try to detect species from actor
+    const actorRace = this.actor?.system?.details?.race || this.actor?.system?.race;
+    if (actorRace) {
+      const raceLower = actorRace.toLowerCase();
+      // Simple mapping
+      if (raceLower.includes('elf')) return 'elf';
+      if (raceLower.includes('dwarf')) return 'dwarf';
+      if (raceLower.includes('orc')) return 'orc';
+      if (raceLower.includes('halfling')) return 'halfling';
+    }
+    return 'human'; // Default fallback
   }
 
   /**
    * Update category dropdown options based on available data and settings
    */
   async _updateCategoryOptions(html) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return;
-
     const language = html.find('#picker-language').val() || this._getDefaultContentLanguage();
     const species = html.find('#picker-species').val() || this._getActorSpecies() || 'human';
     const categorySelect = html.find('#picker-category');
 
     logDebug(`Updating category options for ${language}.${species}`);
 
-    // Get available genders for this species/language
-    const availableGenders = [];
-    const supportedGenders = getSupportedGenders();
+    // Get available genders from catalog displayNameByCategory
+    const packageCode = `${species}-${language}`;
+    const pkg = this.generator.dataManager.getPackage(packageCode);
 
-    for (const gender of supportedGenders) {
-      // Check if we have data for this gender
-      const hasData = await this._hasGenderData(language, species, gender);
-      if (hasData) {
-        availableGenders.push(gender);
+    const availableGenders = [];
+
+    // Get UI language for displaying category names
+    const uiLanguage = game.i18n.lang || 'de';
+    logDebug(`UI Language: ${uiLanguage}, Content Language: ${language}`);
+
+    if (pkg && pkg.data.catalogs && pkg.data.catalogs.firstnames) {
+      const catalog = pkg.data.catalogs.firstnames;
+      logDebug('Catalog structure:', catalog);
+      logDebug('displayNameByCategory:', catalog.displayNameByCategory);
+      logDebug('displayNameByCategory[de]:', catalog.displayNameByCategory?.de);
+      logDebug('displayNameByCategory[en]:', catalog.displayNameByCategory?.en);
+
+      if (catalog.displayNameByCategory && catalog.displayNameByCategory[uiLanguage]) {
+        // Get all available categories (genders) from displayNameByCategory
+        availableGenders.push(...Object.keys(catalog.displayNameByCategory[uiLanguage]));
       }
     }
 
@@ -125,9 +144,10 @@ export class NamesPickerApp extends Application {
     // Build new options HTML
     let optionsHtml = '<option value="">' + game.i18n.localize("names.ui.all-genders") + '</option>';
     for (const gender of availableGenders) {
-      const locKey = `names.${gender}`;
-      const genderName = game.i18n.localize(locKey);
-      optionsHtml += `<option value="${gender}">${genderName}</option>`;
+      const catalog = pkg?.data.catalogs.firstnames;
+      const displayName = catalog?.displayNameByCategory?.[uiLanguage]?.[gender] || gender;
+      logDebug(`Gender option: ${gender} -> displayName="${displayName}" (from displayNameByCategory[${uiLanguage}][${gender}])`);
+      optionsHtml += `<option value="${gender}">${displayName}</option>`;
     }
 
     // Update the select element
@@ -150,22 +170,13 @@ export class NamesPickerApp extends Application {
    * Check if gender data is available for language/species
    */
   async _hasGenderData(language, species, gender) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return false;
-
     try {
-      // Try to generate a test name
-      const options = {
-        language: language,
-        species: species,
-        category: 'names',
-        gender: gender,
-        components: ['firstname'],
-        count: 1
-      };
+      const packageCode = `${species}-${language}`;
+      const recipes = await this.generator.getAvailableRecipes(packageCode, language);
 
-      const result = await NamesAPI.generateNames(options);
-      return result && result.length > 0;
+      // Check if there are recipes that could generate names for this gender
+      // For V4, we look for recipes that mention the gender or are generic person recipes
+      return recipes && recipes.length > 0;
     } catch (error) {
       logDebug(`No data for ${language}.${species}.${gender}:`, error.message);
       return false;
@@ -195,30 +206,13 @@ export class NamesPickerApp extends Application {
       return;
     }
 
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.isLoading) {
-      logDebug("Data still loading, showing loading state");
-      showLoadingState(html);
-      this._waitForLoadingComplete(html);
-    } else {
-      logDebug("Data ready, generating initial names");
-      this._onGenerateNames();
-    }
+    // Update category options on initial load
+    this._updateCategoryOptions(html);
 
+    // Generate initial names
+    logDebug("Generating initial names for picker");
+    this._onGenerateNames();
     this._initialized = true;
-  }
-
-  async _waitForLoadingComplete(html) {
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.loadingPromise) {
-      logDebug("Waiting for data loading to complete");
-      await globalNamesData.loadingPromise;
-    }
-
-    hideLoadingState(html);
-    await this._onGenerateNames();
-    this._initialized = true;
-    logDebug("Data loading completed, names generated");
   }
 
   async _onOptionChange(event) {
@@ -231,11 +225,10 @@ export class NamesPickerApp extends Application {
 
   async _onGenerateNames() {
     const html = this.element;
-    const globalNamesData = getGlobalNamesData();
 
-    if (!globalNamesData) {
-      logError("Data manager not available for name generation");
-      ui.notifications.error("Names data manager not available");
+    if (!this.generator) {
+      logError("Generator not available for name generation");
+      ui.notifications.error("Names generator not available");
       return;
     }
 
@@ -246,44 +239,27 @@ export class NamesPickerApp extends Application {
     logDebug("Generating names for picker", { language, species, category: category || 'random' });
 
     try {
-      const names = [];
-      const nameCount = 3;
+      const packageCode = `${species}-${language}`;
 
-      // If no category selected, get available genders for random selection
-      let availableGenders = [];
-      if (!category) {
-        const supportedGenders = getSupportedGenders();
-        for (const gender of supportedGenders) {
-          const hasData = await this._hasGenderData(language, species, gender);
-          if (hasData) {
-            availableGenders.push(gender);
-          }
-        }
-        logDebug(`Available genders for random selection:`, availableGenders);
-      }
+      // Generate 3 names using generatePersonName with gender filter
+      const result = await this.generator.generatePersonName(packageCode, {
+        locale: language,
+        n: 3,
+        gender: category || null, // Use selected gender or null for random
+        components: ['firstname', 'surname'],
+        format: '{firstname} {surname}',
+        allowDuplicates: false
+      });
 
-      for (let i = 0; i < nameCount; i++) {
-        // Select random gender if no category specified
-        let genderToUse = category;
-        if (!category && availableGenders.length > 0) {
-          genderToUse = availableGenders[Math.floor(Math.random() * availableGenders.length)];
-          logDebug(`Randomly selected gender: ${genderToUse}`);
-        } else if (!category) {
-          // Fallback to male if no available genders
-          genderToUse = 'male';
-        }
+      const names = result.suggestions ? result.suggestions.map(s => s.text) : [];
 
-        const name = await this._generateFormattedName(
-          language, species, genderToUse,
-          ['firstname', 'surname'],
-          '{firstname} {surname}'
-        );
-
-        if (name) {
-          names.push(name);
-          logDebug(`Generated picker name ${i + 1}/${nameCount}: ${name} (${genderToUse})`);
-        }
-      }
+      // Debug output for picker generation
+      logDebug('=== PICKER GENERATION START ===');
+      logDebug(`Generated ${result.suggestions.length} names from package: ${packageCode} | Gender: ${category || 'random'}`);
+      result.suggestions.forEach((suggestion, index) => {
+        logDebug(`[${index + 1}/3] Name: "${suggestion.text}" | Catalog: ${suggestion.catalog || 'unknown'}`, suggestion.metadata);
+      });
+      logDebug('=== PICKER GENERATION END ===');
 
       this.currentNames = names;
       this._updateNamesDisplay(html);
@@ -291,7 +267,7 @@ export class NamesPickerApp extends Application {
       // Add to history
       this._addToHistory(names, language, species, category);
 
-      logInfo(`Successfully generated ${names.length} names for picker`);
+      logDebug(`Successfully generated ${names.length} names for picker`);
 
     } catch (error) {
       logError("Name generation failed in picker", error);
@@ -317,117 +293,12 @@ export class NamesPickerApp extends Application {
     html.find('.names-picker-name').click(this._onSelectName.bind(this));
   }
 
-  async _generateFormattedName(language, species, gender, components, nameFormat) {
-    try {
-      // Use the new NamesAPI for proper person name generation
-      const options = {
-        language: language,
-        species: species,
-        category: 'names',
-        gender: gender,
-        components: components,
-        format: nameFormat,
-        count: 1
-      };
-
-      const results = await NamesAPI.generateNames(options);
-      if (results.length > 0) {
-        const fullName = typeof results[0] === 'string' ? results[0] : results[0].name;
-        logDebug(`Generated picker name: ${fullName} (${species}, ${gender})`);
-        return fullName;
-      }
-
-      throw new Error(game.i18n.localize("names.no-names-generated"));
-    } catch (error) {
-      logWarn(`Failed to generate picker name for ${language}.${species}.${gender}`, error);
-      throw error;
-    }
-  }
-
-  async _generateSimpleName(language, species, category) {
-    try {
-      const options = {
-        language: language,
-        species: species,
-        categories: [category],
-        count: 1
-      };
-
-      const results = await NamesAPI.generateNames(options);
-      if (results.length > 0) {
-        const result = typeof results[0] === 'string' ? results[0] : results[0].name;
-        logDebug(`Generated simple name: ${result} (${language}.${species}.${category})`);
-        return result;
-      }
-
-      throw new Error(`Keine Daten für ${language}.${species}.${category}`);
-    } catch (error) {
-      logWarn(`Failed to generate simple name for ${language}.${species}.${category}`, error);
-      return null;
-    }
-  }
-
-  async _generateNameComponent(language, species, gender, component) {
-    switch (component) {
-      case 'firstname':
-        return await this._getRandomFromData(language, species, gender);
-
-      case 'surname':
-        return await this._getRandomFromData(language, species, 'surnames');
-
-      default:
-        logWarn(`Unknown picker component: ${component}`);
-        return null;
-    }
-  }
-
-  _formatName(format, components) {
-    let result = format;
-
-    const placeholders = {
-      '{firstname}': components.firstname || '',
-      '{surname}': components.surname || ''
-    };
-
-    for (const [placeholder, value] of Object.entries(placeholders)) {
-      result = result.replace(new RegExp(placeholder.replace(/[{}]/g, '\\$&'), 'g'), value);
-    }
-
-    const formattedResult = result.replace(/\s+/g, ' ').trim();
-    logDebug("Formatted picker name:", formattedResult);
-    return formattedResult;
-  }
-
-  async _getRandomFromData(language, species, category) {
-    try {
-      const options = {
-        language: language,
-        species: species,
-        categories: [category],
-        count: 1
-      };
-
-      const results = await NamesAPI.generateNames(options);
-      if (results.length > 0) {
-        const selectedName = typeof results[0] === 'string' ? results[0] : results[0].name;
-        logDebug(`Selected from ${language}.${species}.${category}: ${selectedName}`);
-        return selectedName;
-      }
-
-      logDebug(`No picker data found for ${language}.${species}.${category}`);
-      return null;
-    } catch (error) {
-      logWarn(`Failed to get random data for ${language}.${species}.${category}`, error);
-      return null;
-    }
-  }
-
   async _onSelectName(event) {
     const selectedName = event.currentTarget.dataset.name;
     if (!selectedName || !this.actor) {
-      logWarn("Name selection failed", { 
+      logWarn("Name selection failed", {
         selectedName: selectedName || "No name",
-        hasActor: !!this.actor 
+        hasActor: !!this.actor
       });
       return;
     }
@@ -438,7 +309,7 @@ export class NamesPickerApp extends Application {
       await updateActorName(this.actor, selectedName);
       const message = game.i18n.format("names.name-adopted", { name: selectedName });
       ui.notifications.info(message);
-      
+
       logInfo(`Successfully updated actor name: ${this.actor.name} -> ${selectedName}`);
       this.close();
 
@@ -453,48 +324,26 @@ export class NamesPickerApp extends Application {
    * @returns {string} Default content language code
    */
   _getDefaultContentLanguage() {
-    const defaultContentLanguageSetting = game.settings.get("nomina-names", "defaultContentLanguage");
+    try {
+      const defaultContentLanguageSetting = game.settings.get("nomina-names", "defaultContentLanguage");
 
-    // If set to "auto", use interface language or fallback to Foundry language
-    if (defaultContentLanguageSetting === "auto") {
-      // First try interface language setting
-      const interfaceLanguageSetting = game.settings.get("nomina-names", "interfaceLanguage");
-
-      if (interfaceLanguageSetting !== "auto") {
-        // Use interface language if available in content languages
-        const globalNamesData = getGlobalNamesData();
-        if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(interfaceLanguageSetting)) {
-          return interfaceLanguageSetting;
-        }
+      if (defaultContentLanguageSetting === "auto") {
+        const foundryLang = game.settings.get("core", "language");
+        const languageMapping = {
+          'en': 'en',
+          'de': 'de',
+          'fr': 'fr',
+          'es': 'es',
+          'it': 'it'
+        };
+        return languageMapping[foundryLang] || 'de';
       }
 
-      // Fallback to Foundry language
-      const foundryLang = game.settings.get("core", "language");
-      const languageMapping = {
-        'en': 'en',
-        'de': 'de',
-        'fr': 'fr',
-        'es': 'es',
-        'it': 'it'
-      };
-
-      const mappedLang = languageMapping[foundryLang] || 'de';
-      const globalNamesData = getGlobalNamesData();
-      if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(mappedLang)) {
-        return mappedLang;
-      }
-
-      return 'de'; // Final fallback
-    }
-
-    // Use specific language setting
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(defaultContentLanguageSetting)) {
       return defaultContentLanguageSetting;
+    } catch (error) {
+      logDebug('Error getting default language:', error);
+      return 'de'; // Fallback
     }
-
-    // Fallback to 'de' if set language not available
-    return 'de';
   }
 
   /**
@@ -529,9 +378,9 @@ export class NamesPickerApp extends Application {
           language: language,
           species: species,
           category: 'names',
-          subcategory: gender, // Store gender as subcategory for names
+          subcategory: gender,
           gender: gender,
-          format: '{firstname} {surname}'
+          format: 'v4-generated'
         }
       };
     });

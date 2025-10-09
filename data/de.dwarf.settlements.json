@@ -1,2852 +1,872 @@
 {
-  "format": "3.1.2",
-  "fileVersion": "2.0.0",
-  "code": "dwarf",
-  "displayName": {
-    "de": "Zwerge",
-    "en": "Dwarves"
+  "format": "4.0.0",
+  "package": {
+    "code": "dwarf-de",
+    "displayName": {
+      "de": "Zwerge",
+      "en": "Dwarves"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
   },
-  "languages": [
-    "de"
-  ],
-  "categories": [
-    "settlements"
-  ],
-  "data": {
+  "catalogs": {
     "settlements": {
       "displayName": {
-        "de": "Siedlungen",
-        "en": "Settlements"
+        "de": "Allgemeine Siedlungen",
+        "en": "General Settlements"
       },
-      "subcategories": [
-        {
-          "key": "general",
-          "displayName": {
-            "de": "Allgemeine Siedlungen",
-            "en": "General Settlements"
-          },
-          "entries": {
-            "de": [
-              {
-                "name": "Durak-Tor",
-                "gender": "n"
-              },
-              {
-                "name": "Kazad-Nar",
-                "gender": "n"
-              },
-              {
-                "name": "Baldurshorn",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenschlag",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxgrube",
-                "gender": "f"
-              },
-              {
-                "name": "Runenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Tharg-Khul",
-                "gender": "n"
-              },
-              {
-                "name": "Glutfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Steinmark",
-                "gender": "m"
-              },
-              {
-                "name": "Bartwall",
-                "gender": "m"
-              },
-              {
-                "name": "Akar-Gathol",
-                "gender": "n"
-              },
-              {
-                "name": "Granitklaue",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerstein",
-                "gender": "m"
-              },
-              {
-                "name": "Zornkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Khazad-Rûn",
-                "gender": "n"
-              },
-              {
-                "name": "Morgrimm",
-                "gender": "m"
-              },
-              {
-                "name": "Schattensang",
-                "gender": "m"
-              },
-              {
-                "name": "Felsenfeuer",
-                "gender": "n"
-              },
-              {
-                "name": "Dûrinthral",
-                "gender": "n"
-              },
-              {
-                "name": "Kupferheim",
-                "gender": "n"
-              },
-              {
-                "name": "Axtwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Stahlhain",
-                "gender": "m"
-              },
-              {
-                "name": "Brummfels",
-                "gender": "m"
-              },
-              {
-                "name": "Throgar",
-                "gender": "n"
-              },
-              {
-                "name": "Mithrilgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Barak-Narûl",
-                "gender": "n"
-              },
-              {
-                "name": "Schwarzgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Glutklaue",
-                "gender": "f"
-              },
-              {
-                "name": "Steinschild",
-                "gender": "m"
-              },
-              {
-                "name": "Zornfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Durgrimm",
-                "gender": "m"
-              },
-              {
-                "name": "Runenzahn",
-                "gender": "m"
-              },
-              {
-                "name": "Bartkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Kragendûm",
-                "gender": "n"
-              },
-              {
-                "name": "Sturmkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Feuerbart",
-                "gender": "m"
-              },
-              {
-                "name": "Erzfels",
-                "gender": "m"
-              },
-              {
-                "name": "Baldurshold",
-                "gender": "n"
-              },
-              {
-                "name": "Grollmoor",
-                "gender": "n"
-              },
-              {
-                "name": "Zergrat",
-                "gender": "m"
-              },
-              {
-                "name": "Tharn-Khaz",
-                "gender": "n"
-              },
-              {
-                "name": "Silbersang",
-                "gender": "m"
-              },
-              {
-                "name": "Steinhammer",
-                "gender": "m"
-              },
-              {
-                "name": "Glutwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Dûmthrak",
-                "gender": "n"
-              },
-              {
-                "name": "Schildhügel",
-                "gender": "m"
-              },
-              {
-                "name": "Bartquell",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Mithrilhügel",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxklinge",
-                "gender": "f"
-              },
-              {
-                "name": "Durinswall",
-                "gender": "m"
-              },
-              {
-                "name": "Steinspalt",
-                "gender": "m"
-              },
-              {
-                "name": "Axtberg",
-                "gender": "m"
-              },
-              {
-                "name": "Frostschlund",
-                "gender": "m"
-              },
-              {
-                "name": "Runenklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Glutmark",
-                "gender": "m"
-              },
-              {
-                "name": "Kharum-Dûl",
-                "gender": "n"
-              },
-              {
-                "name": "Zornmoor",
-                "gender": "n"
-              },
-              {
-                "name": "Brummschlag",
-                "gender": "m"
-              },
-              {
-                "name": "Schattenspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Steinbruchtor",
-                "gender": "n"
-              },
-              {
-                "name": "Goldbart",
-                "gender": "m"
-              },
-              {
-                "name": "Helmgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Durinthûl",
-                "gender": "n"
-              },
-              {
-                "name": "Kupferzunge",
-                "gender": "f"
-              },
-              {
-                "name": "Glutheim",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlbart",
-                "gender": "m"
-              },
-              {
-                "name": "Felswacht",
-                "gender": "f"
-              },
-              {
-                "name": "Schlundhall",
-                "gender": "f"
-              },
-              {
-                "name": "Aegis-Dûm",
-                "gender": "n"
-              },
-              {
-                "name": "Erzkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Sturmbart",
-                "gender": "m"
-              },
-              {
-                "name": "Thrangrim",
-                "gender": "m"
-              },
-              {
-                "name": "Eisensporn",
-                "gender": "m"
-              },
-              {
-                "name": "Glutkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Runensang",
-                "gender": "m"
-              },
-              {
-                "name": "Kazad-Thûr",
-                "gender": "n"
-              },
-              {
-                "name": "Bartwall",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxfels",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilsang",
-                "gender": "m"
-              },
-              {
-                "name": "Durinshold",
-                "gender": "n"
-              },
-              {
-                "name": "Schattengang",
-                "gender": "m"
-              },
-              {
-                "name": "Frostgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Glutklaff",
-                "gender": "f"
-              },
-              {
-                "name": "Eisenquader",
-                "gender": "m"
-              },
-              {
-                "name": "Steinhort",
-                "gender": "m"
-              },
-              {
-                "name": "Zornmark",
-                "gender": "m"
-              },
-              {
-                "name": "Khazad-Fel",
-                "gender": "n"
-              },
-              {
-                "name": "Brummhain",
-                "gender": "m"
-              },
-              {
-                "name": "Bartmoor",
-                "gender": "n"
-              },
-              {
-                "name": "Erzmark",
-                "gender": "m"
-              },
-              {
-                "name": "Dûrinfall",
-                "gender": "m"
-              },
-              {
-                "name": "Hammergrund",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferfels",
-                "gender": "m"
-              },
-              {
-                "name": "Runentor",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlschlag",
-                "gender": "m"
-              },
-              {
-                "name": "Felsenwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Granitwall",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Durak-Khul",
-                "gender": "n"
-              },
-              {
-                "name": "Schwarzspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Bartschlucht",
-                "gender": "f"
-              },
-              {
-                "name": "Glutgrenze",
-                "gender": "f"
-              },
-              {
-                "name": "Steinkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Zorntor",
-                "gender": "n"
-              },
-              {
-                "name": "Kazad-Thorn",
-                "gender": "n"
-              },
-              {
-                "name": "Eisensang",
-                "gender": "m"
-              },
-              {
-                "name": "Runenklippe",
-                "gender": "f"
-              },
-              {
-                "name": "Glutfels",
-                "gender": "m"
-              },
-              {
-                "name": "Schattengrund",
-                "gender": "m"
-              },
-              {
-                "name": "Axtwall",
-                "gender": "m"
-              },
-              {
-                "name": "Durinthron",
-                "gender": "m"
-              },
-              {
-                "name": "Erzklang",
-                "gender": "m"
-              },
-              {
-                "name": "Barttal",
-                "gender": "n"
-              },
-              {
-                "name": "Kupfergang",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlsang",
-                "gender": "m"
-              },
-              {
-                "name": "Felsenklang",
-                "gender": "m"
-              },
-              {
-                "name": "Granitgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Khazad-Morak",
-                "gender": "n"
-              },
-              {
-                "name": "Thrumhold",
-                "gender": "n"
-              },
-              {
-                "name": "Onyxspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Glutfels",
-                "gender": "m"
-              },
-              {
-                "name": "Schattentor",
-                "gender": "n"
-              },
-              {
-                "name": "Eisenfort",
-                "gender": "n"
-              },
-              {
-                "name": "Runenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlklang",
-                "gender": "m"
-              },
-              {
-                "name": "Zornwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Bartklang",
-                "gender": "m"
-              },
-              {
-                "name": "Durinshain",
-                "gender": "m"
-              },
-              {
-                "name": "Erzstein",
-                "gender": "m"
-              },
-              {
-                "name": "Kupfermark",
-                "gender": "m"
-              },
-              {
-                "name": "Glutmauer",
-                "gender": "f"
-              },
-              {
-                "name": "Steinhorst",
-                "gender": "m"
-              },
-              {
-                "name": "Khazad-Tûl",
-                "gender": "n"
-              },
-              {
-                "name": "Brummfort",
-                "gender": "n"
-              },
-              {
-                "name": "Schildgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerklang",
-                "gender": "m"
-              },
-              {
-                "name": "Felsenhall",
-                "gender": "f"
-              },
-              {
-                "name": "Mithrilfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Zornhall",
-                "gender": "f"
-              },
-              {
-                "name": "Glutsporn",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlschild",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Runenwall",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Bûl",
-                "gender": "n"
-              },
-              {
-                "name": "Durinthor",
-                "gender": "m"
-              },
-              {
-                "name": "Bartkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Erzklippe",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferklinge",
-                "gender": "f"
-              },
-              {
-                "name": "Steinmark",
-                "gender": "m"
-              },
-              {
-                "name": "Glutbann",
-                "gender": "m"
-              },
-              {
-                "name": "Schattensang",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilwall",
-                "gender": "m"
-              },
-              {
-                "name": "Brummtor",
-                "gender": "n"
-              },
-              {
-                "name": "Zornspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Khazad-Khor",
-                "gender": "n"
-              },
-              {
-                "name": "Throlgar",
-                "gender": "n"
-              },
-              {
-                "name": "Onyxgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Runenkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Stahldorn",
-                "gender": "m"
-              },
-              {
-                "name": "Glutschlucht",
-                "gender": "f"
-              },
-              {
-                "name": "Steinsang",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferhort",
-                "gender": "m"
-              },
-              {
-                "name": "Durinsschlucht",
-                "gender": "f"
-              },
-              {
-                "name": "Erzsporn",
-                "gender": "m"
-              },
-              {
-                "name": "Bartgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Glutmauer",
-                "gender": "f"
-              },
-              {
-                "name": "Schwarzschlund",
-                "gender": "m"
-              },
-              {
-                "name": "Kazad-Fhûl",
-                "gender": "n"
-              },
-              {
-                "name": "Grimmburg",
-                "gender": "f"
-              },
-              {
-                "name": "Throgarûn",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlquell",
-                "gender": "m"
-              },
-              {
-                "name": "Bartfels",
-                "gender": "m"
-              },
-              {
-                "name": "Dûlkhaz",
-                "gender": "n"
-              },
-              {
-                "name": "Feuerklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Runenspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Zirakholm",
-                "gender": "n"
-              },
-              {
-                "name": "Hammerfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Khazruk",
-                "gender": "n"
-              },
-              {
-                "name": "Glutbronn",
-                "gender": "m"
-              },
-              {
-                "name": "Steinpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Durthron",
-                "gender": "m"
-              },
-              {
-                "name": "Granitspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Murzûl",
-                "gender": "n"
-              },
-              {
-                "name": "Axtstollen",
-                "gender": "m"
-              },
-              {
-                "name": "Sturmwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Khazad-Zhal",
-                "gender": "n"
-              },
-              {
-                "name": "Baldurquell",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Schwarzmark",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxhain",
-                "gender": "m"
-              },
-              {
-                "name": "Glutstollen",
-                "gender": "m"
-              },
-              {
-                "name": "Runentor",
-                "gender": "n"
-              },
-              {
-                "name": "Thargûn",
-                "gender": "n"
-              },
-              {
-                "name": "Bartwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Steinsang",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Durgrimhold",
-                "gender": "n"
-              },
-              {
-                "name": "Mithrilklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Zornquell",
-                "gender": "m"
-              },
-              {
-                "name": "Kharadûn",
-                "gender": "n"
-              },
-              {
-                "name": "Felssturm",
-                "gender": "m"
-              },
-              {
-                "name": "Glutspalt",
-                "gender": "m"
-              },
-              {
-                "name": "Schattenschild",
-                "gender": "m"
-              },
-              {
-                "name": "Runenbrunn",
-                "gender": "m"
-              },
-              {
-                "name": "Axtgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Durinheim",
-                "gender": "n"
-              },
-              {
-                "name": "Kazad-Barruk",
-                "gender": "n"
-              },
-              {
-                "name": "Granitflamme",
-                "gender": "f"
-              },
-              {
-                "name": "Onyxwall",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlquader",
-                "gender": "m"
-              },
-              {
-                "name": "Bartwurz",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerhall",
-                "gender": "f"
-              },
-              {
-                "name": "Khuldar",
-                "gender": "n"
-              },
-              {
-                "name": "Erzspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Zornfels",
-                "gender": "m"
-              },
-              {
-                "name": "Glutwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Durkhaz",
-                "gender": "n"
-              },
-              {
-                "name": "Runenfels",
-                "gender": "m"
-              },
-              {
-                "name": "Steinwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Nhul",
-                "gender": "n"
-              },
-              {
-                "name": "Schwarzfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Kupfergrat",
-                "gender": "m"
-              },
-              {
-                "name": "Glutmühle",
-                "gender": "f"
-              },
-              {
-                "name": "Bartschlag",
-                "gender": "m"
-              },
-              {
-                "name": "Axttal",
-                "gender": "n"
-              },
-              {
-                "name": "Sturmhort",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxdorn",
-                "gender": "m"
-              },
-              {
-                "name": "Durinshain",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilwall",
-                "gender": "m"
-              },
-              {
-                "name": "Khazrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Steinkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Erzgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Glutfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Runenschlucht",
-                "gender": "f"
-              },
-              {
-                "name": "Zornhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Granitpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Durinkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Fhaz",
-                "gender": "n"
-              },
-              {
-                "name": "Bartfels",
-                "gender": "m"
-              },
-              {
-                "name": "Hammergrund",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Schattental",
-                "gender": "n"
-              },
-              {
-                "name": "Glutgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Steinschlag",
-                "gender": "m"
-              },
-              {
-                "name": "Khazad-Zor",
-                "gender": "n"
-              },
-              {
-                "name": "Runenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Felskrone",
-                "gender": "f"
-              },
-              {
-                "name": "Durinthal",
-                "gender": "n"
-              },
-              {
-                "name": "Axtgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Granitwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Onyxschmiede",
-                "gender": "f"
-              },
-              {
-                "name": "Mithrilhort",
-                "gender": "m"
-              },
-              {
-                "name": "Stahldom",
-                "gender": "m"
-              },
-              {
-                "name": "Bartquell",
-                "gender": "m"
-              },
-              {
-                "name": "Khazdum",
-                "gender": "n"
-              },
-              {
-                "name": "Schwarzschmied",
-                "gender": "m"
-              },
-              {
-                "name": "Glutberg",
-                "gender": "m"
-              },
-              {
-                "name": "Steinkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Durinwall",
-                "gender": "m"
-              },
-              {
-                "name": "Runenhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Erzkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Drûn",
-                "gender": "n"
-              },
-              {
-                "name": "Bartmark",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerwall",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlhain",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferklang",
-                "gender": "m"
-              },
-              {
-                "name": "Glutbruch",
-                "gender": "m"
-              },
-              {
-                "name": "Schattentor",
-                "gender": "n"
-              },
-              {
-                "name": "Onyxquell",
-                "gender": "m"
-              },
-              {
-                "name": "Durinthron",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilsang",
-                "gender": "m"
-              },
-              {
-                "name": "Khazthûl",
-                "gender": "n"
-              },
-              {
-                "name": "Runendorn",
-                "gender": "m"
-              },
-              {
-                "name": "Steingrund",
-                "gender": "m"
-              },
-              {
-                "name": "Zornstollen",
-                "gender": "m"
-              },
-              {
-                "name": "Glutflamme",
-                "gender": "f"
-              },
-              {
-                "name": "Erzschmiede",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Rhul",
-                "gender": "n"
-              },
-              {
-                "name": "Bartklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerstein",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlschlucht",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Granitkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Durinbruch",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Glutspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Onyxmark",
-                "gender": "m"
-              },
-              {
-                "name": "Runenschild",
-                "gender": "m"
-              },
-              {
-                "name": "Erzbrunn",
-                "gender": "m"
-              },
-              {
-                "name": "Kazad-Mhul",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Bartwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerhort",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferfels",
-                "gender": "m"
-              },
-              {
-                "name": "Durinmark",
-                "gender": "m"
-              },
-              {
-                "name": "Glutdom",
-                "gender": "m"
-              },
-              {
-                "name": "Schattensang",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxwand",
-                "gender": "f"
-              },
-              {
-                "name": "Runenwall",
-                "gender": "m"
-              },
-              {
-                "name": "Erzgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Kazad-Thrum",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlschmiede",
-                "gender": "f"
-              },
-              {
-                "name": "Bartwall",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferquell",
-                "gender": "m"
-              },
-              {
-                "name": "Durinwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Glutgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Schattengrat",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxdûm",
-                "gender": "n"
-              },
-              {
-                "name": "Runensang",
-                "gender": "m"
-              },
-              {
-                "name": "Erztal",
-                "gender": "n"
-              },
-              {
-                "name": "Kazad-Brul",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlberg",
-                "gender": "m"
-              },
-              {
-                "name": "Bartdom",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerhain",
-                "gender": "m"
-              },
-              {
-                "name": "Kupfersturm",
-                "gender": "m"
-              },
-              {
-                "name": "Durintor",
-                "gender": "n"
-              },
-              {
-                "name": "Glutklang",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzfrost",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Runenmark",
-                "gender": "m"
-              },
-              {
-                "name": "Erzhall",
-                "gender": "f"
-              },
-              {
-                "name": "Kazad-Khral",
-                "gender": "n"
-              },
-              {
-                "name": "Stahldorn",
-                "gender": "m"
-              },
-              {
-                "name": "Barttal",
-                "gender": "n"
-              },
-              {
-                "name": "Hammerkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Kupfergrund",
-                "gender": "m"
-              },
-              {
-                "name": "Durinfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Glutsporn",
-                "gender": "m"
-              },
-              {
-                "name": "Schattwall",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxhort",
-                "gender": "m"
-              },
-              {
-                "name": "Runenthor",
-                "gender": "n"
-              },
-              {
-                "name": "Erzdom",
-                "gender": "m"
-              },
-              {
-                "name": "Kazad-Thruk",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlschmied",
-                "gender": "m"
-              },
-              {
-                "name": "Bartgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerdom",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Durinwall",
-                "gender": "m"
-              },
-              {
-                "name": "Gluthain",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzmark",
-                "gender": "m"
-              },
-              {
-                "name": "Onyxbruch",
-                "gender": "m"
-              },
-              {
-                "name": "Runensporn",
-                "gender": "m"
-              },
-              {
-                "name": "Erzwehr",
-                "gender": "f"
-              },
-              {
-                "name": "Durak-Thul",
-                "gender": "n"
-              },
-              {
-                "name": "Khazrak",
-                "gender": "n"
-              },
-              {
-                "name": "Brûndarûm",
-                "gender": "n"
-              },
-              {
-                "name": "Thuldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Grakkar",
-                "gender": "m"
-              },
-              {
-                "name": "Zornak-Dûm",
-                "gender": "n"
-              },
-              {
-                "name": "Khuldaraz",
-                "gender": "n"
-              },
-              {
-                "name": "Bruzthrak",
-                "gender": "m"
-              },
-              {
-                "name": "Dorn-Khaz",
-                "gender": "n"
-              },
-              {
-                "name": "Thrungar",
-                "gender": "m"
-              },
-              {
-                "name": "Mazrûl-Dar",
-                "gender": "n"
-              },
-              {
-                "name": "Khazdrak",
-                "gender": "n"
-              },
-              {
-                "name": "Durgrimak",
-                "gender": "n"
-              },
-              {
-                "name": "Thramhul",
-                "gender": "n"
-              },
-              {
-                "name": "Gornaz-Dûm",
-                "gender": "n"
-              },
-              {
-                "name": "Khargrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Zundrak",
-                "gender": "m"
-              },
-              {
-                "name": "Thrulbarak",
-                "gender": "n"
-              },
-              {
-                "name": "Khaz-Tharûn",
-                "gender": "n"
-              },
-              {
-                "name": "Grondrûl",
-                "gender": "n"
-              },
-              {
-                "name": "Brakkhul",
-                "gender": "n"
-              },
-              {
-                "name": "Dûrnaz",
-                "gender": "n"
-              },
-              {
-                "name": "Thrazgul",
-                "gender": "n"
-              },
-              {
-                "name": "Khuzdrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Grimthrak",
-                "gender": "m"
-              },
-              {
-                "name": "Morzhal",
-                "gender": "n"
-              },
-              {
-                "name": "Thundrak",
-                "gender": "m"
-              },
-              {
-                "name": "Khuradûm",
-                "gender": "n"
-              },
-              {
-                "name": "Baldraz",
-                "gender": "m"
-              },
-              {
-                "name": "Zargûl",
-                "gender": "m"
-              },
-              {
-                "name": "Throldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Khazrûl",
-                "gender": "n"
-              },
-              {
-                "name": "Drungar",
-                "gender": "m"
-              },
-              {
-                "name": "Ghazrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Thramgûl",
-                "gender": "n"
-              },
-              {
-                "name": "Brundaraz",
-                "gender": "n"
-              },
-              {
-                "name": "Khalzûl",
-                "gender": "n"
-              },
-              {
-                "name": "Zorgrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Durzhal",
-                "gender": "n"
-              },
-              {
-                "name": "Gruthrak",
-                "gender": "m"
-              },
-              {
-                "name": "Khuldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Thrugrim",
-                "gender": "m"
-              },
-              {
-                "name": "Mazgul",
-                "gender": "m"
-              },
-              {
-                "name": "Khazthrak",
-                "gender": "n"
-              },
-              {
-                "name": "Bruldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Throlgar",
-                "gender": "n"
-              },
-              {
-                "name": "Durgrim",
-                "gender": "m"
-              },
-              {
-                "name": "Zarnak",
-                "gender": "m"
-              },
-              {
-                "name": "Khuldraz",
-                "gender": "n"
-              },
-              {
-                "name": "Graldrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Thumrak",
-                "gender": "m"
-              },
-              {
-                "name": "Brughal",
-                "gender": "n"
-              },
-              {
-                "name": "Dargûm",
-                "gender": "n"
-              },
-              {
-                "name": "Khazbul",
-                "gender": "n"
-              },
-              {
-                "name": "Thrundar",
-                "gender": "m"
-              },
-              {
-                "name": "Gorzhal",
-                "gender": "n"
-              },
-              {
-                "name": "Durazhul",
-                "gender": "n"
-              },
-              {
-                "name": "Khazmorn",
-                "gender": "n"
-              },
-              {
-                "name": "Brûthrak",
-                "gender": "m"
-              },
-              {
-                "name": "Zhalgrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Throgar",
-                "gender": "n"
-              },
-              {
-                "name": "Grukhal",
-                "gender": "n"
-              },
-              {
-                "name": "Khaztor",
-                "gender": "n"
-              },
-              {
-                "name": "Durmorn",
-                "gender": "n"
-              },
-              {
-                "name": "Bruzdal",
-                "gender": "m"
-              },
-              {
-                "name": "Thargûl",
-                "gender": "n"
-              },
-              {
-                "name": "Zundral",
-                "gender": "m"
-              },
-              {
-                "name": "Khazdûn",
-                "gender": "n"
-              },
-              {
-                "name": "Grûlbar",
-                "gender": "m"
-              },
-              {
-                "name": "Thrumdar",
-                "gender": "m"
-              },
-              {
-                "name": "Dornhul",
-                "gender": "n"
-              },
-              {
-                "name": "Khalgrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Branghul",
-                "gender": "n"
-              },
-              {
-                "name": "Throlmûn",
-                "gender": "n"
-              },
-              {
-                "name": "Ghazrak",
-                "gender": "n"
-              },
-              {
-                "name": "Durkhal",
-                "gender": "n"
-              },
-              {
-                "name": "Brakthul",
-                "gender": "n"
-              },
-              {
-                "name": "Zorgrak",
-                "gender": "m"
-              },
-              {
-                "name": "Thuldar",
-                "gender": "n"
-              },
-              {
-                "name": "Khazgrim",
-                "gender": "m"
-              },
-              {
-                "name": "Drunhul",
-                "gender": "n"
-              },
-              {
-                "name": "Mazrak",
-                "gender": "m"
-              },
-              {
-                "name": "Thramdal",
-                "gender": "m"
-              },
-              {
-                "name": "Khaldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Bruldar",
-                "gender": "n"
-              },
-              {
-                "name": "Durthrak",
-                "gender": "m"
-              },
-              {
-                "name": "Zarhul",
-                "gender": "n"
-              },
-              {
-                "name": "Khazmur",
-                "gender": "n"
-              },
-              {
-                "name": "Thrughal",
-                "gender": "n"
-              },
-              {
-                "name": "Graldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Dûrnthal",
-                "gender": "n"
-              },
-              {
-                "name": "Bruzgrak",
-                "gender": "m"
-              },
-              {
-                "name": "Khazbal",
-                "gender": "n"
-              },
-              {
-                "name": "Thramhul",
-                "gender": "n"
-              },
-              {
-                "name": "Gundrak",
-                "gender": "m"
-              },
-              {
-                "name": "Zurnak",
-                "gender": "m"
-              },
-              {
-                "name": "Durmûl",
-                "gender": "n"
-              },
-              {
-                "name": "Khuldûm",
-                "gender": "n"
-              },
-              {
-                "name": "Brûlnak",
-                "gender": "m"
-              },
-              {
-                "name": "Throlmûn",
-                "gender": "n"
-              },
-              {
-                "name": "Grunthar",
-                "gender": "m"
-              },
-              {
-                "name": "Khalzor",
-                "gender": "n"
-              },
-              {
-                "name": "Durgrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Thruzdal",
-                "gender": "n"
-              },
-              {
-                "name": "Bruzrak",
-                "gender": "m"
-              },
-              {
-                "name": "Khazgar",
-                "gender": "m"
-              },
-              {
-                "name": "Gralthûm",
-                "gender": "n"
-              },
-              {
-                "name": "Thrumhul",
-                "gender": "n"
-              },
-              {
-                "name": "Durzrak",
-                "gender": "m"
-              },
-              {
-                "name": "Brundûl",
-                "gender": "n"
-              },
-              {
-                "name": "Khazthûl",
-                "gender": "n"
-              },
-              {
-                "name": "Throlgar",
-                "gender": "n"
-              },
-              {
-                "name": "Ghrundak",
-                "gender": "m"
-              },
-              {
-                "name": "Zarnûl",
-                "gender": "n"
-              },
-              {
-                "name": "Khazgul",
-                "gender": "n"
-              },
-              {
-                "name": "Durthûl",
-                "gender": "n"
-              },
-              {
-                "name": "Brakdrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Thrugnar",
-                "gender": "m"
-              },
-              {
-                "name": "Khuldraz",
-                "gender": "n"
-              },
-              {
-                "name": "Grûndral",
-                "gender": "m"
-              },
-              {
-                "name": "Thrumdar",
-                "gender": "m"
-              },
-              {
-                "name": "Bruldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Durgrim",
-                "gender": "m"
-              },
-              {
-                "name": "Zornhul",
-                "gender": "n"
-              },
-              {
-                "name": "Khazgrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Throgar",
-                "gender": "n"
-              },
-              {
-                "name": "Grûlmor",
-                "gender": "n"
-              },
-              {
-                "name": "Brugdal",
-                "gender": "m"
-              },
-              {
-                "name": "Durkhal",
-                "gender": "n"
-              },
-              {
-                "name": "Khazdral",
-                "gender": "n"
-              },
-              {
-                "name": "Thrulgar",
-                "gender": "n"
-              },
-              {
-                "name": "Zundrak",
-                "gender": "m"
-              },
-              {
-                "name": "Graldrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Brukhal",
-                "gender": "n"
-              },
-              {
-                "name": "Durmal",
-                "gender": "n"
-              },
-              {
-                "name": "Khaztur",
-                "gender": "n"
-              },
-              {
-                "name": "Thramzul",
-                "gender": "n"
-              },
-              {
-                "name": "Ghazdul",
-                "gender": "n"
-              },
-              {
-                "name": "Bruldûn",
-                "gender": "n"
-              },
-              {
-                "name": "Khazgral",
-                "gender": "n"
-              },
-              {
-                "name": "Durzhal",
-                "gender": "n"
-              },
-              {
-                "name": "Thrugdal",
-                "gender": "n"
-              },
-              {
-                "name": "Gruthûl",
-                "gender": "n"
-              },
-              {
-                "name": "Brukthal",
-                "gender": "n"
-              },
-              {
-                "name": "Zorgrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Khazrûm",
-                "gender": "n"
-              },
-              {
-                "name": "Durmûr",
-                "gender": "n"
-              },
-              {
-                "name": "Thrumrak",
-                "gender": "m"
-              },
-              {
-                "name": "Grûndar",
-                "gender": "m"
-              },
-              {
-                "name": "Brugrûn",
-                "gender": "n"
-              },
-              {
-                "name": "Brammertor",
-                "gender": "n"
-              },
-              {
-                "name": "Dornhammar",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenquell",
-                "gender": "m"
-              },
-              {
-                "name": "Grimmfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Sturmbollwerk",
-                "gender": "n"
-              },
-              {
-                "name": "Balinshalle",
-                "gender": "f"
-              },
-              {
-                "name": "Glutstein",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Runenbronn",
-                "gender": "m"
-              },
-              {
-                "name": "Felshammer",
-                "gender": "m"
-              },
-              {
-                "name": "Goldklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Bartheim",
-                "gender": "n"
-              },
-              {
-                "name": "Ebergrat",
-                "gender": "m"
-              },
-              {
-                "name": "Zornfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Kragendorf",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlquader",
-                "gender": "m"
-              },
-              {
-                "name": "Silberkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Schwarzthor",
-                "gender": "n"
-              },
-              {
-                "name": "Mithrilwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Bronzekamm",
-                "gender": "m"
-              },
-              {
-                "name": "Bergbart",
-                "gender": "m"
-              },
-              {
-                "name": "Runenhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Erzheim",
-                "gender": "n"
-              },
-              {
-                "name": "Drachenkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Steinschmiede",
-                "gender": "f"
-              },
-              {
-                "name": "Granitspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Thorngrat",
-                "gender": "m"
-              },
-              {
-                "name": "Goldquader",
-                "gender": "m"
-              },
-              {
-                "name": "Helmfels",
-                "gender": "m"
-              },
-              {
-                "name": "Bartsturm",
-                "gender": "m"
-              },
-              {
-                "name": "Gluthalle",
-                "gender": "f"
-              },
-              {
-                "name": "Schmiedfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Dornwall",
-                "gender": "m"
-              },
-              {
-                "name": "Silbersang",
-                "gender": "m"
-              },
-              {
-                "name": "Axtburg",
-                "gender": "f"
-              },
-              {
-                "name": "Kupfergrund",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenhain",
-                "gender": "m"
-              },
-              {
-                "name": "Bartwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlberg",
-                "gender": "m"
-              },
-              {
-                "name": "Runenschild",
-                "gender": "m"
-              },
-              {
-                "name": "Erzfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Granitmark",
-                "gender": "m"
-              },
-              {
-                "name": "Glutpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzquell",
-                "gender": "m"
-              },
-              {
-                "name": "Bergheim",
-                "gender": "n"
-              },
-              {
-                "name": "Mithrilspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Thorhall",
-                "gender": "f"
-              },
-              {
-                "name": "Sturmklaue",
-                "gender": "f"
-              },
-              {
-                "name": "Goldfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Erzbronn",
-                "gender": "m"
-              },
-              {
-                "name": "Bartkluft",
-                "gender": "f"
-              },
-              {
-                "name": "Stahlthor",
-                "gender": "n"
-              },
-              {
-                "name": "Runengrund",
-                "gender": "m"
-              },
-              {
-                "name": "Silberfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Glutfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Steinwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Helmklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Bronzegrund",
-                "gender": "m"
-              },
-              {
-                "name": "Schmiedtor",
-                "gender": "n"
-              },
-              {
-                "name": "Mithrilfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferhall",
-                "gender": "f"
-              },
-              {
-                "name": "Dornkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Eisensang",
-                "gender": "m"
-              },
-              {
-                "name": "Bartthor",
-                "gender": "n"
-              },
-              {
-                "name": "Stahlhort",
-                "gender": "m"
-              },
-              {
-                "name": "Runenpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Zornthor",
-                "gender": "n"
-              },
-              {
-                "name": "Glutquell",
-                "gender": "m"
-              },
-              {
-                "name": "Granitwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Erzmark",
-                "gender": "m"
-              },
-              {
-                "name": "Goldhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Silberwall",
-                "gender": "m"
-              },
-              {
-                "name": "Sturmhall",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferfels",
-                "gender": "m"
-              },
-              {
-                "name": "Eisensporn",
-                "gender": "m"
-              },
-              {
-                "name": "Drachenfurt",
-                "gender": "m"
-              },
-              {
-                "name": "Helmhort",
-                "gender": "m"
-              },
-              {
-                "name": "Runensang",
-                "gender": "m"
-              },
-              {
-                "name": "Schmiedhall",
-                "gender": "f"
-              },
-              {
-                "name": "Bronzefels",
-                "gender": "m"
-              },
-              {
-                "name": "Glutmark",
-                "gender": "m"
-              },
-              {
-                "name": "Bartklang",
-                "gender": "m"
-              },
-              {
-                "name": "Steinwall",
-                "gender": "m"
-              },
-              {
-                "name": "Granitpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilhort",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Erzdom",
-                "gender": "m"
-              },
-              {
-                "name": "Goldmark",
-                "gender": "m"
-              },
-              {
-                "name": "Silberhall",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerhain",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Bartkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Kupfermark",
-                "gender": "m"
-              },
-              {
-                "name": "Glutdom",
-                "gender": "m"
-              },
-              {
-                "name": "Runenklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Erzklang",
-                "gender": "m"
-              },
-              {
-                "name": "Bronzespitze",
-                "gender": "f"
-              },
-              {
-                "name": "Helmwall",
-                "gender": "m"
-              },
-              {
-                "name": "Schmiedgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Zornwall",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Sturmthor",
-                "gender": "n"
-              },
-              {
-                "name": "Bartgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Silberhort",
-                "gender": "m"
-              },
-              {
-                "name": "Hammermark",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Glutthor",
-                "gender": "n"
-              },
-              {
-                "name": "Kupfergrat",
-                "gender": "m"
-              },
-              {
-                "name": "Steindom",
-                "gender": "m"
-              },
-              {
-                "name": "Runenhort",
-                "gender": "m"
-              },
-              {
-                "name": "Goldgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Erzpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlwall",
-                "gender": "m"
-              },
-              {
-                "name": "Bronzehort",
-                "gender": "m"
-              },
-              {
-                "name": "Helmklang",
-                "gender": "m"
-              },
-              {
-                "name": "Schmiedfeste",
-                "gender": "f"
-              },
-              {
-                "name": "Bartspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Silbergrund",
-                "gender": "m"
-              },
-              {
-                "name": "Granitthor",
-                "gender": "n"
-              },
-              {
-                "name": "Glutwand",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferhall",
-                "gender": "f"
-              },
-              {
-                "name": "Hammerbruch",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenmark",
-                "gender": "m"
-              },
-              {
-                "name": "Runenwall",
-                "gender": "m"
-              },
-              {
-                "name": "Sturmkamm",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzmark",
-                "gender": "m"
-              },
-              {
-                "name": "Goldwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Bartklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Mithrilmark",
-                "gender": "m"
-              },
-              {
-                "name": "Erzkrone",
-                "gender": "f"
-              },
-              {
-                "name": "Silberschild",
-                "gender": "m"
-              },
-              {
-                "name": "Helmgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Granitwall",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferdom",
-                "gender": "m"
-              },
-              {
-                "name": "Hammerpfad",
-                "gender": "m"
-              },
-              {
-                "name": "Glutwall",
-                "gender": "m"
-              },
-              {
-                "name": "Runenmark",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlquell",
-                "gender": "m"
-              },
-              {
-                "name": "Bronzefurt",
-                "gender": "m"
-              },
-              {
-                "name": "Bartthor",
-                "gender": "n"
-              },
-              {
-                "name": "Silbergrat",
-                "gender": "m"
-              },
-              {
-                "name": "Goldhort",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Schmiedgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Helmthor",
-                "gender": "n"
-              },
-              {
-                "name": "Zornfelsen",
-                "gender": "m"
-              },
-              {
-                "name": "Mithrilgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Steinhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Glutgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Erzspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Kupferwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Bartdom",
-                "gender": "m"
-              },
-              {
-                "name": "Runenflamme",
-                "gender": "f"
-              },
-              {
-                "name": "Silberdom",
-                "gender": "m"
-              },
-              {
-                "name": "Granitgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Goldwall",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlspitze",
-                "gender": "f"
-              },
-              {
-                "name": "Bronzequell",
-                "gender": "m"
-              },
-              {
-                "name": "Helmhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Schmiedgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Eisenschild",
-                "gender": "m"
-              },
-              {
-                "name": "Glutfeld",
-                "gender": "n"
-              },
-              {
-                "name": "Runenfels",
-                "gender": "m"
-              },
-              {
-                "name": "Kupferthor",
-                "gender": "n"
-              },
-              {
-                "name": "Bartflamme",
-                "gender": "f"
-              },
-              {
-                "name": "Mithrilklamm",
-                "gender": "f"
-              },
-              {
-                "name": "Erzbrücke",
-                "gender": "f"
-              },
-              {
-                "name": "Silberwacht",
-                "gender": "f"
-              },
-              {
-                "name": "Goldgrat",
-                "gender": "m"
-              },
-              {
-                "name": "Stahlhorn",
-                "gender": "m"
-              },
-              {
-                "name": "Granitdom",
-                "gender": "m"
-              },
-              {
-                "name": "Helmgrund",
-                "gender": "m"
-              },
-              {
-                "name": "Bronzesporn",
-                "gender": "m"
-              },
-              {
-                "name": "Schwarzthor",
-                "gender": "n"
-              },
-              {
-                "name": "Gluthügel",
-                "gender": "m"
-              },
-              {
-                "name": "Runenquelle",
-                "gender": "f"
-              },
-              {
-                "name": "Eisenhall",
-                "gender": "f"
-              }
-            ]
-          }
-        },
-        {
-          "key": "procedural",
-          "displayName": {
-            "de": "Prozedural (Beta)",
-            "en": "Procedural (Beta)"
-          },
-          "templates": [
-            "{metal}{building}",
-            "{metal}halle der {clan}",
-            "{stone}{suffix}",
-            "{metal}{suffix}",
-            "Festung {metal}{building}",
-            "{stone}halle",
-            "{metal}schmiede der {clan}",
-            "{stone}burg",
-            "{metal}festung"
-          ],
-          "components": {
-            "metal": {
-              "de": [
-                "Eisen",
-                "Gold",
-                "Mithril",
-                "Silber",
-                "Kupfer",
-                "Bronze",
-                "Stahl",
-                "Erz",
-                "Onyx"
-              ]
-            },
-            "stone": {
-              "de": [
-                "Stein",
-                "Granit",
-                "Marmor",
-                "Schiefer",
-                "Fels",
-                "Gestein"
-              ]
-            },
-            "building": {
-              "de": [
-                "schmiede",
-                "grube",
-                "halle",
-                "kammer",
-                "festung",
-                "wacht",
-                "hort",
-                "burg",
-                "tor",
-                "wall"
-              ]
-            },
-            "clan": {
-              "de": [
-                "Steinklaue",
-                "Eisenfaust",
-                "Goldbart",
-                "Silberhammer",
-                "Granitschild",
-                "Mithrilkrone",
-                "Bronzezahn",
-                "Stahlhelm",
-                "Kupferklinge",
-                "Erzspitze",
-                "Felsenbrecher",
-                "Hammerwehr",
-                "Axtgrimm",
-                "Runenhüter",
-                "Schmiedmeister"
-              ]
-            },
-            "suffix": {
-              "de": [
-                "berg",
-                "heim",
-                "hort",
-                "burg",
-                "feste",
-                "mark",
-                "stein",
-                "grat",
-                "klamm",
-                "spitze",
-                "grund",
-                "kamm",
-                "dorn",
-                "horn",
-                "wehr",
-                "wall",
-                "thal",
-                "feld",
-                "hain",
-                "dom"
-              ]
-            }
-          }
-        }
+      "items": [
+        { "t": { "de": "Durak-Tor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Nar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Baldurshorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenschlag" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tharg-Khul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Akar-Gathol" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerstein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Rûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Morgrimm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenfeuer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûrinthral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brummfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Barak-Narûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrimm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenzahn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kragendûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerbart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Baldurshold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grollmoor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zergrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tharn-Khaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbersang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûmthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schildhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxklinge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinswall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinspalt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtberg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Frostschlund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kharum-Dûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornmoor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brummschlag" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinbruchtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldbart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinthûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferzunge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlbart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felswacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schlundhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aegis-Dûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmbart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrangrim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisensporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Thûr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilsang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinshold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattengang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Frostgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutklaff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenquader" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Fel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brummhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartmoor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûrinfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschlag" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durak-Khul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartschlucht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgrenze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zorntor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Thorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattengrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinthron" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Barttal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlsang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Morak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrumhold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenfort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinshain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzstein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutmauer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhorst" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Tûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brummfort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schildgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutsporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Bûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferklinge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutbann" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brummtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Khor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throlgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahldorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutschlucht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinsang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinsschlucht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzsporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutmauer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzschlund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Fhûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grimmburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throgarûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûlkhaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zirakholm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazruk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutbronn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durthron" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Murzûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtstollen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Zhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Baldurquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutstollen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thargûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinsang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrimhold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kharadûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felssturm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutspalt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattenschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenbrunn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Barruk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitflamme" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlquader" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwurz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durkhaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Nhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutmühle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartschlag" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axttal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxdorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinshain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenschlucht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Fhaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattental" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinschlag" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazad-Zor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felskrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinthal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahldom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazdum" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzschmied" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutberg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Drûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutbruch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinthron" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilsang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazthûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runendorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steingrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornstollen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutflamme" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Rhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerstein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschlucht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinbruch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzbrunn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Mhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxwand" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Thrum" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattengrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxdûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erztal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Brul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlberg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfersturm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durintor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzfrost" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Khral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahldorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Barttal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutsporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kazad-Thruk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschmied" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durinwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Onyxbruch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runensporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzwehr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durak-Thul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brûndarûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thuldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grakkar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornak-Dûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldaraz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruzthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dorn-Khaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrungar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mazrûl-Dar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazdrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrimak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thramhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gornaz-Dûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khargrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zundrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrulbarak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khaz-Tharûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grondrûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brakkhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûrnaz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrazgul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuzdrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grimthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Morzhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thundrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuradûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Baldraz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zargûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazrûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drungar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ghazrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thramgûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brundaraz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khalzûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zorgrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durzhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gruthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrugrim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mazgul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throlgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zarnak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldraz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Graldrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thumrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brughal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dargûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazbul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrundar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gorzhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durazhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazmorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brûthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zhalgrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grukhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khaztor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durmorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruzdal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thargûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zundral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazdûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grûlbar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrumdar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dornhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khalgrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Branghul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throlmûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ghazrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durkhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brakthul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zorgrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thuldar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazgrim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drunhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mazrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thramdal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khaldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruldar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durthrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zarhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazmur" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrughal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Graldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dûrnthal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruzgrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazbal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thramhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gundrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zurnak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durmûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brûlnak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throlmûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grunthar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khalzor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thruzdal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruzrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gralthûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrumhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durzrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brundûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazthûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throlgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ghrundak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zarnûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazgul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durthûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brakdrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrugnar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khuldraz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grûndral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrumdar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durgrim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornhul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazgrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Throgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grûlmor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brugdal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durkhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazdral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrulgar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zundrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Graldrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brukhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durmal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khaztur" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thramzul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ghazdul" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bruldûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazgral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durzhal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrugdal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gruthûl" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brukthal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zorgrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Khazrûm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Durmûr" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thrumrak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grûndar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brugrûn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Brammertor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dornhammar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grimmfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmbollwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Balinshalle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutstein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenbronn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felshammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ebergrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kragendorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlquader" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzekamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergbart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thorngrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldquader" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartsturm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthalle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dornwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbersang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Axtburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlberg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Thorhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzbronn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runengrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzegrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dornkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisensporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runensang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzefels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzespitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steindom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmklang" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutwand" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerbruch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzkrone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlquell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzefurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbergrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenflamme" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzequell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bartflamme" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mithrilklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Erzbrücke" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Granitdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Helmgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzesporn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwarzthor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Runenquelle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhall" }, "tags": ["settlements"], "w": 1 }
       ]
     }
-  }
+  },
+  "recipes": [
+    {
+      "id": "procedural_template_0",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 1)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "building" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_1",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 2)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "literal": "halle der " },
+        { "select": { "from": "catalog", "key": "clan" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_2",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 3)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "stone" } },
+        { "select": { "from": "catalog", "key": "suffix" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_3",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 4)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "suffix" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_4",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 5)"
+      },
+      "pattern": [
+        { "literal": "Festung " },
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "building" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_5",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 6)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "stone" } },
+        { "literal": "halle" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_6",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 7)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "literal": "schmiede der " },
+        { "select": { "from": "catalog", "key": "clan" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_7",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 8)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "stone" } },
+        { "literal": "burg" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "procedural_template_8",
+      "displayName": {
+        "de": "Prozedural (Beta) (Template 9)"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "metal" } },
+        { "literal": "festung" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    }
+  ],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "de": "General"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "generals",
+      "labels": {
+        "de": "Generals"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
 }

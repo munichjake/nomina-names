@@ -1,0 +1,84 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Halblinge Titel",
+      "en": "Halblinge Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Hügelherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Feldgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Kesselbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Pfeifenritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Brotfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Weinmarkgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Wiesenhüter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hügeldame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Feldgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Kesselbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Pfeifendame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Brotfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Weinmarkgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Wiesenhüterin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Female"
+          },
+          "male": {
+            "de": "Male"
+          },
+          "nonbinary": {
+            "de": "Nonbinary"
+          },
+          "titles": {
+            "de": "Titles"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

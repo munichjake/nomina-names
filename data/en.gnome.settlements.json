@@ -1,26 +1,23 @@
-﻿{
-    "format":  "3.1.0",
-    "fileVersion":  "1.0.0",
-    "code":  "gnome",
-    "displayName":  {
-                        "de":  "Gnome",
-                        "en":  "Gnomes"
-                    },
-    "languages":  [
-                      "en"
-                  ],
-    "categories":  [
-                       "settlements"
-                   ],
-    "data":  {
-                 "settlements":  {
-                                     "displayName":  {
-                                                         "de":  "Siedlungen",
-                                                         "en":  "Settlements"
-                                                     },
-                                     "subcategories":  [
-
-                                                       ]
-                                 }
-             }
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "gnome-en",
+    "displayName": {
+      "de": "Gnome",
+      "en": "Gnomes"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {},
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  }
 }

@@ -1,1 +1,3445 @@
-﻿{"format":"3.1.0","fileVersion":"1.0.0","code":"aasimar","displayName":{"de":"Aasimar","en":"Aasimar"},"languages":["de"],"categories":["settlements"],"data":{"settlements":{"displayName":{"de":"Siedlungen","en":"Settlements"},"subcategories":[{"key":"general","displayName":{"de":"Allgemeine Siedlungen","en":"General Settlements"},"entries":{"de":[{"gender":"n","name":"Aetheria"},{"gender":"n","name":"Ambraheim"},{"gender":"n","name":"Amelias Ruh"},{"gender":"n","name":"Arcanopolis"},{"gender":"n","name":"Aurelis"},{"gender":"n","name":"Auroranest"},{"gender":"n","name":"Azurschild"},{"gender":"n","name":"Bethanien"},{"gender":"n","name":"Bogenstein"},{"gender":"n","name":"Candorburg"},{"gender":"n","name":"Celestia"},{"gender":"n","name":"Celedon"},{"gender":"n","name":"Chrysalis"},{"gender":"n","name":"Diamantenhort"},{"gender":"n","name":"Elysion"},{"gender":"n","name":"Erzengelwacht"},{"gender":"n","name":"Glanzheim"},{"gender":"n","name":"Himmelsblick"},{"gender":"n","name":"Irinor"},{"gender":"n","name":"Lichtfeste"},{"gender":"n","name":"Luminis"},{"gender":"n","name":"Marienhöhe"},{"gender":"n","name":"Seraphia"},{"gender":"n","name":"Silberhafen"},{"gender":"n","name":"Solara"},{"gender":"n","name":"Sternenruh"},{"gender":"n","name":"Tugendheim"},{"gender":"n","name":"Veritas"},{"gender":"n","name":"Weißwacht"},{"gender":"n","name":"Wohlmut"},{"gender":"n","name":"Alabasterfels"},{"gender":"n","name":"Arielshain"},{"gender":"n","name":"Aurorathal"},{"gender":"n","name":"Barmherzigkeit"},{"gender":"n","name":"Bernsteinklippen"},{"gender":"n","name":"Blütenfried"},{"gender":"n","name":"Celestea"},{"gender":"n","name":"Dämmerlicht"},{"gender":"n","name":"Drachenzahnpass"},{"gender":"n","name":"Ehrfurcht"},{"gender":"n","name":"Ewigblüte"},{"gender":"n","name":"Flügelheim"},{"gender":"n","name":"Freudenbach"},{"gender":"n","name":"Gabrielspforte"},{"gender":"n","name":"Gnadenhafen"},{"gender":"n","name":"Göttergabe"},{"gender":"n","name":"Himmelsstieg"},{"gender":"n","name":"Irisglanz"},{"gender":"n","name":"Jerichos Garten"},{"gender":"n","name":"Kerubenruh"},{"gender":"n","name":"Lichtspitze"},{"gender":"n","name":"Löwenherz"},{"gender":"n","name":"Morgenröte"},{"gender":"n","name":"Reinholdsruh"},{"gender":"n","name":"Serafenwacht"},{"gender":"n","name":"Sonnenburg"},{"gender":"n","name":"Sternenfest"},{"gender":"n","name":"Triumph"},{"gender":"n","name":"Wahrheit"},{"gender":"n","name":"Zionspass"},{"gender":"n","name":"Abendsonne"},{"gender":"n","name":"Adlerhorst"},{"gender":"n","name":"Andacht"},{"gender":"n","name":"Äthertal"},{"gender":"n","name":"Befreiung"},{"gender":"n","name":"Bleichmond"},{"gender":"n","name":"Castiels Ruh"},{"gender":"n","name":"Echohall"},{"gender":"n","name":"Edelsteinspitze"},{"gender":"n","name":"Engelsschritt"},{"gender":"n","name":"Friedenshain"},{"gender":"n","name":"Geduld"},{"gender":"n","name":"Glücksblick"},{"gender":"n","name":"Goldschweif"},{"gender":"n","name":"Heldenruh"},{"gender":"n","name":"Himmelsleiter"},{"gender":"n","name":"Jubiläum"},{"gender":"n","name":"Jupiterschild"},{"gender":"n","name":"Klosterglück"},{"gender":"n","name":"Lichtflut"},{"gender":"n","name":"Löwenpass"},{"gender":"n","name":"Meridian"},{"gender":"n","name":"Nathaniels Tor"},{"gender":"n","name":"Paradies"},{"gender":"n","name":"Priesterfeste"},{"gender":"n","name":"Ramiels Hort"},{"gender":"n","name":"Schildfeste"},{"gender":"n","name":"Seelenruhe"},{"gender":"n","name":"Seraphimshain"},{"gender":"n","name":"Silberschimmer"},{"gender":"n","name":"Sonnenborn"},{"gender":"n","name":"Stahlglanz"},{"gender":"n","name":"Tugendquell"},{"gender":"n","name":"Wachturm"},{"gender":"n","name":"Weißenfels"},{"gender":"n","name":"Abendruh"},{"gender":"n","name":"Adelbertshausen"},{"gender":"n","name":"Agnushain"},{"gender":"n","name":"Altheas Zorn"},{"gender":"n","name":"Aquilastadt"},{"gender":"n","name":"Azurlinie"},{"gender":"n","name":"Balthasarshain"},{"gender":"n","name":"Baruchshöhe"},{"gender":"n","name":"Cassiels Wacht"},{"gender":"n","name":"Clemensruhe"},{"gender":"n","name":"Dionysospass"},{"gender":"n","name":"Elisabeths Frieden"},{"gender":"n","name":"Elfenlichtung"},{"gender":"n","name":"Engelshaag"},{"gender":"n","name":"Freiheitsfeste"},{"gender":"n","name":"Friedensberg"},{"gender":"n","name":"Glorias Halle"},{"gender":"n","name":"Gotteshain"},{"gender":"n","name":"Götzenfall"},{"gender":"n","name":"Heiligtum"},{"gender":"n","name":"Irinor"},{"gender":"n","name":"Josiasthal"},{"gender":"n","name":"Jubiläum"},{"gender":"n","name":"Karlshafen"},{"gender":"n","name":"Lichtburg"},{"gender":"n","name":"Lykos"},{"gender":"n","name":"Mariental"},{"gender":"n","name":"Mondschein"},{"gender":"n","name":"Nahems Gnade"},{"gender":"n","name":"Opferstatt"},{"gender":"n","name":"Orionstor"},{"gender":"n","name":"Paradiestal"},{"gender":"n","name":"Phönixhain"},{"gender":"n","name":"Reinhardsbrunn"},{"gender":"n","name":"Sabaoth"},{"gender":"n","name":"Salomonshain"},{"gender":"n","name":"Serafinschild"},{"gender":"n","name":"Silberstrom"},{"gender":"n","name":"Sonnenburg"},{"gender":"n","name":"Sternenhort"},{"gender":"n","name":"Tugendtal"},{"gender":"n","name":"Vergebung"},{"gender":"n","name":"Weisheit"},{"gender":"n","name":"Wolfsblut"},{"gender":"n","name":"Zionsberg"},{"gender":"n","name":"Abelshöhe"},{"gender":"n","name":"Adalberta"},{"gender":"n","name":"Ahnenruh"},{"gender":"n","name":"Altheas Weide"},{"gender":"n","name":"Arielhorst"},{"gender":"n","name":"Auroranest"},{"gender":"n","name":"Auserwählt"},{"gender":"n","name":"Barak"},{"gender":"n","name":"Celestia"},{"gender":"n","name":"Clemenshafen"},{"gender":"n","name":"Dornenpass"},{"gender":"n","name":"Edelsteinburg"},{"gender":"n","name":"Einheit"},{"gender":"n","name":"Engelskrone"},{"gender":"n","name":"Erdenruh"},{"gender":"n","name":"Erlösung"},{"gender":"n","name":"Friedensfeste"},{"gender":"n","name":"Gabrielshöhe"},{"gender":"n","name":"Götterpforte"},{"gender":"n","name":"Heiligtum"},{"gender":"n","name":"Hoffnungsquell"},{"gender":"n","name":"Himmelsruh"},{"gender":"n","name":"Jeremia"},{"gender":"n","name":"Jubiläum"},{"gender":"n","name":"Karlstal"},{"gender":"n","name":"Lichtschanze"},{"gender":"n","name":"Löwenschwanz"},{"gender":"n","name":"Magdalenenruh"},{"gender":"n","name":"Meridian"},{"gender":"n","name":"Morwental"},{"gender":"n","name":"Mut"},{"gender":"n","name":"Nathanaelsruh"},{"gender":"n","name":"Opfertal"},{"gender":"n","name":"Orionswacht"},{"gender":"n","name":"Pazifikus"},{"gender":"n","name":"Phönixtal"},{"gender":"n","name":"Reinholdsruhe"},{"gender":"n","name":"Sabinas Hain"},{"gender":"n","name":"Salomonsruh"},{"gender":"n","name":"Serafimsruhe"},{"gender":"n","name":"Silberbach"},{"gender":"n","name":"Sol"},{"gender":"n","name":"Stefansdorf"},{"gender":"n","name":"Tugendburg"},{"gender":"n","name":"Urielspass"},{"gender":"n","name":"Veitshöhle"},{"gender":"n","name":"Weisheit"},{"gender":"n","name":"Wohlfahrt"},{"gender":"n","name":"Zion"},{"gender":"n","name":"Abarim"},{"gender":"n","name":"Abendburg"},{"gender":"n","name":"Adelbertshausen"},{"gender":"n","name":"Agnusburg"},{"gender":"n","name":"Alabastersee"},{"gender":"n","name":"Ametis"},{"gender":"n","name":"Andachtsruh"},{"gender":"n","name":"Arcturuspass"},{"gender":"n","name":"Arkadiens Ruh"},{"gender":"n","name":"Athelstadt"},{"gender":"n","name":"Auroraquell"},{"gender":"n","name":"Bärenpass"},{"gender":"n","name":"Belisars Ruhe"},{"gender":"n","name":"Bernsteinwacht"},{"gender":"n","name":"Bethanienhain"},{"gender":"n","name":"Blütenklippe"},{"gender":"n","name":"Briciuspass"},{"gender":"n","name":"Celadon"},{"gender":"n","name":"Cybele"},{"gender":"n","name":"Dämmerlichtung"},{"gender":"n","name":"Damon"},{"gender":"n","name":"Dankbarkeit"},{"gender":"n","name":"Dorianstadt"},{"gender":"n","name":"Drachenhort"},{"gender":"n","name":"Eberstein"},{"gender":"n","name":"Edelsteinquell"},{"gender":"n","name":"Elias\u0027 Hort"},{"gender":"n","name":"Elfenlichtung"},{"gender":"n","name":"Engelsklippe"},{"gender":"n","name":"Erzengelsruh"},{"gender":"n","name":"Ewiglicht"},{"gender":"n","name":"Friedensborn"},{"gender":"n","name":"Friedensburg"},{"gender":"n","name":"Gnade"},{"gender":"n","name":"Gottesfeste"},{"gender":"n","name":"Götterhain"},{"gender":"n","name":"Harmonia"},{"gender":"n","name":"Heiliger Grund"},{"gender":"n","name":"Heldenstein"},{"gender":"n","name":"Himmelshöhle"},{"gender":"n","name":"Hoffnungslicht"},{"gender":"n","name":"Ikarus"},{"gender":"n","name":"Irenaeus"},{"gender":"n","name":"Isoldenruh"},{"gender":"n","name":"Jeremiahafen"},{"gender":"n","name":"Juliusburg"},{"gender":"n","name":"Jupitersruhe"},{"gender":"n","name":"Kaelen"},{"gender":"n","name":"Katharinenruh"},{"gender":"n","name":"Klosterburg"},{"gender":"n","name":"Korallenpass"},{"gender":"n","name":"Lichtschanze"},{"gender":"n","name":"Lorien"},{"gender":"n","name":"Löwenherz"},{"gender":"n","name":"Lukastor"},{"gender":"n","name":"Luminis"},{"gender":"n","name":"Marcellus"},{"gender":"n","name":"Marienfels"},{"gender":"n","name":"Meridianthal"},{"gender":"n","name":"Mikaels Hort"},{"gender":"n","name":"Minerva"},{"gender":"n","name":"Morgenruh"},{"gender":"n","name":"Morwental"},{"gender":"n","name":"Nathanaels Feste"},{"gender":"n","name":"Niklaspass"},{"gender":"n","name":"Odelsdorf"},{"gender":"n","name":"Opferschale"},{"gender":"n","name":"Orions Pass"},{"gender":"n","name":"Pazifikus"},{"gender":"n","name":"Philemon"},{"gender":"n","name":"Quirinus"},{"gender":"n","name":"Rafaelsturm"},{"gender":"n","name":"Regenbogenpass"},{"gender":"n","name":"Reinholdsbrunn"},{"gender":"n","name":"Rittersruh"},{"gender":"n","name":"Sabinas Hafen"},{"gender":"n","name":"Sachiels Halle"},{"gender":"n","name":"Salomos Garten"},{"gender":"n","name":"Serafenpass"},{"gender":"n","name":"Serenitas"},{"gender":"n","name":"Silberwald"},{"gender":"n","name":"Sion"},{"gender":"n","name":"Solana"},{"gender":"n","name":"Sonnenfels"},{"gender":"n","name":"Stahlglanz"},{"gender":"n","name":"Sternenbrücke"},{"gender":"n","name":"Strahlborn"},{"gender":"n","name":"Tugendquell"},{"gender":"n","name":"Urielstor"},{"gender":"n","name":"Valeriusruh"},{"gender":"n","name":"Vergebung"},{"gender":"n","name":"Viridien"},{"gender":"n","name":"Weisheitsquell"},{"gender":"n","name":"Wohlfahrt"},{"gender":"n","name":"Wolfsschild"},{"gender":"n","name":"Yoriels Tor"},{"gender":"n","name":"Zachariaspass"},{"gender":"n","name":"Zadkiels Wacht"},{"gender":"n","name":"Zarinas Feste"},{"gender":"n","name":"Zikiels Ruh"},{"gender":"n","name":"Zurielswacht"},{"gender":"n","name":"Abelstal"},{"gender":"n","name":"Alabasterpass"},{"gender":"n","name":"Ambraquell"},{"gender":"n","name":"Ameliepass"},{"gender":"n","name":"Anastasia"},{"gender":"n","name":"Angelus"},{"gender":"n","name":"Arkanus"},{"gender":"n","name":"Arktis"},{"gender":"n","name":"Asherah"},{"gender":"n","name":"Athenäum"},{"gender":"n","name":"Aurea"},{"gender":"n","name":"Auroranest"},{"gender":"n","name":"Azurschiff"},{"gender":"n","name":"Balthasarshain"},{"gender":"n","name":"Baruch"},{"gender":"n","name":"Bendikt"},{"gender":"n","name":"Bernsteinfels"},{"gender":"n","name":"Blütenhain"},{"gender":"n","name":"Cassiopeia"},{"gender":"n","name":"Celestia"},{"gender":"n","name":"Chrysalis"},{"gender":"n","name":"Clemensstein"},{"gender":"n","name":"Dämmerlicht"},{"gender":"n","name":"Diamantenhort"},{"gender":"n","name":"Dionysos"},{"gender":"n","name":"Drachenschild"},{"gender":"n","name":"Eliasheim"},{"gender":"n","name":"Elfenfels"},{"gender":"n","name":"Engelsbrunn"},{"gender":"n","name":"Erzengelstadt"},{"gender":"n","name":"Ewiglicht"},{"gender":"n","name":"Friedenspass"},{"gender":"n","name":"Gabrielshain"},{"gender":"n","name":"Gottesfried"},{"gender":"n","name":"Gnadenfels"},{"gender":"n","name":"Halbmondpass"},{"gender":"n","name":"Harmonie"},{"gender":"n","name":"Heldenburg"},{"gender":"n","name":"Himmelsspitze"},{"gender":"n","name":"Hoffnungshafen"},{"gender":"n","name":"Idyll"},{"gender":"n","name":"Jubiläum"},{"gender":"n","name":"Justitia"},{"gender":"n","name":"Kaelis"},{"gender":"n","name":"Karlsfort"},{"gender":"n","name":"Königshof"},{"gender":"n","name":"Kristallquell"},{"gender":"n","name":"Lichtbrücke"},{"gender":"n","name":"Lorian"},{"gender":"n","name":"Löwenschwanz"},{"gender":"n","name":"Lucius"},{"gender":"n","name":"Maranatha"},{"gender":"n","name":"Mariental"},{"gender":"n","name":"Meridian"},{"gender":"n","name":"Michaelsruh"},{"gender":"n","name":"Mondschein"},{"gender":"n","name":"Morgenröte"},{"gender":"n","name":"Mut"},{"gender":"n","name":"Nahems Gnade"},{"gender":"n","name":"Neustadt"},{"gender":"n","name":"Nikolauspass"},{"gender":"n","name":"Oase"},{"gender":"n","name":"Odinsruhe"},{"gender":"n","name":"Opferschale"},{"gender":"n","name":"Orionstor"},{"gender":"n","name":"Pazifikus"},{"gender":"n","name":"Philemon"},{"gender":"n","name":"Quirin"},{"gender":"n","name":"Ramiels Hort"},{"gender":"n","name":"Reinholdsbrunn"},{"gender":"n","name":"Rubinpass"},{"gender":"n","name":"Sabinas Hain"},{"gender":"n","name":"Salomon"},{"gender":"n","name":"Saphirsee"},{"gender":"n","name":"Serafenwacht"},{"gender":"n","name":"Silberhafen"},{"gender":"n","name":"Smaragdwald"},{"gender":"n","name":"Sonnenburg"},{"gender":"n","name":"Strahlendorf"},{"gender":"n","name":"Tugendhain"},{"gender":"n","name":"Urielshausen"},{"gender":"n","name":"Valerius"},{"gender":"n","name":"Vergebung"},{"gender":"n","name":"Wahrheit"},{"gender":"n","name":"Weisheit"},{"gender":"n","name":"Wohlfahrt"},{"gender":"n","name":"Wolfsblut"},{"gender":"n","name":"Yoriels Tor"},{"gender":"n","name":"Zacharias"},{"gender":"n","name":"Zadkiel"},{"gender":"n","name":"Zarinas Feste"},{"gender":"n","name":"Zikiels Ruh"},{"gender":"n","name":"Zurielswacht"},{"gender":"n","name":"Abelshal"},{"gender":"n","name":"Abendruh"},{"gender":"n","name":"Adalbert"},{"gender":"n","name":"Agnusburg"},{"gender":"n","name":"Alabasterfels"},{"gender":"n","name":"Ambrahain"},{"gender":"n","name":"Amelias Ruh"},{"gender":"n","name":"Anastasia"},{"gender":"n","name":"Angelus"},{"gender":"n","name":"Arel"},{"gender":"n","name":"Astra"},{"gender":"n","name":"Athenäum"},{"gender":"n","name":"Aurelia"},{"gender":"n","name":"Aurora"},{"gender":"n","name":"Azurschild"},{"gender":"n","name":"Balthasarsruh"},{"gender":"n","name":"Baruch"},{"gender":"n","name":"Benedicta"},{"gender":"n","name":"Bernsteintor"},{"gender":"n","name":"Blütental"},{"gender":"n","name":"Cassiels Wacht"},{"gender":"n","name":"Celestia"},{"gender":"n","name":"Chrysalis"},{"gender":"n","name":"Clemens"},{"gender":"n","name":"Dämmerlicht"},{"gender":"n","name":"Diamantenhorst"},{"gender":"n","name":"Dionysus"},{"gender":"n","name":"Drachenwacht"},{"gender":"n","name":"Elisabeth"},{"gender":"n","name":"Elfenlicht"},{"gender":"n","name":"Engelsruh"},{"gender":"n","name":"Erzengelwacht"},{"gender":"n","name":"Ewiglicht"},{"gender":"n","name":"Friedensborn"},{"gender":"n","name":"Gabrielshöhe"},{"gender":"n","name":"Gottesfrieden"},{"gender":"n","name":"Gnadenhafen"},{"gender":"n","name":"Harmonia"},{"gender":"n","name":"Heiligtum"},{"gender":"n","name":"Heldenruh"},{"gender":"n","name":"Himmelsstieg"},{"gender":"n","name":"Hoffnungsquell"},{"gender":"n","name":"Idyll"},{"gender":"n","name":"Jubiläum"},{"gender":"n","name":"Justitia"},{"gender":"n","name":"Kael"},{"gender":"n","name":"Karlsburg"},{"gender":"n","name":"Königstal"},{"gender":"n","name":"Kristallsee"},{"gender":"n","name":"Lichtburg"},{"gender":"n","name":"Lorian"},{"gender":"n","name":"Löwenschwanz"},{"gender":"n","name":"Lucius"},{"gender":"n","name":"Maranatha"},{"gender":"n","name":"Mariental"},{"gender":"n","name":"Meridian"},{"gender":"n","name":"Michaelsruh"},{"gender":"n","name":"Mondschein"},{"gender":"n","name":"Morgenröte"},{"gender":"n","name":"Mut"},{"gender":"n","name":"Nahems Gnade"},{"gender":"n","name":"Neustadt"},{"gender":"n","name":"Nikolauspass"},{"gender":"n","name":"Oase"},{"gender":"n","name":"Odinsruhe"},{"gender":"n","name":"Opferschale"},{"gender":"n","name":"Orionstor"},{"gender":"n","name":"Pazifikus"},{"gender":"n","name":"Philemon"},{"gender":"n","name":"Quirin"},{"gender":"n","name":"Ramiels Hort"},{"gender":"n","name":"Reinholdsbrunn"},{"gender":"n","name":"Rubinpass"},{"gender":"n","name":"Sabinas Hain"},{"gender":"n","name":"Salomon"},{"gender":"n","name":"Saphirsee"},{"gender":"n","name":"Serafenwacht"},{"gender":"n","name":"Silberhafen"},{"gender":"n","name":"Smaragdwald"},{"gender":"n","name":"Sonnenburg"},{"gender":"n","name":"Strahlendorf"},{"gender":"n","name":"Tugendhain"},{"gender":"n","name":"Urielshausen"},{"gender":"n","name":"Valerius"},{"gender":"n","name":"Vergebung"},{"gender":"n","name":"Wahrheit"},{"gender":"n","name":"Weisheit"},{"gender":"n","name":"Wohlfahrt"},{"gender":"n","name":"Wolfsblut"},{"gender":"n","name":"Yoriels Tor"},{"gender":"n","name":"Zacharias"},{"gender":"n","name":"Zadkiel"},{"gender":"n","name":"Zarinas Feste"},{"gender":"n","name":"Zikiels Ruh"},{"gender":"n","name":"Zurielswacht"}]}}]}}}
+﻿{
+  "format": "4.0.0",
+  "package": {
+    "code": "aasimar-de",
+    "displayName": {
+      "de": "Aasimar",
+      "en": "Aasimar"
+    },
+    "languages": ["de"],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "Allgemeine Siedlungen",
+        "en": "General Settlements"
+      },
+      "items": [
+        {
+          "t": {
+            "de": "Aetheria"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ambraheim"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Amelias Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arcanopolis"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aurelis"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Auroranest"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Azurschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bethanien"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bogenstein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Candorburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celestia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celedon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Chrysalis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Diamantenhort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elysion"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erzengelwacht"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Glanzheim"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsblick"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Irinor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Luminis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Marienhöhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Seraphia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberhafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Solara"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sternenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendheim"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Veritas"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weißwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wohlmut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Alabasterfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arielshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aurorathal"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Barmherzigkeit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bernsteinklippen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Blütenfried"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celestea"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dämmerlicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Drachenzahnpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ehrfurcht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ewigblüte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Flügelheim"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Freudenbach"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gabrielspforte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gnadenhafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Göttergabe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsstieg"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Irisglanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jerichos Garten"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kerubenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtspitze"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenherz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morgenröte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinholdsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafenwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sternenfest"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Triumph"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wahrheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zionspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abendsonne"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Adlerhorst"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Andacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Äthertal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Befreiung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bleichmond"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Castiels Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Echohall"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Edelsteinspitze"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelsschritt"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedenshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Geduld"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Glücksblick"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Goldschweif"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heldenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsleiter"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jubiläum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jupiterschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Klosterglück"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtflut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Meridian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nathaniels Tor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Paradies"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Priesterfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ramiels Hort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Schildfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Seelenruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Seraphimshain"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberschimmer"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenborn"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Stahlglanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wachturm"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weißenfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abendruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Adelbertshausen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Agnushain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Altheas Zorn"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aquilastadt"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Azurlinie"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Balthasarshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Baruchshöhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Cassiels Wacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Clemensruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dionysospass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elisabeths Frieden"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elfenlichtung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelshaag"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Freiheitsfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedensberg"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Glorias Halle"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gotteshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Götzenfall"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heiligtum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Irinor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Josiasthal"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jubiläum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Karlshafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lykos"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mariental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mondschein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nahems Gnade"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Opferstatt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Orionstor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Paradiestal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Phönixhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinhardsbrunn"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sabaoth"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Salomonshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafinschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberstrom"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sternenhort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendtal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Vergebung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weisheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wolfsblut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zionsberg"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abelshöhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Adalberta"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ahnenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Altheas Weide"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arielhorst"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Auroranest"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Auserwählt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Barak"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celestia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Clemenshafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dornenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Edelsteinburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Einheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelskrone"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erdenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erlösung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedensfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gabrielshöhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Götterpforte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heiligtum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Hoffnungsquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jeremia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jubiläum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Karlstal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtschanze"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenschwanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Magdalenenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Meridian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morwental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nathanaelsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Opfertal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Orionswacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Pazifikus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Phönixtal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinholdsruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sabinas Hain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Salomonsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafimsruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberbach"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sol"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Stefansdorf"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Urielspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Veitshöhle"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weisheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wohlfahrt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zion"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abarim"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abendburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Adelbertshausen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Agnusburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Alabastersee"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ametis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Andachtsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arcturuspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arkadiens Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Athelstadt"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Auroraquell"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bärenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Belisars Ruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bernsteinwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bethanienhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Blütenklippe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Briciuspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celadon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Cybele"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dämmerlichtung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Damon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dankbarkeit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dorianstadt"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Drachenhort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Eberstein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Edelsteinquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elias' Hort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elfenlichtung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelsklippe"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erzengelsruh"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ewiglicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedensborn"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedensburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gnade"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gottesfeste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Götterhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Harmonia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heiliger Grund"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heldenstein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelshöhle"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Hoffnungslicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ikarus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Irenaeus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Isoldenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jeremiahafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Juliusburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jupitersruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kaelen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Katharinenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Klosterburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Korallenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtschanze"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lorien"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenherz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lukastor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Luminis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Marcellus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Marienfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Meridianthal"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mikaels Hort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Minerva"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morgenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morwental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nathanaels Feste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Niklaspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Odelsdorf"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Opferschale"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Orions Pass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Pazifikus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Philemon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Quirinus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Rafaelsturm"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Regenbogenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinholdsbrunn"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Rittersruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sabinas Hafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sachiels Halle"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Salomos Garten"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafenpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serenitas"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberwald"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sion"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Solana"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Stahlglanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sternenbrücke"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Strahlborn"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Urielstor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Valeriusruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Vergebung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Viridien"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weisheitsquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wohlfahrt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wolfsschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Yoriels Tor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zachariaspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zadkiels Wacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zarinas Feste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zikiels Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zurielswacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abelstal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Alabasterpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ambraquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ameliepass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Anastasia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Angelus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arkanus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arktis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Asherah"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Athenäum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aurea"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Auroranest"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Azurschiff"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Balthasarshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Baruch"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bendikt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bernsteinfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Blütenhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Cassiopeia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celestia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Chrysalis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Clemensstein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dämmerlicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Diamantenhort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dionysos"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Drachenschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Eliasheim"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elfenfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelsbrunn"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erzengelstadt"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ewiglicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedenspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gabrielshain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gottesfried"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gnadenfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Halbmondpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Harmonie"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heldenburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsspitze"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Hoffnungshafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Idyll"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jubiläum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Justitia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kaelis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Karlsfort"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Königshof"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kristallquell"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtbrücke"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lorian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenschwanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lucius"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Maranatha"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mariental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Meridian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Michaelsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mondschein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morgenröte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nahems Gnade"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Neustadt"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nikolauspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Oase"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Odinsruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Opferschale"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Orionstor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Pazifikus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Philemon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Quirin"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ramiels Hort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinholdsbrunn"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Rubinpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sabinas Hain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Salomon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Saphirsee"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafenwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberhafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Smaragdwald"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Strahlendorf"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Urielshausen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Valerius"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Vergebung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wahrheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weisheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wohlfahrt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wolfsblut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Yoriels Tor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zacharias"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zadkiel"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zarinas Feste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zikiels Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zurielswacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abelshal"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Abendruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Adalbert"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Agnusburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Alabasterfels"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ambrahain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Amelias Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Anastasia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Angelus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Arel"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Astra"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Athenäum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aurelia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Aurora"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Azurschild"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Balthasarsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Baruch"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Benedicta"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Bernsteintor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Blütental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Cassiels Wacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Celestia"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Chrysalis"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Clemens"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dämmerlicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Diamantenhorst"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Dionysus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Drachenwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elisabeth"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Elfenlicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Engelsruh"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Erzengelwacht"
+          },
+          "tags": ["empyreum"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ewiglicht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Friedensborn"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gabrielshöhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gottesfrieden"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Gnadenhafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Harmonia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heiligtum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Heldenruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Himmelsstieg"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Hoffnungsquell"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Idyll"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Jubiläum"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Justitia"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kael"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Karlsburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Königstal"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Kristallsee"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lichtburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lorian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Löwenschwanz"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Lucius"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Maranatha"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mariental"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Meridian"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Michaelsruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mondschein"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Morgenröte"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Mut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nahems Gnade"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Neustadt"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Nikolauspass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Oase"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Odinsruhe"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Opferschale"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Orionstor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Pazifikus"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Philemon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Quirin"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Ramiels Hort"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Reinholdsbrunn"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Rubinpass"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sabinas Hain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Salomon"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Saphirsee"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Serafenwacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Silberhafen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Smaragdwald"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Sonnenburg"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Strahlendorf"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Tugendhain"
+          },
+          "tags": ["glanzhort"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Urielshausen"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Valerius"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Vergebung"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wahrheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Weisheit"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wohlfahrt"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Wolfsblut"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Yoriels Tor"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zacharias"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zadkiel"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zarinas Feste"
+          },
+          "tags": ["light_city"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zikiels Ruh"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        },
+        {
+          "t": {
+            "de": "Zurielswacht"
+          },
+          "tags": ["sanctuary"],
+          "w": 1
+        }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": ["TrimSpaces", "CollapseSpaces"],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "sanctuary": {
+            "de": "Heiligtum",
+            "en": "Sanctuary"
+          },
+          "glanzhort": {
+            "de": "Glanzhort",
+            "en": "Radiant Haven"
+          },
+          "light_city": {
+            "de": "Lichtstadt",
+            "en": "Light City"
+          },
+          "empyreum": {
+            "de": "Empyreum",
+            "en": "Empyreum"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "sanctuaries",
+      "labels": {
+        "de": "Heiligtümer"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": ["sanctuary"]
+      }
+    },
+    {
+      "key": "glanzhorte",
+      "labels": {
+        "de": "Glanzhorte"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": ["glanzhort"]
+      }
+    },
+    {
+      "key": "light_cities",
+      "labels": {
+        "de": "Lichtstädte"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": ["light_city"]
+      }
+    },
+    {
+      "key": "empyrea",
+      "labels": {
+        "de": "Empyrea"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": ["empyreum"]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
