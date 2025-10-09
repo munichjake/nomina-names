@@ -176,11 +176,11 @@
   transition: background-color 0.1s;
 }
 
-.history-entry.copied .name-text,
+.history-entry.copied .history-name-text,
 .history-entry.copied .species-badge,
 .history-entry.copied .category-badge,
 .history-entry.copied .subcategory-badge,
-.history-entry.copied .time-text {
+.history-entry.copied .history-time-text {
   color: white !important;
 }
 
@@ -190,7 +190,7 @@
   font-size: 12px;
 }
 
-.history-entry > * > .name-text {
+.history-name-text {
   font-size: 14px;
   font-weight: normal;
   color: #eee;

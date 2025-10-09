@@ -1,0 +1,84 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Elfen Titel",
+      "en": "Elfen Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Blütenfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hainherzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Mondbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Waldritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Sternfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Silbermarkgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Lichtweber" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Blütenfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Hainherzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Mondbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Walddame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Sternfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "SilbermarkgräFin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Lichtweberin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Weiblich"
+          },
+          "male": {
+            "de": "Männlich"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          },
+          "titles": {
+            "de": "Adelstitel"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

@@ -1,3308 +1,881 @@
-﻿{
-    "format": "3.1.0",
-    "fileVersion": "1.0.0",
-    "code": "gnome",
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "gnome-de",
     "displayName": {
-        "de": "Gnome",
-        "en": "Gnomes"
+      "de": "Gnome",
+      "en": "Gnomes"
     },
     "languages": [
-        "de"
+      "de"
     ],
-    "categories": [
-        "settlements"
-    ],
-    "data": {
-        "settlements": {
-            "displayName": {
-                "de": "Siedlungen",
-                "en": "Settlements"
-            },
-            "subcategories": [
-                {
-                    "key": "settlements",
-                    "displayName": {
-                        "de": "settlements",
-                        "en": "settlements"
-                    },
-                    "entries": {
-                        "de": [
-                            {
-                                "name": "Hammerstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Werkschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusshof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Federhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bolzenwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingehügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kieselschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kesselhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bolzenkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlewerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steingraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kohletor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingespitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bolzenort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steintal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlegraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlekliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängewerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechtal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Goldpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kupferbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Klingehammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingefurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschefeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusspfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampffeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Eisenhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusshügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Höhlenstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Klingegraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Goldmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsendorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silbersee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steintor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Waldhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Werktor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschegrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zahnpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohledorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlengrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silbergrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Waldsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzeau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zunderhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Gussdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kohlehofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlehammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlehain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kupferhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupfermark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steingrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gluthofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammersee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlemark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleiffelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunneltor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Silberschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuersee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsentor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzeldorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Klingefeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarztal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschetal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Zahnschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gussklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlebrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschehain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bolzensee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlestadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bohrfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusspfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bronzetal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Mechmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Klingeschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschestadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Tunnelstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Steinhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zahnhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kieselfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kupferspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzeltal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Gluthain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Tunnelhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Rädermark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupfersee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Glutspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zundergraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingemark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängeschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzehügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Klingeklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlehube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusskessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Rädergraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunneldorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängehamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Meiselbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzehof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleiffurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschekliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlefeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzehafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubensee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Radtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingetor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzebrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bronzehain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bergtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kieselklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlentor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gluthammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahntal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingewerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusshausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuergrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinntor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzeort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusskliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzetor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Mechburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Flussgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschefurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlepfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zahnradburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bergfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Glutwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzendorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängeschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Rädergrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Felsenau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kieselmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Schleiffeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Felsenkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängeort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahldorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingegrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisengrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gussheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Berghausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubentor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsengrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Flussheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingeschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Silberburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Feuerhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zahnradklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschemark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gussfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schraubklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschehafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Hammergrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusshof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gussgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Klingeheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupfergraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Zinnwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silbertor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kohlesee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Berghofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingefelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schraubhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohlefelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Waldschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinngrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubtal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusshügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Meiselspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Berghammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bohrschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kesseltor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusshafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Gussweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Feuerkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängemark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kristallgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzefeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingepfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Rädersee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Hammerwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzedorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gluthamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silbergraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Quarzburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schleifklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Quarzspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingekliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusswerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammertal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Eisenkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängefurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängegrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängebrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängehofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzemark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radtal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Dampfkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzengraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Grubenkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieseltal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingeweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingehofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsengraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldtor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsental",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisental",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügeldorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusskliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschehamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingehafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleiftor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Berggrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuermark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zundertal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingehausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bolzenhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Raddorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängegraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Glutklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzeheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiseltor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzegraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kesselfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifhafen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisendorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Tunnelgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Berggraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Gussgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsensee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Meiselgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Klingeburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zinnschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gluthügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Eisenklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Kupferhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahngrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisentor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldtal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuertor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hügelmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlengrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gluthube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Silberhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Höhlenhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Grubenbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Grubengrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Räderkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängekessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlheim",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Klingestadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schraubhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Funkenklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängeklamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Eisenhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzehammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Golddorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschekessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängeklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzfelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gusswerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzepfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampffelsen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusstal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammerhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Dampfau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Funkenburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Quarzhamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flusshamm",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Steinbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Berghügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Flusskessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bolzenhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Schraubklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselhofen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bergpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Höhlenweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schleifhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kieselgraben",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfdorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kupferschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschedorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkkliff",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Dampfgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradkessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bolzenhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Bohrhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunneltal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Schraubweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Räderstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schraubburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Aschehammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Schleifgrund",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Klingekessel",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnmark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zunderstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bronzespitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Stahlort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bronzeschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängetal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammermark",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Feuerhügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Mechort",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Zahnfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Tunnelwerk",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Gängesee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Aschehügel",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Zunderhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Hammertor",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubendorf",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Grubenfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Federweg",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zinnau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Bohrtal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Flussschacht",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Goldstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Klingehain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kohleburg",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Goldau",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Feuerhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Bohrhammer",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Radhof",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ritzelfeld",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Quarzgrube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Felsenbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldhube",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Ascheschmiede",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Zahnradsee",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Werkspitze",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gängestadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Ritzelklippe",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kohletal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Gussfurt",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldbrück",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Mechpfad",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Meiselhausen",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Waldhain",
-                                "gender": "m"
-                            },
-                            {
-                                "name": "Kesseltal",
-                                "gender": "n"
-                            },
-                            {
-                                "name": "Kristallstadt",
-                                "gender": "f"
-                            },
-                            {
-                                "name": "Räderschmiede",
-                                "gender": "n"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "settlements",
+        "en": "settlements"
+      },
+      "items": [
+        { "t": { "de": "Hammerstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusshof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlewerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steingraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohletor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingespitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steintal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlegraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlekliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängewerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingefurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschefeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusspfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampffeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusshügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingegraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsendorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbersee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steintor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werktor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschegrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohledorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlengrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzeau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlehofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlehammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlehain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steingrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammersee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlemark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleiffelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunneltor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuersee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzeldorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingefeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarztal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschetal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlebrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschehain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzensee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlestadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusspfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzetal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschestadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzeltal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rädermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfersee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zundergraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingemark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängeschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlehube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusskessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rädergraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunneldorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängehamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleiffurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschekliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlefeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubensee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingetor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzebrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahntal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingewerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusshausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuergrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinntor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzeort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusskliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzetor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschefurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlepfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzendorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängeschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rädergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleiffeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängeort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahldorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingegrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisengrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berghausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsengrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschemark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschehafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammergrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusshof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfergraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbertor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlesee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berghofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingefelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohlefelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinngrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusshügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berghammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesseltor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusshafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängemark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzefeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingepfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rädersee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzedorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silbergraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingekliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusswerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammertal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängefurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängegrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängebrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängehofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzemark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzengraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieseltal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsengraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldtor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsental" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisental" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügeldorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusskliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschehamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleiftor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berggrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zundertal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Raddorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängegraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Glutklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzeheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiseltor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzegraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifhafen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisendorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berggraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsensee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingeburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahngrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisentor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuertor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlengrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gluthube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubengrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängekessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlheim" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingestadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängeklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzehammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Golddorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschekessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängeklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzfelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gusswerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzepfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampffelsen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusstal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammerhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Funkenburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzhamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusshamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Berghügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flusskessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselhofen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bergpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Höhlenweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kieselgraben" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfdorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschedorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkkliff" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Dampfgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bolzenhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunneltal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schraubburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschehammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schleifgrund" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingekessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzespitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzeschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängetal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammermark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Tunnelwerk" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängesee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschehügel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zunderhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hammertor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubendorf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grubenfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Federweg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zinnau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flussschacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Klingehain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohleburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Feuerhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bohrhammer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Radhof" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelfeld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Quarzgrube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsenbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhube" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ascheschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahnradsee" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Werkspitze" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gängestadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Ritzelklippe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kohletal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gussfurt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldbrück" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mechpfad" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meiselhausen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Waldhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesseltal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kristallstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Räderschmiede" }, "tags": ["settlements"], "w": 1 }
+      ]
     }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "de": "Settlements"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "settlements",
+      "labels": {
+        "de": "Settlements"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
 }

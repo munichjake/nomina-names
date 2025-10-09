@@ -1,0 +1,129 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "human-de",
+    "displayName": {
+      "de": "Menschen"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Lian" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kim" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Jan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Chris" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Pat" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lou" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Jule" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nico" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Toni" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rene" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mel" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Flo" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Jo" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Maxi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Dani" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sasha" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mika" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Noa" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Luca" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Juna" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lynn" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kira" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ari" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Finne" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Emmi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Andi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Franzi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Manu" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Olli" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lexi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nicki" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Alex" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sam" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Robin" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kai" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Eli" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ira" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Jani" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kalle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Cleo" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Doro" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Gero" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Hajo" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kess" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lasse" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nuri" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Pepe" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ravi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Simi" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tilo" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Uri" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vali" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Yuki" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zuri" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Bente" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Curve" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Devin" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Jess" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ulli" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mica" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Roan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sage" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vale" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "firstnames": {
+            "de": "Firstnames"
+          },
+          "nonbinary": {
+            "de": "Nonbinary"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "firstnames",
+          "nonbinary"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

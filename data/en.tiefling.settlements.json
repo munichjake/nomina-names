@@ -1,836 +1,163 @@
 {
-    "format": "3.1.0",
-    "fileVersion": "1.0.0",
-    "code": "tiefling",
+  "format": "4.0.0",
+  "package": {
+    "code": "tiefling-en",
     "displayName": {
-        "de": "Tieflinge",
-        "en": "Tieflings"
+      "de": "Tieflinge",
+      "en": "Tieflings"
     },
     "languages": [
-        "en"
+      "en"
     ],
-    "categories": [
-        "settlements"
-    ],
-    "data": {
-        "settlements": {
-            "displayName": {
-                "de": "Siedlungen",
-                "en": "Settlements"
-            },
-            "subcategories": [
-                {
-                    "key": "general",
-                    "displayName": {
-                        "de": "Allgemeine Siedlungen & Städte",
-                        "en": "General Settlements"
-                    },
-                    "entries": {
-                        "en": [
-                            {
-                                "name": "Brimstone Quay",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "coastal",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ashen Crossroads",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Cindersong",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Obsidian Market",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Emberfall",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Flameward",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gloambridge",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Nightember",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Iron Halo",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Pacthaven",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Red Coil",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Emberreach",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sootfen",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Gallows Lantern",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Smokeward Docks",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "coastal",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Coalspire Heights",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hellbloom Terrace",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Scoria Vale",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gloamroot",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Brazen Court",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Styxford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ninefires Causey",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Basalt Bastion",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "mountain",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Ashenvein",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Char Harbor",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "coastal",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Pactmaker’s Row",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Sable Crucible",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Infernal Stairs",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ashenmere",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Bloodsalt Wharf",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "coastal",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cinderwheel",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Umbral Gate",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sootcrown",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Devil’s Bargain",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Emberglass",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Pitchfork Downs",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Coal-and-Copper",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Redsmoke Ward",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gloamspire",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Warrens of the Brand",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Kindlefast",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Pactforge",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Sablemarsh",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Burnt Penny Market",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Mire of Oaths",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Smokeveil",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Charcoal Court",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Helltide Causeway",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "coastal",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ashen Banner",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Brazierside",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Stain of Night",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Emberholt",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gulch of Embers",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Red Sigil",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Glowfen",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Coalglass",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Vexbridge",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cinderhold Fast",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Duskweld",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "The Black Ledger",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Oathwick",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Hearth of Chains",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Scarlet Ward",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Blazebank",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gloamwater",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sootwarren",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Pactstone",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Cindercleft",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "The Ember Archive",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Upturned Horn",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Nightwall",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ashen Crown",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Redbraid Steps",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Firesluice",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gallowsgate",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Coalrill",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Smolderfast",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "The Scorched Mile",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Pitchmar",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Embershade",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hellion’s Rest",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sable Quarters",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Oathmarket",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Bitterbrand",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Glowspire",
-                                "meta": {
-                                    "size": "city",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ashenfold",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Basilisk Furnace",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Devil’s Resting",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cinder Run",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Obsidian Ladder",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "mountain",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Sootfen Wick",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "poor"
-                                }
-                            },
-                            {
-                                "name": "Infernal Cross",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Red Harrow",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gloamcrest",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Brim Quarters",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Chainbridge",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Grim Aerie",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Covenant Reach",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "wealthy"
-                                }
-                            },
-                            {
-                                "name": "Coalbarrow",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "The Ember Commons",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "Siedlungen",
+        "en": "Settlements"
+      },
+      "items": [
+        { "t": { "en": "Brimstone Quay" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashen Crossroads" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cindersong" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Obsidian Market" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Flameward" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloambridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nightember" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Iron Halo" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pacthaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Red Coil" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberreach" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sootfen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gallows Lantern" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Smokeward Docks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coalspire Heights" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hellbloom Terrace" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Scoria Vale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloamroot" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brazen Court" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Styxford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ninefires Causey" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Basalt Bastion" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashenvein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Char Harbor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pactmaker’s Row" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sable Crucible" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Infernal Stairs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashenmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bloodsalt Wharf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cinderwheel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Umbral Gate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sootcrown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Devil’s Bargain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberglass" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pitchfork Downs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coal-and-Copper" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Redsmoke Ward" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloamspire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Warrens of the Brand" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kindlefast" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pactforge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sablemarsh" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Burnt Penny Market" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mire of Oaths" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Smokeveil" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Charcoal Court" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Helltide Causeway" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashen Banner" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brazierside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stain of Night" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberholt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gulch of Embers" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Red Sigil" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Glowfen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coalglass" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Vexbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cinderhold Fast" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Duskweld" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "The Black Ledger" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oathwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hearth of Chains" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Scarlet Ward" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Blazebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloamwater" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sootwarren" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pactstone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cindercleft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "The Ember Archive" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Upturned Horn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nightwall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashen Crown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Redbraid Steps" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Firesluice" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gallowsgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coalrill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Smolderfast" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "The Scorched Mile" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pitchmar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Embershade" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hellion’s Rest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sable Quarters" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oathmarket" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bitterbrand" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Glowspire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashenfold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Basilisk Furnace" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Devil’s Resting" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cinder Run" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Obsidian Ladder" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sootfen Wick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Infernal Cross" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Red Harrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloamcrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brim Quarters" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Chainbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Grim Aerie" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Covenant Reach" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coalbarrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "The Ember Commons" }, "tags": ["settlements"], "w": 1 }
+      ]
     }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "en": "Settlements"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "settlements",
+      "labels": {
+        "en": "Settlements"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
 }

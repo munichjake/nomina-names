@@ -110,9 +110,9 @@ export function log(level, message, data = null, options = {}) {
       
     case LOG_LEVELS.DEBUG:
       if (data) {
-        console.debug(prefixedMessage, data);
+        console.log(prefixedMessage, data);
       } else {
-        console.debug(prefixedMessage);
+        console.log(prefixedMessage);
       }
       break;
   }

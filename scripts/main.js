@@ -3,7 +3,9 @@
  * Handles initialization, settings, and Foundry VTT integration
  */
 
-import { ensureGlobalNamesData, setGlobalNamesData, NamesDataManager } from './core/data-manager.js';
+import { getGlobalDataManager } from './core/data-manager.js';
+import { getGlobalGenerator } from './api/generator.js';
+import { getGlobalEngine } from './core/engine.js';
 import { NamesGeneratorApp } from './apps/generator-app.js';
 import { NamesPickerApp } from './apps/picker-app.js';
 import { EmergencyNamesApp } from './apps/emergency-app.js';
@@ -17,6 +19,7 @@ import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
 import { getHistoryManager } from './core/history-manager.js';
+import { registerHandlebarsHelpers } from './utils/handlebars-helpers.js';
 
 /**
  * Central function to handle Names Generator opening
@@ -53,18 +56,13 @@ function openNamesGenerator() {
 Hooks.once('init', () => {
   logInfoL("console.module-init");
 
-  // Create global instance with error protection
-  try {
-    const dataManager = new NamesDataManager();
-    setGlobalNamesData(dataManager);
-    logDebug("NamesDataManager created successfully");
-  } catch (error) {
-    logError("Failed to create NamesDataManager", error);
-  }
+  // Register Handlebars helpers
+  registerHandlebarsHelpers();
+  logDebug("Handlebars helpers registered");
 
   // Register settings
   registerModuleSettings();
-  
+
   // Register socket handler
   registerSocketHandler();
 });
@@ -79,19 +77,19 @@ Hooks.once('ready', () => {
   // Initialize log level FIRST before any logging
   updateLogLevel();
 
-  logDebug("Ready hook - initializing data");
+  logDebug("Ready hook - initializing V4 data");
 
-  // Ensure globalNamesData exists and start loading
-  const dataManager = ensureGlobalNamesData();
-  if (dataManager) {
-    dataManager.initializeData().then(() => {
-      // Setup API after DataManager is ready
-      NamesAPI.setup();
-      logDebug("API setup completed after DataManager initialization");
-    }).catch(error => {
-      logError("Failed to initialize DataManager", error);
-    });
-  }
+  // Initialize V4 DataManager and Generator
+  const dataManager = getGlobalDataManager();
+  const generator = getGlobalGenerator();
+
+  dataManager.initializeData().then(() => {
+    // Setup NamesAPI after DataManager is ready
+    NamesAPI.setup();
+    logDebug("V4 DataManager and NamesAPI initialization completed");
+  }).catch(error => {
+    logError("Failed to initialize V4 DataManager", error);
+  });
 
   // Initialize History Manager and apply setting
   const historyManager = getHistoryManager();
@@ -1072,7 +1070,9 @@ window.NamesModule = {
   NamesHistoryApp,
   NamesRoleConfig,
   hasNamesGeneratorPermission,
-  getGlobalNamesData: () => ensureGlobalNamesData(),
+  getGlobalDataManager: () => getGlobalDataManager(),
+  getGlobalGenerator: () => getGlobalGenerator(),
+  getGlobalEngine: () => getGlobalEngine(),
   getHistoryManager: () => getHistoryManager(),
   // Expose API for other modules
   api: NamesAPI,

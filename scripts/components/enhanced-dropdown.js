@@ -32,9 +32,15 @@ export class EnhancedDropdown {
       allowCustomValue: false,
       groupBy: null,
       theme: 'names-orange', // names-orange, names-dark, names-light
+      preselect: null, // Value to preselect (e.g., "de" for language dropdown)
+      dependsOn: null, // CSS selector for dependency (e.g., "#names-language-select")
       ...dataEnhanced, // Apply data-enhanced first
       ...options // Then apply constructor options
     };
+
+    // Auto-localize placeholders if they look like i18n keys
+    this.options.placeholder = this._localizeIfNeeded(this.options.placeholder);
+    this.options.searchPlaceholder = this._localizeIfNeeded(this.options.searchPlaceholder);
 
     // Handle both maxVisible and maxVisibleItems
     if (this.options.maxVisibleItems && !options.maxVisible) {
@@ -54,11 +60,95 @@ export class EnhancedDropdown {
     this.init();
   }
 
+  /**
+   * Auto-localize a string if it looks like an i18n key
+   * Checks if the string contains dots (like "names.ui.placeholder-language")
+   * @param {string} text - The text to potentially localize
+   * @returns {string} Localized text or original text
+   */
+  _localizeIfNeeded(text) {
+    if (!text || typeof text !== 'string') return text;
+
+    // Check if text looks like an i18n key (contains dots and no spaces)
+    const looksLikeI18nKey = text.includes('.') && !text.includes(' ');
+
+    if (looksLikeI18nKey && typeof game !== 'undefined' && game.i18n) {
+      const localized = game.i18n.localize(text);
+      // If localization returns the same key, it wasn't found - return original
+      return localized !== text ? localized : text;
+    }
+
+    return text;
+  }
+
+  /**
+   * Check if dependency is satisfied
+   * @returns {boolean} True if no dependency or dependency has a value
+   */
+  _isDependencySatisfied() {
+    if (!this.dependencyElement) return true;
+
+    // Check if dependency element has a value
+    if (this.dependencyElement.tagName === 'SELECT') {
+      return this.dependencyElement.value !== '';
+    } else if (this.dependencyElement.tagName === 'INPUT') {
+      if (this.dependencyElement.type === 'checkbox') {
+        return this.dependencyElement.checked;
+      } else {
+        return this.dependencyElement.value !== '';
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Update disabled state based on dependency
+   */
+  _updateDependencyState() {
+    if (!this.options.dependsOn) return;
+
+    const isSatisfied = this._isDependencySatisfied();
+    this.options.disabled = !isSatisfied;
+
+    logDebug(`Enhanced Dropdown (${this.element.id}): Dependency satisfied: ${isSatisfied}, disabled: ${!isSatisfied}`);
+
+    if (this.container) {
+      this.container.classList.toggle('disabled', !isSatisfied);
+
+      if (!isSatisfied) {
+        this.container.setAttribute('aria-disabled', 'true');
+      } else {
+        this.container.removeAttribute('aria-disabled');
+      }
+    }
+  }
+
   init() {
     this.createStructure();
     this.bindEvents();
     this.updateDisplay();
     this.loadItems();
+
+    // Find and setup dependency element
+    this.dependencyElement = null;
+    if (this.options.dependsOn) {
+      this.dependencyElement = document.querySelector(this.options.dependsOn);
+      if (!this.dependencyElement) {
+        logWarn(`Enhanced Dropdown: Dependency element not found: ${this.options.dependsOn}`);
+      } else {
+        logDebug(`Enhanced Dropdown (${this.element.id}): Found dependency element:`, this.dependencyElement.id || this.options.dependsOn);
+
+        // Listen for changes on dependency element
+        this.dependencyElement.addEventListener('change', () => {
+          logDebug(`Enhanced Dropdown (${this.element.id}): Dependency changed, updating state`);
+          this._updateDependencyState();
+        });
+      }
+    }
+
+    // Set initial dependency state
+    this._updateDependencyState();
 
     // Store reference on container for external access
     this.container._enhancedDropdown = this;
@@ -252,16 +342,27 @@ export class EnhancedDropdown {
   loadItems() {
     this.allItems = [];
     const options = this.element.querySelectorAll('option');
-    
+
+    // Re-localize placeholders in case language has changed
+    const dataEnhanced = this.element.dataset.enhanced ? JSON.parse(this.element.dataset.enhanced) : {};
+    if (dataEnhanced.placeholder) {
+      this.options.placeholder = this._localizeIfNeeded(dataEnhanced.placeholder);
+    }
+    if (dataEnhanced.searchPlaceholder) {
+      this.options.searchPlaceholder = this._localizeIfNeeded(dataEnhanced.searchPlaceholder);
+    }
+
     options.forEach((option, index) => {
-      if (option.value || option.textContent.trim()) {
-        const group = option.parentElement.tagName.toLowerCase() === 'optgroup' 
-          ? option.parentElement.label 
+      // Skip options with empty value (placeholder options like <option value="">...</option>)
+      if (option.value) {
+        const group = option.parentElement.tagName.toLowerCase() === 'optgroup'
+          ? option.parentElement.label
           : null;
-          
+
         this.allItems.push({
           value: option.value,
           text: option.textContent.trim(),
+          subtitle: option.dataset.subtitle || null,
           selected: option.selected,
           disabled: option.disabled,
           index: index,
@@ -270,18 +371,29 @@ export class EnhancedDropdown {
         });
       }
     });
-    
+
     this.applyGrouping();
     this.filteredItems = [...this.allItems];
-    
+
     // Set initial selection
     if (this.options.multiSelect) {
       this.selectedValues = this.allItems.filter(item => item.selected).map(item => item.value);
     } else {
       const selected = this.allItems.find(item => item.selected);
       this.selectedValues = selected ? selected.value : null;
+
+      // Apply preselect if no value is selected and preselect is configured
+      if (!this.selectedValues && this.options.preselect) {
+        const preselectItem = this.allItems.find(item => item.value === this.options.preselect);
+        if (preselectItem) {
+          this.selectedValues = preselectItem.value;
+          // Update the native select element
+          this.element.value = preselectItem.value;
+          preselectItem.element.selected = true;
+        }
+      }
     }
-    
+
     this.updateDisplay();
   }
 
@@ -602,16 +714,30 @@ export class EnhancedDropdown {
       const regex = new RegExp(`(${this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
       displayText = item.text.replace(regex, '<mark>$1</mark>');
     }
-    
+
+    // Handle subtitle if available
+    let subtitleHtml = '';
+    if (item.subtitle) {
+      let displaySubtitle = item.subtitle;
+      if (this.searchTerm) {
+        const regex = new RegExp(`(${this.searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        displaySubtitle = item.subtitle.replace(regex, '<mark>$1</mark>');
+      }
+      subtitleHtml = `<div class="item-subtitle">${displaySubtitle}</div>`;
+    }
+
     itemEl.innerHTML = `
-      <div class="item-content">
+      <div class="item-content ${item.subtitle ? 'has-subtitle' : ''}">
         ${this.options.multiSelect ? `
           <div class="item-checkbox">
             <input type="checkbox" ${isSelected ? 'checked' : ''} tabindex="-1">
             <div class="checkbox-mark"></div>
           </div>
         ` : ''}
-        <div class="item-text">${displayText}</div>
+        <div class="item-text-wrapper">
+          <div class="item-text">${displayText}</div>
+          ${subtitleHtml}
+        </div>
         ${isSelected && !this.options.multiSelect ? '<div class="item-check"><i class="fas fa-check"></i></div>' : ''}
       </div>
     `;

@@ -6,7 +6,6 @@
 import { getHistoryManager } from '../core/history-manager.js';
 import { TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn } from '../utils/logger.js';
-import { getGlobalNamesData } from '../core/data-manager.js';
 
 /**
  * Names History Application
@@ -427,7 +426,7 @@ export class NamesHistoryApp extends Application {
               <input type="checkbox" class="history-entry-checkbox" data-entry-id="${entry.id}">
             </td>
             <td class="col-name">
-              <span class="name-text">${entry.name}</span>
+              <span class="history-name-text">${entry.name}</span>
             </td>
             <td class="col-species">
               ${entry.displaySpecies ? `<span class="species-badge">${entry.displaySpecies}</span>` : `<span class="empty-badge">—</span>`}
@@ -442,7 +441,7 @@ export class NamesHistoryApp extends Application {
               <span class="source-badge source-${entry.source}" title="${game.i18n.localize(`names.history.source.${entry.source}`)}">${sourceIcon}</span>
             </td>
             <td class="col-time">
-              <span class="time-text">${entry.displayTime}</span>
+              <span class="history-time-text">${entry.displayTime}</span>
             </td>
           </tr>
         `);
@@ -519,11 +518,10 @@ export class NamesHistoryApp extends Application {
   _getSpeciesName(speciesCode) {
     if (!speciesCode) return '';
 
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData) {
-      const species = globalNamesData.getLocalizedSpecies();
-      const found = species.find(s => s.code === speciesCode);
-      if (found) return found.name;
+    // Try to get localized species name from i18n
+    const locKey = `names.species.${speciesCode}`;
+    if (game.i18n.has(locKey)) {
+      return game.i18n.localize(locKey);
     }
 
     return speciesCode.charAt(0).toUpperCase() + speciesCode.slice(1);
@@ -539,14 +537,13 @@ export class NamesHistoryApp extends Application {
   _getCategoryName(categoryCode, language, species) {
     if (!categoryCode) return '';
 
-    return getLocalizedCategoryName(categoryCode, {
-      language,
-      species,
-      getCategoryDisplayName: (lang, spec, cat) => {
-        const globalNamesData = getGlobalNamesData();
-        return globalNamesData?.getCategoryDisplayName?.(lang, spec, cat);
-      }
-    });
+    // Try to get localized category name from i18n
+    const locKey = `names.category.${categoryCode}`;
+    if (game.i18n.has(locKey)) {
+      return game.i18n.localize(locKey);
+    }
+
+    return categoryCode.charAt(0).toUpperCase() + categoryCode.slice(1);
   }
 
   /**
@@ -566,26 +563,14 @@ export class NamesHistoryApp extends Application {
       return game.i18n.localize(genderKey);
     }
 
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.getAvailableSubcategories) {
-      try {
-        const subcats = globalNamesData.getAvailableSubcategories(language, species, category);
-        if (subcats && Array.isArray(subcats)) {
-          const found = subcats.find(sub => sub && sub.key === subcategoryCode);
-          if (found && found.displayName) {
-            const currentLang = game.i18n.lang || 'de';
-            return found.displayName[currentLang] ||
-                   found.displayName.en ||
-                   found.displayName.de ||
-                   subcategoryCode;
-          }
-        }
-      } catch (error) {
-        logDebug("Error getting subcategory name:", error);
-      }
+    // Try general subcategory localization
+    const subcatKey = `names.subcategory.${subcategoryCode}`;
+    if (game.i18n.has(subcatKey)) {
+      return game.i18n.localize(subcatKey);
     }
 
-    return subcategoryCode.replace(/_/g, ' ');
+    // Fallback: capitalize the subcategory code
+    return subcategoryCode.charAt(0).toUpperCase() + subcategoryCode.slice(1);
   }
 
   /**

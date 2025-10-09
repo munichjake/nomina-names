@@ -1,491 +1,998 @@
-﻿{
-  "files": [
-    {
-      "species": "elf",
-      "filename": "en.elf.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "dwarf",
-      "filename": "en.dwarf.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "elf",
-      "filename": "en.elf.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "gnome",
-      "filename": "en.gnome.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "gnome",
-      "filename": "en.gnome.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "dwarf",
-      "filename": "en.dwarf.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "aasimar",
-      "filename": "en.aasimar.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "dwarf",
-      "filename": "dwarf.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "2.0.0",
-      "language": "de"
-    },
-    {
-      "species": "aasimar",
-      "filename": "en.aasimar.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "dragonborn",
-      "filename": "en.dragonborn.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "dragonborn",
-      "filename": "en.dragonborn.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "halfling",
-      "filename": "en.halfling.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "halfling",
-      "filename": "de.halfling.taverns.json",
-      "enabled": true,
-      "category": "taverns",
-      "format": "3.1.0",
-      "fileVersion": "2.0.0",
-      "language": "de"
-    },
-    {
-      "species": "tiefling",
-      "filename": "en.tiefling.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.taverns.json",
-      "enabled": true,
-      "category": "taverns",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "tiefling",
-      "filename": "en.tiefling.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "human.weapons.json",
-      "enabled": true,
-      "category": "weapons",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "human.weapons.json",
-      "enabled": true,
-      "category": "weapons",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "human.pets.json",
-      "enabled": true,
-      "category": "pets",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "human.pets.json",
-      "enabled": true,
-      "category": "pets",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.shops.json",
-      "enabled": true,
-      "category": "shops",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.books.json",
-      "enabled": true,
-      "category": "books",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "halfling",
-      "filename": "en.halfling.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.ships.json",
-      "enabled": true,
-      "category": "ships",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "human",
-      "filename": "en.human.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "en"
-    },
-    {
-      "species": "tiefling",
-      "filename": "de.tiefling.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.books.json",
-      "enabled": true,
-      "category": "books",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.shops.json",
-      "enabled": true,
-      "category": "shops",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.ships.json",
-      "enabled": true,
-      "category": "ships",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "dwarf",
-      "filename": "de.dwarf.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "aasimar",
-      "filename": "de.aasimar.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "aasimar",
-      "filename": "de.aasimar.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "dragonborn",
-      "filename": "de.dragonborn.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "dwarf",
-      "filename": "de.dwarf.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "dragonborn",
-      "filename": "de.dragonborn.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "elf",
-      "filename": "de.elf.taverns.json",
-      "enabled": true,
-      "category": "taverns",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.ships.json",
-      "enabled": true,
-      "category": "ships",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.shops.json",
-      "enabled": true,
-      "category": "shops",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "tiefling",
-      "filename": "de.tiefling.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.taverns.json",
-      "enabled": true,
-      "category": "taverns",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "gnome",
-      "filename": "de.gnome.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "gnome",
-      "filename": "de.gnome.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "halfling",
-      "filename": "de.halfling.names.json",
-      "enabled": true,
-      "category": "names",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "human",
-      "filename": "de.human.books.json",
-      "enabled": true,
-      "category": "books",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
-    },
-    {
-      "species": "halfling",
-      "filename": "de.halfling.settlements.json",
-      "enabled": true,
-      "category": "settlements",
-      "format": "3.1.0",
-      "fileVersion": "1.0.0",
-      "language": "de"
+{
+  "format": "4.0.0",
+  "version": "1.0.0",
+  "locales": {
+    "default": "en",
+    "fallbacks": {
+      "en": [
+        "de"
+      ],
+      "de": [
+        "en"
+      ]
     }
-  ],
-  "format": "3.1.0",
-  "description": "Data files for nomina-names module",
-  "version": "3.1.0",
-  "categories": {
-    "settlements": {
-      "en": "Settlements",
-      "de": "Siedlungen"
+  },
+  "species": {
+    "aasimar": {
+      "en": "Aasimar",
+      "de": "Aasimar"
     },
-    "shops": {
-      "en": "Shops",
-      "de": "Geschäfte"
+    "dragonborn": {
+      "en": "Dragonborn",
+      "de": "Drachengeborene"
     },
-    "pets": {
-      "de": "Haustiere & Begleiter",
-      "en": "Pets & Companions"
+    "dwarf": {
+      "en": "Dwarves",
+      "de": "Zwerge"
     },
-    "ships": {
-      "en": "Ships",
-      "de": "Schiffe"
+    "elf": {
+      "en": "Elves",
+      "de": "Elfen"
     },
-    "taverns": {
-      "en": "Taverns",
-      "de": "Gasthäuser"
+    "gnome": {
+      "en": "Gnomes",
+      "de": "Gnome"
     },
-    "books": {
-      "en": "Books",
-      "de": "Bücher"
+    "halfling": {
+      "en": "Halflings",
+      "de": "Halblinge"
     },
-    "weapons": {
-            "de": "Waffen",
-            "en": "Weapons"
+    "human": {
+      "en": "Humans",
+      "de": "Menschen"
     },
-    "names": {
-      "en": "Names",
-      "de": "Namen"
+    "tiefling": {
+      "en": "Tieflings",
+      "de": "Tieflinge"
     }
-  }
+  },
+  "packages": [
+    {
+      "species": "aasimar",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "aasimar",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "aasimar",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "aasimar",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "aasimar",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "aasimar",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "male-min",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.male-min.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "books",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.books.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "ships",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.ships.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "shops",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.shops.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "taverns",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.taverns.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.gnome.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "taverns",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.taverns.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "books",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.books.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.books.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "ships",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.ships.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.ships.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "shops",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.shops.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.shops.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "recipes",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.recipes.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.recipes.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "taverns",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.human.taverns.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.taverns.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "human",
+      "category": "pets",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/human.pets.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.female.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.female.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.male.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "names",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.names.json",
+          "language": "de",
+          "enabled": false
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.names.json",
+          "language": "en",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.nicknames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.nicknames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "settlements",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.settlements.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.settlements.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.surnames.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    }
+  ]
 }
