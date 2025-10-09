@@ -1,0 +1,166 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "human-de",
+    "displayName": {
+      "de": "Menschen"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Aerynthal" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Liraen" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thandir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Emyrith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaelir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Serethil" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Myrwenil" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Caelith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elunir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thalindis" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Naevor" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sylthir" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aeriswenil" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Talrin" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vanyrith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Orithir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lethir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Amryth" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Faenril" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elaris" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nymraen" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Corwyn" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thelianth" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aryeth" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ilvraen" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaenith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thalys" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Emyraen" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Seralith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhaevyn" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mythir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Eliris" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaerin" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Olyndir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Shaevren" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Luthirn" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Caerys" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nirel" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thaelir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Orynthil" }, "tags": ["nonbinary", "firstnames", "darkelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Faeril" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Amarthil" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sylraen" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elyndrin" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Naeris" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ilyth" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Velorim" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Eirveth" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aelrith" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Maeril" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tyshairn" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaelun" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Odrinil" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aerwyn" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Calithen" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Liraeyn" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Theryn" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elandir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Corinil" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Venyren" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thaenril" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ormelis" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aevryn" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lyssir" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nairwyn" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Velthir" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Faenyr" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ilraen" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Myrvalis" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elisair" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thalir" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aenrys" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Caelrin" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Orveth" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaeryn" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nyssairn" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Amrien" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Selthir" }, "tags": ["nonbinary", "firstnames", "darkelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Lorynir" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Eryndis" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tyrain" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Shaelir" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Olyrin" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vynraen" }, "tags": ["nonbinary", "firstnames", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elthir" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aevrien" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Noreth" }, "tags": ["nonbinary", "firstnames", "darkelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Calenir" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Syrwenil" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Eiloth" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaelys" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Myrin" }, "tags": ["nonbinary", "firstnames", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thalrae" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Liraith" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Aeronil" }, "tags": ["nonbinary", "firstnames", "highelf", "darkelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Sylraeth" }, "tags": ["nonbinary", "firstnames", "woodelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Elveth" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Orineth" }, "tags": ["nonbinary", "firstnames", "darkelf", "highelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Naerys" }, "tags": ["nonbinary", "firstnames", "highelf", "woodelf"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaenyth" }, "tags": ["nonbinary", "firstnames", "highelf"], "w": 1, "attrs": { "gender": "n" } }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "firstnames": {
+            "de": "Firstnames"
+          },
+          "nonbinary": {
+            "de": "Nonbinary"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "firstnames",
+          "nonbinary"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

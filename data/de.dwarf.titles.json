@@ -1,0 +1,88 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Zwerge Titel",
+      "en": "Zwerge Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "König" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hochkönig" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Erzfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Bergbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Tiefenherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Felsengraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Runenmeister" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Schildwächter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Ältester" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Gildenherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Königin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Erzfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Bergbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Tiefenherrin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Felsengräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Runenmeisterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Älteste" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Gildenherrin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Weiblich"
+          },
+          "male": {
+            "de": "Männlich"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          },
+          "titles": {
+            "de": "Adelstitel"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

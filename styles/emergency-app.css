@@ -109,7 +109,7 @@
   }
 }
 
-.name-text {
+.emergency-name-pill .name-text {
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -118,7 +118,7 @@
   letter-spacing: 0.5px;
 }
 
-.species-text {
+.emergency-name-pill .species-text {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
@@ -222,11 +222,11 @@
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
   }
-  
-  .name-text {
+
+  .emergency-name-pill .name-text {
     font-size: 20px;
   }
-  
+
   .emergency-name-pill {
     padding: 15px 10px;
     min-height: 80px;

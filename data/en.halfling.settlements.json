@@ -1,836 +1,163 @@
 {
-    "format": "3.1.0",
-    "fileVersion": "1.0.0",
-    "code": "halfling",
+  "format": "4.0.0",
+  "package": {
+    "code": "halfling-en",
     "displayName": {
-        "de": "Halblinge",
-        "en": "Halflings"
+      "de": "Halblinge",
+      "en": "Halflings"
     },
     "languages": [
-        "en"
+      "en"
     ],
-    "categories": [
-        "settlements"
-    ],
-    "data": {
-        "settlements": {
-            "displayName": {
-                "de": "Siedlungen",
-                "en": "Settlements"
-            },
-            "subcategories": [
-                {
-                    "key": "generic",
-                    "displayName": {
-                        "de": "Allgemein",
-                        "en": "Generic"
-                    },
-                    "entries": {
-                        "en": [
-                            {
-                                "name": "Barleyburrow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Appleford Green",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Daisybank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Mossy Knoll",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Pieman’s Rest",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Willowholt",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Clovercross",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Brandybrook",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Honeywell",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Fernhill Downs",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cobblefield",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Acorn Hollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Bramblethicket",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Bakeswell",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Thimbleton",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Oldbridge",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Meadowdrop",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cherryford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Pipeweed Corner",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Tumblehill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hazelholt",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Oatcake Green",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Bumblebee Dell",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Puddifoot’s Crossing",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Buttercup Vale",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Turnip Row",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Gamwell Downs",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hopwillow",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Mulberry Hollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hearthwell",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Buttonwood",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Goosefeather Hill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Merriford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Elmstitch",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sweetapple Glen",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Copperkettle",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Roundtop",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Thistleburrow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Caraway Common",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Brookwhistle",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Ciderpress Hill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Goodmeadow",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Foxburrow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hayfield Downs",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Rosebank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Crickhollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Tansyfield",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Butterbiscuit Hill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Fernycombe",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cherrystone",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Maplebarrow",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sunnyholt",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Little Delving",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Brassbuttons",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Loamford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hazelhedge",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Bumblebrook",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Strawberry Downs",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "mountain",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Peaseblossom Hollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Nettlebank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Picklecombe",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hopsfield",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Barrowgate",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Muddleford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Shadyburrow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Plumthicket",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Woolcotton",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Bramblebank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Rushlight Vale",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Tinker’s Green",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Fennelwood",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cloverdown",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Pennywhistle",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Raspberry Hill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Oakenholt",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Butterbell Hollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Briarwell",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Mulberry Holt",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "forest",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Goosetrot",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Sweetfern Dell",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Honeymill",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Porridgepool",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Barrowdell",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Acornridge",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Thimblebank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Puddlebank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Hopclover",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Merribrook",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Bumblecroft",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Crumpetfield",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Lanternford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Cherrydrop Hollow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Snugburrow",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Turnipbank",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Mugwort Green",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Puffball Hill",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "mountain",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Buttermilk Vale",
-                                "meta": {
-                                    "size": "village",
-                                    "region": "inland",
-                                    "prosperity": "prosperous"
-                                }
-                            },
-                            {
-                                "name": "Brambleford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Pennycombe",
-                                "meta": {
-                                    "size": "hamlet",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            },
-                            {
-                                "name": "Little Toadford",
-                                "meta": {
-                                    "size": "town",
-                                    "region": "inland",
-                                    "prosperity": "modest"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "Siedlungen",
+        "en": "Settlements"
+      },
+      "items": [
+        { "t": { "en": "Barleyburrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Appleford Green" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Daisybank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mossy Knoll" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pieman’s Rest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Willowholt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clovercross" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brandybrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Honeywell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fernhill Downs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cobblefield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Acorn Hollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bramblethicket" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bakeswell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thimbleton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oldbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Meadowdrop" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cherryford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pipeweed Corner" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tumblehill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hazelholt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oatcake Green" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bumblebee Dell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Puddifoot’s Crossing" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Buttercup Vale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Turnip Row" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gamwell Downs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hopwillow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mulberry Hollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hearthwell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Buttonwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goosefeather Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Merriford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Elmstitch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sweetapple Glen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Copperkettle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Roundtop" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thistleburrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Caraway Common" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brookwhistle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ciderpress Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goodmeadow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Foxburrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hayfield Downs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rosebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crickhollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tansyfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Butterbiscuit Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fernycombe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cherrystone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Maplebarrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sunnyholt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Little Delving" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brassbuttons" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Loamford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hazelhedge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bumblebrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Strawberry Downs" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Peaseblossom Hollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nettlebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Picklecombe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hopsfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Barrowgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Muddleford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shadyburrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Plumthicket" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Woolcotton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bramblebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rushlight Vale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tinker’s Green" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fennelwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cloverdown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pennywhistle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Raspberry Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oakenholt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Butterbell Hollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Briarwell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mulberry Holt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goosetrot" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sweetfern Dell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Honeymill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Porridgepool" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Barrowdell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Acornridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thimblebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Puddlebank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hopclover" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Merribrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bumblecroft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crumpetfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lanternford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cherrydrop Hollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Snugburrow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Turnipbank" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mugwort Green" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Puffball Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Buttermilk Vale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brambleford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pennycombe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Little Toadford" }, "tags": ["settlements"], "w": 1 }
+      ]
     }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "en": "Settlements"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "settlements",
+      "labels": {
+        "en": "Settlements"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
 }

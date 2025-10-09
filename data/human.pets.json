@@ -1,291 +1,430 @@
 {
-    "format": "3.1.0",
-    "fileVersion": "1.0.0",
+  "format": "4.0.0",
+  "package": {
     "code": "human",
     "displayName": {
-        "de": "Menschen",
-        "en": "Human"
+      "de": "Menschen",
+      "en": "Human"
     },
     "languages": [
-        "de",
-        "en"
+      "de",
+      "en"
     ],
-    "categories": [
-        "pets"
-    ],
-    "data": {
-        "pets": {
-            "displayName": {
-                "de": "Haustiere & Begleiter",
-                "en": "Pets & Companions"
-            },
-            "subcategories": [
-                {
-                    "key": "hunde",
-                    "displayName": {
-                        "de": "Hunde",
-                        "en": "Dogs"
-                    },
-                    "entries": {
-                        "de": [
-                            "Bello",
-                            "Rex",
-                            "Luna",
-                            "Sammy",
-                            "Max",
-                            "Bruno",
-                            "Molly",
-                            "Rocky",
-                            "Kira",
-                            "Leo",
-                            "Nala",
-                            "Charly",
-                            "Flocke",
-                            "Odin",
-                            "Maja",
-                            "Spike",
-                            "Paula",
-                            "Balou",
-                            "Snoopy",
-                            "Emma"
-                        ],
-                        "en": [
-                            "Buddy",
-                            "Bella",
-                            "Charlie",
-                            "Daisy",
-                            "Max",
-                            "Luna",
-                            "Rocky",
-                            "Molly",
-                            "Bailey",
-                            "Sadie",
-                            "Cooper",
-                            "Lucy",
-                            "Duke",
-                            "Zoe",
-                            "Milo",
-                            "Stella",
-                            "Toby",
-                            "Rosie",
-                            "Jack",
-                            "Ruby"
-                        ]
-                    }
-                },
-                {
-                    "key": "katzen",
-                    "displayName": {
-                        "de": "Katzen",
-                        "en": "Cats"
-                    },
-                    "entries": {
-                        "de": [
-                            "Minka",
-                            "Felix",
-                            "Lilly",
-                            "Tiger",
-                            "Mauzi",
-                            "Simba",
-                            "Neko",
-                            "Susi",
-                            "Momo",
-                            "Whisky",
-                            "Luna",
-                            "Mieze",
-                            "Nala",
-                            "Moritz",
-                            "Keks",
-                            "Tinka",
-                            "Shadow",
-                            "Cleo",
-                            "Leo",
-                            "Garfield"
-                        ],
-                        "en": [
-                            "Whiskers",
-                            "Mittens",
-                            "Shadow",
-                            "Luna",
-                            "Simba",
-                            "Cleo",
-                            "Oliver",
-                            "Nala",
-                            "Milo",
-                            "Chloe",
-                            "Leo",
-                            "Socks",
-                            "Willow",
-                            "Smokey",
-                            "Ziggy",
-                            "Jasper",
-                            "Tigger",
-                            "Oreo",
-                            "Pumpkin",
-                            "Midnight"
-                        ]
-                    }
-                },
-                {
-                    "key": "voegel",
-                    "displayName": {
-                        "de": "Vögel",
-                        "en": "Birds"
-                    },
-                    "entries": {
-                        "de": [
-                            "Hansi",
-                            "Kiki",
-                            "Coco",
-                            "Lora",
-                            "Piepser",
-                            "Tweety",
-                            "Nico",
-                            "Sunny",
-                            "Maxi",
-                            "Paco",
-                            "Bubi",
-                            "Sissi",
-                            "Koko",
-                            "Rudi",
-                            "Pauli",
-                            "Lilly",
-                            "Chico",
-                            "Mimi",
-                            "Piri",
-                            "Flori"
-                        ],
-                        "en": [
-                            "Tweety",
-                            "Sunny",
-                            "Coco",
-                            "Kiwi",
-                            "Sky",
-                            "Rio",
-                            "Blue",
-                            "Lemon",
-                            "Peppy",
-                            "Mango",
-                            "Chirpy",
-                            "Tango",
-                            "Feathers",
-                            "Pico",
-                            "Angel",
-                            "Buddy",
-                            "Snowy",
-                            "Pepper",
-                            "Lucky",
-                            "Star"
-                        ]
-                    }
-                },
-                {
-                    "key": "fische",
-                    "displayName": {
-                        "de": "Fische",
-                        "en": "Fish"
-                    },
-                    "entries": {
-                        "de": [
-                            "Goldi",
-                            "Bubbles",
-                            "Nemo",
-                            "Blubbi",
-                            "Silva",
-                            "Koi",
-                            "Flosse",
-                            "Finni",
-                            "Saphira",
-                            "Glitzer",
-                            "Sunny",
-                            "Coral",
-                            "Schuppi",
-                            "Aqua",
-                            "Perla",
-                            "Marlin",
-                            "Funky",
-                            "Ocean",
-                            "Stella",
-                            "Blue"
-                        ],
-                        "en": [
-                            "Goldie",
-                            "Bubbles",
-                            "Nemo",
-                            "Dory",
-                            "Coral",
-                            "Splash",
-                            "Finn",
-                            "Sunny",
-                            "Blue",
-                            "Pearl",
-                            "Marlin",
-                            "Shadow",
-                            "Aqua",
-                            "Flame",
-                            "Sparkle",
-                            "Crystal",
-                            "Jelly",
-                            "Sushi",
-                            "Flash",
-                            "Bubblegum"
-                        ]
-                    }
-                },
-                {
-                    "key": "tressym",
-                    "displayName": {
-                        "de": "Tressym",
-                        "en": "Tressym"
-                    },
-                    "entries": {
-                        "de": [
-                            "Schwinge",
-                            "Mondpfote",
-                            "Luftikus",
-                            "Samtflügel",
-                            "Wolkenherz",
-                            "Flauschi",
-                            "Himmelsschweif",
-                            "Mondschnurr",
-                            "Silbersamt",
-                            "Windspiel",
-                            "Dämmerflügel",
-                            "Nachtpfote",
-                            "Glanzfell",
-                            "Federchen",
-                            "Sturmbart",
-                            "Nebelklaue",
-                            "Traumauge",
-                            "Komet",
-                            "Zauberschweif",
-                            "Lichtfang"
-                        ],
-                        "en": [
-                            "Moonpaw",
-                            "Skysong",
-                            "Featherwhisker",
-                            "Starlight",
-                            "Cloudtail",
-                            "Silverwing",
-                            "Dreamfur",
-                            "Stormclaw",
-                            "Whisperpaw",
-                            "Glimmer",
-                            "Twilight",
-                            "Sunshadow",
-                            "Windwhisker",
-                            "Sparkpaw",
-                            "Mystic",
-                            "Shadowfeather",
-                            "Aurora",
-                            "Starfur",
-                            "Lunaris",
-                            "Zephyr"
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "de"
+  },
+  "vocab": {
+    "tags": {
+      "pets": {
+        "de": "Haustiere",
+        "en": "Pets"
+      },
+      "dog": {
+        "de": "🐕 Hund",
+        "en": "🐕 Dog"
+      },
+      "cat": {
+        "de": "🐱 Katze",
+        "en": "🐱 Cat"
+      },
+      "bird": {
+        "de": "🐦 Vogel",
+        "en": "🐦 Bird"
+      },
+      "fish": {
+        "de": "🐠 Fisch",
+        "en": "🐠 Fish"
+      },
+      "tressym": {
+        "de": "🦅 Tressym",
+        "en": "🦅 Tressym"
+      },
+      "parrot": {
+        "de": "🦜 Papagei",
+        "en": "🦜 Parrot"
+      }
     }
+  },
+  "catalogs": {
+    "pets": {
+      "displayName": {
+        "de": "Haustiere & Begleiter",
+        "en": "Pets & Companions"
+      },
+      "items": [
+        { "t": { "de": "Bello", "en": "Buddy" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Rex", "en": "Bella" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Luna", "en": "Charlie" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Sammy", "en": "Daisy" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Max", "en": "Max" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Bruno", "en": "Luna" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Molly", "en": "Rocky" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Rocky", "en": "Molly" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Kira", "en": "Bailey" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Leo", "en": "Sadie" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Nala", "en": "Cooper" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Charly", "en": "Lucy" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Flocke", "en": "Duke" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Odin", "en": "Zoe" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Maja", "en": "Milo" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Spike", "en": "Stella" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Paula", "en": "Toby" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Balou", "en": "Rosie" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Snoopy", "en": "Jack" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Emma", "en": "Ruby" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Nero", "en": "Bear" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Bella", "en": "Sophie" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Lucky", "en": "Oliver" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Buddy", "en": "Lola" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Sam", "en": "Tucker" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Zeus", "en": "Riley" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Amy", "en": "Maggie" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Frodo", "en": "Winston" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Balu", "en": "Bentley" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Lady", "en": "Penny" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Thor", "en": "Murphy" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Mia", "en": "Lily" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Paco", "en": "Finn" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Struppi", "en": "Scout" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Herkules", "en": "Diesel" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Laika", "en": "Harley" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Rambo", "en": "Gus" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Flitzi", "en": "Apollo" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Hexe", "en": "Roxy" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Anton", "en": "Blue" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Gismo", "en": "Jake" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Coco", "en": "Cody" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Kasper", "en": "Buster" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Waldi", "en": "Oscar" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Queenie", "en": "Ace" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Fifi", "en": "Moose" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Django", "en": "Jasper" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Trixi", "en": "Athena" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Merlin", "en": "Dexter" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Wuschel", "en": "Shadow" }, "tags": ["dog"], "w": 1 },
+        { "t": { "de": "Minka", "en": "Whiskers" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Felix", "en": "Mittens" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Lilly", "en": "Shadow" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Tiger", "en": "Luna" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Mauzi", "en": "Simba" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Simba", "en": "Cleo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Neko", "en": "Oliver" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Susi", "en": "Nala" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Momo", "en": "Milo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Whisky", "en": "Chloe" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Luna", "en": "Leo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Mieze", "en": "Socks" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Nala", "en": "Willow" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Moritz", "en": "Smokey" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Keks", "en": "Ziggy" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Tinka", "en": "Jasper" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Shadow", "en": "Tigger" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Cleo", "en": "Oreo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Leo", "en": "Pumpkin" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Garfield", "en": "Midnight" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Kitty", "en": "Binx" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Saphira", "en": "Salem" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Pünktchen", "en": "Boots" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Findus", "en": "Gizmo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Schnurri", "en": "Felix" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Tiffy", "en": "Bella" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Blacky", "en": "Pepper" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Sammy", "en": "Charlie" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Loki", "en": "Loki" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Missy", "en": "Gracie" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Charly", "en": "Lucky" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Muffin", "en": "Smudge" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Filou", "en": "Bandit" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Tapsi", "en": "Paws" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Cosmo", "en": "Cosmo" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Lulu", "en": "Lily" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Fritzi", "en": "Whisper" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Smoky", "en": "Sooty" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Pussi", "en": "Kitty" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Baghira", "en": "Panther" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Merlin", "en": "Merlin" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Socke", "en": "Mittens" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Piper", "en": "Piper" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Zelda", "en": "Zelda" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Micki", "en": "Chester" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Chili", "en": "Ginger" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Kasimir", "en": "Oscar" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Mopsi", "en": "Butterscotch" }, "tags": ["cat"], "w": 1 },
+        { "t": { "de": "Hansi", "en": "Tweety" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Kiki", "en": "Sunny" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Coco", "en": "Coco" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Lora", "en": "Kiwi" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Piepser", "en": "Sky" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Tweety", "en": "Rio" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Nico", "en": "Blue" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Sunny", "en": "Lemon" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Maxi", "en": "Peppy" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Paco", "en": "Mango" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Bubi", "en": "Chirpy" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Sissi", "en": "Tango" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Koko", "en": "Feathers" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Rudi", "en": "Pico" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Pauli", "en": "Angel" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Lilly", "en": "Buddy" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Chico", "en": "Snowy" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Mimi", "en": "Pepper" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Piri", "en": "Lucky" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Flori", "en": "Star" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Piepmatz", "en": "Chirp" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Zorro", "en": "Zorro" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Fips", "en": "Pip" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Lilo", "en": "Lilo" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Flocki", "en": "Fluffy" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Schnäbel", "en": "Beaky" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Pieps", "en": "Peep" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Tino", "en": "Tino" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Spatz", "en": "Sparrow" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Piepi", "en": "Tweet" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Bella", "en": "Bella" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Flapper", "en": "Flapper" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Goldi", "en": "Goldie" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Picco", "en": "Picco" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Willow", "en": "Willow" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Blümchen", "en": "Blossom" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Robin", "en": "Robin" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Pünktchen", "en": "Dotty" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Nimbus", "en": "Nimbus" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Cloud", "en": "Cloud" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Zwitscheri", "en": "Chirper" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Jojo", "en": "Jojo" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Bodo", "en": "Bodo" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Aurora", "en": "Aurora" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Fifi", "en": "Fifi" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Moritz", "en": "Morris" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Flöckchen", "en": "Snowflake" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Pikachu", "en": "Pikachu" }, "tags": ["bird"], "w": 1 },
+        { "t": { "de": "Goldi", "en": "Goldie" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Bubbles", "en": "Bubbles" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Nemo", "en": "Nemo" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Blubbi", "en": "Dory" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Silva", "en": "Coral" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Koi", "en": "Splash" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Flosse", "en": "Finn" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Finni", "en": "Sunny" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Saphira", "en": "Blue" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Glitzer", "en": "Pearl" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Sunny", "en": "Marlin" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Coral", "en": "Shadow" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Schuppi", "en": "Aqua" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Aqua", "en": "Flame" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Perla", "en": "Sparkle" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Marlin", "en": "Crystal" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Funky", "en": "Jelly" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Ocean", "en": "Sushi" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Stella", "en": "Flash" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Blue", "en": "Bubblegum" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Blitz", "en": "Zippy" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Welli", "en": "Wavy" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Nixie", "en": "Nixie" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Fluppi", "en": "Flipper" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Merlin", "en": "Merlin" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Neptun", "en": "Neptune" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Goldfisch", "en": "Goldfish" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Sushi", "en": "Wasabi" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Wirbel", "en": "Swirl" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Silber", "en": "Silver" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Tropfen", "en": "Droplet" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Blubber", "en": "Blubber" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Arielle", "en": "Ariel" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Schuppe", "en": "Scales" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Plitsch", "en": "Splish" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Platsch", "en": "Splash" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Triton", "en": "Triton" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Saphir", "en": "Sapphire" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Smaragd", "en": "Emerald" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Rubin", "en": "Ruby" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Kristall", "en": "Crystal" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Mamba", "en": "Mamba" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Topas", "en": "Topaz" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Perle", "en": "Pearl" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Tümpel", "en": "Puddle" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Flunder", "en": "Flounder" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Hai", "en": "Shark" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Octopus", "en": "Octopus" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Welle", "en": "Wave" }, "tags": ["fish"], "w": 1 },
+        { "t": { "de": "Schwinge", "en": "Moonpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Mondpfote", "en": "Skysong" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Luftikus", "en": "Featherwhisker" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Samtflügel", "en": "Starlight" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Wolkenherz", "en": "Cloudtail" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Flauschi", "en": "Silverwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Himmelsschweif", "en": "Dreamfur" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Mondschnurr", "en": "Stormclaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Silbersamt", "en": "Whisperpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Windspiel", "en": "Glimmer" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Dämmerflügel", "en": "Twilight" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Nachtpfote", "en": "Sunshadow" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Glanzfell", "en": "Windwhisker" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Federchen", "en": "Sparkpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sturmbart", "en": "Mystic" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Nebelklaue", "en": "Shadowfeather" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Traumauge", "en": "Aurora" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Komet", "en": "Starfur" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Zauberschweif", "en": "Lunaris" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Lichtfang", "en": "Zephyr" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sternenpfote", "en": "Starpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Himmelsauge", "en": "Skyeye" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Flügelherz", "en": "Wingheart" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Morgenflug", "en": "Dawnflight" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Nachtschwinge", "en": "Nightwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sturmfeder", "en": "Stormfeather" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Wolkenklaue", "en": "Cloudclaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Mondsamt", "en": "Moonvelvet" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Glitzerflügel", "en": "Glitterwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sternenfell", "en": "Starfur" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Windfeder", "en": "Windfeather" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Himmelsflug", "en": "Skyflight" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Nebelherz", "en": "Mistheart" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Abendstern", "en": "Evenstar" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sonnenflügel", "en": "Sunwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Kristallpfote", "en": "Crystalpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Winterfell", "en": "Winterfur" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Blitzfeder", "en": "Lightningfeather" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Regenflügel", "en": "Rainwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Morgentau", "en": "Morningdew" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Eishauch", "en": "Frostbreath" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Silberpfote", "en": "Silverpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Nebelflug", "en": "Mistflight" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Sturmherz", "en": "Stormheart" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Donnerfeder", "en": "Thunderfeather" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Schneeschwinge", "en": "Snowwing" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Regenbogen", "en": "Rainbow" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Lichtpfote", "en": "Lightpaw" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Gluthauch", "en": "Emberbreath" }, "tags": ["tressym"], "w": 1 },
+        { "t": { "de": "Polly", "en": "Polly" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Captain", "en": "Captain" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Skipper", "en": "Skipper" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Rotbart", "en": "Redbeard" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Schatz", "en": "Treasure" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Käpt'n", "en": "Cap'n" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Papageno", "en": "Papageno" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Flint", "en": "Flint" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Blackbeard", "en": "Blackbeard" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Kralle", "en": "Talon" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Rum", "en": "Rum" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Smutje", "en": "Cookie" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Pirat", "en": "Pirate" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Störtebeker", "en": "Sparrow" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Blaubart", "en": "Bluebeard" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Treasure", "en": "Booty" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Matrose", "en": "Sailor" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Shiver", "en": "Shiver" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Timber", "en": "Timber" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Krähe", "en": "Crow" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Papaya", "en": "Papaya" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Kokosnuss", "en": "Coconut" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Iago", "en": "Iago" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Crackers", "en": "Crackers" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Schatzkarte", "en": "Mapster" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Bones", "en": "Bones" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Jolly", "en": "Jolly" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Roger", "en": "Roger" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Anker", "en": "Anchor" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Smee", "en": "Smee" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Käptn Hook", "en": "Hook" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Morgan", "en": "Morgan" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Korsair", "en": "Corsair" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Dublone", "en": "Doubloon" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Piranha", "en": "Piranha" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Kraken", "en": "Kraken" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Racker", "en": "Rascal" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Scurvy", "en": "Scurvy" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Bounty", "en": "Bounty" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Cutlass", "en": "Cutlass" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Buccaneer", "en": "Buccaneer" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Mutiny", "en": "Mutiny" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Grog", "en": "Grog" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Plünderer", "en": "Plunderer" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Karibik", "en": "Caribbean" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Tortuga", "en": "Tortuga" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Davy", "en": "Davy" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Jones", "en": "Jones" }, "tags": ["parrot"], "w": 1 },
+        { "t": { "de": "Blitz", "en": "Flash" }, "tags": ["parrot"], "w": 1 }
+      ]
+    }
+  },
+  "collections": [
+    {
+      "key": "dogs",
+      "labels": {
+        "de": "🐕 Hunde",
+        "en": "🐕 Dogs"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "dog"
+        ]
+      }
+    },
+    {
+      "key": "cats",
+      "labels": {
+        "de": "🐱 Katzen",
+        "en": "🐱 Cats"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "cat"
+        ]
+      }
+    },
+    {
+      "key": "birds",
+      "labels": {
+        "de": "🐦 Vögel",
+        "en": "🐦 Birds"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "bird"
+        ]
+      }
+    },
+    {
+      "key": "fish",
+      "labels": {
+        "de": "🐠 Fische",
+        "en": "🐠 Fish"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "fish"
+        ]
+      }
+    },
+    {
+      "key": "tressym",
+      "labels": {
+        "de": "🦅 Tressym",
+        "en": "🦅 Tressym"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "tressym"
+        ]
+      }
+    },
+    {
+      "key": "parrots",
+      "labels": {
+        "de": "🦜 Papageien",
+        "en": "🦜 Parrots"
+      },
+      "query": {
+        "category": "pets",
+        "tags": [
+          "parrot"
+        ]
+      }
+    }
+  ]
 }

@@ -1,1 +1,163 @@
-﻿{"format":"3.1.0","fileVersion":"1.0.0","code":"dragonborn","displayName":{"de":"Drachengeborene","en":"Dragonborn"},"languages":["de"],"categories":["settlements"],"data":{"settlements":{"displayName":{"de":"Siedlungen","en":"Settlements"},"subcategories":[{"key":"general","displayName":{"de":"Allgemeine Siedlungen","en":"General Settlements"},"entries":{"de":[{"name":"Aschenfall","gender":"m"},{"name":"Atemburg","gender":"f"},{"name":"Atemtal","gender":"n"},{"name":"Drachenzahnpass","gender":"m"},{"name":"Eisenschuppe","gender":"f"},{"name":"Flammenhort","gender":"m"},{"name":"Flammenstieg","gender":"m"},{"name":"Flammenwacht","gender":"f"},{"name":"Grolltal","gender":"n"},{"name":"Himmelsglut","gender":"f"},{"name":"Himmelswacht","gender":"f"},{"name":"Kupferhort","gender":"m"},{"name":"Kupferfeste","gender":"f"},{"name":"Kupferfall","gender":"m"},{"name":"Lavaschmiede","gender":"f"},{"name":"Löwenschuppe","gender":"f"},{"name":"Meteoritenfall","gender":"m"},{"name":"Schuppenstein","gender":"m"},{"name":"Schuppenwald","gender":"m"},{"name":"Schwertfeste","gender":"f"},{"name":"Silberschwingen","gender":"f"},{"name":"Sonnenhorst","gender":"m"},{"name":"Sonnenfeuer","gender":"n"},{"name":"Stahlklaue","gender":"f"},{"name":"Stahlgrat","gender":"m"},{"name":"Stahlstadt","gender":"f"},{"name":"Stahlwacht","gender":"f"},{"name":"Steinatem","gender":"m"},{"name":"Steinfaust","gender":"f"},{"name":"Sturmzorn","gender":"m"},{"name":"Titanenklaue","gender":"f"},{"name":"Vulkanschild","gender":"m"},{"name":"Zornkamm","gender":"m"},{"name":"Zornklamm","gender":"f"},{"name":"Adlerkamm","gender":"m"},{"name":"Adlerschild","gender":"m"},{"name":"Blutfeuer","gender":"n"},{"name":"Blutgrat","gender":"m"},{"name":"Bronzestrom","gender":"m"},{"name":"Donnerfeste","gender":"f"},{"name":"Donnerruf","gender":"m"},{"name":"Donnerstieg","gender":"m"},{"name":"Drachenblut","gender":"n"},{"name":"Drachenruf","gender":"m"},{"name":"Echsenhain","gender":"m"},{"name":"Eisodem","gender":"m"},{"name":"Eisschuppe","gender":"f"},{"name":"Eiswacht","gender":"f"},{"name":"Flammenherz","gender":"n"},{"name":"Felsengrat","gender":"m"},{"name":"Geisterfall","gender":"m"},{"name":"Gletschertor","gender":"n"},{"name":"Goldkamm","gender":"m"},{"name":"Goldstrom","gender":"m"},{"name":"Graustein","gender":"m"},{"name":"Grimmdorn","gender":"m"},{"name":"Hügelschild","gender":"m"},{"name":"Kesselfeste","gender":"f"},{"name":"Kupferruf","gender":"m"},{"name":"Kupferschmiede","gender":"f"},{"name":"Loderfels","gender":"m"},{"name":"Mondschein","gender":"m"},{"name":"Mondzahn","gender":"m"},{"name":"Mondklaue","gender":"f"},{"name":"Obsidiangrat","gender":"m"},{"name":"Obsidianschmiede","gender":"f"},{"name":"Rabenfels","gender":"m"},{"name":"Raucharche","gender":"f"},{"name":"Rauchtal","gender":"n"},{"name":"Rotschuppe","gender":"f"},{"name":"Rotzahn","gender":"m"},{"name":"Schattenhort","gender":"m"},{"name":"Schmiedegrat","gender":"m"},{"name":"Schuppenturm","gender":"m"},{"name":"Silberstrom","gender":"m"},{"name":"Sonnenzahn","gender":"m"},{"name":"Spitzkamm","gender":"m"},{"name":"Stahlfall","gender":"m"},{"name":"Sturmkamm","gender":"m"},{"name":"Sturmschmiede","gender":"f"},{"name":"Sumpfodem","gender":"m"},{"name":"Todesgrat","gender":"m"},{"name":"Titanenhort","gender":"m"},{"name":"Totenklamm","gender":"f"},{"name":"Weißenfels","gender":"m"},{"name":"Wellenfall","gender":"m"},{"name":"Wolfsgrat","gender":"m"},{"name":"Zahntal","gender":"n"},{"name":"Zornkluft","gender":"f"},{"name":"Zornsteig","gender":"m"},{"name":"Aschenodem","gender":"m"},{"name":"Donnerkessel","gender":"m"},{"name":"Drachenfaust","gender":"f"},{"name":"Drachenfels","gender":"m"},{"name":"Drachenhauch","gender":"m"},{"name":"Flammenborn","gender":"m"},{"name":"Kupfertal","gender":"n"},{"name":"Rauchgrat","gender":"m"},{"name":"Silberborn","gender":"m"},{"name":"Sturmfaust","gender":"f"}]}}]}}}
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "dragonborn-de",
+    "displayName": {
+      "de": "Drachengeborene",
+      "en": "Dragonborn"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "Allgemeine Siedlungen",
+        "en": "General Settlements"
+      },
+      "items": [
+        { "t": { "de": "Aschenfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Atemburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Atemtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenzahnpass" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisenschuppe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flammenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flammenstieg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flammenwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grolltal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Himmelsglut" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Himmelswacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Lavaschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Löwenschuppe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Meteoritenfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schuppenstein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schuppenwald" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schwertfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberschwingen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sonnenhorst" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sonnenfeuer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlstadt" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlwacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinatem" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Steinfaust" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmzorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Titanenklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Vulkanschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Adlerkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Adlerschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Blutfeuer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Blutgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Bronzestrom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Donnerfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Donnerruf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Donnerstieg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenblut" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenruf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Echsenhain" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisodem" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisschuppe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eiswacht" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flammenherz" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Felsengrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Geisterfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Gletschertor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Goldstrom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Graustein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Grimmdorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Hügelschild" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kesselfeste" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferruf" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupferschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Loderfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mondschein" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mondzahn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Mondklaue" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Obsidiangrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Obsidianschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rabenfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Raucharche" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rauchtal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rotschuppe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rotzahn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schattenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schmiedegrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Schuppenturm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberstrom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sonnenzahn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Spitzkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Stahlfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmkamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmschmiede" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sumpfodem" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Todesgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Titanenhort" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Totenklamm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Weißenfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Wellenfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Wolfsgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zahntal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornkluft" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Zornsteig" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Aschenodem" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Donnerkessel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenfaust" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenfels" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Drachenhauch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Flammenborn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Kupfertal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Rauchgrat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Silberborn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Sturmfaust" }, "tags": ["settlements"], "w": 1 }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "de": "General"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "generals",
+      "labels": {
+        "de": "Generals"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

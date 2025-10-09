@@ -1,2296 +1,628 @@
 {
-    "format": "3.1.2",
-    "fileVersion": "1.0.0",
-    "code": "dragonborn",
+  "format": "4.0.0",
+  "package": {
+    "code": "dragonborn-en",
     "displayName": {
-        "de": "Drachenblütige",
-        "en": "Dragonborn"
+      "de": "Drachenblütige",
+      "en": "Dragonborn"
     },
     "languages": [
-        "en"
+      "en"
     ],
-    "categories": [
-        "settlements"
-    ],
-    "data": {
-        "settlements": {
-            "displayName": {
-                "de": "Siedlungen",
-                "en": "Settlements"
-            },
-            "subcategories": [
-                {
-                    "key": "general",
-                    "displayName": {
-                        "de": "Allgemein",
-                        "en": "General"
-                    },
-                    "entries": {
-                        "en": [
-                            {
-                                "gender": "n",
-                                "name": "Ashford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Blackwater"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Clearbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Deepwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eastgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fairhaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Goldfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Highridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ironwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Millbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Northport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oakdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Redhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Southmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Westbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Brightwater"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Darkhollow"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Silverstone"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Goldmeadow"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bronzehill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ashborne"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Brightdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Clearwater"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Darkwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eagleport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fairdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Greenhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hartwell"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ironhold"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kingstown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lonewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Millfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Newcastle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oldtown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pinehurst"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bastion"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Citadel"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fortress"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sanctuary"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Stronghold"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Drakeshire"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Wyrmhaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Scaleford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Flamewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Stormheath"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Emberdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Frostmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Thornwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ravenshollow"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Shadowmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dragonscrest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Wyrmsworth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Scalehaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Taloncrest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Breathhaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Wingdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Clawford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hornwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fangsbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tailmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Northbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Southford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Easthill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Westwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Upperfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lowerdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oldmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Newton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Greatham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Littlewick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Highbourne"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Deepfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Longwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Shorthill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Broaddale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Narrowton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Whitebride"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Blackford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Redwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Greenfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Abbeyton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bishopstoke"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Charlestown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dunmore"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Edmundsbury"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Frankford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Georgetown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Huntersville"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jamestown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kingsbury"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lamberton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Middleton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Newmarket"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oldcastle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pembroke"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Queensgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Richardstown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Stanfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Thomaston"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Whitmore"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Armorbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bannerburn"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Castlebury"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Crownby"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Honorhall"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knightham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lancehope"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Noblelea"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Royalmarsh"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Shieldmoor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Swordmouth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Valorness"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Brightshaw"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Darkstead"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fairthorpe"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Grandthwaite"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ancientton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Elderwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lostworth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hiddengarth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Refuge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pinnacle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Apex"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Crown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Throne"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Glory"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Honor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Valor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Summit"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Peak"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Heights"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Depths"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Core"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Heart"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Beacon"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tower"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Spire"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Keep"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Castle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Palace"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Manor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Haven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Harbor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Port"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bay"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cove"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Inlet"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Reach"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dragonreach"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Wyrmharbor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Scalecrossing"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Flamelanding"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Stormjunction"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Crystalgardens"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Goldenmeadows"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Silversprings"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Emberfalls"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Thunderrapids"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Buckingham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nottingham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Birmingham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Wellington"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Darlington"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Huntington"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Winchester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Manchester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Leicester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gloucester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Worcester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lancaster"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Plymouth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Portsmouth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dartmouth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Weymouth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Chester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Rochester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Chichester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dorchester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ashbourne"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Blackmoor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Brightholm"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Clearmont"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Darkstone"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eastbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fairmont"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Goldbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Greystone"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hardwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Irondale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knightsburg"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Longford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Millhaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Newholm"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oldgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pinewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Redbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Shadowbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Stormgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Thorndale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Valewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Whitehaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Winterhold"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Springdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Summerfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Autumnwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Morningside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eveninghill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Noonbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Midnightmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dawngate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Duskwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Twilightdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Starfall"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Moonrise"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sunbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Rainwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Snowfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Windhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "First Bridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Second Gate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Third Hill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fourth Wood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Fifth Dale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sixth Field"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Seventh Mere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eighth Ford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ninth Wick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tenth Ham"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Upper Dragonhaven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lower Wyrmshire"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "North Scalebrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "South Emberdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "East Stormwatch"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "West Flamecrest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Central Keep"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Outer Gate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Alderton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ashington"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bradfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Chatsworth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dalewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Edgewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ferndale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Glenwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hawthorn"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ivywood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jonestown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kirkwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Linwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Morley"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Norton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ogden"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Preston"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quinton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ridgewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sherwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Crystalford"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dragonbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Emberfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Frostwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Golddale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hornburg"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Irongate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jadewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knightdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lanceport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Mithrilton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nyxwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Onyxdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pearlgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quartzfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Rubyhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sapphirewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Topazdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Uraniumridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Voidbridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Riverbend"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lakeside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hillcrest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Valleybend"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Mountainview"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Coastwatch"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Forestdeep"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Plainside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Marshland"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Moorside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cliffside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cavetown"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gorgebend"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Canyonside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Plateauview"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ridgetop"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Summitview"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Peakside"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Heightsview"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lowlands"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bramblewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cedarfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dogwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Elmshire"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Firdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Groveland"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hickoryhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ironbark"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Juniper"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knotwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Laurelton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Maplewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nutwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Olivegate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Poplar"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quincewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sprucefield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Teakwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Willowbrook"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Amberton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Berryfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cherryhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dewmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Emberwick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Flintwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Garnetdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Heatherfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ivybridge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jasperhill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kestrelwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Larkspur"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Mistwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nightshade"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Orchardgate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Peachwood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quincedale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Rosewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sagebrush"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Thornfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Admiralty"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Barracks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Commandpost"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dutchess"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Embassy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Garrison"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Headquarters"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Imperial"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Justicehill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kingscrest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lordsmere"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Majesty"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nobility"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Officerdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Palacegate"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Queensport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Regiment"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Squadron"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Troopdale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Academy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Biblioteca"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "College"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dragonlore"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Education"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Faculty"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gymnasium"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hallowed"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Institute"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Journal"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knowledge"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Library"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Museum"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nunnery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Observatory"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Preparatory"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Research"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Seminary"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tutorial"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Alchemy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Brewhouse"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Carpenter"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dyeworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Engineering"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Forgeworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Goldsmith"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Harborworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ironworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jointery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kiln"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Loomworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Millworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Needleworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Oven"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pottery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quarry"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ropeworks"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Smithy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tannery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Applewood"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Barleyfield"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Corndale"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dairy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Eggton"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Farmstead"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Granary"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Harvest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Irrigation"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jam"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kitchen"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Livestock"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Mill"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nursery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Orchard"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pasture"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quinoa"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ranch"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Silo"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Threshing"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Anchor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Berth"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cargo"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Dock"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Export"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ferry"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Galleon"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Import"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jetty"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Keel"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Lighthouse"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Marina"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Navigation"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Outport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pier"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quay"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Rig"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Shipyard"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tide"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Arena"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bard"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Carnival"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Drama"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Entertainment"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Festival"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Games"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Holiday"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Inn"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Jester"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Knavery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Laughter"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Music"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Opera"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Performance"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quadrille"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Recreation"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sport"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Theatre"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Variety"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Apothecary"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bed"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Clinic"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Doctor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Emergency"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "First"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "General"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hospital"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Infirmary"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kindness"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Life"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Medicine"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Nurse"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Operation"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Physician"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quarantine"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Recovery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Surgery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Treatment"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Altar"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bell"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Cathedral"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Divine"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Episcopal"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Faith"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gospel"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Holy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Icon"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Justice"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kindred"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Light"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ministry"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Novice"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Order"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Prayer"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quiet"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Reverence"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Sacred"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Temple"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Armor"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Battle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Combat"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Defense"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Elite"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Force"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Guard"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Heavy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Infantry"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Legion"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Military"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Navy"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Patrol"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quick"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Strike"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tactical"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Administration"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Bureau"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "City"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "District"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Executive"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Federal"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Government"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Hall"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Judicial"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Kingdom"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Legal"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Municipal"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "National"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Official"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Provincial"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quarters"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Regional"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "State"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Territory"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Archive"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Book"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Chronicle"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Document"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Encyclopedia"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "File"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gallery"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "History"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Information"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Keeper"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Ledger"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Memory"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Note"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Office"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Paper"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Query"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Record"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Study"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Tome"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Adventure"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Beyond"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Crossroads"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Distant"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Explorer"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Frontier"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Gateway"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Horizon"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Journey"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Keystone"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Landmark"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Mapmaker"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Outpost"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Pathfinder"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Quest"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Route"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Signpost"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Trail"
-                            },
-                            {
-                                "gender": "n",
-                                "name": "Venture"
-                            }
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "settlements": {
+      "displayName": {
+        "de": "Siedlungen",
+        "en": "Settlements"
+      },
+      "items": [
+        { "t": { "en": "Ashford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Blackwater" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clearbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Deepwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eastgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fairhaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goldfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Highridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ironwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Millbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Northport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oakdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Redhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Southmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Westbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brightwater" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Darkhollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Silverstone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goldmeadow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bronzehill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashborne" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brightdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clearwater" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Darkwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eagleport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fairdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Greenhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hartwell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ironhold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kingstown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lonewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Millfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Newcastle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oldtown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pinehurst" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bastion" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Citadel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fortress" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sanctuary" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stronghold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Drakeshire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Wyrmhaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Scaleford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Flamewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stormheath" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Frostmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thornwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ravenshollow" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shadowmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dragonscrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Wyrmsworth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Scalehaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Taloncrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Breathhaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Wingdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clawford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hornwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fangsbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tailmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Northbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Southford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Easthill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Westwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Upperfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lowerdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oldmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Newton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Greatham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Littlewick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Highbourne" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Deepfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Longwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shorthill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Broaddale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Narrowton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Whitebride" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Blackford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Redwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Greenfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Abbeyton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bishopstoke" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Charlestown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dunmore" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Edmundsbury" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Frankford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Georgetown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Huntersville" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jamestown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kingsbury" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lamberton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Middleton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Newmarket" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oldcastle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pembroke" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Queensgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Richardstown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stanfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thomaston" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Whitmore" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Armorbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bannerburn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Castlebury" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crownby" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Honorhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knightham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lancehope" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Noblelea" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Royalmarsh" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shieldmoor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Swordmouth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Valorness" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brightshaw" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Darkstead" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fairthorpe" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Grandthwaite" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ancientton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Elderwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lostworth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hiddengarth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Refuge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pinnacle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Apex" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Throne" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Glory" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Honor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Valor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Summit" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Peak" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Heights" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Depths" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Core" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Heart" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Beacon" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tower" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Spire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Keep" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Castle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Palace" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Manor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Haven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Harbor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Port" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bay" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cove" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Inlet" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Reach" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dragonreach" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Wyrmharbor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Scalecrossing" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Flamelanding" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stormjunction" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crystalgardens" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goldenmeadows" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Silversprings" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberfalls" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thunderrapids" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Buckingham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nottingham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Birmingham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Wellington" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Darlington" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Huntington" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Winchester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Manchester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Leicester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gloucester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Worcester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lancaster" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Plymouth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Portsmouth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dartmouth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Weymouth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Chester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rochester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Chichester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dorchester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashbourne" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Blackmoor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brightholm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clearmont" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Darkstone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eastbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fairmont" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goldbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Greystone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hardwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Irondale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knightsburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Longford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Millhaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Newholm" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oldgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pinewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Redbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shadowbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Stormgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thorndale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Valewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Whitehaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Winterhold" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Springdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Summerfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Autumnwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Morningside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eveninghill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Noonbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Midnightmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dawngate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Duskwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Twilightdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Starfall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Moonrise" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sunbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rainwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Snowfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Windhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "First Bridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Second Gate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Third Hill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fourth Wood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Fifth Dale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sixth Field" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Seventh Mere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eighth Ford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ninth Wick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tenth Ham" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Upper Dragonhaven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lower Wyrmshire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "North Scalebrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "South Emberdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "East Stormwatch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "West Flamecrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Central Keep" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Outer Gate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Alderton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ashington" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bradfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Chatsworth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dalewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Edgewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ferndale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Glenwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hawthorn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ivywood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jonestown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kirkwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Linwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Morley" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Norton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ogden" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Preston" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quinton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ridgewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sherwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crystalford" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dragonbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Frostwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Golddale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hornburg" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Irongate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jadewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knightdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lanceport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mithrilton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nyxwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Onyxdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pearlgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quartzfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rubyhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sapphirewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Topazdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Uraniumridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Voidbridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Riverbend" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lakeside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hillcrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Valleybend" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mountainview" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Coastwatch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Forestdeep" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Plainside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Marshland" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Moorside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cliffside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cavetown" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gorgebend" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Canyonside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Plateauview" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ridgetop" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Summitview" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Peakside" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Heightsview" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lowlands" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bramblewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cedarfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dogwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Elmshire" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Firdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Groveland" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hickoryhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ironbark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Juniper" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knotwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Laurelton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Maplewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nutwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Olivegate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Poplar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quincewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sprucefield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Teakwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Willowbrook" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Amberton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Berryfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cherryhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dewmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emberwick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Flintwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Garnetdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Heatherfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ivybridge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jasperhill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kestrelwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Larkspur" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mistwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nightshade" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Orchardgate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Peachwood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quincedale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rosewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sagebrush" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Thornfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Admiralty" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Barracks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Commandpost" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dutchess" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Embassy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Garrison" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Headquarters" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Imperial" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Justicehill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kingscrest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lordsmere" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Majesty" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nobility" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Officerdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Palacegate" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Queensport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Regiment" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Squadron" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Troopdale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Academy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Biblioteca" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "College" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dragonlore" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Education" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Faculty" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gymnasium" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hallowed" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Institute" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Journal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knowledge" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Library" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Museum" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nunnery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Observatory" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Preparatory" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Research" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Seminary" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tutorial" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Alchemy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Brewhouse" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Carpenter" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dyeworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Engineering" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Forgeworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Goldsmith" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Harborworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ironworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jointery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kiln" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Loomworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Millworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Needleworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Oven" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pottery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quarry" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ropeworks" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Smithy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tannery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Applewood" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Barleyfield" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Corndale" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dairy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Eggton" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Farmstead" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Granary" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Harvest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Irrigation" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jam" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kitchen" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Livestock" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mill" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nursery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Orchard" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pasture" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quinoa" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ranch" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Silo" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Threshing" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Anchor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Berth" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cargo" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Dock" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Export" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ferry" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Galleon" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Import" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jetty" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Keel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Lighthouse" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Marina" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Navigation" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Outport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pier" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quay" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Rig" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Shipyard" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tide" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Arena" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bard" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Carnival" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Drama" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Entertainment" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Festival" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Games" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Holiday" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Inn" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Jester" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Knavery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Laughter" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Music" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Opera" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Performance" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quadrille" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Recreation" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sport" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Theatre" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Variety" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Apothecary" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bed" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Clinic" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Doctor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Emergency" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "First" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "General" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hospital" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Infirmary" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kindness" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Life" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Medicine" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Nurse" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Operation" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Physician" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quarantine" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Recovery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Surgery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Treatment" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Altar" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bell" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Cathedral" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Divine" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Episcopal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Faith" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gospel" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Holy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Icon" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Justice" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kindred" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Light" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ministry" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Novice" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Order" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Prayer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quiet" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Reverence" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Sacred" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Temple" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Armor" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Battle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Combat" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Defense" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Elite" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Force" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Guard" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Heavy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Infantry" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Legion" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Military" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Navy" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Patrol" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quick" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Strike" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tactical" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Administration" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Bureau" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "City" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "District" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Executive" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Federal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Government" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Hall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Judicial" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Kingdom" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Legal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Municipal" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "National" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Official" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Provincial" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quarters" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Regional" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "State" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Territory" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Archive" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Book" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Chronicle" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Document" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Encyclopedia" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "File" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gallery" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "History" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Information" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Keeper" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Ledger" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Memory" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Note" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Office" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Paper" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Query" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Record" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Study" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Tome" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Adventure" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Beyond" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Crossroads" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Distant" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Explorer" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Frontier" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Gateway" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Horizon" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Journey" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Keystone" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Landmark" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Mapmaker" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Outpost" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Pathfinder" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Quest" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Route" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Signpost" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Trail" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "en": "Venture" }, "tags": ["settlements"], "w": 1 }
+      ]
     }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "settlements": {
+            "en": "Settlements"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "settlements",
+      "labels": {
+        "en": "Settlements"
+      },
+      "query": {
+        "category": "settlements",
+        "tags": [
+          "settlements"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
 }

@@ -1,0 +1,115 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Aasimar Titel",
+      "en": "Aasimar Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Auserwählter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Dux" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Edelmann" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Erzherzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Erzpaladin" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Großherzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Himmelsfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Himmelsritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Herr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hochfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hochmeister" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Lichtbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Lichtfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Prinz" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Reichsfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Seraphim-Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Sternenritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Wächter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Auserwählte" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Edelfrau" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Erzherzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Großherzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Himmelsfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Himmelsdame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Herrin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Hochfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Lichtbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Lichtfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Prinzessin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Reichsfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Seraphim-Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Sternendame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Wächterin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Weiblich"
+          },
+          "male": {
+            "de": "Männlich"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          },
+          "titles": {
+            "de": "Adelstitel"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
