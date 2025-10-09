@@ -1,0 +1,84 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "displayName": {
+      "de": "Gnome Titel",
+      "en": "Gnome Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Werkmeister" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hammerherzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Zahnradbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Funkenritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Kupferfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Dampfmarkgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Eisenweber" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Werkmeisterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Hammerherzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Zahnradbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Funkenritterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Kupferfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Dampfmarkgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Eisenweberin" }, "tags": ["female", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "de": "Weiblich"
+          },
+          "male": {
+            "de": "Männlich"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          },
+          "titles": {
+            "de": "Adelstitel"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

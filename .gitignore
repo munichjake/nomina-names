@@ -11,6 +11,7 @@ test-simplified-system.js
 # Backup and temporary data
 data-old/
 data-new/
+*.backup
 
 # Development files
 *.tmp
@@ -19,6 +20,8 @@ data-new/
 Thumbs.db
 *.fixed.*
 *.copy.*
+.prettierrc.json
+.vscode/
 
 # IDE files
 .vscode/

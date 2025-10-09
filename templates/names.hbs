@@ -10,8 +10,8 @@
         <select id="names-language-select"
                 name="names-language"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Sprache suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
-          <option value="">-- {{localize "names.select-all"}} --</option>
+                data-enhanced='{"theme": "names-orange", "placeholder": "names.ui.placeholder-language", "searchPlaceholder": "names.ui.search-language", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
+          <option value=""></option>
           {{#each languages}}
           <option value="{{this.code}}" {{#if (eq this.code ../defaultLanguage)}}selected{{/if}}>{{this.name}}</option>
           {{/each}}
@@ -23,8 +23,8 @@
         <select id="names-species-select"
                 name="names-species"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Spezies suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
-          <option value="">-- {{localize "names.select-all"}} --</option>
+                data-enhanced='{"theme": "names-orange", "placeholder": "names.ui.placeholder-species", "searchPlaceholder": "names.ui.search-species", "dependsOn": "#names-language-select", "virtualScroll": true, "clearable": false, "maxVisibleItems": 8, "itemHeight": 32}'>
+          <option value=""></option>
           {{#each species}}
           <option value="{{this.code}}">{{this.name}}</option>
           {{/each}}
@@ -36,12 +36,10 @@
         <select id="names-category-select"
                 name="names-category"
                 required
-                data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": true, "clearable": false, "maxVisibleItems": 12, "itemHeight": 32}'>
-          <option value="">-- {{localize "names.select-all"}} --</option>
+                data-enhanced='{"theme": "names-orange", "placeholder": "names.ui.placeholder-category", "searchPlaceholder": "names.ui.search-category", "dependsOn": "#names-species-select", "virtualScroll": true, "clearable": false, "maxVisibleItems": 12, "itemHeight": 32}'>
+          <option value=""></option>
           {{#each categories}}
           {{#if this.length}}
-          <!-- Group separator -->
-          <option value="" disabled class="names-category-group-header">── {{this.groupLabel}} ──</option>
           {{#each this.items}}
           <option value="{{this.code}}" class="names-category-item">{{this.name}}</option>
           {{/each}}
@@ -53,7 +51,7 @@
 
     <!-- Geschlechter-Auswahl Panel - wird nur für "Namen" angezeigt -->
     <div class="names-module-section names-module-gender-section" style="display: none;">
-      <h3>{{localize "names.gender"}}</h3>
+      <h3>{{localize "names.lbl_gender"}}</h3>
 
       <div class="names-module-checkbox-grid" id="gender-checkboxes-container">
         <!-- Wird dynamisch von JavaScript gefüllt -->
@@ -77,48 +75,115 @@
 
     <!-- Namenskomponenten Panel - wird nur für "Namen" angezeigt -->
     <div class="names-module-section names-module-components-section" style="display: none;">
-      <h3>{{localize "names.components"}}</h3>
-
-      <div class="names-module-checkbox-grid">
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-include-firstname" checked>
-          <span class="names-module-checkmark"></span>
-          {{localize "names.firstname"}}
-        </label>
-
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-include-surname">
-          <span class="names-module-checkmark"></span>
-          {{localize "names.surname"}}
-        </label>
-
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-include-title">
-          <span class="names-module-checkmark"></span>
-          {{localize "names.titles"}}
-        </label>
-
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-include-nickname">
-          <span class="names-module-checkmark"></span>
-          {{localize "names.nickname"}}
-        </label>
+      <!-- Mode Toggle -->
+      <div class="names-module-mode-toggle">
+        <button type="button" class="names-module-mode-btn active" data-mode="components">
+          <i class="fas fa-puzzle-piece"></i>
+          <span>{{localize "names.component-mode"}}</span>
+        </button>
+        <button type="button" class="names-module-mode-btn" data-mode="recipe">
+          <i class="fas fa-scroll"></i>
+          <span>{{localize "names.recipe-mode"}}</span>
+        </button>
       </div>
 
-      <div class="names-module-format-group">
+      <!-- Components Mode -->
+      <div class="names-module-components-content" style="display: block;">
+        <h3>{{localize "names.components"}}</h3>
+
+        <div class="names-module-checkbox-grid">
+          <label class="names-module-checkbox-item">
+            <input type="checkbox" name="names-include-firstname" checked>
+            <span class="names-module-checkmark"></span>
+            {{localize "names.firstname"}}
+          </label>
+
+          <label class="names-module-checkbox-item">
+            <input type="checkbox" name="names-include-surname">
+            <span class="names-module-checkmark"></span>
+            {{localize "names.surname"}}
+          </label>
+
+          <label class="names-module-checkbox-item">
+            <input type="checkbox" name="names-include-title">
+            <span class="names-module-checkmark"></span>
+            {{localize "names.titles"}}
+          </label>
+
+          <label class="names-module-checkbox-item">
+            <input type="checkbox" name="names-include-nickname">
+            <span class="names-module-checkmark"></span>
+            {{localize "names.nickname"}}
+          </label>
+        </div>
+
+        <div class="names-module-format-group">
+          <div class="names-module-form-group">
+            <label for="names-format-input">{{localize "names.nameformat"}}:</label>
+            <input
+              type="text"
+              id="names-format-input"
+              name="names-format"
+              class="names-module-format-input"
+              value="{firstname} \"{nickname}\" {surname}, {title}"
+              placeholder="{firstname} \"{nickname}\" {surname}, {title}"
+            >
+            <div class="names-module-format-help">
+              {{localize "names.placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
+              {{localize "names.examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recipe Mode -->
+      <div class="names-module-recipe-content" style="display: none;">
+        <h3>{{localize "names.recipes"}}</h3>
+
         <div class="names-module-form-group">
-          <label for="names-format-input">{{localize "names.nameformat"}}:</label>
-          <input
-            type="text"
-            id="names-format-input"
-            name="names-format"
-            class="names-module-format-input"
-            value="{firstname} {nickname} {surname}, {title}"
-            placeholder="{firstname} {nickname} {surname}, {title}"
-          >
-          <div class="names-module-format-help">
-            {{localize "names.placeholders"}}: <strong>{firstname}</strong>, <strong>{surname}</strong>, <strong>{title}</strong>, <strong>{nickname}</strong><br>
-            {{localize "names.examples"}}: "{firstname} {surname}" {{localize "or"}} "{title} {firstname} '{nickname}' {surname}"
+          <label for="names-recipe-select">{{localize "names.recipe"}}:</label>
+          <select id="names-recipe-select"
+                  name="names-recipe"
+                  class="names-module-recipe-select"
+                  data-enhanced='{"theme": "names-orange", "placeholder": "names.ui.placeholder-recipe", "searchPlaceholder": "names.ui.search-recipe", "clearable": false, "maxVisibleItems": 8, "itemHeight": 48}'>
+            <option value=""></option>
+            <!-- Will be filled dynamically by JavaScript -->
+          </select>
+        </div>
+
+        <div class="names-module-form-group">
+          <label for="names-recipe-definition">{{localize "names.recipe-field-label"}}:</label>
+          <textarea
+            id="names-recipe-definition"
+            name="names-recipe-definition"
+            class="names-module-recipe-textarea"
+            rows="4"
+            disabled
+            readonly
+          ></textarea>
+          <div class="names-module-recipe-buttons">
+            <button type="button" id="names-recipe-copy-btn" class="names-module-recipe-action-btn" disabled>
+              <i class="fas fa-copy"></i> {{localize "names.recipe-copy"}}
+            </button>
+            <button type="button" id="names-recipe-clear-btn" class="names-module-recipe-action-btn" disabled>
+              <i class="fas fa-eraser"></i> {{localize "names.recipe-clear"}}
+            </button>
+          </div>
+        </div>
+
+        <div class="names-module-form-group">
+          <label for="names-recipe-seed">{{localize "names.recipe-seed"}}:</label>
+          <div class="names-module-seed-input-container">
+            <input
+              type="text"
+              id="names-recipe-seed"
+              name="names-recipe-seed"
+              class="names-module-seed-input"
+              placeholder="{{localize 'names.recipe-seed-placeholder'}}"
+            >
+            <button type="button" id="names-recipe-randomize-seed" class="names-module-seed-dice-btn" title="{{localize 'names.recipe-randomize-seed'}}">
+              <i class="fas fa-dice"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -154,7 +219,6 @@
   <div class="names-module-results-panel">
     <div class="names-module-results-header">
       <h2 class="names-module-results-title">{{localize "names.results.title"}}</h2>
-      <span class="names-module-results-count" id="resultsCount">{{localize "names.results.count-zero"}}</span>
       <button type="button" id="names-history-btn" class="names-module-history-icon-btn" title="{{localize 'names.history.open'}}">
         <i class="fas fa-history"></i>
       </button>
@@ -168,8 +232,8 @@
     </div>
 
     <div class="names-module-view-toggle">
-      <button class="names-module-toggle-btn active" data-view="detailed"><span>📋 {{localize "names.view.detailed"}}</span></button>
-      <button class="names-module-toggle-btn" data-view="simple"><span>📝 {{localize "names.view.simple"}}</span></button>
+      <button type="button" class="names-module-toggle-btn active" data-view="detailed"><span>📋 {{localize "names.view.detailed"}}</span></button>
+      <button type="button" class="names-module-toggle-btn" data-view="simple"><span>📝 {{localize "names.view.simple"}}</span></button>
     </div>
 
     <div id="names-result-display" class="names-module-result-display">

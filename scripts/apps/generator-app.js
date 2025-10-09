@@ -1,2163 +1,1254 @@
 /**
- * Names Generator App - Main application for generating names
- * Updated for simplified UI with gender and component checkboxes + categorized content subcategories
+ * Names Generator App
+ * Updated to use V4 API with dynamic recipe generation
+ * Maintains old UI for gender and component selection
  */
 
-import { ensureGlobalNamesData, getGlobalNamesData } from '../core/data-manager.js';
-import { showLoadingState, hideLoadingState } from '../utils/ui-helpers.js';
-import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, DEFAULT_NAME_FORMAT, isCategorizedContent, getSubcategories, isGeneratorOnlyCategory, MODULE_ID, getLocalizedCategoryName } from '../shared/constants.js';
-import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
-import { NamesAPI } from '../api-system.js';
+import { getGlobalGenerator } from '../api/generator.js';
 import { getHistoryManager } from '../core/history-manager.js';
+import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID } from '../shared/constants.js';
+import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesHistoryApp } from './history-app.js';
+import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
 
-/**
- * Names Generator Application - Main application for generating names
- * Provides UI for selecting language, species, category and generating various types of names
- * Supports enhanced dropdowns, auto-resize, and smart defaults
- */
 export class NamesGeneratorApp extends Application {
-  /**
-   * Creates a new Names Generator App instance
-   * @param {Object} options - Application options
-   */
   constructor(options = {}) {
     super(options);
+    this.generator = null;
+    this.currentLanguage = null;
+    this.currentSpecies = null;
+    this.currentCategory = null; // Will use catalogs now
+    this.generatedNames = [];
+    this.favoritedNames = new Set(); // Track favorited names
     this.supportedGenders = getSupportedGenders();
-    this.enhancedDropdowns = new Map(); // Store Enhanced Dropdown instances
-    this.autoResize = true; // Enable auto-resize by default
-    this.minHeight = 400; // Minimum window height
-    this.maxHeight = 800; // Maximum window height
-    this.favoriteNames = new Set(); // Store favorited names
-    logDebug("NamesGeneratorApp initialized with supported genders:", this.supportedGenders);
+    this._isFirstRender = true; // Track first render to avoid infinite loop
+    this.currentView = 'detailed'; // 'detailed' or 'simple'
+    this.currentMode = 'components'; // 'components' or 'recipe'
+    this.currentRecipe = null; // Currently selected recipe ID
+    this.lastRecipeDefinition = ''; // Store last recipe definition for "selbst definieren"
   }
 
-  /**
-   * Default application options
-   * @returns {Object} Default options for the Names Generator App
-   */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       id: "names-generator",
-      title: game.i18n.localize("names.window-title") || "Nomina Names - Name Generator",
+      title: game.i18n.localize("names.window-title") || "Nomina Names - Generator",
       template: TEMPLATE_PATHS.generator,
       width: 900,
-      height: 800, // Reduced initial height for more compact layout
+      height: 800,
       resizable: true,
       classes: [CSS_CLASSES.moduleApp]
     });
   }
 
-  /**
-   * Prepares data for template rendering
-   * @returns {Promise<Object>} Template data including languages, species, categories, and loading state
-   */
   async getData() {
-    ensureGlobalNamesData();
-    const globalNamesData = getGlobalNamesData();
-
-    if (globalNamesData) {
-      await globalNamesData.initializeData();
+    if (!this.generator) {
+      this.generator = getGlobalGenerator();
+      await this.generator.initialize();
     }
 
-    // Safely get data with proper fallbacks
-    let languages = [];
-    let species = [];
+    // Set default language if not set
+    if (!this.currentLanguage) {
+      this.currentLanguage = this._getFoundryLanguage();
+    }
+
+    // Get available data
+    const languages = await this.generator.getAvailableLanguages();
+    const species = this.currentLanguage
+      ? await this.generator.getAvailableSpecies(this.currentLanguage)
+      : [];
+
+    // Get catalogs (categories) for current package
     let categories = [];
-    let isLoading = false;
-    let isLoaded = false;
+    if (this.currentLanguage && this.currentSpecies) {
+      const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
+      const catalogs = await this.generator.getAvailableCatalogs(packageCode, this.currentLanguage);
 
-    if (globalNamesData) {
-      try {
-        languages = globalNamesData.getLocalizedLanguages() || [];
-        species = globalNamesData.getLocalizedSpecies() || [];
-        categories = await globalNamesData.getLocalizedCategoriesForGenerator('generator') || [];
-        isLoading = globalNamesData.isLoading;
-        isLoaded = globalNamesData.isLoaded;
-      } catch (error) {
-        logError("Error getting data in generator-app getData:", error);
-        // Keep default empty arrays
-      }
+      // Catalogs already come as { code, name } objects
+      // Template checks for length property, so we add it
+      categories = [{
+        length: catalogs.length, // Add length for template check
+        groupLabel: game.i18n.localize("names.categories") || "Categories",
+        items: catalogs // Already in the right format
+      }];
     }
 
-    logDebug("generator-app getData analysis:", {
-      globalNamesDataExists: !!globalNamesData,
-      isLoaded: globalNamesData?.isLoaded,
-      isLoading: globalNamesData?.isLoading,
-      nameDataSize: globalNamesData?.nameData?.size || 0,
-      localizedSpecies: species
-    });
-
-    const data = {
-      languages: languages,
-      species: species,
-      categories: categories,
-      isLoading: isLoading,
-      isLoaded: isLoaded,
-      supportedGenders: getSupportedGenders() || [],
-      defaultLanguage: this._getFoundryLanguage()
+    return {
+      languages: languages.map(code => ({ code, name: code.toUpperCase() })),
+      species, // Already contains { code, name } objects with localized names
+      categories,
+      defaultLanguage: this.currentLanguage,
+      isLoading: false,
+      isLoaded: true,
+      supportedGenders: this.supportedGenders
     };
+  }
 
-    logDebug("Generator app data prepared:", {
-      languages: data.languages.length,
-      species: data.species.length,
-      categories: data.categories.length,
-      isLoading: data.isLoading,
-      isLoaded: data.isLoaded,
-      defaultLanguage: data.defaultLanguage
-    });
-
-    return data;
+  _capitalizeSpecies(species) {
+    return species.charAt(0).toUpperCase() + species.slice(1);
   }
 
   /**
-   * Activates event listeners for the application
-   * @param {jQuery} html - The application's HTML
+   * Apply preselection to language dropdown
+   * (Placeholders are now auto-localized via placeholderI18n in data-enhanced)
    */
+  _updateEnhancedDropdownOptions(html) {
+    // Language dropdown - preselect default content language
+    const languageDropdown = html.find('#names-language-select')[0]?.nextSibling?._enhancedDropdown;
+    if (languageDropdown) {
+      // Set preselect to default content language if not already set
+      if (!languageDropdown.selectedValues && this.currentLanguage) {
+        languageDropdown.options.preselect = this.currentLanguage;
+        languageDropdown.loadItems(); // Reload to apply preselect
+      }
+
+      languageDropdown.updateDisplay();
+    }
+  }
+
   activateListeners(html) {
     super.activateListeners(html);
 
-    // Update supported genders on render
-    this.supportedGenders = getSupportedGenders();
-    logDebug("Updated supported genders:", this.supportedGenders);
+    // Hide view toggle initially (will be shown only when there's metadata)
+    html.find('.names-module-view-toggle').hide();
 
-    html.find('#names-generate-btn').click(this._onGenerateName.bind(this));
-    html.find('#names-copy-btn').click(this._onCopyName.bind(this));
-    html.find('#names-clear-btn').click(this._onClearResult.bind(this));
-    html.find('#names-history-btn').click(this._onOpenHistory.bind(this));
+    // Update enhanced dropdown options after they are initialized
+    setTimeout(() => {
+      this._updateEnhancedDropdownOptions(html);
+    }, 50);
 
-    html.find('input[type="checkbox"]').change(this._onCheckboxChange.bind(this));
+    // Language change
+    html.find('#names-language-select').change(async (ev) => {
+      this.currentLanguage = ev.target.value;
+      this.currentSpecies = null;
+      this.currentCategory = null;
+      this.generatedNames = [];
+      await this._updateSpeciesDropdown(html);
+      await this._updateCategoriesDropdown(html);
+    });
+
+    // Species change
+    html.find('#names-species-select').change(async (ev) => {
+      this.currentSpecies = ev.target.value;
+      this.currentCategory = null;
+      this.generatedNames = [];
+      await this._updateCategoriesDropdown(html);
+    });
+
+    // Category change
+    html.find('#names-category-select').change(async (ev) => {
+      this.currentCategory = ev.target.value;
+      await this._updateComponentsPanel(html);
+    });
+
+    // Generate button
+    html.find('#names-generate-btn').click(async (ev) => {
+      ev.preventDefault();
+      await this._onGenerateName(html);
+    });
+
+    // Copy all names
+    html.find('#names-copy-btn').click(async (ev) => {
+      ev.preventDefault();
+      await this._onCopyNames(html);
+    });
+
+    // Clear results
+    html.find('#names-clear-btn').click((ev) => {
+      ev.preventDefault();
+      this._onClearResult(html);
+    });
+
+    // History button
+    html.find('#names-history-btn').click((ev) => {
+      ev.preventDefault();
+      new NamesHistoryApp().render(true);
+    });
 
     // View toggle buttons
-    html.find('.names-module-toggle-btn').click(this._onViewToggle.bind(this));
+    html.find('.names-module-toggle-btn').click((ev) => {
+      ev.preventDefault();
+      const btn = $(ev.currentTarget);
+      const view = btn.data('view');
 
-    // Copy name on click (event delegation)
-    html.find('#names-result-display').on('click', '.names-module-generated-name', this._onNameClick.bind(this));
+      if (view === this.currentView) return; // Already in this view
 
-    // Favorite toggle on click (event delegation)
-    html.find('#names-result-display').on('click', '.favorite-toggle', this._onFavoriteToggle.bind(this));
+      this.currentView = view;
 
-    // Store Enhanced Dropdown instances and bind to their change events
-    this._initializeEnhancedDropdowns(html);
+      // Update button states
+      html.find('.names-module-toggle-btn').removeClass('active');
+      btn.addClass('active');
 
-    // Add selective event blocking - only block clicks that aren't handled by our own event handlers
-    html.on('click', (event) => {
-      // Don't block clicks on our own interactive elements
-      const target = event.target;
-      const isOurButton = target.closest('.names-module-toggle-btn, .names-module-generate-btn, .names-module-action-btn, .names-module-generated-name');
-      const isFormElement = target.matches('input, select, button, textarea, label');
-      const isDropdownElement = target.closest('.enhanced-dropdown, .dropdown-panel');
+      // Update result display
+      this._updateResultDisplay(html);
 
-      // Only stop propagation for clicks that aren't on our interactive elements
-      if (!isOurButton && !isFormElement && !isDropdownElement) {
-        event.stopPropagation();
+      logDebug(`View switched to: ${view}`);
+    });
+
+    // Mode toggle buttons (Components vs Recipe)
+    html.find('.names-module-mode-btn').click((ev) => {
+      ev.preventDefault();
+      const btn = $(ev.currentTarget);
+      const mode = btn.data('mode');
+
+      if (mode === this.currentMode) return; // Already in this mode
+
+      this.currentMode = mode;
+
+      // Update button states
+      html.find('.names-module-mode-btn').removeClass('active');
+      btn.addClass('active');
+
+      // Toggle content visibility
+      if (mode === 'recipe') {
+        html.find('.names-module-components-content').hide();
+        html.find('.names-module-recipe-content').show();
+        this._updateRecipeDropdown(html);
+      } else {
+        html.find('.names-module-recipe-content').hide();
+        html.find('.names-module-components-content').show();
+      }
+
+      logDebug(`Mode switched to: ${mode}`);
+    });
+
+    // Recipe dropdown change
+    html.find('#names-recipe-select').change(async (ev) => {
+      const recipeId = ev.target.value;
+      this.currentRecipe = recipeId;
+      await this._onRecipeSelected(html, recipeId);
+    });
+
+    // Recipe copy button
+    html.find('#names-recipe-copy-btn').click(async (ev) => {
+      ev.preventDefault();
+      await this._onCopyRecipe(html);
+    });
+
+    // Recipe clear button
+    html.find('#names-recipe-clear-btn').click((ev) => {
+      ev.preventDefault();
+      this._onClearRecipe(html);
+    });
+
+    // Recipe seed randomize button
+    html.find('#names-recipe-randomize-seed').click((ev) => {
+      ev.preventDefault();
+      this._onRandomizeSeed(html);
+    });
+
+    // Copy individual name (detailed view)
+    html.find('#names-result-display').on('click', '.names-module-generated-name', async (ev) => {
+      const nameEl = $(ev.currentTarget);
+      const name = nameEl.data('name');
+      if (name) {
+        await navigator.clipboard.writeText(name);
+        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
+
+        // Add copied animation
+        nameEl.addClass('copied');
+        setTimeout(() => {
+          nameEl.removeClass('copied');
+        }, 600);
       }
     });
 
-    // Live search functionality for results
-    html.find('#searchInput').on('input', this._onSearchInput.bind(this));
+    // Copy individual name (simple view)
+    html.find('#names-result-display').on('click', '.names-module-simple-name', async (ev) => {
+      const nameEl = $(ev.currentTarget);
+      const name = nameEl.data('name');
+      if (name) {
+        await navigator.clipboard.writeText(name);
+        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
 
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.isLoading) {
-      logDebug("Data still loading, showing loading state");
-      showLoadingState(html);
-      this._waitForLoadingComplete(html);
-    } else {
-      this._updateUI(html);
-    }
-
-    // Initial resize to fit content
-    setTimeout(() => this._resizeToContent(), 100);
-
-    // Set default language selection, view, and name count after UI is ready
-    setTimeout(() => {
-      this._setDefaultLanguage();
-      this._setDefaultView();
-      this._setDefaultNameCount();
-    }, 200);
-  }
-
-  /**
-   * Initializes enhanced dropdowns and binds change events
-   * @param {jQuery} html - The application's HTML
-   */
-  _initializeEnhancedDropdowns(html) {
-    // Wait for Enhanced Dropdowns to be initialized
-    setTimeout(() => {
-      const languageSelect = html[0].querySelector('#names-language-select');
-      const speciesSelect = html[0].querySelector('#names-species-select');
-      const categorySelect = html[0].querySelector('#names-category-select');
-
-      // Find Enhanced Dropdown instances by checking the next sibling
-      if (languageSelect && languageSelect.nextElementSibling && languageSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
-        this.enhancedDropdowns.set('language', languageSelect.nextElementSibling._enhancedDropdown);
-        logInfo("Language Enhanced Dropdown found and stored");
+        // Add copied animation
+        nameEl.addClass('copied');
+        setTimeout(() => {
+          nameEl.removeClass('copied');
+        }, 600);
       }
-      if (speciesSelect && speciesSelect.nextElementSibling && speciesSelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
-        this.enhancedDropdowns.set('species', speciesSelect.nextElementSibling._enhancedDropdown);
-        logInfo("Species Enhanced Dropdown found and stored");
-      }
-      if (categorySelect && categorySelect.nextElementSibling && categorySelect.nextElementSibling.classList.contains('enhanced-dropdown')) {
-        this.enhancedDropdowns.set('category', categorySelect.nextElementSibling._enhancedDropdown);
-        logInfo("Category Enhanced Dropdown found and stored");
-      }
-
-      // If Enhanced Dropdowns aren't ready yet, try again with longer delay
-      if (!this.enhancedDropdowns.has('language')) {
-        setTimeout(() => this._initializeEnhancedDropdowns(html), 200);
-        return;
-      }
-
-      // Bind change events for Enhanced Dropdowns
-      html.find('#names-language-select, #names-species-select, #names-category-select').change(this._onDropdownChange.bind(this));
-
-      logInfo("Enhanced Dropdowns initialized and bound:", Array.from(this.enhancedDropdowns.keys()));
-      logInfo("Event listeners bound to dropdown elements");
-    }, 100);
-  }
-
-  /**
-   * Waits for data loading to complete and updates the UI
-   * @param {jQuery} html - The application's HTML
-   */
-  async _waitForLoadingComplete(html) {
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.loadingPromise) {
-      logDebug("Waiting for data loading to complete");
-      await globalNamesData.loadingPromise;
-    }
-    
-    hideLoadingState(html);
-    this._updateUI(html);
-    logDebug("Data loading completed, UI updated");
-    this.render(false);
-  }
-
-  /**
-   * Handles checkbox change events
-   * @param {Event} event - The change event
-   */
-  _onCheckboxChange(event) {
-    const $form = $(event.currentTarget).closest('form');
-    this._updateGenerateButtonState($form);
-    logDebug(`Checkbox changed: ${event.currentTarget.name} = ${event.currentTarget.checked}`);
-  }
-
-  /**
-   * Handles view toggle button clicks
-   * @param {Event} event - The click event
-   */
-  _onViewToggle(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    const button = event.currentTarget;
-    const view = button.dataset.view;
-    const container = button.closest('form').querySelector('#names-result-display');
-
-    // Update active state
-    button.parentElement.querySelectorAll('.names-module-toggle-btn').forEach(btn => {
-      btn.classList.remove('active');
     });
-    button.classList.add('active');
 
-    // Apply view class to results container
-    if (view === 'simple') {
-      container.classList.add('simple-view');
-    } else {
-      container.classList.remove('simple-view');
-    }
+    // Toggle favorite (both views)
+    html.find('#names-result-display').on('click', '.favorite-toggle', (ev) => {
+      ev.stopPropagation(); // Prevent copy action
+      const btn = $(ev.currentTarget);
+      const nameEl = btn.closest('.names-module-generated-name, .names-module-simple-name');
+      const name = nameEl.data('name');
 
-    logDebug(`View changed to: ${view}`);
-  }
+      if (this.favoritedNames.has(name)) {
+        this.favoritedNames.delete(name);
+        btn.removeClass('active');
+        nameEl.removeClass('favorited');
+      } else {
+        this.favoritedNames.add(name);
+        btn.addClass('active');
+        nameEl.addClass('favorited');
+      }
 
-  /**
-   * Handles name click for copy functionality
-   * @param {Event} event - The click event
-   */
-  async _onNameClick(event) {
-    // Don't copy if clicking on the favorite toggle
-    if (event.target.closest('.favorite-toggle')) {
-      return;
-    }
+      logDebug(`Toggled favorite for: ${name}. Total favorites: ${this.favoritedNames.size}`);
+    });
 
-    event.preventDefault();
-    event.stopPropagation();
-
-    const nameElement = event.currentTarget;
-    const name = nameElement.dataset.name;
-
-    if (!name) return;
-
-    try {
-      await navigator.clipboard.writeText(name);
-
-      // Success animation - simple bounce
-      nameElement.classList.add('copied');
+    // Set default language only on first render
+    if (this._isFirstRender) {
+      this._isFirstRender = false;
       setTimeout(() => {
-        nameElement.classList.remove('copied');
-      }, 800);
-
-      ui.notifications.info(`"${name}" wurde kopiert!`);
-    } catch (error) {
-      logWarn('Clipboard copy failed:', error);
-      ui.notifications.warn('Kopieren fehlgeschlagen');
+        this._setDefaultLanguage(html);
+      }, 100);
     }
   }
 
-  /**
-   * Handles favorite toggle button click
-   * @param {Event} event - The click event
-   */
-  _onFavoriteToggle(event) {
-    event.preventDefault();
-    event.stopPropagation();
+  async _updateSpeciesDropdown(html) {
+    const speciesSelect = html.find('#names-species-select');
+    const species = this.currentLanguage
+      ? await this.generator.getAvailableSpecies(this.currentLanguage)
+      : [];
 
-    const toggleButton = event.currentTarget;
-    const nameElement = toggleButton.closest('.names-module-generated-name');
-    const name = nameElement.dataset.name;
+    // Get the native select element
+    const nativeSelect = speciesSelect[0];
 
-    if (!name) return;
-
-    if (this.favoriteNames.has(name)) {
-      this.favoriteNames.delete(name);
-      toggleButton.classList.remove('active');
-      nameElement.classList.remove('favorited');
-      logDebug(`Removed favorite: ${name}`);
-    } else {
-      this.favoriteNames.add(name);
-      toggleButton.classList.add('active');
-      nameElement.classList.add('favorited');
-      logDebug(`Added favorite: ${name}`);
-    }
-  }
-
-  /**
-   * Handles dropdown change events with cascading behavior
-   * @param {Event} event - The change event
-   */
-  _onDropdownChange(event) {
-    const $form = $(event.currentTarget).closest('form');
-    const changedElement = event.currentTarget;
-    logInfo(`Dropdown changed: ${changedElement.name} = "${changedElement.value}"`);
-
-    // Implement cascading behavior
-    if (changedElement.name === 'names-language') {
-      // When language changes, reset species and category
-      $form.find('#names-species-select').val('');
-      $form.find('#names-category-select').val('');
-      this._updateEnhancedDropdownValue('species', '');
-      this._updateEnhancedDropdownValue('category', '');
-      logInfo('Language changed - reset species and category');
-    } else if (changedElement.name === 'names-species') {
-      // When species changes, reset category
-      $form.find('#names-category-select').val('');
-      this._updateEnhancedDropdownValue('category', '');
-      logInfo('Species changed - reset category');
-    }
-
-    this._updateUI($form);
-  }
-
-  /**
-   * Updates the entire UI based on current selections
-   * @param {jQuery} $form - The form element
-   */
-  async _updateUI($form) {
-    const language = $form.find('#names-language-select').val();
-    const species = $form.find('#names-species-select').val();
-    let category = $form.find('#names-category-select').val();
-
-    // Check Enhanced Dropdown value if native select is empty
-    if (!category || category === '') {
-      const enhancedDropdown = this.enhancedDropdowns.get('category');
-      if (enhancedDropdown && enhancedDropdown.getValue) {
-        const enhancedValue = enhancedDropdown.getValue();
-        if (enhancedValue && enhancedValue !== '') {
-          category = enhancedValue;
-          logInfo(`Using Enhanced Dropdown value for category: "${enhancedValue}"`);
-          // Sync native select with enhanced dropdown
-          $form.find('#names-category-select').val(enhancedValue);
-        }
-      }
-    }
-
-    logInfo("=== UI UPDATE START ===");
-    logInfo("Updating UI with selection:", { language, species, category });
-
-    // Update species options based on language (cascading)
-    await this._updateSpeciesOptions($form, language);
-    logInfo("Species options updated");
-
-    await this._updateCategoryOptions($form, language, species);
-    logInfo("Category options updated");
-
-    await this._updateGenderCheckboxes($form, language, species);
-    logInfo("Gender checkboxes updated");
-
-    await this._updateComponentCheckboxes($form, language, species);
-    logInfo("Component checkboxes updated");
-
-    await this._updateSubcategoryCheckboxes($form, language, species, category);
-    logInfo("Subcategory checkboxes updated");
-
-    this._toggleNamesPanels($form, category);
-    logInfo("Panels toggled");
-
-    this._updateViewToggleVisibility($form, language, species, category);
-    logInfo("View toggle visibility updated");
-
-    this._updateGenerateButtonState($form);
-    logInfo("=== UI UPDATE END ===");
-
-    // Resize window after UI updates
-    setTimeout(() => this._resizeToContent(), 100);
-  }
-
-  /**
-   * Updates species dropdown options based on current language selection
-   * @param {jQuery} $form - The form element
-   * @param {string} language - Selected language
-   */
-  async _updateSpeciesOptions($form, language) {
-    if (!language) {
-      logDebug("No language selected, clearing species options");
-      const speciesSelect = $form.find('#names-species-select');
-      speciesSelect.empty();
-      speciesSelect.append('<option value="">' + game.i18n.localize("names.ui.choose-species") + '</option>');
-      this._updateEnhancedDropdownOptions('species');
-      return;
-    }
-
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return;
-
-    let allSpecies = [];
-    try {
-      allSpecies = globalNamesData.getLocalizedSpecies() || [];
-    } catch (error) {
-      logError("Error getting localized species:", error);
-      allSpecies = [];
-    }
-
-    const speciesSelect = $form.find('#names-species-select');
-    const currentSpecies = speciesSelect.val();
-
-    // Filter species that have data for the selected language
-    const availableSpecies = [];
-    if (Array.isArray(allSpecies)) {
-      for (const species of allSpecies) {
-        if (species && species.code && (
-            globalNamesData.hasData(language, species.code, 'names') ||
-            globalNamesData.hasData(language, species.code, 'male') ||
-            globalNamesData.hasData(language, species.code, 'female'))) {
-          availableSpecies.push(species);
-        }
-      }
-    }
-
-    // Rebuild options
+    // Update native select
     speciesSelect.empty();
-    speciesSelect.append('<option value="">' + game.i18n.localize("names.ui.choose-species") + '</option>');
+    speciesSelect.append('<option value=""></option>'); // Empty placeholder option
 
-    for (const species of availableSpecies) {
-      speciesSelect.append(`<option value="${species.code}">${species.name}</option>`);
+    // Species is now array of { code, name } objects with localized names
+    for (const item of species) {
+      speciesSelect.append(`<option value="${item.code}">${item.name}</option>`);
     }
 
-    // Try to restore previous selection if still available
-    if (currentSpecies && availableSpecies.some(s => s.code === currentSpecies)) {
-      speciesSelect.val(currentSpecies);
-    } else {
-      // Current species not available for this language, clear selection
-      speciesSelect.val('');
+    // If enhanced dropdown exists, reload its items
+    const container = nativeSelect.nextSibling;
+    if (container && container._enhancedDropdown) {
+      container._enhancedDropdown.loadItems();
     }
-
-    this._updateEnhancedDropdownOptions('species');
-    logDebug(`Updated species options for language ${language}, ${availableSpecies.length} available`);
   }
 
-  async _updateCategoryOptions($form, language, species) {
-    const globalNamesData = getGlobalNamesData();
-    const categorySelect = $form.find('#names-category-select');
+  async _updateCategoriesDropdown(html) {
+    const categorySelect = html.find('#names-category-select');
+    const nativeSelect = categorySelect[0];
 
-    if (!globalNamesData || !language || !species) {
-      logDebug("Cannot update categories - missing data or selection, clearing options");
-      categorySelect.empty();
-      categorySelect.append('<option value="">' + game.i18n.localize("names.ui.choose-category") + '</option>');
-      this._updateEnhancedDropdownOptions('category');
-      return;
-    }
-
-    const currentCategory = categorySelect.val();
-
-    // Get categories available for this specific language/species combination
-    let availableCategories = [];
-    try {
-      availableCategories = await globalNamesData.getLocalizedCategoriesForLanguageAndSpecies(language, species, 'generator') || [];
-    } catch (error) {
-      logError(`Error getting categories for ${language}.${species}:`, error);
-      availableCategories = [];
-    }
-
-    logDebug(`Updating categories for ${language}.${species}:`, availableCategories);
-
-    // Clear and repopulate the category dropdown
     categorySelect.empty();
+    categorySelect.append('<option value=""></option>'); // Empty placeholder option
 
-    // Add default option
-    categorySelect.append('<option value="">' + game.i18n.localize("names.ui.choose-category") + '</option>');
+    if (this.currentLanguage && this.currentSpecies) {
+      const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
+      const catalogs = await this.generator.getAvailableCatalogs(packageCode, this.currentLanguage);
 
-    // Add available categories grouped - ensure availableCategories is an array
-    if (Array.isArray(availableCategories)) {
-      for (const group of availableCategories) {
-        if (group && Array.isArray(group.items)) {
-          const optgroup = $(`<optgroup label="${group.groupLabel || 'Categories'}"></optgroup>`);
-          for (const item of group.items) {
-            if (item && item.code && item.name) {
-              optgroup.append(`<option value="${item.code}">${item.name}</option>`);
-            }
-          }
-          categorySelect.append(optgroup);
+      if (catalogs && catalogs.length > 0) {
+        for (const catalog of catalogs) {
+          // Catalog is already an object with { code, name } where name is localized
+          categorySelect.append(`<option value="${catalog.code}" class="names-category-item">${catalog.name}</option>`);
         }
       }
     }
 
-    // Try to restore previous selection if still available
-    if (currentCategory && Array.isArray(availableCategories)) {
-      const isStillAvailable = availableCategories.some(group =>
-        group && Array.isArray(group.items) && group.items.some(item => item && item.code === currentCategory)
-      );
-      if (isStillAvailable) {
-        categorySelect.val(currentCategory);
-      }
+    // If enhanced dropdown exists, reload its items
+    const container = nativeSelect.nextSibling;
+    if (container && container._enhancedDropdown) {
+      container._enhancedDropdown.loadItems();
     }
 
-    // Update Enhanced Dropdown if available
-    const enhancedDropdown = this.enhancedDropdowns.get('category');
-    if (enhancedDropdown && enhancedDropdown.loadItems) {
-      logInfo("Reloading Enhanced Dropdown options for category");
-      enhancedDropdown.loadItems(); // Lädt Items vom ursprünglichen select neu
-      if (categorySelect.val()) {
-        enhancedDropdown.setValue(categorySelect.val());
-        logInfo(`Set Enhanced Dropdown value to: "${categorySelect.val()}"`);
+    await this._updateComponentsPanel(html);
+  }
+
+  async _updateComponentsPanel(html) {
+    const componentsSection = html.find('.names-module-components-section');
+    const genderSection = html.find('.names-module-gender-section');
+    const subcategorySection = html.find('.names-module-subcategory-section');
+    const generateBtn = html.find('#names-generate-btn');
+
+    logDebug(`_updateComponentsPanel called for category: ${this.currentCategory}`);
+
+    // Show gender and components sections for person name catalogs
+    if (this.currentCategory === 'firstnames' || this.currentCategory === 'surnames' ||
+        this.currentCategory === 'titles' || this.currentCategory === 'nicknames' ||
+        this.currentCategory === 'names') {
+      logDebug('Showing gender/components sections');
+      genderSection.show();
+      componentsSection.show();
+      subcategorySection.hide();
+
+      // Fill gender checkboxes if not already filled
+      const genderContainer = html.find('#gender-checkboxes-container');
+      if (genderContainer.children().length === 0) {
+        this._fillGenderCheckboxes(html);
       }
+
+      // Enable generate button
+      generateBtn.prop('disabled', false);
+    } else if (this.currentCategory) {
+      // For other catalogs, show collections if available
+      logDebug('Checking for collections...');
+      genderSection.hide();
+      componentsSection.hide();
+
+      // Check if collections are available
+      const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
+      logDebug(`Package code: ${packageCode}, Category: ${this.currentCategory}`);
+
+      const collections = await this._getCollectionsForCatalog(packageCode, this.currentCategory);
+      logDebug(`Found ${collections ? collections.length : 0} collections`);
+
+      if (collections && collections.length > 0) {
+        logDebug('Showing collections section with', collections);
+        subcategorySection.show();
+        await this._fillCollectionCheckboxes(html, collections);
+      } else {
+        logDebug('No collections found, hiding section');
+        subcategorySection.hide();
+      }
+
+      // Enable generate button when category is selected
+      generateBtn.prop('disabled', false);
     } else {
-      logInfo("Enhanced Dropdown not available for category, rebinding events");
-      // Re-bind change event if Enhanced Dropdown not available
-      categorySelect.off('change.names');
-      categorySelect.on('change.names', this._onDropdownChange.bind(this));
-    }
+      logDebug('No category selected, hiding all sections');
+      genderSection.hide();
+      componentsSection.hide();
+      subcategorySection.hide();
 
-    logInfo(`Category options updated, current selection: "${categorySelect.val()}"`);
-
-    // Debug: Log all available options
-    const options = [];
-    categorySelect.find('option').each(function() {
-      options.push(`"${this.value}" = "${this.text}"`);
-    });
-    logInfo(`Available category options: ${options.join(', ')}`);
-
-    // Debug: Enhanced dropdown state (reuse variable from above)
-    if (enhancedDropdown) {
-      logInfo(`Enhanced dropdown for category exists: ${!!enhancedDropdown}`);
-    } else {
-      logInfo("No enhanced dropdown found for category");
+      // Disable generate button when no category selected
+      generateBtn.prop('disabled', true);
     }
   }
 
-  async _updateGenderCheckboxes(html, language, species) {
-    const globalNamesData = getGlobalNamesData();
-    const container = html.find('#gender-checkboxes-container');
-    
-    if (!globalNamesData || !language || !species) {
-      // Clear gender checkboxes if no data available
-      container.empty();
-      logDebug("Clearing gender checkboxes - missing data, language, or species");
+  _fillGenderCheckboxes(html) {
+    const genderContainer = html.find('#gender-checkboxes-container');
+    genderContainer.empty();
+
+    for (const gender of this.supportedGenders) {
+      const label = game.i18n.localize(`names.gender.${gender}`) || gender;
+      const checkbox = `
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-gender-${gender}" checked>
+          <span class="names-module-checkmark"></span>
+          ${label}
+        </label>
+      `;
+      genderContainer.append(checkbox);
+    }
+  }
+
+  async _onGenerateName(html) {
+    if (!this.currentLanguage || !this.currentSpecies) {
+      ui.notifications.warn(game.i18n.localize("names.select-all"));
       return;
     }
 
-    const supportedGenders = getSupportedGenders() || [];
-    const availableGenders = [];
+    const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
 
-    logDebug(`Checking gender data availability for ${language}.${species}`, { supportedGenders });
-
-    // Check if names data is available for this language/species combination
     try {
-      // Load the main names file for this language/species combination
-      await globalNamesData.ensureDataLoaded(language, species, 'names');
-    } catch (error) {
-      logDebug(`Failed to load names data for ${language}.${species}:`, error.message);
-    }
+      const count = parseInt(html.find('#names-count-input').val()) || 10;
 
-    // Check each gender individually to see if data is available
-    if (Array.isArray(supportedGenders)) {
-      for (const gender of supportedGenders) {
-        // Check if we have either names data or specific gender data
-        const hasNamesData = globalNamesData.hasData(language, species, 'names');
-        const hasGenderData = globalNamesData.hasDataFile(language, species, gender);
+      // Check if this is a person name generation (with gender/components)
+      const isPersonName = this.currentCategory === 'firstnames' || this.currentCategory === 'surnames' ||
+                          this.currentCategory === 'titles' || this.currentCategory === 'nicknames' ||
+                          this.currentCategory === 'names';
 
-        if (hasNamesData || hasGenderData) {
-          // For nonbinary, we need to check if there's actually nonbinary names data available
-          if (gender === 'nonbinary') {
+      let result;
+
+      if (isPersonName && this.currentMode === 'recipe') {
+        // Recipe-based generation
+        result = await this._generateWithRecipe(html, packageCode, count);
+      } else if (isPersonName) {
+        // Get selected genders
+        const selectedGenders = [];
+        html.find('input[name^="names-gender-"]:checked').each(function() {
+          const genderName = this.name.replace('names-gender-', '');
+          selectedGenders.push(genderName);
+        });
+
+        // Get selected components
+        const components = [];
+        if (html.find('input[name="names-include-firstname"]:checked').length) components.push('firstname');
+        if (html.find('input[name="names-include-surname"]:checked').length) components.push('surname');
+        if (html.find('input[name="names-include-title"]:checked').length) components.push('title');
+        if (html.find('input[name="names-include-nickname"]:checked').length) components.push('nickname');
+
+        // Default to firstname + surname if nothing selected
+        if (components.length === 0) {
+          components.push('firstname', 'surname');
+        }
+
+        // Get format string from input field, or build default
+        let format = html.find('input[name="names-format"]').val()?.trim();
+        if (!format) {
+          // Build default format string if field is empty
+          format = components.map(c => `{${c}}`).join(' ');
+        }
+
+        // Generate person names with mixed genders if multiple selected
+        if (selectedGenders.length > 1) {
+          // Generate a mix of names from all selected genders
+          const suggestions = [];
+          const errors = [];
+          const namesPerGender = Math.ceil(count / selectedGenders.length);
+
+          for (const gender of selectedGenders) {
             try {
-              // Direct file check approach since cache is unreliable during initialization
-              const filePath = `modules/nomina-names/data/${language}.${species}.names.json`;
+              const genderResult = await this.generator.generatePersonName(packageCode, {
+                locale: this.currentLanguage,
+                n: namesPerGender,
+                gender,
+                components,
+                format,
+                allowDuplicates: false
+              });
 
-              let fileData;
-              try {
-                const response = await fetch(filePath);
-                if (response.ok) {
-                  fileData = await response.json();
-                } else {
-                  continue;
-                }
-              } catch (fetchError) {
-                continue;
-              }
-
-              let hasNonbinaryNames = false;
-
-              if (fileData && fileData.data && fileData.data.names && fileData.data.names.subcategories) {
-                // Look through all subcategories for nonbinary entries
-                for (const subcat of fileData.data.names.subcategories) {
-                  if (subcat.entries && subcat.entries[language]) {
-                    // Check if this subcategory has nonbinary entries in nested object format
-                    if (typeof subcat.entries[language] === 'object' && !Array.isArray(subcat.entries[language])) {
-                      if (subcat.entries[language].nonbinary && Array.isArray(subcat.entries[language].nonbinary) && subcat.entries[language].nonbinary.length > 0) {
-                        hasNonbinaryNames = true;
-                        break;
-                      }
-                    }
-                  }
-                }
-              }
-
-              if (!hasNonbinaryNames) {
-                logDebug(`Gender ${gender} has no actual names data for ${language}.${species} - skipping`);
-                continue;
+              suggestions.push(...genderResult.suggestions);
+              if (genderResult.errors) {
+                errors.push(...genderResult.errors);
               }
             } catch (error) {
-              logDebug(`Gender ${gender} failed to check names data for ${language}.${species}:`, error.message);
-              continue;
+              logError(`Failed to generate names for gender ${gender}:`, error);
+              errors.push({ code: 'generation_failed', message: error.message, gender });
             }
           }
 
-          // If we have either type of data (and for nonbinary, verified non-empty data), include the gender
-          availableGenders.push(gender);
-          logDebug(`Gender ${gender} has data for ${language}.${species} (${hasNamesData ? 'names' : 'dedicated'} data)`);
+          // Shuffle to mix genders and trim to requested count
+          const shuffled = suggestions.sort(() => Math.random() - 0.5).slice(0, count);
+          result = {
+            suggestions: shuffled,
+            errors
+          };
         } else {
-          logDebug(`Gender ${gender} has no data for ${language}.${species}`);
+          // Single gender or no gender selected - use original logic
+          const gender = selectedGenders.length > 0 ? selectedGenders[0] : null;
+
+          result = await this.generator.generatePersonName(packageCode, {
+            locale: this.currentLanguage,
+            n: count,
+            gender,
+            components,
+            format,
+            allowDuplicates: false
+          });
         }
-      }
-    }
+      } else {
+        // Generate from catalog with collection filters
+        const selectedCollections = [];
+        html.find('input[name^="names-collection-"]:checked').each(function() {
+          selectedCollections.push(this.value);
+        });
 
-    logDebug(`Available genders for ${language}.${species}:`, availableGenders);
+        // If collections are selected, generate from collections
+        if (selectedCollections.length > 0) {
+          // Collect all tags from selected collections
+          const allTags = [];
+          const errors = [];
 
-    if (availableGenders.length === 0) {
-      container.empty();
-      logDebug("No gender data available for current selection");
-      return;
-    }
+          for (const collectionKey of selectedCollections) {
+            const collection = this.generator.dataManager.getCollection(packageCode, collectionKey);
+            if (collection && collection.query && collection.query.tags) {
+              allTags.push(...collection.query.tags);
+            }
+          }
 
-    // Generate gender checkboxes
-    let checkboxesHtml = '';
-    for (const gender of availableGenders) {
-      // Get display name with safe fallback
-      let genderLabel = gender;
-      try {
-        // Try to get display name from JSON files first
-        const jsonDisplayName = globalNamesData.getCategoryDisplayName(language, species, gender);
-        if (jsonDisplayName) {
-          const currentLang = game.i18n.lang || 'en';
-          genderLabel = jsonDisplayName[currentLang] || jsonDisplayName.en || jsonDisplayName.de || Object.values(jsonDisplayName)[0] || gender;
+          // Remove duplicates
+          const uniqueTags = [...new Set(allTags)];
+
+          logDebug(`Generating ${count} names from catalog ${this.currentCategory} with tags: ${uniqueTags.join(', ')}`);
+
+          // Generate all names at once with all tags (using OR logic)
+          try {
+            result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
+              locale: this.currentLanguage,
+              n: count,
+              tags: uniqueTags,
+              anyOfTags: true, // Use OR logic to get variety from multiple collections
+              allowDuplicates: false
+            });
+          } catch (err) {
+            logError(`Failed to generate from catalog with collections:`, err);
+            result = {
+              suggestions: [],
+              errors: [err.message]
+            };
+          }
         } else {
-          // Fallback to Foundry i18n
-          const locKey = `names.categories.${gender}`;
-          genderLabel = game.i18n.localize(locKey) || gender;
-        }
-      } catch (error) {
-        // Safe fallback if anything goes wrong
-        logDebug(`Failed to get localized name for gender ${gender}:`, error);
-        const locKey = `names.categories.${gender}`;
-        genderLabel = game.i18n.localize(locKey) || gender;
-      }
-
-      const isChecked = availableGenders.length === 1 ? 'checked' : ''; // Auto-select if only one option
-      
-      checkboxesHtml += `
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-gender-${gender}" ${isChecked}>
-          <span class="names-module-checkmark"></span>
-          ${genderLabel}
-        </label>
-      `;
-    }
-
-    container.html(checkboxesHtml);
-
-    // Bind change events to new checkboxes
-    container.find('input[type="checkbox"]').change(this._onCheckboxChange.bind(this));
-
-    // Apply orange styling to selected checkboxes
-    container.find('input[type="checkbox"]:checked').each(function() {
-      $(this).closest('.names-module-checkbox-item').addClass('selected');
-    });
-
-    // Add change event for styling updates
-    container.find('input[type="checkbox"]').change(function() {
-      const item = $(this).closest('.names-module-checkbox-item');
-      if (this.checked) {
-        item.addClass('selected');
-      } else {
-        item.removeClass('selected');
-      }
-    });
-
-    logDebug(`Updated gender checkboxes for ${language}.${species}:`, availableGenders);
-  }
-
-  async _updateComponentCheckboxes(html, language, species) {
-    const globalNamesData = getGlobalNamesData();
-
-    if (!globalNamesData || !language || !species) {
-      logDebug("Cannot update component checkboxes - missing data, language, or species");
-      return;
-    }
-
-    const componentTypes = ['firstname', 'surname', 'title', 'nickname'];
-    const availableComponents = [];
-
-    // Check if we have names data - if yes, firstname and surname are always available
-    const hasNamesData = globalNamesData.hasData(language, species, 'names');
-
-    // Check each component type to see if data is available
-    for (const component of componentTypes) {
-      try {
-        let hasComponentData = false;
-
-        if (component === 'firstname' || component === 'surname') {
-          // firstname and surname are available if we have names data or dedicated component files
-          hasComponentData = hasNamesData || globalNamesData.hasDataFile(language, species, component);
-        } else {
-          // title and nickname require dedicated component files
-          hasComponentData = globalNamesData.hasDataFile(language, species, component);
-        }
-
-        if (hasComponentData) {
-          availableComponents.push(component);
-          logDebug(`Component ${component} has data for ${language}.${species}`);
-        } else {
-          logDebug(`Component ${component} has no data for ${language}.${species}`);
-        }
-      } catch (error) {
-        logDebug(`Failed to check component ${component} for ${language}.${species}:`, error.message);
-      }
-    }
-
-    // Show/hide component checkboxes based on availability
-    for (const component of componentTypes) {
-      const checkbox = html.find(`input[name="names-include-${component}"]`);
-      const checkboxItem = checkbox.closest('.names-module-checkbox-item');
-
-      if (availableComponents.includes(component)) {
-        // Show the checkbox
-        checkboxItem.show();
-      } else {
-        // Hide the checkbox and uncheck it
-        checkboxItem.hide();
-        checkbox.prop('checked', false);
-        checkboxItem.removeClass('selected');
-      }
-    }
-
-    logDebug(`Updated component checkboxes for ${language}.${species}:`, availableComponents);
-  }
-
-  async _updateSubcategoryCheckboxes(html, language, species, category) {
-    const globalNamesData = getGlobalNamesData();
-    const container = html.find('#subcategory-checkboxes-container');
-    
-    // Clear container first
-    container.empty();
-
-    if (!globalNamesData || !language || !species || !category) {
-      logDebug("Clearing subcategory checkboxes - missing data");
-      return;
-    }
-
-    // Only show subcategories for categorized content
-    if (!isCategorizedContent(category)) {
-      logDebug(`Category ${category} is not categorized content, no subcategories needed`);
-      return;
-    }
-
-    // Ensure data is loaded for this category
-    logDebug(`Calling ensureDataLoaded for ${language}.${species}.${category}`);
-    const hasData = await globalNamesData.ensureDataLoaded(language, species, category);
-    logDebug(`ensureDataLoaded returned: ${hasData}`);
-    if (!hasData) {
-      logDebug(`No data available for ${language}.${species}.${category}`);
-      return;
-    }
-
-    // Get available subcategories from data
-    let availableSubcategories = [];
-    try {
-      logDebug(`Getting subcategories for ${language}.${species}.${category}`);
-      logDebug(`globalNamesData constructor:`, globalNamesData.constructor.name);
-      logDebug(`globalNamesData.getAvailableSubcategories exists:`, typeof globalNamesData.getAvailableSubcategories);
-      logDebug(`globalNamesData.apiSpecies keys:`, Array.from(globalNamesData.apiSpecies?.keys() || []));
-      logDebug(`globalNamesData has species ${species}:`, globalNamesData.apiSpecies?.has(species));
-
-      if (globalNamesData.apiSpecies?.has(species)) {
-        const apiSpecies = globalNamesData.apiSpecies.get(species);
-        logDebug(`API species ${species} data:`, apiSpecies);
-        logDebug(`API species ${species} dataFiles keys:`, Array.from(apiSpecies.dataFiles?.keys() || []));
-      }
-
-      availableSubcategories = globalNamesData.getAvailableSubcategories(language, species, category) || [];
-      logDebug(`getAvailableSubcategories returned:`, availableSubcategories);
-    } catch (error) {
-      logError(`Error getting subcategories for ${language}.${species}.${category}:`, error);
-      availableSubcategories = [];
-    }
-
-    if (!Array.isArray(availableSubcategories) || availableSubcategories.length === 0) {
-      logDebug(`No subcategories available for ${language}.${species}.${category}`);
-      return;
-    }
-
-    logDebug(`Available subcategories for ${language}.${species}.${category}:`, availableSubcategories);
-
-    // Generate subcategory checkboxes
-    let checkboxesHtml = '';
-    const subcategoryDefinitions = getSubcategories(category);
-
-    for (const subcategory of availableSubcategories) {
-      let subcategoryKey, subcategoryLabel;
-
-      // Handle 3.0.0 format with display names
-      if (typeof subcategory === 'object' && subcategory.key && subcategory.displayName) {
-        subcategoryKey = subcategory.key;
-        const currentLanguage = this._getFoundryLanguage();
-        subcategoryLabel = subcategory.displayName[currentLanguage] || subcategory.displayName.en || subcategory.displayName.de || subcategoryKey;
-      } else {
-        // Handle legacy format
-        subcategoryKey = subcategory;
-        const locKey = subcategoryDefinitions[subcategory] || `names.subcategory-translations.${category}.${subcategory}`;
-        subcategoryLabel = game.i18n.localize(locKey) || subcategory.replace(/_/g, ' ');
-      }
-
-      // Auto-check all subcategories by default to ensure generation works
-      const isChecked = 'checked';
-
-      checkboxesHtml += `
-        <label class="names-module-checkbox-item">
-          <input type="checkbox" name="names-subcategory-${subcategoryKey}" ${isChecked}>
-          <span class="names-module-checkmark"></span>
-          ${subcategoryLabel}
-        </label>
-      `;
-    }
-
-    container.html(checkboxesHtml);
-
-    // Bind change events to new checkboxes
-    container.find('input[type="checkbox"]').change(this._onCheckboxChange.bind(this));
-
-    // Apply orange styling to selected checkboxes
-    container.find('input[type="checkbox"]:checked').each(function() {
-      $(this).closest('.names-module-checkbox-item').addClass('selected');
-    });
-
-    // Add change event for styling updates
-    container.find('input[type="checkbox"]').change(function() {
-      const item = $(this).closest('.names-module-checkbox-item');
-      if (this.checked) {
-        item.addClass('selected');
-      } else {
-        item.removeClass('selected');
-      }
-    });
-
-    logDebug(`Updated subcategory checkboxes for ${language}.${species}.${category}:`, availableSubcategories);
-  }
-
-  _toggleNamesPanels(html, category) {
-    const genderPanel = html.find('.names-module-gender-section');
-    const componentsPanel = html.find('.names-module-components-section');
-    const formatGroup = html.find('.names-module-format-group');
-    const subcategoryPanel = html.find('.names-module-subcategory-section');
-
-    if (category === 'names') {
-      genderPanel.show();
-      componentsPanel.show();
-      formatGroup.show();
-      subcategoryPanel.hide();
-
-      // Hide/show gender help based on nonbinary names setting
-      const includeNonbinaryNames = game.settings.get('nomina-names', 'includeNonbinaryNames');
-      const genderHelp = genderPanel.find('.names-module-format-help');
-      if (includeNonbinaryNames) {
-        genderHelp.show();
-      } else {
-        genderHelp.hide();
-      }
-
-      logDebug("Showing names panels for name generation");
-    } else if (isCategorizedContent(category)) {
-      genderPanel.hide();
-      componentsPanel.hide();
-      formatGroup.hide();
-      subcategoryPanel.show();
-      logDebug(`Showing subcategory panel for categorized content: ${category}`);
-    } else {
-      genderPanel.hide();
-      componentsPanel.hide();
-      formatGroup.hide();
-      subcategoryPanel.hide();
-      logDebug(`Hiding all special panels for category: ${category}`);
-    }
-
-    // Trigger resize after panel visibility changes
-    setTimeout(() => this._resizeToContent(), 50);
-  }
-
-  /**
-   * Updates the state of the generate button based on current selections
-   * @param {jQuery} html - The form element
-   */
-  _updateGenerateButtonState(html) {
-    const generateBtn = html.find('#names-generate-btn');
-    const language = html.find('#names-language-select').val();
-    const species = html.find('#names-species-select').val();
-    let category = html.find('#names-category-select').val();
-
-    // Check Enhanced Dropdown value if native select is empty
-    if (!category || category === '') {
-      const enhancedDropdown = this.enhancedDropdowns.get('category');
-      if (enhancedDropdown && enhancedDropdown.getValue) {
-        const enhancedValue = enhancedDropdown.getValue();
-        if (enhancedValue && enhancedValue !== '') {
-          category = enhancedValue;
-          logInfo(`Button state: Using Enhanced Dropdown value for category: "${enhancedValue}"`);
+          // Generate from catalog directly (no collections filter)
+          result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
+            locale: this.currentLanguage,
+            n: count,
+            allowDuplicates: false
+          });
         }
       }
-    }
 
-    logInfo(`Button state check: language="${language}", species="${species}", category="${category}"`);
-
-    // Basic requirements: language and species must be selected
-    let isDisabled = !language || !species;
-    let disabledReason = "";
-
-    if (!language) disabledReason += "No language selected. ";
-    if (!species) disabledReason += "No species selected. ";
-
-    // If no category selected, that's okay - we'll just disable generation temporarily
-    if (!category) {
-      isDisabled = true;
-      disabledReason += "No category selected. ";
-    }
-
-    if (category === 'names') {
-      // For names category, we need either gender OR component checkboxes available
-      const genderCheckboxes = html.find('input[name^="names-gender-"]');
-      const componentCheckboxes = html.find('input[name^="names-include-"]');
-
-      logInfo(`Names category: ${genderCheckboxes.length} gender checkboxes, ${componentCheckboxes.length} component checkboxes available`);
-
-      // If no checkboxes are available yet, that means data is still loading
-      if (genderCheckboxes.length === 0 && componentCheckboxes.length === 0) {
-        isDisabled = true;
-        disabledReason += "Names data still loading. ";
-      }
-      // If we have checkboxes available, generation is possible (smart defaults apply internally)
-    } else if (isCategorizedContent(category)) {
-      // For categorized content, generation is possible once we have the category selected
-      // Subcategory selection is optional (smart defaults apply)
-      logInfo(`Categorized content "${category}" selected - allowing generation`);
-    } else if (category) {
-      // For other categories (like settlements), generation should be possible
-      logInfo(`Simple category "${category}" selected - allowing generation`);
-    }
-
-    generateBtn.prop('disabled', isDisabled);
-
-    if (isDisabled) {
-      logInfo(`Generate button DISABLED: ${disabledReason}`);
-    } else {
-      logInfo("Generate button ENABLED");
-    }
-  }
-
-  /**
-   * Handles the generate name button click event
-   * Now simplified to use the central API
-   * @param {Event} event - The click event
-   */
-  async _onGenerateName(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    logDebug("Generate name button clicked");
-
-    const form = event.currentTarget.closest('form');
-    const $form = $(form);
-
-    // Get form values
-    const options = this._getGenerationOptions($form);
-
-    if (!options.language || !options.species || !options.category) {
-      ui.notifications.warn(game.i18n.localize("names.select-all"));
-      logWarn(`Missing values: language="${options.language}", species="${options.species}", category="${options.category}"`);
-      return;
-    }
-
-    logInfo(`Generating ${options.count} names: ${options.language}.${options.species}.${options.category}`);
-
-    try {
-      // Use the simplified API for all generation
-      const results = await NamesAPI.generateNames(options);
-
-      if (results.length === 0) {
-        throw new Error(game.i18n.localize("names.no-names-generated"));
+      if (result.errors && result.errors.length > 0) {
+        logError('Generation errors:', result.errors);
+        ui.notifications.error(game.i18n.localize('names.generation-error'));
       }
 
-      // Display results
-      this._displayResults(form, results, options);
+      // Keep favorited names and add new ones
+      const newNames = result.suggestions.map(s => s.text);
+      const favoritedNamesArray = Array.from(this.favoritedNames);
+
+      // Combine: favorited names first, then new names (excluding any that are already favorited)
+      const combinedNames = [...favoritedNamesArray, ...newNames.filter(name => !this.favoritedNames.has(name))];
+
+      this.generatedNames = combinedNames;
+
+      // Debug: Log all generated names with their catalog sources
+      logDebug('=== GENERATION DEBUG ===');
+      logDebug(`Generated ${result.suggestions.length} names from package: ${packageCode}`);
+      result.suggestions.forEach((suggestion, index) => {
+        logDebug(`[${index + 1}] Name: "${suggestion.text}" | Catalog: ${suggestion.catalog || 'unknown'} | Metadata:`, suggestion.metadata);
+      });
+      logDebug('=== END GENERATION DEBUG ===');
+
+      // Check if any result has meaningful metadata (for showing/hiding view toggle)
+      // Metadata like just 'catalog' or 'source' isn't meaningful for detailed view
+      const hasMetadata = result.suggestions.some(s => {
+        if (!s.metadata || Object.keys(s.metadata).length === 0) return false;
+        // Filter out metadata that's just technical info (catalog, source, seed, etc.)
+        const meaningfulKeys = Object.keys(s.metadata).filter(k =>
+          k !== 'catalog' && k !== 'source' && k !== 'tags' && k !== 'index' && k !== 'seed'
+        );
+        logDebug(`Metadata keys:`, Object.keys(s.metadata), `Meaningful:`, meaningfulKeys);
+        return meaningfulKeys.length > 0;
+      });
+
+      logDebug(`Has meaningful metadata: ${hasMetadata}`);
+      this._updateViewToggleVisibility(html, hasMetadata);
+
+      // Determine if this is first generation (show animation) or regeneration (keep favorited)
+      const isFirstGeneration = this.favoritedNames.size === 0 && favoritedNamesArray.length === 0;
+      this._displayResults(html, isFirstGeneration);
 
       // Add to history
-      this._addToHistory(results, options);
+      this._addToHistory();
 
-      logInfo(`Successfully generated ${results.length} names`);
+      logInfo(`Generated ${this.generatedNames.length} names`);
 
     } catch (error) {
-      logError("Name generation failed", error);
-      const errorMsg = game.i18n.format("names.generation-error", { error: error.message });
-      ui.notifications.error(errorMsg);
+      logError('Failed to generate names:', error);
+      ui.notifications.error(game.i18n.localize('names.generation-failed'));
     }
   }
 
-  /**
-   * Extract generation options from form
-   * @param {jQuery} $form - The form element
-   * @returns {Object} Generation options
-   */
-  _getGenerationOptions($form) {
-    // Get basic values
-    const language = $form.find('#names-language-select').val();
-    const species = $form.find('#names-species-select').val();
-    let category = $form.find('#names-category-select').val();
+  _displayResults(html, isInitialRender = true) {
+    const resultDiv = html.find('#names-result-display');
 
-    // Check Enhanced Dropdown value if native select is empty
-    if (!category || category === '') {
-      const enhancedDropdown = this.enhancedDropdowns.get('category');
-      if (enhancedDropdown && enhancedDropdown.getValue) {
-        const enhancedValue = enhancedDropdown.getValue();
-        if (enhancedValue && enhancedValue !== '') {
-          category = enhancedValue;
-          logInfo(`Using Enhanced Dropdown value for category: "${enhancedValue}"`);
+    if (this.generatedNames.length === 0) {
+      resultDiv.html('<div class="names-module-no-result">' +
+        game.i18n.localize("names.select-options") + '</div>');
+      return;
+    }
+
+    // Get existing favorited elements to keep them (detach preserves event handlers and prevents fade-out)
+    const existingFavorited = new Map();
+    if (!isInitialRender) {
+      resultDiv.find('.names-module-generated-name.favorited, .names-module-simple-name.favorited').each((i, el) => {
+        const $el = $(el);
+        const name = $el.data('name');
+        if (this.favoritedNames.has(name)) {
+          existingFavorited.set(name, $el.detach()); // detach removes from DOM without destroying
         }
-      }
-    }
-
-    const formData = new FormData($form[0]);
-    const nameFormat = formData.get('names-format') || DEFAULT_NAME_FORMAT;
-    const count = parseInt(formData.get('names-count')) || 1;
-
-    const options = {
-      language,
-      species,
-      category,
-      format: nameFormat,
-      count,
-      returnWithMetadata: true  // Enable meta data in results
-    };
-
-    // Handle names category with components and gender
-    if (category === 'names') {
-      options.components = this._getSelectedComponents($form);
-      options.gender = this._getSelectedGender($form);
-    }
-
-    // Handle categorized content with subcategories
-    if (isCategorizedContent(category)) {
-      const selectedSubcategories = this._getSelectedSubcategories($form);
-      if (selectedSubcategories.length > 0) {
-        // Pass all selected subcategories to allow random selection for each name
-        options.subcategories = selectedSubcategories;
-        options.subcategory = null; // Don't set a single subcategory
-      } else {
-        // No subcategory selected - let the generator pick automatically
-        options.subcategory = null;
-        options.subcategories = null;
-      }
-    }
-
-    return options;
-  }
-
-  /**
-   * Get selected name components from form
-   */
-  _getSelectedComponents($form) {
-    const components = [];
-    if ($form.find('input[name="names-include-firstname"]:checked').length) components.push('firstname');
-    if ($form.find('input[name="names-include-surname"]:checked').length) components.push('surname');
-    if ($form.find('input[name="names-include-title"]:checked').length) components.push('title');
-    if ($form.find('input[name="names-include-nickname"]:checked').length) components.push('nickname');
-
-    // Smart default: if no components selected, use firstname and surname
-    return components.length > 0 ? components : ['firstname', 'surname'];
-  }
-
-  /**
-   * Get selected gender from form
-   */
-  _getSelectedGender($form) {
-    const selectedGenders = [];
-    $form.find('input[name^="names-gender-"]:checked').each(function() {
-      const genderName = this.name.replace('names-gender-', '');
-      selectedGenders.push(genderName);
-    });
-
-    // Smart default: if no genders selected, use all available genders
-    if (selectedGenders.length === 0) {
-      $form.find('input[name^="names-gender-"]').each(function() {
-        const genderName = this.name.replace('names-gender-', '');
-        selectedGenders.push(genderName);
       });
     }
 
-    // Return random gender from selected ones
-    return selectedGenders.length > 0 ?
-      selectedGenders[Math.floor(Math.random() * selectedGenders.length)] : 'male';
-  }
+    resultDiv.empty();
 
-  /**
-   * Get selected subcategories from form
-   */
-  _getSelectedSubcategories($form) {
-    const subcategories = [];
-    $form.find('input[name^="names-subcategory-"]:checked').each(function() {
-      const subcategoryName = this.name.replace('names-subcategory-', '');
-      subcategories.push(subcategoryName);
-    });
-    return subcategories;
-  }
+    if (this.currentView === 'simple') {
+      // Simple view: compact list with favorite button
+      const container = $('<div class="names-module-simple-view"></div>');
 
-  /**
-   * Display generation results
-   */
-  _displayResults(form, results, options) {
-    const resultDiv = form.querySelector('#names-result-display');
-    const authorCredits = this._collectAuthorCredits(options.language, options.species, [options.category]);
+      for (const name of this.generatedNames) {
+        const isFavorited = this.favoritedNames.has(name);
 
-    // Update results count
-    const resultsCount = form.querySelector('#resultsCount');
-    if (resultsCount) {
-      resultsCount.textContent = game.i18n.format("names.results.count", { count: results.length });
-    }
-
-    // Add updating class for shimmer effect
-    resultDiv.classList.add('updating');
-
-    // Clear previous results with a short delay
-    setTimeout(() => {
-      // Collect favorite names before clearing
-      const favoritedResults = [];
-
-      let resultsHtml = results.map((nameResult, index) => {
-        // Handle both string results and object results with subcategory info
-        const name = typeof nameResult === 'string' ? nameResult : nameResult.name;
-        const subcategory = typeof nameResult === 'object' ? nameResult.subcategory : options.subcategory;
-
-        // Determine the display type
-        let typeDisplay = `📝 ${game.i18n.localize("names.type.name")}`;
-        if (subcategory) {
-          // Try to get localized subcategory name
-          const globalNamesData = getGlobalNamesData();
-          if (globalNamesData && globalNamesData.getAvailableSubcategories) {
-            try {
-              const availableSubcats = globalNamesData.getAvailableSubcategories(options.language, options.species, options.category);
-              logDebug('Debug subcategory display:', {
-                subcategory,
-                availableSubcats,
-                category: options.category
-              });
-              if (availableSubcats && Array.isArray(availableSubcats)) {
-                const subcatInfo = availableSubcats.find(sub => sub && sub.key === subcategory);
-                logDebug('Found subcatInfo:', subcatInfo);
-                if (subcatInfo && subcatInfo.displayName) {
-                  // Get the appropriate display name for current language
-                  const currentLanguage = this._getFoundryLanguage();
-                  const displayName = (typeof subcatInfo.displayName === 'object') ?
-                                    (subcatInfo.displayName[currentLanguage] ||
-                                    subcatInfo.displayName.en ||
-                                    subcatInfo.displayName.de ||
-                                    subcategory) : subcatInfo.displayName;
-                  logDebug('Using display name:', displayName);
-                  typeDisplay = `📝 ${displayName}`;
-                } else {
-                  typeDisplay = `📝 ${subcategory}`;
-                }
-              } else {
-                typeDisplay = `📝 ${subcategory}`;
-              }
-            } catch (error) {
-              logDebug('Error getting subcategory display name:', error);
-              typeDisplay = `📝 ${subcategory}`;
-            }
-          } else {
-            typeDisplay = `📝 ${subcategory}`;
-          }
-        } else if (options.category && options.category !== 'names') {
-          // For non-names categories without subcategory, use the category name
-          typeDisplay = `📝 ${options.category}`;
+        // Reuse existing favorited element if available (no animation)
+        if (!isInitialRender && existingFavorited.has(name)) {
+          container.append(existingFavorited.get(name));
+        } else {
+          // New item: always animate
+          const favClass = isFavorited ? 'active' : '';
+          const nameClass = isFavorited ? 'favorited' : '';
+          const itemHtml = `
+            <div class="names-module-simple-name ${nameClass} initial-render" data-name="${name}">
+              <button type="button" class="favorite-toggle ${favClass}">⭐</button>
+              <span class="name-text">${name}</span>
+            </div>`;
+          container.append(itemHtml);
         }
+      }
 
-        // Check if nameResult has meta data
-        const metaData = (typeof nameResult === 'object' && nameResult.meta) ? nameResult.meta : null;
+      resultDiv.append(container);
+    } else {
+      // Detailed view: cards with favorite button
+      for (const name of this.generatedNames) {
+        const isFavorited = this.favoritedNames.has(name);
 
-        // Debug meta data
-        logDebug('Processing name result:', {
-          nameResult,
-          isObject: typeof nameResult === 'object',
-          hasMeta: nameResult && nameResult.meta,
-          metaData,
-          name
-        });
-
-        const metaHtml = metaData ? this._generateMetaDataHtml(metaData, options.language, options.species, options.category) : '';
-
-        // Check if this name is favorited
-        const isFavorited = this.favoriteNames.has(name);
-        const favoritedClass = isFavorited ? 'favorited' : '';
-        const favoriteActiveClass = isFavorited ? 'active' : '';
-
-        return `
-          <div class="${CSS_CLASSES.generatedName} ${favoritedClass}" style="animation-delay: ${index * 0.1}s" data-name="${name.replace(/"/g, '&quot;')}">
-            <div class="name-content-wrapper">
-              <button class="favorite-toggle ${favoriteActiveClass}" title="Favorit markieren">⭐</button>
-              <div class="name-content">
-                <div class="name-header">
-                  <div class="name-title">${name}</div>
-                  <div class="name-type">${typeDisplay}</div>
-                </div>
-                ${metaHtml}
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      // Prepend favorited names
-      const favoriteNamesArray = Array.from(this.favoriteNames);
-      if (favoriteNamesArray.length > 0) {
-        const favoritesHtml = favoriteNamesArray.map((name, index) => {
-          // Check if this favorite is already in the new results
-          const alreadyInResults = results.some(r => {
-            const resultName = typeof r === 'string' ? r : r.name;
-            return resultName === name;
-          });
-
-          if (alreadyInResults) {
-            return ''; // Skip duplicates
-          }
-
-          return `
-            <div class="${CSS_CLASSES.generatedName} favorited" style="animation-delay: ${index * 0.1}s" data-name="${name.replace(/"/g, '&quot;')}">
+        // Reuse existing favorited element if available (no animation)
+        if (!isInitialRender && existingFavorited.has(name)) {
+          resultDiv.append(existingFavorited.get(name));
+        } else {
+          // New item: always animate
+          const favClass = isFavorited ? 'active' : '';
+          const nameClass = isFavorited ? 'favorited' : '';
+          const itemHtml = `
+            <div class="names-module-generated-name ${nameClass} initial-render" data-name="${name}">
               <div class="name-content-wrapper">
-                <button class="favorite-toggle active" title="Favorit markieren">⭐</button>
+                <button type="button" class="favorite-toggle ${favClass}">⭐</button>
                 <div class="name-content">
-                  <div class="name-header">
-                    <div class="name-title">${name}</div>
-                    <div class="name-type">📝 ${game.i18n.localize("names.type.name")}</div>
-                  </div>
+                  <div class="name-title">${name}</div>
                 </div>
               </div>
             </div>
           `;
-        }).join('');
-
-        resultsHtml = favoritesHtml + resultsHtml;
-      }
-
-      resultDiv.innerHTML = resultsHtml + authorCredits;
-
-      // Clear search input and search info when displaying new results
-      const searchInput = form.querySelector('#searchInput');
-      const searchInfo = form.querySelector('#searchInfo');
-      if (searchInput) {
-        searchInput.value = '';
-      }
-      if (searchInfo) {
-        searchInfo.style.display = 'none';
-      }
-
-      // Remove updating class after animation starts
-      setTimeout(() => {
-        resultDiv.classList.remove('updating');
-      }, 300);
-    }, 100);
-
-    form.querySelector('#names-copy-btn').disabled = false;
-    form.querySelector('#names-clear-btn').disabled = false;
-
-    // Resize window after generating names
-    setTimeout(() => this._resizeToContent(), 100);
-  }
-
-
-
-
-
-  _collectAuthorCredits(language, species, components) {
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return '';
-
-    const authors = new Map();
-
-    for (const component of components) {
-      const key = `${language}.${species}.${component}`;
-      const data = globalNamesData.getData(key);
-
-      if (data?.authors) {
-        for (const author of data.authors) {
-          const authorKey = author.name || author.email || 'Unbekannt';
-          authors.set(authorKey, author);
+          resultDiv.append(itemHtml);
         }
       }
     }
 
-    if (authors.size === 0) return '';
+    html.find('#names-copy-btn').prop('disabled', false);
+    html.find('#names-clear-btn').prop('disabled', false);
+  }
 
-    logDebug(`Collected credits from ${authors.size} authors`);
+  _updateResultDisplay(html) {
+    const resultDiv = html.find('#names-result-display');
 
-    let creditsHtml = '<div class="names-module-author-credits"><strong>Quellen:</strong><br>';
+    // Transform existing elements with grow/shrink animation
+    const existingNames = resultDiv.find('.names-module-generated-name, .names-module-simple-name');
 
-    for (const [key, author] of authors) {
-      creditsHtml += `<div class="names-module-author-entry">`;
-      creditsHtml += `<span class="names-module-author-name">${author.name || 'Unbekannt'}</span>`;
+    if (existingNames.length > 0) {
+      // Update existing elements with new classes
+      existingNames.each((index, el) => {
+        const $el = $(el);
+        const name = $el.data('name');
+        const isFavorited = this.favoritedNames.has(name);
+        const favClass = isFavorited ? 'active' : '';
 
-      const links = [];
-      if (author.email) links.push(`<a href="mailto:${author.email}" title="E-Mail">✉️</a>`);
-      if (author.url) links.push(`<a href="${author.url}" target="_blank" title="Website">🌐</a>`);
-      if (author.github) links.push(`<a href="${author.github}" target="_blank" title="GitHub">💻</a>`);
-      if (author.twitter) links.push(`<a href="${author.twitter}" target="_blank" title="Twitter">🦅</a>`);
+        // Remove animation class to prevent re-animation during view switch
+        $el.removeClass('initial-render');
 
-      if (links.length > 0) {
-        creditsHtml += ` <span class="names-module-author-links">${links.join(' ')}</span>`;
+        if (this.currentView === 'simple') {
+          // Transform to simple view with shrink animation
+          $el.addClass('view-transition');
+          $el.removeClass('names-module-generated-name').addClass('names-module-simple-name');
+          $el.html(`
+            <button type="button" class="favorite-toggle ${favClass}">⭐</button>
+            <span class="name-text">${name}</span>
+          `);
+          setTimeout(() => $el.removeClass('view-transition'), 400);
+        } else {
+          // Transform to detailed view with grow animation
+          $el.addClass('view-transition');
+          $el.removeClass('names-module-simple-name').addClass('names-module-generated-name');
+          $el.html(`
+            <div class="name-content-wrapper">
+              <button type="button" class="favorite-toggle ${favClass}">⭐</button>
+              <div class="name-content">
+                <div class="name-title">${name}</div>
+              </div>
+            </div>
+          `);
+          setTimeout(() => $el.removeClass('view-transition'), 400);
+        }
+      });
+
+      // Update container
+      const container = resultDiv.find('.names-module-simple-view');
+      if (container.length > 0 && this.currentView !== 'simple') {
+        container.contents().unwrap();
+      } else if (container.length === 0 && this.currentView === 'simple') {
+        resultDiv.children().wrapAll('<div class="names-module-simple-view"></div>');
       }
-
-      creditsHtml += `</div>`;
+    } else {
+      // No existing elements, do full render
+      this._displayResults(html);
     }
-
-    creditsHtml += '</div>';
-    return creditsHtml;
   }
 
-  /**
-   * Opens the History App
-   * @param {Event} event - The click event
-   */
-  _onOpenHistory(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    logDebug("Opening history from generator app");
+  async _onCopyNames(html) {
+    if (this.generatedNames.length === 0) return;
 
-    new NamesHistoryApp().render(true);
+    const names = this.generatedNames.join('\n');
+    await navigator.clipboard.writeText(names);
+    ui.notifications.info(game.i18n.localize("names.copied"));
   }
 
-  /**
-   * Add generated names to history
-   * @param {Array} results - Array of generated names (strings or objects)
-   * @param {Object} options - Generation options
-   */
-  _addToHistory(results, options) {
+  _onClearResult(html) {
+    this.generatedNames = [];
+    const resultDiv = html.find('#names-result-display');
+    resultDiv.html('<div class="names-module-no-result">' +
+      game.i18n.localize("names.select-options") + '</div>');
+
+    html.find('#names-copy-btn').prop('disabled', true);
+    html.find('#names-clear-btn').prop('disabled', true);
+  }
+
+  _addToHistory() {
     const historyManager = getHistoryManager();
 
-    const entries = results.map(result => {
-      const name = typeof result === 'string' ? result : result.name;
-
-      // For names category: use gender as subcategory (for display purposes)
-      // For other categories: use actual subcategory
-      let displaySubcategory = '';
-      if (options.category === 'names' && options.gender) {
-        displaySubcategory = options.gender;
-      } else if (typeof result === 'object' && result.subcategory) {
-        displaySubcategory = result.subcategory;
-      } else if (options.subcategory) {
-        displaySubcategory = options.subcategory;
+    const entries = this.generatedNames.map(name => ({
+      name: name,
+      source: 'generator',
+      metadata: {
+        language: this.currentLanguage,
+        species: this.currentSpecies,
+        category: this.currentCategory,
+        timestamp: Date.now()
       }
-
-      return {
-        name: name,
-        source: 'generator',
-        metadata: {
-          language: options.language,
-          species: options.species,
-          category: options.category,
-          subcategory: displaySubcategory || '',
-          gender: options.gender || '',
-          format: options.format || ''
-        }
-      };
-    });
+    }));
 
     historyManager.addEntries(entries);
-
-    logDebug(`Added ${entries.length} names to history from generator`);
+    logDebug(`Added ${entries.length} names to history`);
   }
 
-  /**
-   * Handles the copy names button click event
-   * @param {Event} event - The click event
-   */
-  async _onCopyName(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    logDebug("Copy names button clicked");
-
-    const form = event.currentTarget.closest('form');
-    const nameElements = form.querySelectorAll('.names-module-generated-name');
-    if (nameElements.length === 0) return;
-
-    const names = Array.from(nameElements).map(el => el.dataset.name).join('\n');
-
-    try {
-      await navigator.clipboard.writeText(names);
-      ui.notifications.info(game.i18n.localize("names.copied"));
-      logInfo(`Copied ${nameElements.length} names to clipboard`);
-    } catch (error) {
-      logWarn("Clipboard copy failed, using fallback", error);
-      this._fallbackCopyToClipboard(names);
-    }
-  }
-
-  _fallbackCopyToClipboard(text) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-
-    try {
-      document.execCommand('copy');
-      ui.notifications.info(game.i18n.localize("names.copied"));
-      logInfo("Successfully copied names using fallback method");
-    } catch (error) {
-      logError("Fallback copy method failed", error);
-      ui.notifications.error(game.i18n.localize("names.copy-error"));
-    }
-
-    document.body.removeChild(textArea);
-  }
-
-  _onClearResult(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    logDebug("Clear results button clicked");
-
-    const form = event.currentTarget.closest('form');
-    const resultDiv = form.querySelector('#names-result-display');
-
-    // Add updating class for shimmer effect during clear
-    resultDiv.classList.add('updating');
-
-    setTimeout(() => {
-      resultDiv.innerHTML = `<div class="names-module-no-result">${game.i18n.localize("names.select-options")}</div>`;
-
-      form.querySelector('#names-copy-btn').disabled = true;
-      form.querySelector('#names-clear-btn').disabled = true;
-
-      // Remove updating class
-      setTimeout(() => {
-        resultDiv.classList.remove('updating');
-      }, 300);
-
-      logDebug("Results cleared and buttons disabled");
-
-      // Resize after clearing results
-      this._resizeToContent();
-    }, 100);
-  }
-
-  /**
-   * Calculate required height based on visible content
-   */
-  _calculateRequiredHeight() {
-    if (!this.element || !this.element[0]) return this.minHeight;
-
-    const contentElement = this.element.find('.window-content')[0];
-    if (!contentElement) return this.minHeight;
-
-    // Get the natural height of all content
-    const children = Array.from(contentElement.children);
-    let totalHeight = 0;
-
-    // Add padding and margins
-    const computedStyle = window.getComputedStyle(contentElement);
-    const padding = parseInt(computedStyle.paddingTop) + parseInt(computedStyle.paddingBottom);
-    const margin = parseInt(computedStyle.marginTop) + parseInt(computedStyle.marginBottom);
-
-    // Calculate height of all visible content
-    children.forEach(child => {
-      if (child.offsetHeight > 0) {
-        const childStyle = window.getComputedStyle(child);
-        const childMargin = parseInt(childStyle.marginTop) + parseInt(childStyle.marginBottom);
-        totalHeight += child.offsetHeight + childMargin;
-      }
-    });
-
-    // Add window header height (estimated)
-    const headerHeight = 30;
-
-    // Add some buffer for comfortable spacing
-    const buffer = 20;
-
-    const requiredHeight = headerHeight + totalHeight + padding + margin + buffer;
-
-    logDebug(`Calculated required height: ${requiredHeight}px (content: ${totalHeight}px)`);
-
-    // Clamp to min/max values
-    return Math.max(this.minHeight, Math.min(this.maxHeight, requiredHeight));
-  }
-
-  /**
-   * Resize window to fit content with smooth animation
-   */
-  _resizeToContent() {
-    if (!this.autoResize || !this.element || !this.element[0]) return;
-
-    const newHeight = this._calculateRequiredHeight();
-    const currentHeight = this.position.height;
-
-    // Only resize if there's a significant difference (avoid micro-adjustments)
-    if (Math.abs(newHeight - currentHeight) > 10) {
-      logDebug(`Resizing window from ${currentHeight}px to ${newHeight}px`);
-
-      // Add CSS transition for smooth resizing
-      this.element.css('transition', 'height 0.3s ease-out');
-
-      // Perform the resize
-      this.setPosition({ height: newHeight });
-
-      // Remove transition after animation completes
-      setTimeout(() => {
-        if (this.element) {
-          this.element.css('transition', '');
-        }
-      }, 300);
-    }
-  }
-
-  /**
-   * Updates an Enhanced Dropdown value
-   * @param {string} dropdownName - Name of the dropdown (language, species, category)
-   * @param {string} value - Value to set
-   */
-  _updateEnhancedDropdownValue(dropdownName, value) {
-    const enhancedDropdown = this.enhancedDropdowns.get(dropdownName);
-    if (enhancedDropdown && enhancedDropdown.setValue) {
-      enhancedDropdown.setValue(value);
-      logDebug(`Updated ${dropdownName} Enhanced Dropdown to: "${value}"`);
-    }
-  }
-
-  /**
-   * Updates Enhanced Dropdown options after rebuilding select options
-   * @param {string} dropdownName - Name of the dropdown to update
-   */
-  _updateEnhancedDropdownOptions(dropdownName) {
-    const enhancedDropdown = this.enhancedDropdowns.get(dropdownName);
-    if (enhancedDropdown && enhancedDropdown.loadItems) {
-      enhancedDropdown.loadItems();
-      logDebug(`Reloaded Enhanced Dropdown options for ${dropdownName}`);
-    }
-  }
-
-  /**
-   * Get the default language from module settings
-   */
   _getFoundryLanguage() {
-    const defaultContentLanguageSetting = game.settings.get("nomina-names", "defaultContentLanguage");
+    try {
+      const defaultContentLanguageSetting = game.settings.get("nomina-names", "defaultContentLanguage");
 
-    // If set to "auto", use interface language or fallback to Foundry language
-    if (defaultContentLanguageSetting === "auto") {
-      // First try interface language setting
-      const interfaceLanguageSetting = game.settings.get("nomina-names", "interfaceLanguage");
-
-      if (interfaceLanguageSetting !== "auto") {
-        // Use interface language if available in content languages
-        const globalNamesData = getGlobalNamesData();
-        if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(interfaceLanguageSetting)) {
-          logDebug(`Using interface language as content language: ${interfaceLanguageSetting}`);
-          return interfaceLanguageSetting;
-        }
+      if (defaultContentLanguageSetting === "auto") {
+        const foundryLang = game.settings.get("core", "language");
+        const languageMapping = {
+          'en': 'en',
+          'de': 'de',
+          'fr': 'fr',
+          'es': 'es',
+          'it': 'it'
+        };
+        return languageMapping[foundryLang] || 'de';
       }
 
-      // Fallback to Foundry language
-      const foundryLang = game.settings.get("core", "language");
-
-      const languageMapping = {
-        'en': 'en',
-        'de': 'de',
-        'fr': 'fr',
-        'es': 'es',
-        'it': 'it'
-      };
-
-      const mappedLang = languageMapping[foundryLang] || 'de';
-      logDebug(`Auto mode: Foundry language ${foundryLang} mapped to ${mappedLang}`);
-
-      const globalNamesData = getGlobalNamesData();
-      if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(mappedLang)) {
-        return mappedLang;
-      }
-
-      // Fallback to 'de' if mapped language not available
-      logDebug(`Language ${mappedLang} not available, falling back to 'de'`);
+      return defaultContentLanguageSetting;
+    } catch (error) {
+      logDebug('Error getting Foundry language:', error);
       return 'de';
     }
+  }
 
-    // Use specific language setting
-    logDebug(`Using module default content language setting: ${defaultContentLanguageSetting}`);
+  _setDefaultLanguage(html) {
+    const defaultLang = this._getFoundryLanguage();
+    const languageSelect = html.find('#names-language-select');
 
-    const globalNamesData = getGlobalNamesData();
-    if (globalNamesData && globalNamesData.availableLanguages && globalNamesData.availableLanguages.has(defaultContentLanguageSetting)) {
-      return defaultContentLanguageSetting;
+    if (languageSelect.length && defaultLang) {
+      languageSelect.val(defaultLang);
+      languageSelect.trigger('change');
     }
+  }
 
-    // Fallback to 'de' if set language not available
-    logDebug(`Set content language ${defaultContentLanguageSetting} not available, falling back to 'de'`);
-    return 'de';
+  // ============================================================
+  // V4.0.1 Collections Support
+  // ============================================================
+
+  /**
+   * Get collections for a specific catalog
+   */
+  async _getCollectionsForCatalog(packageCode, catalogKey) {
+    try {
+      const dataManager = this.generator.dataManager;
+      logDebug('DataManager exists:', !!dataManager);
+
+      if (!dataManager) {
+        logError('No dataManager available');
+        return [];
+      }
+
+      const hasSupport = dataManager.hasCollectionsSupport(packageCode);
+      logDebug(`Package ${packageCode} has collections support:`, hasSupport);
+
+      if (!hasSupport) {
+        logDebug('Package does not have collections support');
+        return [];
+      }
+
+      const collections = dataManager.getCollectionsForCatalog(packageCode, catalogKey);
+      logDebug(`getCollectionsForCatalog returned:`, collections);
+
+      return collections;
+    } catch (error) {
+      logError('Failed to get collections:', error);
+      return [];
+    }
   }
 
   /**
-   * Set the default language selection in the dropdown
+   * Fill collection checkboxes
    */
+  async _fillCollectionCheckboxes(html, collections) {
+    const container = html.find('#subcategory-checkboxes-container');
+    container.empty();
+
+    const dataManager = this.generator.dataManager;
+    const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
+
+    for (const collection of collections) {
+      // Get translated label
+      const label = collection.labels?.[this.currentLanguage] ||
+                   collection.labels?.en ||
+                   collection.key;
+
+      // Get icon for the first tag if available
+      let icon = '';
+      if (collection.query?.tags && collection.query.tags.length > 0) {
+        const tagIcon = dataManager.getVocabIcon(packageCode, collection.query.tags[0]);
+        if (tagIcon) {
+          icon = tagIcon + ' ';
+        }
+      }
+
+      const checkbox = `
+        <label class="names-module-checkbox-item">
+          <input type="checkbox" name="names-collection-${collection.key}" value="${collection.key}" checked>
+          <span class="names-module-checkmark"></span>
+          ${icon}${label}
+        </label>
+      `;
+      container.append(checkbox);
+    }
+  }
+
+  // ============================================================
+  // Recipe Mode Support
+  // ============================================================
+
   /**
-   * Updates the visibility of view toggle buttons based on whether metadata is supported
+   * Update recipe dropdown with available recipes
    */
-  _updateViewToggleVisibility($form, language, species, category) {
-    const viewToggle = $form.find('.names-module-view-toggle');
-    const container = $form.find('#names-result-display');
+  async _updateRecipeDropdown(html) {
+    const recipeSelect = html.find('#names-recipe-select');
+    const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
 
-    if (!viewToggle.length) return;
+    // Get available recipes
+    const recipes = this.generator.dataManager.getRecipes(packageCode, this.currentLanguage);
 
-    // Check if metadata features are enabled in settings
-    const metadataEnabled = game.settings.get(MODULE_ID, "enableMetadata") !== false; // Default to true if not set
+    // Clear and repopulate
+    recipeSelect.empty();
+    recipeSelect.append('<option value=""></option>');
 
-    if (!metadataEnabled) {
-      viewToggle.hide();
-      this._forceSimpleView(container);
-      logDebug("View toggle hidden - metadata disabled in settings, forced simple view");
+    // Add custom option first
+    const customLabel = game.i18n.localize('names.custom-recipe');
+    recipeSelect.append(`<option value="custom">${customLabel}</option>`);
+
+    // Generate example names for each recipe and add to dropdown
+    for (const recipe of recipes) {
+      // Get display name (already localized by engine)
+      const displayName = recipe.displayName || recipe.id;
+
+      // Try to generate example name
+      let exampleName = displayName; // Fallback to display name
+      try {
+        const exampleResult = await this._generateExampleForRecipe(packageCode, recipe.id);
+        if (exampleResult) {
+          exampleName = exampleResult;
+        }
+      } catch (error) {
+        // Silently fail - use display name as fallback
+        logDebug(`Could not generate example for recipe ${recipe.id}, using display name`);
+      }
+
+      // Create option with display name as main text and example as subtitle
+      const examplePrefix = game.i18n.localize('names.example-prefix') || 'z.B.:';
+      const subtitle = `${examplePrefix} ${exampleName}`;
+      recipeSelect.append(`<option value="${recipe.id}" data-subtitle="${subtitle}">${displayName}</option>`);
+    }
+
+    // Initialize or reload enhanced dropdown
+    const nativeSelect = recipeSelect[0];
+    const container = nativeSelect?.nextSibling;
+
+    if (container && container._enhancedDropdown) {
+      // Enhanced dropdown already exists - reload items
+      container._enhancedDropdown.loadItems();
+    } else {
+      // Initialize enhanced dropdown for the first time
+      initializeEnhancedDropdowns('#names-recipe-select');
+    }
+  }
+
+  /**
+   * Generate example name for a recipe
+   * Uses a consistent seed based on recipe ID for reproducible examples
+   */
+  async _generateExampleForRecipe(packageCode, recipeId) {
+    try {
+      // Create a simple hash-based seed from recipeId for consistency
+      const seed = `examples`;
+
+      const result = await this.generator.generate({
+        packageCode,
+        locale: this.currentLanguage,
+        n: 1,
+        recipes: recipeId,
+        seed: seed,
+        allowDuplicates: false
+      });
+
+      if (result.suggestions && result.suggestions.length > 0) {
+        return result.suggestions[0].text;
+      }
+    } catch (error) {
+      // Silently ignore - recipe might be incompatible with current data structure
+      logDebug(`Skipping example generation for recipe ${recipeId} (incompatible)`);
+    }
+    return null;
+  }
+
+  /**
+   * Handle recipe selection
+   */
+  async _onRecipeSelected(html, recipeId) {
+    const recipeTextarea = html.find('#names-recipe-definition');
+    const copyBtn = html.find('#names-recipe-copy-btn');
+    const clearBtn = html.find('#names-recipe-clear-btn');
+
+    if (!recipeId) {
+      // No recipe selected
+      recipeTextarea.val('');
+      recipeTextarea.prop('disabled', true).prop('readonly', true);
+      copyBtn.prop('disabled', true);
+      clearBtn.prop('disabled', true);
       return;
     }
 
-    // Check if current selection has metadata support
-    const hasMetadata = this._checkMetadataSupport(language, species, category);
+    if (recipeId === 'custom') {
+      // Custom mode - enable textarea
+      recipeTextarea.val(this.lastRecipeDefinition);
+      recipeTextarea.prop('disabled', false).prop('readonly', false);
+      copyBtn.prop('disabled', false);
+      clearBtn.prop('disabled', false);
+      return;
+    }
 
+    // Regular recipe - show full recipe definition
+    const packageCode = `${this.currentSpecies}-${this.currentLanguage}`;
+    const pkg = this.generator.dataManager.getPackage(packageCode);
+
+    if (pkg && pkg.data.recipes) {
+      const recipe = pkg.data.recipes.find(r => r.id === recipeId);
+
+      if (recipe) {
+        // Format complete recipe as JSON (not just id and displayName)
+        const recipeJson = JSON.stringify(recipe, null, 2);
+        recipeTextarea.val(recipeJson);
+        recipeTextarea.prop('disabled', true).prop('readonly', true);
+
+        // Store for custom mode
+        this.lastRecipeDefinition = recipeJson;
+
+        copyBtn.prop('disabled', false);
+        clearBtn.prop('disabled', false);
+      }
+    }
+  }
+
+  /**
+   * Copy recipe to clipboard
+   */
+  async _onCopyRecipe(html) {
+    const recipeTextarea = html.find('#names-recipe-definition');
+    const recipeText = recipeTextarea.val();
+
+    if (recipeText) {
+      await navigator.clipboard.writeText(recipeText);
+      ui.notifications.info(game.i18n.localize('names.copied'));
+    }
+  }
+
+  /**
+   * Clear recipe definition
+   */
+  _onClearRecipe(html) {
+    const recipeTextarea = html.find('#names-recipe-definition');
+    recipeTextarea.val('');
+    this.lastRecipeDefinition = '';
+  }
+
+  /**
+   * Randomize seed
+   */
+  _onRandomizeSeed(html) {
+    const seedInput = html.find('#names-recipe-seed');
+    // Generate a random seed using timestamp and random number
+    const randomSeed = `seed-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+    seedInput.val(randomSeed);
+  }
+
+  /**
+   * Generate names using selected recipe
+   */
+  async _generateWithRecipe(html, packageCode, count) {
+    const recipeId = this.currentRecipe;
+
+    if (!recipeId) {
+      ui.notifications.warn(game.i18n.localize('names.select-all'));
+      return { suggestions: [], errors: ['No recipe selected'] };
+    }
+
+    // Get seed from input field
+    const seedInput = html.find('#names-recipe-seed');
+    const userSeed = seedInput.val()?.trim() || null;
+
+    // Get selected genders from checkboxes
+    const selectedGenders = [];
+    html.find('input[name^="names-gender-"]:checked').each(function() {
+      const genderName = this.name.replace('names-gender-', '');
+      selectedGenders.push(genderName);
+    });
+
+    logDebug(`Selected genders from checkboxes:`, selectedGenders);
+
+    if (recipeId === 'custom') {
+      // Custom recipe mode
+      const recipeTextarea = html.find('#names-recipe-definition');
+      const recipeText = recipeTextarea.val();
+
+      if (!recipeText) {
+        ui.notifications.warn('Please define a custom recipe');
+        return { suggestions: [], errors: ['No custom recipe defined'] };
+      }
+
+      try {
+        const customRecipe = JSON.parse(recipeText);
+
+        // Add custom recipe temporarily to package
+        const pkg = this.generator.dataManager.getPackage(packageCode);
+        const engine = this.generator.dataManager.getEngine();
+
+        if (!pkg) {
+          throw new Error(`Package not found: ${packageCode}`);
+        }
+
+        const customRecipeId = '_custom_user_recipe';
+        customRecipe.id = customRecipeId;
+
+        // Replace or add custom recipe
+        if (!pkg.data.recipes) {
+          pkg.data.recipes = [];
+        }
+        const existingIndex = pkg.data.recipes.findIndex(r => r.id === customRecipeId);
+        if (existingIndex >= 0) {
+          pkg.data.recipes[existingIndex] = customRecipe;
+        } else {
+          pkg.data.recipes.push(customRecipe);
+        }
+
+        // Reload package in engine
+        engine.loadPackage(pkg.data);
+
+        // Generate with custom recipe
+        return await this.generator.generate({
+          packageCode,
+          locale: this.currentLanguage,
+          n: count,
+          recipes: customRecipeId,
+          seed: userSeed,
+          allowDuplicates: false
+        });
+      } catch (error) {
+        ui.notifications.error('Invalid recipe JSON: ' + error.message);
+        return { suggestions: [], errors: ['Invalid recipe JSON'] };
+      }
+    }
+
+    // Generate with existing recipe
+    // If genders are selected, we need to modify the recipe to include gender filters
+    if (selectedGenders.length > 0 && selectedGenders.length < 3) {
+      // Clone and modify the recipe to add gender tags
+      const pkg = this.generator.dataManager.getPackage(packageCode);
+      const engine = this.generator.dataManager.getEngine();
+
+      if (!pkg) {
+        throw new Error(`Package not found: ${packageCode}`);
+      }
+
+      // Find the original recipe
+      const originalRecipe = pkg.data.recipes?.find(r => r.id === recipeId);
+      if (!originalRecipe) {
+        ui.notifications.error('Recipe not found');
+        return { suggestions: [], errors: ['Recipe not found'] };
+      }
+
+      // Deep clone the recipe
+      const modifiedRecipe = JSON.parse(JSON.stringify(originalRecipe));
+      modifiedRecipe.id = `_temp_${recipeId}_gendered`;
+
+      // Inject gender tags into all name selections with "firstnames" tag
+      this._injectGenderTagsIntoRecipe(modifiedRecipe, selectedGenders);
+
+      logDebug(`Modified recipe after gender injection:`, JSON.stringify(modifiedRecipe, null, 2));
+
+      // Add or replace the temporary recipe
+      const existingIndex = pkg.data.recipes.findIndex(r => r.id === modifiedRecipe.id);
+      if (existingIndex >= 0) {
+        pkg.data.recipes[existingIndex] = modifiedRecipe;
+      } else {
+        pkg.data.recipes.push(modifiedRecipe);
+      }
+
+      // Reload package in engine
+      engine.loadPackage(pkg.data);
+
+      // Generate with modified recipe
+      return await this.generator.generate({
+        packageCode,
+        locale: this.currentLanguage,
+        n: count,
+        recipes: modifiedRecipe.id,
+        seed: userSeed,
+        allowDuplicates: false
+      });
+    }
+
+    // No gender filter or all genders selected - use original recipe
+    return await this.generator.generate({
+      packageCode,
+      locale: this.currentLanguage,
+      n: count,
+      recipes: recipeId,
+      seed: userSeed,
+      allowDuplicates: false
+    });
+  }
+
+  /**
+   * Inject gender tags into recipe pattern
+   * Modifies select blocks that have "firstnames" in their where.tags
+   * Uses anyOfTags so at least ONE gender tag must match (not ALL)
+   */
+  _injectGenderTagsIntoRecipe(recipe, genderTags) {
+    if (!recipe.pattern || !Array.isArray(recipe.pattern)) {
+      return;
+    }
+
+    for (const block of recipe.pattern) {
+      // Check if this is a select block for firstnames
+      if (block.select && block.select.where && block.select.where.tags) {
+        if (block.select.where.tags.includes('firstnames')) {
+          // Add gender tags as anyOfTags (at least one must match)
+          if (!block.select.where.anyOfTags) {
+            block.select.where.anyOfTags = [];
+          }
+          block.select.where.anyOfTags = [...block.select.where.anyOfTags, ...genderTags];
+        }
+      }
+
+      // Also check nested blocks (e.g., in pp.ref)
+      if (block.pp && block.pp.ref && block.pp.ref.select) {
+        const nestedSelect = block.pp.ref.select;
+        if (nestedSelect.where && nestedSelect.where.tags && nestedSelect.where.tags.includes('firstnames')) {
+          // Add gender tags as anyOfTags
+          if (!nestedSelect.where.anyOfTags) {
+            nestedSelect.where.anyOfTags = [];
+          }
+          nestedSelect.where.anyOfTags = [...nestedSelect.where.anyOfTags, ...genderTags];
+        }
+      }
+    }
+  }
+
+  /**
+   * Show or hide the view toggle based on whether results have metadata
+   */
+  _updateViewToggleVisibility(html, hasMetadata) {
+    const viewToggle = html.find('.names-module-view-toggle');
     if (hasMetadata) {
-      viewToggle.show();
-      // Restore user's preferred view when metadata becomes available
-      this._restorePreferredView(container);
-      logDebug("View toggle shown - metadata available for current selection");
+      viewToggle.css('display', 'flex'); // Show as flex container
+      // Keep current view preference when metadata is present
     } else {
       viewToggle.hide();
-      this._forceSimpleView(container);
-      logDebug("View toggle hidden - no metadata available for current selection, forced simple view");
+      // Force simple/compact view when no metadata (no need for detailed view)
+      this.currentView = 'simple';
     }
-  }
-
-  /**
-   * Forces simple view when no metadata is available
-   */
-  _forceSimpleView(container) {
-    if (container && container.length > 0) {
-      container.addClass('simple-view');
-
-      // Also update toggle button states if they exist but are hidden
-      const toggleButtons = container.closest('form').find('.names-module-toggle-btn');
-      toggleButtons.removeClass('active');
-      const simpleButton = container.closest('form').find('[data-view="simple"]');
-      if (simpleButton.length > 0) {
-        simpleButton.addClass('active');
-      }
-
-      logDebug("Forced simple view applied");
-    }
-  }
-
-  /**
-   * Restores user's preferred view when metadata becomes available
-   */
-  _restorePreferredView(container) {
-    if (container && container.length > 0) {
-      // Get the user's default view setting
-      const defaultView = game.settings.get(MODULE_ID, "defaultView") || "detailed";
-      const form = container.closest('form');
-      const toggleButtons = form.find('.names-module-toggle-btn');
-
-      // Remove active state from all buttons
-      toggleButtons.removeClass('active');
-
-      // Apply the default view
-      if (defaultView === 'simple') {
-        container.addClass('simple-view');
-        const simpleButton = form.find('[data-view="simple"]');
-        if (simpleButton.length > 0) {
-          simpleButton.addClass('active');
-        }
-      } else {
-        container.removeClass('simple-view');
-        const detailedButton = form.find('[data-view="detailed"]');
-        if (detailedButton.length > 0) {
-          detailedButton.addClass('active');
-        }
-      }
-
-      logDebug(`Restored preferred view: ${defaultView}`);
-    }
-  }
-
-  /**
-   * Checks if the current data selection supports metadata (3.1.0+ format)
-   */
-  _checkMetadataSupport(language, species, category) {
-    if (!language || !species || !category) return false;
-
-    const globalNamesData = getGlobalNamesData();
-    if (!globalNamesData) return false;
-
-    // Check for 3.1.1 entry metadata first
-    if (globalNamesData.hasEntryMetadata(language, species, category)) {
-      logDebug(`Found 3.1.1 entry metadata for ${language}.${species}.${category}`);
-      return true;
-    }
-
-    // For names category, names are simple strings without metadata - no detailed view needed
-    if (category === 'names') {
-      return false;
-    }
-
-    // For categorized content, check if data has metadata structure
-    if (isCategorizedContent(category)) {
-      try {
-        // Check if this category has any subcategories with metadata structure
-        // We need language and species context to get subcategories
-        const currentOptions = this.getCurrentOptions();
-        if (currentOptions.language && currentOptions.species) {
-          const availableSubcats = globalNamesData.getAvailableSubcategories(
-            currentOptions.language,
-            currentOptions.species,
-            category
-          );
-
-          if (availableSubcats && Array.isArray(availableSubcats)) {
-            // For now, assume metadata support if subcategories exist
-            // In future, this could check for actual metadata fields
-            return availableSubcats.length > 0;
-          }
-        }
-      } catch (error) {
-        logDebug("Error checking metadata support:", error);
-      }
-    }
-
-    return false;
-  }
-
-  /**
-   * Sets the default view based on module settings
-   */
-  _setDefaultView() {
-    if (!this.element || !this.element[0]) return;
-
-    const defaultView = game.settings.get(MODULE_ID, "defaultView") || "detailed";
-    const toggleButtons = this.element[0].querySelectorAll('.names-module-toggle-btn');
-    const container = this.element[0].querySelector('#names-result-display');
-
-    if (toggleButtons.length > 0 && container) {
-      // Remove active state from all buttons
-      toggleButtons.forEach(btn => btn.classList.remove('active'));
-
-      // Find and activate the button for the default view
-      const targetButton = this.element[0].querySelector(`[data-view="${defaultView}"]`);
-      if (targetButton) {
-        targetButton.classList.add('active');
-
-        // Apply the view class to the results container
-        if (defaultView === 'simple') {
-          container.classList.add('simple-view');
-        } else {
-          container.classList.remove('simple-view');
-        }
-
-        logDebug(`Set default view to: ${defaultView}`);
-      }
-    }
-  }
-
-  /**
-   * Sets the default name count based on module settings
-   */
-  _setDefaultNameCount() {
-    if (!this.element || !this.element[0]) return;
-
-    const defaultCount = game.settings.get(MODULE_ID, "defaultNameCount") || 5;
-    const countInput = this.element[0].querySelector('#names-count-input');
-
-    if (countInput) {
-      countInput.value = defaultCount;
-      logDebug(`Set default name count to: ${defaultCount}`);
-    }
-  }
-
-  _setDefaultLanguage() {
-    if (!this.element || !this.element[0]) return;
-
-    const defaultLang = this._getFoundryLanguage();
-    const languageSelect = this.element[0].querySelector('#names-language-select');
-
-    if (languageSelect && defaultLang) {
-      // Set value for native select
-      languageSelect.value = defaultLang;
-
-      // If Enhanced Dropdown is available, update it too
-      const enhancedDropdown = this.enhancedDropdowns.get('language');
-      if (enhancedDropdown && enhancedDropdown.setValue) {
-        enhancedDropdown.setValue(defaultLang);
-        logDebug(`Set default language to ${defaultLang} via Enhanced Dropdown`);
-      } else {
-        logDebug(`Set default language to ${defaultLang} via native select`);
-      }
-
-      // Trigger change event to update UI
-      $(languageSelect).trigger('change');
-    }
-  }
-
-  /**
-   * Handles live search input for filtering results
-   * @param {Event} event - The input event
-   */
-  _onSearchInput(event) {
-    const searchTerm = event.target.value.toLowerCase().trim();
-    const form = event.target.closest('form');
-    const resultDisplay = form.querySelector('#names-result-display');
-    const nameCards = resultDisplay.querySelectorAll('.names-module-generated-name');
-    const searchInfo = form.querySelector('#searchInfo');
-
-    let visibleCount = 0;
-    let totalCount = nameCards.length;
-
-    nameCards.forEach(card => {
-      const shouldShow = this._shouldShowCard(card, searchTerm);
-
-      if (shouldShow) {
-        card.style.display = '';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    // Update search info
-    if (searchTerm) {
-      searchInfo.textContent = `${visibleCount} von ${totalCount} Ergebnissen`;
-      searchInfo.style.display = 'block';
-    } else {
-      searchInfo.style.display = 'none';
-    }
-
-    // Update results count
-    const resultsCount = form.querySelector('#resultsCount');
-    if (resultsCount) {
-      if (visibleCount === 0) {
-        resultsCount.textContent = game.i18n.localize("names.results.count-zero");
-      } else {
-        resultsCount.textContent = game.i18n.format("names.results.count", { count: visibleCount });
-      }
-    }
-  }
-
-  /**
-   * Generates HTML for meta data display - fully dynamic for any content
-   * @param {Object} metaData - The meta data object
-   * @returns {string} HTML string for meta data
-   */
-  _generateMetaDataHtml(metaData, language, species, category) {
-    if (!metaData || typeof metaData !== 'object') return '';
-
-    const metaItems = [];
-
-    // Process all fields dynamically
-    Object.keys(metaData).forEach(key => {
-      const value = metaData[key];
-      if (value !== null && value !== undefined && value !== '') {
-        const { label, icon, formattedValue } = this._processMetaField(key, value, language, species, category);
-
-        metaItems.push(`
-          <div class="detail-item">
-            <div class="detail-label">${icon} ${label}</div>
-            <div class="detail-value">${formattedValue}</div>
-          </div>
-        `);
-      }
-    });
-
-    if (metaItems.length === 0) return '';
-
-    return `
-      <div class="name-details">
-        <div class="detail-row">
-          ${metaItems.join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  /**
-   * Processes a meta field to determine label, icon and formatting
-   * Uses 3.1.2 individual entry translation and 3.1.1+ entry_metadata when available, falls back to pattern detection
-   * @param {string} key - The field key
-   * @param {any} value - The field value
-   * @param {string} language - Language code
-   * @param {string} species - Species code
-   * @param {string} category - Category code
-   * @returns {Object} Object with label, icon, and formattedValue
-   */
-  _processMetaField(key, value, language, species, category) {
-    const globalNamesData = getGlobalNamesData();
-
-    // Try to get 3.1.1+ entry metadata first
-    if (globalNamesData && globalNamesData.hasEntryMetadata(language, species, category)) {
-      const metadataLabel = globalNamesData.getFieldLabel(language, species, category, key);
-      const metadataIcon = globalNamesData.getFieldIcon(language, species, category, key);
-
-      // First try individual entry translation (3.1.2)
-      let localizedValue = value;
-      if (globalNamesData.getLocalizedEntryValue) {
-        localizedValue = globalNamesData.getLocalizedEntryValue(value);
-      }
-
-      // Then try predefined value mapping (3.1.1)
-      if (typeof localizedValue === 'string') {
-        localizedValue = globalNamesData.getLocalizedValue(language, species, category, key, localizedValue);
-      }
-
-      if (metadataLabel || metadataIcon) {
-        return {
-          label: metadataLabel || this._humanizeKey(key),
-          icon: metadataIcon || '📋',
-          formattedValue: this._formatFieldValue(key, localizedValue || value)
-        };
-      }
-    }
-
-    // Fall back to pattern-based detection for older formats
-    const { icon, label } = this._getFieldDisplay(key);
-    const formattedValue = this._formatFieldValue(key, value);
-
-    return { label, icon, formattedValue };
-  }
-
-  /**
-   * Determines appropriate icon and label for a field key
-   * @param {string} key - The field key
-   * @returns {Object} Object with icon and label
-   */
-  _getFieldDisplay(key) {
-    const keyLower = key.toLowerCase();
-
-    // Pattern-based detection for common field types
-    const patterns = [
-      // Owner/Person patterns
-      { patterns: ['owner', 'inhaber', 'besitzer', 'proprietor', 'merchant'], icon: '👤', labelKey: 'Owner' },
-      // Location patterns
-      { patterns: ['location', 'lage', 'ort', 'place', 'district', 'quarter', 'viertel'], icon: '📍', labelKey: 'Location' },
-      // Price/Money patterns
-      { patterns: ['price', 'preis', 'cost', 'kosten', 'level', 'stufe', 'tier'], icon: '💰', labelKey: 'Price' },
-      // Specialization patterns
-      { patterns: ['special', 'speciali', 'spezial', 'focus', 'expertise'], icon: '⭐', labelKey: 'Specialization' },
-      // Atmosphere patterns
-      { patterns: ['atmosphere', 'atmosphäre', 'mood', 'stimmung', 'ambiance', 'feeling'], icon: '🎭', labelKey: 'Atmosphere' },
-      // Clientele patterns
-      { patterns: ['clientele', 'klientel', 'customers', 'kunden', 'patrons'], icon: '👥', labelKey: 'Clientele' },
-      // Features patterns
-      { patterns: ['feature', 'besonderheit', 'highlight', 'trait', 'characteristic'], icon: '✨', labelKey: 'Features' },
-      // Services patterns
-      { patterns: ['service', 'dienst', 'offering', 'angebot'], icon: '🎯', labelKey: 'Services' },
-      // Quality patterns
-      { patterns: ['quality', 'qualität', 'grade', 'rating'], icon: '⭐', labelKey: 'Quality' },
-      // Size patterns
-      { patterns: ['size', 'größe', 'capacity', 'kapazität'], icon: '📏', labelKey: 'Size' },
-      // Age patterns
-      { patterns: ['age', 'alter', 'years', 'jahre', 'old'], icon: '🕰️', labelKey: 'Age' },
-      // Type patterns
-      { patterns: ['type', 'typ', 'kind', 'art', 'category', 'kategorie'], icon: '🏷️', labelKey: 'Type' },
-      // Description patterns
-      { patterns: ['description', 'beschreibung', 'details', 'info'], icon: '📝', labelKey: 'Description' }
-    ];
-
-    // Find matching pattern
-    for (const pattern of patterns) {
-      if (pattern.patterns.some(p => keyLower.includes(p))) {
-        return {
-          icon: pattern.icon,
-          label: this._getLocalizedLabel(pattern.labelKey, key)
-        };
-      }
-    }
-
-    // Default fallback
-    return {
-      icon: '📋',
-      label: this._humanizeKey(key)
-    };
-  }
-
-  /**
-   * Gets a localized label or falls back to humanized key
-   * @param {string} labelKey - The label key to look up
-   * @param {string} originalKey - The original field key as fallback
-   * @returns {string} Localized or humanized label
-   */
-  _getLocalizedLabel(labelKey, originalKey) {
-    // Try to get localized version first
-    const localizationKey = `names.meta.${labelKey.toLowerCase()}`;
-    if (game.i18n.has(localizationKey)) {
-      return game.i18n.localize(localizationKey);
-    }
-
-    // Fall back to humanizing the original key
-    return this._humanizeKey(originalKey);
-  }
-
-  /**
-   * Converts a camelCase or snake_case key to human readable form
-   * @param {string} key - The key to humanize
-   * @returns {string} Human readable label
-   */
-  _humanizeKey(key) {
-    return key
-      // Handle camelCase: convert to space-separated
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      // Handle snake_case and kebab-case: replace with spaces
-      .replace(/[_-]/g, ' ')
-      // Capitalize first letter of each word
-      .replace(/\b\w/g, l => l.toUpperCase())
-      .trim();
-  }
-
-  /**
-   * Formats field values based on their type and content
-   * @param {string} key - The field key
-   * @param {any} value - The field value
-   * @returns {string} Formatted HTML value
-   */
-  _formatFieldValue(key, value) {
-    const keyLower = key.toLowerCase();
-
-    // Handle arrays as tags
-    if (Array.isArray(value)) {
-      return value
-        .filter(item => item !== null && item !== undefined && item !== '')
-        .map(item => `<span class="tag">${this._escapeHtml(String(item))}</span>`)
-        .join(' ');
-    }
-
-    // Handle objects by showing key-value pairs
-    if (typeof value === 'object' && value !== null) {
-      return Object.entries(value)
-        .filter(([k, v]) => v !== null && v !== undefined && v !== '')
-        .map(([k, v]) => `<span class="tag">${this._humanizeKey(k)}: ${this._escapeHtml(String(v))}</span>`)
-        .join(' ');
-    }
-
-    // Handle price/level fields with coins
-    if (keyLower.includes('price') || keyLower.includes('preis') ||
-        keyLower.includes('level') || keyLower.includes('stufe') ||
-        keyLower.includes('tier')) {
-      const numValue = parseInt(String(value)) || 0;
-      if (numValue > 0 && numValue <= 10) {
-        const coins = '🪙'.repeat(Math.min(numValue, 5));
-        return `<div class="price-level">${coins} ${this._escapeHtml(String(value))}</div>`;
-      }
-    }
-
-    // Handle boolean values
-    if (typeof value === 'boolean') {
-      return value ? '✅ Yes' : '❌ No';
-    }
-
-    // Default: escape and return as string
-    return this._escapeHtml(String(value));
-  }
-
-  /**
-   * Escapes HTML characters for safe display
-   * @param {string} text - Text to escape
-   * @returns {string} Escaped text
-   */
-  _escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  /**
-   * Determines if a name card should be shown based on search criteria
-   * @param {Element} card - The name card element
-   * @param {string} searchTerm - The search term
-   * @returns {boolean} Whether the card should be shown
-   */
-  _shouldShowCard(card, searchTerm) {
-    if (!searchTerm) return true;
-
-    // Get the name from data attribute
-    const name = card.dataset.name;
-    if (!name) return false;
-
-    // Search in the main name
-    if (name.toLowerCase().includes(searchTerm)) {
-      return true;
-    }
-
-    // Search in type/category information
-    const typeElement = card.querySelector('.name-type');
-    if (typeElement && typeElement.textContent.toLowerCase().includes(searchTerm)) {
-      return true;
-    }
-
-    // Search in any metadata if it exists
-    const metaElement = card.querySelector('.name-meta');
-    if (metaElement && metaElement.textContent.toLowerCase().includes(searchTerm)) {
-      return true;
-    }
-
-    // Search in all text content of the card as fallback
-    const cardText = card.textContent.toLowerCase();
-    return cardText.includes(searchTerm);
-  }
-
-  /**
-   * Clean up Enhanced Dropdowns when app is closed
-   */
-  close() {
-    // Clean up enhanced dropdowns
-    if (this.enhancedDropdowns) {
-      for (const dropdown of this.enhancedDropdowns.values()) {
-        if (dropdown && typeof dropdown.destroy === 'function') {
-          dropdown.destroy();
-        }
-      }
-      this.enhancedDropdowns.clear();
-    }
-
-    return super.close();
   }
 }
-
-// Copy functionality is now handled by _onNameClick method

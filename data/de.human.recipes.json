@@ -1,0 +1,143 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "human-de",
+    "displayName": {
+      "de": "Human Rezepte",
+      "en": "Human Recipes"
+    },
+    "languages": [
+      "de",
+      "en"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {},
+  "recipes": [
+    {
+      "id": "name_only",
+      "displayName": {
+        "de": "Nur Vorname",
+        "en": "First Name Only"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" }
+      ],
+      "post": [
+        "TrimSpaces"
+      ]
+    },
+    {
+      "id": "full_name",
+      "displayName": {
+        "de": "Vor- und Nachname",
+        "en": "Full Name"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "full_name_auto_agree",
+      "displayName": {
+        "de": "Name mit Beiname",
+        "en": "Name with Nickname"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
+        { "literal": " \"" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["nicknames"] } }, "as": "BN", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
+        { "literal": "\" ", "ext": { "optionalWith": "BN" } },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "titled_name_auto_agree",
+      "displayName": {
+        "de": "Titel-Name",
+        "en": "Titled Name"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["titles"] } }, "as": "T", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
+        { "literal": " ", "ext": { "optionalWith": "T" } },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    },
+    {
+      "id": "titled_name_from_settlement",
+      "displayName": {
+        "de": "Name mit Titel und Herkunftsort",
+        "en": "Name with Title and Origin"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" },
+        { "literal": ", " },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["titles"] } }, "as": "T", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
+        { "literal": " ", "ext": { "optionalWith": "S" } },
+        { "as": "S", "pp": { "prep": " von", "ref": { "select": { "from": "catalog", "key": "settlements" } } } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    }
+  ],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "prepCase": {
+        "von": "dat",
+        "aus": "dat",
+        "zu": "dat"
+      },
+      "articles": {
+        "def": {
+          "dat": {
+            "m": "dem",
+            "n": "dem",
+            "f": "der",
+            "pl": "den"
+          }
+        }
+      },
+      "contractions": {
+        "von dem": "vom",
+        "zu dem": "zum",
+        "zu der": "zur"
+      },
+      "defaults": {
+        "articleWhenNone": "omit",
+        "titlePrep": "von"
+      }
+    },
+    "en": {
+      "defaults": {
+        "titlePrep": "of"
+      }
+    }
+  }
+}

@@ -139,7 +139,8 @@
 }
 
 /* Individual Items */
-.modern-dropdown-item {
+.modern-dropdown-item,
+.dropdown-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -152,45 +153,88 @@
   box-sizing: border-box;
 }
 
-.modern-dropdown-item:last-child {
+.modern-dropdown-item:last-child,
+.dropdown-item:last-child {
   border-bottom: none;
 }
 
-.modern-dropdown-item:hover {
+.modern-dropdown-item:hover,
+.dropdown-item:hover {
   background: var(--color-bg-btn-hover, #3a3a3a);
   color: var(--color-border-highlight, #ff6400);
 }
 
-.modern-dropdown-item.focused {
+.modern-dropdown-item.focused,
+.dropdown-item.focused {
   background: var(--color-bg-btn-hover, #3a3a3a);
   outline: 2px solid var(--color-border-highlight, #ff6400);
   outline-offset: -2px;
 }
 
-.modern-dropdown-item.selected {
+.modern-dropdown-item.selected,
+.dropdown-item.selected {
   background: rgba(255, 100, 0, 0.1);
   color: var(--color-border-highlight, #ff6400);
   font-weight: 600;
 }
 
-.modern-dropdown-item.disabled {
+.modern-dropdown-item.disabled,
+.dropdown-item.disabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.modern-dropdown-item input[type="checkbox"] {
+.modern-dropdown-item input[type="checkbox"],
+.dropdown-item input[type="checkbox"] {
   margin: 0;
   width: 16px;
   height: 16px;
   accent-color: var(--color-border-highlight, #ff6400);
 }
 
-.item-text {
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.item-text-wrapper {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.item-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.item-subtitle {
+  font-size: 0.7rem;
+  color: #888;
+  opacity: 0.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.item-content.has-subtitle {
+  min-height: 48px;
+  align-items: flex-start !important;
+}
+
+.dropdown-item.has-subtitle,
+.modern-dropdown-item.has-subtitle {
+  min-height: 48px;
+  align-items: flex-start;
+  padding: 10px 12px;
 }
 
 .modern-dropdown-item .fas.fa-check {

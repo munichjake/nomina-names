@@ -1,0 +1,252 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "aasimar-de",
+    "displayName": {
+      "de": "Aasimar"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Aaronschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Abendglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Abendstern" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Abendwind" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Adlerfeder" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Adlerschwinge" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Alabaster" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Albenfels" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Albussonn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ambrafels" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ammiel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ätherblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ätherborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ätherstamm" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ätherwacht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Auroran" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Aureliusson" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Azurschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Barmherzig" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Bärenstolz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Bethanien" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Blütenfried" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Blutmond" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Brandgluth" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Brennstahl" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Cael" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Celestian" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Corvusson" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Cygnus" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Dämmerlicht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Diamantenborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Donnerschlag" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Drachenzahn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Dunkelfeder" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Eberschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ehrfurcht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Eisenhand" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Eisenschmied" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Eisenschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Elfenlicht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Engelsbote" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Engelsglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Engelsherz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Erlöser" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Erlöserblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ewiglicht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ewigstein" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Falkenfels" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Falkenschwung" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Feuerglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Feuerherz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Feuerklinge" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Feuersturm" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Flügelhieb" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Flügelstolz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Freudensang" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Friedensbringer" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gabriel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Geduld" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gerechtsinn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gewissen" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gnade" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Götterblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Götterbote" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Götterrufer" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gottesfürst" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gotteshand" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gotteshauch" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Gottesschwert" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Graustein" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Grenzfels" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Glutborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Hagelsturm" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Hahnenkamm" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsbote" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsglut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsruf" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelsstrom" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Himmelszorn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Hirschhorn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Hoffnung" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Irinor" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Jubiläum" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Justitia" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Kardinal" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Keilerzahn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Klosterstein" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Kranichflügel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Kreuzritter" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Krone" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lämmerstolz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lichtbringer" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lichtglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lichtruf" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lichtschwinge" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lichtstrahl" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Löwenherz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Löwenschwanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lucius" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Lunaris" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Morgenröte" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Morgenwind" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Morgenstern" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Mundschau" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Nachtschwinge" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Nathaniel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Neumond" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Nordwind" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Perlenfels" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Perlenkuss" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Phönixborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Phönixhieb" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Priesterstein" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Prinzess" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ramiel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Raphael" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Rechtsinn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Reinhardsbrunn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Reinherz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Riesenzorn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Rosenkranz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Rosengarten" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Rostglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Rubinschild" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sabaoth" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Salomon" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sanftmut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Saphirborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Schwertarm" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Schwingen" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Seelenruf" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Seelenwacht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Serafien" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Silberglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Silberstrom" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Smaragdsee" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sonnenborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sonnenfeuer" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sonnenruf" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Stahlglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sternenklang" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sternenruf" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sturmborn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sturmglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Sturmkralle" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Tannenwald" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Trauerwacht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Tugendlicht" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Tugendsonn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Uriel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Ursprung" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Viktoria" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Volksbote" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Vollmond" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Wahrheit" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Wellenkuss" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Weisheit" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Weißglanz" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Weißhand" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Westwind" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Widderhorn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Winterblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Wolfsblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Wolfszahn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Wohlmut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Yoriel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Zadkiel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Zornblut" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Zionssohn" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Zuriel" }, "tags": ["surnames"], "w": 1 },
+        { "t": { "de": "Zweifelsfall" }, "tags": ["surnames"], "w": 1 }
+      ]
+    }
+  },
+  "recipes": [
+    {
+      "id": "full_name",
+      "displayName": {
+        "de": "Vollständiger Name"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "firstnames" } },
+        { "literal": { "de": " " } },
+        { "select": { "from": "catalog", "key": "surnames" } }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces"
+      ]
+    }
+  ],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "surnames": {
+            "de": "Surnames"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "surnames"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

@@ -1,0 +1,236 @@
+<form class="names-module-form">
+  <!-- Left Controls Panel -->
+  <div class="names-module-controls-panel">
+
+    <!-- Language Selection -->
+    <div class="names-module-section">
+      <h3>{{localize "names.language"}}</h3>
+      <div class="names-module-form-group">
+        <select name="names-language" id="names-language-select">
+          {{#each languages}}
+            <option value="{{this}}" {{#if (eq this ../currentLocale)}}selected{{/if}}>
+              {{upper this}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <!-- Species Selection -->
+    <div class="names-module-section">
+      <h3>{{localize "names.species"}}</h3>
+      <div class="names-module-form-group">
+        <select name="names-species" id="names-species-select" {{#unless currentLocale}}disabled{{/unless}}>
+          <option value="">-- {{localize "names.select-species"}} --</option>
+          {{#each species}}
+            <option value="{{this}}" {{#if (eq this ../currentPackage)}}selected{{/if}}>
+              {{capitalize this}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <!-- Recipe Selection -->
+    {{#if recipes}}
+    <div class="names-module-section">
+      <h3>{{localize "names.recipes"}}</h3>
+      <div class="names-module-checkbox-grid">
+        {{#each recipes}}
+          <label class="names-module-checkbox-item {{#if (includes ../currentRecipes this.id)}}selected{{/if}}">
+            <input type="checkbox" name="recipe" value="{{this.id}}" {{#if (includes ../currentRecipes this.id)}}checked{{/if}}>
+            <span class="names-module-checkmark"></span>
+            <span>{{this.displayName}}</span>
+          </label>
+        {{/each}}
+      </div>
+    </div>
+    {{/if}}
+
+    <!-- Generate Button -->
+    <div class="names-module-section">
+      <button type="button" name="generate" class="names-module-generate-btn" {{#unless currentPackage}}disabled{{/unless}}>
+        <i class="fas fa-dice"></i>
+        {{localize "names.generate"}}
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Right Results Panel -->
+  <div class="names-module-results-panel">
+
+    <!-- Results Header -->
+    <div class="names-module-results-header">
+      <h3>{{localize "names.results"}}</h3>
+      <div class="names-module-results-actions">
+        <button type="button" id="names-copy-btn" class="names-module-action-btn" {{#unless generatedNames}}disabled{{/unless}}>
+          <i class="fas fa-copy"></i>
+          {{localize "names.copy-all"}}
+        </button>
+        <button type="button" id="names-clear-btn" class="names-module-action-btn" {{#unless generatedNames}}disabled{{/unless}}>
+          <i class="fas fa-trash"></i>
+          {{localize "names.clear"}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Display -->
+    <div id="names-result-display" class="names-module-results-list">
+      {{#if generatedNames}}
+        {{#each generatedNames}}
+          <div class="names-module-generated-name">
+            <div class="name-content">
+              <div class="name-title">{{this.text}}</div>
+              <div class="name-recipe">{{this.recipe}}</div>
+            </div>
+            <div class="name-actions">
+              <button class="copy-name names-module-action-btn-small" data-name="{{this.text}}" title="{{localize 'names.copy'}}">
+                <i class="fas fa-copy"></i>
+              </button>
+              <button class="add-to-history names-module-action-btn-small" data-name="{{this.text}}" title="{{localize 'names.add-to-history'}}">
+                <i class="fas fa-history"></i>
+              </button>
+              <button class="create-actor names-module-action-btn-small" data-name="{{this.text}}" title="{{localize 'names.create-actor'}}">
+                <i class="fas fa-user-plus"></i>
+              </button>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <div class="names-module-no-result">
+          {{localize "names.select-options"}}
+        </div>
+      {{/if}}
+    </div>
+
+  </div>
+</form>
+
+<style>
+/* Results Header */
+.names-module-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e67e22;
+}
+
+.names-module-results-header h3 {
+  color: #e67e22;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.names-module-results-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Results List */
+.names-module-results-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Generated Name Cards */
+.names-module-generated-name {
+  background: #3a3a3a;
+  border: 2px solid #555;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.names-module-generated-name:hover {
+  border-color: #e67e22;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.2);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.name-content {
+  flex: 1;
+}
+
+.name-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin-bottom: 0.25rem;
+}
+
+.name-recipe {
+  font-size: 0.85rem;
+  color: #999;
+  font-style: italic;
+}
+
+.name-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.names-module-action-btn-small {
+  background: #4a4a4a;
+  border: 2px solid #555;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #cccccc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.names-module-action-btn-small:hover {
+  border-color: #e67e22;
+  background: #e67e22;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* No Results State */
+.names-module-no-result {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #999;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* Disabled State */
+.names-module-generate-btn:disabled,
+.names-module-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.names-module-generate-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+}
+
+.names-module-generate-btn:not(:disabled):hover::before {
+  left: 100%;
+}
+</style>

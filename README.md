@@ -32,14 +32,14 @@ A flexible and extensible name generator for FoundryVTT with configurable JSON d
 - **Third-party Extensions**: API for other modules to add content
 
 ### 📊 Advanced Features
-- **JSON Format 3.1.2**: Self-contained files with rich metadata support, localized field definitions, and individual entry translation
-- **Enhanced Metadata**: Localized field labels, icons, and value mappings directly in data files
-- **Category Groups**: Organized categories (Names, Places, Objects, etc.)
-- **Dynamic Categories**: Categories loaded from index.json with fallback support
+- **JSON Format 4.0.0**: Modern unified package format with catalogs, recipes, vocab, and collections
+- **Tag-based Filtering**: Flexible filtering with tags and predefined collections
+- **Weighted Selection**: Control probability distribution of generated names
+- **Recipe System**: Template-based composition for complex name patterns
+- **Vocabulary System**: Centralized translations and icons for consistent UI
 - **Permission System**: Control access based on user roles
 - **Modern UI**: Enhanced dropdowns and responsive design
 - **Nonbinary Support**: Optional nonbinary names (configurable)
-- **Metadata Toggle**: Enable/disable metadata features in module settings
 
 ## 📦 Installation
 
@@ -166,40 +166,50 @@ const book = await namesAPI.generateCategorizedContent({
 
 ### Extension System
 
-#### Register New Species
+#### Register New Package (JSON Format 4.0.0)
 ```javascript
 const namesAPI = game.modules.get('nomina-names').api;
 
-namesAPI.registerSpecies('my-module', {
-  species: 'dragonborn',
-  languages: ['en', 'de'],
+// Register a complete package with JSON Format 4.0.0
+await namesAPI.registerPackage({
+  code: 'dragonborn-en',
   data: {
-    en: {
-      male: ['Arjhan', 'Balasar', 'Bharash'],
-      female: ['Akra', 'Biri', 'Daar'],
-      surnames: ['Clethtinthiallor', 'Daardendrian', 'Delmirev']
+    format: '4.0.0',
+    package: {
+      code: 'dragonborn-en',
+      displayName: {
+        en: 'Dragonborn',
+        de: 'Drachenblütige'
+      },
+      languages: ['en'],
+      phoneticLanguage: 'en'
     },
-    de: {
-      male: ['Arjhan', 'Balasar', 'Bharash'],
-      female: ['Akra', 'Biri', 'Daar'],
-      surnames: ['Clethtinthiallor', 'Daardendrian', 'Delmirev']
-    }
-  },
-  localization: {
-    en: 'Dragonborn',
-    de: 'Drachenblütige'
+    catalogs: {
+      names: {
+        displayName: { en: 'Names', de: 'Namen' },
+        items: [
+          { t: { en: 'Arjhan' }, tags: ['male', 'firstnames'], w: 1 },
+          { t: { en: 'Balasar' }, tags: ['male', 'firstnames'], w: 1 },
+          { t: { en: 'Akra' }, tags: ['female', 'firstnames'], w: 1 },
+          { t: { en: 'Biri' }, tags: ['female', 'firstnames'], w: 1 },
+          { t: { en: 'Clethtinthiallor' }, tags: ['surnames'], w: 1 },
+          { t: { en: 'Daardendrian' }, tags: ['surnames'], w: 1 }
+        ]
+      }
+    },
+    recipes: [
+      {
+        id: 'fullname',
+        displayName: { en: 'Full Name', de: 'Voller Name' },
+        pattern: [
+          { select: { from: 'catalog', key: 'names', where: { tags: ['firstnames'] } } },
+          { literal: ' ' },
+          { select: { from: 'catalog', key: 'names', where: { tags: ['surnames'] } } }
+        ],
+        post: ['TrimSpaces', 'CollapseSpaces']
+      }
+    ]
   }
-});
-```
-
-#### Register Custom Data Source
-```javascript
-namesAPI.registerDataSource('my-module', {
-  language: 'en',
-  species: 'human',
-  category: 'titles',
-  data: ['Lord', 'Lady', 'Sir', 'Dame'],
-  priority: 1
 });
 ```
 
@@ -262,174 +272,120 @@ namesAPI.registerHook('names.afterGenerate', (data) => {
 }
 ```
 
-### Data File Formats
+### Data File Format
 
-#### JSON Format 3.1.2 (Latest)
-Self-contained files with integrated category translations:
+#### JSON Format 4.0.0 (Current)
+
+Nomina Names uses a modern, unified package format with powerful features:
 
 ```json
 {
-  "format": "3.1.0",
-  "fileVersion": "1.0.0",
-  "code": "human",
-  "displayName": {
-    "de": "Menschen",
-    "en": "Human"
+  "format": "4.0.0",
+  "package": {
+    "code": "human-de",
+    "displayName": {
+      "de": "Menschen",
+      "en": "Humans"
+    },
+    "languages": ["de"],
+    "phoneticLanguage": "de"
   },
-  "languages": ["de", "en"],
-  "categories": ["pets"],
-  "data": {
-    "pets": {
+  "catalogs": {
+    "names": {
       "displayName": {
-        "de": "Haustiere & Begleiter",
-        "en": "Pets & Companions"
+        "de": "Namen",
+        "en": "Names"
       },
-      "subcategories": [
+      "items": [
         {
-          "key": "dogs",
-          "displayName": {
-            "de": "Hunde",
-            "en": "Dogs"
-          },
-          "entries": {
-            "de": ["Rex", "Luna", "Bello"],
-            "en": ["Buddy", "Bella", "Charlie"]
-          }
-        }
-      ]
-    }
-  }
-}
-```
-
-#### JSON Format 3.1.2 (Latest)
-Enhanced format with rich metadata support and localized field definitions:
-
-```json
-{
-  "format": "3.1.2",
-  "fileVersion": "1.0.0",
-  "code": "human",
-  "displayName": {
-    "de": "Menschen",
-    "en": "Human"
-  },
-  "languages": ["de", "en"],
-  "categories": ["taverns"],
-  "data": {
-    "taverns": {
-      "displayName": {
-        "de": "Gasthäuser",
-        "en": "Taverns"
-      },
-      "entry_metadata": {
-        "type": {
-          "de": "Typ",
-          "en": "Type",
-          "icon": {
-            "type": "unicode",
-            "value": "🏨"
-          },
-          "values": {
-            "de": {
-              "inn": "Gasthaus",
-              "tavern": "Taverne"
-            },
-            "en": {
-              "inn": "Inn",
-              "tavern": "Tavern"
-            }
-          }
+          "t": { "de": "Hans" },
+          "tags": ["male", "firstnames"],
+          "w": 1,
+          "attrs": { "gender": "m" }
         },
-        "quality": {
-          "de": "Qualität",
-          "en": "Quality",
-          "icon": {
-            "type": "unicode",
-            "value": "⭐"
-          }
-        }
-      },
-      "subcategories": [
         {
-          "key": "upscale_inns",
-          "displayName": {
-            "de": "Luxuriöse Gasthäuser",
-            "en": "Upscale Inns"
-          },
-          "entries": {
-            "de": [
-              {
-                "name": "Gasthof Kronprinz",
-                "meta": {
-                  "type": "inn",
-                  "quality": "luxury",
-                  "location": "Tiefwasser (Oberstadt)",
-                  "owner": "Belindra Hügelfeld"
-                }
-              }
-            ],
-            "en": [
-              {
-                "name": "The Crown Prince Inn",
-                "meta": {
-                  "type": "inn",
-                  "quality": "luxury",
-                  "location": "Waterdeep (Castle Ward)",
-                  "owner": "Belindra Hillfield"
-                }
-              }
-            ]
-          }
+          "t": { "de": "Maria" },
+          "tags": ["female", "firstnames"],
+          "w": 1,
+          "attrs": { "gender": "f" }
+        },
+        {
+          "t": { "de": "Schmidt" },
+          "tags": ["surnames"],
+          "w": 1
+        }
+      ]
+    },
+    "settlements": {
+      "displayName": {
+        "de": "Siedlungen",
+        "en": "Settlements"
+      },
+      "items": [
+        {
+          "t": { "de": "Goldenhain" },
+          "tags": ["village", "rural"],
+          "w": 1
         }
       ]
     }
-  }
-}
-```
-
-**Key Features of 3.1.2:**
-- **entry_metadata**: Define localized labels, icons, and value mappings for metadata fields (3.1.1)
-- **Individual Entry Translation**: Localize dynamic content within entries like names, locations, and descriptions (3.1.2)
-- **Rich Icons**: Unicode emoji support for visual field identification
-- **Value Localization**: Map raw values to localized display text
-- **Backward Compatibility**: Works alongside 3.1.0, 3.0.x, and legacy formats
-- **Settings Integration**: Can be toggled via module settings
-
-#### Legacy Data File Formats
-
-##### Simple Categories (surnames, titles, etc.)
-```json
-{
-  "version": "1.0.0",
-  "author": "Your Name",
-  "description": "Description of data source",
-  "data": [
-    "Name 1",
-    "Name 2",
-    "Name 3"
+  },
+  "vocab": {
+    "fields": {
+      "location": {
+        "labels": { "de": "Ort", "en": "Location" },
+        "values": {
+          "village": { "de": "Dorf", "en": "Village" },
+          "city": { "de": "Stadt", "en": "City" }
+        }
+      }
+    },
+    "icons": {
+      "village": "🏘️",
+      "city": "🏙️"
+    }
+  },
+  "collections": [
+    {
+      "key": "common_names",
+      "labels": { "de": "Häufige Namen", "en": "Common Names" },
+      "query": {
+        "category": "names",
+        "tags": ["firstnames"]
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "id": "fullname",
+      "displayName": { "de": "Voller Name", "en": "Full Name" },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } } },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } } }
+      ],
+      "post": ["TrimSpaces", "CollapseSpaces"]
+    }
   ]
 }
 ```
 
-##### Categorized Content (books, ships, etc.)
-```json
-{
-  "version": "1.0.0",
-  "author": "Your Name",
-  "description": "Books data",
-  "data": {
-    "religious_books": [
-      "The Sacred Tome",
-      "Divine Revelations"
-    ],
-    "novels": [
-      "The Dragon's Tale",
-      "Love in the Tavern"
-    ]
-  }
-}
-```
+**Key Features of Format 4.0.0:**
+
+- **Unified Packages**: All species data in comprehensive, self-contained files
+- **Catalogs**: Organized collections of items (names, settlements, taverns, etc.)
+- **Tags**: Flexible filtering and categorization system
+- **Weights**: Control probability distribution of generated content
+- **Attributes**: Rich metadata for items (gender, rarity, culture, etc.)
+- **Vocab**: Centralized translations and icons for consistent UI
+- **Collections**: Predefined filter sets for common queries
+- **Recipes**: Template-based patterns for complex name composition
+- **Language Rules**: Grammar support for German articles and prepositions
+
+**For detailed information:**
+- **Format Specification**: See [docs/json_v_4_spec.md](docs/json_v_4_spec.md)
+- **Developer Guide**: See [docs/module-extension-guide.md](docs/module-extension-guide.md)
+- **API Documentation**: See [docs/api-documentation.md](docs/api-documentation.md)
 
 ### Language Support
 
@@ -495,14 +451,15 @@ This module is licensed under the MIT License. See the LICENSE file for details.
 
 ## 📈 Changelog
 
-### Version 2.0.0+
-- JSON Format 3.1.2 with rich metadata and individual entry translation
+### Version 3.0.0 (Current)
+- JSON Format 4.0.0 with unified packages, recipes, vocab, and collections
 - Enhanced localization system with fallback chains
 - Dynamic category system - add categories without code changes
 - Improved performance with intelligent caching
 - Modern UI with enhanced dropdowns and responsive design
 - Live search and filtering in results
 - Advanced metadata display with icons and localized field labels
+- Runtime package registration API for external modules
 
 ### Previous Versions
 See [CHANGELOG.md](CHANGELOG.md) for complete version history.

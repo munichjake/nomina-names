@@ -1,125 +1,75 @@
 {
-    "format": "3.1.0",
-    "fileVersion": "1.0.0",
+  "format": "4.0.0",
+  "package": {
     "code": "human",
     "displayName": {
-        "de": "Menschen",
-        "en": "Human"
+      "de": "Menschen",
+      "en": "Human"
     },
     "languages": [
-        "de",
-        "en"
+      "de",
+      "en"
     ],
-    "categories": [
-        "weapons"
-    ],
-    "data": {
-        "weapons": {
-            "displayName": {
-                "de": "Waffen",
-                "en": "Weapons"
-            },
-            "subcategories": [
-                {
-                    "key": "schwerter",
-                    "displayName": {
-                        "de": "Schwerter",
-                        "en": "Swords"
-                    },
-                    "entries": {
-                        "de": [
-                            "Drachenzahn",
-                            "Mondschneide",
-                            "Blutklinge",
-                            "Schattenhieb",
-                            "Sonnenschwert",
-                            "Frostschneide",
-                            "Sturmbringer",
-                            "Glanzstahl",
-                            "Eisenfaust",
-                            "Runenklinge"
-                        ],
-                        "en": [
-                            "Dragonfang",
-                            "Moonblade",
-                            "Bloodsword",
-                            "Shadowstrike",
-                            "Sunblade",
-                            "Frostedge",
-                            "Stormbringer",
-                            "Brightsteel",
-                            "Ironfist",
-                            "Runeblade"
-                        ]
-                    }
-                },
-                {
-                    "key": "bögen",
-                    "displayName": {
-                        "de": "Bögen",
-                        "en": "Bows"
-                    },
-                    "entries": {
-                        "de": [
-                            "Eibenbogen",
-                            "Sturmbogen",
-                            "Mondjäger",
-                            "Seelenpfeil",
-                            "Nachtwind",
-                            "Waldschatten",
-                            "Himmelsblick",
-                            "Falkenschuss",
-                            "Sonnenbogen",
-                            "Frostpfeil"
-                        ],
-                        "en": [
-                            "Yewbow",
-                            "Stormbow",
-                            "Moonhunter",
-                            "Soularrow",
-                            "Nightwind",
-                            "Forestshadow",
-                            "Skygaze",
-                            "Hawkshot",
-                            "Sunbow",
-                            "Frostarrow"
-                        ]
-                    }
-                },
-                {
-                    "key": "äxte",
-                    "displayName": {
-                        "de": "Äxte",
-                        "en": "Axes"
-                    },
-                    "entries": {
-                        "de": [
-                            "Knochenspalter",
-                            "Donnerhieb",
-                            "Blutbeil",
-                            "Sturmbrecher",
-                            "Felsenschneider",
-                            "Runenspalter",
-                            "Frostbeil",
-                            "Kriegsschlag",
-                            "Schädelspalter",
-                            "Schattenaxt"
-                        ],
-                        "en": [
-                            "Bonesplitter",
-                            "Thunderstrike",
-                            "Bloodaxe",
-                            "Stormbreaker",
-                            "Rockcleaver",
-                            "Runesplitter",
-                            "Frostaxe",
-                            "Warstrike",
-                            "Skullsplitter",
-                            "Shadowaxe"
-                        ]
-                    }
-                }
-            ]
-        }
+    "phoneticLanguage": "de"
+  },
+  "vocab": {
+    "tags": {
+      "weapons": {
+        "de": "Waffen",
+        "en": "Weapons"
+      },
+      "sword": {
+        "de": "Schwert",
+        "en": "Sword"
+      },
+      "bow": {
+        "de": "Bogen",
+        "en": "Bow"
+      },
+      "axe": {
+        "de": "Axt",
+        "en": "Axe"
+      }
     }
+  },
+  "catalogs": {
+    "weapons": {
+      "displayName": {
+        "de": "Waffen",
+        "en": "Weapons"
+      },
+      "items": [
+        { "t": { "de": "Drachenzahn", "en": "Dragonfang" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Mondschneide", "en": "Moonblade" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Blutklinge", "en": "Bloodsword" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Schattenhieb", "en": "Shadowstrike" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Sonnenschwert", "en": "Sunblade" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Frostschneide", "en": "Frostedge" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Sturmbringer", "en": "Stormbringer" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Glanzstahl", "en": "Brightsteel" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Eisenfaust", "en": "Ironfist" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Runenklinge", "en": "Runeblade" }, "tags": ["weapons", "sword"], "w": 1 },
+        { "t": { "de": "Eibenbogen", "en": "Yewbow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Sturmbogen", "en": "Stormbow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Mondjäger", "en": "Moonhunter" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Seelenpfeil", "en": "Soularrow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Nachtwind", "en": "Nightwind" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Waldschatten", "en": "Forestshadow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Himmelsblick", "en": "Skygaze" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Falkenschuss", "en": "Hawkshot" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Sonnenbogen", "en": "Sunbow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Frostpfeil", "en": "Frostarrow" }, "tags": ["weapons", "bow"], "w": 1 },
+        { "t": { "de": "Knochenspalter", "en": "Bonesplitter" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Donnerhieb", "en": "Thunderstrike" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Blutbeil", "en": "Bloodaxe" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Sturmbrecher", "en": "Stormbreaker" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Felsenschneider", "en": "Rockcleaver" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Runenspalter", "en": "Runesplitter" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Frostbeil", "en": "Frostaxe" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Kriegsschlag", "en": "Warstrike" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Schädelspalter", "en": "Skullsplitter" }, "tags": ["weapons", "axe"], "w": 1 },
+        { "t": { "de": "Schattenaxt", "en": "Shadowaxe" }, "tags": ["weapons", "axe"], "w": 1 }
+      ]
+    }
+  }
 }
