@@ -101,6 +101,8 @@
         "no-permission": "You don't have permission to use the name generator.",
         "permissions-saved": "Role permissions have been saved!",
         "copied-to-clipboard": "copied to clipboard",
+        "click-disabled-hint": "Name click actions are disabled. Enable them in module settings.",
+        "generated-name": "Generated Name",
         "// ===== ERRORS & WARNINGS =====": "",
         "no-names-found": "No names found for",
         "generation-error": "Error generating: {error}",
@@ -224,6 +226,21 @@
             "enableMetadata": {
                 "name": "Show Enhanced Metadata",
                 "hint": "Displays additional information like owners, locations, and specialties for generated places and buildings"
+            },
+            "nameClickCopy": {
+                "name": "Copy to Clipboard",
+                "hint": "Automatically copy names to clipboard when clicked"
+            },
+            "nameClickPost": {
+                "name": "Post to Chat",
+                "hint": "Automatically post names to chat when clicked"
+            },
+            "nameClickPostWhisper": {
+                "name": "Chat Privacy",
+                "hint": "Determines the visibility of chat messages when posting names",
+                "inherit": "Inherit Current Mode",
+                "whisper": "GM Only (WHISPER)",
+                "public": "Public (PUBLIC)"
             }
         },
         "// ===== SPECIES CONFIG =====": "",

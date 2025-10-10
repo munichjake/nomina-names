@@ -14,8 +14,8 @@
   "catalogs": {
     "settlements": {
       "displayName": {
-        "de": "Allgemeine Siedlungen",
-        "en": "General Settlements"
+        "de": "Siedlungen",
+        "en": "Settlements"
       },
       "items": [
         { "t": { "de": "Durak-Tor" }, "tags": ["settlements"], "w": 1 },
@@ -696,7 +696,99 @@
         { "t": { "de": "Schwarzthor" }, "tags": ["settlements"], "w": 1 },
         { "t": { "de": "Gluthügel" }, "tags": ["settlements"], "w": 1 },
         { "t": { "de": "Runenquelle" }, "tags": ["settlements"], "w": 1 },
-        { "t": { "de": "Eisenhall" }, "tags": ["settlements"], "w": 1 }
+        { "t": { "de": "Eisenhall" }, "tags": ["settlements"], "w": 1 },
+        { "t": { "de": "Eisen" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Stahl" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Silber" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Gold" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Kupfer" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Bronze" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Mithril" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Erz" }, "tags": ["metal", "procedural"], "w": 1 },
+        { "t": { "de": "Berg" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Fels" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Klippen" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Hügel" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Sporn" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Grat" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Quell" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Stein" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Fels" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Granit" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Kamm" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Horn" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "Spitz" }, "tags": ["stone", "procedural"], "w": 1 },
+        { "t": { "de": "burg" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "festung" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "feste" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "halle" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "hall" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "schmiede" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "tor" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "wacht" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "klamm" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "furt" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "grund" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "dom" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "pfad" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "wall" }, "tags": ["building", "procedural"], "w": 1 },
+        { "t": { "de": "tal" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "hain" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "furt" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "mark" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "heim" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "dorf" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "stadt" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "burg" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "grad" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "tor" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ingen" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "um" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "on" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ar" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "or" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ir" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ur" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "al" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "el" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": ".il" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "tor" }, "tags": ["suffix", "procedural"], "w": 2 },
+        { "t": { "de": "ingen" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "um" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "on" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ar" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "or" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ir" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "ur" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "al" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "el" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "il" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "hammar" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "marr" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "dûn" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "zul" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "thal" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "dâr" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "gral" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "zhal" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "gdal" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "Eisenbarts" }, "tags": ["clan", "procedural"], "w": 5 },
+        { "t": { "de": "Steinfäuste" }, "tags": ["clan", "procedural"], "w": 4 },
+        { "t": { "de": "Grimmhammer" }, "tags": ["clan", "procedural"], "w": 4 },
+        { "t": { "de": "Donnerkeile" }, "tags": ["clan", "procedural"], "w": 3 },
+        { "t": { "de": "Feuerklingen" }, "tags": ["clan", "procedural"], "w": 3 },
+        { "t": { "de": "Blutbeile" }, "tags": ["clan", "procedural"], "w": 3 },
+        { "t": { "de": "Runensteine" }, "tags": ["clan", "procedural"], "w": 2 },
+        { "t": { "de": "Axtschläger" }, "tags": ["clan", "procedural"], "w": 2 },
+        { "t": { "de": "Bergschilde" }, "tags": ["clan", "procedural"], "w": 2 },
+        { "t": { "de": "Felsenschilde" }, "tags": ["clan", "procedural"], "w": 2 },
+        { "t": { "de": "Eberherzen" }, "tags": ["clan", "procedural"], "w": 2 },
+        { "t": { "de": "Drachenzorns" }, "tags": ["clan", "procedural"], "w": 1 },
+        { "t": { "de": "Goldhände" }, "tags": ["clan", "procedural"], "w": 1 },
+        { "t": { "de": "Silberfäuste" }, "tags": ["clan", "procedural"], "w": 1 },
+        { "t": { "de": "Kupferbärte" }, "tags": ["clan", "procedural"], "w": 1 },
+        { "t": { "de": "Bronzebeile" }, "tags": ["clan", "procedural"], "w": 1 },
+        { "t": { "de": "Mithrilkeile" }, "tags": ["clan", "procedural"], "w": 1 }
       ]
     }
   },
@@ -704,11 +796,12 @@
     {
       "id": "procedural_template_0",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 1)"
+        "de": "Prozedural: [Metall][Gebäude]",
+        "en": "Procedural: [Metal][Building]"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "metal" } },
-        { "select": { "from": "catalog", "key": "building" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["building"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -718,12 +811,13 @@
     {
       "id": "procedural_template_1",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 2)"
+        "de": "Prozedural: [Metall]halle der [Clan]",
+        "en": "Procedural: [Metal]hall of the [Clan]"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
         { "literal": "halle der " },
-        { "select": { "from": "catalog", "key": "clan" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["clan"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -733,11 +827,12 @@
     {
       "id": "procedural_template_2",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 3)"
+        "de": "Prozedural: [Stein][Suffix]",
+        "en": "Procedural: [Stone][Suffix]"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "stone" } },
-        { "select": { "from": "catalog", "key": "suffix" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["stone"] } } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["suffix"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -747,11 +842,12 @@
     {
       "id": "procedural_template_3",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 4)"
+        "de": "Prozedural: [Metall][Suffix]",
+        "en": "Procedural: [Metal][Suffix]"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "metal" } },
-        { "select": { "from": "catalog", "key": "suffix" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["suffix"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -761,12 +857,13 @@
     {
       "id": "procedural_template_4",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 5)"
+        "de": "Prozedural: Festung [Metall][Gebäude]",
+        "en": "Procedural: Fortress [Metal][Building]"
       },
       "pattern": [
         { "literal": "Festung " },
-        { "select": { "from": "catalog", "key": "metal" } },
-        { "select": { "from": "catalog", "key": "building" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["building"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -776,10 +873,11 @@
     {
       "id": "procedural_template_5",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 6)"
+        "de": "Prozedural: [Stein]halle",
+        "en": "Procedural: [Stone]hall"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "stone" } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["stone"] } } },
         { "literal": "halle" }
       ],
       "post": [
@@ -790,12 +888,13 @@
     {
       "id": "procedural_template_6",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 7)"
+        "de": "Prozedural: [Metall]schmiede der [Clan]",
+        "en": "Procedural: [Metal]forge of the [Clan]"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
         { "literal": "schmiede der " },
-        { "select": { "from": "catalog", "key": "clan" } }
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["clan"] } } }
       ],
       "post": [
         "TrimSpaces",
@@ -805,10 +904,11 @@
     {
       "id": "procedural_template_7",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 8)"
+        "de": "Prozedural: [Stein]burg",
+        "en": "Procedural: [Stone]castle"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "stone" } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["stone"] } } },
         { "literal": "burg" }
       ],
       "post": [
@@ -819,10 +919,11 @@
     {
       "id": "procedural_template_8",
       "displayName": {
-        "de": "Prozedural (Beta) (Template 9)"
+        "de": "Prozedural: [Metall]festung",
+        "en": "Procedural: [Metal]fortress"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "metal" } },
+        { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["metal"] } } },
         { "literal": "festung" }
       ],
       "post": [
@@ -847,7 +948,25 @@
         },
         "values": {
           "settlements": {
-            "de": "General"
+            "de": "Zwergensiedlungen"
+          },
+          "metal": {
+            "de": "Metall-Komponenten"
+          },
+          "stone": {
+            "de": "Stein-Komponenten"
+          },
+          "building": {
+            "de": "Gebäude-Komponenten"
+          },
+          "suffix": {
+            "de": "Suffix-Komponenten"
+          },
+          "clan": {
+            "de": "Clan-Namen"
+          },
+          "procedural": {
+            "de": "Prozedurale Komponenten"
           }
         }
       }
@@ -856,14 +975,36 @@
   },
   "collections": [
     {
-      "key": "generals",
+      "key": "settlements",
       "labels": {
-        "de": "Generals"
+        "de": "Generische Siedlungen",
+        "en": "Generic Settlements"
       },
       "query": {
         "category": "settlements",
         "tags": [
           "settlements"
+        ]
+      }
+    },
+    {
+      "key": "procedural",
+      "labels": {
+        "de": "Prozedural generiert",
+        "en": "Procedurally generated"
+      },
+      "query": {
+        "category": "settlements",
+        "recipes": [
+          "procedural_template_0",
+          "procedural_template_1",
+          "procedural_template_2",
+          "procedural_template_3",
+          "procedural_template_4",
+          "procedural_template_5",
+          "procedural_template_6",
+          "procedural_template_7",
+          "procedural_template_8"
         ]
       }
     }

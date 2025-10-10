@@ -2,7 +2,7 @@
   "id": "nomina-names",
   "title": "Names",
   "description": "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "compatibility": {
     "minimum": "12",
     "verified": "13"

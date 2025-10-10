@@ -241,14 +241,7 @@ export class NamesGeneratorApp extends Application {
       const nameEl = $(ev.currentTarget);
       const name = nameEl.data('name');
       if (name) {
-        await navigator.clipboard.writeText(name);
-        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
-
-        // Add copied animation
-        nameEl.addClass('copied');
-        setTimeout(() => {
-          nameEl.removeClass('copied');
-        }, 600);
+        await this._handleNameClick(name, nameEl);
       }
     });
 
@@ -257,14 +250,7 @@ export class NamesGeneratorApp extends Application {
       const nameEl = $(ev.currentTarget);
       const name = nameEl.data('name');
       if (name) {
-        await navigator.clipboard.writeText(name);
-        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
-
-        // Add copied animation
-        nameEl.addClass('copied');
-        setTimeout(() => {
-          nameEl.removeClass('copied');
-        }, 600);
+        await this._handleNameClick(name, nameEl);
       }
     });
 
@@ -531,37 +517,126 @@ export class NamesGeneratorApp extends Application {
 
         // If collections are selected, generate from collections
         if (selectedCollections.length > 0) {
-          // Collect all tags from selected collections
+          // Separate collections by type: recipe-based vs tag-based
           const allTags = [];
+          const allRecipes = [];
           const errors = [];
 
           for (const collectionKey of selectedCollections) {
             const collection = this.generator.dataManager.getCollection(packageCode, collectionKey);
-            if (collection && collection.query && collection.query.tags) {
-              allTags.push(...collection.query.tags);
+            if (collection && collection.query) {
+              // If collection has recipes, use recipe-based generation
+              if (collection.query.recipes && collection.query.recipes.length > 0) {
+                allRecipes.push(...collection.query.recipes);
+              }
+              // If collection has tags, collect them for tag-based generation
+              if (collection.query.tags) {
+                allTags.push(...collection.query.tags);
+              }
             }
           }
 
-          // Remove duplicates
-          const uniqueTags = [...new Set(allTags)];
+          // If we have recipes, use recipe-based generation
+          if (allRecipes.length > 0) {
+            // Remove duplicate recipes
+            const uniqueRecipes = [...new Set(allRecipes)];
 
-          logDebug(`Generating ${count} names from catalog ${this.currentCategory} with tags: ${uniqueTags.join(', ')}`);
+            logDebug(`Generating ${count} names from ${uniqueRecipes.length} recipes (random recipe per name)`);
 
-          // Generate all names at once with all tags (using OR logic)
-          try {
+            try {
+              // Generate names one by one, picking a random recipe for each
+              const suggestions = [];
+              const errors = [];
+              const generatedNames = new Set(); // Track unique names across all recipes
+
+              let attempts = 0;
+              const maxAttempts = count * 10; // Prevent infinite loops
+
+              while (suggestions.length < count && attempts < maxAttempts) {
+                attempts++;
+
+                // Pick a truly random recipe for each name
+                const randomRecipe = uniqueRecipes[Math.floor(Math.random() * uniqueRecipes.length)];
+
+                // Create a unique seed for this attempt
+                const nameSeed = `${Date.now()}-${Math.random()}-${attempts}`;
+
+                logDebug(`Generating name ${suggestions.length + 1}/${count} with recipe: ${randomRecipe} (attempt ${attempts})`);
+
+                try {
+                  const singleResult = await this.generator.generate({
+                    packageCode,
+                    locale: this.currentLanguage,
+                    n: 1,
+                    recipes: randomRecipe,
+                    seed: nameSeed,
+                    allowDuplicates: false
+                  });
+
+                  if (singleResult.suggestions && singleResult.suggestions.length > 0) {
+                    const newName = singleResult.suggestions[0].text;
+
+                    // Only add if it's not a duplicate
+                    if (!generatedNames.has(newName)) {
+                      generatedNames.add(newName);
+                      suggestions.push(singleResult.suggestions[0]);
+                      logDebug(`✓ Added unique name: ${newName}`);
+                    } else {
+                      logDebug(`✗ Skipped duplicate name: ${newName}`);
+                    }
+                  }
+                  if (singleResult.errors && singleResult.errors.length > 0) {
+                    errors.push(...singleResult.errors);
+                  }
+                } catch (err) {
+                  logError(`Failed to generate from recipe ${randomRecipe}:`, err);
+                  errors.push({ code: 'generation_failed', message: err.message, recipe: randomRecipe });
+                }
+              }
+
+              if (suggestions.length < count) {
+                logWarn(`Only generated ${suggestions.length}/${count} unique names after ${attempts} attempts`);
+              }
+
+              result = {
+                suggestions,
+                errors
+              };
+            } catch (err) {
+              logError(`Failed to generate from recipes:`, err);
+              result = {
+                suggestions: [],
+                errors: [err.message]
+              };
+            }
+          } else if (allTags.length > 0) {
+            // Use tag-based generation if no recipes
+            const uniqueTags = [...new Set(allTags)];
+
+            logDebug(`Generating ${count} names from catalog ${this.currentCategory} with tags: ${uniqueTags.join(', ')}`);
+
+            try {
+              result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
+                locale: this.currentLanguage,
+                n: count,
+                tags: uniqueTags,
+                anyOfTags: true, // Use OR logic to get variety from multiple collections
+                allowDuplicates: false
+              });
+            } catch (err) {
+              logError(`Failed to generate from catalog with collections:`, err);
+              result = {
+                suggestions: [],
+                errors: [err.message]
+              };
+            }
+          } else {
+            // No tags or recipes - generate from catalog directly
             result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
               locale: this.currentLanguage,
               n: count,
-              tags: uniqueTags,
-              anyOfTags: true, // Use OR logic to get variety from multiple collections
               allowDuplicates: false
             });
-          } catch (err) {
-            logError(`Failed to generate from catalog with collections:`, err);
-            result = {
-              suggestions: [],
-              errors: [err.message]
-            };
           }
         } else {
           // Generate from catalog directly (no collections filter)
@@ -1250,5 +1325,80 @@ export class NamesGeneratorApp extends Application {
       // Force simple/compact view when no metadata (no need for detailed view)
       this.currentView = 'simple';
     }
+  }
+
+  /**
+   * Handle name click - copy and/or post to chat based on settings
+   */
+  async _handleNameClick(name, nameEl) {
+    const shouldCopy = game.settings.get(MODULE_ID, "nameClickCopy");
+    const shouldPost = game.settings.get(MODULE_ID, "nameClickPost");
+
+    // Copy to clipboard
+    if (shouldCopy) {
+      await navigator.clipboard.writeText(name);
+      ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
+
+      // Add copied animation
+      nameEl.addClass('copied');
+      setTimeout(() => {
+        nameEl.removeClass('copied');
+      }, 600);
+    }
+
+    // Post to chat
+    if (shouldPost) {
+      await this._postNameToChat(name);
+    }
+
+    // If neither is enabled, do nothing (but show a hint)
+    if (!shouldCopy && !shouldPost) {
+      ui.notifications.info(game.i18n.localize('names.click-disabled-hint') ||
+        'Name click actions are disabled. Enable them in module settings.');
+    }
+  }
+
+  /**
+   * Post a name to chat with configured privacy settings
+   */
+  async _postNameToChat(name) {
+    const whisperSetting = game.settings.get(MODULE_ID, "nameClickPostWhisper");
+
+    let whisperTargets = null;
+    let rollMode = null;
+
+    // Determine whisper/roll mode based on setting
+    if (whisperSetting === "whisper") {
+      // Whisper to GM only
+      whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      rollMode = CONST.DICE_ROLL_MODES.PRIVATE;
+    } else if (whisperSetting === "public") {
+      // Public message
+      rollMode = CONST.DICE_ROLL_MODES.PUBLIC;
+    } else {
+      // Inherit current roll mode from chat
+      rollMode = game.settings.get("core", "rollMode");
+
+      // Apply roll mode rules
+      if (rollMode === CONST.DICE_ROLL_MODES.PRIVATE) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      } else if (rollMode === CONST.DICE_ROLL_MODES.BLIND) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      }
+    }
+
+    // Create chat message
+    const messageData = {
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker(),
+      content: `<div class="nomina-names-chat-post">
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+      </div>`,
+      whisper: whisperTargets
+    };
+
+    await ChatMessage.create(messageData);
+
+    logDebug(`Posted name to chat: ${name} (mode: ${whisperSetting})`);
   }
 }
