@@ -228,22 +228,90 @@ export class NamesHistoryApp extends Application {
 
     if (!name) return;
 
-    try {
-      await navigator.clipboard.writeText(name);
+    await this._handleNameClick(name, $(row));
+  }
 
-      // Visual feedback
-      $(row).addClass('copied');
-      setTimeout(() => {
-        $(row).removeClass('copied');
-      }, 800);
+  /**
+   * Handle name click - copy and/or post to chat based on settings
+   */
+  async _handleNameClick(name, nameEl) {
+    const shouldCopy = game.settings.get(MODULE_ID, "nameClickCopy");
+    const shouldPost = game.settings.get(MODULE_ID, "nameClickPost");
 
-      ui.notifications.info(game.i18n.format("names.history.name-copied", { name }));
-      logDebug(`Copied name from history: "${name}"`);
+    // Copy to clipboard
+    if (shouldCopy) {
+      try {
+        await navigator.clipboard.writeText(name);
 
-    } catch (error) {
-      logWarn('Clipboard copy failed:', error);
-      ui.notifications.warn(game.i18n.localize("names.copy-error"));
+        // Visual feedback
+        nameEl.addClass('copied');
+        setTimeout(() => {
+          nameEl.removeClass('copied');
+        }, 800);
+
+        ui.notifications.info(game.i18n.format("names.history.name-copied", { name }));
+        logDebug(`Copied name from history: "${name}"`);
+
+      } catch (error) {
+        logWarn('Clipboard copy failed:', error);
+        ui.notifications.warn(game.i18n.localize("names.copy-error"));
+      }
     }
+
+    // Post to chat
+    if (shouldPost) {
+      await this._postNameToChat(name);
+    }
+
+    // If neither is enabled, do nothing (but show a hint)
+    if (!shouldCopy && !shouldPost) {
+      ui.notifications.info(game.i18n.localize('names.click-disabled-hint') ||
+        'Name click actions are disabled. Enable them in module settings.');
+    }
+  }
+
+  /**
+   * Post a name to chat with configured privacy settings
+   */
+  async _postNameToChat(name) {
+    const whisperSetting = game.settings.get(MODULE_ID, "nameClickPostWhisper");
+
+    let whisperTargets = null;
+    let rollMode = null;
+
+    // Determine whisper/roll mode based on setting
+    if (whisperSetting === "whisper") {
+      // Whisper to GM only
+      whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      rollMode = CONST.DICE_ROLL_MODES.PRIVATE;
+    } else if (whisperSetting === "public") {
+      // Public message
+      rollMode = CONST.DICE_ROLL_MODES.PUBLIC;
+    } else {
+      // Inherit current roll mode from chat
+      rollMode = game.settings.get("core", "rollMode");
+
+      // Apply roll mode rules
+      if (rollMode === CONST.DICE_ROLL_MODES.PRIVATE) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      } else if (rollMode === CONST.DICE_ROLL_MODES.BLIND) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      }
+    }
+
+    // Create chat message
+    const messageData = {
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker(),
+      content: `<div class="nomina-names-chat-post">
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+      </div>`,
+      whisper: whisperTargets
+    };
+
+    await ChatMessage.create(messageData);
+
+    logDebug(`Posted name to chat: ${name} (mode: ${whisperSetting})`);
   }
 
   /**
