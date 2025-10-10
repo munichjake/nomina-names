@@ -7,6 +7,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Name-Click-Konfiguration**: Neue Settings für individuelles Name-Click-Verhalten
+  - Checkbox: In Zwischenablage kopieren (Standard: aktiviert)
+  - Checkbox: In Chat posten (Standard: deaktiviert)
+  - Beide Optionen gleichzeitig nutzbar
+  - Dropdown für Vertraulichkeitsstufe bei Chat-Posts:
+    - Aktuelle Stufe übernehmen (erbt den aktuellen Roll-Mode)
+    - Nur für GM sichtbar (WHISPER)
+    - Öffentlich (PUBLIC)
+  - Hinweis-Notification wenn beide Optionen deaktiviert sind
+  - Funktioniert in allen Apps: Generator, Emergency Names und History
+  - Lokalisierung für Deutsch und Englisch
+
+- **Prozedurale Generierung (Beta)**: Neue Collection-basierte prozedurale Namensgenerierung
+  - Unterstützung für Recipe-basierte Collections in JSON Format 4.0.1
+  - Collections können jetzt entweder `tags` (für Catalog-Filterung) oder `recipes` (für prozedurale Generierung) enthalten
+  - Bei Auswahl von Recipe-basierten Collections wählt der Generator für jeden Namen zufällig ein Recipe aus
+  - Automatische Duplikat-Vermeidung über alle generierten Namen hinweg
+  - Beispiel: Zwergensiedlungen mit 9 verschiedenen prozeduralen Templates für realistische Namen wie "Eisentor", "Goldhalle der Steinfäuste", "Granitburg"
+  - Generator-App zeigt Recipe-basierte und Tag-basierte Collections gemeinsam als Checkboxen an
+  - Flexible Kombination möglich: Mehrere Collections können gleichzeitig ausgewählt werden
+
+### Changed
+
+- **Generator App**: Verbesserte Collection-Verarbeitung in `generator-app.js`
+  - Intelligente Erkennung von Recipe- vs Tag-basierten Collections
+  - Separate Generierungslogik für beide Collection-Typen
+  - Bei Recipe-Collections: Iterative Generierung mit zufälliger Recipe-Auswahl pro Name
+  - Bei Tag-Collections: Batch-Generierung mit Tag-Filterung
+  - Kombinierbar: Recipe-basierte und Tag-basierte Collections können gemeinsam verwendet werden
+
+### Fixed
+
+- **Duplikat-Vermeidung**: Generator verhindert jetzt korrekt Duplikate über alle Generierungsmethoden hinweg
+  - Recipe-basierte Generierung nutzt Set-basiertes Tracking für eindeutige Namen
+  - Maximale Versuche (10x gewünschte Anzahl) verhindern Endlosschleifen
+  - Warnung wenn nicht genug eindeutige Namen generiert werden konnten
+
 ## [3.0.0] - 2025-10-09
 
 ### Major Update - JSON Format 4.0.0 Migration

@@ -101,6 +101,8 @@
         "no-permission": "Du hast keine Berechtigung, den Namen-Generator zu verwenden.",
         "permissions-saved": "Rollenberechtigungen wurden gespeichert!",
         "copied-to-clipboard": "in die Zwischenablage kopiert",
+        "click-disabled-hint": "Name-Klick-Aktionen sind deaktiviert. Aktiviere sie in den Modul-Einstellungen.",
+        "generated-name": "Generierter Name",
         "// ===== ERRORS & WARNINGS =====": "",
         "no-names-found": "Keine Namen gefunden für",
         "generation-error": "Fehler beim Generieren: {error}",
@@ -223,6 +225,21 @@
             "enableMetadata": {
                 "name": "Erweiterte Metadaten anzeigen",
                 "hint": "Zeigt zusätzliche Informationen wie Inhaber, Lage und Spezialitäten bei generierten Orten und Gebäuden an"
+            },
+            "nameClickCopy": {
+                "name": "In Zwischenablage kopieren",
+                "hint": "Namen beim Klick automatisch in die Zwischenablage kopieren"
+            },
+            "nameClickPost": {
+                "name": "In Chat posten",
+                "hint": "Namen beim Klick automatisch in den Chat posten"
+            },
+            "nameClickPostWhisper": {
+                "name": "Chat-Vertraulichkeit",
+                "hint": "Bestimmt die Sichtbarkeit der Chat-Nachricht beim Posten von Namen",
+                "inherit": "Aktuelle Stufe übernehmen",
+                "whisper": "Nur für GM sichtbar (WHISPER)",
+                "public": "Öffentlich (PUBLIC)"
             }
         },
         "// ===== SPECIES CONFIG =====": "",
