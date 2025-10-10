@@ -241,14 +241,7 @@ export class NamesGeneratorApp extends Application {
       const nameEl = $(ev.currentTarget);
       const name = nameEl.data('name');
       if (name) {
-        await navigator.clipboard.writeText(name);
-        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
-
-        // Add copied animation
-        nameEl.addClass('copied');
-        setTimeout(() => {
-          nameEl.removeClass('copied');
-        }, 600);
+        await this._handleNameClick(name, nameEl);
       }
     });
 
@@ -257,14 +250,7 @@ export class NamesGeneratorApp extends Application {
       const nameEl = $(ev.currentTarget);
       const name = nameEl.data('name');
       if (name) {
-        await navigator.clipboard.writeText(name);
-        ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
-
-        // Add copied animation
-        nameEl.addClass('copied');
-        setTimeout(() => {
-          nameEl.removeClass('copied');
-        }, 600);
+        await this._handleNameClick(name, nameEl);
       }
     });
 
@@ -1339,5 +1325,80 @@ export class NamesGeneratorApp extends Application {
       // Force simple/compact view when no metadata (no need for detailed view)
       this.currentView = 'simple';
     }
+  }
+
+  /**
+   * Handle name click - copy and/or post to chat based on settings
+   */
+  async _handleNameClick(name, nameEl) {
+    const shouldCopy = game.settings.get(MODULE_ID, "nameClickCopy");
+    const shouldPost = game.settings.get(MODULE_ID, "nameClickPost");
+
+    // Copy to clipboard
+    if (shouldCopy) {
+      await navigator.clipboard.writeText(name);
+      ui.notifications.info(`"${name}" ${game.i18n.localize('names.copied-to-clipboard') || 'copied to clipboard'}`);
+
+      // Add copied animation
+      nameEl.addClass('copied');
+      setTimeout(() => {
+        nameEl.removeClass('copied');
+      }, 600);
+    }
+
+    // Post to chat
+    if (shouldPost) {
+      await this._postNameToChat(name);
+    }
+
+    // If neither is enabled, do nothing (but show a hint)
+    if (!shouldCopy && !shouldPost) {
+      ui.notifications.info(game.i18n.localize('names.click-disabled-hint') ||
+        'Name click actions are disabled. Enable them in module settings.');
+    }
+  }
+
+  /**
+   * Post a name to chat with configured privacy settings
+   */
+  async _postNameToChat(name) {
+    const whisperSetting = game.settings.get(MODULE_ID, "nameClickPostWhisper");
+
+    let whisperTargets = null;
+    let rollMode = null;
+
+    // Determine whisper/roll mode based on setting
+    if (whisperSetting === "whisper") {
+      // Whisper to GM only
+      whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      rollMode = CONST.DICE_ROLL_MODES.PRIVATE;
+    } else if (whisperSetting === "public") {
+      // Public message
+      rollMode = CONST.DICE_ROLL_MODES.PUBLIC;
+    } else {
+      // Inherit current roll mode from chat
+      rollMode = game.settings.get("core", "rollMode");
+
+      // Apply roll mode rules
+      if (rollMode === CONST.DICE_ROLL_MODES.PRIVATE) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      } else if (rollMode === CONST.DICE_ROLL_MODES.BLIND) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      }
+    }
+
+    // Create chat message
+    const messageData = {
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker(),
+      content: `<div class="nomina-names-chat-post">
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+      </div>`,
+      whisper: whisperTargets
+    };
+
+    await ChatMessage.create(messageData);
+
+    logDebug(`Posted name to chat: ${name} (mode: ${whisperSetting})`);
   }
 }

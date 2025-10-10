@@ -782,6 +782,39 @@ function registerModuleSettings() {
 
   // ===== CLIENT SETTINGS (Benutzer-spezifische Einstellungen) =====
 
+  // Name Click Behavior Settings
+  game.settings.register(MODULE_ID, "nameClickCopy", {
+    name: game.i18n.localize("names.settings.nameClickCopy.name") || "In Zwischenablage kopieren",
+    hint: game.i18n.localize("names.settings.nameClickCopy.hint") || "Namen beim Klick in die Zwischenablage kopieren",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true
+  });
+
+  game.settings.register(MODULE_ID, "nameClickPost", {
+    name: game.i18n.localize("names.settings.nameClickPost.name") || "In Chat posten",
+    hint: game.i18n.localize("names.settings.nameClickPost.hint") || "Namen beim Klick in den Chat posten",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
+  game.settings.register(MODULE_ID, "nameClickPostWhisper", {
+    name: game.i18n.localize("names.settings.nameClickPostWhisper.name") || "Chat-Vertraulichkeit",
+    hint: game.i18n.localize("names.settings.nameClickPostWhisper.hint") || "Vertraulichkeitseinstellung beim Chat-Post",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "inherit": game.i18n.localize("names.settings.nameClickPostWhisper.inherit") || "Aktuelle Stufe übernehmen",
+      "whisper": game.i18n.localize("names.settings.nameClickPostWhisper.whisper") || "Nur für GM sichtbar (WHISPER)",
+      "public": game.i18n.localize("names.settings.nameClickPostWhisper.public") || "Öffentlich (PUBLIC)"
+    },
+    default: "inherit"
+  });
+
   // Legacy migration: migrate defaultLanguage to new settings
   try {
     const legacyDefaultLanguage = game.settings.get(MODULE_ID, "defaultLanguage");

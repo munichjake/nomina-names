@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Name-Click-Konfiguration**: Neue Settings für individuelles Name-Click-Verhalten
+  - Checkbox: In Zwischenablage kopieren (Standard: aktiviert)
+  - Checkbox: In Chat posten (Standard: deaktiviert)
+  - Beide Optionen gleichzeitig nutzbar
+  - Dropdown für Vertraulichkeitsstufe bei Chat-Posts:
+    - Aktuelle Stufe übernehmen (erbt den aktuellen Roll-Mode)
+    - Nur für GM sichtbar (WHISPER)
+    - Öffentlich (PUBLIC)
+  - Hinweis-Notification wenn beide Optionen deaktiviert sind
+  - Funktioniert in allen Apps: Generator, Emergency Names und History
+  - Lokalisierung für Deutsch und Englisch
+
 - **Prozedurale Generierung (Beta)**: Neue Collection-basierte prozedurale Namensgenerierung
   - Unterstützung für Recipe-basierte Collections in JSON Format 4.0.1
   - Collections können jetzt entweder `tags` (für Catalog-Filterung) oder `recipes` (für prozedurale Generierung) enthalten

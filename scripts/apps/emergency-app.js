@@ -5,7 +5,7 @@
 
 import { getGlobalGenerator } from '../api/generator.js';
 import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClipboard } from '../utils/ui-helpers.js';
-import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders } from '../shared/constants.js';
+import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, MODULE_ID } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
@@ -286,20 +286,88 @@ export class EmergencyNamesApp extends Application {
       return;
     }
 
-    logDebug(`Copying name to clipboard: ${name}`);
+    await this._handleNameClick(name, nameElement);
+  }
 
-    try {
-      await copyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
+  /**
+   * Handle name click - copy and/or post to chat based on settings
+   */
+  async _handleNameClick(name, nameEl) {
+    const shouldCopy = game.settings.get(MODULE_ID, "nameClickCopy");
+    const shouldPost = game.settings.get(MODULE_ID, "nameClickPost");
 
-      // Visual feedback
-      nameElement.addClass('copied');
-      setTimeout(() => nameElement.removeClass('copied'), 1000);
+    // Copy to clipboard
+    if (shouldCopy) {
+      logDebug(`Copying name to clipboard: ${name}`);
 
-      logDebug(`Successfully copied name: ${name}`);
-    } catch (error) {
-      logWarn("Clipboard copy failed, using fallback", error);
-      fallbackCopyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
+      try {
+        await copyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
+
+        // Visual feedback
+        nameEl.addClass('copied');
+        setTimeout(() => nameEl.removeClass('copied'), 1000);
+
+        logDebug(`Successfully copied name: ${name}`);
+      } catch (error) {
+        logWarn("Clipboard copy failed, using fallback", error);
+        fallbackCopyToClipboard(name, game.i18n.format("names.emergency.nameCopied", { name: name }) || `Name "${name}" kopiert`);
+      }
     }
+
+    // Post to chat
+    if (shouldPost) {
+      await this._postNameToChat(name);
+    }
+
+    // If neither is enabled, do nothing (but show a hint)
+    if (!shouldCopy && !shouldPost) {
+      ui.notifications.info(game.i18n.localize('names.click-disabled-hint') ||
+        'Name click actions are disabled. Enable them in module settings.');
+    }
+  }
+
+  /**
+   * Post a name to chat with configured privacy settings
+   */
+  async _postNameToChat(name) {
+    const whisperSetting = game.settings.get(MODULE_ID, "nameClickPostWhisper");
+
+    let whisperTargets = null;
+    let rollMode = null;
+
+    // Determine whisper/roll mode based on setting
+    if (whisperSetting === "whisper") {
+      // Whisper to GM only
+      whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      rollMode = CONST.DICE_ROLL_MODES.PRIVATE;
+    } else if (whisperSetting === "public") {
+      // Public message
+      rollMode = CONST.DICE_ROLL_MODES.PUBLIC;
+    } else {
+      // Inherit current roll mode from chat
+      rollMode = game.settings.get("core", "rollMode");
+
+      // Apply roll mode rules
+      if (rollMode === CONST.DICE_ROLL_MODES.PRIVATE) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      } else if (rollMode === CONST.DICE_ROLL_MODES.BLIND) {
+        whisperTargets = ChatMessage.getWhisperRecipients("GM").map(u => u.id);
+      }
+    }
+
+    // Create chat message
+    const messageData = {
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker(),
+      content: `<div class="nomina-names-chat-post">
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+      </div>`,
+      whisper: whisperTargets
+    };
+
+    await ChatMessage.create(messageData);
+
+    logDebug(`Posted name to chat: ${name} (mode: ${whisperSetting})`);
   }
 
   /**
