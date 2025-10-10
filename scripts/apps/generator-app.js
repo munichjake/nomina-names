@@ -531,37 +531,126 @@ export class NamesGeneratorApp extends Application {
 
         // If collections are selected, generate from collections
         if (selectedCollections.length > 0) {
-          // Collect all tags from selected collections
+          // Separate collections by type: recipe-based vs tag-based
           const allTags = [];
+          const allRecipes = [];
           const errors = [];
 
           for (const collectionKey of selectedCollections) {
             const collection = this.generator.dataManager.getCollection(packageCode, collectionKey);
-            if (collection && collection.query && collection.query.tags) {
-              allTags.push(...collection.query.tags);
+            if (collection && collection.query) {
+              // If collection has recipes, use recipe-based generation
+              if (collection.query.recipes && collection.query.recipes.length > 0) {
+                allRecipes.push(...collection.query.recipes);
+              }
+              // If collection has tags, collect them for tag-based generation
+              if (collection.query.tags) {
+                allTags.push(...collection.query.tags);
+              }
             }
           }
 
-          // Remove duplicates
-          const uniqueTags = [...new Set(allTags)];
+          // If we have recipes, use recipe-based generation
+          if (allRecipes.length > 0) {
+            // Remove duplicate recipes
+            const uniqueRecipes = [...new Set(allRecipes)];
 
-          logDebug(`Generating ${count} names from catalog ${this.currentCategory} with tags: ${uniqueTags.join(', ')}`);
+            logDebug(`Generating ${count} names from ${uniqueRecipes.length} recipes (random recipe per name)`);
 
-          // Generate all names at once with all tags (using OR logic)
-          try {
+            try {
+              // Generate names one by one, picking a random recipe for each
+              const suggestions = [];
+              const errors = [];
+              const generatedNames = new Set(); // Track unique names across all recipes
+
+              let attempts = 0;
+              const maxAttempts = count * 10; // Prevent infinite loops
+
+              while (suggestions.length < count && attempts < maxAttempts) {
+                attempts++;
+
+                // Pick a truly random recipe for each name
+                const randomRecipe = uniqueRecipes[Math.floor(Math.random() * uniqueRecipes.length)];
+
+                // Create a unique seed for this attempt
+                const nameSeed = `${Date.now()}-${Math.random()}-${attempts}`;
+
+                logDebug(`Generating name ${suggestions.length + 1}/${count} with recipe: ${randomRecipe} (attempt ${attempts})`);
+
+                try {
+                  const singleResult = await this.generator.generate({
+                    packageCode,
+                    locale: this.currentLanguage,
+                    n: 1,
+                    recipes: randomRecipe,
+                    seed: nameSeed,
+                    allowDuplicates: false
+                  });
+
+                  if (singleResult.suggestions && singleResult.suggestions.length > 0) {
+                    const newName = singleResult.suggestions[0].text;
+
+                    // Only add if it's not a duplicate
+                    if (!generatedNames.has(newName)) {
+                      generatedNames.add(newName);
+                      suggestions.push(singleResult.suggestions[0]);
+                      logDebug(`✓ Added unique name: ${newName}`);
+                    } else {
+                      logDebug(`✗ Skipped duplicate name: ${newName}`);
+                    }
+                  }
+                  if (singleResult.errors && singleResult.errors.length > 0) {
+                    errors.push(...singleResult.errors);
+                  }
+                } catch (err) {
+                  logError(`Failed to generate from recipe ${randomRecipe}:`, err);
+                  errors.push({ code: 'generation_failed', message: err.message, recipe: randomRecipe });
+                }
+              }
+
+              if (suggestions.length < count) {
+                logWarn(`Only generated ${suggestions.length}/${count} unique names after ${attempts} attempts`);
+              }
+
+              result = {
+                suggestions,
+                errors
+              };
+            } catch (err) {
+              logError(`Failed to generate from recipes:`, err);
+              result = {
+                suggestions: [],
+                errors: [err.message]
+              };
+            }
+          } else if (allTags.length > 0) {
+            // Use tag-based generation if no recipes
+            const uniqueTags = [...new Set(allTags)];
+
+            logDebug(`Generating ${count} names from catalog ${this.currentCategory} with tags: ${uniqueTags.join(', ')}`);
+
+            try {
+              result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
+                locale: this.currentLanguage,
+                n: count,
+                tags: uniqueTags,
+                anyOfTags: true, // Use OR logic to get variety from multiple collections
+                allowDuplicates: false
+              });
+            } catch (err) {
+              logError(`Failed to generate from catalog with collections:`, err);
+              result = {
+                suggestions: [],
+                errors: [err.message]
+              };
+            }
+          } else {
+            // No tags or recipes - generate from catalog directly
             result = await this.generator.generateFromCatalog(packageCode, this.currentCategory, {
               locale: this.currentLanguage,
               n: count,
-              tags: uniqueTags,
-              anyOfTags: true, // Use OR logic to get variety from multiple collections
               allowDuplicates: false
             });
-          } catch (err) {
-            logError(`Failed to generate from catalog with collections:`, err);
-            result = {
-              suggestions: [],
-              errors: [err.message]
-            };
           }
         } else {
           // Generate from catalog directly (no collections filter)
