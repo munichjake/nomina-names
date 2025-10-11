@@ -75,6 +75,16 @@
       </div>
     </div>
 
+    <!-- Search Section -->
+    <div class="names-module-search-section">
+      <input
+        type="text"
+        id="names-search-input"
+        class="names-module-search-input"
+        placeholder="🔍 {{localize 'names.search-placeholder'}}"
+      >
+    </div>
+
     <!-- Results Display -->
     <div id="names-result-display" class="names-module-results-list">
       {{#if generatedNames}}
@@ -208,13 +218,44 @@
   transform: scale(1.05);
 }
 
+/* Search Section */
+.names-module-search-section {
+  margin-bottom: 1rem;
+}
+
+.names-module-search-input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: #3a3a3a;
+  border: 2px solid #555;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.names-module-search-input:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+}
+
+.names-module-search-input::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
 /* No Results State */
-.names-module-no-result {
+.names-module-no-result,
+.names-module-no-search-results {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 2rem;
   color: #999;
   font-size: 1.1rem;
   font-style: italic;
+  background: #2a2a2a;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
 /* Disabled State */

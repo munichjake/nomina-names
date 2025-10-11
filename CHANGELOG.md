@@ -41,6 +41,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Suchfunktion im Generator**: Die Suchfunktion zum Durchsuchen der generierten Namen wurde implementiert
+  - Echtzeit-Filterung der generierten Namen während der Eingabe (150ms Debounce)
+  - Case-insensitive Suche für bessere Benutzbarkeit
+  - Suchfilter bleibt nach Neu-Generierung erhalten
+  - "Keine Namen gefunden"-Meldung wenn keine Treffer
+  - Lokalisierung für Deutsch und Englisch
+  - Suchfeld-ID korrigiert von `searchInput` zu `names-search-input` für korrekte Event-Bindung
+
 - **Duplikat-Vermeidung**: Generator verhindert jetzt korrekt Duplikate über alle Generierungsmethoden hinweg
   - Recipe-basierte Generierung nutzt Set-basiertes Tracking für eindeutige Namen
   - Maximale Versuche (10x gewünschte Anzahl) verhindern Endlosschleifen
