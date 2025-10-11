@@ -557,7 +557,7 @@
   margin-bottom: 1rem;
   color: #e0e0e0;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -896,8 +896,8 @@
   border: 1px solid #4a4a4a;
   border-left: 3px solid #e67e22;
   border-radius: 6px;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #e0e0e0;
   cursor: pointer;
@@ -905,7 +905,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   position: relative;
   z-index: 1;
   display: flex;
@@ -1031,7 +1031,7 @@
 .names-module-generated-name .name-title {
   font-weight: 700;
   color: #e0e0e0;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -1042,6 +1042,15 @@
 .names-module-generated-name:hover .name-title {
   color: #f39c12;
   text-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+/* Emergency-style name display for generator app */
+.generator-name-display {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .names-module-generated-name .name-type {

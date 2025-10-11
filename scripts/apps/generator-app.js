@@ -832,7 +832,7 @@ export class NamesGeneratorApp extends Application {
           const itemHtml = `
             <div class="names-module-simple-name ${nameClass} initial-render" data-name="${name}">
               <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-              <span class="name-text">${name}</span>
+              <span class="generator-name-display">${name}</span>
             </div>`;
           container.append(itemHtml);
         }
@@ -893,7 +893,7 @@ export class NamesGeneratorApp extends Application {
           $el.removeClass('names-module-generated-name').addClass('names-module-simple-name');
           $el.html(`
             <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-            <span class="name-text">${name}</span>
+            <span class="generator-name-display">${name}</span>
           `);
           setTimeout(() => $el.removeClass('view-transition'), 400);
         } else {
