@@ -318,6 +318,7 @@ export class DataManager {
 
   /**
    * Get available species for a language with localized names
+   * Respects user settings for enabled/disabled species
    * @param {string} language - Language code (e.g., 'de')
    * @param {string} locale - UI locale for species names (e.g., 'de')
    * @returns {Array<Object>} Array of { code, name } objects with localized species names
@@ -334,15 +335,33 @@ export class DataManager {
     // Get species metadata for localized names
     const speciesMetadata = this.getSpeciesMetadata();
 
-    return Array.from(speciesCodes).sort().map(code => {
-      const metadata = speciesMetadata[code];
-      // Species metadata structure: { "code": { "en": "Name", "de": "Name" } }
-      const name = metadata?.[locale] ||
-                   metadata?.en ||
-                   code.charAt(0).toUpperCase() + code.slice(1);
+    // Get user settings for available species
+    let speciesSettings = {};
+    try {
+      speciesSettings = game.settings.get("nomina-names", "availableSpecies") || {};
+    } catch (error) {
+      logWarn("Failed to read species settings, showing all species:", error);
+    }
 
-      return { code, name };
-    });
+    // Filter and map species, respecting enabled/disabled settings
+    return Array.from(speciesCodes).sort()
+      .filter(code => {
+        // If no settings exist, default to enabled
+        if (!speciesSettings || Object.keys(speciesSettings).length === 0) {
+          return true;
+        }
+        // Species is enabled if not explicitly set to false
+        return speciesSettings[code] !== false;
+      })
+      .map(code => {
+        const metadata = speciesMetadata[code];
+        // Species metadata structure: { "code": { "en": "Name", "de": "Name" } }
+        const name = metadata?.[locale] ||
+                     metadata?.en ||
+                     code.charAt(0).toUpperCase() + code.slice(1);
+
+        return { code, name };
+      });
   }
 
   /**

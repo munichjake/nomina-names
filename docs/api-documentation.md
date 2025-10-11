@@ -387,6 +387,17 @@ const species = await api.getAvailableSpecies('en');
 // ]
 ```
 
+#### `getAllSpeciesCodes()`
+
+Get all species codes across all languages. This is useful for configuration dialogs and administrative interfaces that need to display all registered species regardless of language availability.
+
+```javascript
+const allSpecies = api.getAllSpeciesCodes();
+// Result: ['aasimar', 'dragonborn', 'dwarf', 'elf', 'gnome', 'halfling', 'human', 'orc', 'tiefling']
+```
+
+**Note:** This method returns a synchronous array of species codes sorted alphabetically. Unlike `getAvailableSpecies()`, it does not filter by language or provide localized names.
+
 #### `getAvailableCatalogs(language, species)`
 
 Get available catalogs (categories) for a species/language package.
