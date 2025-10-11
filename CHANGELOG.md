@@ -41,6 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Standard-Anzahl der Namen**: Die Einstellung "Standard-Anzahl Namen" wird jetzt korrekt verwendet statt des hartcodierten Wertes 5
+
 - **Suchfunktion im Generator**: Die Suchfunktion zum Durchsuchen der generierten Namen wurde implementiert
   - Echtzeit-Filterung der generierten Namen während der Eingabe (150ms Debounce)
   - Case-insensitive Suche für bessere Benutzbarkeit

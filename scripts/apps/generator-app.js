@@ -73,11 +73,15 @@ export class NamesGeneratorApp extends Application {
       }];
     }
 
+    // Get default name count from settings
+    const defaultNameCount = game.settings.get(MODULE_ID, "defaultNameCount") || 5;
+
     return {
       languages: languages.map(code => ({ code, name: code.toUpperCase() })),
       species, // Already contains { code, name } objects with localized names
       categories,
       defaultLanguage: this.currentLanguage,
+      defaultNameCount: defaultNameCount,
       isLoading: false,
       isLoaded: true,
       supportedGenders: this.supportedGenders
