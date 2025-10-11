@@ -26,6 +26,7 @@ export class NamesGeneratorApp extends Application {
     this.currentMode = 'components'; // 'components' or 'recipe'
     this.currentRecipe = null; // Currently selected recipe ID
     this.lastRecipeDefinition = ''; // Store last recipe definition for "selbst definieren"
+    this.searchTerm = ''; // Current search filter
   }
 
   static get defaultOptions() {
@@ -252,6 +253,11 @@ export class NamesGeneratorApp extends Application {
       if (name) {
         await this._handleNameClick(name, nameEl);
       }
+    });
+
+    // Search input
+    html.find('#names-search-input').on('input', (ev) => {
+      this._onSearchInput(ev, html);
     });
 
     // Toggle favorite (both views)
@@ -688,6 +694,11 @@ export class NamesGeneratorApp extends Application {
       // Determine if this is first generation (show animation) or regeneration (keep favorited)
       const isFirstGeneration = this.favoritedNames.size === 0 && favoritedNamesArray.length === 0;
       this._displayResults(html, isFirstGeneration);
+
+      // Apply search filter if active
+      if (this.searchTerm) {
+        this._filterDisplayedNames(html);
+      }
 
       // Add to history
       this._addToHistory();
@@ -1400,5 +1411,68 @@ export class NamesGeneratorApp extends Application {
     await ChatMessage.create(messageData);
 
     logDebug(`Posted name to chat: ${name} (mode: ${whisperSetting})`);
+  }
+
+  /**
+   * Handle search input
+   * Filters displayed names based on search term
+   */
+  _onSearchInput(event, html) {
+    const searchTerm = event.target.value.trim().toLowerCase();
+    this.searchTerm = searchTerm;
+
+    // Debounce search to avoid losing focus
+    clearTimeout(this._searchTimeout);
+    this._searchTimeout = setTimeout(() => {
+      this._filterDisplayedNames(html);
+    }, 150);
+
+    logDebug(`Search term: "${searchTerm}"`);
+  }
+
+  /**
+   * Filter displayed names based on search term
+   */
+  _filterDisplayedNames(html) {
+    const resultDiv = html.find('#names-result-display');
+    const nameElements = resultDiv.find('.names-module-generated-name, .names-module-simple-name');
+
+    if (!this.searchTerm) {
+      // Show all names if search is empty
+      nameElements.show();
+      return;
+    }
+
+    let visibleCount = 0;
+
+    // Filter names
+    nameElements.each((_index, element) => {
+      const $el = $(element);
+      const name = $el.data('name');
+
+      if (name && name.toLowerCase().includes(this.searchTerm)) {
+        $el.show();
+        visibleCount++;
+      } else {
+        $el.hide();
+      }
+    });
+
+    logDebug(`Filtered names: ${visibleCount} visible out of ${nameElements.length}`);
+
+    // Show "no results" message if no names match
+    if (visibleCount === 0 && nameElements.length > 0) {
+      // Check if message already exists
+      if (resultDiv.find('.names-module-no-search-results').length === 0) {
+        resultDiv.prepend(`
+          <div class="names-module-no-search-results">
+            ${game.i18n.localize('names.no-search-results') || 'Keine Namen gefunden'}
+          </div>
+        `);
+      }
+    } else {
+      // Remove "no results" message
+      resultDiv.find('.names-module-no-search-results').remove();
+    }
   }
 }
