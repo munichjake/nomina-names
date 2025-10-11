@@ -302,7 +302,13 @@
             "noNames": "no names available",
             "hint": "Names are generated using the default settings of the name generator module",
             "error": "Error generating names",
-            "errorOpenGenerator": "Error opening the main generator"
+            "errorOpenGenerator": "Error opening the main generator",
+            "speciesFilter": "Species Filter",
+            "speciesFilterExpanded": "Select species",
+            "selectAll": "Select all",
+            "selectHumans": "Humans",
+            "allSpeciesSelected": "All species",
+            "minOneSpecies": "At least one species must be selected"
         },
         "// ===== META DATA LABELS =====": "",
         "meta": {
