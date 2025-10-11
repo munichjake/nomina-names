@@ -70,6 +70,8 @@
         "select-all": "Please select language and species",
         "select-components": "Please select at least one name component",
         "search-hint": "Tip: Use the search function to find additional options",
+        "search-placeholder": "Search names...",
+        "no-search-results": "No names found",
         "// ===== HELP & INSTRUCTIONS =====": "",
         "gender-help": "Non-binary first names are only available if the selected species supports it.",
         "subcategory-help": "Select at least one subcategory, or leave all unselected for random selection.",
