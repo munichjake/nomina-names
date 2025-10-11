@@ -1095,23 +1095,7 @@
       ]
     }
   },
-  "recipes": [
-    {
-      "id": "full_name",
-      "displayName": {
-        "de": "Vollständiger Name"
-      },
-      "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" } },
-        { "literal": { "de": " " } },
-        { "select": { "from": "catalog", "key": "surnames" } }
-      ],
-      "post": [
-        "TrimSpaces",
-        "CollapseSpaces"
-      ]
-    }
-  ],
+  "recipes": [],
   "output": {
     "transforms": [
       "TrimSpaces",

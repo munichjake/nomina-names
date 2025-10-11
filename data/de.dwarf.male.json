@@ -1056,9 +1056,9 @@
         "de": "Vollständiger Name"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" } },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
         { "literal": { "de": " " } },
-        { "select": { "from": "catalog", "key": "surnames" } }
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "SN" }
       ],
       "post": [
         "TrimSpaces",
