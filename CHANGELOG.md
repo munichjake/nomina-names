@@ -53,6 +53,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **API: getAllSpeciesCodes()**: Neue API-Methode hinzugefügt für den Zugriff auf alle registrierten Spezies-Codes
+  - Gibt alle Spezies-Codes über alle Sprachen hinweg zurück (alphabetisch sortiert)
+  - Wird von der Spezies-Konfigurationsdialog verwendet
+  - Behebt Rendering-Fehler in NamesSpeciesConfig ("api.getAllSpeciesCodes is not a function")
+  - Synchrone Methode, die ein Array von Spezies-Codes zurückgibt
+  - Dokumentiert in API-Dokumentation unter "Information Functions"
+
 - **Standard-Anzahl der Namen**: Die Einstellung "Standard-Anzahl Namen" wird jetzt korrekt verwendet statt des hartcodierten Wertes 5
 
 - **Suchfunktion im Generator**: Die Suchfunktion zum Durchsuchen der generierten Namen wurde implementiert

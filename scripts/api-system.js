@@ -155,6 +155,30 @@ class NamesModuleAPI {
   }
 
   /**
+   * Get all species codes across all languages
+   * Used by the species configuration dialog
+   * @returns {Array<string>} All species codes
+   */
+  getAllSpeciesCodes() {
+    if (!this._isSetup || !this.dataManager) {
+      logWarn("DataManager not initialized, returning empty species list");
+      return [];
+    }
+
+    const speciesCodes = new Set();
+    const packages = this.dataManager.getLoadedPackages();
+
+    for (const packageCode of packages) {
+      const pkg = this.dataManager.getPackage(packageCode);
+      if (pkg && pkg.species) {
+        speciesCodes.add(pkg.species);
+      }
+    }
+
+    return Array.from(speciesCodes).sort();
+  }
+
+  /**
    * Get available catalogs (categories) for a package
    * @param {string} language - Language code
    * @param {string} species - Species code

@@ -1415,7 +1415,12 @@ export class NamesGeneratorApp extends Application {
     } else {
       viewToggle.hide();
       // Force simple/compact view when no metadata (no need for detailed view)
-      this.currentView = 'simple';
+      if (this.currentView !== 'simple') {
+        this.currentView = 'simple';
+        // Update button states to reflect forced simple view
+        html.find('.names-module-toggle-btn').removeClass('active');
+        html.find('.names-module-toggle-btn[data-view="simple"]').addClass('active');
+      }
     }
   }
 

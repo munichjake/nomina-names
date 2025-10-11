@@ -57,12 +57,20 @@ export class EmergencyNamesApp extends Application {
       ? game.i18n.localize("names.emergency.allSpeciesSelected")
       : `(${this.enabledSpecies.size}/${allSpecies.length})`;
 
+    // Determine the correct label for the "select single species" button
+    const humanSpecies = this.availableSpecies.find(s => s.code === 'human');
+    const firstSpecies = this.availableSpecies.sort((a, b) => a.code.localeCompare(b.code))[0];
+    const selectSingleLabel = humanSpecies
+      ? game.i18n.localize("names.emergency.selectHumans")
+      : (firstSpecies ? firstSpecies.displayName : game.i18n.localize("names.emergency.selectHumans"));
+
     return {
       emergencyNames: this.emergencyNames,
       isLoading: false,
       availableSpecies: this.availableSpecies,
       speciesFilterLabel: game.i18n.localize("names.emergency.speciesFilter"),
-      speciesFilterCount: speciesFilterCount
+      speciesFilterCount: speciesFilterCount,
+      selectSingleLabel: selectSingleLabel
     };
   }
 
@@ -516,6 +524,13 @@ export class EmergencyNamesApp extends Application {
       if (targetSpecies) {
         this.enabledSpecies.add(targetSpecies.code);
         html.find(`.species-pill[data-species="${targetSpecies.code}"]`).addClass('active');
+
+        // Update the button label to show the actually selected species
+        const buttonText = humanSpecies
+          ? game.i18n.localize("names.emergency.selectHumans")
+          : targetSpecies.displayName;
+        $(event.currentTarget).text(buttonText);
+
         logDebug(`Selected only ${targetSpecies.code} species`);
       }
     }
