@@ -280,9 +280,30 @@ export class NamesGeneratorApp extends Application {
       logDebug(`Toggled favorite for: ${name}. Total favorites: ${this.favoritedNames.size}`);
     });
 
-    // Component checkboxes - update format field
+    // Component checkboxes - update format field and toggle selected class
     html.find('input[name^="names-include-"]').change((ev) => {
+      const checkbox = $(ev.currentTarget);
+      const label = checkbox.closest('.names-module-checkbox-item');
+
+      if (checkbox.is(':checked')) {
+        label.addClass('selected');
+      } else {
+        label.removeClass('selected');
+      }
+
       this._updateFormatField(html);
+    });
+
+    // All checkboxes - toggle selected class on checkbox container
+    html.on('change', '.names-module-checkbox-item input[type="checkbox"]', (ev) => {
+      const checkbox = $(ev.currentTarget);
+      const label = checkbox.closest('.names-module-checkbox-item');
+
+      if (checkbox.is(':checked')) {
+        label.addClass('selected');
+      } else {
+        label.removeClass('selected');
+      }
     });
 
     // Set default language only on first render
@@ -417,7 +438,7 @@ export class NamesGeneratorApp extends Application {
     for (const gender of this.supportedGenders) {
       const label = game.i18n.localize(`names.gender.${gender}`) || gender;
       const checkbox = `
-        <label class="names-module-checkbox-item">
+        <label class="names-module-checkbox-item selected">
           <input type="checkbox" name="names-gender-${gender}" checked>
           <span class="names-module-checkmark"></span>
           ${label}
@@ -1030,7 +1051,7 @@ export class NamesGeneratorApp extends Application {
       }
 
       const checkbox = `
-        <label class="names-module-checkbox-item">
+        <label class="names-module-checkbox-item selected">
           <input type="checkbox" name="names-collection-${collection.key}" value="${collection.key}" checked>
           <span class="names-module-checkmark"></span>
           ${icon}${label}
