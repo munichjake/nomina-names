@@ -82,7 +82,7 @@ export function fallbackCopyToClipboard(text, successMessage = null) {
 
 /**
  * Injects the emergency names button into the chat
- * Compatible with both Foundry VTT v12 and v13
+ * Compatible with Foundry v12 and v13 using native DOM API
  */
 export function injectEmergencyButton() {
   // Check settings
@@ -91,40 +91,40 @@ export function injectEmergencyButton() {
     return;
   }
 
-  // Check if button already exists
-  if ($('#emergency-names-button').length > 0) {
+  // Remove existing button if present
+  if (document.getElementById('emergency-names-button')) {
+    document.getElementById('emergency-names-button').remove();
+  }
+
+  // Get the chat input element for reliable positioning
+  const inputElement = document.getElementById("chat-message");
+
+  if (!inputElement) {
+    logWarn("Could not find chat-message input for emergency button");
     return;
   }
 
-  // Find chat elements - try multiple selectors for v13 compatibility
-  let chatContainer = $('#chat-log');
-  if (chatContainer.length === 0) {
-    chatContainer = $('#sidebar-tabs .tab[data-tab="chat"]');
-  }
-  if (chatContainer.length === 0) {
-    chatContainer = $('#chat');
-  }
-  if (chatContainer.length === 0) {
-    chatContainer = $('.sidebar .tab.chat');
-  }
-
-  const chatForm = $('#chat-form');
-
-  if (chatContainer.length === 0) {
-    logWarn("Could not find chat container for emergency button");
-    return;
-  }
-
-  // Create button
-  const emergencyButton = $(`
+  // Create button HTML
+  const buttonHTML = `
     <div id="emergency-names-button" class="${CSS_CLASSES.emergencyButton}" title="${game.i18n.localize("names.emergency.tooltip") || "Schnelle NPC-Namen"}">
       <i class="fas fa-user-friends"></i>
       <span>${game.i18n.localize("names.emergency.button") || "NPC Namen"}</span>
     </div>
-  `);
+  `;
 
-  // Add click handler with multiple event types for v13 compatibility
-  emergencyButton.on('click', (event) => {
+  // Inject button after chat input using native DOM API for better performance
+  inputElement.insertAdjacentHTML("afterend", buttonHTML);
+
+  // Get the injected button and add event listeners
+  const emergencyButton = document.getElementById('emergency-names-button');
+
+  if (!emergencyButton) {
+    logWarn("Failed to create emergency button");
+    return;
+  }
+
+  // Add click handler
+  emergencyButton.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
     logDebug("Emergency button clicked");
@@ -147,18 +147,11 @@ export function injectEmergencyButton() {
     }
   });
 
-  // Additional event handlers for better compatibility
-  emergencyButton.on('mousedown', (event) => {
+  // Additional event handler for better compatibility
+  emergencyButton.addEventListener('mousedown', (event) => {
     event.preventDefault();
     logDebug("Emergency button mousedown");
   });
-
-  // Try different insertion points for v13 compatibility
-  if (chatForm.length > 0) {
-    chatForm.after(emergencyButton);
-  } else {
-    chatContainer.append(emergencyButton);
-  }
 
   // Add CSS if not present
   injectEmergencyButtonCSS();
@@ -170,8 +163,25 @@ export function injectEmergencyButton() {
  * Removes the emergency names button from chat
  */
 export function removeEmergencyButton() {
-  $('#emergency-names-button').remove();
-  logInfo("Emergency button removed");
+  const button = document.getElementById('emergency-names-button');
+  if (button) {
+    button.remove();
+    logInfo("Emergency button removed");
+  }
+}
+
+/**
+ * Moves the emergency button to the correct position
+ * Used when chat is popped out, collapsed, or repositioned
+ */
+export function moveEmergencyButton() {
+  const button = document.getElementById('emergency-names-button');
+  const inputElement = document.getElementById("chat-message");
+
+  if (button && inputElement) {
+    inputElement.insertAdjacentElement("afterend", button);
+    logDebug("Emergency button repositioned");
+  }
 }
 
 /**
@@ -186,8 +196,8 @@ function injectEmergencyButtonCSS() {
           border: 1px solid #e55a00;
           border-radius: 6px;
           color: white;
-          padding: 8px 16px;
-          margin: 10px;
+          padding: 2em;
+          margin: 0.5em 0;
           cursor: pointer;
           font-weight: bold;
           font-size: 12px;
