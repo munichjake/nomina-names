@@ -54,6 +54,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Maximale Versuche (10x gewünschte Anzahl) verhindern Endlosschleifen
   - Warnung wenn nicht genug eindeutige Namen generiert werden konnten
 
+- **Namensformat-Feld im Generator**: Formatierung und dynamische Befüllung korrigiert
+  - Backslash-Escape-Problem behoben: `\"` wird nicht mehr falsch als `\` + `"` angezeigt
+  - Format-Feld wird jetzt dynamisch basierend auf ausgewählten Komponenten befüllt
+  - Nur aktivierte Komponenten (Firstname, Surname, Title, Nickname) werden ins Format eingefügt
+  - Format wird automatisch aktualisiert beim An-/Abwählen von Komponenten-Checkboxen
+  - Initial leeres Feld mit intelligentem Placeholder
+  - Reihenfolge: `{title} {firstname} "{nickname}" {surname}` (Nickname in Anführungszeichen)
+
 ## [3.0.0] - 2025-10-09
 
 ### Major Update - JSON Format 4.0.0 Migration
