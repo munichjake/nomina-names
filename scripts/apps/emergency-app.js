@@ -27,7 +27,7 @@ export class EmergencyNamesApp extends Application {
       title: game.i18n.localize("names.emergency.title") || "Schnelle NPC Namen",
       template: TEMPLATE_PATHS.emergency,
       width: 500,
-      height: 720,
+      height: 760,
       resizable: false,
       classes: [CSS_CLASSES.emergencyApp]
     });
