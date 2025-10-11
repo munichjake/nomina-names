@@ -29,8 +29,48 @@
 }
 
 .emergency-header {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   text-align: center;
+}
+
+.emergency-title-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.emergency-title-header h3 {
+  margin: 0;
+}
+
+.emergency-history-icon {
+  width:auto;
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 0.75em;
+  cursor: pointer;
+  padding: 0.15em;
+  transition: all 0.2s;
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5em;
+}
+
+.emergency-history-icon:active {
+  box-shadow:none;
+}
+
+.emergency-history-icon:hover {
+  color: #ff6400 !important;
+  opacity: 1;
+  transform: scale(1.15);
+  box-shadow:none;
 }
 
 .emergency-header p {
@@ -38,6 +78,136 @@
   font-size: 16px;
   margin: 0;
   font-weight: 500;
+}
+
+/* Species Filter */
+.emergency-species-filter {
+  margin-bottom: 20px;
+  margin-top: 12px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  padding: 8px 12px;
+  padding-top: 12px;
+  background: transparent;
+  position: relative;
+}
+
+.species-filter-header {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 12px;
+}
+
+.species-filter-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #2d2d2d;
+  padding: 0 6px;
+}
+
+.species-filter-count {
+  font-weight: 400;
+  color: #777;
+  text-transform: none;
+}
+
+.species-filter-toggle {
+  background: #2d2d2d;
+  border: none;
+  color: #999;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 0 6px;
+  width: auto;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.species-filter-toggle:hover {
+  color: #ff6400;
+}
+
+.species-filter-toggle i {
+  transition: transform 0.3s ease;
+}
+
+.species-filter-content {
+  display: none;
+  padding-top: 4px;
+}
+
+.species-filter-actions {
+  margin-bottom: 8px;
+}
+
+.species-filter-action {
+  display: inline-block;
+  width: max-content;
+  padding: 2px 8px;
+  border: 1px solid #999;
+  border-radius: 999px;
+  background: transparent;
+  color: #555;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+
+.species-filter-action:hover {
+  border-color: #ff6400;
+  color: #ff6400;
+}
+
+.species-pills-container {
+  font-size: 0;
+}
+
+.species-pill {
+  display: inline-block;
+  width: max-content;
+  padding: 3px 10px;
+  border: 1px solid #999;
+  border-radius: 999px;
+  background: transparent;
+  color: #666;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+.species-pill:hover {
+  border-color: #ff6400;
+  color: #666;
+}
+
+.species-pill.active {
+  background: #ff6400;
+  border-color: #ff6400;
+  color: white;
+}
+
+.species-pill.active:hover {
+  background: #ff7a2e;
+  border-color: #ff7a2e;
 }
 
 .emergency-names-grid {
@@ -95,21 +265,21 @@
 }
 
 @keyframes pulseSuccess {
-  0% { 
+  0% {
     transform: scale(1);
     box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
   }
-  50% { 
+  50% {
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
   }
-  100% { 
+  100% {
     transform: scale(1);
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
   }
 }
 
-.emergency-name-pill .name-text {
+.name-text {
   font-size: 24px;
   font-weight: bold;
   color: white;
@@ -118,7 +288,7 @@
   letter-spacing: 0.5px;
 }
 
-.emergency-name-pill .species-text {
+.species-text {
   font-size: 12px;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
@@ -131,6 +301,7 @@
   gap: 15px;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .emergency-reroll-btn,
@@ -223,7 +394,7 @@
     gap: 12px;
   }
 
-  .emergency-name-pill .name-text {
+  .name-text {
     font-size: 20px;
   }
 
