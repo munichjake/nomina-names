@@ -70,6 +70,8 @@
         "select-all": "Bitte wähle Sprache und Spezies aus",
         "select-components": "Bitte wähle mindestens eine Namenskomponente aus",
         "search-hint": "Tipp: Nutze die Suchfunktion um weitere Optionen zu finden",
+        "search-placeholder": "Namen durchsuchen...",
+        "no-search-results": "Keine Namen gefunden",
         "// ===== HELP & INSTRUCTIONS =====": "",
         "gender-help": "Nicht-binäre Vornamen sind nur verfügbar, wenn die ausgewählte Spezies dies unterstützt.",
         "subcategory-help": "Wähle mindestens eine Unterkategorie aus, oder lasse alle unausgewählt für zufällige Auswahl.",
