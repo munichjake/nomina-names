@@ -280,6 +280,11 @@ export class NamesGeneratorApp extends Application {
       logDebug(`Toggled favorite for: ${name}. Total favorites: ${this.favoritedNames.size}`);
     });
 
+    // Component checkboxes - update format field
+    html.find('input[name^="names-include-"]').change((ev) => {
+      this._updateFormatField(html);
+    });
+
     // Set default language only on first render
     if (this._isFirstRender) {
       this._isFirstRender = false;
@@ -365,6 +370,9 @@ export class NamesGeneratorApp extends Application {
         this._fillGenderCheckboxes(html);
       }
 
+      // Update format field based on current component selection
+      this._updateFormatField(html);
+
       // Enable generate button
       generateBtn.prop('disabled', false);
     } else if (this.currentCategory) {
@@ -417,6 +425,54 @@ export class NamesGeneratorApp extends Application {
       `;
       genderContainer.append(checkbox);
     }
+  }
+
+  /**
+   * Update format field based on selected components
+   */
+  _updateFormatField(html) {
+    const formatInput = html.find('input[name="names-format"]');
+
+    // Get selected components
+    const components = [];
+    if (html.find('input[name="names-include-firstname"]:checked').length) components.push('firstname');
+    if (html.find('input[name="names-include-surname"]:checked').length) components.push('surname');
+    if (html.find('input[name="names-include-title"]:checked').length) components.push('title');
+    if (html.find('input[name="names-include-nickname"]:checked').length) components.push('nickname');
+
+    // Build format string based on selected components
+    let format = '';
+    if (components.length > 0) {
+      // Build format with proper separators
+      const parts = [];
+
+      // Add title first if selected
+      if (components.includes('title')) {
+        parts.push('{title}');
+      }
+
+      // Add firstname
+      if (components.includes('firstname')) {
+        parts.push('{firstname}');
+      }
+
+      // Add nickname in quotes if selected
+      if (components.includes('nickname')) {
+        parts.push('"{nickname}"');
+      }
+
+      // Add surname
+      if (components.includes('surname')) {
+        parts.push('{surname}');
+      }
+
+      format = parts.join(' ');
+    }
+
+    // Update the input field
+    formatInput.val(format);
+
+    logDebug(`Updated format field to: ${format}`);
   }
 
   async _onGenerateName(html) {
