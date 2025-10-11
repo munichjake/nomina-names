@@ -18,7 +18,8 @@
   "styles": [
     "styles/names.css",
     "styles/names-picker.css",
-    "styles/history-app.css"
+    "styles/history-app.css",
+    "styles/emergency-app.css"
   ],
   "languages": [
     {

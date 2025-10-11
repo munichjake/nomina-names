@@ -16,6 +16,9 @@ export class EmergencyNamesApp extends Application {
     this.emergencyNames = [];
     this.generator = null;
     this._initialized = false;
+    this.availableSpecies = [];
+    this.enabledSpecies = new Set();
+    this.isFilterExpanded = false;
   }
 
   static get defaultOptions() {
@@ -36,9 +39,30 @@ export class EmergencyNamesApp extends Application {
       await this.generator.initialize();
     }
 
+    const language = this._getFoundryLanguage();
+    const allSpecies = await this.generator.getAvailableSpecies(language);
+
+    // Initialize enabled species if not already done
+    if (this.enabledSpecies.size === 0) {
+      allSpecies.forEach(s => this.enabledSpecies.add(s.code));
+    }
+
+    this.availableSpecies = allSpecies.map(s => ({
+      code: s.code,
+      displayName: this._getLocalizedSpecies(s.code),
+      enabled: this.enabledSpecies.has(s.code)
+    }));
+
+    const speciesFilterCount = this.enabledSpecies.size === allSpecies.length
+      ? game.i18n.localize("names.emergency.allSpeciesSelected")
+      : `(${this.enabledSpecies.size}/${allSpecies.length})`;
+
     return {
       emergencyNames: this.emergencyNames,
-      isLoading: false
+      isLoading: false,
+      availableSpecies: this.availableSpecies,
+      speciesFilterLabel: game.i18n.localize("names.emergency.speciesFilter"),
+      speciesFilterCount: speciesFilterCount
     };
   }
 
@@ -49,6 +73,11 @@ export class EmergencyNamesApp extends Application {
     html.find('.emergency-open-generator-btn').off('click').on('click', this._onOpenGenerator.bind(this));
     html.find('.emergency-name-pill').off('click').on('click', this._onCopyName.bind(this));
     html.find('#emergency-history-btn').off('click').on('click', this._onOpenHistory.bind(this));
+
+    // Species filter listeners
+    html.find('.species-filter-header').off('click').on('click', this._onToggleFilter.bind(this));
+    html.find('.species-pill').off('click').on('click', this._onToggleSpecies.bind(this));
+    html.find('.species-filter-action').off('click').on('click', this._onFilterAction.bind(this));
 
     this._initializeApp(html);
   }
@@ -84,13 +113,16 @@ export class EmergencyNamesApp extends Application {
       // Get available species for this language
       const availableSpecies = await this.generator.getAvailableSpecies(language);
 
-      if (availableSpecies.length === 0) {
-        logWarn("No species data available, using fallback");
+      // Filter by enabled species
+      const filteredSpecies = availableSpecies.filter(s => this.enabledSpecies.has(s.code));
+
+      if (filteredSpecies.length === 0) {
+        logWarn("No enabled species available, using fallback");
         this._generateFallbackNames();
         return;
       }
 
-      logDebug("Available species:", availableSpecies);
+      logDebug("Available species:", filteredSpecies);
 
       // Generate 6 random names
       const supportedGenders = getSupportedGenders();
@@ -99,7 +131,7 @@ export class EmergencyNamesApp extends Application {
 
       for (let i = 0; i < 6; i++) {
         try {
-          const speciesObj = availableSpecies[Math.floor(Math.random() * availableSpecies.length)];
+          const speciesObj = filteredSpecies[Math.floor(Math.random() * filteredSpecies.length)];
           const species = speciesObj.code;
           const gender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
           const packageCode = `${species}-${language}`;
@@ -410,5 +442,99 @@ export class EmergencyNamesApp extends Application {
     historyManager.addEntries(entries);
 
     logDebug(`Added ${entries.length} names to history from emergency app`);
+  }
+
+  /**
+   * Toggle the species filter expand/collapse
+   */
+  _onToggleFilter(event) {
+    event.preventDefault();
+    const html = this.element;
+    const filterContent = html.find('.species-filter-content');
+    const toggleBtn = html.find('.species-filter-toggle i');
+
+    this.isFilterExpanded = !this.isFilterExpanded;
+
+    if (this.isFilterExpanded) {
+      filterContent.slideDown(300);
+      toggleBtn.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+    } else {
+      filterContent.slideUp(300);
+      toggleBtn.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+    }
+
+    logDebug(`Species filter ${this.isFilterExpanded ? 'expanded' : 'collapsed'}`);
+  }
+
+  /**
+   * Toggle individual species selection
+   */
+  _onToggleSpecies(event) {
+    event.preventDefault();
+    const btn = $(event.currentTarget);
+    const species = btn.data('species');
+
+    if (this.enabledSpecies.has(species)) {
+      // Prevent deselecting the last species
+      if (this.enabledSpecies.size <= 1) {
+        logDebug(`Cannot deselect last species ${species}`);
+        ui.notifications.warn(game.i18n.localize("names.emergency.minOneSpecies") || "Mindestens eine Spezies muss ausgewählt sein");
+        return;
+      }
+      this.enabledSpecies.delete(species);
+      btn.removeClass('active');
+    } else {
+      this.enabledSpecies.add(species);
+      btn.addClass('active');
+    }
+
+    this._updateFilterLabel();
+    logDebug(`Toggled species ${species}, now ${this.enabledSpecies.size} enabled`);
+  }
+
+  /**
+   * Handle select all / select humans actions
+   */
+  _onFilterAction(event) {
+    event.preventDefault();
+    const action = $(event.currentTarget).data('action');
+    const html = this.element;
+
+    if (action === 'select-all') {
+      this.availableSpecies.forEach(s => this.enabledSpecies.add(s.code));
+      html.find('.species-pill').addClass('active');
+      logDebug('Selected all species');
+    } else if (action === 'select-humans') {
+      // Deselect all first
+      this.enabledSpecies.clear();
+      html.find('.species-pill').removeClass('active');
+
+      // Try to find 'human' species, otherwise take first alphabetically
+      const humanSpecies = this.availableSpecies.find(s => s.code === 'human');
+      const targetSpecies = humanSpecies || this.availableSpecies.sort((a, b) => a.code.localeCompare(b.code))[0];
+
+      if (targetSpecies) {
+        this.enabledSpecies.add(targetSpecies.code);
+        html.find(`.species-pill[data-species="${targetSpecies.code}"]`).addClass('active');
+        logDebug(`Selected only ${targetSpecies.code} species`);
+      }
+    }
+
+    this._updateFilterLabel();
+  }
+
+  /**
+   * Update the species filter label text
+   */
+  _updateFilterLabel() {
+    const html = this.element;
+    const countSpan = html.find('.species-filter-count');
+    const totalSpecies = this.availableSpecies.length;
+
+    const countText = this.enabledSpecies.size === totalSpecies
+      ? game.i18n.localize("names.emergency.allSpeciesSelected")
+      : `(${this.enabledSpecies.size}/${totalSpecies})`;
+
+    countSpan.text(countText);
   }
 }

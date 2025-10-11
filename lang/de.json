@@ -302,7 +302,13 @@
             "noNames": "Keine Namen verfügbar",
             "hint": "Namen basieren auf der aktuellen Foundry-Sprache",
             "error": "Fehler beim Generieren der Namen",
-            "errorOpenGenerator": "Fehler beim Öffnen des Haupt-Generators"
+            "errorOpenGenerator": "Fehler beim Öffnen des Haupt-Generators",
+            "speciesFilter": "Spezies-Filter",
+            "speciesFilterExpanded": "Spezies auswählen",
+            "selectAll": "Alle auswählen",
+            "selectHumans": "Menschen",
+            "allSpeciesSelected": "Alle Spezies",
+            "minOneSpecies": "Mindestens eine Spezies muss ausgewählt sein"
         },
         "// ===== META DATA LABELS =====": "",
         "meta": {
