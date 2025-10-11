@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Spezies-Filter in Emergency App**: Neue Filteroptionen für schnellere Namensgenerierung
+  - Kompakter, ausklappbarer Filter-Bereich mit Fieldset-Design
+  - Alle Spezies standardmäßig ausgewählt
+  - Inline-Pills zum Aktivieren/Deaktivieren einzelner Spezies
+  - "Alle auswählen" Button für schnelle Vollauswahl
+  - "Menschen" Button zum schnellen Filtern auf Menschen (oder erste alphabetische Spezies als Fallback)
+  - Dynamische Anzeige der Anzahl ausgewählter Spezies (z.B. "(3/10)")
+  - Mindestens eine Spezies muss ausgewählt bleiben (Validierung verhindert vollständige Abwahl)
+  - Smooth slideDown/slideUp Animation beim Ausklappen
+  - Vollständig i18n-fähig (Deutsch/Englisch)
+  - Subtiles, kompaktes Design das den Fokus auf Namensgenerierung behält
+
 - **Name-Click-Konfiguration**: Neue Settings für individuelles Name-Click-Verhalten
   - Checkbox: In Zwischenablage kopieren (Standard: aktiviert)
   - Checkbox: In Chat posten (Standard: deaktiviert)
