@@ -13,7 +13,7 @@ import { NamesHistoryApp } from './apps/history-app.js';
 import { NamesRoleConfig } from './apps/role-config.js';
 import { NamesSpeciesConfig } from './apps/species-config.js';
 import { hasNamesGeneratorPermission, showPermissionChangeDialog } from './utils/permissions.js';
-import { injectEmergencyButton, removeEmergencyButton } from './utils/ui-helpers.js';
+import { injectEmergencyButton, removeEmergencyButton, moveEmergencyButton } from './utils/ui-helpers.js';
 import { MODULE_ID } from './shared/constants.js';
 import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
@@ -221,14 +221,52 @@ function replaceDropdownsInElement(element) {
 // ===== UI INTEGRATIONS =====
 
 /**
- * Emergency Button injection after Chat Log renders
+ * Emergency Button injection with robust event handling for chat state changes
+ * Inspired by best practices for Foundry VTT module UI integration
  */
+
+// Initial injection after Chat Log renders
 Hooks.on('renderChatLog', () => {
   setTimeout(() => {
     if (hasNamesGeneratorPermission() && game.settings.get(MODULE_ID, "showEmergencyButton")) {
       injectEmergencyButton();
     }
   }, 100);
+});
+
+// Re-inject/move button when chat is popped out
+Hooks.on('renderChatLog', (chatlog, html, data) => {
+  if (!chatlog.isPopout) return;
+  if (!game.settings.get(MODULE_ID, "showEmergencyButton")) return;
+  moveEmergencyButton();
+});
+
+// Remove/re-inject button when chat popout is closed
+Hooks.on('closeChatLog', (chatlog, html, data) => {
+  if (!chatlog.isPopout) return;
+  if (!game.settings.get(MODULE_ID, "showEmergencyButton")) return;
+  moveEmergencyButton();
+});
+
+// Move button when chat tab is activated
+Hooks.on('activateChatLog', (chatlog) => {
+  if (ui.chat.popout?.rendered && !ui.chat.isPopout) return;
+  if (!game.settings.get(MODULE_ID, "showEmergencyButton")) return;
+  moveEmergencyButton();
+});
+
+// Move button when chat tab is deactivated
+Hooks.on('deactivateChatLog', (chatlog) => {
+  if (ui.chat.popout?.rendered && !ui.chat.isPopout) return;
+  if (!game.settings.get(MODULE_ID, "showEmergencyButton")) return;
+  moveEmergencyButton();
+});
+
+// Move button when sidebar is collapsed/expanded
+Hooks.on('collapseSidebar', (sidebar, wasExpanded) => {
+  if (ui.chat.popout?.rendered && !ui.chat.isPopout) return;
+  if (!game.settings.get(MODULE_ID, "showEmergencyButton")) return;
+  moveEmergencyButton();
 });
 
 /**

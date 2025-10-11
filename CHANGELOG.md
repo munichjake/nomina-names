@@ -44,6 +44,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Emergency Button Injection**: Verbesserte Button-Injection mit robuster Event-Behandlung
+  - Umstellung von jQuery auf native DOM API (insertAdjacentHTML/insertAdjacentElement) für bessere Performance
+  - Umfassende Chat-Event-Hooks für zuverlässige Button-Positionierung:
+    - renderChatLog, closeChatLog, activateChatLog, deactivateChatLog, collapseSidebar
+  - Button bleibt korrekt positioniert bei Chat-Popout, Sidebar-Kollaps und Tab-Wechseln
+  - Neue moveEmergencyButton() Funktion für dynamische Repositionierung
+  - Button-Padding auf 2em erhöht für bessere Klickbarkeit
+
 - **Generator App**: Verbesserte Collection-Verarbeitung in `generator-app.js`
   - Intelligente Erkennung von Recipe- vs Tag-basierten Collections
   - Separate Generierungslogik für beide Collection-Typen
@@ -52,6 +60,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Kombinierbar: Recipe-basierte und Tag-basierte Collections können gemeinsam verwendet werden
 
 ### Fixed
+
+- **Generator App Styling**: Verbesserte Darstellung der Generator-App
+  - Optimierte CSS-Stile für bessere visuelle Konsistenz
+  - Anpassungen am Layout für verbesserte Benutzerfreundlichkeit
+
+- **Emergency App**: Fehlerbehandlung und Stabilität verbessert
+  - Robustere Spezies-Auswahl und Datenvalidierung
+  - Verbessertes Error-Handling bei fehlenden Daten
+
+- **Data Manager**: Erweiterte Validierung und Fehlerbehandlung
+  - Bessere Prüfung auf ungültige oder fehlende Spezies-Daten
+  - Verbesserte Logging-Informationen für Debugging
 
 - **API: getAllSpeciesCodes()**: Neue API-Methode hinzugefügt für den Zugriff auf alle registrierten Spezies-Codes
   - Gibt alle Spezies-Codes über alle Sprachen hinweg zurück (alphabetisch sortiert)
