@@ -318,3 +318,43 @@ export async function updateActorName(actor, name) {
     });
   }
 }
+
+/**
+ * Check if nonbinary names are available for a specific species
+ * @param {string} language - Language code (e.g., 'de')
+ * @param {string} species - Species code (e.g., 'human')
+ * @returns {boolean} True if nonbinary names exist for this species
+ */
+export function hasNonbinaryNamesForSpecies(language, species) {
+  if (!language || !species) {
+    return false;
+  }
+
+  // Get dataManager directly from global module
+  const dataManager = window.NamesModule?.getGlobalDataManager();
+  if (!dataManager) {
+    return false;
+  }
+
+  const packageCode = `${species}-${language}`;
+  const pkg = dataManager.getPackage(packageCode);
+
+  if (!pkg || !pkg.data.catalogs || !pkg.data.catalogs.names) {
+    return false;
+  }
+
+  // Check if the 'names' catalog has any entries with the 'nonbinary' tag
+  const namesCatalog = pkg.data.catalogs.names;
+
+  // V4 format supports both 'entries' and 'items' arrays
+  const itemsArray = namesCatalog.entries || namesCatalog.items;
+
+  if (!itemsArray || !Array.isArray(itemsArray)) {
+    return false;
+  }
+
+  // Check if any entry/item has the 'nonbinary' tag
+  return itemsArray.some(item =>
+    item.tags && Array.isArray(item.tags) && item.tags.includes('nonbinary')
+  );
+}
