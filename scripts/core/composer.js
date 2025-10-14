@@ -51,12 +51,24 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
         // Apply transformation if specified
         let finalText = result.text;
         if (block.transform) {
-          if (block.transform === 'genderAdapt') {
+          // Normalize transform type to lowercase for case-insensitive comparison
+          const transformType = typeof block.transform === 'string'
+            ? block.transform.toLowerCase()
+            : (typeof block.transform === 'object' && block.transform.type)
+              ? block.transform.type.toLowerCase()
+              : null;
+
+          if (transformType === 'genderadapt') {
             finalText = applyGenderAdaptation(result.item, parts, langRules, locale);
-          } else if (block.transform === 'Demonym' || (typeof block.transform === 'object' && block.transform.type === 'Demonym')) {
+          } else if (transformType === 'demonym') {
             // Extract toponym from item text
             const toponym = result.text;
             finalText = applyDemonymTransform(toponym, locale);
+          } else if (transformType === 'genitive' || transformType === 'possessive') {
+            // Convert name to genitive/possessive form
+            const name = result.text;
+            const gramData = result.item.gram || {};
+            finalText = applyGenitiveTransform(name, locale, gramData);
           }
         }
 
@@ -290,8 +302,93 @@ function applyDemonymTransform(toponym, locale) {
     }
   }
 
+  // For words ending in 'e', remove the 'e' before adding 'er'
+  if (/e$/i.test(toponym)) {
+    return toponym.slice(0, -1) + 'er';
+  }
+
   // Default: just add 'er'
   return toponym + 'er';
+}
+
+/**
+ * Apply Genitive/Possessive transformation
+ * Converts names to genitive case according to language-specific grammar rules
+ * @param {string} name - Name to convert
+ * @param {string} locale - Target locale (currently 'de' and 'en' supported)
+ * @param {Object} gramData - Grammatical metadata from item.gram (optional)
+ * @returns {string} Genitive/possessive form of the name
+ */
+function applyGenitiveTransform(name, locale, gramData = {}) {
+  if (!name || typeof name !== 'string') {
+    logWarn('Invalid name for Genitive transform');
+    return name;
+  }
+
+  if (locale === 'de') {
+    return applyGermanGenitive(name, gramData);
+  } else if (locale === 'en') {
+    return applyEnglishPossessive(name);
+  } else {
+    logWarn(`Genitive transform not implemented for locale: ${locale}`);
+    return name;
+  }
+}
+
+/**
+ * Apply German genitive case rules
+ * German genitive rules depend on gender, declension class, and ending
+ * @param {string} name - Name to convert
+ * @param {Object} gramData - Grammatical metadata (gender, declension, etc.)
+ * @returns {string} German genitive form
+ */
+function applyGermanGenitive(name, gramData) {
+  // Extract gender from gram data (can be locale-specific or general)
+  const gender = gramData.de?.gender || gramData.gender;
+
+  // Proper names in German typically take -s in genitive
+  // But there are exceptions based on ending sounds
+
+  // 1. Names ending in -s, -ss, -ß, -x, -z, -tz take no additional ending (or use "von + Dative")
+  //    However, in written form often use apostrophe: Hans → Hans' or Hans's
+  if (/[sßxz]$/i.test(name) || /tz$/i.test(name)) {
+    // For names ending in sibilants, use apostrophe
+    return name + "'";
+  }
+
+  // 2. Names ending in -e often get -ns (especially older/traditional names)
+  //    Modern names just get -s
+  if (/e$/i.test(name)) {
+    // Check if it's a traditional name pattern (this is heuristic)
+    // For simplicity, we'll just add -s for most cases
+    return name + 's';
+  }
+
+  // 3. Names ending in -er, -el, -en typically just add -s
+  if (/(?:er|el|en)$/i.test(name)) {
+    return name + 's';
+  }
+
+  // 4. Default: add -s for most proper names
+  return name + 's';
+}
+
+/**
+ * Apply English possessive rules
+ * English possessive is simpler: add 's or just apostrophe for names ending in s
+ * @param {string} name - Name to convert
+ * @returns {string} English possessive form
+ */
+function applyEnglishPossessive(name) {
+  // 1. Names ending in -s: traditionally just apostrophe (Charles' hat)
+  //    Modern usage also accepts 's (Charles's hat)
+  //    We'll use just apostrophe for classical style
+  if (/s$/i.test(name)) {
+    return name + "'";
+  }
+
+  // 2. All other names: add 's
+  return name + "'s";
 }
 
 /**
