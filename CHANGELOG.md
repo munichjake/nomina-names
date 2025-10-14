@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Genitive/Possessive Transformer**: Neuer Transformer zur Umwandlung von Namen in den Genitiv/Possessiv
+  - Unterstützt deutsche Genitivbildung nach korrekten Grammatikregeln
+  - Unterstützt englische Possessivbildung (apostrophe rules)
+  - Case-insensitiv: `genitive`, `Genitive`, `GENITIVE` und `possessive`, `Possessive`, `POSSESSIVE` funktionieren alle
+  - Verwendung in Patterns: `"transform": "genitive"` oder `"transform": { "type": "genitive" }`
+  - Deutsche Regeln:
+    - Namen auf -s, -ß, -x, -z, -tz: Apostroph anhängen (Hans → Hans')
+    - Namen auf -e: -s anhängen (Marie → Maries)
+    - Namen auf -er, -el, -en: -s anhängen (Peter → Peters)
+    - Standard: -s anhängen (Wilhelm → Wilhelms)
+  - Englische Regeln:
+    - Namen auf -s: nur Apostroph (Charles → Charles')
+    - Standard: 's anhängen (Peter → Peter's)
+  - Praktische Anwendung z.B. für Tavernennamen, Ladennamen: "Peters Taverne", "Annas Laden"
+
 - **Spezies-Filter in Emergency App**: Neue Filteroptionen für schnellere Namensgenerierung
   - Kompakter, ausklappbarer Filter-Bereich mit Fieldset-Design
   - Alle Spezies standardmäßig ausgewählt
@@ -60,6 +75,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Kombinierbar: Recipe-basierte und Tag-basierte Collections können gemeinsam verwendet werden
 
 ### Fixed
+
+- **Nonbinär-Feld im Generator**: Nonbinäres Geschlechtsfeld wird jetzt nur noch korrekt angezeigt, wenn beide Bedingungen erfüllt sind
+  - Nur sichtbar wenn Nonbinär-Einstellung aktiviert ist UND die gewählte Spezies nonbinäre Namen hat
+  - Behebt Problem wo Nonbinär-Feld bei allen Spezies angezeigt wurde (z.B. Zwerge, Dragonborn)
+  - Neue zentrale Hilfsfunktion `hasNonbinaryNamesForSpecies()` in [ui-helpers.js](scripts/utils/ui-helpers.js:322-360)
+  - DataManager-Zugriff korrigiert: Nutzt jetzt `window.NamesModule.getGlobalDataManager()` statt `generator.dataManager`
+  - Geschlechts-Checkboxen werden jetzt bei jedem Spezieswechsel aktualisiert statt nur einmal initial
+  - Test 35 in [console-tests-extended.js](_dev/tests/console-tests-extended.js) verifiziert das Verhalten
 
 - **Generator App Styling**: Verbesserte Darstellung der Generator-App
   - Optimierte CSS-Stile für bessere visuelle Konsistenz
