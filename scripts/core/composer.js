@@ -614,9 +614,33 @@ function titleCase(text) {
   const particles = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'a', 'an',
                      'von', 'der', 'die', 'das', 'den', 'dem', 'des', 'und', 'in', 'an', 'am', 'bei'];
 
-  // Use Unicode letter property to match all word characters including diacritics
+  // Match words, including those with apostrophes (for possessives like "Peter's")
   // \p{L} matches any Unicode letter, \p{N} matches any Unicode number
-  return text.replace(/[\p{L}\p{N}]+/gu, (word, index) => {
+  // We include apostrophe within the word pattern to keep possessives together
+  return text.replace(/[\p{L}\p{N}]+(?:'[\p{L}\p{N}]*)?/gu, (word, index) => {
+    // Check if word contains an apostrophe (possessive)
+    const apostropheIndex = word.indexOf("'");
+
+    if (apostropheIndex > 0) {
+      // Handle possessive: capitalize only the part before the apostrophe
+      // "peter's" -> "Peter's" (not "Peter'S")
+      const beforeApostrophe = word.slice(0, apostropheIndex);
+      const afterApostrophe = word.slice(apostropheIndex); // includes the apostrophe
+
+      // Capitalize first letter of the word before apostrophe
+      if (index === 0) {
+        // First word: always capitalize
+        return beforeApostrophe.charAt(0).toUpperCase() + beforeApostrophe.slice(1).toLowerCase() + afterApostrophe.toLowerCase();
+      } else if (particles.includes(beforeApostrophe.toLowerCase())) {
+        // Particle: keep lowercase
+        return word.toLowerCase();
+      } else {
+        // Regular word: capitalize first letter
+        return beforeApostrophe.charAt(0).toUpperCase() + beforeApostrophe.slice(1).toLowerCase() + afterApostrophe.toLowerCase();
+      }
+    }
+
+    // Regular word without apostrophe (original logic)
     // Always capitalize first word
     if (index === 0) {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
