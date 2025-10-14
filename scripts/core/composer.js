@@ -48,10 +48,16 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
           continue;
         }
 
-        // Apply gender adaptation transform if specified
+        // Apply transformation if specified
         let finalText = result.text;
-        if (block.transform === 'genderAdapt') {
-          finalText = applyGenderAdaptation(result.item, parts, langRules, locale);
+        if (block.transform) {
+          if (block.transform === 'genderAdapt') {
+            finalText = applyGenderAdaptation(result.item, parts, langRules, locale);
+          } else if (block.transform === 'Demonym' || (typeof block.transform === 'object' && block.transform.type === 'Demonym')) {
+            // Extract toponym from item text
+            const toponym = result.text;
+            finalText = applyDemonymTransform(toponym, locale);
+          }
         }
 
         // Only add to output if not hidden (ext.hidden is for pre-generating aliases)
@@ -231,6 +237,61 @@ function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters 
 
   // Build phrase using grammar rules
   return buildPPPhrase(targetItem, locale, prep, langRules);
+}
+
+/**
+ * Apply Demonym transformation (Toponym → Demonym)
+ * Converts place names to inhabitant names according to German rules
+ * @param {string} toponym - Place name
+ * @param {string} locale - Target locale (currently only 'de' supported)
+ * @returns {string} Demonym (inhabitant name)
+ */
+function applyDemonymTransform(toponym, locale) {
+  if (!toponym || typeof toponym !== 'string') {
+    logWarn('Invalid toponym for Demonym transform');
+    return toponym;
+  }
+
+  // Only German rules implemented for now
+  if (locale !== 'de') {
+    logWarn(`Demonym transform not implemented for locale: ${locale}`);
+    return toponym;
+  }
+
+  // German Demonym transformation rules
+  const rules = [
+    { pattern: /ingen$/i, replacement: 'inger' },
+    { pattern: /ing$/i, replacement: 'inger' },
+    { pattern: /au$/i, replacement: 'auer' },
+    { pattern: /ach$/i, replacement: 'acher' },
+    { pattern: /heim$/i, replacement: 'heimer' },
+    { pattern: /stein$/i, replacement: 'steiner' },
+    { pattern: /burg$/i, replacement: 'burger' },
+    { pattern: /dorf$/i, replacement: 'dorfer' },
+    { pattern: /feld$/i, replacement: 'felder' },
+    { pattern: /furt$/i, replacement: 'furter' },
+    { pattern: /thal$/i, replacement: 'taler' },
+    { pattern: /tal$/i, replacement: 'taler' },
+    { pattern: /wald$/i, replacement: 'walder' },
+    { pattern: /hagen$/i, replacement: 'hagener' },
+    { pattern: /hausen$/i, replacement: 'hausener' },
+    { pattern: /kirchen$/i, replacement: 'kirchner' },
+    { pattern: /bach$/i, replacement: 'bacher' },
+    { pattern: /bruch$/i, replacement: 'brucher' },
+    { pattern: /born$/i, replacement: 'borner' },
+    { pattern: /see$/i, replacement: 'seer' },
+    { pattern: /zell$/i, replacement: 'zeller' }
+  ];
+
+  // Try each rule
+  for (const rule of rules) {
+    if (rule.pattern.test(toponym)) {
+      return toponym.replace(rule.pattern, rule.replacement);
+    }
+  }
+
+  // Default: just add 'er'
+  return toponym + 'er';
 }
 
 /**
@@ -456,7 +517,9 @@ function titleCase(text) {
   const particles = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'a', 'an',
                      'von', 'der', 'die', 'das', 'den', 'dem', 'des', 'und', 'in', 'an', 'am', 'bei'];
 
-  return text.replace(/\w+/g, (word, index) => {
+  // Use Unicode letter property to match all word characters including diacritics
+  // \p{L} matches any Unicode letter, \p{N} matches any Unicode number
+  return text.replace(/[\p{L}\p{N}]+/gu, (word, index) => {
     // Always capitalize first word
     if (index === 0) {
       return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();

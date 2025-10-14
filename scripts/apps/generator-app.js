@@ -10,6 +10,7 @@ import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID } from '../
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesHistoryApp } from './history-app.js';
 import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
+import { hasNonbinaryNamesForSpecies } from '../utils/ui-helpers.js';
 
 export class NamesGeneratorApp extends Application {
   constructor(options = {}) {
@@ -389,11 +390,8 @@ export class NamesGeneratorApp extends Application {
       componentsSection.show();
       subcategorySection.hide();
 
-      // Fill gender checkboxes if not already filled
-      const genderContainer = html.find('#gender-checkboxes-container');
-      if (genderContainer.children().length === 0) {
-        this._fillGenderCheckboxes(html);
-      }
+      // Always refresh gender checkboxes when species changes to update nonbinary availability
+      this._fillGenderCheckboxes(html);
 
       // Update format field based on current component selection
       this._updateFormatField(html);
@@ -439,7 +437,24 @@ export class NamesGeneratorApp extends Application {
     const genderContainer = html.find('#gender-checkboxes-container');
     genderContainer.empty();
 
+    // Check if nonbinary setting is enabled
+    const nonbinaryEnabled = game.settings.get('nomina-names', 'includeNonbinaryNames');
+
+    // Check if nonbinary names exist for current species
+    const hasNonbinaryNames = hasNonbinaryNamesForSpecies(
+      this.currentLanguage,
+      this.currentSpecies
+    );
+
     for (const gender of this.supportedGenders) {
+      // Skip nonbinary if either:
+      // 1. Setting is disabled, OR
+      // 2. No nonbinary names exist for this species
+      if (gender === 'nonbinary' && (!nonbinaryEnabled || !hasNonbinaryNames)) {
+        logDebug(`Skipping nonbinary checkbox: enabled=${nonbinaryEnabled}, hasNames=${hasNonbinaryNames}`);
+        continue;
+      }
+
       const label = game.i18n.localize(`names.gender.${gender}`) || gender;
       const checkbox = `
         <label class="names-module-checkbox-item selected">
