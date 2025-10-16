@@ -433,18 +433,34 @@ export class Generator {
     const recipes = await this.getAvailableRecipes(packageCode, locale);
     let recipeId = null;
 
+    logDebug(`=== RECIPE LOOKUP DEBUG ===`);
+    logDebug(`Looking for recipe for catalog: ${catalogKey}`);
+    logDebug(`Available recipes: ${recipes.map(r => r.id).join(', ')}`);
+    logDebug(`=== END RECIPE LOOKUP DEBUG ===`);
+
     // Look for a recipe that uses only this catalog
+    // BUT: Skip dynamic recipes to avoid using stale cached recipes with old tags
     const catalogRecipe = recipes.find(r =>
-      r.id === catalogKey ||
-      r.id === `simple_${catalogKey}` ||
-      r.displayName?.toLowerCase() === catalogKey.toLowerCase()
+      !r.id.startsWith('_dynamic_') && // Skip dynamic recipes
+      (r.id === catalogKey ||
+       r.id === `simple_${catalogKey}` ||
+       r.displayName?.toLowerCase() === catalogKey.toLowerCase())
     );
 
     if (catalogRecipe) {
+      logDebug(`Found existing static catalog recipe: ${catalogRecipe.id} - using it`);
       recipeId = catalogRecipe.id;
     } else {
       // Create a dynamic simple recipe
-      recipeId = `_dynamic_${catalogKey}`;
+      // Include tags in recipe ID to ensure different tag combinations create different recipes
+      const tagsSuffix = tags.length > 0 ? `_${tags.sort().join('_')}` : '';
+      recipeId = `_dynamic_${catalogKey}${tagsSuffix}`;
+
+      logDebug(`=== RECIPE CREATION DEBUG ===`);
+      logDebug(`Creating recipe: ${recipeId}`);
+      logDebug(`Tags: [${tags.join(', ')}]`);
+      logDebug(`anyOfTags: ${anyOfTags}`);
+      logDebug(`=== END RECIPE DEBUG ===`);
 
       // Register dynamic recipe with engine
       const engine = this.dataManager.getEngine();
@@ -487,12 +503,16 @@ export class Generator {
         pkg.data.recipes = [];
       }
 
-      // Check if already exists
-      if (!pkg.data.recipes.find(r => r.id === recipeId)) {
+      // Replace existing recipe with same ID if it exists, or add new one
+      const existingIndex = pkg.data.recipes.findIndex(r => r.id === recipeId);
+      if (existingIndex >= 0) {
+        pkg.data.recipes[existingIndex] = recipe;
+      } else {
         pkg.data.recipes.push(recipe);
-        // Reload package in engine
-        engine.loadPackage(pkg.data);
       }
+
+      // Always reload package in engine to apply changes
+      engine.loadPackage(pkg.data);
     }
 
     // Generate using the recipe
