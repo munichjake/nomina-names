@@ -617,6 +617,12 @@ export class NamesGeneratorApp extends Application {
           selectedCollections.push(this.value);
         });
 
+        logDebug(`=== CHECKBOX DEBUG ===`);
+        logDebug(`Selected collections: ${selectedCollections.join(', ')}`);
+        logDebug(`Total checkboxes: ${html.find('input[name^="names-collection-"]').length}`);
+        logDebug(`Checked checkboxes: ${html.find('input[name^="names-collection-"]:checked').length}`);
+        logDebug(`=== END CHECKBOX DEBUG ===`);
+
         // If collections are selected, generate from collections
         if (selectedCollections.length > 0) {
           // Separate collections by type: recipe-based vs tag-based
