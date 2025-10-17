@@ -170,12 +170,13 @@ Recipes are optional but recommended. They describe **how to produce an output s
 
 A pattern is a left‑to‑right sequence of **blocks**. Valid block kinds:
 
-- **`select` block** (pick from a source)
+- **`select` block** (pick from a source - legacy syntax)
+- **`generate` block** (generate content from catalogs or recipes - **recommended**)
 - **`literal` block** (insert a fixed string)
 - **`pp` block** (build preposition+article+name phrase)
 
 ```json
-// SELECT block
+// SELECT block (LEGACY - use GENERATE block instead)
 {
   "select": {
     "from": "catalog" | "generator" | "bundle"* | "external"*,  // `bundle`/`external` are optional extensions
@@ -191,6 +192,62 @@ A pattern is a left‑to‑right sequence of **blocks**. Valid block kinds:
   "distinctFrom": ["AliasA", "AliasB"] // optional: ensure different item identity
 }
 ```
+
+```json
+// GENERATE block (RECOMMENDED - new in v4.1)
+{
+  "generate": {
+    "from": "<package/category>" | "recipe" | "catalog",  // Source - see details below
+    "collection": "<collection-id>",  // Optional: collection to use for generation
+    "key": "<id>",                     // Optional: explicit recipe or catalog key (for "recipe"/"catalog" mode)
+    "where": {                          // Optional: additional filter (catalog mode only)
+      "kinds": ["…"],                  // ANY-of match
+      "tags":  ["…","…"]             // ALL-of match
+    }
+  },
+  "as": "Alias",                       // Optional: store under an alias
+  "transform": "Demonym" | "possessive" // Optional: apply transformation
+}
+```
+
+**GENERATE block details:**
+
+**IMPORTANT: GENERATE always produces complete, generated results. To pick individual catalog items, use SELECT.**
+
+- **Simplified Syntax (RECOMMENDED)**: `"from": "packageName"`
+  - Automatically finds and executes recipes from collections
+  - With `collection`: Executes random recipe from specified collection
+    - Example: `{ "from": "settlements", "collection": "procedural_settlements" }`
+    - Finds collection with key "procedural_settlements"
+    - Picks random recipe from collection's recipe list
+    - Executes recipe to generate complete name (e.g., "Ironforge", "Steelhold")
+
+  - Without `collection`: Uses first available collection with recipes
+    - Example: `{ "from": "settlements" }`
+    - Searches for first collection in package that has recipes defined
+    - Executes random recipe from that collection
+    - Useful for simple generation without specifying collection
+
+- **Explicit Syntax**: `"from": "recipe"` or `"from": "catalog"`
+  - **`from: "recipe"`**: Execute a specific recipe by ID
+    - `key`: Recipe ID from the same package (required)
+    - Example: `{ "from": "recipe", "key": "settlement_compound" }`
+    - Direct recipe execution with full control
+
+  - **`from: "catalog"`**: Generate from catalog with collection-based recipe execution
+    - `key`: Catalog name (local) or `"packageCode:catalogName"` (cross-package)
+    - `collection`: Collection key (required for recipe execution)
+    - Example: `{ "from": "catalog", "key": "dwarf-en:settlements", "collection": "mountain_settlements" }`
+    - Cross-package generation support
+
+- **`transform`**: Apply a transformation to the generated text
+  - `"Demonym"`: Convert place name to inhabitant name (e.g., "Ironforge" → "Ironfordian" [EN], "Hamburg" → "Hamburger" [DE])
+  - `"possessive"` or `"genitive"`: Convert to possessive form (e.g., "Peter" → "Peter's" [EN], "Peter" → "Peters" [DE])
+  - Transforms are locale-aware and applied before the text is added to output
+
+**GENERATE vs SELECT:**
+- **GENERATE**: Always produces complete, generated results (executes recipes)
+- **SELECT**: Picks individual items from catalogs (raw catalog entries)
 
 ```json
 // LITERAL block
@@ -380,6 +437,189 @@ Given a candidate item with arrays `item.kinds` and `item.tags` (both optional):
 - `Heuburg am Kreuzberg` (mountain m, `an dem`→`am`)
 - `Kreuzberg bei Heuburg` (both settlements, no article)
 - `Kreuzberg bei der Heuburg` (castle f, `bei der`)
+
+### 3.7 Examples – GENERATE Block with Transforms
+
+The `generate` block provides a cleaner, more semantic syntax for content generation with built-in support for transformations and cross-package references.
+
+**IMPORTANT:** GENERATE always produces complete, generated results by executing recipes. To pick individual catalog items (like prefixes or suffixes), use SELECT instead.
+
+**Example 1: Simplified Syntax with Collection (RECOMMENDED)**
+
+```json
+{
+  "id": "settlement_beer",
+  "displayName": { "en": "Settlement Beer" },
+  "pattern": [
+    {
+      "generate": {
+        "from": "settlements",
+        "collection": "procedural_settlements"
+      },
+      "transform": "Demonym"
+    },
+    { "literal": " " },
+    {
+      "select": {
+        "from": "catalog",
+        "key": "beer_styles"
+      }
+    }
+  ],
+  "post": ["TitleCase", "CollapseSpaces"]
+}
+```
+
+**What happens:**
+1. Finds collection "procedural_settlements" in settlements package
+2. Picks random recipe from collection (e.g., "procedural_template_0")
+3. Executes recipe → generates "Ironforge", "Steelhold", etc.
+4. Applies Demonym transform → "Ironfordian", "Steelholdian"
+5. Adds beer style → "Ironfordian Lager", "Steelholdian Bock"
+
+**Output:** "Ironfordian Lager", "Steelholdian Bock"
+
+**Example 2: Simplified Syntax without Collection**
+
+```json
+{
+  "id": "quick_settlement_beer",
+  "displayName": { "en": "Quick Settlement Beer" },
+  "pattern": [
+    {
+      "generate": {
+        "from": "settlements"  // Uses first available collection with recipes
+      },
+      "transform": "Demonym"
+    },
+    { "literal": " " },
+    {
+      "select": {
+        "from": "catalog",
+        "key": "beer_styles"
+      }
+    }
+  ],
+  "post": ["TitleCase"]
+}
+```
+
+**What happens:**
+1. Searches for first collection in settlements package that has recipes
+2. Finds "procedural_buildings" or "procedural_settlements"
+3. Executes random recipe from that collection
+4. Generates complete settlement name
+
+**Output:** "Copperkeep Ale", "Bronzehall Stout"
+
+**Example 3: Cross-Package Reference with Explicit Syntax**
+
+```json
+{
+  "id": "brand_from_dwarf_settlements",
+  "displayName": { "en": "Brand from Dwarf Settlements" },
+  "pattern": [
+    {
+      "generate": {
+        "from": "catalog",
+        "key": "dwarf-en:settlements",
+        "collection": "procedural_settlements"
+      },
+      "transform": "Demonym",
+      "as": "TOPONYM"
+    },
+    { "literal": " " },
+    {
+      "select": {
+        "from": "catalog",
+        "key": "beer_styles"
+      }
+    }
+  ],
+  "post": ["TitleCase"]
+}
+```
+
+**What happens:**
+1. References settlements catalog from dwarf-en package (cross-package)
+2. Uses collection "procedural_settlements"
+3. Executes recipe to generate settlement name
+
+**Output:** "Ironpeakian Lager", "Stonehavenite Ale"
+
+**Example 4: Explicit Recipe Execution**
+
+```json
+{
+  "id": "complex_brand",
+  "displayName": { "en": "Complex Brand" },
+  "pattern": [
+    {
+      "generate": {
+        "from": "recipe",
+        "key": "procedural_template_0"
+      },
+      "transform": "Demonym"
+    },
+    { "literal": " " },
+    {
+      "select": {
+        "from": "catalog",
+        "key": "beer_styles"
+      }
+    }
+  ],
+  "post": ["TitleCase"]
+}
+```
+
+**What happens:**
+1. Directly executes recipe "procedural_template_0"
+2. Full control over which recipe is used
+3. No collection lookup needed
+
+**Output:** "Mithrilforger Pilsner", "Goldhallic Wheat"
+
+**Example 5: Possessive Transform**
+
+```json
+{
+  "id": "possessive_brewery",
+  "displayName": { "en": "Possessive Brewery" },
+  "pattern": [
+    {
+      "generate": {
+        "from": "names",
+        "collection": "surnames"
+      },
+      "transform": "possessive"
+    },
+    { "literal": " " },
+    {
+      "select": {
+        "from": "catalog",
+        "key": "brewery_types"
+      }
+    }
+  ],
+  "post": ["TitleCase"]
+}
+```
+
+**Output (EN):** "Ironhammer's Brewery", "Stonefist's Tavern"
+**Output (DE):** "Eisenhammers Brauerei", "Steinfausts Taverne"
+
+**GENERATE vs SELECT - When to use which:**
+
+```json
+// ✅ GENERATE: For complete, generated content
+{ "generate": { "from": "settlements", "collection": "procedural" } }
+// → Executes recipe → "Ironforge", "Steelhold"
+
+// ✅ SELECT: For individual catalog items
+{ "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["prefix"] } } }
+// → Picks item → "Iron", "Steel", "Copper"
+```
 
 ---
 
