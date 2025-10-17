@@ -207,6 +207,29 @@ export class Engine {
       throw new Error('Recipe must have pattern or oneOf');
     }
 
+    // Prepare context for generator support and cross-package references
+    const context = {
+      recipes: pkg.recipes || [],
+      collections: pkg.collections || [],
+      executeRecipe: (recipeId, recipLocale, recipeSeed, params) => {
+        // Execute another recipe within this package
+        const result = this.generateOne(pkg, recipeId, recipLocale, recipeSeed, filters, components);
+        return result.text;
+      },
+      getPackageCatalog: (packageCode, catalogKey) => {
+        // Get catalog from another package
+        const targetPkg = this.getPackage(packageCode);
+        if (!targetPkg) {
+          throw new Error(`Cross-package reference failed: Package not found: ${packageCode}`);
+        }
+        const catalog = targetPkg.catalogs[catalogKey];
+        if (!catalog) {
+          throw new Error(`Cross-package reference failed: Catalog not found: ${packageCode}:${catalogKey}`);
+        }
+        return catalog;
+      }
+    };
+
     // Execute pattern
     const { text: rawText, parts } = executePattern(
       pattern,
@@ -215,7 +238,8 @@ export class Engine {
       locale,
       seed,
       filters,
-      components
+      components,
+      context
     );
 
     // Apply transforms

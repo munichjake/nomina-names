@@ -9,6 +9,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **GENERATE Block (JSON Format 4.1)**: Neue, semantisch klarere Syntax für vollständige Content-Generierung in Rezepten
+  - **Semantischer Unterschied zu SELECT**:
+    - ✅ `GENERATE` = Vollständige Endergebnisse durch Recipe-Ausführung
+    - ✅ `SELECT` = Einzelne Catalog-Items (Prefixe, Suffixe, rohe Daten)
+  - **`generate` Block**: Führt immer Rezepte aus, um komplette, generierte Ergebnisse zu liefern
+  - **Drei Syntax-Varianten**:
+    - **Vereinfachte Syntax (EMPFOHLEN)**: `"from": "packageName"`
+      - Mit Collection: `{ "from": "settlements", "collection": "procedural_settlements" }`
+        - Sucht Collection im settlements-Package
+        - Wählt zufällig ein Recipe aus der Collection
+        - Führt Recipe aus → "Ironforge", "Steelhold", "Copperkeep"
+      - Ohne Collection: `{ "from": "settlements" }`
+        - Nutzt erste verfügbare Collection mit Rezepten
+        - Automatische Recipe-Auswahl und -Ausführung
+    - **Explizite Recipe-Ausführung**: `"from": "recipe", "key": "recipe_id"`
+      - Direkte Kontrolle über welches Recipe ausgeführt wird
+      - Beispiel: `{ "from": "recipe", "key": "procedural_template_0" }`
+    - **Explizite Catalog-Generation**: `"from": "catalog", "key": "catalog_name", "collection": "collection_id"`
+      - Für Cross-Package References
+      - Format: `"key": "packageCode:catalogName"` (z.B. `"dwarf-en:settlements"`)
+  - **Collection-basierte Recipe-Ausführung**:
+    - Collections definieren Recipe-Listen: `"recipes": ["template_0", "compound_names"]`
+    - GENERATE wählt zufällig und führt aus
+    - Ergebnis: Immer vollständig generierte Namen, nie einzelne Teile
+  - **Integrierte Transformationen**: `transform` Parameter direkt am Block
+    - `"Demonym"`: Ortsnamen → Einwohnernamen (z.B. "Ironforge" → "Ironfordian" [EN], "Hamburg" → "Hamburger" [DE])
+    - `"possessive"`: Namen → Possessivform (z.B. "Peter" → "Peter's" [EN], "Peter" → "Peters" [DE])
+  - **Erweiterte Demonym-Unterstützung für Englisch**:
+    - 26 spezifische Regeln für englische Toponyme
+    - Beispiele: `-ton` → `-tonian` (Boston → Bostonian), `-pool` → `-pudlian` (Liverpool → Liverpudlian)
+    - `-land` → `-lander`, `-ia` → `-ian`, `-burg` → `-burger`, `-ford` → `-fordian`
+    - Fallback-Regeln für unbekannte Endungen
+  - **Abwärtskompatibel**: Alte `select`-Syntax funktioniert weiterhin
+  - **Dokumentiert in JSON v4 Spec** mit ausführlichen Beispielen und Gegenüberstellungen (§3.2, §3.7)
+  - **Beispiel-Verwendungen**:
+    ```json
+    // Vereinfachte Syntax mit Collection (empfohlen)
+    { "generate": { "from": "settlements", "collection": "procedural_settlements" }, "transform": "Demonym" }
+    // → Findet Collection, wählt Recipe, führt aus → "Ironfordian", "Steelholdian"
+
+    // Vereinfachte Syntax ohne Collection
+    { "generate": { "from": "settlements" }, "transform": "Demonym" }
+    // → Nutzt erste Collection mit Recipes → "Copperkeepian", "Bronzehallian"
+
+    // Explizite Recipe-Ausführung
+    { "generate": { "from": "recipe", "key": "procedural_template_0" }, "transform": "Demonym" }
+    // → Direkte Kontrolle → "Mithrilforger", "Goldhallic"
+
+    // Cross-Package mit expliziter Syntax
+    { "generate": { "from": "catalog", "key": "dwarf-en:settlements", "collection": "procedural" }, "transform": "Demonym" }
+    // → Package-übergreifende Generierung → "Ironpeakian", "Stonehavenite"
+    ```
+
 - **Genitive/Possessive Transformer**: Neuer Transformer zur Umwandlung von Namen in den Genitiv/Possessiv
   - Unterstützt deutsche Genitivbildung nach korrekten Grammatikregeln
   - Unterstützt englische Possessivbildung (apostrophe rules)
@@ -23,6 +76,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Namen auf -s: nur Apostroph (Charles → Charles')
     - Standard: 's anhängen (Peter → Peter's)
   - Praktische Anwendung z.B. für Tavernennamen, Ladennamen: "Peters Taverne", "Annas Laden"
+
+### Changed
+
+- **TitleCase Transformer**: Verbesserte Behandlung von Apostrophen in Possessiv-Formen
+  - Buchstaben nach Apostrophen werden nicht mehr fälschlicherweise großgeschrieben
+  - Korrekte Ausgabe: "Peter's Shop" statt "Peter'S Shop", "Hans' Taverne" statt "Hans' Taverne"
+  - Funktioniert mit allen Unicode-Zeichen: "François' Taverne", "Müller's Laden", "José's Shop"
+  - Konsistent mit der bestehenden Behandlung von Umlauten und diakritischen Zeichen
 
 - **Spezies-Filter in Emergency App**: Neue Filteroptionen für schnellere Namensgenerierung
   - Kompakter, ausklappbarer Filter-Bereich mit Fieldset-Design
@@ -75,6 +136,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Kombinierbar: Recipe-basierte und Tag-basierte Collections können gemeinsam verwendet werden
 
 ### Fixed
+
+- **Collection-Checkbox-Filterung**: Behebt kritischen Bug, bei dem Checkbox-Änderungen bei Collections nicht übernommen wurden
+  - Problem: Dynamisch erstellte Rezepte wurden gecacht und bei nachfolgenden Generierungen wiederverwendet, auch wenn andere Collections ausgewählt wurden
+  - Lösung: Dynamische Rezepte (mit `_dynamic_` Prefix) werden jetzt bei der Recipe-Suche übersprungen
+  - Generator erstellt nun immer eine neue dynamische Recipe mit korrekten Tags, wenn sich die Collection-Auswahl ändert
+  - Betrifft alle Kategorien mit Collections (z.B. Bücher: Religiöse Bücher, Romane, Wissenschaftliche Abhandlungen, Humorvolle Titel)
+  - Ausführliches Debug-Logging in `generator.js` zur Nachverfolgung von Recipe-Erstellung und -Verwendung
 
 - **Nonbinär-Feld im Generator**: Nonbinäres Geschlechtsfeld wird jetzt nur noch korrekt angezeigt, wenn beide Bedingungen erfüllt sind
   - Nur sichtbar wenn Nonbinär-Einstellung aktiviert ist UND die gewählte Spezies nonbinäre Namen hat
