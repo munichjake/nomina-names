@@ -288,8 +288,8 @@
         },
         "// ===== EMERGENCY NAMES =====": "",
         "emergency": {
-            "title": "Emergency NSC Namen",
-            "button": "Emergency NSC Namen",
+            "title": "Notfall NSC Namen",
+            "button": "Notfall NSC Namen",
             "description": "Klicke auf einen Namen um ihn zu kopieren.",
             "tooltip": "Schnelle NSC Namen für den Notfall",
             "reroll": "Neue Namen",
@@ -354,12 +354,12 @@
                 "all": "Alle",
                 "generator": "Generator",
                 "picker": "Picker",
-                "emergency": "Emergency"
+                "emergency": "Notfall"
             },
             "source": {
                 "generator": "Generator",
                 "picker": "Picker",
-                "emergency": "Emergency"
+                "emergency": "Notfall"
             },
             "column": {
                 "name": "Name",
