@@ -344,7 +344,15 @@ export const TEMPLATE_PATHS = {
   picker: 'modules/nomina-names/templates/names-picker.hbs',
   emergency: 'modules/nomina-names/templates/emergency-names.hbs',
   history: 'modules/nomina-names/templates/history.hbs',
-  roleConfig: 'modules/nomina-names/templates/role-config.hbs'
+  roleConfig: 'modules/nomina-names/templates/role-config.hbs',
+  genderColorsConfig: 'modules/nomina-names/templates/gender-colors-config.hbs'
+};
+
+// Default gender colors
+export const DEFAULT_GENDER_COLORS = {
+  male: '#4a90d9',
+  female: '#d94a6b',
+  nonbinary: '#9b59b6'
 };
 
 export const DATA_PATHS = {

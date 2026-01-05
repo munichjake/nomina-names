@@ -250,7 +250,29 @@
                 "inherit": "Inherit Current Mode",
                 "whisper": "GM Only (WHISPER)",
                 "public": "Public (PUBLIC)"
+            },
+            "enableGenderColors": {
+                "name": "Enable Gender Colors",
+                "hint": "Display generated names with color-coding based on gender"
+            },
+            "genderColorsConfig": {
+                "name": "Configure Gender Colors",
+                "hint": "Set individual colors for each gender",
+                "label": "Configure Colors"
             }
+        },
+        "// ===== GENDER COLORS CONFIG =====": "",
+        "genderColorsConfig": {
+            "title": "Gender Colors",
+            "description": "Choose an accent color for each gender. The color will be used subtly as a background gradient and border accent.",
+            "male": "Male",
+            "female": "Female",
+            "nonbinary": "Non-binary",
+            "preview": "Preview",
+            "reset": "Reset",
+            "save": "Save",
+            "cancel": "Cancel",
+            "saved": "Colors have been saved!"
         },
         "// ===== SPECIES CONFIG =====": "",
         "speciesConfig": {
