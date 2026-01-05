@@ -12,9 +12,10 @@ import { EmergencyNamesApp } from './apps/emergency-app.js';
 import { NamesHistoryApp } from './apps/history-app.js';
 import { NamesRoleConfig } from './apps/role-config.js';
 import { NamesSpeciesConfig } from './apps/species-config.js';
+import { NamesGenderColorsConfig } from './apps/gender-colors-config.js';
 import { hasNamesGeneratorPermission, showPermissionChangeDialog } from './utils/permissions.js';
 import { injectEmergencyButton, removeEmergencyButton, moveEmergencyButton } from './utils/ui-helpers.js';
-import { MODULE_ID } from './shared/constants.js';
+import { MODULE_ID, DEFAULT_GENDER_COLORS } from './shared/constants.js';
 import { NamesAPI } from './api-system.js';
 import { LOG_LEVELS, updateLogLevel, logInfo, logInfoL, logDebug, logError } from './utils/logger.js';
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
@@ -967,6 +968,34 @@ function registerModuleSettings() {
       historyManager.setMaxEntries(value);
       logDebug(`History max entries updated to: ${value}`);
     }
+  });
+
+  // Gender Colors Settings - farbliche Kennzeichnung nach Geschlecht
+  game.settings.register(MODULE_ID, "enableGenderColors", {
+    name: game.i18n.localize("names.settings.enableGenderColors.name") || "Geschlechter-Farben aktivieren",
+    hint: game.i18n.localize("names.settings.enableGenderColors.hint") || "Zeigt generierte Namen farblich nach Geschlecht unterschieden an",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false
+  });
+
+  game.settings.registerMenu(MODULE_ID, "genderColorsConfig", {
+    name: game.i18n.localize("names.settings.genderColorsConfig.name") || "Geschlechter-Farben konfigurieren",
+    hint: game.i18n.localize("names.settings.genderColorsConfig.hint") || "Lege individuelle Farben für jedes Geschlecht fest",
+    label: game.i18n.localize("names.settings.genderColorsConfig.label") || "Farben konfigurieren",
+    icon: "fas fa-palette",
+    type: NamesGenderColorsConfig,
+    restricted: false
+  });
+
+  game.settings.register(MODULE_ID, "genderColors", {
+    name: "Gender Colors",
+    hint: "Color configuration for each gender",
+    scope: "client",
+    config: false,
+    type: Object,
+    default: DEFAULT_GENDER_COLORS
   });
 
   // Log Level Setting - für Entwicklung/Debugging am Ende der Client-Settings

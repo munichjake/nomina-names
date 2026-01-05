@@ -249,7 +249,29 @@
                 "inherit": "Aktuelle Stufe übernehmen",
                 "whisper": "Nur für GM sichtbar (WHISPER)",
                 "public": "Öffentlich (PUBLIC)"
+            },
+            "enableGenderColors": {
+                "name": "Geschlechter-Farben aktivieren",
+                "hint": "Zeigt generierte Namen farblich nach Geschlecht unterschieden an"
+            },
+            "genderColorsConfig": {
+                "name": "Geschlechter-Farben konfigurieren",
+                "hint": "Lege individuelle Farben für jedes Geschlecht fest",
+                "label": "Farben konfigurieren"
             }
+        },
+        "// ===== GENDER COLORS CONFIG =====": "",
+        "genderColorsConfig": {
+            "title": "Geschlechter-Farben",
+            "description": "Wähle für jedes Geschlecht eine Akzentfarbe. Die Farbe wird dezent als Hintergrund-Gradient und Border-Akzent verwendet.",
+            "male": "Männlich",
+            "female": "Weiblich",
+            "nonbinary": "Nicht-binär",
+            "preview": "Vorschau",
+            "reset": "Zurücksetzen",
+            "save": "Speichern",
+            "cancel": "Abbrechen",
+            "saved": "Farben wurden gespeichert!"
         },
         "// ===== SPECIES CONFIG =====": "",
         "speciesConfig": {

@@ -1,0 +1,196 @@
+/* ===============================
+   Gender Colors Configuration & Display
+   =============================== */
+
+/* === CONFIG FORM === */
+.names-gender-colors-config {
+  padding: 1rem;
+}
+
+.names-gender-colors-config .notes {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.gender-colors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.gender-color-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.gender-color-preview {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.gender-color-preview .preview-name {
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-picker-wrapper input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #4a4a4a;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 2px;
+  background: #2d2d2d;
+}
+
+.color-picker-wrapper input[type="color"]:hover {
+  border-color: #e67e22;
+}
+
+.color-picker-wrapper .color-hex {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #888;
+  min-width: 70px;
+}
+
+.names-gender-colors-config .sheet-footer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid #4a4a4a;
+}
+
+.names-gender-colors-config .sheet-footer button {
+  padding: 0.5rem 1rem;
+}
+
+/* === GENERATOR NAME DISPLAY WITH COLORS === */
+
+/* Gender-colored name items - detailed view */
+.names-module-generated-name[data-gender="male"] {
+  --gender-color: var(--gender-color-male, #4a90d9);
+}
+
+.names-module-generated-name[data-gender="female"] {
+  --gender-color: var(--gender-color-female, #d94a6b);
+}
+
+.names-module-generated-name[data-gender="nonbinary"] {
+  --gender-color: var(--gender-color-nonbinary, #9b59b6);
+}
+
+.names-module-generated-name.gender-colored {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--gender-color) 12%, transparent) 0%,
+    color-mix(in srgb, var(--gender-color) 5%, transparent) 100%
+  );
+  border-left: 3px solid var(--gender-color);
+  box-shadow: inset 0 0 20px color-mix(in srgb, var(--gender-color) 8%, transparent);
+}
+
+.names-module-generated-name.gender-colored:hover {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--gender-color) 18%, transparent) 0%,
+    color-mix(in srgb, var(--gender-color) 8%, transparent) 100%
+  );
+  border-left-color: var(--gender-color);
+  box-shadow:
+    inset 0 0 25px color-mix(in srgb, var(--gender-color) 12%, transparent),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Gender-colored name items - simple view */
+.names-module-simple-name[data-gender="male"] {
+  --gender-color: var(--gender-color-male, #4a90d9);
+}
+
+.names-module-simple-name[data-gender="female"] {
+  --gender-color: var(--gender-color-female, #d94a6b);
+}
+
+.names-module-simple-name[data-gender="nonbinary"] {
+  --gender-color: var(--gender-color-nonbinary, #9b59b6);
+}
+
+.names-module-simple-name.gender-colored {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--gender-color) 15%, transparent) 0%,
+    transparent 100%
+  );
+  border-left: 2px solid var(--gender-color);
+  padding-left: 0.75rem;
+}
+
+.names-module-simple-name.gender-colored:hover {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--gender-color) 22%, transparent) 0%,
+    transparent 100%
+  );
+}
+
+/* Gender indicator badge (optional, subtle) */
+.gender-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+  background: var(--gender-color);
+  color: #fff;
+}
+
+.names-module-generated-name:hover .gender-indicator,
+.names-module-simple-name:hover .gender-indicator {
+  opacity: 1;
+}
+
+/* Fallback for browsers without color-mix support */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .names-module-generated-name.gender-colored[data-gender="male"] {
+    background: linear-gradient(135deg, rgba(74, 144, 217, 0.12) 0%, rgba(74, 144, 217, 0.05) 100%);
+    box-shadow: inset 0 0 20px rgba(74, 144, 217, 0.08);
+  }
+
+  .names-module-generated-name.gender-colored[data-gender="female"] {
+    background: linear-gradient(135deg, rgba(217, 74, 107, 0.12) 0%, rgba(217, 74, 107, 0.05) 100%);
+    box-shadow: inset 0 0 20px rgba(217, 74, 107, 0.08);
+  }
+
+  .names-module-generated-name.gender-colored[data-gender="nonbinary"] {
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.12) 0%, rgba(155, 89, 182, 0.05) 100%);
+    box-shadow: inset 0 0 20px rgba(155, 89, 182, 0.08);
+  }
+
+  .names-module-simple-name.gender-colored[data-gender="male"] {
+    background: linear-gradient(90deg, rgba(74, 144, 217, 0.15) 0%, transparent 100%);
+  }
+
+  .names-module-simple-name.gender-colored[data-gender="female"] {
+    background: linear-gradient(90deg, rgba(217, 74, 107, 0.15) 0%, transparent 100%);
+  }
+
+  .names-module-simple-name.gender-colored[data-gender="nonbinary"] {
+    background: linear-gradient(90deg, rgba(155, 89, 182, 0.15) 0%, transparent 100%);
+  }
+}

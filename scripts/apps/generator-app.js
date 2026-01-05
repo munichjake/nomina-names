@@ -6,7 +6,7 @@
 
 import { getGlobalGenerator } from '../api/generator.js';
 import { getHistoryManager } from '../core/history-manager.js';
-import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID } from '../shared/constants.js';
+import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID, DEFAULT_GENDER_COLORS } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { NamesHistoryApp } from './history-app.js';
 import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
@@ -20,6 +20,7 @@ export class NamesGeneratorApp extends Application {
     this.currentSpecies = null;
     this.currentCategory = null; // Will use catalogs now
     this.generatedNames = [];
+    this.nameGenders = new Map(); // Track gender for each name (for color coding)
     this.favoritedNames = new Set(); // Track favorited names
     this.supportedGenders = getSupportedGenders();
     this._isFirstRender = true; // Track first render to avoid infinite loop
@@ -587,7 +588,12 @@ export class NamesGeneratorApp extends Application {
                 allowDuplicates: false
               });
 
-              suggestions.push(...genderResult.suggestions);
+              // Add gender info to each suggestion for color coding
+              const suggestionsWithGender = genderResult.suggestions.map(s => ({
+                ...s,
+                gender: gender
+              }));
+              suggestions.push(...suggestionsWithGender);
               if (genderResult.errors) {
                 errors.push(...genderResult.errors);
               }
@@ -615,6 +621,14 @@ export class NamesGeneratorApp extends Application {
             format,
             allowDuplicates: false
           });
+
+          // Add gender info to each suggestion for color coding
+          if (gender && result.suggestions) {
+            result.suggestions = result.suggestions.map(s => ({
+              ...s,
+              gender: gender
+            }));
+          }
         }
       } else {
         // Generate from catalog with collection filters
@@ -771,6 +785,13 @@ export class NamesGeneratorApp extends Application {
       const newNames = result.suggestions.map(s => s.text);
       const favoritedNamesArray = Array.from(this.favoritedNames);
 
+      // Update gender map for new names (preserve favorited names' genders)
+      for (const suggestion of result.suggestions) {
+        if (suggestion.gender && suggestion.text) {
+          this.nameGenders.set(suggestion.text, suggestion.gender);
+        }
+      }
+
       // Combine: favorited names first, then new names (excluding any that are already favorited)
       const combinedNames = [...favoritedNamesArray, ...newNames.filter(name => !this.favoritedNames.has(name))];
 
@@ -828,6 +849,16 @@ export class NamesGeneratorApp extends Application {
       return;
     }
 
+    // Check if gender colors are enabled and set CSS variables
+    const genderColorsEnabled = game.settings.get(MODULE_ID, "enableGenderColors");
+    if (genderColorsEnabled) {
+      const genderColors = game.settings.get(MODULE_ID, "genderColors") || DEFAULT_GENDER_COLORS;
+      const resultsPanel = html.find('.names-module-results-panel');
+      resultsPanel.css('--gender-color-male', genderColors.male || DEFAULT_GENDER_COLORS.male);
+      resultsPanel.css('--gender-color-female', genderColors.female || DEFAULT_GENDER_COLORS.female);
+      resultsPanel.css('--gender-color-nonbinary', genderColors.nonbinary || DEFAULT_GENDER_COLORS.nonbinary);
+    }
+
     // Get existing favorited elements to keep them (detach preserves event handlers and prevents fade-out)
     const existingFavorited = new Map();
     if (!isInitialRender) {
@@ -856,8 +887,12 @@ export class NamesGeneratorApp extends Application {
           // New item: always animate
           const favClass = isFavorited ? 'active' : '';
           const nameClass = isFavorited ? 'favorited' : '';
+          // Gender color attributes
+          const gender = this.nameGenders.get(name);
+          const genderAttr = genderColorsEnabled && gender ? `data-gender="${gender}"` : '';
+          const genderClass = genderColorsEnabled && gender ? 'gender-colored' : '';
           const itemHtml = `
-            <div class="names-module-simple-name ${nameClass} initial-render" data-name="${name}">
+            <div class="names-module-simple-name ${nameClass} ${genderClass} initial-render" data-name="${name}" ${genderAttr}>
               <button type="button" class="favorite-toggle ${favClass}">⭐</button>
               <span class="generator-name-display">${name}</span>
             </div>`;
@@ -878,8 +913,12 @@ export class NamesGeneratorApp extends Application {
           // New item: always animate
           const favClass = isFavorited ? 'active' : '';
           const nameClass = isFavorited ? 'favorited' : '';
+          // Gender color attributes
+          const gender = this.nameGenders.get(name);
+          const genderAttr = genderColorsEnabled && gender ? `data-gender="${gender}"` : '';
+          const genderClass = genderColorsEnabled && gender ? 'gender-colored' : '';
           const itemHtml = `
-            <div class="names-module-generated-name ${nameClass} initial-render" data-name="${name}">
+            <div class="names-module-generated-name ${nameClass} ${genderClass} initial-render" data-name="${name}" ${genderAttr}>
               <div class="name-content-wrapper">
                 <button type="button" class="favorite-toggle ${favClass}">⭐</button>
                 <div class="name-content">
@@ -962,6 +1001,7 @@ export class NamesGeneratorApp extends Application {
 
   _onClearResult(html) {
     this.generatedNames = [];
+    this.nameGenders.clear(); // Clear gender tracking
     const resultDiv = html.find('#names-result-display');
     resultDiv.html('<div class="names-module-no-result">' +
       game.i18n.localize("names.select-options") + '</div>');

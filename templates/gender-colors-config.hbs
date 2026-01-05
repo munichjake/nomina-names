@@ -1,0 +1,26 @@
+<form class="names-gender-colors-config">
+  <p class="notes">{{description}}</p>
+
+  <div class="gender-colors-list">
+    {{#each genders}}
+    <div class="gender-color-row">
+      <div class="gender-color-preview" data-gender="{{this.key}}" style="background: linear-gradient(135deg, {{this.color}}15 0%, {{this.color}}08 100%); border-left: 3px solid {{this.color}}; box-shadow: inset 0 0 20px {{this.color}}10;">
+        <span class="preview-name">{{this.label}}</span>
+      </div>
+      <div class="color-picker-wrapper">
+        <input type="color" name="color_{{this.key}}" value="{{this.color}}" />
+        <span class="color-hex">{{this.color}}</span>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <footer class="sheet-footer flexrow">
+    <button type="button" name="reset">
+      <i class="fas fa-undo"></i> {{localize "names.genderColorsConfig.reset"}}
+    </button>
+    <button type="submit" name="save">
+      <i class="fas fa-check"></i> {{localize "names.genderColorsConfig.save"}}
+    </button>
+  </footer>
+</form>
