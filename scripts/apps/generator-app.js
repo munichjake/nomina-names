@@ -114,6 +114,12 @@ export class NamesGeneratorApp extends Application {
   activateListeners(html) {
     super.activateListeners(html);
 
+    // Set generate button placement from settings
+    const buttonPlacement = game.settings.get(MODULE_ID, "generateButtonPlacement") || "legacy";
+    // Use filter() for root element, find() for children - try both
+    const form = html.hasClass('names-module-form') ? html : html.find('.names-module-form');
+    form.attr('data-generate-btn-placement', buttonPlacement);
+
     // Hide view toggle initially (will be shown only when there's metadata)
     html.find('.names-module-view-toggle').hide();
 
@@ -146,8 +152,8 @@ export class NamesGeneratorApp extends Application {
       await this._updateComponentsPanel(html);
     });
 
-    // Generate button
-    html.find('#names-generate-btn').click(async (ev) => {
+    // Generate buttons (all three placements)
+    html.find('.names-module-generate-btn').click(async (ev) => {
       ev.preventDefault();
       await this._onGenerateName(html);
     });
@@ -377,7 +383,7 @@ export class NamesGeneratorApp extends Application {
     const componentsSection = html.find('.names-module-components-section');
     const genderSection = html.find('.names-module-gender-section');
     const subcategorySection = html.find('.names-module-subcategory-section');
-    const generateBtn = html.find('#names-generate-btn');
+    const generateBtn = html.find('.names-module-generate-btn');
 
     logDebug(`_updateComponentsPanel called for category: ${this.currentCategory}`);
 
