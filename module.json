@@ -19,7 +19,8 @@
     "styles/names.css",
     "styles/names-picker.css",
     "styles/history-app.css",
-    "styles/emergency-app.css"
+    "styles/emergency-app.css",
+    "styles/gender-colors.css"
   ],
   "languages": [
     {
