@@ -1,4 +1,4 @@
-<form class="names-module-form">
+<form class="names-module-form" data-generate-btn-placement="legacy">
   <!-- Left Controls Panel -->
   <div class="names-module-controls-panel">
     <!-- Grundeinstellungen Section -->
@@ -209,7 +209,15 @@
         </div>
       </div>
 
-      <button type="button" id="names-generate-btn" class="names-module-generate-btn" disabled>
+      <!-- Legacy position: Generate button inside section -->
+      <button type="button" id="names-generate-btn" class="names-module-generate-btn names-generate-btn-legacy" disabled>
+        <i class="fas fa-dice"></i> {{localize "names.generate"}}
+      </button>
+    </div>
+
+    <!-- Floating position: Generate button at bottom of controls panel -->
+    <div class="names-module-floating-generate">
+      <button type="button" class="names-module-generate-btn names-generate-btn-floating" disabled>
         <i class="fas fa-dice"></i> {{localize "names.generate"}}
       </button>
     </div>
@@ -241,6 +249,10 @@
     </div>
 
     <div class="names-module-result-actions">
+      <!-- Result position: Generate button next to copy/clear -->
+      <button type="button" class="names-module-generate-btn names-generate-btn-result" disabled>
+        <i class="fas fa-dice"></i> {{localize "names.generate"}}
+      </button>
       <button type="button" id="names-copy-btn" class="names-module-action-btn" disabled>
         <i class="fas fa-copy"></i> {{localize "names.btn-copy"}}
       </button>

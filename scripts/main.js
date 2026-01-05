@@ -933,6 +933,21 @@ function registerModuleSettings() {
     default: "detailed"
   });
 
+  // Generate Button Placement Setting - nur für Generator-App
+  game.settings.register(MODULE_ID, "generateButtonPlacement", {
+    name: game.i18n.localize("names.settings.generateButtonPlacement.name") || "Generieren-Button Position",
+    hint: game.i18n.localize("names.settings.generateButtonPlacement.hint") || "Position des Generieren-Buttons in der Generator-App",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      "legacy": game.i18n.localize("names.settings.generateButtonPlacement.legacy") || "Klassisch (unter den Optionen)",
+      "floating": game.i18n.localize("names.settings.generateButtonPlacement.floating") || "Schwebend (am unteren Rand der Optionen)",
+      "result": game.i18n.localize("names.settings.generateButtonPlacement.result") || "Ergebnisbereich (neben Kopieren-Button)"
+    },
+    default: "legacy"
+  });
+
   // History Max Entries Setting - Anzahl der gespeicherten Namen
   game.settings.register(MODULE_ID, "historyMaxEntries", {
     name: game.i18n.localize("names.settings.historyMaxEntries.name") || "Maximale History-Einträge",

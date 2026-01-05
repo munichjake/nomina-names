@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Generate Button Placement Setting**: Neue Einstellung zur Positionierung des Generieren-Buttons in der Generator-App (Closes #11)
+  - **Legacy**: Klassische Position unter den Optionen (Standard)
+  - **Floating**: Schwebend am unteren Rand des Options-Panels mit sticky positioning
+  - **Result**: Im Ergebnisbereich neben dem Kopieren-Button für schnelles Regenerieren
+  - Einstellung unter: Module Settings → Nomina Names → "Generieren-Button Position"
+
 - **GENERATE Block (JSON Format 4.1)**: Neue, semantisch klarere Syntax für vollständige Content-Generierung in Rezepten
   - **Semantischer Unterschied zu SELECT**:
     - ✅ `GENERATE` = Vollständige Endergebnisse durch Recipe-Ausführung

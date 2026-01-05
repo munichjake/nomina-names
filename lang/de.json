@@ -216,6 +216,13 @@
                 "detailed": "Detailliert",
                 "simple": "Kompakt"
             },
+            "generateButtonPlacement": {
+                "name": "Generieren-Button Position",
+                "hint": "Position des Generieren-Buttons in der Generator-App",
+                "legacy": "Klassisch (unter den Optionen)",
+                "floating": "Schwebend (am unteren Rand der Optionen)",
+                "result": "Ergebnisbereich (neben Kopieren-Button)"
+            },
             "defaultNameCount": {
                 "name": "Standard-Anzahl Namen",
                 "hint": "Die Anzahl der Namen, die standardmäßig generiert werden sollen (1-20)"
