@@ -1709,3 +1709,69 @@
   align-items: flex-start;
   padding: 10px 12px;
 }
+
+/* ===============================
+   Generate Button Placement Options
+   =============================== */
+
+/* Hide all generate buttons by default - use higher specificity to override base styles */
+.names-module-form .names-module-generate-btn.names-generate-btn-legacy,
+.names-module-form .names-module-generate-btn.names-generate-btn-floating,
+.names-module-form .names-module-generate-btn.names-generate-btn-result,
+.names-module-form .names-module-floating-generate {
+  display: none !important;
+}
+
+/* Legacy placement: button inside section (default) */
+.names-module-form[data-generate-btn-placement="legacy"] .names-module-generate-btn.names-generate-btn-legacy {
+  display: flex !important;
+}
+
+/* Floating placement: button at bottom of controls panel, scrolls with content */
+.names-module-form[data-generate-btn-placement="floating"] .names-module-floating-generate {
+  display: block !important;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, #3a3a3a 80%, transparent);
+  padding: 1.5rem 0 0.5rem 0;
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+.names-module-form[data-generate-btn-placement="floating"] .names-module-generate-btn.names-generate-btn-floating {
+  display: flex !important;
+}
+
+/* Result placement: button in result actions area */
+.names-module-form[data-generate-btn-placement="result"] .names-module-generate-btn.names-generate-btn-result {
+  display: flex !important;
+  flex: 0 0 auto;
+  width: auto;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+/* Hide the count input section when using result placement */
+.names-module-form[data-generate-btn-placement="result"] .names-module-section:has(#names-count-input) h3 {
+  display: none;
+}
+
+/* Keep the count input visible but style it differently for result placement */
+.names-module-form[data-generate-btn-placement="result"] .names-module-section:has(#names-count-input) {
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+}
+
+/* Adjust result actions layout when generate button is present */
+.names-module-form[data-generate-btn-placement="result"] .names-module-result-actions {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.names-module-form[data-generate-btn-placement="result"] .names-module-result-actions .names-module-generate-btn.names-generate-btn-result {
+  order: -1;
+  flex-basis: 100%;
+  margin-bottom: 8px;
+}
