@@ -751,7 +751,7 @@
         { "t": { "de": "ur" }, "tags": ["suffix", "procedural"], "w": 1 },
         { "t": { "de": "al" }, "tags": ["suffix", "procedural"], "w": 1 },
         { "t": { "de": "el" }, "tags": ["suffix", "procedural"], "w": 1 },
-        { "t": { "de": ".il" }, "tags": ["suffix", "procedural"], "w": 1 },
+        { "t": { "de": "il" }, "tags": ["suffix", "procedural"], "w": 1 },
         { "t": { "de": "tor" }, "tags": ["suffix", "procedural"], "w": 2 },
         { "t": { "de": "ingen" }, "tags": ["suffix", "procedural"], "w": 1 },
         { "t": { "de": "um" }, "tags": ["suffix", "procedural"], "w": 1 },

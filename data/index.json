@@ -81,17 +81,12 @@
     },
     {
       "species": "aasimar",
-      "category": "names",
+      "category": "nonbinary",
       "files": [
         {
-          "path": "modules/nomina-names/data/de.aasimar.names.json",
+          "path": "modules/nomina-names/data/de.aasimar.nonbinary.json",
           "language": "de",
-          "enabled": false
-        },
-        {
-          "path": "modules/nomina-names/data/en.aasimar.names.json",
-          "language": "en",
-          "enabled": false
+          "enabled": true
         }
       ]
     },
@@ -347,6 +342,22 @@
       ]
     },
     {
+      "species": "dwarf",
+      "category": "breweries",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.breweries.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.breweries.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "elf",
       "category": "books",
       "files": [
@@ -520,17 +531,17 @@
     },
     {
       "species": "gnome",
-      "category": "names",
+      "category": "accidents",
       "files": [
         {
-          "path": "modules/nomina-names/data/de.gnome.names.json",
+          "path": "modules/nomina-names/data/de.gnome.accidents.json",
           "language": "de",
-          "enabled": false
+          "enabled": true
         },
         {
-          "path": "modules/nomina-names/data/en.gnome.names.json",
+          "path": "modules/nomina-names/data/en.gnome.accidents.json",
           "language": "en",
-          "enabled": false
+          "enabled": true
         }
       ]
     },
