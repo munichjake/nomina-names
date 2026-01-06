@@ -785,9 +785,9 @@ export class NamesGeneratorApp extends Application {
       const newNames = result.suggestions.map(s => s.text);
       const favoritedNamesArray = Array.from(this.favoritedNames);
 
-      // Update gender map for new names (preserve favorited names' genders)
+      // Update gender map for new names (gender comes from engine via parts)
       for (const suggestion of result.suggestions) {
-        if (suggestion.gender && suggestion.text) {
+        if (suggestion.text && suggestion.gender) {
           this.nameGenders.set(suggestion.text, suggestion.gender);
         }
       }
@@ -1343,13 +1343,64 @@ export class NamesGeneratorApp extends Application {
           throw new Error(`Package not found: ${packageCode}`);
         }
 
-        const customRecipeId = '_custom_user_recipe';
-        customRecipe.id = customRecipeId;
-
         // Replace or add custom recipe
         if (!pkg.data.recipes) {
           pkg.data.recipes = [];
         }
+
+        // If multiple genders selected, generate for each separately
+        if (selectedGenders.length > 1) {
+          const suggestions = [];
+          const errors = [];
+          const namesPerGender = Math.ceil(count / selectedGenders.length);
+
+          for (const gender of selectedGenders) {
+            const genderedRecipe = JSON.parse(JSON.stringify(customRecipe));
+            genderedRecipe.id = `_custom_user_recipe_${gender}`;
+
+            this._injectGenderTagsIntoRecipe(genderedRecipe, [gender]);
+
+            const existingIndex = pkg.data.recipes.findIndex(r => r.id === genderedRecipe.id);
+            if (existingIndex >= 0) {
+              pkg.data.recipes[existingIndex] = genderedRecipe;
+            } else {
+              pkg.data.recipes.push(genderedRecipe);
+            }
+
+            engine.loadPackage(pkg.data);
+
+            const genderResult = await this.generator.generate({
+              packageCode,
+              locale: this.currentLanguage,
+              n: namesPerGender,
+              recipes: genderedRecipe.id,
+              seed: userSeed ? `${userSeed}-${gender}` : null,
+              allowDuplicates: false
+            });
+
+            const suggestionsWithGender = genderResult.suggestions.map(s => ({
+              ...s,
+              gender: gender
+            }));
+            suggestions.push(...suggestionsWithGender);
+
+            if (genderResult.errors) {
+              errors.push(...genderResult.errors);
+            }
+          }
+
+          const shuffled = suggestions.sort(() => Math.random() - 0.5).slice(0, count);
+          return { suggestions: shuffled, errors };
+        }
+
+        // Single gender or no gender
+        const customRecipeId = '_custom_user_recipe';
+        customRecipe.id = customRecipeId;
+
+        if (selectedGenders.length === 1) {
+          this._injectGenderTagsIntoRecipe(customRecipe, selectedGenders);
+        }
+
         const existingIndex = pkg.data.recipes.findIndex(r => r.id === customRecipeId);
         if (existingIndex >= 0) {
           pkg.data.recipes[existingIndex] = customRecipe;
@@ -1361,7 +1412,7 @@ export class NamesGeneratorApp extends Application {
         engine.loadPackage(pkg.data);
 
         // Generate with custom recipe
-        return await this.generator.generate({
+        const result = await this.generator.generate({
           packageCode,
           locale: this.currentLanguage,
           n: count,
@@ -1369,6 +1420,16 @@ export class NamesGeneratorApp extends Application {
           seed: userSeed,
           allowDuplicates: false
         });
+
+        // If exactly one gender was selected, add gender info to all results
+        if (selectedGenders.length === 1 && result.suggestions) {
+          result.suggestions = result.suggestions.map(s => ({
+            ...s,
+            gender: selectedGenders[0]
+          }));
+        }
+
+        return result;
       } catch (error) {
         ui.notifications.error('Invalid recipe JSON: ' + error.message);
         return { suggestions: [], errors: ['Invalid recipe JSON'] };
@@ -1376,9 +1437,8 @@ export class NamesGeneratorApp extends Application {
     }
 
     // Generate with existing recipe
-    // If genders are selected, we need to modify the recipe to include gender filters
-    if (selectedGenders.length > 0 && selectedGenders.length < 3) {
-      // Clone and modify the recipe to add gender tags
+    // If multiple genders are selected, generate separately for each gender to track colors
+    if (selectedGenders.length > 1) {
       const pkg = this.generator.dataManager.getPackage(packageCode);
       const engine = this.generator.dataManager.getEngine();
 
@@ -1393,16 +1453,85 @@ export class NamesGeneratorApp extends Application {
         return { suggestions: [], errors: ['Recipe not found'] };
       }
 
-      // Deep clone the recipe
+      // Generate names for each gender separately (like component mode)
+      const suggestions = [];
+      const errors = [];
+      const namesPerGender = Math.ceil(count / selectedGenders.length);
+
+      for (const gender of selectedGenders) {
+        try {
+          // Create a gender-specific modified recipe
+          const modifiedRecipe = JSON.parse(JSON.stringify(originalRecipe));
+          modifiedRecipe.id = `_temp_${recipeId}_${gender}`;
+
+          // Inject only this gender tag
+          this._injectGenderTagsIntoRecipe(modifiedRecipe, [gender]);
+
+          // Add or replace the temporary recipe
+          const existingIndex = pkg.data.recipes.findIndex(r => r.id === modifiedRecipe.id);
+          if (existingIndex >= 0) {
+            pkg.data.recipes[existingIndex] = modifiedRecipe;
+          } else {
+            pkg.data.recipes.push(modifiedRecipe);
+          }
+
+          // Reload package in engine
+          engine.loadPackage(pkg.data);
+
+          // Generate for this gender
+          const genderResult = await this.generator.generate({
+            packageCode,
+            locale: this.currentLanguage,
+            n: namesPerGender,
+            recipes: modifiedRecipe.id,
+            seed: userSeed ? `${userSeed}-${gender}` : null,
+            allowDuplicates: false
+          });
+
+          // Add gender info to each suggestion
+          const suggestionsWithGender = genderResult.suggestions.map(s => ({
+            ...s,
+            gender: gender
+          }));
+          suggestions.push(...suggestionsWithGender);
+
+          if (genderResult.errors) {
+            errors.push(...genderResult.errors);
+          }
+        } catch (error) {
+          logError(`Failed to generate recipe names for gender ${gender}:`, error);
+          errors.push({ code: 'generation_failed', message: error.message, gender });
+        }
+      }
+
+      // Shuffle to mix genders and trim to requested count
+      const shuffled = suggestions.sort(() => Math.random() - 0.5).slice(0, count);
+      return {
+        suggestions: shuffled,
+        errors
+      };
+    }
+
+    // Single gender selected - modify recipe for that gender
+    if (selectedGenders.length === 1) {
+      const pkg = this.generator.dataManager.getPackage(packageCode);
+      const engine = this.generator.dataManager.getEngine();
+
+      if (!pkg) {
+        throw new Error(`Package not found: ${packageCode}`);
+      }
+
+      const originalRecipe = pkg.data.recipes?.find(r => r.id === recipeId);
+      if (!originalRecipe) {
+        ui.notifications.error('Recipe not found');
+        return { suggestions: [], errors: ['Recipe not found'] };
+      }
+
       const modifiedRecipe = JSON.parse(JSON.stringify(originalRecipe));
       modifiedRecipe.id = `_temp_${recipeId}_gendered`;
 
-      // Inject gender tags into all name selections with "firstnames" tag
       this._injectGenderTagsIntoRecipe(modifiedRecipe, selectedGenders);
 
-      logDebug(`Modified recipe after gender injection:`, JSON.stringify(modifiedRecipe, null, 2));
-
-      // Add or replace the temporary recipe
       const existingIndex = pkg.data.recipes.findIndex(r => r.id === modifiedRecipe.id);
       if (existingIndex >= 0) {
         pkg.data.recipes[existingIndex] = modifiedRecipe;
@@ -1410,11 +1539,9 @@ export class NamesGeneratorApp extends Application {
         pkg.data.recipes.push(modifiedRecipe);
       }
 
-      // Reload package in engine
       engine.loadPackage(pkg.data);
 
-      // Generate with modified recipe
-      return await this.generator.generate({
+      const result = await this.generator.generate({
         packageCode,
         locale: this.currentLanguage,
         n: count,
@@ -1422,9 +1549,19 @@ export class NamesGeneratorApp extends Application {
         seed: userSeed,
         allowDuplicates: false
       });
+
+      // Add gender info to all results
+      if (result.suggestions) {
+        result.suggestions = result.suggestions.map(s => ({
+          ...s,
+          gender: selectedGenders[0]
+        }));
+      }
+
+      return result;
     }
 
-    // No gender filter or all genders selected - use original recipe
+    // No gender filter - use original recipe without gender tracking
     return await this.generator.generate({
       packageCode,
       locale: this.currentLanguage,
