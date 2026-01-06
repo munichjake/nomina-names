@@ -1,0 +1,5207 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "elf-de",
+    "displayName": {
+      "de": "Elfen",
+      "en": "Elves"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "taverns": {
+      "displayName": {
+        "en": "Taverns & Inns",
+        "de": "Tavernen & Gasthäuser"
+      },
+      "items": [
+        {
+          "t": {
+            "en": "The House of Silver Leaves"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Moonbloom"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Star Garden Inn"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Stag"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Light Roof"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Flute"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Starlight Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Dancing Winds"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rose Hall of Immergold"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Purple Dream"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Eternal Spring"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Moonlight House"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Song of the Birch"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crown Hall"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Flame Roses"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Three Moons"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Mirror"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Starry Laurel House"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Morning Rose"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elven Bow"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dreaming of the Fog"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Still Waters"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Crown of Stars"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ruby Wood"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Leaf House"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pearl Hall"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Shoe"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Evening Ember"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Tree"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "House Sunflower"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Wind Song"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swan Lake Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Eternal Green"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Crowns"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Path of Twilight Light"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Crystal Roses"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rainbow Hall"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Morning Star"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Spring House"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Star Arrows"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Fern"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Eternal Melody"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Gate"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Moon Feather Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Green Ice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Emerald Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crown Hall of Evereska"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Along the Pearl Path"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Golden Winds"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Leaf House"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eulenhof"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Blooming Moonlight"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ruby Light"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Whispering Springs"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Amber Leaves"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Evening Skies"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Jade Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Glowing Feathers"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Star Rose"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Crystal Heaven"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Mist Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Morning Blooms"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sun Songs"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shimmering Lake"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Wings"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Flute Songs"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dream of the Crystal"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Eternal Green Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Gate"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Silver Arrow"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Star Fern"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Dancing Flames"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Pearl Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Cloud Fortress"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Moon"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Purple Bloom"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Sparkling Water"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Dusk Wind"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Grove"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Emerald Singers"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Star Crowns"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Ruby Woods"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Pasture"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Lights"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of the Endless Spring"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Morning Dew"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Fern"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Glowing Roses"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Winged Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Starlight"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Spring"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Evening Bloom"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Purple Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Cloud Song"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swan Path"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Golden Melody"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Ruby Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Emerald Forest"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Star Winds"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of the Silver Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Light's Reaping"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Bow"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Water"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of the Sun Melody"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Misty Shimmer"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Moon Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Pearl Blooms"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Eternal Sun"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Crystal Winds"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Emerald Spire"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Star Singers"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Purple Lights"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Flame's Ember"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Swan"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Glowing Stars"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of the Morning Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Ruby Fire"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Glen"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Blooms"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Evening Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Star Path"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Deer Pavilion"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Solar Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Pearl Crowns"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Eternity's Light"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Forest"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Emerald Blooms"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Moon Rose"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of the Sunwell"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Path"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Arrows"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Ruby Bloom"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Twilight Song"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Star"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Luminous Springs"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Star Leaves"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Morning Breeze"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Dreams"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Cloud Blooms"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Crystal Songing"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Emerald Lake"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Evening Arrows"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of the Solar Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Silver Singing"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ruby Path"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Sparkling Feathers"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The House of Starry Crowns"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hall of Moon Songing"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Golden Mallorn"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Moonlight"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn to the Crystal Rose"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Proud Unicorn"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Stellar Glow Palace"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn to the White Stag"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Diamond Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Purple Pegasus"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn of the Golden Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Emerald Star"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sapphire Falcon"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hanali's Rest"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Corellon's Court"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sehanine's Wisdom"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Hall"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rivendell"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lothlórien's Beauty"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Silver Harp"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Black Swan"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Phoenix"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn of the Pearl Mussel"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Ruby Red Wine"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Marble Hall"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Yavanna's Blessing"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Silk Leaf"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ivory Tower"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Velvet Curtain"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tymora's Luck"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Goldwork"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor's Elegance"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoon Pride"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Residence"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Myth Drannor's Honor"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Tower"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Jewel Chalice"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn of the Golden Harp"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ehlonna's Court"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rillifane's Table"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Solonor's Splendor"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Labelas' Crown"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Residence"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Prince's Feast"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Duke's Table"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn of the Royal Table"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Solinari's Light"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Paladine's Court"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mishakal's Mercy"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvanesti Palace"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Qualinesti Residence"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Cup"
+          },
+          "tags": [
+            "upscale_inn"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Green Ebereschenblatt"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Three Arrows"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dancing Deer"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Althariel's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Mug"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Seven Feathers"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Long Bow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mist Jug"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Quick Fox"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Forest Cat"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cooling Spring"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Thalanil's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Four Moons"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Fern"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Lime Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The White Stone"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mirelion's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Sunbeam"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Sparrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Pearl Grotto"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Slanting Oak"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Dancing Light"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elenwe’s"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Glowing Moss"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Stags"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Golden Meadow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Swan"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Wild Brook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Kethrils"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Singing Breeze"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Bridge"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Green Grotto"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Farnhalle"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Dancing Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Two Ravens"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Strong Grotto"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shadow Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Gentle Song"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Norea"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Ancient Ash Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Arrows"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Dark Horn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shimmerstone"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Clear Water"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lirael's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the White Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wood Rose"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Proud Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Oak"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Silent Brook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Klarquell"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Swift Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Two Hammers"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Green Fern"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Barrel"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Silver Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elion's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wild Boar's Den"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Wing"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Wind's Lair"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crooked Bow's Rest"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Quiet Stone's Haven"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Finwe's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Blue Leaf's Glade"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Lanterns' Tower"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Star's Peak"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Stag's Glade"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Bow's Sanctuary"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lyari's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dancing Stag's Glade"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Feather's Nest"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Green Spring's Oasis"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Mug's Inn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Singing Fern's Haven"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nebelrose"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Proud Deer's Glen"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Two Worlds"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Silverbrook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Shimmering Leaf"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Caelthir's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Long Song"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Hare Cow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the White Spring"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Barrel"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Golden Horn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Three Flames"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Shade Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Mill"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Blue Hare"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gentle Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Fog Barrel"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Varanis"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Green Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Feathers"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Silverbrook's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Chalice"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Long Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Thalendril's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Dancing Wolf"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Cricket"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Old Barrel"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The White Brook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Shimmering Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Rose"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Strong Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Green Horn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Erlanor's"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Silver Song"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Rose"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Quiet Water"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nebelstar"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Long Barrel"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Three Crowns"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Red Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Oak"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Golden Fern"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Dancing Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mist Jug at the Spring"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the White Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Feather"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Green Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Blue Brook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tirael’s"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Shimmering Horn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Arrows"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Old Spring"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gentle Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Strong Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Larch"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Silver Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Jug"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Red Brook"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Three Springs"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Long Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Cat"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Green Garland"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old Fern"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Blue Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nimriel’s"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Shimmering Fern"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Two Stars"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Golden Tree"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The White Arrow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Quiet Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dark Mug"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Misty Leaf"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Deer Cow"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Old Star"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Spring"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Silver Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Garland"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Green Stag"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Celebriel's Inn"
+          },
+          "tags": [
+            "common_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn under the Lime Tree"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Waystone"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Moss Rose"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Eber Inn in the Fern"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Silver Brook"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn beside the Ancient Stone Circle"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hirschgrund Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elven Tower"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wirtshaus in the Shade Glen"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Root Path"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fox Inn in the Fog"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Golden Tanberry"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Buckenblatt"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wanderer's Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn beside the Redbuck"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tavern at the Star Lake"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wolfskopf Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn beside the Two Stones"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inns by the Farnway"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inn by the Cellar Ground"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Night Spring"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Alley of the Heavenly Lark"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rest in the Dark Green"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inn of the Mushroom"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn on the Old Meadow"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Alley by the Misty River"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hare's Beacon"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Magpie"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn with the Silver Fern"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Firs' Crown"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tavern in the Forest Ground"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Bear Ford"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inn of the Red Ridge"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Alcove by the Peat Spring"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn on the Sun's Spear"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Green Watch"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Woodhorn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn in the Shade Valley"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Eberstein Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Mill Pond"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tavern at the Spring Cavern"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Raven's Mound"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cellar of the Golden Root"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rest in the Ashwood Glade"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Owl's Glen"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Deer Path"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ivy Leaf"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Birches"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Hazel Thicket"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cellar in the Pine Ground"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Bearstone"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Swan's Pond"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rest among the Pine Stumps"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Fern Lane"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tavern at the Dark Forest"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Cellar of the Bog Flower"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Rock Arch"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Wild Brook Bottom"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cellar on the Mist Stair"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Walnut Crown"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Leaf Roof"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Frog's Cauldron"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn by the Oaks"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Silver Spring"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tavern on the Bramble Slope"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Moorstone"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Butterfly Meadow Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tavern in the Ashwood"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Golden Hoof"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Fox Grounds"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wood Rose"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Crow's Nest"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Bear's Garland"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fern House"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Wolf's Cliffs"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Tannen Tree Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mushroom Mug"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn on the Moonpath"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Flute Player"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn at the Oak Crown"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hunting Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elch Ground Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rest in the Beechwood"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Bridge Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moorbrook Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Schänke of the Holly Blossom"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Horned Deer Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nebelstein Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fir Light"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wacholder Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Riedgrund Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rest at the Wiesenhang"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eberhorn Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Night Fern Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Schänke in the Root Valley"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Star Birch Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Beechwood Estate"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Mug in the Woods"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Raven Path Inn"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mossy Moor"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tavern by the Waterfall"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inn of the Birken Rest"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Sunflower"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wood Sword"
+          },
+          "tags": [
+            "forest_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Rusted Sword"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Three Cubes"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Drunken Troll Inn"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Claw"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Broken Lance"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Seventh Ale"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Blade"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Blue Dragon"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Last Arrow"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Blood-Red Feather"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crown and the Mug"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Boot in the Fire"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Greedy Coin"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bard with the Lute"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Iron Kettle"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Scorpion Inn"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tavern of the Iron Helm"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rolling Kobold"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Lantern"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lost Sword"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bright Axe"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Arrow in the Heart"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Five Mugs"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dancing Hammer"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Taverns of the Cowardly Heroes"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bloody Mug"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Five Dice"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Borsted Shield"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Flag"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Aurochs with Scars"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Sword"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Stumbling Tower"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lance in the Sand"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Growling Bear"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Copper Crown"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Howling Wolf's Rest"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Last Resting Place"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Triple Blade's End"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Frosty Fist"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dented Helmet's Edge"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Sword"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bent Spear's Tip"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tavern on the Dice Table"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wild Stag's Charge"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Storm Maiden"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Broken Wheel"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grey Coin"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flexible Knife"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Embers of Night"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Seven-Fold Die"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Moon's Halo"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ancient Warrior"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Rose in Steel"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bone Bowl"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inn on the Gallows Path"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "At the Blue Eagle's Lair"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fire Crown"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Coppered Dagger"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Crow"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Thundering Hoof"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Glassy Blade"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Last Die"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tavern of the Three Swords"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Blood Raven"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flame in the Mug"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Golden Shield"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silver Harp"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Grey Falcon"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Sun"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Iron Horn"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red Lantern"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Moon Spear"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crown of Bones"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Drunken Giant"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Steel Rose"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Frozen Dagger"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Helm of Heroes"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Laughing Orc"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Two Swords"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Swift Arrow"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Crown"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Barbed Helmet"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Black Plume"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sword's Flame"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Coin of Fate"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fifth Mug"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Iron Crane"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Screaming Grasp"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bloody Sickle"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gray Stone"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ten Dice"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Curved Saber"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crowned Flame"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Steel Raven"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Iron Crown"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dark Cup"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Last Bottle"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Smoking Arrow"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Copper Rose"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Dead Man"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Zecher Hall"
+          },
+          "tags": [
+            "adventurers_tavern"
+          ],
+          "w": 1
+        }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "adventurers_tavern": {
+            "de": "Abenteurertaverne"
+          },
+          "common_tavern": {
+            "de": "Gewöhnliche Taverne"
+          },
+          "forest_tavern": {
+            "de": "Waldtaverne"
+          },
+          "upscale_inn": {
+            "de": "Gehobenes Gasthaus"
+          }
+        }
+      }
+    },
+    "icons": {
+      "upscale_inn": "⭐",
+      "adventurers_tavern": "⚔️",
+      "forest_tavern": "🌲",
+      "common_tavern": "🍺"
+    }
+  },
+  "collections": [
+    {
+      "key": "upscale_inns",
+      "labels": {
+        "de": "Gehobene Gasthäuser"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": [
+          "upscale_inn"
+        ]
+      }
+    },
+    {
+      "key": "common_taverns",
+      "labels": {
+        "de": "Gewöhnliche Tavernen"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": [
+          "common_tavern"
+        ]
+      }
+    },
+    {
+      "key": "forest_taverns",
+      "labels": {
+        "de": "Waldtavernen"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": [
+          "forest_tavern"
+        ]
+      }
+    },
+    {
+      "key": "adventurers_taverns",
+      "labels": {
+        "de": "Adventurers Taverns"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": [
+          "adventurers_tavern"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

@@ -1,0 +1,479 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "dwarf-de",
+    "displayName": {
+      "de": "Zwergische Brauereien",
+      "en": "Dwarven Breweries"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "breweries": {
+      "displayName": {
+        "de": "Brauereien & Biere",
+        "en": "Breweries & Beer"
+      },
+      "items": [
+        { "t": { "de": "Durstiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Goldener" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Dunkler" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Starker" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Kräftiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Schäumender" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Perlender" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Würziger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Glühender" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Feuriger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Frostiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Kühler" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Warmer" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Kupferner" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Eiserner" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Erzener" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Steinerner" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Felsiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Bergiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Mächtiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Ehrwürdiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Gärender" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Siedender" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Rauchiger" }, "tags": ["procedural", "adjectives", "brand", "tavern"], "w": 1 },
+        { "t": { "de": "Amboss" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Hammer" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Axt" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Beil" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Meißel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Zange" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schmiede" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schmiedefeuer" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Blasebalg" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Gießform" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hammerstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ambossblock" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ambossfels" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Werkbank" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schraubstock" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schmelzofen" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Esse" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schmelze" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Feuerkessel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Metallform" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hauer" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Spitzhacke" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schürhaken" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schmiedehaken" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Zunder" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Feilenstein" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Berg" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Fels" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Stein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Erz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Ader" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Stollen" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schacht" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Mine" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Tunnel" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bruch" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Kluft" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Spalt" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Grotte" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Höhle" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Kristall" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Edelstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Brocken" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bergwerk" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Aderquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Tiefgang" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Kohlenherz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Staubgrund" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Eisen" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Stahl" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bronze" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Kupfer" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Messing" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Silber" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Gold" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Zinn" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Blei" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Mithril" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Adamant" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Obsidian" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Granite" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Basalt" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Kohle" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Asche" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Staub" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Funken" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Glut" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Rauch" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Dampf" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ruß" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schlacke" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Erzbrocken" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Lava" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Krug" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Humpen" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Becher" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Kelch" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Fass" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Kufe" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Trog" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schank" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Zapfhahn" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Malz" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Hopfen" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Sud" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bierstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Gerst" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Maische" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schaum" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Hefe" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Trunk" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schluck" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schluckstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Braukessel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Braupfanne" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Brauherz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Lagerfass" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Zapfstein" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Zapfschild" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Braukrug" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Brauquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Feuer" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Flamme" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Funke" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Dunst" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Woge" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Brand" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Loder" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Funkenherz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Flammenquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schwel" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Siedepfanne" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hitzstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schmelzbrand" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Erzglut" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hitzequell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Runenstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Runenhammer" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Runenquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Runenaxt" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Runenschmied" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schädel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bart" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Helm" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Kette" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Ring" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Krone" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Zepter" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Schild" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Rüstung" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Panzer" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Groll" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Eid" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Erbstück" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Blutstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ahnenbecher" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ahnentafel" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Erzkelch" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Götterfass" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Götterschmied" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Donnerstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Eisenbart" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Bartquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Hammerherz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Zwergenherz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Tiefenschluck" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Ahnenbräu" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Bergquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Felsenquelle" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Bach" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Strom" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Quelle" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Flut" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Tropfen" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Tau" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Wasser" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Erde" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Wind" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Frost" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Eis" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Nebel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schnee" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Winterquell" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Eiskrug" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Tropfstein" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Gletscher" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Felsgrund" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Wurzel" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Wald" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Moos" }, "tags": ["procedural", "symbols", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Pilz" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Wurzelkeller" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Moosbecher" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Tannenzapfen" }, "tags": ["procedural", "symbols", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Wurzelfass" }, "tags": ["procedural", "symbols", "tavern", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "bräu" }, "tags": ["procedural", "brand", "suffix"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "trunk" }, "tags": ["procedural", "brand", "suffix"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "sud" }, "tags": ["procedural", "brand", "suffix"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "gebräu" }, "tags": ["procedural", "brand", "suffix"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "bier" }, "tags": ["procedural", "brand", "suffix"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Brauerei" }, "tags": ["procedural", "tavern", "procedural-post", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Privatbrauerei" }, "tags": ["procedural", "tavern", "procedural-pre", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Klosterbrauerei" }, "tags": ["procedural", "tavern", "procedural-pre", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Staatsbrauerei" }, "tags": ["procedural", "tavern", "procedural-pre", "brand"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hofbräu" }, "tags": ["procedural", "tavern", "procedural-post", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Bürgerbräu" }, "tags": ["procedural", "tavern", "procedural-post", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Brauhaus" }, "tags": ["procedural", "tavern", "procedural-post", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Bräuhaus" }, "tags": ["procedural", "tavern", "procedural-post", "brand"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Brauhof" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Keller" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Halle" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Hof" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Stube" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Zeche" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schank" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "m" } } },
+        { "t": { "de": "Schenke" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Schänke" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Gasthaus" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Wirtshaus" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Taverne" }, "tags": ["procedural", "tavern"], "w": 1, "gram": { "de": { "gender": "f" } } },
+        { "t": { "de": "Lager" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Bier" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Weizen" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Hell" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Dunkel" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender ": "n" } } },
+        { "t": { "de": "Pils" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Weißbier" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Kellerbier" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Rauchbier" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Märzen" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Bock" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Doppelbock" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } },
+        { "t": { "de": "Starkbier" }, "tags": ["procedural", "styles"], "w": 1, "gram": { "de": { "gender": "n" } } }
+      ]
+    }
+  },
+  "recipes": [
+    {
+      "id": "brand_adjective_symbol",
+      "displayName": {
+        "de": "Marke: Adjektiv + Symbol",
+        "en": "Brand: Adjective + Symbol"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["adjectives", "brand"] } }, "as": "ADJ" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_symbol_suffix",
+      "displayName": {
+        "de": "Marke: Symbol + Suffix (bräu/trunk/sud)",
+        "en": "Brand: Symbol + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "suffix"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_type_symbol_suffix",
+      "displayName": {
+        "de": "Marke: Typ + Symbol + Suffix (bräu/trunk/sud)",
+        "en": "Brand: Type + Symbol + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["procedural-pre", "brand"] } }, "as": "SYM" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "suffix"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_denonym_symbol_post",
+      "displayName": {
+        "de": "Marke: Denonym + Symbol + Post",
+        "en": "Brand: Denonym + Symbol + Post"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "settlements" }, "as": "TOPONYM", "transform": "Demonym" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "suffix"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_demonym_symbol_suffix",
+      "displayName": {
+        "de": "Marke: Typ + Symbol + Suffix (bräu/trunk/sud)",
+        "en": "Brand: Type + Symbol + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "settlements" }, "as": "TOPONYM", "transform": "Demonym" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "suffix"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_adjective_symbol_suffix",
+      "displayName": {
+        "de": "Marke: Adjektiv + Symbol + Suffix",
+        "en": "Brand: Adjective + Symbol + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["adjectives", "brand"] } }, "as": "ADJ" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "procedural-post"] } }, "as": "PST" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_demonym_suffix",
+      "displayName": {
+        "de": "Marke: Demonym + Suffix",
+        "en": "Brand: Demonym + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "settlements" }, "as": "TOPONYM", "transform": "Demonym" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_demonym",
+      "displayName": {
+        "de": "Marke: Nur Demonym",
+        "en": "Brand: Demonym only"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "settlements" }, "as": "TOPONYM", "transform": "Demonym" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "brand_name_symbol_post",
+      "displayName": {
+        "de": "Marke: Name + Symbol + Post",
+        "en": "Brand: Denonym + Symbol + Post"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "name" }, "as": "LN", "where": { "tags": ["surnames"] }, "transform": "possessive" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["symbols", "brand"] } }, "as": "SYM" },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["brand", "procedural-post"] } }, "as": "PST" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "style_denonym",
+      "displayName": {
+        "de": "Denonym + Stil",
+        "en": "Denonym + Style"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "settlements" }, "as": "TOPONYM", "transform": "Demonym" },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "breweries", "where": { "tags": ["styles", "procedural"] } }, "as": "STYLE" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "CollapseSpaces",
+        "TitleCase"
+      ]
+    }
+  ],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces",
+      "TitleCase"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "collections": [
+    {
+      "key": "simple_brands",
+      "labels": {
+        "de": "Brauereien",
+        "en": "Breweries"
+      },
+      "query": {
+        "category": "breweries",
+        "recipes": [
+          "brand_demonym_suffix",
+          "brand_demonym",
+          "brand_symbol_suffix",
+          "brand_type_symbol_suffix",
+          "brand_denonym_symbol_post",
+          "brand_demonym_symbol_suffix",
+          "brand_name_symbol_post"
+        ]
+      }
+    },
+    {
+      "key": "beer_styles",
+      "labels": {
+        "de": "Sorten",
+        "en": "Styles"
+      },
+      "query": {
+        "category": "breweries",
+        "recipes": [
+          "style_denonym"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
