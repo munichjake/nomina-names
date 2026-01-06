@@ -27,6 +27,62 @@ export class Generator {
   }
 
   /**
+   * Extract gender from suggestion parts
+   * Looks for gender information in tags or attrs of the parts
+   * @param {Object} parts - The parts object from the engine suggestion
+   * @returns {string|null} - 'male', 'female', 'nonbinary', or null if not found
+   */
+  _extractGenderFromParts(parts) {
+    if (!parts) return null;
+
+    // Priority: Check firstname parts first (FN, FN_OUT), then any part with gender info
+    const priorityAliases = ['FN', 'FN_OUT'];
+
+    // First check priority aliases
+    for (const alias of priorityAliases) {
+      if (parts[alias]) {
+        const gender = this._getGenderFromPart(parts[alias]);
+        if (gender) return gender;
+      }
+    }
+
+    // Then check all other parts
+    for (const [alias, part] of Object.entries(parts)) {
+      if (priorityAliases.includes(alias)) continue; // Skip already checked
+      const gender = this._getGenderFromPart(part);
+      if (gender) return gender;
+    }
+
+    return null;
+  }
+
+  /**
+   * Extract gender from a single part
+   * @param {Object} part - A single part from the parts object
+   * @returns {string|null} - 'male', 'female', 'nonbinary', or null
+   */
+  _getGenderFromPart(part) {
+    if (!part) return null;
+
+    // Check tags array first
+    if (part.tags && Array.isArray(part.tags)) {
+      if (part.tags.includes('male')) return 'male';
+      if (part.tags.includes('female')) return 'female';
+      if (part.tags.includes('nonbinary')) return 'nonbinary';
+    }
+
+    // Check attrs.gender as fallback
+    if (part.attrs && part.attrs.gender) {
+      const g = part.attrs.gender;
+      if (g === 'm' || g === 'male') return 'male';
+      if (g === 'f' || g === 'female') return 'female';
+      if (g === 'nb' || g === 'nonbinary') return 'nonbinary';
+    }
+
+    return null;
+  }
+
+  /**
    * Initialize generator
    */
   async initialize() {
@@ -76,12 +132,13 @@ export class Generator {
         allowDuplicates
       });
 
-      // Transform to unified format
+      // Transform to unified format with gender extraction
       return {
         suggestions: result.suggestions.map(s => ({
           text: s.text,
           recipe: s.recipe,
           parts: s.parts,
+          gender: this._extractGenderFromParts(s.parts),
           metadata: {
             seed: s.seed
           }
