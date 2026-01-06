@@ -972,18 +972,18 @@ function registerModuleSettings() {
 
   // Gender Colors Settings - farbliche Kennzeichnung nach Geschlecht
   game.settings.register(MODULE_ID, "enableGenderColors", {
-    name: game.i18n.localize("names.settings.enableGenderColors.name") || "Geschlechter-Farben aktivieren",
-    hint: game.i18n.localize("names.settings.enableGenderColors.hint") || "Zeigt generierte Namen farblich nach Geschlecht unterschieden an",
+    name: "Enable Gender Colors",
+    hint: "Display generated names with color-coding based on gender",
     scope: "client",
-    config: true,
+    config: false, // Managed via config dialog
     type: Boolean,
     default: false
   });
 
   game.settings.registerMenu(MODULE_ID, "genderColorsConfig", {
-    name: game.i18n.localize("names.settings.genderColorsConfig.name") || "Geschlechter-Farben konfigurieren",
-    hint: game.i18n.localize("names.settings.genderColorsConfig.hint") || "Lege individuelle Farben für jedes Geschlecht fest",
-    label: game.i18n.localize("names.settings.genderColorsConfig.label") || "Farben konfigurieren",
+    name: game.i18n.localize("names.settings.genderColorsConfig.name") || "Geschlechter-Farben",
+    hint: game.i18n.localize("names.settings.genderColorsConfig.hint") || "Aktivieren und konfigurieren der farblichen Kennzeichnung nach Geschlecht",
+    label: game.i18n.localize("names.settings.genderColorsConfig.label") || "Konfigurieren",
     icon: "fas fa-palette",
     type: NamesGenderColorsConfig,
     restricted: false

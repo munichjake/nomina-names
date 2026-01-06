@@ -19,6 +19,7 @@ export class NamesGenderColorsConfig extends FormApplication {
 
   getData() {
     const currentColors = game.settings.get(MODULE_ID, "genderColors");
+    const enabled = game.settings.get(MODULE_ID, "enableGenderColors");
     const supportedGenders = getSupportedGenders();
 
     const genders = supportedGenders.map(gender => ({
@@ -29,6 +30,7 @@ export class NamesGenderColorsConfig extends FormApplication {
 
     return {
       genders,
+      enabled,
       description: game.i18n.localize("names.genderColorsConfig.description")
     };
   }
@@ -39,8 +41,21 @@ export class NamesGenderColorsConfig extends FormApplication {
     // Update preview when color changes
     html.find('input[type="color"]').on('input', this._onColorChange.bind(this));
 
+    // Toggle enable/disable
+    html.find('input[name="enabled"]').on('change', this._onEnableToggle.bind(this));
+
     // Reset button
     html.find('button[name="reset"]').click(this._onResetClick.bind(this));
+  }
+
+  _onEnableToggle(event) {
+    const enabled = $(event.currentTarget).prop('checked');
+    const colorsList = this.element.find('.gender-colors-list');
+    if (enabled) {
+      colorsList.removeClass('disabled');
+    } else {
+      colorsList.addClass('disabled');
+    }
   }
 
   _onColorChange(event) {
@@ -90,6 +105,8 @@ export class NamesGenderColorsConfig extends FormApplication {
     // Merge with defaults to ensure all genders have a color
     const finalColors = { ...DEFAULT_GENDER_COLORS, ...newColors };
 
+    // Save both settings
+    await game.settings.set(MODULE_ID, "enableGenderColors", formData.enabled === true);
     await game.settings.set(MODULE_ID, "genderColors", finalColors);
     ui.notifications.info(game.i18n.localize("names.genderColorsConfig.saved"));
   }

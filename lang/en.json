@@ -264,6 +264,7 @@
         "// ===== GENDER COLORS CONFIG =====": "",
         "genderColorsConfig": {
             "title": "Gender Colors",
+            "enable": "Enable Gender Colors",
             "description": "Choose an accent color for each gender. The color will be used subtly as a background gradient and border accent.",
             "male": "Male",
             "female": "Female",

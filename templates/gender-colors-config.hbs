@@ -1,7 +1,14 @@
 <form class="names-gender-colors-config">
+  <div class="enable-toggle-row">
+    <label class="enable-toggle">
+      <input type="checkbox" name="enabled" {{#if enabled}}checked{{/if}} />
+      <span class="toggle-label">{{localize "names.genderColorsConfig.enable"}}</span>
+    </label>
+  </div>
+
   <p class="notes">{{description}}</p>
 
-  <div class="gender-colors-list">
+  <div class="gender-colors-list {{#unless enabled}}disabled{{/unless}}">
     {{#each genders}}
     <div class="gender-color-row">
       <div class="gender-color-preview" data-gender="{{this.key}}" style="background: linear-gradient(135deg, {{this.color}}15 0%, {{this.color}}08 100%); border-left: 3px solid {{this.color}}; box-shadow: inset 0 0 20px {{this.color}}10;">
