@@ -30,7 +30,7 @@
                 data-enhanced='{"theme": "names-orange", "searchPlaceholder": "Kategorie suchen...", "virtualScroll": false, "clearable": true, "maxVisible": 6}'>
           <option value="">{{localize "names.ui.all-genders"}}</option>
           {{#each supportedGenders}}
-          <option value="{{this}}">{{localize (concat "names." this)}}</option>
+          <option value="{{this}}">{{localize (concat "names.gender." this)}}</option>
           {{/each}}
         </select>
       </div>
