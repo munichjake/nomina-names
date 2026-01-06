@@ -19,10 +19,10 @@
       "items": [
         { "t": { "de": "Auserwählter" }, "tags": ["male", "titles"], "w": 1 },
         { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Dux" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Dux" }, "tags": ["male", "nonbinary", "titles"], "w": 1 },
         { "t": { "de": "Edelmann" }, "tags": ["male", "titles"], "w": 1 },
         { "t": { "de": "Erzherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzpaladin" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Erzpaladin" }, "tags": ["male", "nonbinary", "titles"], "w": 1 },
         { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1 },
         { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1 },
         { "t": { "de": "Großherzog" }, "tags": ["male", "titles"], "w": 1 },
@@ -61,7 +61,23 @@
         { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1 },
         { "t": { "de": "Seraphim-Lady" }, "tags": ["female", "titles"], "w": 1 },
         { "t": { "de": "Sternendame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Wächterin" }, "tags": ["female", "titles"], "w": 1 }
+        { "t": { "de": "Sternenkind" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Wächterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Komtur" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Legat" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Magistrat" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Oberhaupt" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Orakel" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Protektor" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Tribun" }, "tags": ["nonbinary", "titles"], "w": 1 }
       ]
     }
   },
