@@ -139,6 +139,17 @@
       ]
     },
     {
+      "species": "aasimar",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "dragonborn",
       "category": "female",
       "files": [
@@ -241,6 +252,17 @@
         {
           "path": "modules/nomina-names/data/en.dragonborn.surnames.json",
           "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.titles.json",
+          "language": "de",
           "enabled": true
         }
       ]
@@ -353,6 +375,17 @@
         {
           "path": "modules/nomina-names/data/en.dwarf.breweries.json",
           "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.titles.json",
+          "language": "de",
           "enabled": true
         }
       ]
@@ -498,6 +531,17 @@
       ]
     },
     {
+      "species": "elf",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "gnome",
       "category": "female",
       "files": [
@@ -589,6 +633,17 @@
         {
           "path": "modules/nomina-names/data/en.gnome.surnames.json",
           "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.titles.json",
+          "language": "de",
           "enabled": true
         }
       ]
@@ -695,6 +750,17 @@
       "files": [
         {
           "path": "modules/nomina-names/data/de.halfling.taverns.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.titles.json",
           "language": "de",
           "enabled": true
         }
@@ -1001,6 +1067,17 @@
         {
           "path": "modules/nomina-names/data/en.tiefling.surnames.json",
           "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.titles.json",
+          "language": "de",
           "enabled": true
         }
       ]
