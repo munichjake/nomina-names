@@ -21,7 +21,7 @@
         "de": "Nur Vorname"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" }, "as": "FN" }
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" }
       ],
       "post": [
         "TrimSpaces"
@@ -34,9 +34,9 @@
         "de": "Vollständiger Name"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" }, "as": "FN" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
         { "literal": { "en": " ", "de": " " } },
-        { "select": { "from": "catalog", "key": "surnames" }, "as": "LN" }
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
       ],
       "post": [
         "TrimSpaces",
@@ -50,11 +50,11 @@
         "de": "Name mit automatischer Übereinstimmung"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" }, "as": "FN" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
         { "literal": { "en": " ", "de": " " } },
         { "select": { "from": "catalog", "key": "nicknames" }, "as": "BN", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
         { "literal": { "en": " ", "de": " " }, "ext": { "optionalWith": "BN" } },
-        { "select": { "from": "catalog", "key": "surnames" }, "as": "LN" }
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
       ],
       "post": [
         "TrimSpaces",
@@ -68,11 +68,11 @@
         "de": "Titel-Name mit automatischer Übereinstimmung"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" }, "as": "FN" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
         { "literal": { "en": " ", "de": " " } },
         { "select": { "from": "catalog", "key": "titles" }, "as": "T", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
         { "literal": { "en": " ", "de": " " }, "ext": { "optionalWith": "T" } },
-        { "select": { "from": "catalog", "key": "surnames" }, "as": "LN" }
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" }
       ],
       "post": [
         "TrimSpaces",
@@ -86,9 +86,9 @@
         "de": "Name mit Titel und Herkunftsort"
       },
       "pattern": [
-        { "select": { "from": "catalog", "key": "firstnames" }, "as": "FN" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["firstnames"] } }, "as": "FN" },
         { "literal": { "en": " ", "de": " " } },
-        { "select": { "from": "catalog", "key": "surnames" }, "as": "LN" },
+        { "select": { "from": "catalog", "key": "names", "where": { "tags": ["surnames"] } }, "as": "LN" },
         { "literal": { "en": ", ", "de": ", " } },
         { "select": { "from": "catalog", "key": "titles" }, "as": "T", "ext": { "agreeWith": { "ref": "FN", "features": [{ "from": "tags", "requireAllOf": ["male", "female", "nonbinary"] }], "fallback": "skip" } } },
         { "as": "S", "pp": { "prep": "of", "ref": { "select": { "from": "catalog", "key": "settlements" } } } }

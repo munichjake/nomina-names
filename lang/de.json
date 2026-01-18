@@ -263,6 +263,7 @@
         "// ===== GENDER COLORS CONFIG =====": "",
         "genderColorsConfig": {
             "title": "Geschlechter-Farben",
+            "enable": "Geschlechter-Farben aktivieren",
             "description": "Wähle für jedes Geschlecht eine Akzentfarbe. Die Farbe wird dezent als Hintergrund-Gradient und Border-Akzent verwendet.",
             "male": "Männlich",
             "female": "Weiblich",
