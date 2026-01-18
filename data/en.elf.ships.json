@@ -1,0 +1,5770 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "elf-de",
+    "displayName": {
+      "de": "Elfen",
+      "en": "Elves"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "ships": {
+      "displayName": {
+        "en": "Ships",
+        "de": "Schiffe"
+      },
+      "items": [
+        {
+          "t": {
+            "en": "Golden Dolphin"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Wave"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Faithful Gull"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Morn Star"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sturdy Trader"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Rose"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Pearl"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luck Bringer"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rich Harvest"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Tower"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Wind"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Copper Wave"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Black Diamond"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "North Sailor"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "South Star"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trade Luck"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spice Hunter"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silk Weaver"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Corn Maiden"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Salt Breaker"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Depth Pouch"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Traveler"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Barge Master"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Loyalty"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Digger"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Freight Master"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ware Keeper"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Coin Song"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trade Lord"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant's Pride"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trade Wind"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Profit Hunter"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goods Luck"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cargo Master"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Customs Breaker"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Warehouse Lord"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Business Faith"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Weight Star"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Price Hammer"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Wind"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant's Rose"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trader"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Coin Collector"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Standard"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Counter"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trade Wolf"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant Eagle"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Profit Falcon"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Business Lion"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wauken's Blessing"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Waterdeep's Pride"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Neverwinter's Glory"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sembia's Wealth"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Amn's Treasures"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormyr's Prosperity"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Baldur's Gate"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luskan's Profit"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tyrs Scale"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Westroad's Wealth"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Daggerford's Trade"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Seconder's Blessing"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Loudwater's Luck"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Triboar's Gain"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Yartar's Prosperity"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Raven's Bluff Wealth"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tantra's Trade"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Suzail's Luxury"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Marsember's Gain"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arabel's Profit"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tilverton's Trade"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eveningstar's Blessing"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Esparr's Prosperity"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Immersa's Wealth"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Waymoote's Luck"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wheloon's Gain"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Spear"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Golden Crown"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Copper Mug"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Iron Mark"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zinnier Coin"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bronze Scales"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Copper Coin"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant Lady"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Winner"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Messenger Runner"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Harasser"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Guild Master"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goldsmith"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stacking Right"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Free Trade"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Highest Bid"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant's Oath"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Contract Partner"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Honor Word"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Handshake"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Business Mind"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Occupational Trader"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trade Trader"
+          },
+          "tags": [
+            "merchant_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Iron Fist"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storm Breaker"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Thunderclaw"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shield Bearer"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lightning Strike"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "War Eagle"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Flame Fury"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shield Wall"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cannon's Call"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Battle"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Battle Spirit"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Victory Sword"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Lord"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wave Crusher"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unconquerable"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proud Warrior"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragon's Wrath"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lion's Courage"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bear Strength"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wolf Pack"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eagle Claw"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Falcon's Eye"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Battle Cry"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "North Rage"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "South Gust"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "East Grim"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "West Storm"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Revenge"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wave Madness"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storm Fury"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Blood Edge"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Death Breath"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "War Lord"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Battle Victory"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Combat Will"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Victory Glory"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Honor Shield"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fame Journey"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Heroism"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Courage"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fearless"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Brave"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unyielding"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unconquerable"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Iron Heart"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Steel Will"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bronze Corruption"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Golden Shield"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Blade"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Diamond Will"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tyrs Guardian"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Helms Watch"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Torms Fortress"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tempus' Wrath"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Retribution"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Justice"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unshakeable"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Guardian"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Defender"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Liberator"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Avenger"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Conqueror"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bravery"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Honorable"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Courage"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bold"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unwavering"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormyrs Sword"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Waterdeeps Guardian"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Neverwinters Shield"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoons Blade"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Citadel Adbars Hammer"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mithral Halls Axe"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Icewind Dales Storm"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luskans Revenge"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Menzoberranzans Shadow"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ched Nasads Darkness"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gracklstughs Anvil"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gauntlgryms Echo"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Felbarrs Bastion"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mirabars Strength"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sundabars Fortress"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tyrs Revenge"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Helms Loyalty"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Torm's Honor"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tempus' Wrath"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Baneholds Terror"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zhentil Keeps Power"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Darkholds Darkness"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Westgates Dagger"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ravens Bluffs Honor"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tantras Light"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rudder Strike"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Taktschläger"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gleichschritt"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Strength Giant"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Muscle Maiden"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lace Ripper"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Oar Master"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Time Manipulator"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Speed Devil"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Faster Lightning"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Runner"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storm Hunter"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ferryman"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eagle Flight"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hawk's Journey"
+          },
+          "tags": [
+            "war_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Black Pearl"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Red Revenge"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bloody Sword"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Skullcap"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gallows Humor"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Clown of the Damned"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hell's Voyage"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Devil's Bride"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Demon's Claw"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Satan's Wind"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Freebooter's Dream"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pirate's Pride"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Raider's Luck"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Caper's Curse"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ent's Joy"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mutiny Mut"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Treasure Hunter"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Seeker"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Plundering"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Black Flag"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jolly Roger"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crane's Nest"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Parrot's Cry"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rum and Honor"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sword and Pistol"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gunpowder and Lead"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Smuggler"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lawless One"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bird Free"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unholy"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Corsair"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Freebooter"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mutineer"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rebel"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Troublemaker"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Troublemaker"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Quarry Hunter"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Troublemakeress"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Monster"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Monster"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Kraken Kisser"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Horse Rider"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Whale Strangler"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Umarloth's Terror"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luskans Lion"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ruathens Thief"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nelanthers Nightmare"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mintarns Marauder"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Baldurans Curse"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sekolahschreck"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Talos' Wrath"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Umberlees Kiss"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Valkurs Spot"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Aurils Frost"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Malars Hunger"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Black Snake"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Circus Deceit"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shadows' Shade"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Talon's Gift"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ladybird's Hair"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gargauth's Treachery"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Black Bull"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Red Dragon"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "White Shark"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Green Kraken"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Blue Serpent"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Golden Vulture"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Wolf"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Copper Fox"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Iron Bear"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zinnier Raven"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bronze Scorpion"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Brass Beetle"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lead Worm"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Steel Rat"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Titanic Spider"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragon Hide Wings"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unicorn Hoof"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pegasus Feather"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Griffin Claw"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hippogriff Mane"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Manticore Tail"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sphinx Riddle"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Minotaur Horns"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Centaur Foot"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Satyr Flute"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nymph Song"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mermaid"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trident Horn"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nereid Laughter"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Oceanid Squeals"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragon Spittle"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Kobold Tricks"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goblin Pranks"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Orc Grumbles"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Troll fist"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ogre scream"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Giant rage"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "One-eyed Cyclops"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Medusa's gaze"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gorgon's head"
+          },
+          "tags": [
+            "pirate_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Little wave"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bendy streamer"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ufertainer"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silt whisperer"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trout hunter"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Heck terror"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Carp king"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eel catcher"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Seaweed maiden"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Water jumper"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Frog king"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragonfly dance"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Water lily"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Reed hummer"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fishing Luck"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Net Fishing"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Angling Luck"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bait Master"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hook Fisher"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Reel Setter"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Morning Fisherman"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evening Catch"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Quiet Water"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Soft Ripple"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Peaceful Wave"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Still Lake"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Clear Flood"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mirror Water"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Smooth Wave"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Leisurely Voyage"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Swinging Maid"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cradle Child"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dreamer Girl"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hopeful Boat"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sunshine"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moonlight"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Star Signal"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sky Drizzle"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Morning Glow"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evening Blush"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Golden Hour"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Sheen"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pearl Rain"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crystal Water"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stream Downstream"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stream Upstream"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "River Course"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tide Rider"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Riverbanker"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bridge Walker"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fortress Guardian"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lockkeeper"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mill Wheel Pedestrian"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Village Gatekeeper"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Town Visitor"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Trader"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ferryman"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Interpreter"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bridge Builder"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "River Walker"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Water Nymph"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stream Maiden"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fish Elf"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Brook Dwarf"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Sprite"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Garden Pixie"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Woodland Nymph"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fishlet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Newtlet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Caterpillarlet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Snaillet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wormlet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crablet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shrimp"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shellfish"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Star"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Urchin"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Snail"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crablet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Foal"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dorado Fish"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Fish"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gold Fish"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Red Mullet"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Blue Eye"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Green Slug"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Colored Stripe"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Horse"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Marine Cat"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Water Dog"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "River Foal"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Marsh Turtle"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pond Frog"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stream Carp"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rainbow Trout"
+          },
+          "tags": [
+            "small_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wireless Hunter"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Horizon Hunter"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unknown Worlds"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "New Shores"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wide Journey"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Great Quest"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Departure"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dangers"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Adventure"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Discovery"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Expedition"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Research"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Exploration"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Surveying"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cartography"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Navigation"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Compass Rose"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sextant"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Astrolabe"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Star Chart"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Chart"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Logbook"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Diary"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chronometer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Telescope"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Harp"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Poem"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mast Symphony"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Music"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Dream"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Song"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wave's Call"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Concert"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Oper"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Maiden"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wave Waltz"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Variation"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Theme"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mast Motif"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sailor's Master"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Hymn"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Two-Master Ship"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sailing Pride"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Dancer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mast Crown"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Yard"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Lord"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Breeze Catcher"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Hope"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Bearer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail King"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mast Baron"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Master"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sail Knight"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Warrior"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Breeze Hunter"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storm Sail"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hope Bearer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dream Walker"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Star Sailor"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moon Sailor"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sun Seeker"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sky Stormer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cloud Runner"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wind Rider"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storm Rider"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wave Rider"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Foam Crown"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Salt Breaker"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Deep Sprint"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sea Bolt"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ocean Gallop"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Curiosity"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Thirst for Knowledge"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Research Drive"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Discovery Spirit"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Adventure Hunger"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Travel Craving"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Far-Off Longing"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Restlessness"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Impulse to Depart"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pioneer Spirit"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Path Pioneers"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trailblazers"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Treasure Hunters"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Border Wanderers"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Limitless"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unlimited"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Endless"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Baldur's Vision"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Drizzt's Path"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elminster's Wisdom"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Volos' Guide"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tethyr's Explorer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Halruaas Researcher"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chults Discoverer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mazticas Seeker"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zakharas Traveler"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Kara-Turs Wanderer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spelljammer"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Star Sailor"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Space Traveler"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crystal Sphere"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Aether Sea"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wildspace"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Phlogiston"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Netheril's Legacy"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Myth Drannor's Echo"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthyr's Remembering"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska's Hope"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet's Longing"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvermoon's Dream"
+          },
+          "tags": [
+            "exploration_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchanted Wind"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystic Tides"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arcane Currents"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magical Fog"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Unlucky Voyage"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ghost Ship"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ghost Galeone"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Phantom ship"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shadow stalker"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fog handler"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dream ship"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Visionaries"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Oracle ship"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Prophecy"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Seeress"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Seeress"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystros' Blessing"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Azuth's Wisdom"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Savras' Sight"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Velsharoon's Power"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Karsus' Inheritance"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elminster's Magic"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Khelben's Might"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Laeral's Charm"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Storms Bolt"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dove's Wing"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Qilués Song"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Alasras' Glory"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Syluves' Spirit"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sun's Beauty"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Selûnes' Hope"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chaunteas' Gift"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mielikkis' Favor"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvanus' Call"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eldath's Silence"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lurue's Horn"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shiallias' Shadow"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tethys' Tear"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arkaner's Glow"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystical Shine"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchanted Beam"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Haunted Drift"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mysterious Journey"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Supernatural Journey"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spiritual Wind"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Astral Gust"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ethereal Wave"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dimensional Rider"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Planetary Weaver"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spherical Runner"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cosmic Harp"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stellar Lyre"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Planetary Flute"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lunar Lute"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Solar Fiddle"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nebula Crystal"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shadow Fragment"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Light Carrier"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rainbow Seeker"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Auric Weaver"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Energy Rider"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Power Source"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystic Stream"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magic Haven"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magical Shell"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchanted Pearl"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crystal Heart"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragon's Dream"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Kobold's Wit"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elven Song"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dwarf's Hammer"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gnome's Wonder"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Half-Elf's Hope"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Humanity"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tiefling Pact"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Assassin's Blessing"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Genasi Tower"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dragon's Blood Wind"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Feywild Dancer"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shadowfell Rider"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fire Elemental"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Water Spirit"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Earth Giant"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sky Sylph"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Starry Fire"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moon Silver"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sunbeam"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sky Rain"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cloud White"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rainbow"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dusk Glow"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Morning Rose"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Midnight Blue"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Twilight Gray"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Shade Green"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ghostly Pale"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wizard Violet"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystic Gold"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arkank Copper"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magic Bronze"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Runes Silver"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Glyph Iron"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Symbol Steel"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sign Mithril"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Band Diamond"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Protection Sapphire"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Healing Ruby"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Power Emerald"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wisdom Amethyst"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Truth Topaz"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Courage Peridot"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hope Aquamarine"
+          },
+          "tags": [
+            "mythical_ship"
+          ],
+          "w": 1
+        }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "exploration_ship": {
+            "de": "Forschungsschiff"
+          },
+          "merchant_ship": {
+            "de": "Handelsschiff"
+          },
+          "mythical_ship": {
+            "de": "Mythisches Schiff"
+          },
+          "pirate_ship": {
+            "de": "Piratenschiff"
+          },
+          "small_ship": {
+            "de": "Kleines Schiff"
+          },
+          "war_ship": {
+            "de": "Kriegsschiff"
+          }
+        }
+      }
+    },
+    "icons": {
+      "mythical_ship": "✨",
+      "exploration_ship": "🧭",
+      "war_ship": "⚓",
+      "pirate_ship": "🏴‍☠️",
+      "merchant_ship": "🚢",
+      "small_ship": "⛵"
+    }
+  },
+  "collections": [
+    {
+      "key": "merchant_ships",
+      "labels": {
+        "de": "Handelsschiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "merchant_ship"
+        ]
+      }
+    },
+    {
+      "key": "war_ships",
+      "labels": {
+        "de": "Kriegsschiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "war_ship"
+        ]
+      }
+    },
+    {
+      "key": "pirate_ships",
+      "labels": {
+        "de": "Piratenschiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "pirate_ship"
+        ]
+      }
+    },
+    {
+      "key": "small_ships",
+      "labels": {
+        "de": "Kleine Schiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "small_ship"
+        ]
+      }
+    },
+    {
+      "key": "exploration_ships",
+      "labels": {
+        "de": "Forschungsschiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "exploration_ship"
+        ]
+      }
+    },
+    {
+      "key": "mythical_ships",
+      "labels": {
+        "de": "Mythische Schiffe"
+      },
+      "query": {
+        "category": "ships",
+        "tags": [
+          "mythical_ship"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "dwarf-de",
     "displayName": {
       "de": "Zwerge Titel",
       "en": "Zwerge Titles"
@@ -34,7 +35,17 @@
         { "t": { "de": "Felsengräfin" }, "tags": ["female", "titles"], "w": 1 },
         { "t": { "de": "Runenmeisterin" }, "tags": ["female", "titles"], "w": 1 },
         { "t": { "de": "Älteste" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Gildenherrin" }, "tags": ["female", "titles"], "w": 1 }
+        { "t": { "de": "Gildenherrin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Eckstein" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Kronenträger" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Erzlenker" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Tiefenkern" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Berghüter" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Runenwahrer" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Schildhalter" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Stammesahn" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Gildenprimus" }, "tags": ["non-binary", "titles"], "w": 1 },
+        { "t": { "de": "Felsenkern" }, "tags": ["non-binary", "titles"], "w": 1 }
       ]
     }
   },

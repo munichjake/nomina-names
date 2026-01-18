@@ -1124,7 +1124,6 @@
       ]
     }
   },
-  "recipes": [],
   "output": {
     "transforms": [
       "TrimSpaces",
@@ -1141,7 +1140,7 @@
         },
         "values": {
           "humorous_book": {
-            "de": "Humorous Book"
+            "de": "Humoristische Bücher"
           },
           "novel": {
             "de": "Novel"
@@ -1155,7 +1154,12 @@
         }
       }
     },
-    "icons": {}
+    "icons": {
+      "religious_book": "⛪",
+      "novel": "📖",
+      "scientific_treatise": "🔬",
+      "humorous_book": "😄"
+    }
   },
   "collections": [
     {
@@ -1185,7 +1189,7 @@
     {
       "key": "scientific_treatises",
       "labels": {
-        "de": "Wissenschaftliche Abhandlungen"
+        "de": "Wissenschaftliche Texte"
       },
       "query": {
         "category": "books",
@@ -1197,7 +1201,7 @@
     {
       "key": "humorous_books",
       "labels": {
-        "de": "Humoristische Bücher"
+        "de": "Humorvolle Titel"
       },
       "query": {
         "category": "books",

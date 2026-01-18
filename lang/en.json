@@ -426,6 +426,51 @@
             "generation-error": "Error generating:",
             "name-setting-error": "Error setting name:",
             "clipboard-fallback": "Clipboard API not available, using fallback"
+        },
+        "// ===== DETAILED ERROR MESSAGES =====": "",
+        "errors": {
+            "catalog": {
+                "empty": "No names available in this category",
+                "empty-hint": "This category doesn't contain any names yet. Try a different category or species.",
+                "no-match": "No names match your filter criteria",
+                "no-match-hint": "Try removing some filters or selecting different options.",
+                "not-found": "Category '{catalog}' not found",
+                "no-distinct": "Unable to find unique names after {attempts} attempts",
+                "no-distinct-hint": "There aren't enough different names available. Try generating fewer names at once."
+            },
+            "package": {
+                "not-found": "Name data for {species} in {language} not available",
+                "not-found-hint": "This combination of species and language is not currently available.",
+                "invalid-format": "Invalid data format: {format}",
+                "missing-data": "Required name data is missing"
+            },
+            "recipe": {
+                "not-found": "Recipe '{recipe}' not found",
+                "not-found-hint": "This name template is not available. Try selecting a different option.",
+                "invalid-json": "Invalid recipe format",
+                "invalid-json-hint": "The recipe definition contains errors. Check the syntax and try again.",
+                "missing": "At least one recipe must be specified",
+                "execution-failed": "Failed to generate name using template",
+                "execution-failed-hint": "There was a problem with the name generation. Try again or select a different template."
+            },
+            "generation": {
+                "failed": "Names could not be generated",
+                "failed-hint": "Please check your settings and try again.",
+                "partial": "Only {count} of {requested} names could be generated",
+                "partial-hint": "Not enough unique names available. Try generating fewer names.",
+                "no-components": "No name components could be generated",
+                "no-components-hint": "Please select at least one component (first name, surname, etc.) and try again.",
+                "species-unavailable": "Species '{species}' not available for {language}",
+                "unsupported-gender": "Gender '{gender}' is not supported",
+                "no-subcategories": "No subcategories available for this selection",
+                "no-data": "No data available for {subcategory}",
+                "template-failed": "Template is missing required components: {components}"
+            },
+            "selection": {
+                "select-language-species": "Please select both language and species",
+                "select-components": "Please select at least one name component",
+                "select-category": "Please select a category"
+            }
         }
     }
 }

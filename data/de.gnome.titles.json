@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "gnome-de",
     "displayName": {
       "de": "Gnome Titel",
       "en": "Gnome Titles"

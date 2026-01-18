@@ -14,8 +14,8 @@
   "catalogs": {
     "settlements": {
       "displayName": {
-        "de": "settlements",
-        "en": "settlements"
+        "de": "Siedlungen",
+        "en": "Settlements"
       },
       "items": [
         { "t": { "de": "Hammerstadt" }, "tags": ["settlements"], "w": 1 },
@@ -867,7 +867,7 @@
     {
       "key": "settlements",
       "labels": {
-        "de": "Settlements"
+        "de": "Siedlungen"
       },
       "query": {
         "category": "settlements",

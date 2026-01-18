@@ -8,6 +8,7 @@ import { getGlobalGenerator } from '../api/generator.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID, DEFAULT_GENDER_COLORS } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+import { getUserFriendlyMessage, notifyError } from '../utils/error-helper.js';
 import { NamesHistoryApp } from './history-app.js';
 import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
 import { hasNonbinaryNamesForSpecies } from '../utils/ui-helpers.js';
@@ -778,7 +779,11 @@ export class NamesGeneratorApp extends Application {
 
       if (result.errors && result.errors.length > 0) {
         logError('Generation errors:', result.errors);
-        ui.notifications.error(game.i18n.localize('names.generation-error'));
+        const firstError = result.errors[0];
+        const errorMessage = getUserFriendlyMessage(
+          typeof firstError === 'string' ? new Error(firstError) : firstError
+        );
+        ui.notifications.error(errorMessage);
       }
 
       // Keep favorited names and add new ones
@@ -836,7 +841,7 @@ export class NamesGeneratorApp extends Application {
 
     } catch (error) {
       logError('Failed to generate names:', error);
-      ui.notifications.error(game.i18n.localize('names.generation-failed'));
+      notifyError(error);
     }
   }
 
@@ -1431,7 +1436,7 @@ export class NamesGeneratorApp extends Application {
 
         return result;
       } catch (error) {
-        ui.notifications.error('Invalid recipe JSON: ' + error.message);
+        notifyError(error);
         return { suggestions: [], errors: ['Invalid recipe JSON'] };
       }
     }

@@ -1,0 +1,5628 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "elf-de",
+    "displayName": {
+      "de": "Elfen",
+      "en": "Elves"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "shops": {
+      "displayName": {
+        "en": "Shops",
+        "de": "Läden"
+      },
+      "items": [
+        {
+          "t": {
+            "en": "Solonor's Bogenschmiede"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Singing Bow"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moonlight Archer"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Thread & Stars"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "True Archery Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Whispering Thread"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Bowmaker"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Corellon's Shooting Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Perfect Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Arrow Master"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Piercing Point"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Thranduil's Longbow Factory"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Singing Meadow"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eschenbogen & Tradition"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unbreakable Yew"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Honorable Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverlight Bowcraft"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fearless Hunter"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Victorious Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Legolas' Archery Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arrow & Moonlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Brave Forest Runner"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Quiet Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Bowcraft"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Prepared Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Hunter & Craftsmanship"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Just Archer"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Protective Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoon Arrow Factory"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sturdy Defense"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hunt Gear Moonlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unshakable Will"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Unbreakable Posture"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Bow Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Honorable Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ash & Justice"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Righteous Bowman"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Virtuous Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Arrowwork"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Honorable Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Feder and Flight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sure Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Accurate Point"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Archery Craft Starlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wide Distance"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Long Range & Precision"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sharp Eye"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Safe Hand"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Arrow Smith Moonlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Piercing Force"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fine Arrow and Point"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Secret Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Swift Movement"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hunting Arrows Starlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Curved Guidance"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Short Distance & Cunning"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Skilled Shot"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Surprising Attack"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Precision Arrows Moonbeam"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Accurate Movement"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "[\"Weide & Wucht\" => \"Wither and Strength\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Der Kraftvolle Schuss\" => \"The Mighty Shot\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zur Durchschlagenden Kraft\" => \"To Piercing Power\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jagdbogen Sternenhimmel\" => \"Hunting Bow Star Sky\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Die Betäubende Wirkung\" => \"The Numbing Effect\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nicht-tödliche & Macht\" => \"Non-Fatal & Might\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Der Kraftvolle Treffer\" => \"The Mighty Hit\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zur Erschütternden Gewalt\" => \"To Tremendous Force\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Betäubungspfeil Mondschimmer\" => \"Numbing Arrow Moonlight\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Die Durchschlagende Wucht\" => \"Piercing Power\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sehne & Reichweite\" => \"Sinew and Range\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Der Lange Schuss\" => \"The Long Shot\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zur Distanzierten Führung\" => \"To Distant Leadership\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Langbogen Sternenfeuer\" => \"Longbow Starfire\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Die Überlegene Reichweite\" => \"Supreme Range\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fernkampf & Ordnung\" => \"Distant Combat and Order\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Der Disziplinierte Schuss\" => \"The Disciplined Shot\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Zur Formation der Pfeile\" => \"To Form the Arrows\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Schlachtbogen Mondfeuer\" => \"Battle Bow Moonfire\","
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Die Geschlossene Reihe\" => \"The Closed Line\"]"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Exotic Rarity"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Foreign Style"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unusual Technique"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eastern Star Arrows"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mysterious Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fern Eastern Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unknown Path"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mystical Guidance"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Foreign Shooting Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Foreign Tradition"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Masterpiece & Art"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Completed Archer"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Artistic Completion"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Artisan's Moonlight"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Aesthetic Perfection"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Beauty & Function"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Harmonious Archer"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elegant Form"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Noble Star Arrows"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Precious Hunt"
+          },
+          "tags": [
+            "bowmaker"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mystra's Enchantments"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shimmering Crystal"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wise Enchanter"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Azuth's Enchantments"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mysterious Rune"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Golden Imbuing"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Zauberwerk"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Oghma's Insights"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flickering Focus"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Verzauberungskunst am Turm"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enduring Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Celebrimbor's Runework"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Radiant Essence"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Permanence & Perfection"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Stone"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enigmatic Inlaying"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Runemaster Mondschein"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pulsating Jewel"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Magical Substance"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elrond's Secret Chamber"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magical Art & Study"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Experimental Spirit"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Transmutation"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gond's Inventions"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Precise Attitude"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wizards at the Market Square"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Researching Mind"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Amplification"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Paracelsus' Heirs"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Amplifying Force"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Runes & Spells"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Catalytic Process"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Amplifying Solution"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Boccob's Secrets"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Analyzing Hand"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magnus Laboratory"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Discovering Spirit"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Powerful Enchantment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Runemonger Guild"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Amplifying Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchantment for the Unicorn"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Magician Master"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Empowerment Enchantment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvermoon Runework"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Regenerative Force"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magicus & Enchanter"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Diagnosis Specialist"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Strengthening Essence"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Magic Art"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Preventive Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Runology & Empowerment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rune Expert"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Natural Empowerment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Enchantments"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magical Enhancement"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchantment & Alchemy"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rune Collector"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wild Enchantment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Druidic Runework"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Natural Balance"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magic of the Forest & Permanence"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wise Enchanter"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Harmonious Implantation"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chauntea's Blessing"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fertile Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nature Magic Moonlight"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gentle Enchanter"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mild Effect"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvanus' Gift"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pure Nature"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Combat Magic & Power"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cautious Handling"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dangerous Substance"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stealthy Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Deadly Enchantment"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Combat Magic & Defense"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Neutral Researcher"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Effective Solution"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "War Magic & Protection"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Purifying Effect"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magic of Power"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Strengthening Spell"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Essence of Might"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Magical Energies Magnus"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Amplifying Effect"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Power Increase & Strength"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Energizing Spell"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enduring Effect"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Vitality & Strength"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Refreshing Magic"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Enchantment of the Senses"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sharpening Mind"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Clarity of Sight"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Intelligence & Wisdom"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Expanding Perception"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spiritual Acuity & Insight"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Illuminating Spell"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enlightening Insight"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Consciousness & Clarity"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Opening Effect"
+          },
+          "tags": [
+            "enchanter"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hanali's Allerlei"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Full Harvest Yard"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Painted Glade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Handel & Natural Wonders"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Open Bloom"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Colorful Forest Layout"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Trading Post"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rillifane's Collection"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Useful Nature Store"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Stall at the Moon Spring"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Practical Nature Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silberblatt's Mixed Goods Glade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Full Forest Layout"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Krämergrotte Mondschein"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Necessary Forest Supply"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Common Nature Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Trader by the Forest Gate"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Everyday Need"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Household Use"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sternentau's Trading"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Provisions and Forest Stores"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Stuffed Tree Storage"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Long Shelf Life"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Trade Office"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proven Quality"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Merchant's Row Moonlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Honest Trade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Fair Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoon Market Office"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Reliable Delivery"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Market Square Starlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Punctual Service"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Swift Transaction"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Trading House"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Great Selection"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Warehouses & Distribution"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Comprehensive Provision"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Complete Equipment"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Trade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rich Storage"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Everyone's Use"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bargain Price"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Frugal Household Management"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Popular Trade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Affordable Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spare Carts at the Forest Market"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Little Purse"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For the Modest Cashbox"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Simple Need"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Necessary Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Handicrafts & Household"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Useful Object"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Practical Solution"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Household Articles Moonlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Helpful Invention"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tools & Utensils"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Handy Helper"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Easier Work"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Useful Items"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proven Technique"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Travel Equipment Star King"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wanderer Trader"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Distant Journey"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Distant Trade & Exotica"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Foreign Goods"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Import & Curiosities"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rare Discovery"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Unusual Exploration"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Exotic Goods Moonlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mysterious Origin"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luxury & Comfort"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fine Taste"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Special Quality"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Precious Metals Starlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Esteemed Selection"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Luxury Shop at Elven Ring"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elevated Expectation"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Distinguished Customer"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Exclusive Trade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rare Value"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Family & Tradition"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Established Business"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proven Tradition"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Generations' Moonlight"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Timeless Quality"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Traditional Trade"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Experienced Merchant"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Old School"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proven and Solid"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Timeless Quality"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Quick and Reliable"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Prompt Service"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Same-Day Delivery"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Express Trade Star King"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Swift Order"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Blitz Delivery & Service"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fast Courier"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Immediate Resolution"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ready-to-Use Shop"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Constant Readiness"
+          },
+          "tags": [
+            "general-store"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Runner's Equipment Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Brave Hearts"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Prepared Wanderer"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Expedition & Forest Gear"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wide Wilderness"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Daring Wood Mission"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Adventure Loaders"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fharlanghn's Nature Backpack"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Long Forest March"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pathfinder at the Gate"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Unknown Wild Route"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Path's Expedition Equipment"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Heavy Forest Load"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Wanderer's Joy Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Safe Path"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Loyalty Equipment"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Researchers at the Wood Pass"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unshaken Spirit"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Daring Act"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stardawn's Forest Provision"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Survival and Survival Art"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Full Forest Sack"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Long Forest Journey"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Expedition Camp"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Necessary Equipment"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Mondlight Adventurer's Office"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Practical Object"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Useful Invention"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvermoon Survival School"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Proven Technique"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Starry Sky Wilderness Store"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Experienced Guide"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Safe Return"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Expedition House"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Complete Outfit"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Adventure Equipment & Co"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Reliable Partner"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Successful Mission"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Expeditions"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Professional Preparation"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rope & Hook"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Firm Hold"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Secure Bonding"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Climbing Gear Moon King"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Strong Connection"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Knots and Fastening"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Safe Grip"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Reliable Connection"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cave Exploration Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Depth of Darkness"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fire and Light"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bright Beam"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Illuminating Flame"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Torch and Lantern"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Warm Glow"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Light Source Starlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Leading Ray"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Wise Radiance"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Eternal Light Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Never-Extinguished Flame"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Direction & Navigation"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Right Path"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Safe Direction"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Compass & Wood Map"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Exact Position"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lunar Navigation Aids Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Reliable Course"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Targeted Guidance"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Stellar Cartographer Stellar King"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Celestial Orientation"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "First Aid & Healing"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Quick Bandage"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Soothing Treatment"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Emergency Medicine Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rescue Measure"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Medicine & First Aid"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Expert Helper"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Immediate Care"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Lunar Savior Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Important Help"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hand Tool & Repair"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Handy Helper"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Quick Repair"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "All-Purpose Tool Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Practical Solution"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Repair Set & Maintenance"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Skilled Grip"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Permanent Repair"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Maintenance Star King"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Preventive Care"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Weather & Protection"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dry Shelter"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Warm Accommodation"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Weather Equipment Starlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Protective Shell"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Weather Protection & Heat"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Insulating Mantle"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Comfortable Rest"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "All-Weather Protection Moonlight"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Reliable Barrier"
+          },
+          "tags": [
+            "adventure_supplie"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Hanali's Jewelcraft"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal of Illumination"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sparkling Diamond"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moonlight Jewelrywork"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Perfect Polishing"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shining Crown"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Jeweler's Art"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sune's Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Noble Ornament"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Master Jeweler at the Tower"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Pure Clarity"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverglow's Jewelers' Forge"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pure Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goldsmith & Gemstone"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unparalleled Brilliance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Priceless Crown"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moonlight Jewelrywork"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Majestic Smith"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Royal Crown"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Moonlight's Jewelcraft"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jewelry & Charm"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Charismatic Artist"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Elegant Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Jewelry Craft"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Radiant Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Precious Stone Art & Tradition"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Experienced Master"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Timeless Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoon Jeweler's Artisan"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enduring Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jewelry Equipment Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Reliable Glow"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Reliable Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Precious Stone Smiths"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Trustworthy Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crystal & Comfort"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Soothing Glow"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Secure Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Jewelry Art"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Umbrellaed Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver & Flexibility"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mobile Shine"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Twinkling Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silver Jewelry Star King"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flexible Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Softer Jewelry & Comfort"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Comforting Shine"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Pleasant Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goldsmith Moonlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Breathing Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chain & Connection"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Connected Shine"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Entwined Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pearl Jewelry Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bound Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Ring Jewelry & Movement"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flowing Shine"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Swinging Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chainsmith Moonlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rhythmic Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Golden Refinement & Purity"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pure Radiance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Illuminating Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Platinum Jewelry Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Purifying Effect"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Goldsmithing & Comfort"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gentle Radiance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Adaptable Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jewelry of the Moon King"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Yielding Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Diadem & Head Jewelry"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Protective Radiance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Secure Crown"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Crownsmiths Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Covering Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Head Jewelry & Sight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Clear Gaze"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Free Sight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forehead Ornament Art Moonlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Open Perception"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Amulet & Defense"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Intercepting Shield"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Diverting Force"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Amulet Smith Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Redirecting Force"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Talisman & Magic"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Skilled Shield"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Turning Defense"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Protection Jewelry Moon King"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elegant Defense"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Strengthening & Improvement"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Additional Luster"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Expanded Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jewelry Modification Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Adapted Beauty"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Custom Work & Fit"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Individual Luster"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Personal Adornment"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Tailoring Art Moonlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Customized Elegance"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Maintenance & Repair"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preserving Service"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Enduring Use"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Jewelry Care Starlight"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preserving Treatment"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Maintenance & Care"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nurturing Craftsman"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For a Longer Life Span"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Restoration of the Moon King"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Renewing Work"
+          },
+          "tags": [
+            "jeweler"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Oghma's Writing Studio"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Golden Parchment"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wise Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Deneir's Ink Workshop"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mysterious Quill"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Silver Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evermeet Scriptarium"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Corellon's Wisdom"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flowing Writing Pen"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Scribe Master at the Tower"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Enduring Ink"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverfeder's Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Elegant Handwriting"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Beautiful Script & Perfection"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crystal Ink Vessel"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Artful Ornamentation"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Calligrapher Moonlight"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Precise Stroke"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Magical Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Elrond's Book Chamber"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Scriptcraft & Study"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Scholarly Mind"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Translation"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Gonds Inventions"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Precise Copy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Scribe at the Marketplace"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Researching Intellect"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Multiplication"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Paracelsus' Chronicles"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preserving Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Parchment & Knowledge"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Collecting Process"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Archive Solution"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Boccob's Secrets"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cataloguing Hand"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Bibliotheca Magnus"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ordering Spirit"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Art of Knowledge Storage"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Cormanthor Scribes' Guild"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preserving Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Inkwell for the Unicorn"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Master of Knowledge"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Script of Preservation"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silverymoon Scriptarium"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preserving Art"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Scribe & Archivist"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Diagnosing Specialist"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ordering Essence"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Evereska Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Preventive Archiving"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Calligraphy & Preservation"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Calligraphy Expert"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Natural Conservation"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Rivendell Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Written Improvement"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Script & Alchemy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tint Collector"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Wild Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Druidic Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Natural Balance"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Forest Script & Permanence"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wise Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Harmonious Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Chauntea's Blessing"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Fertile Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Nature Script Moonlight"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gentle Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "For Mild Ink"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Silvanus' Gift"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Pure Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "War Script & Power"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cautious Handling"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To the Dangerous Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Secret Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Deadly Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spy & Secrets"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Neutral Researcher"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Effective Encryption"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Secret Service & Codes"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Decoding Art"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Script of Power"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mighty Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Influential Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Machtwords Magnus"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Commanding Effect"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Dominance & Power"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Energy-Spreading Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "To Enduring Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Vitality & Strength"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Refreshing Calligraphy"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Sight of Knowledge"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sharpening Mind"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Clear Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Intelligence & Wisdom"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Expanding Perception"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Spiritual Acuity & Understanding"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Illuminating Scribe"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Knowing Insight"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "Consciousness & Clarity"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Opening Script"
+          },
+          "tags": [
+            "scribe"
+          ],
+          "w": 1
+        }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "adventure_supplie": {
+            "de": "Adventure Supplie"
+          },
+          "bowmaker": {
+            "de": "Bowmaker"
+          },
+          "enchanter": {
+            "de": "Enchanter"
+          },
+          "general-store": {
+            "de": "General-Store"
+          },
+          "jeweler": {
+            "de": "Jeweler"
+          },
+          "scribe": {
+            "de": "Scribe"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "bowmakers",
+      "labels": {
+        "de": "Bogenmacher"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "bowmaker"
+        ]
+      }
+    },
+    {
+      "key": "enchanters",
+      "labels": {
+        "de": "Verzauberer"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "enchanter"
+        ]
+      }
+    },
+    {
+      "key": "general-stores",
+      "labels": {
+        "de": "General-Stores"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "general-store"
+        ]
+      }
+    },
+    {
+      "key": "adventure_supplies",
+      "labels": {
+        "de": "Abenteuerbedarf"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "adventure_supplie"
+        ]
+      }
+    },
+    {
+      "key": "jewelers",
+      "labels": {
+        "de": "Juweliere"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "jeweler"
+        ]
+      }
+    },
+    {
+      "key": "scribes",
+      "labels": {
+        "de": "Schreiber"
+      },
+      "query": {
+        "category": "shops",
+        "tags": [
+          "scribe"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

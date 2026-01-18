@@ -7,6 +7,7 @@ import { addItemIndices } from './selector.js';
 import { executePattern, applyTransforms } from './composer.js';
 import { getLocalizedText } from '../utils/grammar.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
+import { createNominaError, ErrorType } from '../utils/error-helper.js';
 
 /**
  * Generation Engine
@@ -86,7 +87,7 @@ export class Engine {
 
     // Validate inputs
     if (!recipes || recipes.length === 0) {
-      throw new Error('At least one recipe must be specified');
+      throw createNominaError(ErrorType.RECIPE_MISSING, {});
     }
 
     if (n <= 0 || n > 100) {
@@ -96,7 +97,10 @@ export class Engine {
     // Get package
     const pkg = this.getPackage(packageCode);
     if (!pkg) {
-      throw new Error(`Package not found: ${packageCode}`);
+      throw createNominaError(ErrorType.PACKAGE_NOT_FOUND, {
+        species: packageCode,
+        language: 'unknown'
+      });
     }
 
     // Validate locale
@@ -145,7 +149,7 @@ export class Engine {
 
     // Check if we got enough results
     if (suggestions.length === 0) {
-      throw new Error('No suggestions could be generated');
+      throw createNominaError(ErrorType.GENERATION_FAILED, {});
     }
 
     if (suggestions.length < n) {
@@ -172,7 +176,9 @@ export class Engine {
     // Find recipe
     const recipe = this.findRecipe(pkg, recipeId);
     if (!recipe) {
-      throw new Error(`Recipe not found: ${recipeId}`);
+      throw createNominaError(ErrorType.RECIPE_NOT_FOUND, {
+        recipe: recipeId
+      });
     }
 
     // Determine pattern to use
