@@ -87,6 +87,11 @@
           "path": "modules/nomina-names/data/de.aasimar.nonbinary.json",
           "language": "de",
           "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.nonbinary.json",
+          "language": "en",
+          "enabled": true
         }
       ]
     },
@@ -146,6 +151,11 @@
           "path": "modules/nomina-names/data/de.aasimar.titles.json",
           "language": "de",
           "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.titles.json",
+          "language": "en",
+          "enabled": true
         }
       ]
     },
@@ -188,6 +198,22 @@
         {
           "path": "modules/nomina-names/data/de.dragonborn.male-min.json",
           "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.nonbinary.json",
+          "language": "en",
           "enabled": true
         }
       ]
