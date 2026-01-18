@@ -751,6 +751,17 @@
     },
     {
       "species": "halfling",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/en.halfling.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
       "category": "names",
       "files": [
         {
