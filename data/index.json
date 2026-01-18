@@ -633,6 +633,17 @@
     },
     {
       "species": "gnome",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/en.gnome.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
       "category": "accidents",
       "files": [
         {
