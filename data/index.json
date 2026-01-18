@@ -477,6 +477,22 @@
     },
     {
       "species": "elf",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
       "category": "names",
       "files": [
         {
