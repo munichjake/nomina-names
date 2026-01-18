@@ -1274,8 +1274,8 @@ export class EnhancedDropdown {
       .dropdown-empty {
         padding: 20px 12px;
         text-align: center;
-        color: var(--color-text-dark-inactive, #7a7971);
-        background: var(--color-bg, #f8f8f7);
+        color: var(--color-text-dark-inactive, #999);
+        background: var(--color-bg-option, #2a2a2a);
       }
 
       .empty-icon {
