@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "human-en",
     "displayName": {
       "de": "Human Rezepte",
       "en": "Human Recipes"

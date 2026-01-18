@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "aasimar-de",
     "displayName": {
       "de": "Aasimar Titel",
       "en": "Aasimar Titles"
