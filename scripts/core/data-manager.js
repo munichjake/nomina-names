@@ -172,9 +172,17 @@ export class DataManager {
         }
       }
 
-      // Merge recipes from this file
+      // Merge recipes from this file (deduplicate by ID)
       if (data.recipes && Array.isArray(data.recipes)) {
-        packageData.data.recipes.push(...data.recipes);
+        const existingIds = new Set(packageData.data.recipes.map(r => r.id));
+        for (const recipe of data.recipes) {
+          if (existingIds.has(recipe.id)) {
+            logDebug(`Skipping duplicate recipe '${recipe.id}' in package ${packageCode} (from ${path})`);
+          } else {
+            packageData.data.recipes.push(recipe);
+            existingIds.add(recipe.id);
+          }
+        }
       }
 
       // Merge langRules
