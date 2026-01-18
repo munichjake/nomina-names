@@ -1110,6 +1110,17 @@
     },
     {
       "species": "tiefling",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/en.tiefling.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
       "category": "nicknames",
       "files": [
         {
