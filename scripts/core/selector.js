@@ -4,6 +4,7 @@
  */
 
 import { logDebug, logWarn } from '../utils/logger.js';
+import { createNominaError, ErrorType } from '../utils/error-helper.js';
 
 /**
  * Select an item from a catalog with optional filtering and weighting
@@ -16,14 +17,20 @@ import { logDebug, logWarn } from '../utils/logger.js';
  */
 export function selectFromCatalog(items, { where = null, distinctFrom = [], seed = null, maxRetries = 20 } = {}) {
   if (!items || items.length === 0) {
-    throw new Error('SelectionError: Catalog is empty');
+    throw createNominaError(ErrorType.CATALOG_EMPTY, {
+      catalog: this.catalogKey || 'unknown'
+    });
   }
 
   // Filter candidates
   let candidates = where ? filterItems(items, where) : items;
 
   if (candidates.length === 0) {
-    throw new Error('SelectionError: No candidates match the filter criteria');
+    throw createNominaError(ErrorType.CATALOG_NO_MATCH, {
+      catalog: this.catalogKey || 'unknown',
+      totalItems: items.length,
+      filters: JSON.stringify(where || {})
+    });
   }
 
   // Handle distinctness
@@ -124,7 +131,9 @@ function selectDistinct(candidates, distinctFrom, seed, maxRetries) {
     attempts++;
   }
 
-  throw new Error(`SelectionError: Could not find distinct item after ${maxRetries} attempts`);
+  throw createNominaError(ErrorType.CATALOG_NO_DISTINCT, {
+    attempts: maxRetries
+  });
 }
 
 /**

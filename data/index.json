@@ -832,6 +832,11 @@
           "path": "modules/nomina-names/data/de.halfling.taverns.json",
           "language": "de",
           "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.taverns.json",
+          "language": "en",
+          "enabled": true
         }
       ]
     },
@@ -1174,6 +1179,11 @@
         {
           "path": "modules/nomina-names/data/de.tiefling.titles.json",
           "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.titles.json",
+          "language": "en",
           "enabled": true
         }
       ]

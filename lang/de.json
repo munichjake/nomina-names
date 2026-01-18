@@ -426,6 +426,51 @@
             "generation-error": "Fehler beim Generieren:",
             "name-setting-error": "Fehler beim Setzen des Namens:",
             "clipboard-fallback": "Clipboard API nicht verfügbar, verwende Fallback"
+        },
+        "// ===== DETAILED ERROR MESSAGES =====": "",
+        "errors": {
+            "catalog": {
+                "empty": "Keine Namen in dieser Kategorie verfügbar",
+                "empty-hint": "Diese Kategorie enthält noch keine Namen. Versuche eine andere Kategorie oder Spezies.",
+                "no-match": "Keine Namen entsprechen deinen Filterkriterien",
+                "no-match-hint": "Entferne einige Filter oder wähle andere Optionen.",
+                "not-found": "Kategorie '{catalog}' nicht gefunden",
+                "no-distinct": "Konnte keine einzigartigen Namen nach {attempts} Versuchen finden",
+                "no-distinct-hint": "Es sind nicht genug unterschiedliche Namen verfügbar. Versuche weniger Namen auf einmal zu generieren."
+            },
+            "package": {
+                "not-found": "Namensdaten für {species} in {language} nicht verfügbar",
+                "not-found-hint": "Diese Kombination aus Spezies und Sprache ist derzeit nicht verfügbar.",
+                "invalid-format": "Ungültiges Datenformat: {format}",
+                "missing-data": "Erforderliche Namensdaten fehlen"
+            },
+            "recipe": {
+                "not-found": "Rezept '{recipe}' nicht gefunden",
+                "not-found-hint": "Diese Namensvorlage ist nicht verfügbar. Versuche eine andere Option.",
+                "invalid-json": "Ungültiges Rezept-Format",
+                "invalid-json-hint": "Die Rezeptdefinition enthält Fehler. Überprüfe die Syntax und versuche es erneut.",
+                "missing": "Mindestens ein Rezept muss angegeben werden",
+                "execution-failed": "Fehler beim Generieren des Namens mit Vorlage",
+                "execution-failed-hint": "Es gab ein Problem bei der Namensgenerierung. Versuche es erneut oder wähle eine andere Vorlage."
+            },
+            "generation": {
+                "failed": "Namen konnten nicht generiert werden",
+                "failed-hint": "Bitte überprüfe deine Einstellungen und versuche es erneut.",
+                "partial": "Nur {count} von {requested} Namen konnten generiert werden",
+                "partial-hint": "Nicht genug einzigartige Namen verfügbar. Versuche weniger Namen zu generieren.",
+                "no-components": "Keine Namenskomponenten konnten generiert werden",
+                "no-components-hint": "Bitte wähle mindestens eine Komponente (Vorname, Nachname, etc.) und versuche es erneut.",
+                "species-unavailable": "Spezies '{species}' nicht verfügbar für {language}",
+                "unsupported-gender": "Geschlecht '{gender}' wird nicht unterstützt",
+                "no-subcategories": "Keine Unterkategorien für diese Auswahl verfügbar",
+                "no-data": "Keine Daten für {subcategory} verfügbar",
+                "template-failed": "Vorlage fehlt benötigte Komponenten: {components}"
+            },
+            "selection": {
+                "select-language-species": "Bitte wähle sowohl Sprache als auch Spezies",
+                "select-components": "Bitte wähle mindestens eine Namenskomponente",
+                "select-category": "Bitte wähle eine Kategorie"
+            }
         }
     }
 }

@@ -17,223 +17,2610 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "en": "The Tinkerer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Inventor" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Builder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Breaker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Fixer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Clockmaker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Gear-Grinder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cogspinner" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Whirring" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Whistler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Chatterer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Babbling" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Laughing" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Giggle" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Snort" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Chuckler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Jokester" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Prankster" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Trickster" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Fool" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Jester" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Wise" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Mad" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Strange" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Odd" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Curious" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Nosy" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Peeker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Watcher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Spyer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sleepless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Restless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Wanderer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Roamer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Wayward" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Lost" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Finder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Seeker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Treasure-Hunter" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Key-Holder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Locksmith" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Door-Knocker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Window-Creeper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Burrower" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Mole" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Tunnel-Runner" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Digging" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Lantern-Bearer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Candle" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Torch" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Spark" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Glimmer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Flicker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bright" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dull" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Colorful" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Painted" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Patchwork" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Motley" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Ragged" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Mismatched" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Buttoned" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Pocketed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bagged" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Collector" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hoarder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Trinket-Finder" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Shiny-Seeker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Pebble-Keeper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Stone-Skipper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dice-Roller" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Card-Sharp" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Gambler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Lucky" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Unlucky" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cursed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Blessed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Fortunate" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Misfortunate" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Quick" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Nimble" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Clumsy" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Falling" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Stumbler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Tripper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Skipper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Spinner" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Jumper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hopping" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dancing" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Singing" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Whistling" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Silent" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Loud" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Yeller" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Screecher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Squeaker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The High-Pitched" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Mumbler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Whisperer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Storyteller" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Tale-Spinner" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dreamer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Daydreamer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sleeper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Waker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Awakener" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Spinner of Lies" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Truthful" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Exaggerator" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Boaster" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Proud" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bashful" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Shy" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Blushing" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Red-Cheeked" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Round-Bellied" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Big-Eared" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Pointy-Nosed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sniffer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Taster" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Tongue" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hungry" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Thirsty" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Eater" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Drinker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Ale-Drenched" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cider-Sipper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Pipe-Smoker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Puff" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Steam-Whistle" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Smoke-Ring" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Burp" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hiccup" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Belcher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sneezer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cougher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Snorer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sleeptalker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Restless Foot" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Tapper" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Fiddler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Drum-Finger" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Nose-Picker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Ear-Wiggler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hair-Twirler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Beardless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Wigged" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Hat-Wearer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cap" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Feathered" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bejeweled" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Ribboned" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Painted-Face" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Masked" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Unmasked" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Shouted" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Whispered" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Forgotten" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Remembered" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Long-Named" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Nicknamed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Nameless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Many-Named" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bright-Eyed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Wide-Eyed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Squinty" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Winky" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Blink" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Teary" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cryer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Laugh-Lines" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Smiler" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Grinner" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Toothless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Gold-Toothed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sharp-Toothed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Crooked" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Crooked Smile" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bent" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Twisted" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Straight" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Upright" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Upside-Down" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Backwards" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sideways" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Inside-Out" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Outside-In" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Madcap" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Foolish" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Clever" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Oddling" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Peculiar" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Inquisitive" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Bold" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Brash" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Fearless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Coward" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Quick-Fingered" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Light-Fingered" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sneaky" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Shadow" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Spotless" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Muddy" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dusty" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Soaked" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Drowned Rat" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Dry" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Sunburned" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Moon-Kissed" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Star-Gazer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Cloud-Watcher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Rain-Dancer" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Thunder-Laugher" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Lightning-Chaser" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Rainbow-Seeker" }, "tags": ["nicknames"], "w": 1 },
-        { "t": { "en": "The Storm-Rider" }, "tags": ["nicknames"], "w": 1 }
+        {
+          "t": {
+            "en": "The Tinkerer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inventor"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Builder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Breaker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fixer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Clockmaker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gear-Grinder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cogspinner"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Whirring"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Whistler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Chatterer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Babbling"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Laughing"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Giggle"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Snort"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Chuckler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Jokester"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Prankster"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Trickster"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fool"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Jester"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wise"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mad"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Strange"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Odd"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Curious"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nosy"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Peeker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Watcher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Spyer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sleepless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Restless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wanderer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Roamer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wayward"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lost"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Finder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Seeker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Treasure-Hunter"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Key-Holder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Locksmith"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Door-Knocker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Window-Creeper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Burrower"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mole"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tunnel-Runner"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Digging"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lantern-Bearer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Candle"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Torch"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Spark"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Glimmer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Flicker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bright"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dull"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Colorful"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Painted"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Patchwork"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Motley"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ragged"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mismatched"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Buttoned"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pocketed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bagged"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Collector"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hoarder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Trinket-Finder"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shiny-Seeker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pebble-Keeper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Stone-Skipper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dice-Roller"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Card-Sharp"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gambler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lucky"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unlucky"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cursed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Blessed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fortunate"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Misfortunate"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Quick"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nimble"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Clumsy"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Falling"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Stumbler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tripper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Skipper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Spinner"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Jumper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hopping"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dancing"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Singing"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Whistling"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Silent"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Loud"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Yeller"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Screecher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Squeaker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The High-Pitched"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Mumbler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Whisperer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Storyteller"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tale-Spinner"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dreamer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Daydreamer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sleeper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Waker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Awakener"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Spinner of Lies"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Truthful"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Exaggerator"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Boaster"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Proud"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bashful"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shy"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Blushing"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Red-Cheeked"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Round-Bellied"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Big-Eared"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pointy-Nosed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sniffer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Taster"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tongue"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hungry"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Thirsty"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Eater"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Drinker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ale-Drenched"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cider-Sipper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Pipe-Smoker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Puff"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Steam-Whistle"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Smoke-Ring"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Burp"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hiccup"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Belcher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sneezer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cougher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Snorer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sleeptalker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Restless Foot"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Tapper"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fiddler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Drum-Finger"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nose-Picker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ear-Wiggler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hair-Twirler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Beardless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wigged"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Hat-Wearer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cap"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Feathered"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bejeweled"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Ribboned"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Painted-Face"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Masked"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Unmasked"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shouted"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Whispered"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Forgotten"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Remembered"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Long-Named"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nicknamed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Nameless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Many-Named"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bright-Eyed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Wide-Eyed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Squinty"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Winky"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Blink"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Teary"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cryer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Laugh-Lines"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Smiler"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Grinner"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Toothless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Gold-Toothed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sharp-Toothed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crooked"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Crooked Smile"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bent"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Twisted"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Straight"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Upright"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Upside-Down"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Backwards"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sideways"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inside-Out"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Outside-In"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Madcap"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Foolish"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Clever"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Oddling"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Peculiar"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Inquisitive"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Bold"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Brash"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Fearless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Coward"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Quick-Fingered"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Light-Fingered"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sneaky"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Shadow"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Spotless"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Muddy"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dusty"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Soaked"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Drowned Rat"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Dry"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Sunburned"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Moon-Kissed"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Star-Gazer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Cloud-Watcher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rain-Dancer"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Thunder-Laugher"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Lightning-Chaser"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Rainbow-Seeker"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        },
+        {
+          "t": {
+            "en": "The Storm-Rider"
+          },
+          "tags": [
+            "male",
+            "female",
+            "nonbinary",
+            "nicknames"
+          ],
+          "w": 1
+        }
       ]
     }
   },
