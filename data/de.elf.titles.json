@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "elf-de",
     "displayName": {
       "de": "Elfen Titel",
       "en": "Elfen Titles"

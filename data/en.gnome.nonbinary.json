@@ -1,0 +1,91 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "gnome-en",
+    "displayName": {
+      "en": "Gnome"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "en": "Bimble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Breezle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Bumble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Clink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Coggle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Cricket" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Dazzle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Dimble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Dink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Fable" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Fidget" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Fimble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Fizz" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Fizzle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Flicker" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Gadget" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Gibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Gimble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Glim" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Glimmer" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Jangle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Jibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Jink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Kipp" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Kindle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Maple" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Mibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Mink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Muddle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Nettle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Nibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Nix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Pebble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Pip" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Pocket" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Puzzle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Quibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Quirk" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Riddle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Ripple" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Rizzle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Scribble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Shimmer" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Sizzle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Snip" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Spark" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Sprocket" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Squeak" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Thistle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Thimble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Tibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Tickle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Tink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Tinker" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Trinket" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Tumble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Twibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Twink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Whimsy" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Whisper" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Widget" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Wiggle" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Wink" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Wobble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Zibble" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Zing" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "en": "Zippy" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } }
+      ]
+    }
+  },
+  "recipes": []
+}

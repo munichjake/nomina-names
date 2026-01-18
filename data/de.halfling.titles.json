@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "halfling-de",
     "displayName": {
       "de": "Halblinge Titel",
       "en": "Halblinge Titles"

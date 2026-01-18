@@ -1,0 +1,163 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "dragonborn-de",
+    "displayName": {
+      "de": "Dragonborn"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Zorix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Varax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kroxar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Drazan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tharix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vorath" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhazor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Skan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zhaon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Arjix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ghaor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Draxos" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Xalar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zarith" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vaxor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Uldix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Droth" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Traxan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vyrix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhogar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Grolax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Belon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Fenar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nithix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mornak" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zorex" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Varan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kroth" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Drazor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tharax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vorth" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Skaron" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zhaix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Arjan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ghax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Draxan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Xaroth" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zaron" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vorix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Uldar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Droan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Traxor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vyx" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Gorax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Belix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Fenor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nithar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Morx" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zorath" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Kran" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Drix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vok" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Skar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zhix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Arjor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ghon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Drak" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Xil" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zan" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ulrix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Dror" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Tax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vyr" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rho" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Gron" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Balor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Fen" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nit" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zarix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vrox" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Krax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Draz" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Thox" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Voran" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Rhaxar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Skax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zhanon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Arjax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Ghor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Drakon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Zaroth" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Uldon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Traxix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Vyxon" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Grolar" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Belor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Fenix" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Nithor" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } },
+        { "t": { "de": "Mornax" }, "tags": ["nonbinary", "firstnames"], "w": 1, "attrs": { "gender": "n" } }
+      ]
+    }
+  },
+  "recipes": [],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "CollapseSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "firstnames": {
+            "de": "Vornamen"
+          },
+          "nonbinary": {
+            "de": "Nonbinär"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "firstnames",
+          "nonbinary"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

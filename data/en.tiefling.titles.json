@@ -1,0 +1,235 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "tiefling-en",
+    "displayName": {
+      "de": "Tiefling Titel",
+      "en": "Tiefling Titles"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "en": "Infernal Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Marquis" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Marquise" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ember Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ember Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ember Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ember Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ember Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ember Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Ember Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Ember Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dark Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dark Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dark Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dark Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dark Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dark Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dark Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dark Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Nether Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Nether Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Nether Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Nether Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Nether Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Nether Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Nether Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Nether Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Archduke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Archduchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Archduke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Archduchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dread Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dread Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dread Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dread Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dread Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dread Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dread Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dread Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Infernal Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Blood Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Blood Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Blood Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Blood Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ashen Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ember Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ember Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ember Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Ember Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Crimson Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dark Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dark Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dark Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dark Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Obsidian Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Nether Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Nether Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Nether Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Nether Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sulfur Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Abyssal Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dread Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dread Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dread Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dread Liege" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Heir" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hellfire Liege" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "en": "Female"
+          },
+          "male": {
+            "en": "Male"
+          },
+          "nonbinary": {
+            "en": "Nonbinary"
+          },
+          "titles": {
+            "en": "Titles"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

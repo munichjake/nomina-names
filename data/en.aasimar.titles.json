@@ -1,0 +1,141 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "aasimar-en",
+    "displayName": {
+      "de": "Aasimar Titel",
+      "en": "Aasimar Titles"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "en": "Lightbringer" }, "tags": ["male", "female", "titles"], "w": 1 },
+        { "t": { "en": "Heavenprince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Heavenprincess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Radiancebaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Radiancebaroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Celestial Knight" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Celestial Dame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Divine Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Divine Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Holy Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Holy Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Star Knight" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Star Dame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Pure Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Pure Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Gracebringer" }, "tags": ["male", "female", "titles"], "w": 1 },
+        { "t": { "en": "Seraphim Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Seraphim Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Baron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Baroness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Count" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Countess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Knight" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dame" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Archduke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Archduchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Grand Duke" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Grand Duchess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "High Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "High Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Marquis" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Marquise" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "High Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "High Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Guardian" }, "tags": ["male", "female", "titles"], "w": 1 },
+        { "t": { "en": "Warden" }, "tags": ["male", "female", "titles"], "w": 1 },
+        { "t": { "en": "Chosen One" }, "tags": ["male", "female", "titles"], "w": 1 },
+        { "t": { "en": "Archpaladin" }, "tags": ["male", "female", "nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Lightkeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Heavenward" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Radianceguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Celestialward" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Divineguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Holykeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Starwarden" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Pureguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Gracekeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Starchild" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Commander" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Legate" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Magistrate" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Oracle" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Protector" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Tribune" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dux" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "female": {
+            "en": "Female"
+          },
+          "male": {
+            "en": "Male"
+          },
+          "nonbinary": {
+            "en": "Nonbinary"
+          },
+          "titles": {
+            "en": "Noble Titles"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

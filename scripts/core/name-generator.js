@@ -7,6 +7,7 @@ import { ensureGlobalNamesData } from './data-manager.js';
 import { isCategorizedContent, getSubcategories, getSupportedGenders, DEFAULT_NAME_FORMAT } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { parseTemplate, validateTemplate } from '../utils/template-parser.js';
+import { createNominaError, ErrorType } from '../utils/error-helper.js';
 
 /**
  * Unified Name Generator - Handles all types of name generation
@@ -49,7 +50,10 @@ export class NameGenerator {
 
     // Validate species availability
     if (!this._isSpeciesAvailable(species, language)) {
-      throw new Error(`Species "${species}" not available for language "${language}"`);
+      throw createNominaError(ErrorType.GENERATION_SPECIES_UNAVAILABLE, {
+        species,
+        language
+      });
     }
 
     const results = [];
@@ -77,7 +81,10 @@ export class NameGenerator {
     }
 
     if (results.length === 0) {
-      throw new Error(`No names could be generated for ${species}/${category}`);
+      throw createNominaError(ErrorType.GENERATION_FAILED, {
+        species,
+        category
+      });
     }
 
     logInfo(`Generated ${results.length}/${count} names successfully`);
@@ -93,7 +100,9 @@ export class NameGenerator {
     // Validate gender
     const supportedGenders = getSupportedGenders();
     if (!supportedGenders.includes(gender)) {
-      throw new Error(`Unsupported gender: ${gender}`);
+      throw createNominaError(ErrorType.GENERATION_UNSUPPORTED_GENDER, {
+        gender
+      });
     }
 
     // Data availability will be checked during component generation
@@ -127,7 +136,7 @@ export class NameGenerator {
     }
 
     if (Object.keys(nameComponents).length === 0) {
-      throw new Error("No name components could be generated");
+      throw createNominaError(ErrorType.GENERATION_NO_COMPONENTS, {});
     }
 
     const formattedName = this._formatName(format, nameComponents);
@@ -176,7 +185,11 @@ export class NameGenerator {
     }
 
     if (subcategoriesToUse.length === 0) {
-      throw new Error(`No subcategories available for ${language}.${species}.${category}`);
+      throw createNominaError(ErrorType.GENERATION_NO_SUBCATEGORIES, {
+        language,
+        species,
+        category
+      });
     }
 
     // Select subcategory
@@ -194,7 +207,9 @@ export class NameGenerator {
     logDebug(`Subcategory data for ${subcategory}:`, subcategoryData);
 
     if (!subcategoryData) {
-      throw new Error(`No data available for subcategory ${subcategory}`);
+      throw createNominaError(ErrorType.GENERATION_NO_DATA, {
+        subcategory
+      });
     }
 
     // === 3.2.0 TEMPLATE SUPPORT ===
@@ -228,7 +243,9 @@ export class NameGenerator {
     // The DataManager returns the array for the specific language (potentially filtered)
     if (!Array.isArray(subcategoryData) || subcategoryData.length === 0) {
       logDebug(`No items match the criteria for subcategory ${subcategory}`);
-      throw new Error(`No items available for subcategory ${subcategory}${filters ? ' matching the specified filters' : ''}`);
+      throw createNominaError(ErrorType.GENERATION_NO_DATA, {
+        subcategory
+      });
     }
 
     // Select random item
@@ -364,7 +381,10 @@ export class NameGenerator {
       return data.names[randomIndex];
     }
 
-    throw new Error(`No names available for ${category}/${subcategory}`);
+    throw createNominaError(ErrorType.GENERATION_FAILED, {
+      category,
+      subcategory
+    });
   }
 
   /**
@@ -394,11 +414,15 @@ export class NameGenerator {
    */
   _generateFromTemplate(subcatData, language) {
     if (!subcatData.templates || !Array.isArray(subcatData.templates) || subcatData.templates.length === 0) {
-      throw new Error('No templates available for generation');
+      throw createNominaError(ErrorType.GENERATION_TEMPLATE_FAILED, {
+        components: 'templates'
+      });
     }
 
     if (!subcatData.components || typeof subcatData.components !== 'object') {
-      throw new Error('No components available for template generation');
+      throw createNominaError(ErrorType.GENERATION_TEMPLATE_FAILED, {
+        components: 'components'
+      });
     }
 
     // Pick a random template
@@ -409,7 +433,9 @@ export class NameGenerator {
     const validation = validateTemplate(template, subcatData.components, language);
     if (!validation.isValid) {
       logWarn(`Template "${template}" is missing components: ${validation.missing.join(', ')}`);
-      throw new Error(`Template validation failed: missing components ${validation.missing.join(', ')}`);
+      throw createNominaError(ErrorType.GENERATION_TEMPLATE_FAILED, {
+        components: validation.missing.join(', ')
+      });
     }
 
     // Generate name from template

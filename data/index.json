@@ -81,17 +81,17 @@
     },
     {
       "species": "aasimar",
-      "category": "names",
+      "category": "nonbinary",
       "files": [
         {
-          "path": "modules/nomina-names/data/de.aasimar.names.json",
+          "path": "modules/nomina-names/data/de.aasimar.nonbinary.json",
           "language": "de",
-          "enabled": false
+          "enabled": true
         },
         {
-          "path": "modules/nomina-names/data/en.aasimar.names.json",
+          "path": "modules/nomina-names/data/en.aasimar.nonbinary.json",
           "language": "en",
-          "enabled": false
+          "enabled": true
         }
       ]
     },
@@ -144,6 +144,22 @@
       ]
     },
     {
+      "species": "aasimar",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.aasimar.titles.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.aasimar.titles.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "dragonborn",
       "category": "female",
       "files": [
@@ -182,6 +198,22 @@
         {
           "path": "modules/nomina-names/data/de.dragonborn.male-min.json",
           "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dragonborn",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dragonborn.nonbinary.json",
+          "language": "en",
           "enabled": true
         }
       ]
@@ -251,6 +283,17 @@
       ]
     },
     {
+      "species": "dragonborn",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dragonborn.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "dwarf",
       "category": "female",
       "files": [
@@ -277,6 +320,22 @@
         },
         {
           "path": "modules/nomina-names/data/en.dwarf.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.nonbinary.json",
           "language": "en",
           "enabled": true
         }
@@ -347,6 +406,33 @@
       ]
     },
     {
+      "species": "dwarf",
+      "category": "breweries",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.breweries.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.dwarf.breweries.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "dwarf",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.dwarf.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "elf",
       "category": "books",
       "files": [
@@ -384,6 +470,22 @@
         },
         {
           "path": "modules/nomina-names/data/en.elf.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "elf",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.nonbinary.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.elf.nonbinary.json",
           "language": "en",
           "enabled": true
         }
@@ -487,6 +589,17 @@
       ]
     },
     {
+      "species": "elf",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.elf.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "gnome",
       "category": "female",
       "files": [
@@ -520,17 +633,28 @@
     },
     {
       "species": "gnome",
-      "category": "names",
+      "category": "nonbinary",
       "files": [
         {
-          "path": "modules/nomina-names/data/de.gnome.names.json",
+          "path": "modules/nomina-names/data/en.gnome.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "gnome",
+      "category": "accidents",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.accidents.json",
           "language": "de",
-          "enabled": false
+          "enabled": true
         },
         {
-          "path": "modules/nomina-names/data/en.gnome.names.json",
+          "path": "modules/nomina-names/data/en.gnome.accidents.json",
           "language": "en",
-          "enabled": false
+          "enabled": true
         }
       ]
     },
@@ -583,6 +707,17 @@
       ]
     },
     {
+      "species": "gnome",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.gnome.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "species": "halfling",
       "category": "female",
       "files": [
@@ -609,6 +744,17 @@
         },
         {
           "path": "modules/nomina-names/data/en.halfling.male.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/en.halfling.nonbinary.json",
           "language": "en",
           "enabled": true
         }
@@ -684,6 +830,22 @@
       "files": [
         {
           "path": "modules/nomina-names/data/de.halfling.taverns.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.halfling.taverns.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "halfling",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.halfling.titles.json",
           "language": "de",
           "enabled": true
         }
@@ -787,6 +949,11 @@
         {
           "path": "modules/nomina-names/data/de.human.nonbinary.json",
           "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.human.nonbinary.json",
+          "language": "en",
           "enabled": true
         }
       ]
@@ -948,6 +1115,17 @@
     },
     {
       "species": "tiefling",
+      "category": "nonbinary",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/en.tiefling.nonbinary.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
       "category": "nicknames",
       "files": [
         {
@@ -989,6 +1167,22 @@
         },
         {
           "path": "modules/nomina-names/data/en.tiefling.surnames.json",
+          "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "tiefling",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.tiefling.titles.json",
+          "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.tiefling.titles.json",
           "language": "en",
           "enabled": true
         }

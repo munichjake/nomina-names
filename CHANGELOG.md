@@ -5,9 +5,25 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.1.0] - 2025-01-18
 
 ### Added
+
+- **English Nonbinary Names**: Nonbinäre Namen für alle 8 Spezies auf Englisch hinzugefügt
+  - Aasimar, Dragonborn, Dwarf, Elf, Gnome, Halfling, Human, Tiefling
+  - Vollständige Parität mit deutschen nonbinären Namen
+
+- **Configurable Gender Color Coding**: Farbkodierung für generierte Namen nach Geschlecht
+  - Konfigurierbare Farben für männliche, weibliche und nonbinäre Namen
+  - Multi-Gender-Generierung mit farblicher Unterscheidung
+  - Einstellungs-Dialog für individuelle Farbanpassung
+  - Theme-kompatible Farbextraktion aus Engine-Parts
+
+- **Expanded Data Content**:
+  - Erweiterte Aasimar Nicknames und Titles (EN)
+  - Erweiterte deutsche Titel-Daten
+  - Neue Halfling Taverns (EN)
+  - Neue Tiefling Titles (EN)
 
 - **Generate Button Placement Setting**: Neue Einstellung zur Positionierung des Generieren-Buttons in der Generator-App (Closes #11)
   - **Legacy**: Klassische Position unter den Optionen (Standard)
@@ -142,6 +158,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Kombinierbar: Recipe-basierte und Tag-basierte Collections können gemeinsam verwendet werden
 
 ### Fixed
+
+- **Recipe Catalog References**: Korrekte Catalog-Referenzen in Rezepten aller Spezies
+  - Behebt fehlerhafte Verweise auf Catalogs in verschiedenen Spezies-Paketen
+
+- **Recipe Deduplication**: Rezepte werden jetzt bei Multi-File-Packages korrekt dedupliziert
+  - Verhindert doppelte Rezept-IDs beim Laden von Paketen mit mehreren Dateien
+
+- **Missing Title Data Files**: Fehlende Title-Datendateien wurden im Index registriert
+  - Alle Spezies-Titel sind jetzt korrekt im `data/index.json` eingetragen
+
+- **Dropdown Dark Background**: Dunkler Hintergrund für leere Dropdown-Suchergebnisse
+  - Verbesserte visuelle Konsistenz bei leeren Suchergebnissen in Dropdowns
+
+- **Picker Gender Localization**: Korrigierte Lokalisierungsschlüssel für Geschlecht im Picker
+  - Gender-Labels werden jetzt korrekt übersetzt
 
 - **Collection-Checkbox-Filterung**: Behebt kritischen Bug, bei dem Checkbox-Änderungen bei Collections nicht übernommen wurden
   - Problem: Dynamisch erstellte Rezepte wurden gecacht und bei nachfolgenden Generierungen wiederverwendet, auch wenn andere Collections ausgewählt wurden

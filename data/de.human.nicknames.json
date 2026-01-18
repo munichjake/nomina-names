@@ -1,6 +1,7 @@
 {
   "format": "4.0.0",
   "package": {
+    "code": "human-de",
     "displayName": {
       "de": "Human Beinamen",
       "en": "Human Nicknames"
