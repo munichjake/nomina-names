@@ -136,6 +136,7 @@ export class NamesGeneratorApp extends Application {
       this.currentSpecies = null;
       this.currentCategory = null;
       this.generatedNames = [];
+      this.nameGenders.clear();
       await this._updateSpeciesDropdown(html);
       await this._updateCategoriesDropdown(html);
     });
@@ -145,12 +146,14 @@ export class NamesGeneratorApp extends Application {
       this.currentSpecies = ev.target.value;
       this.currentCategory = null;
       this.generatedNames = [];
+      this.nameGenders.clear();
       await this._updateCategoriesDropdown(html);
     });
 
     // Category change
     html.find('#names-category-select').change(async (ev) => {
       this.currentCategory = ev.target.value;
+      this.nameGenders.clear();
       await this._updateComponentsPanel(html);
     });
 
@@ -792,8 +795,13 @@ export class NamesGeneratorApp extends Application {
 
       // Update gender map for new names (gender comes from engine via parts)
       for (const suggestion of result.suggestions) {
-        if (suggestion.text && suggestion.gender) {
-          this.nameGenders.set(suggestion.text, suggestion.gender);
+        if (suggestion.text) {
+          if (suggestion.gender) {
+            this.nameGenders.set(suggestion.text, suggestion.gender);
+          } else {
+            // Explicitly remove gender for names without gender-relevant parts
+            this.nameGenders.delete(suggestion.text);
+          }
         }
       }
 
