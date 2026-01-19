@@ -1,0 +1,341 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "orc-de",
+    "displayName": {
+      "de": "Ork Prozedurale Namen",
+      "en": "Orc Procedural Names"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "procedural": {
+      "displayName": {
+        "de": "Prozedurale Komponenten",
+        "en": "Procedural Components"
+      },
+      "hidden": true,
+      "items": [
+        { "t": { "de": "Gr" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Thr" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Kr" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Mog" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Urg" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Zag" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Drog" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Ghr" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Khar" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Vrog" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Brak" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Skul" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Murg" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Gor" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Zul" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Bor" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Naz" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Grak" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Thuk" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Vrak" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Prug" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Org" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Hrak" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Lurg" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Rag" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Bruk" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Ghaz" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Krog" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Skor" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+        { "t": { "de": "Ulg" }, "tags": ["procedural", "prefix", "male"], "w": 1 },
+
+        { "t": { "de": "ag" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "og" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "uk" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "ash" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "gor" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "zul" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "urg" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "duk" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "mok" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "rak" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "gul" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "thok" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "dor" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "mur" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+        { "t": { "de": "grath" }, "tags": ["procedural", "middle", "male"], "w": 1 },
+
+        { "t": { "de": "ok" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "ash" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "gul" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "mar" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "zog" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "duk" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "gor" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "thak" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "grim" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "zak" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "nak" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "oth" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "gath" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "dosh" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "mak" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "rath" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "zoth" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "gar" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "drak" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "mash" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "grok" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "thul" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "zul" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "kul" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+        { "t": { "de": "dur" }, "tags": ["procedural", "suffix", "male"], "w": 1 },
+
+        { "t": { "de": "Gor" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Mog" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Thra" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Khar" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Vorg" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Ghr" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Drak" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Zul" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Mur" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Ugh" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Gro" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Shag" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Gri" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Vrak" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Bor" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Thuk" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Gul" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Krug" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Durg" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Brug" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Zhur" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Grom" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Vog" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Throg" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+        { "t": { "de": "Bag" }, "tags": ["procedural", "prefix", "female"], "w": 1 },
+
+        { "t": { "de": "za" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "sha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "gha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "ra" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "ka" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "na" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "kha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "ga" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "tha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "da" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "zha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "rha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "la" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "ma" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "gra" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "kka" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "sha" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "hra" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "dra" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+        { "t": { "de": "bza" }, "tags": ["procedural", "suffix", "female"], "w": 1 },
+
+        { "t": { "de": "Blut" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Knochen" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Eisen" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Stahl" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Flammen" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Schatten" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Donner" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Schädel" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Fleisch" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Stein" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Fels" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Glut" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Asche" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Gift" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Wut" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Grimm" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Zorn" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Sturm" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Nacht" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Schwarz" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Rot" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Toten" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Kriegs" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Kampf" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Erz" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Schlacken" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Kohle" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Brand" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Hass" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Rache" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Mord" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Wolf" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Eber" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Drachen" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+        { "t": { "de": "Narben" }, "tags": ["procedural", "compound1", "surnames"], "w": 1 },
+
+        { "t": { "de": "faust" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "brecher" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Klaue" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "zahn" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Schädel" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "klinge" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "hammer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Reißer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "spalter" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "kiefer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "auge" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "schrei" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "bringer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "toter" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "schlag" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "kracher" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Fresser" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Beißer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Hauer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "malmer" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "schlund" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "schnitter" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "mund" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "horn" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "durst" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Würger" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Träger" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "narbe" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Kessel" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 },
+        { "t": { "de": "Turm" }, "tags": ["procedural", "compound2", "surnames"], "w": 1 }
+      ]
+    }
+  },
+  "recipes": [
+    {
+      "id": "male_prefix_suffix",
+      "displayName": {
+        "de": "Männlicher Name: Präfix + Suffix",
+        "en": "Male Name: Prefix + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "prefix", "male"] } }, "as": "PRE" },
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "suffix", "male"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "male_prefix_middle_suffix",
+      "displayName": {
+        "de": "Männlicher Name: Präfix + Mitte + Suffix",
+        "en": "Male Name: Prefix + Middle + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "prefix", "male"] } }, "as": "PRE" },
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "middle", "male"] } }, "as": "MID" },
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "suffix", "male"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "female_prefix_suffix",
+      "displayName": {
+        "de": "Weiblicher Name: Präfix + Suffix",
+        "en": "Female Name: Prefix + Suffix"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "prefix", "female"] } }, "as": "PRE" },
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "suffix", "female"] } }, "as": "SUF" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "TitleCase"
+      ]
+    },
+    {
+      "id": "surname_compound",
+      "displayName": {
+        "de": "Clanname: Kompositum",
+        "en": "Clan Name: Compound"
+      },
+      "pattern": [
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "compound1", "surnames"] } }, "as": "C1" },
+        { "select": { "from": "catalog", "key": "procedural", "where": { "tags": ["procedural", "compound2", "surnames"] } }, "as": "C2" }
+      ],
+      "post": [
+        "TrimSpaces",
+        "TitleCase"
+      ]
+    }
+  ],
+  "output": {
+    "transforms": [
+      "TrimSpaces",
+      "TitleCase"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "type": {
+        "labels": {
+          "en": "Type",
+          "de": "Typ"
+        },
+        "values": {
+          "procedural": {
+            "de": "Prozedural",
+            "en": "Procedural"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "male_names",
+      "labels": {
+        "de": "Männliche Vornamen (Prozedural)",
+        "en": "Male First Names (Procedural)"
+      },
+      "query": {
+        "category": "procedural",
+        "recipes": [
+          "male_prefix_suffix",
+          "male_prefix_middle_suffix"
+        ]
+      }
+    },
+    {
+      "key": "female_names",
+      "labels": {
+        "de": "Weibliche Vornamen (Prozedural)",
+        "en": "Female First Names (Procedural)"
+      },
+      "query": {
+        "category": "procedural",
+        "recipes": [
+          "female_prefix_suffix"
+        ]
+      }
+    },
+    {
+      "key": "clan_names",
+      "labels": {
+        "de": "Clannamen (Prozedural)",
+        "en": "Clan Names (Procedural)"
+      },
+      "query": {
+        "category": "procedural",
+        "recipes": [
+          "surname_compound"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

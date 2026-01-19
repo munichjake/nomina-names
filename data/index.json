@@ -44,6 +44,14 @@
     "tiefling": {
       "en": "Tieflings",
       "de": "Tieflinge"
+    },
+    "orc": {
+      "en": "Orcs",
+      "de": "Orks"
+    },
+    "goblin": {
+      "en": "Goblins",
+      "de": "Goblins"
     }
   },
   "packages": [
@@ -1184,6 +1192,138 @@
         {
           "path": "modules/nomina-names/data/en.tiefling.titles.json",
           "language": "en",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.male.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.female.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.surnames.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.nicknames.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "orc",
+      "category": "procedural",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.orc.procedural.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "male",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.male.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "female",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.female.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "surnames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.surnames.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "titles",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.titles.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "nicknames",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.nicknames.json",
+          "language": "de",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "species": "goblin",
+      "category": "recipes",
+      "files": [
+        {
+          "path": "modules/nomina-names/data/de.goblin.recipes.json",
+          "language": "de",
           "enabled": true
         }
       ]
