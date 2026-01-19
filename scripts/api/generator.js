@@ -7,6 +7,12 @@ import { getGlobalDataManager } from '../core/data-manager.js';
 import { logDebug, logWarn, logError } from '../utils/logger.js';
 
 /**
+ * Tags that indicate a part carries gender information.
+ * Only parts with these tags should be used for gender extraction.
+ */
+const GENDER_RELEVANT_TAGS = ['firstnames', 'titles', 'nicknames'];
+
+/**
  * Generation options
  * @typedef {Object} GenerationOptions
  * @property {string} packageCode - Package identifier (e.g., "human-de")
@@ -28,7 +34,8 @@ export class Generator {
 
   /**
    * Extract gender from suggestion parts
-   * Looks for gender information in tags or attrs of the parts
+   * Only extracts gender from parts that have gender-relevant tags (firstnames, titles, nicknames).
+   * Parts like surnames and settlements are ignored for gender extraction.
    * @param {Object} parts - The parts object from the engine suggestion
    * @returns {string|null} - 'male', 'female', 'nonbinary', or null if not found
    */
@@ -58,20 +65,32 @@ export class Generator {
 
   /**
    * Extract gender from a single part
+   * Only extracts gender from parts that have gender-relevant tags (firstnames, titles, nicknames).
+   * Parts like surnames and settlements should NOT provide gender information.
    * @param {Object} part - A single part from the parts object
    * @returns {string|null} - 'male', 'female', 'nonbinary', or null
    */
   _getGenderFromPart(part) {
     if (!part) return null;
 
-    // Check tags array first
-    if (part.tags && Array.isArray(part.tags)) {
-      if (part.tags.includes('male')) return 'male';
-      if (part.tags.includes('female')) return 'female';
-      if (part.tags.includes('nonbinary')) return 'nonbinary';
+    // First, check if this part has gender-relevant tags
+    // Only parts with tags like 'firstnames', 'titles', 'nicknames' should provide gender
+    if (!part.tags || !Array.isArray(part.tags)) {
+      return null;
     }
 
-    // Check attrs.gender as fallback
+    // Check if any of the part's tags indicate it's gender-relevant
+    const hasGenderRelevantTag = part.tags.some(tag => GENDER_RELEVANT_TAGS.includes(tag));
+    if (!hasGenderRelevantTag) {
+      return null;
+    }
+
+    // Now extract gender from tags
+    if (part.tags.includes('male')) return 'male';
+    if (part.tags.includes('female')) return 'female';
+    if (part.tags.includes('nonbinary')) return 'nonbinary';
+
+    // Check attrs.gender as fallback (only for gender-relevant parts)
     if (part.attrs && part.attrs.gender) {
       const g = part.attrs.gender;
       if (g === 'm' || g === 'male') return 'male';
