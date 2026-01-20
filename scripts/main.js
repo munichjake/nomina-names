@@ -110,6 +110,10 @@ Hooks.once('ready', () => {
     game.modules.get(MODULE_ID).api = NamesAPI;
     logDebug("API registered with Foundry module system");
   }
+
+  // Register simplified global API access point
+  game.NominaAPI = NamesAPI;
+  logDebug("Global API access point registered: game.NominaAPI");
   
   // Initialize Enhanced Dropdowns after a short delay to ensure DOM is ready
   setTimeout(() => {

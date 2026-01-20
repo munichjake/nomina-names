@@ -9,19 +9,49 @@ import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 
 /**
  * Data Manager
- * Handles loading and managing v4.0 format data packages
+ * Handles loading and managing v4.0 format data packages.
+ * Responsible for discovering, loading, merging, and caching all name generation data.
+ * Supports multi-file packages where data from multiple JSON files is merged into one package.
+ *
+ * @class DataManager
+ * @example
+ * // Get the global data manager instance
+ * const dataManager = getGlobalDataManager();
+ * await dataManager.initializeData();
+ *
+ * // Get available species for German language
+ * const species = dataManager.getSpecies('de', 'de');
  */
 export class DataManager {
+  /**
+   * Creates a new DataManager instance.
+   * Initializes internal caches and references the global engine.
+   */
   constructor() {
-    this.packages = new Map(); // packageCode -> packageData
+    /** @type {Map<string, Object>} Map of packageCode to package data */
+    this.packages = new Map();
+    /** @type {Engine} Reference to the global generation engine */
     this.engine = getGlobalEngine();
+    /** @type {Object|null} Loaded index.json data */
     this.indexData = null;
+    /** @type {boolean} Whether data has been fully loaded */
     this.isLoaded = false;
+    /** @type {boolean} Whether data is currently being loaded */
     this.isLoading = false;
   }
 
   /**
-   * Initialize and load all data packages
+   * Initialize and load all data packages from the index.
+   * Loads the index.json file first, then loads all enabled packages in parallel.
+   * Files within the same package are loaded sequentially to avoid race conditions during merging.
+   *
+   * @async
+   * @returns {Promise<void>} Resolves when all packages are loaded
+   * @throws {Error} If index loading or critical package loading fails
+   * @example
+   * const dataManager = getGlobalDataManager();
+   * await dataManager.initializeData();
+   * console.log(`Loaded ${dataManager.packages.size} packages`);
    */
   async initializeData() {
     if (this.isLoaded || this.isLoading) {
@@ -83,7 +113,13 @@ export class DataManager {
   }
 
   /**
-   * Load index file
+   * Load the index.json file that describes all available packages.
+   * The index contains species metadata, locale configuration, and package file paths.
+   * Falls back to an empty configuration if loading fails.
+   *
+   * @async
+   * @returns {Promise<void>} Resolves when index is loaded (or fallback applied)
+   * @private
    */
   async loadIndex() {
     try {
@@ -102,7 +138,17 @@ export class DataManager {
   }
 
   /**
-   * Load a single package file and merge it into the package
+   * Load a single package file and merge it into the existing package data.
+   * If the package doesn't exist yet, creates a new package entry.
+   * Handles merging of catalogs, recipes, langRules, vocab, and collections.
+   *
+   * @async
+   * @param {string} path - Path to the JSON package file
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} species - Species code (e.g., "human")
+   * @param {string} category - Category for this file (e.g., "male", "female")
+   * @returns {Promise<void>} Resolves when package file is loaded and merged
+   * @private
    */
   async loadPackage(path, packageCode, species, category) {
     try {
@@ -259,9 +305,28 @@ export class DataManager {
   }
 
   /**
-   * Register a package at runtime (for external modules)
-   * @param {string} packageCode - Package code (e.g., 'goblin-de')
+   * Register a package at runtime for external modules.
+   * Allows third-party modules to add their own name data packages dynamically.
+   * The package will be validated and loaded into the engine immediately.
+   *
+   * @async
+   * @param {string} packageCode - Package code (e.g., "goblin-de", "custom-species-en")
    * @param {Object} data - V4.0.0/4.0.1 format package data
+   * @param {string} data.format - Must be "4.0.0"
+   * @param {Object} data.package - Package metadata with code and displayName
+   * @param {Object} data.catalogs - At least one catalog with items
+   * @param {Array} [data.recipes] - Optional recipes for name generation
+   * @param {Object} [data.langRules] - Optional language-specific grammar rules
+   * @param {Object} [data.vocab] - Optional vocabulary translations (v4.0.1)
+   * @param {Array} [data.collections] - Optional preset queries (v4.0.1)
+   * @returns {Promise<void>} Resolves when package is registered
+   * @throws {Error} If format is unsupported or required fields are missing
+   * @example
+   * await dataManager.registerPackage('custom-de', {
+   *   format: '4.0.0',
+   *   package: { code: 'custom-de', displayName: { de: 'Benutzerdefiniert' } },
+   *   catalogs: { names: { items: [{ t: { de: 'Max' }, tags: ['firstnames', 'male'] }] } }
+   * });
    */
   async registerPackage(packageCode, data) {
     // Validate format
@@ -321,7 +386,12 @@ export class DataManager {
   }
 
   /**
-   * Get species display name from index
+   * Get the localized display name for a species from the index metadata.
+   * Falls back to a capitalized version of the species code if not found.
+   *
+   * @param {string} speciesCode - Species code (e.g., "human", "elf", "dwarf")
+   * @returns {Object} Localized display names (e.g., { en: "Human", de: "Mensch" })
+   * @private
    */
   _getSpeciesDisplayName(speciesCode) {
     if (this.indexData?.species?.[speciesCode]) {
@@ -334,7 +404,13 @@ export class DataManager {
   }
 
   /**
-   * Get available languages
+   * Get all available languages across all loaded packages.
+   * Languages are determined from the package.languages array of each package.
+   *
+   * @returns {string[]} Sorted array of unique language codes (e.g., ["de", "en"])
+   * @example
+   * const languages = dataManager.getLanguages();
+   * // Returns: ["de", "en"]
    */
   getLanguages() {
     const languages = new Set();
@@ -395,15 +471,31 @@ export class DataManager {
   }
 
   /**
-   * Get available recipes for a package
+   * Get available recipes for a specific package.
+   * Delegates to the engine to retrieve recipe metadata with localized display names.
+   *
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} [locale='en'] - Locale for display names
+   * @returns {Array<{id: string, displayName: string}>} Array of recipe objects
+   * @example
+   * const recipes = dataManager.getRecipes('human-de', 'de');
+   * // Returns: [{ id: 'full_name', displayName: 'Vollständiger Name' }, ...]
    */
   getRecipes(packageCode, locale = 'en') {
     return this.engine.getAvailableRecipes(packageCode, locale);
   }
 
   /**
-   * Get available catalogs (categories) for a package
-   * Returns catalogs as category-like structure for UI compatibility
+   * Get available catalogs (categories) for a package.
+   * Catalogs are collections of name items (e.g., "names", "settlements", "taverns").
+   * Hidden catalogs are filtered out from the results.
+   *
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} [locale='en'] - Locale for display names
+   * @returns {Array<{code: string, name: string}>} Array of catalog objects with code and localized name
+   * @example
+   * const catalogs = dataManager.getCatalogs('human-de', 'de');
+   * // Returns: [{ code: 'names', name: 'Namen' }, { code: 'settlements', name: 'Siedlungen' }]
    */
   getCatalogs(packageCode, locale = 'en') {
     const pkg = this.packages.get(packageCode);
@@ -439,7 +531,12 @@ export class DataManager {
   }
 
   /**
-   * Capitalize catalog name for display
+   * Capitalize a catalog key for display when no localized name is available.
+   * Converts underscores to spaces and capitalizes each word.
+   *
+   * @param {string} catalogKey - The catalog key (e.g., "first_names")
+   * @returns {string} Capitalized name (e.g., "First Names")
+   * @private
    */
   _capitalizeCatalogName(catalogKey) {
     return catalogKey
@@ -449,42 +546,58 @@ export class DataManager {
   }
 
   /**
-   * Get the engine instance
+   * Get the global engine instance used for name generation.
+   *
+   * @returns {Engine} The Engine instance
    */
   getEngine() {
     return this.engine;
   }
 
   /**
-   * Get package by code
+   * Get a loaded package by its code.
+   *
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @returns {Object|undefined} Package object with data, code, species, and categories, or undefined if not found
    */
   getPackage(packageCode) {
     return this.packages.get(packageCode);
   }
 
   /**
-   * Get all loaded package codes
+   * Get all loaded package codes.
+   *
+   * @returns {string[]} Array of package codes (e.g., ["human-de", "human-en", "elf-de"])
    */
   getLoadedPackages() {
     return Array.from(this.packages.keys());
   }
 
   /**
-   * Get the index data
+   * Get the raw index data loaded from index.json.
+   * Contains species metadata, locale configuration, and package definitions.
+   *
+   * @returns {Object|null} Index data object or null if not loaded
    */
   getIndexData() {
     return this.indexData;
   }
 
   /**
-   * Get species metadata from index
+   * Get species metadata from the index.
+   * Contains localized display names for all species.
+   *
+   * @returns {Object} Species metadata object (e.g., { human: { en: "Human", de: "Mensch" } })
    */
   getSpeciesMetadata() {
     return this.indexData?.species || {};
   }
 
   /**
-   * Get locales configuration from index
+   * Get locale configuration from the index.
+   * Contains default locale and fallback mappings.
+   *
+   * @returns {Object} Locales config (e.g., { default: "en", fallbacks: { de: "en" } })
    */
   getLocalesConfig() {
     return this.indexData?.locales || { default: 'en', fallbacks: {} };
@@ -495,9 +608,14 @@ export class DataManager {
   // ============================================================
 
   /**
-   * Get vocab (vocabulary) for a package
+   * Get vocabulary definitions for a package (v4.0.1 feature).
+   * Vocab provides localized translations for tags and other metadata.
+   *
    * @param {string} packageCode - Package code (e.g., "human-de")
-   * @returns {object|null} Vocab object with fields and icons, or null
+   * @returns {Object|null} Vocab object with fields and icons, or null if not available
+   * @example
+   * const vocab = dataManager.getVocab('human-de');
+   * // Returns: { fields: { type: { values: { noble: { de: "Adelig", en: "Noble" } } } }, icons: { noble: "crown" } }
    */
   getVocab(packageCode) {
     const pkg = this.packages.get(packageCode);
@@ -508,12 +626,17 @@ export class DataManager {
   }
 
   /**
-   * Get translation for a tag from vocab
-   * @param {string} packageCode - Package code
-   * @param {string} tag - Tag name (e.g., "upscale_inn")
-   * @param {string} lang - Language code (e.g., "de", "en")
-   * @param {string} fieldName - Field name in vocab (default: "type")
+   * Get a localized translation for a tag from the package vocabulary.
+   * Looks up the tag in the specified vocab field and returns the translation for the given language.
+   *
+   * @param {string} packageCode - Package code (e.g., "human-de")
+   * @param {string} tag - Tag name to translate (e.g., "upscale_inn", "noble")
+   * @param {string} lang - Language code for the translation (e.g., "de", "en")
+   * @param {string} [fieldName='type'] - Field name in vocab to search (default: "type")
    * @returns {string|null} Translated tag label, or null if not found
+   * @example
+   * const label = dataManager.getVocabTranslation('tavern-de', 'upscale_inn', 'de', 'type');
+   * // Returns: "Gehobenes Wirtshaus"
    */
   getVocabTranslation(packageCode, tag, lang, fieldName = 'type') {
     const vocab = this.getVocab(packageCode);
@@ -540,11 +663,16 @@ export class DataManager {
   }
 
   /**
-   * Get all vocab translations for a tag in all languages
-   * @param {string} packageCode - Package code
-   * @param {string} tag - Tag name
-   * @param {string} fieldName - Field name in vocab (default: "type")
-   * @returns {object|null} Object with language keys, or null
+   * Get all translations for a tag across all available languages.
+   * Returns the complete translation object for the tag.
+   *
+   * @param {string} packageCode - Package code (e.g., "human-de")
+   * @param {string} tag - Tag name to translate (e.g., "noble")
+   * @param {string} [fieldName='type'] - Field name in vocab to search
+   * @returns {Object|null} Object mapping language codes to translations, or null if not found
+   * @example
+   * const translations = dataManager.getVocabTranslations('human-de', 'noble', 'type');
+   * // Returns: { de: "Adelig", en: "Noble" }
    */
   getVocabTranslations(packageCode, tag, fieldName = 'type') {
     const vocab = this.getVocab(packageCode);
@@ -559,10 +687,15 @@ export class DataManager {
   }
 
   /**
-   * Get icon for a tag from vocab
-   * @param {string} packageCode - Package code
-   * @param {string} tag - Tag name
-   * @returns {string|null} Icon string (emoji or icon token), or null
+   * Get the icon associated with a tag from the package vocabulary.
+   * Icons can be emojis or icon tokens used for UI display.
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @param {string} tag - Tag name (e.g., "upscale_inn")
+   * @returns {string|null} Icon string (emoji or icon token), or null if not defined
+   * @example
+   * const icon = dataManager.getVocabIcon('tavern-de', 'upscale_inn');
+   * // Returns: "fa-star" or an emoji like "star"
    */
   getVocabIcon(packageCode, tag) {
     const vocab = this.getVocab(packageCode);
@@ -574,9 +707,14 @@ export class DataManager {
   }
 
   /**
-   * Get all collections for a package
-   * @param {string} packageCode - Package code
-   * @returns {array} Array of collection objects
+   * Get all collections defined in a package (v4.0.1 feature).
+   * Collections are preset queries that define catalog + filter combinations.
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @returns {Array<Object>} Array of collection objects with key, displayName, and query
+   * @example
+   * const collections = dataManager.getCollections('tavern-de');
+   * // Returns: [{ key: "upscale", displayName: { de: "Gehobene Tavernen" }, query: { category: "taverns", tags: ["upscale"] } }]
    */
   getCollections(packageCode) {
     const pkg = this.packages.get(packageCode);
@@ -587,10 +725,11 @@ export class DataManager {
   }
 
   /**
-   * Get a specific collection by key
-   * @param {string} packageCode - Package code
-   * @param {string} collectionKey - Collection key
-   * @returns {object|null} Collection object, or null if not found
+   * Get a specific collection by its key.
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @param {string} collectionKey - Collection key (e.g., "upscale")
+   * @returns {Object|null} Collection object, or null if not found
    */
   getCollection(packageCode, collectionKey) {
     const collections = this.getCollections(packageCode);
@@ -598,10 +737,15 @@ export class DataManager {
   }
 
   /**
-   * Get items filtered by collection query
-   * @param {string} packageCode - Package code
-   * @param {string} collectionKey - Collection key
-   * @returns {array} Array of items matching the collection query
+   * Get catalog items filtered by a collection's query criteria.
+   * Applies the collection's tag filters and limit to return matching items.
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @param {string} collectionKey - Collection key (e.g., "upscale")
+   * @returns {Array<Object>} Array of catalog items matching the collection query
+   * @example
+   * const items = dataManager.getItemsByCollection('tavern-de', 'upscale');
+   * // Returns items from 'taverns' catalog that have the 'upscale' tag
    */
   getItemsByCollection(packageCode, collectionKey) {
     const collection = this.getCollection(packageCode, collectionKey);
@@ -643,10 +787,15 @@ export class DataManager {
   }
 
   /**
-   * Get collections for a specific catalog/category
-   * @param {string} packageCode - Package code
+   * Get all collections that query a specific catalog.
+   * Useful for finding available preset filters for a catalog.
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
    * @param {string} catalogKey - Catalog key (e.g., "taverns")
-   * @returns {array} Array of collections that query this catalog
+   * @returns {Array<Object>} Array of collections that target this catalog
+   * @example
+   * const collections = dataManager.getCollectionsForCatalog('tavern-de', 'taverns');
+   * // Returns all collections that filter the 'taverns' catalog
    */
   getCollectionsForCatalog(packageCode, catalogKey) {
     const collections = this.getCollections(packageCode);
@@ -654,9 +803,10 @@ export class DataManager {
   }
 
   /**
-   * Check if a package has vocab support (v4.0.1+)
-   * @param {string} packageCode - Package code
-   * @returns {boolean} True if package has vocab
+   * Check if a package has vocabulary support (v4.0.1+ feature).
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @returns {boolean} True if the package has vocab definitions
    */
   hasVocabSupport(packageCode) {
     const pkg = this.packages.get(packageCode);
@@ -664,9 +814,10 @@ export class DataManager {
   }
 
   /**
-   * Check if a package has collections support (v4.0.1+)
-   * @param {string} packageCode - Package code
-   * @returns {boolean} True if package has collections
+   * Check if a package has collections support (v4.0.1+ feature).
+   *
+   * @param {string} packageCode - Package code (e.g., "tavern-de")
+   * @returns {boolean} True if the package has at least one collection defined
    */
   hasCollectionsSupport(packageCode) {
     const pkg = this.packages.get(packageCode);
@@ -691,9 +842,11 @@ export class DataManager {
   }
 
   /**
-   * Get file version of a package
-   * @param {string} packageCode - Package code
-   * @returns {string|null} File version string, or null
+   * Get the file version of a package data file.
+   * The fileVersion indicates the content version, separate from the format version.
+   *
+   * @param {string} packageCode - Package code (e.g., "human-de")
+   * @returns {string|null} File version string (e.g., "1.2.0"), or null if not specified
    */
   getFileVersion(packageCode) {
     const pkg = this.packages.get(packageCode);
@@ -705,7 +858,13 @@ export class DataManager {
 let globalDataManager = null;
 
 /**
- * Get or create global data manager
+ * Get or create the global DataManager singleton instance.
+ * The DataManager is shared across all components to ensure consistent data access.
+ *
+ * @returns {DataManager} The global DataManager instance
+ * @example
+ * const dataManager = getGlobalDataManager();
+ * await dataManager.initializeData();
  */
 export function getGlobalDataManager() {
   if (!globalDataManager) {

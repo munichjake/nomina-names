@@ -621,6 +621,401 @@ Your package data must follow JSON Format 4.0.0. See the [JSON Format 4.0.0 Spec
 
 For more information on creating custom content, see the [Module Extension Guide](module-extension-guide.md) and [JSON Format 4.0.0 Specification](json_v_4_spec.md).
 
+## Collections
+
+Collections are predefined filter queries that simplify access to specific subsets of catalog items. They provide a convenient way to group related items without the need to manually specify tags every time.
+
+### What are Collections?
+
+A Collection is a named query that defines:
+- Which catalog to query (e.g., "taverns", "names")
+- Which tags to filter by (e.g., ["harbor_tavern"], ["male", "rare"])
+- Optional display labels and descriptions in multiple languages
+
+Collections serve two main purposes:
+1. **Simplify API calls**: Instead of specifying `catalog: "taverns", tags: ["upscale_inn"]`, you just use `collection: "upscale_inns"`
+2. **Provide user-friendly UI labels**: Collections can have localized display names for dropdown menus
+
+### Tag-based Collections vs Recipe-based Collections
+
+**Tag-based Collections** (most common):
+- Define a catalog and tag filter
+- Items are selected randomly from filtered results
+- Perfect for categorized content like tavern types or name subsets
+
+```json
+{
+  "key": "harbor_taverns",
+  "labels": { "de": "Hafentavernen", "en": "Harbor Taverns" },
+  "query": {
+    "category": "taverns",
+    "tags": ["harbor_tavern"]
+  }
+}
+```
+
+**Recipe-based Collections** (advanced):
+- Reference a recipe instead of raw tags
+- Enable complex composition patterns
+- Used when collection items need multi-step generation
+
+```json
+{
+  "key": "full_noble_names",
+  "labels": { "de": "Volle Adelsnamen", "en": "Full Noble Names" },
+  "query": {
+    "recipe": "noble_fullname"
+  }
+}
+```
+
+### Collection Definition in JSON
+
+Collections are defined in the `collections` array of a v4.0.0 package JSON file:
+
+```json
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "human-de",
+    "displayName": { "de": "Menschen", "en": "Humans" },
+    "languages": ["de"]
+  },
+  "catalogs": {
+    "taverns": {
+      "displayName": { "de": "Tavernen", "en": "Taverns" },
+      "items": [
+        { "t": { "de": "Goldener Greif" }, "tags": ["upscale_inn"], "w": 1 },
+        { "t": { "de": "Zum Anker" }, "tags": ["harbor_tavern"], "w": 1 },
+        { "t": { "de": "Brauner Bar" }, "tags": ["common_tavern"], "w": 1 },
+        { "t": { "de": "Rostiges Schwert" }, "tags": ["adventurer_tavern"], "w": 1 }
+      ]
+    }
+  },
+  "collections": [
+    {
+      "key": "upscale_inns",
+      "labels": {
+        "de": "Gehobene Gasthauser",
+        "en": "Upscale Inns"
+      },
+      "description": {
+        "de": "Feine Etablissements fur wohlhabende Gaste",
+        "en": "Fine establishments for wealthy guests"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": ["upscale_inn"]
+      }
+    },
+    {
+      "key": "harbor_taverns",
+      "labels": {
+        "de": "Hafentavernen",
+        "en": "Harbor Taverns"
+      },
+      "query": {
+        "category": "taverns",
+        "tags": ["harbor_tavern"]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
+```
+
+#### Collection Properties
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+| `key` | string | Yes | Unique identifier for the collection (e.g., "upscale_inns") |
+| `labels` | object | Yes | Localized display names `{ "de": "...", "en": "..." }` |
+| `description` | object | No | Localized descriptions for UI tooltips |
+| `query` | object | Yes | The filter query definition |
+| `query.category` | string | Yes | The catalog key to query (e.g., "taverns", "names") |
+| `query.tags` | array | No | Tags that items must have (AND logic - all tags required) |
+| `query.limit` | number | No | Maximum number of items to consider |
+
+### API Methods for Collections
+
+#### `generateFromCollection(options)`
+
+Generate content using a predefined collection.
+
+**Parameters:**
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `language` | string | `'de'` | Language code |
+| `species` | string | `'human'` | Species identifier |
+| `collection` | string | - | Collection key (e.g., "upscale_inns") |
+| `count` | number | `1` | Number of items to generate |
+
+**Returns:** `Promise<Array<string>>` - Array of generated names/items
+
+**Examples:**
+
+```javascript
+const api = game.modules.get('nomina-names').api;
+
+// Generate an upscale inn name
+const upscaleInns = await api.generateFromCollection({
+  species: 'human',
+  language: 'de',
+  collection: 'upscale_inns',
+  count: 1
+});
+// Result: ["Goldener Greif"]
+
+// Generate multiple harbor tavern names
+const harborTaverns = await api.generateFromCollection({
+  species: 'human',
+  language: 'de',
+  collection: 'harbor_taverns',
+  count: 5
+});
+// Result: ["Zum Anker", "Salziger Hund", "Windrose", "Tiefes Wasser", "Nebelhafen"]
+
+// Generate adventurer tavern names
+const adventurerTaverns = await api.generateFromCollection({
+  species: 'human',
+  language: 'de',
+  collection: 'adventurer_taverns',
+  count: 3
+});
+// Result: ["Rostiges Schwert", "Letzte Chance", "Goldener Wurfel"]
+```
+
+#### `getAvailableCollections(language, species)`
+
+Get all collections available for a species/language combination.
+
+```javascript
+const api = game.modules.get('nomina-names').api;
+
+const collections = await api.getAvailableCollections('de', 'human');
+// Result: [
+//   { key: 'upscale_inns', label: 'Gehobene Gasthauser' },
+//   { key: 'harbor_taverns', label: 'Hafentavernen' },
+//   { key: 'common_taverns', label: 'Gewohnliche Tavernen' },
+//   { key: 'adventurer_taverns', label: 'Abenteurertavernen' }
+// ]
+```
+
+### Practical Collection Examples
+
+#### Example 1: Tavern Generator with Types
+
+```javascript
+async function generateTavernByType(type) {
+  const api = game.modules.get('nomina-names').api;
+
+  // Map tavern type to collection
+  const collectionMap = {
+    'upscale': 'upscale_inns',
+    'common': 'common_taverns',
+    'harbor': 'harbor_taverns',
+    'adventurer': 'adventurer_taverns'
+  };
+
+  const collection = collectionMap[type];
+  if (!collection) {
+    throw new Error(`Unknown tavern type: ${type}`);
+  }
+
+  const names = await api.generateFromCollection({
+    species: 'human',
+    language: 'de',
+    collection: collection,
+    count: 1
+  });
+
+  return names[0];
+}
+
+// Usage
+const harborTavern = await generateTavernByType('harbor');
+console.log(`Welcome to ${harborTavern}!`);
+// Output: "Welcome to Zum Anker!"
+```
+
+#### Example 2: Building a Settlement with Themed Locations
+
+```javascript
+async function generateSettlement() {
+  const api = game.modules.get('nomina-names').api;
+
+  // Generate settlement name
+  const settlementNames = await api.generateFromCatalog({
+    species: 'human',
+    language: 'de',
+    catalog: 'settlements',
+    count: 1
+  });
+
+  // Generate different tavern types using collections
+  const upscaleInn = await api.generateFromCollection({
+    species: 'human',
+    language: 'de',
+    collection: 'upscale_inns',
+    count: 1
+  });
+
+  const commonTavern = await api.generateFromCollection({
+    species: 'human',
+    language: 'de',
+    collection: 'common_taverns',
+    count: 1
+  });
+
+  const harborTavern = await api.generateFromCollection({
+    species: 'human',
+    language: 'de',
+    collection: 'harbor_taverns',
+    count: 1
+  });
+
+  return {
+    name: settlementNames[0],
+    locations: {
+      nobleTavern: upscaleInn[0],
+      commonTavern: commonTavern[0],
+      docks: harborTavern[0]
+    }
+  };
+}
+
+// Usage
+const settlement = await generateSettlement();
+console.log(`Welcome to ${settlement.name}!`);
+console.log(`  Noble district: ${settlement.locations.nobleTavern}`);
+console.log(`  Market square: ${settlement.locations.commonTavern}`);
+console.log(`  Docks: ${settlement.locations.docks}`);
+```
+
+#### Example 3: Dynamic Collection Selection in UI
+
+```javascript
+async function buildCollectionDropdown(species, language) {
+  const api = game.modules.get('nomina-names').api;
+
+  // Get all available collections
+  const collections = await api.getAvailableCollections(language, species);
+
+  // Build HTML dropdown
+  let html = '<select id="collection-select">';
+  html += '<option value="">-- Select Type --</option>';
+
+  for (const collection of collections) {
+    html += `<option value="${collection.key}">${collection.label}</option>`;
+  }
+
+  html += '</select>';
+  return html;
+}
+
+// Generate based on selected collection
+async function generateFromSelectedCollection() {
+  const select = document.getElementById('collection-select');
+  const collectionKey = select.value;
+
+  if (!collectionKey) {
+    ui.notifications.warn('Please select a collection');
+    return;
+  }
+
+  const api = game.modules.get('nomina-names').api;
+  const results = await api.generateFromCollection({
+    species: 'human',
+    language: 'de',
+    collection: collectionKey,
+    count: 5
+  });
+
+  console.log('Generated:', results);
+}
+```
+
+### Creating Custom Collections
+
+When creating your own module extension, you can define custom collections to provide themed name subsets:
+
+```javascript
+// In your module's main.js
+const myPackageData = {
+  format: "4.0.0",
+  package: {
+    code: "goblin-de",
+    displayName: { de: "Goblins", en: "Goblins" },
+    languages: ["de"]
+  },
+  catalogs: {
+    names: {
+      displayName: { de: "Namen", en: "Names" },
+      items: [
+        // Chieftain names - important goblins
+        { t: { de: "Grax der Grosse" }, tags: ["male", "firstnames", "chieftain"], w: 1 },
+        { t: { de: "Vyx Schaedelspalter" }, tags: ["female", "firstnames", "chieftain"], w: 1 },
+        // Common goblin names
+        { t: { de: "Snarl" }, tags: ["male", "firstnames", "common"], w: 1 },
+        { t: { de: "Grit" }, tags: ["female", "firstnames", "common"], w: 1 },
+        // Shaman names
+        { t: { de: "Hexzahn" }, tags: ["male", "firstnames", "shaman"], w: 1 },
+        { t: { de: "Knochenauge" }, tags: ["female", "firstnames", "shaman"], w: 1 }
+      ]
+    }
+  },
+  collections: [
+    {
+      key: "chieftains",
+      labels: { de: "Hauptlinge", en: "Chieftains" },
+      description: { de: "Namen fur Goblin-Anfuhrer", en: "Names for goblin leaders" },
+      query: {
+        category: "names",
+        tags: ["firstnames", "chieftain"]
+      }
+    },
+    {
+      key: "shamans",
+      labels: { de: "Schamanen", en: "Shamans" },
+      description: { de: "Namen fur Goblin-Schamanen", en: "Names for goblin shamans" },
+      query: {
+        category: "names",
+        tags: ["firstnames", "shaman"]
+      }
+    },
+    {
+      key: "common_goblins",
+      labels: { de: "Gewohnliche Goblins", en: "Common Goblins" },
+      query: {
+        category: "names",
+        tags: ["firstnames", "common"]
+      }
+    }
+  ]
+};
+
+// Register with Nomina Names
+await api.registerPackage({
+  code: 'goblin-de',
+  data: myPackageData
+});
+```
+
+### Best Practices for Collections
+
+1. **Use descriptive keys**: Use clear, lowercase keys with underscores (e.g., `harbor_taverns`, not `ht` or `HarborTaverns`)
+
+2. **Always provide labels**: Include labels in all supported languages for proper UI display
+
+3. **Document with descriptions**: Add descriptions to help users understand what each collection contains
+
+4. **Keep queries focused**: Each collection should represent a distinct, useful subset of items
+
+5. **Match tags consistently**: Ensure your catalog items have the tags your collections query for
+
+6. **Test your collections**: Verify that collections return expected results before publishing
+
 ## Practical Examples
 
 ### Creating a Complete NPC Generator
@@ -896,6 +1291,78 @@ The following species are available by default:
 - `shops` - Shop and business names
 - `books` - Book and tome titles
 - `ships` - Ship and vessel names
+
+## Version 3.1.0 Features
+
+### Gender Color Coding
+
+Version 3.1.0 introduces configurable gender color coding for generated names. This feature allows visual distinction of names by gender in the Generator App.
+
+#### Settings Access
+
+You can programmatically check and modify the gender color settings:
+
+```javascript
+// Check if gender colors are enabled
+const enabled = game.settings.get('nomina-names', 'enableGenderColors');
+
+// Get current color configuration
+const colors = game.settings.get('nomina-names', 'genderColors');
+// Result: { male: '#4a90d9', female: '#d94a6b', nonbinary: '#9b59b6' }
+
+// Enable gender colors programmatically
+await game.settings.set('nomina-names', 'enableGenderColors', true);
+
+// Set custom colors
+await game.settings.set('nomina-names', 'genderColors', {
+  male: '#3498db',
+  female: '#e74c3c',
+  nonbinary: '#9b59b6'
+});
+```
+
+#### Default Colors
+
+| Gender | Default Color | Hex Code |
+|--------|--------------|----------|
+| Male | Blue | `#4a90d9` |
+| Female | Pink/Rose | `#d94a6b` |
+| Nonbinary | Purple | `#9b59b6` |
+
+#### CSS Variables
+
+When gender colors are enabled, the following CSS variables are set on the results panel:
+
+```css
+--gender-color-male: #4a90d9;
+--gender-color-female: #d94a6b;
+--gender-color-nonbinary: #9b59b6;
+```
+
+You can override these in your own CSS to customize the appearance further.
+
+### Generate Button Placement
+
+The position of the generate button in the Generator App can be configured via the `generateButtonPlacement` setting:
+
+```javascript
+// Get current placement
+const placement = game.settings.get('nomina-names', 'generateButtonPlacement');
+// Result: 'legacy', 'floating', or 'result'
+
+// Change placement
+await game.settings.set('nomina-names', 'generateButtonPlacement', 'floating');
+```
+
+**Available Values:**
+
+| Value | Description |
+|-------|-------------|
+| `legacy` | Classic position below the options panel (default) |
+| `floating` | Sticky position at the bottom of the options panel |
+| `result` | In the results area next to the copy button |
+
+---
 
 ## Advanced Configuration
 

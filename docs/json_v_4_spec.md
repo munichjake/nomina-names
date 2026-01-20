@@ -1,8 +1,76 @@
-# JSON Format 4.0 – **Complete Specification** (English)
+# JSON Format 4.0/4.1 – **Complete Specification**
 
 > **Purpose.** A single, uniform JSON format to power curated and generative content for TTRPG/Fantasy tooling (names, ships, shops, books, weapons, pets, toponyms, etc.). The spec is written for **third‑party plugin developers**. It is deliberately exhaustive: every concept, field, default, and algorithm is explained with runnable examples, request/response shapes, and edge‑cases.
 >
 > **Scope.** A **Package** is the smallest deliverable unit (one JSON file). An **Index** enumerates available packages in multiple languages and species; a future **Bundle** groups packages for thematic sets. This document defines all three.
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 4.0.0 | 2025-10 | Initial release with catalogs, recipes, langRules, vocab, and collections |
+| 4.1.0 | 2025-01 | GENERATE block, Transformer system (Demonym, Possessive, Genitive), enhanced post-processing |
+
+---
+
+## What's New in Format 4.1
+
+Format 4.1 is **fully backwards compatible** with 4.0. Existing packages continue to work without modification. The following features are new:
+
+### 1. GENERATE Block (New Syntax for Dynamic Generation)
+
+The `generate` block provides a cleaner, more semantic syntax for content generation compared to the legacy `select` block.
+
+**Key difference:**
+- **GENERATE** = Complete, generated results (executes recipes)
+- **SELECT** = Individual catalog items (raw entries)
+
+See [Section 3.2](#32-pattern-blocks-formal) and [Section 3.7](#37-examples--generate-block-with-transforms) for details.
+
+### 2. Transformer System (Demonym, Possessive, Genitive)
+
+New inline transformations that can be applied directly to generated content:
+
+| Transform | Example (EN) | Example (DE) |
+|-----------|--------------|--------------|
+| `Demonym` | "Ironforge" → "Ironfordian" | "Hamburg" → "Hamburger" |
+| `possessive`/`genitive` | "Peter" → "Peter's" | "Peter" → "Peters" |
+| `genderAdapt` | Adapts titles to character gender | Adapts titles to character gender |
+
+See [Section 3.8](#38-transformer-reference) for the complete reference.
+
+### 3. Enhanced Post-Processing
+
+New and improved standard transforms for post-processing:
+
+| Transform | Description |
+|-----------|-------------|
+| `NormalizeUmlauts` | Converts German umlauts to ASCII equivalents (ae, oe, ue, ss) |
+| `TitleCase` | Improved handling of possessives ("Peter's" not "Peter'S") |
+
+---
+
+## Table of Contents
+
+- [0. Terminology & Design Goals](#0-terminology--design-goals)
+- [1. Package File - Root Structure](#1-package-file--root-structure)
+- [2. Catalogs - Structure, Items, Semantics](#2-catalogs--structure-items-semantics)
+- [3. Recipes - Patterns, Selection, Grammar, Transforms](#3-recipes--patterns-selection-grammar-transforms)
+  - [3.2 Pattern Blocks (Formal)](#32-pattern-blocks-formal) - SELECT and GENERATE blocks
+  - [3.7 Examples - GENERATE Block with Transforms](#37-examples--generate-block-with-transforms) - *New in 4.1*
+  - [3.8 Transformer Reference](#38-transformer-reference-new-in-41) - *New in 4.1*
+- [4. Output - Global Options & Transforms](#4-output--global-options--transforms)
+  - [4.3 Inline Transforms vs Post-Processing](#43-inline-transforms-vs-post-processing-new-in-41) - *New in 4.1*
+- [5. Language Rules (`langRules`)](#5-language-rules-langrules--grammar-tables)
+- [6. Index File - Discovery, Locales, Species Labels](#6-index-file--discovery-locales-species-labels)
+- [7. Runtime API - Request/Response & Determinism](#7-runtime-api--requestresponse--determinism)
+- [8. Errors, Validation, and Fallbacks](#8-errors-validation-and-fallbacks)
+- [Appendix A - JSON Schema](#appendix-a--jsonschema-abridged)
+- [Appendix B - Full Working Demo (Toponyms)](#appendix-b--full-working-demo-toponyms)
+- [Appendix C - Format 4.1 Complete Example](#appendix-c----format-41-complete-example-generate-with-transforms) - *New in 4.1*
+- [Appendix D - API Integration (game.NominaAPI)](#appendix-d----api-integration-gamenominaapi) - *New in 4.1*
 
 ---
 
@@ -612,13 +680,194 @@ The `generate` block provides a cleaner, more semantic syntax for content genera
 **GENERATE vs SELECT - When to use which:**
 
 ```json
-// ✅ GENERATE: For complete, generated content
+// GENERATE: For complete, generated content
 { "generate": { "from": "settlements", "collection": "procedural" } }
-// → Executes recipe → "Ironforge", "Steelhold"
+// -> Executes recipe -> "Ironforge", "Steelhold"
 
-// ✅ SELECT: For individual catalog items
+// SELECT: For individual catalog items
 { "select": { "from": "catalog", "key": "settlements", "where": { "tags": ["prefix"] } } }
-// → Picks item → "Iron", "Steel", "Copper"
+// -> Picks item -> "Iron", "Steel", "Copper"
+```
+
+---
+
+### 3.8 Transformer Reference (New in 4.1)
+
+Transformers modify generated text inline within a pattern block. They are specified via the `transform` property and are applied before the text is added to the output.
+
+**Syntax:**
+
+```json
+{
+  "generate": { "from": "settlements", "collection": "procedural" },
+  "transform": "Demonym"
+}
+// OR with object syntax for future extensibility:
+{
+  "select": { "from": "catalog", "key": "names" },
+  "transform": { "type": "genitive" }
+}
+```
+
+**Important:** Transform names are **case-insensitive**. `"demonym"`, `"Demonym"`, and `"DEMONYM"` all work.
+
+#### 3.8.1 Demonym Transformer
+
+Converts place names (toponyms) to inhabitant names (demonyms).
+
+**Use case:** Creating beer brands, regional products, or inhabitant references from settlement names.
+
+**Locale: English (EN)**
+
+The English demonym transformer applies 26 specific suffix rules:
+
+| Suffix | Replacement | Example |
+|--------|-------------|---------|
+| `-land` | `-lander` | Iceland -> Icelander |
+| `-ia` | `-ian` | Australia -> Australian |
+| `-a` | `-an` | America -> American |
+| `-y` | `-ian` | Sicily -> Sicilian |
+| `-o` | `-an` | Mexico -> Mexican |
+| `-ton` | `-tonian` | Boston -> Bostonian |
+| `-pool` | `-pudlian` | Liverpool -> Liverpudlian |
+| `-ford` | `-fordian` | Oxford -> Oxfordian |
+| `-burg` | `-burger` | Hamburg -> Hamburger |
+| `-burgh` | `-burgher` | Edinburgh -> Edinburgher |
+| `-ham` | `-hamite` | Birmingham -> Birminghamite |
+| `-ville` | `-villian` | Nashville -> Nashvillian |
+| `-shire` | `-shirian` | Yorkshire -> Yorkshirian |
+| `-mouth` | `-mouthian` | Plymouth -> Plymouthian |
+| `-port` | `-portian` | Newport -> Newportian |
+| `-dale` | `-dalian` | Rochdale -> Rochdalian |
+| `-wood` | `-woodian` | Hollywood -> Hollywoodian |
+| `-field` | `-fieldian` | Springfield -> Springfieldian |
+| `-bridge` | `-bridgean` | Cambridge -> Cambridgean |
+| `-castle` | `-castlian` | Newcastle -> Newcastlian |
+| `-haven` | `-havener` | New Haven -> New Havener |
+| `-wick` | `-wicker` | Brunswick -> Brunswicker |
+| `-worth` | `-worthian` | Letchworth -> Letchworthian |
+| (ends in `-e`) | (remove `-e`, add `-an`) | Rome -> Roman |
+| (default) | `-ian` | London -> Londonian |
+
+**Locale: German (DE)**
+
+The German demonym transformer applies these suffix rules:
+
+| Suffix | Replacement | Example |
+|--------|-------------|---------|
+| `-ingen` | `-inger` | Tubingen -> Tubinger |
+| `-ing` | `-inger` | Freising -> Freisinger |
+| `-au` | `-auer` | Passau -> Passauer |
+| `-ach` | `-acher` | Offenbach -> Offenbacher |
+| `-heim` | `-heimer` | Mannheim -> Mannheimer |
+| `-stein` | `-steiner` | Frankenstein -> Frankensteiner |
+| `-burg` | `-burger` | Hamburg -> Hamburger |
+| `-dorf` | `-dorfer` | Dusseldorf -> Dusseldorfer |
+| `-feld` | `-felder` | Bielefeld -> Bielefelder |
+| `-furt` | `-furter` | Frankfurt -> Frankfurter |
+| `-thal`/`-tal` | `-taler` | Wuppertal -> Wuppertaler |
+| `-wald` | `-walder` | Schwarzwald -> Schwarzwalder |
+| `-hagen` | `-hagener` | Kopenhagen -> Kopenhagener |
+| `-hausen` | `-hausener` | Mulhausen -> Mulhausener |
+| `-kirchen` | `-kirchner` | Gelsenkirchen -> Gelsenkirchner |
+| `-bach` | `-bacher` | Gladbach -> Gladbacher |
+| `-bruch` | `-brucher` | Moers -> Moerser |
+| `-born` | `-borner` | Heilbronn -> Heilbronner |
+| `-see` | `-seer` | Bodensee -> Bodenseer |
+| `-zell` | `-zeller` | Metzell -> Metzeller |
+| (ends in `-e`) | (remove `-e`, add `-er`) | Karlsruhe -> Karlsruher |
+| (default) | `-er` | Berlin -> Berliner |
+
+**Example usage:**
+
+```json
+{
+  "id": "regional_beer",
+  "displayName": { "en": "Regional Beer" },
+  "pattern": [
+    {
+      "generate": { "from": "settlements", "collection": "procedural" },
+      "transform": "Demonym",
+      "as": "ORIGIN"
+    },
+    { "literal": " " },
+    { "select": { "from": "catalog", "key": "beer_styles" } }
+  ]
+}
+// Output: "Ironfordian Lager", "Hamburger Pils"
+```
+
+#### 3.8.2 Genitive/Possessive Transformer
+
+Converts names to their possessive/genitive form.
+
+**Use case:** Creating shop names, tavern names, or ownership references.
+
+**Syntax:** Both `"genitive"` and `"possessive"` are accepted and produce the same result.
+
+**Locale: English (EN)**
+
+| Name ending | Rule | Example |
+|-------------|------|---------|
+| ends in `-s` | add `'` only | Charles -> Charles' |
+| (default) | add `'s` | Peter -> Peter's |
+
+**Locale: German (DE)**
+
+| Name ending | Rule | Example |
+|-------------|------|---------|
+| ends in `-s`, `-ss`, `-x`, `-z`, `-tz` | add `'` only | Hans -> Hans', Max -> Max' |
+| ends in `-e` | add `s` | Marie -> Maries |
+| ends in `-er`, `-el`, `-en` | add `s` | Peter -> Peters |
+| (default) | add `s` | Wilhelm -> Wilhelms |
+
+**Example usage:**
+
+```json
+{
+  "id": "shop_name",
+  "displayName": { "en": "Shop Name" },
+  "pattern": [
+    {
+      "select": { "from": "catalog", "key": "first_names" },
+      "transform": "possessive"
+    },
+    { "literal": " " },
+    { "select": { "from": "catalog", "key": "shop_types" } }
+  ]
+}
+// Output (EN): "Peter's Smithy", "Anna's Bakery"
+// Output (DE): "Peters Schmiede", "Annas Backstube"
+```
+
+#### 3.8.3 GenderAdapt Transformer
+
+Adapts gendered words (typically titles) to match a referenced character's gender.
+
+**Use case:** Ensuring titles match the gender of generated characters (e.g., "King" vs "Queen").
+
+**Requirements:**
+- The pattern must include a previous selection with alias `"Person"` that has `attrs.gender` set
+- The item being transformed should have gender variants defined in `gram` or as separate items
+
+**Example usage:**
+
+```json
+{
+  "id": "titled_person",
+  "displayName": { "en": "Titled Person" },
+  "pattern": [
+    {
+      "select": { "from": "catalog", "key": "first_names" },
+      "as": "Person"
+    },
+    { "literal": " " },
+    {
+      "select": { "from": "catalog", "key": "titles" },
+      "transform": "genderAdapt"
+    }
+  ]
+}
 ```
 
 ---
@@ -641,13 +890,47 @@ The `generate` block provides a cleaner, more semantic syntax for content genera
 
 ### 4.2 Standard Transforms (Normative Names)
 
-- `TrimSpaces`: trim leading/trailing whitespace.
-- `CollapseSpaces`: collapse runs of spaces/tabs to a single space.
-- `TitleCase`: title‑case per locale (simplified: capitalize first letter of words; leave particles like *of, the* as‑is).
-- `ConcatNoSpace`: remove all spaces between blocks (useful for compounds like `Granit` + `heim` → `Granitheim`).
-- `NormalizeUmlauts`: optional ASCII fallback (ä→ae, ö→oe, ü→ue, ß→ss). **Not** applied unless explicitly included.
+| Transform | Description |
+|-----------|-------------|
+| `TrimSpaces` | Trim leading/trailing whitespace. |
+| `CollapseSpaces` | Collapse runs of spaces/tabs to a single space. |
+| `TitleCase` | Title-case per locale. Capitalizes first letter of words; leaves particles (*of, the, von, der*) lowercase. **v4.1:** Correctly handles possessives ("Peter's" not "Peter'S"). |
+| `ConcatNoSpace` | Remove all spaces between blocks (useful for compounds like `Granit` + `heim` -> `Granitheim`). |
+| `NormalizeUmlauts` | ASCII fallback for German umlauts (ae, oe, ue, ss). **Not** applied unless explicitly included. |
 
 Runtimes may safely add vendor transforms under a namespaced name (e.g., `vendorX.Slugify`).
+
+### 4.3 Inline Transforms vs Post-Processing (New in 4.1)
+
+Format 4.1 distinguishes between two types of transforms:
+
+**Inline Transforms** (via `transform` property on blocks):
+- Applied to individual selections/generations
+- Modify text before it joins the output stream
+- Examples: `Demonym`, `possessive`, `genitive`, `genderAdapt`
+
+**Post-Processing Transforms** (via `post` array on recipes or `output.transforms`):
+- Applied to the complete generated text after all blocks are combined
+- Modify the final output string
+- Examples: `TrimSpaces`, `CollapseSpaces`, `TitleCase`, `NormalizeUmlauts`
+
+**Example combining both:**
+
+```json
+{
+  "id": "fancy_tavern",
+  "displayName": { "en": "Fancy Tavern Name" },
+  "pattern": [
+    {
+      "select": { "from": "catalog", "key": "first_names" },
+      "transform": "possessive"          // Inline: "peter" -> "peter's"
+    },
+    { "literal": " " },
+    { "select": { "from": "catalog", "key": "tavern_types" } }
+  ],
+  "post": ["TitleCase", "CollapseSpaces"]  // Post: "peter's tavern" -> "Peter's Tavern"
+}
+```
 
 ---
 
@@ -1223,6 +1506,203 @@ A minimal, self‑contained package including catalogs, recipes, output, and `la
   "langRules": { "de": { "prepCase": { "an": "dat", "bei": "dat" }, "articles": { "def": { "dat": { "m": "dem", "n": "dem", "f": "der", "pl": "den" } } }, "contractions": { "an dem": "am", "bei dem": "beim" }, "defaults": { "articleWhenNone": "omit" } } }
 }
 ```
+
+---
+
+## Appendix C -- Format 4.1 Complete Example (GENERATE with Transforms)
+
+A complete package demonstrating Format 4.1 features including GENERATE blocks, inline transforms, and cross-references.
+
+```json
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "brewery-demo",
+    "displayName": { "en": "Brewery Names - Demo" },
+    "languages": ["en", "de"]
+  },
+  "catalogs": {
+    "first_names": {
+      "displayName": { "en": "First Names" },
+      "items": [
+        { "t": { "en": "Peter", "de": "Peter" }, "tags": ["male"] },
+        { "t": { "en": "Anna", "de": "Anna" }, "tags": ["female"] },
+        { "t": { "en": "Hans", "de": "Hans" }, "tags": ["male"] },
+        { "t": { "en": "Maria", "de": "Maria" }, "tags": ["female"] }
+      ]
+    },
+    "settlements": {
+      "displayName": { "en": "Settlements" },
+      "items": [
+        { "t": { "en": "Ironforge", "de": "Eisenschmiede" }, "tags": ["procedural"] },
+        { "t": { "en": "Goldenhall", "de": "Goldhalle" }, "tags": ["procedural"] },
+        { "t": { "en": "Steelkeep", "de": "Stahlburg" }, "tags": ["procedural"] }
+      ]
+    },
+    "beer_styles": {
+      "displayName": { "en": "Beer Styles" },
+      "items": [
+        { "t": { "en": "Lager", "de": "Lager" } },
+        { "t": { "en": "Pilsner", "de": "Pils" } },
+        { "t": { "en": "Stout", "de": "Schwarzbier" } },
+        { "t": { "en": "Wheat Beer", "de": "Weizenbier" } }
+      ]
+    },
+    "brewery_types": {
+      "displayName": { "en": "Brewery Types" },
+      "items": [
+        { "t": { "en": "Brewery", "de": "Brauerei" } },
+        { "t": { "en": "Brewhouse", "de": "Brauhaus" } },
+        { "t": { "en": "Alehouse", "de": "Bierstube" } }
+      ]
+    }
+  },
+  "collections": [
+    {
+      "key": "procedural_settlements",
+      "labels": { "en": "Procedural Settlements", "de": "Prozedurale Siedlungen" },
+      "query": { "tags": ["procedural"] }
+    }
+  ],
+  "recipes": [
+    {
+      "id": "regional_beer",
+      "displayName": { "en": "Regional Beer", "de": "Regionalbier" },
+      "pattern": [
+        {
+          "select": { "from": "catalog", "key": "settlements" },
+          "transform": "Demonym"
+        },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "beer_styles" } }
+      ],
+      "post": ["TitleCase", "CollapseSpaces"]
+    },
+    {
+      "id": "brewery_name",
+      "displayName": { "en": "Brewery Name", "de": "Brauereiname" },
+      "pattern": [
+        {
+          "select": { "from": "catalog", "key": "first_names" },
+          "transform": "possessive"
+        },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "brewery_types" } }
+      ],
+      "post": ["TitleCase", "CollapseSpaces"]
+    },
+    {
+      "id": "full_brand",
+      "displayName": { "en": "Full Brand", "de": "Volle Marke" },
+      "pattern": [
+        {
+          "select": { "from": "catalog", "key": "first_names" },
+          "transform": "possessive",
+          "as": "OWNER"
+        },
+        { "literal": " " },
+        {
+          "select": { "from": "catalog", "key": "settlements" },
+          "transform": "Demonym"
+        },
+        { "literal": " " },
+        { "select": { "from": "catalog", "key": "beer_styles" } }
+      ],
+      "post": ["TitleCase", "CollapseSpaces"]
+    }
+  ],
+  "output": {
+    "transforms": ["TrimSpaces"],
+    "uniqueWithinBatch": true
+  }
+}
+```
+
+**Sample outputs:**
+
+| Recipe | Locale | Examples |
+|--------|--------|----------|
+| `regional_beer` | EN | "Ironfordian Lager", "Goldenhallic Stout" |
+| `regional_beer` | DE | "Eisenschmieder Pils", "Goldhaller Schwarzbier" |
+| `brewery_name` | EN | "Peter's Brewery", "Anna's Alehouse" |
+| `brewery_name` | DE | "Peters Brauerei", "Annas Bierstube" |
+| `full_brand` | EN | "Hans' Steelkeepian Wheat Beer" |
+| `full_brand` | DE | "Hans' Stahlburger Weizenbier" |
+
+---
+
+## Appendix D -- API Integration (game.NominaAPI)
+
+For Foundry VTT module developers, Format 4.1 packages can be accessed via the global `game.NominaAPI` interface.
+
+**Basic Usage:**
+
+```javascript
+// Generate names using a specific package and recipe
+const result = await game.NominaAPI.generate({
+  species: "dwarf",
+  language: "en",
+  category: "names",
+  recipes: ["full_name"],
+  n: 5,
+  filters: {
+    first_names: { tags: ["male"] }
+  }
+});
+
+console.log(result.suggestions);
+// [{ text: "Thorin Ironforge", recipe: "full_name", ... }, ...]
+```
+
+**Using GENERATE Block Features:**
+
+```javascript
+// Generate settlement-based names with Demonym transform
+const brandResult = await game.NominaAPI.generate({
+  species: "dwarf",
+  language: "en",
+  category: "settlements",
+  recipes: ["regional_beer"],
+  n: 3
+});
+
+console.log(brandResult.suggestions);
+// [{ text: "Ironfordian Stout", ... }, ...]
+```
+
+**Registering Custom Packages:**
+
+```javascript
+// Register a custom Format 4.1 package at runtime
+game.NominaAPI.registerPackage({
+  format: "4.0.0",
+  package: {
+    code: "my-custom-species",
+    displayName: { en: "Custom Species" },
+    languages: ["en"]
+  },
+  catalogs: {
+    names: {
+      displayName: { en: "Names" },
+      items: [
+        { t: { en: "Zyx" }, tags: ["unique"] },
+        { t: { en: "Qar" }, tags: ["unique"] }
+      ]
+    }
+  },
+  recipes: [
+    {
+      id: "simple_name",
+      displayName: { en: "Simple Name" },
+      pattern: [
+        { select: { from: "catalog", key: "names" } }
+      ]
+    }
+  ]
+});
+```
+
+For complete API documentation, see [api-documentation.md](./api-documentation.md).
 
 ---
 

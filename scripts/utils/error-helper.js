@@ -120,6 +120,20 @@ export function getUserFriendlyMessage(error) {
     return game.i18n.localize('names.errors.recipe.not-found');
   }
 
+  if (message.includes('Catalog not found')) {
+    // Extract the catalog name from the error message
+    const match = message.match(/Catalog not found:\s*(\w+)/);
+    const catalogName = match ? match[1] : 'unknown';
+    return game.i18n.format('names.errors.catalog.not-found', { catalog: catalogName });
+  }
+
+  if (message.includes('missing required catalogs')) {
+    // Extract the catalog names from the error message
+    const match = message.match(/missing required catalogs:\s*([^.]+)/);
+    const catalogNames = match ? match[1] : 'unknown';
+    return game.i18n.format('names.errors.catalog.missing-required', { catalogs: catalogNames });
+  }
+
   if (message.includes('No suggestions could be generated') || message.includes('No names could be generated')) {
     return game.i18n.localize('names.errors.generation.failed');
   }

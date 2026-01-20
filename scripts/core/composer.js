@@ -1,6 +1,15 @@
 /**
  * Composer - Pattern execution and output transformation
- * Implements recipe pattern execution from JSON Format 4.0 specification
+ * Implements recipe pattern execution from JSON Format 4.0 specification.
+ *
+ * This module handles:
+ * - Executing recipe patterns (SELECT, GENERATE, LITERAL, PP, REF blocks)
+ * - Applying grammatical transformations (gender adaptation, genitive, demonym)
+ * - Post-processing transforms (TitleCase, TrimSpaces, etc.)
+ * - Cross-package catalog references
+ * - Agreement logic between name parts
+ *
+ * @module composer
  */
 
 import { selectFromCatalog } from './selector.js';
@@ -8,16 +17,32 @@ import { buildPPPhrase, getLocalizedText, adaptTitleToGender } from '../utils/gr
 import { logDebug, logWarn, logError } from '../utils/logger.js';
 
 /**
- * Execute a recipe pattern and return generated text
- * @param {Array} pattern - Array of pattern blocks (select, literal, pp)
- * @param {Object} catalogs - Available catalogs
- * @param {Object} langRules - Language rules for grammar
- * @param {string} locale - Target locale
- * @param {string} seed - Random seed for deterministic generation
- * @param {Object} filters - Runtime filters per catalog key
- * @param {Object} components - Optional component flags
- * @param {Object} context - Execution context (recipes, package data)
- * @returns {Object} {text, parts} - Generated text and component parts
+ * Execute a recipe pattern and return generated text.
+ * Iterates through pattern blocks and assembles the final output text.
+ *
+ * Pattern blocks can be:
+ * - SELECT: Choose an item from a catalog
+ * - GENERATE: Generate from a recipe or collection
+ * - LITERAL: Insert static text
+ * - PP: Preposition-article-phrase (e.g., "von Berlin")
+ * - REF: Reference a previously generated alias
+ *
+ * @param {Array<Object>} pattern - Array of pattern blocks
+ * @param {Object} catalogs - Available catalogs from the package
+ * @param {Object} langRules - Language rules for grammar (articles, prepositions)
+ * @param {string} locale - Target locale for text output
+ * @param {string|null} seed - Random seed for deterministic generation
+ * @param {Object} [filters={}] - Runtime filters per catalog key
+ * @param {Object} [components={}] - Optional component flags for conditional blocks
+ * @param {Object} [context={}] - Execution context with recipes and cross-package functions
+ * @returns {Object} Result object
+ * @returns {string} return.text - Generated text from all blocks joined together
+ * @returns {Object} return.parts - Named parts from aliased selections (for agreement, etc.)
+ * @example
+ * const { text, parts } = executePattern(
+ *   [{ select: { from: 'catalog', key: 'names' }, as: 'FN' }, { literal: ' ' }, { ref: 'FN' }],
+ *   catalogs, langRules, 'de', null, {}, {}, context
+ * );
  */
 export function executePattern(pattern, catalogs, langRules, locale, seed, filters = {}, components = {}, context = {}) {
   const parts = {}; // Store aliased selections
@@ -170,15 +195,18 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
 }
 
 /**
- * Handle SELECT block execution
- * @param {Object} block - Select block
+ * Handle SELECT block execution.
+ * Routes to either generator selection (execute a recipe) or catalog selection (pick an item).
+ *
+ * @param {Object} block - Select block with select configuration
  * @param {Object} catalogs - Available catalogs
  * @param {string} locale - Target locale
- * @param {Object} parts - Existing aliased parts
- * @param {string} seed - Random seed
- * @param {Object} filters - Runtime filters per catalog key
- * @param {Object} context - Execution context (recipes, package data)
- * @returns {Object} {text, item}
+ * @param {Object} parts - Existing aliased parts for agreement
+ * @param {string|null} seed - Random seed
+ * @param {Object} [filters={}] - Runtime filters per catalog key
+ * @param {Object} [context={}] - Execution context
+ * @returns {Object} Result with text, item, and optional skip flag
+ * @private
  */
 function handleSelectBlock(block, catalogs, locale, parts, seed, filters = {}, context = {}) {
   const { select, distinctFrom } = block;
@@ -196,12 +224,16 @@ function handleSelectBlock(block, catalogs, locale, parts, seed, filters = {}, c
 }
 
 /**
- * Handle generator selection (execute a recipe)
- * @param {Object} select - Select configuration
+ * Handle generator selection by executing a referenced recipe.
+ * Creates a synthetic item for consistency with catalog selection.
+ *
+ * @param {Object} select - Select configuration with key (recipe ID)
  * @param {string} locale - Target locale
- * @param {string} seed - Random seed
- * @param {Object} context - Execution context
- * @returns {Object} {text, item}
+ * @param {string|null} seed - Random seed
+ * @param {Object} context - Execution context with recipes and executeRecipe function
+ * @returns {Object} Result with generated text and synthetic item
+ * @throws {Error} If context is missing required functions or recipe not found
+ * @private
  */
 function handleGeneratorSelect(select, locale, seed, context) {
   const { key: recipeId, params = {} } = select;
@@ -232,17 +264,21 @@ function handleGeneratorSelect(select, locale, seed, context) {
 }
 
 /**
- * Handle catalog selection (original implementation)
- * @param {Object} select - Select configuration
- * @param {Object} catalogs - Available catalogs
+ * Handle catalog selection by picking an item from the catalog.
+ * Supports cross-package references, agreement logic, and fallback handling.
+ *
+ * @param {Object} select - Select configuration with catalog key and where clause
+ * @param {Object} catalogs - Available catalogs in current package
  * @param {string} locale - Target locale
- * @param {Object} parts - Existing aliased parts
- * @param {string} seed - Random seed
- * @param {Object} filters - Runtime filters per catalog key
- * @param {Array} distinctFrom - Aliases to be distinct from
- * @param {Object} blockExt - Block extension data (for agreeWith etc.)
- * @param {Object} context - Execution context (for cross-package references)
- * @returns {Object} {text, item}
+ * @param {Object} parts - Existing aliased parts for agreement
+ * @param {string|null} seed - Random seed
+ * @param {Object} [filters={}] - Runtime filters per catalog key
+ * @param {Array<string>} [distinctFrom] - Aliases to ensure distinctness from
+ * @param {Object} [blockExt={}] - Block extension data (agreeWith, optional, etc.)
+ * @param {Object} [context={}] - Execution context for cross-package references
+ * @returns {Object} Result with text, item, and optional skip flag
+ * @throws {Error} If catalog not found or selection fails
+ * @private
  */
 function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}, distinctFrom, blockExt = {}, context = {}) {
 
@@ -334,16 +370,20 @@ function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}
 }
 
 /**
- * Handle PP (preposition-article-phrase) block execution
- * @param {Object} block - PP block
+ * Handle PP (preposition-article-phrase) block execution.
+ * Generates phrases like "von Berlin" or "aus dem Norden" using grammar rules.
+ *
+ * @param {Object} block - PP block with prep and ref configuration
  * @param {Object} catalogs - Available catalogs
- * @param {Object} langRules - Language rules
+ * @param {Object} langRules - Language rules for article/preposition contraction
  * @param {string} locale - Target locale
  * @param {Object} parts - Existing aliased parts
- * @param {string} seed - Random seed
- * @param {Object} filters - Runtime filters per catalog key
- * @param {Object} context - Execution context (recipes, package data)
- * @returns {string} Formatted pp phrase
+ * @param {string|null} seed - Random seed
+ * @param {Object} [filters={}] - Runtime filters per catalog key
+ * @param {Object} [context={}] - Execution context
+ * @returns {string} Formatted preposition-article-noun phrase
+ * @throws {Error} If referenced alias not found or invalid ref configuration
+ * @private
  */
 function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}) {
   const { pp } = block;
@@ -372,16 +412,23 @@ function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters 
 }
 
 /**
- * Handle GENERATE block execution (new syntax)
- * @param {Object} block - Generate block
+ * Handle GENERATE block execution (v4.0.1 syntax).
+ * Supports multiple modes:
+ * - from: 'recipe' - Execute a specific recipe
+ * - from: 'catalog' - Select from catalog with optional collection filter
+ * - from: 'packageName' - Simplified syntax for collections
+ *
+ * @param {Object} block - Generate block with from, key, collection configuration
  * @param {Object} catalogs - Available catalogs
  * @param {Object} langRules - Language rules
  * @param {string} locale - Target locale
  * @param {Object} parts - Existing aliased parts
- * @param {string} seed - Random seed
- * @param {Object} filters - Runtime filters per catalog key
- * @param {Object} context - Execution context (recipes, package data)
- * @returns {Object} {text, item, skip?}
+ * @param {string|null} seed - Random seed
+ * @param {Object} [filters={}] - Runtime filters per catalog key
+ * @param {Object} [context={}] - Execution context with recipes and collections
+ * @returns {Object} Result with text, item, and optional skip flag
+ * @throws {Error} If generation fails or required context is missing
+ * @private
  */
 function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}) {
   const { generate } = block;
@@ -683,9 +730,12 @@ function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, fi
 }
 
 /**
- * Simple hash function for seed-based randomness
+ * Simple hash function for seed-based deterministic randomness.
+ * Converts a string seed to a positive integer for array indexing.
+ *
  * @param {string} seed - Seed string
- * @returns {number} Hash value
+ * @returns {number} Positive integer hash value
+ * @private
  */
 function hashSeed(seed) {
   let hash = 0;
@@ -698,11 +748,16 @@ function hashSeed(seed) {
 }
 
 /**
- * Apply Demonym transformation (Toponym → Demonym)
- * Converts place names to inhabitant names according to language-specific rules
- * @param {string} toponym - Place name
+ * Apply Demonym transformation (Toponym to Demonym).
+ * Converts place names to inhabitant names according to language-specific rules.
+ *
+ * @param {string} toponym - Place name (e.g., "Hamburg", "London")
  * @param {string} locale - Target locale ('de' and 'en' supported)
- * @returns {string} Demonym (inhabitant name)
+ * @returns {string} Demonym (inhabitant name, e.g., "Hamburger", "Londoner")
+ * @example
+ * applyDemonymTransform('Hamburg', 'de'); // Returns: "Hamburger"
+ * applyDemonymTransform('London', 'en'); // Returns: "Londonian"
+ * @private
  */
 function applyDemonymTransform(toponym, locale) {
   if (!toponym || typeof toponym !== 'string') {
@@ -721,9 +776,12 @@ function applyDemonymTransform(toponym, locale) {
 }
 
 /**
- * Apply German demonym transformation rules
- * @param {string} toponym - Place name
- * @returns {string} German demonym
+ * Apply German demonym transformation rules.
+ * Handles common German place name endings like -burg, -dorf, -heim, etc.
+ *
+ * @param {string} toponym - Place name (e.g., "Hamburg", "Düsseldorf")
+ * @returns {string} German demonym (e.g., "Hamburger", "Düsseldorfer")
+ * @private
  */
 function applyGermanDemonym(toponym) {
   // German Demonym transformation rules
@@ -768,10 +826,12 @@ function applyGermanDemonym(toponym) {
 }
 
 /**
- * Apply English demonym transformation rules
- * Converts English place names to demonyms (inhabitant names)
- * @param {string} toponym - Place name
- * @returns {string} English demonym
+ * Apply English demonym transformation rules.
+ * Handles common English place name endings like -land, -ton, -ville, etc.
+ *
+ * @param {string} toponym - Place name (e.g., "Boston", "Nashville")
+ * @returns {string} English demonym (e.g., "Bostonian", "Nashvillian")
+ * @private
  */
 function applyEnglishDemonym(toponym) {
   // English Demonym transformation rules
@@ -871,12 +931,18 @@ function applyEnglishDemonym(toponym) {
 }
 
 /**
- * Apply Genitive/Possessive transformation
- * Converts names to genitive case according to language-specific grammar rules
- * @param {string} name - Name to convert
- * @param {string} locale - Target locale (currently 'de' and 'en' supported)
- * @param {Object} gramData - Grammatical metadata from item.gram (optional)
- * @returns {string} Genitive/possessive form of the name
+ * Apply Genitive/Possessive transformation.
+ * Converts names to genitive case according to language-specific grammar rules.
+ *
+ * @param {string} name - Name to convert (e.g., "Peter", "Hans")
+ * @param {string} locale - Target locale ('de' and 'en' supported)
+ * @param {Object} [gramData={}] - Grammatical metadata from item.gram
+ * @returns {string} Genitive/possessive form (e.g., "Peters", "Hans'", "Peter's")
+ * @example
+ * applyGenitiveTransform('Peter', 'de'); // Returns: "Peters"
+ * applyGenitiveTransform('Hans', 'de'); // Returns: "Hans'"
+ * applyGenitiveTransform('Peter', 'en'); // Returns: "Peter's"
+ * @private
  */
 function applyGenitiveTransform(name, locale, gramData = {}) {
   if (!name || typeof name !== 'string') {
@@ -895,11 +961,13 @@ function applyGenitiveTransform(name, locale, gramData = {}) {
 }
 
 /**
- * Apply German genitive case rules
- * German genitive rules depend on gender, declension class, and ending
+ * Apply German genitive case rules.
+ * Handles sibilant endings, silent 'e', and standard cases.
+ *
  * @param {string} name - Name to convert
  * @param {Object} gramData - Grammatical metadata (gender, declension, etc.)
  * @returns {string} German genitive form
+ * @private
  */
 function applyGermanGenitive(name, gramData) {
   // Extract gender from gram data (can be locale-specific or general)
@@ -933,10 +1001,12 @@ function applyGermanGenitive(name, gramData) {
 }
 
 /**
- * Apply English possessive rules
- * English possessive is simpler: add 's or just apostrophe for names ending in s
+ * Apply English possessive rules.
+ * Adds 's for most names, or just apostrophe for names ending in s.
+ *
  * @param {string} name - Name to convert
  * @returns {string} English possessive form
+ * @private
  */
 function applyEnglishPossessive(name) {
   // 1. Names ending in -s: traditionally just apostrophe (Charles' hat)
@@ -951,12 +1021,15 @@ function applyEnglishPossessive(name) {
 }
 
 /**
- * Apply gender adaptation to title based on Person alias
- * @param {Object} titleItem - Title item
- * @param {Object} parts - All aliased parts
- * @param {Object} langRules - Language rules
+ * Apply gender adaptation to a title based on the Person alias.
+ * Looks up the Person's gender and adapts the title accordingly.
+ *
+ * @param {Object} titleItem - Title item with text and gender variants
+ * @param {Object} parts - All aliased parts (must contain 'Person' alias)
+ * @param {Object} langRules - Language rules for gender adaptation
  * @param {string} locale - Target locale
- * @returns {string} Gender-adapted title
+ * @returns {string} Gender-adapted title text
+ * @private
  */
 function applyGenderAdaptation(titleItem, parts, langRules, locale) {
   // Look for Person alias to determine gender
@@ -980,10 +1053,16 @@ function applyGenderAdaptation(titleItem, parts, langRules, locale) {
 }
 
 /**
- * Apply agreement logic from ext.agreeWith
+ * Apply agreement logic from ext.agreeWith configuration.
+ * Extracts tags, gram values, or kinds from a referenced alias and returns matching filters.
+ *
  * @param {Object} agreeCfg - ext.agreeWith configuration
+ * @param {string} agreeCfg.ref - Reference alias to agree with
+ * @param {Array<Object>} [agreeCfg.features=[]] - Features to extract for agreement
+ * @param {string} [agreeCfg.fallback] - Fallback behavior if agreement fails
  * @param {Object} parts - Existing aliased parts
- * @returns {Object} Filter object derived from agreement
+ * @returns {Object} Filter object derived from agreement (tags, kinds)
+ * @private
  */
 function applyAgreement(agreeCfg, parts) {
   const { ref, features = [], fallback } = agreeCfg;
@@ -1038,10 +1117,14 @@ function applyAgreement(agreeCfg, parts) {
 }
 
 /**
- * Get nested value from object using dot notation path
- * @param {Object} obj - Source object
- * @param {string} path - Dot notation path (e.g., "de.gender")
- * @returns {*} Value at path or undefined
+ * Get a nested value from an object using dot notation path.
+ *
+ * @param {Object} obj - Source object to traverse
+ * @param {string} path - Dot notation path (e.g., "de.gender", "gram.article")
+ * @returns {*} Value at path or undefined if not found
+ * @example
+ * getNestedValue({ de: { gender: 'm' } }, 'de.gender'); // Returns: 'm'
+ * @private
  */
 function getNestedValue(obj, path) {
   if (!obj || !path) return undefined;
@@ -1061,10 +1144,13 @@ function getNestedValue(obj, path) {
 }
 
 /**
- * Merge recipe where clause with runtime filters
- * @param {Object} recipeWhere - Where clause from recipe
+ * Merge recipe where clause with runtime filters.
+ * Tags use ALL-of logic (combined), kinds use ANY-of logic (intersected).
+ *
+ * @param {Object} recipeWhere - Where clause from recipe definition
  * @param {Object} runtimeFilter - Runtime filter for this catalog key
- * @returns {Object} Merged where clause
+ * @returns {Object} Merged where clause with combined filters
+ * @private
  */
 function mergeFilters(recipeWhere, runtimeFilter) {
   if (!runtimeFilter) {
@@ -1103,9 +1189,12 @@ function mergeFilters(recipeWhere, runtimeFilter) {
 }
 
 /**
- * Get item identity for distinctness checking
- * @param {Object} item - Item object
- * @returns {string} Unique identifier
+ * Get a unique identity string for an item for distinctness checking.
+ * Uses _index if available, otherwise hashes the text content.
+ *
+ * @param {Object} item - Item object from catalog
+ * @returns {string} Unique identifier string (prefixed with "idx:" or "text:")
+ * @private
  */
 function getItemIdentity(item) {
   if (item._index !== undefined) {
@@ -1116,10 +1205,22 @@ function getItemIdentity(item) {
 }
 
 /**
- * Apply post-processing transforms to generated text
- * @param {string} text - Input text
- * @param {Array<string>} transforms - Transform names
+ * Apply post-processing transforms to generated text.
+ * Transforms are applied in order.
+ *
+ * Available transforms:
+ * - TrimSpaces: Remove leading/trailing whitespace
+ * - CollapseSpaces: Replace multiple spaces with single space
+ * - TitleCase: Capitalize words (respecting particles like "von", "of")
+ * - ConcatNoSpace: Remove all spaces
+ * - NormalizeUmlauts: Convert German umlauts to ASCII (ae, oe, ue, ss)
+ *
+ * @param {string} text - Input text to transform
+ * @param {Array<string>} transforms - Array of transform names to apply
  * @returns {string} Transformed text
+ * @example
+ * applyTransforms('  hans   von   hamburg  ', ['TrimSpaces', 'CollapseSpaces', 'TitleCase']);
+ * // Returns: "Hans von Hamburg"
  */
 export function applyTransforms(text, transforms) {
   if (!transforms || transforms.length === 0) {
@@ -1136,10 +1237,12 @@ export function applyTransforms(text, transforms) {
 }
 
 /**
- * Apply a single transform
+ * Apply a single named transform to text.
+ *
  * @param {string} text - Input text
- * @param {string} transformName - Transform name
- * @returns {string} Transformed text
+ * @param {string} transformName - Transform name (case-sensitive)
+ * @returns {string} Transformed text (unchanged if transform unknown)
+ * @private
  */
 function applyTransform(text, transformName) {
   switch (transformName) {
@@ -1165,9 +1268,14 @@ function applyTransform(text, transformName) {
 }
 
 /**
- * Title case transformation
+ * Title case transformation.
+ * Capitalizes the first letter of each word, except for common particles
+ * (von, der, of, the, etc.) which remain lowercase unless they are the first word.
+ * Handles possessives correctly (Peter's stays as Peter's, not Peter'S).
+ *
  * @param {string} text - Input text
  * @returns {string} Title cased text
+ * @private
  */
 function titleCase(text) {
   const particles = ['of', 'the', 'and', 'in', 'on', 'at', 'to', 'a', 'an',
@@ -1216,9 +1324,12 @@ function titleCase(text) {
 }
 
 /**
- * Normalize German umlauts to ASCII equivalents
- * @param {string} text - Input text
- * @returns {string} Normalized text
+ * Normalize German umlauts to ASCII equivalents.
+ * Converts: ae, oe, ue, Ae, Oe, Ue, ss.
+ *
+ * @param {string} text - Input text with potential umlauts
+ * @returns {string} Normalized text with ASCII characters only
+ * @private
  */
 function normalizeUmlauts(text) {
   return text
@@ -1229,4 +1340,103 @@ function normalizeUmlauts(text) {
     .replace(/ü/g, 'ue')
     .replace(/Ü/g, 'Ue')
     .replace(/ß/g, 'ss');
+}
+
+/**
+ * Validate that all catalogs referenced in a pattern exist.
+ * Should be called BEFORE executePattern to catch missing catalogs early.
+ * Distinguishes between required and optional catalog references.
+ *
+ * @param {Array<Object>} pattern - Array of pattern blocks to validate
+ * @param {Object} catalogs - Available catalogs in the package
+ * @returns {Object} Validation result
+ * @returns {boolean} return.valid - True if all required catalogs exist
+ * @returns {string[]} return.missingRequired - Required catalogs that don't exist
+ * @returns {string[]} return.missingOptional - Optional catalogs that don't exist
+ * @returns {string[]} return.requiredCatalogs - All required catalog keys found in pattern
+ * @example
+ * const validation = validatePatternCatalogs(recipe.pattern, pkg.catalogs);
+ * if (!validation.valid) {
+ *   throw new Error(`Missing catalogs: ${validation.missingRequired.join(', ')}`);
+ * }
+ */
+export function validatePatternCatalogs(pattern, catalogs) {
+  const requiredCatalogs = new Set();
+  const optionalCatalogs = new Set();
+
+  // Recursively extract all catalog keys from a block
+  function extractCatalogKeys(block, isOptional = false) {
+    if (!block) return;
+
+    // Check if this block is optional
+    const blockIsOptional = isOptional || block.optional === true || block.ext?.optionalWith;
+
+    // Handle select block
+    if (block.select) {
+      const select = block.select;
+      if (select.from === 'catalog' && select.key) {
+        if (blockIsOptional) {
+          optionalCatalogs.add(select.key);
+        } else {
+          requiredCatalogs.add(select.key);
+        }
+      }
+    }
+
+    // Handle pp block with nested ref.select
+    if (block.pp && block.pp.ref) {
+      // PP blocks inherit optional status from parent
+      extractCatalogKeys(block.pp.ref, blockIsOptional);
+    }
+
+    // Handle ref block that might have select
+    if (block.ref && typeof block.ref === 'object') {
+      extractCatalogKeys(block.ref, blockIsOptional);
+    }
+
+    // Handle oneOf with nested patterns
+    if (block.oneOf && Array.isArray(block.oneOf)) {
+      for (const option of block.oneOf) {
+        if (option.pattern && Array.isArray(option.pattern)) {
+          for (const nestedBlock of option.pattern) {
+            extractCatalogKeys(nestedBlock, blockIsOptional);
+          }
+        }
+      }
+    }
+  }
+
+  // Process all blocks in pattern
+  for (const block of pattern) {
+    extractCatalogKeys(block);
+  }
+
+  // Check which catalogs are missing
+  const missingRequired = [];
+  const missingOptional = [];
+
+  for (const catalogKey of requiredCatalogs) {
+    if (!catalogs || !catalogs[catalogKey]) {
+      missingRequired.push(catalogKey);
+    }
+  }
+
+  for (const catalogKey of optionalCatalogs) {
+    // Only report as missing optional if not already in required
+    if (!requiredCatalogs.has(catalogKey) && (!catalogs || !catalogs[catalogKey])) {
+      missingOptional.push(catalogKey);
+    }
+  }
+
+  // Log warning for missing optional catalogs
+  if (missingOptional.length > 0) {
+    logWarn(`Pattern references optional catalogs that don't exist: ${missingOptional.join(', ')}. These will be skipped.`);
+  }
+
+  return {
+    valid: missingRequired.length === 0,
+    missingRequired,
+    missingOptional,
+    requiredCatalogs: Array.from(requiredCatalogs)
+  };
 }
