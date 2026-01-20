@@ -567,6 +567,10 @@ export class NamesGeneratorApp extends Application {
           components.push('firstname', 'surname');
         }
 
+        // Check if any gender-relevant components are selected (for color coding)
+        const GENDER_RELEVANT_COMPONENTS = ['firstname', 'title', 'nickname'];
+        const hasGenderRelevantComponents = components.some(c => GENDER_RELEVANT_COMPONENTS.includes(c));
+
         // Get format string from input field, or build default
         let format = html.find('input[name="names-format"]').val()?.trim();
         if (!format) {
@@ -593,9 +597,10 @@ export class NamesGeneratorApp extends Application {
               });
 
               // Add gender info to each suggestion for color coding
+              // Only apply gender if we have gender-relevant components (firstname, title, nickname)
               const suggestionsWithGender = genderResult.suggestions.map(s => ({
                 ...s,
-                gender: gender
+                gender: hasGenderRelevantComponents ? gender : null
               }));
               suggestions.push(...suggestionsWithGender);
               if (genderResult.errors) {
@@ -627,7 +632,8 @@ export class NamesGeneratorApp extends Application {
           });
 
           // Add gender info to each suggestion for color coding
-          if (gender && result.suggestions) {
+          // Only apply gender if we have gender-relevant components (firstname, title, nickname)
+          if (gender && result.suggestions && hasGenderRelevantComponents) {
             result.suggestions = result.suggestions.map(s => ({
               ...s,
               gender: gender
@@ -1391,9 +1397,11 @@ export class NamesGeneratorApp extends Application {
               allowDuplicates: false
             });
 
+            // Only apply gender if recipe has gender-relevant parts
+            const hasGenderRelevant = this._recipeHasGenderRelevantParts(genderedRecipe);
             const suggestionsWithGender = genderResult.suggestions.map(s => ({
               ...s,
-              gender: gender
+              gender: hasGenderRelevant ? gender : null
             }));
             suggestions.push(...suggestionsWithGender);
 
@@ -1408,6 +1416,7 @@ export class NamesGeneratorApp extends Application {
 
         // Single gender or no gender
         const customRecipeId = '_custom_user_recipe';
+        const hasGenderRelevantParts = this._recipeHasGenderRelevantParts(customRecipe);
         customRecipe.id = customRecipeId;
 
         if (selectedGenders.length === 1) {
@@ -1434,8 +1443,8 @@ export class NamesGeneratorApp extends Application {
           allowDuplicates: false
         });
 
-        // If exactly one gender was selected, add gender info to all results
-        if (selectedGenders.length === 1 && result.suggestions) {
+        // If exactly one gender was selected, add gender info (only if recipe has gender-relevant parts)
+        if (selectedGenders.length === 1 && result.suggestions && hasGenderRelevantParts) {
           result.suggestions = result.suggestions.map(s => ({
             ...s,
             gender: selectedGenders[0]
@@ -1465,6 +1474,9 @@ export class NamesGeneratorApp extends Application {
         ui.notifications.error('Recipe not found');
         return { suggestions: [], errors: ['Recipe not found'] };
       }
+
+      // Check if recipe has gender-relevant parts
+      const recipeHasGenderParts = this._recipeHasGenderRelevantParts(originalRecipe);
 
       // Generate names for each gender separately (like component mode)
       const suggestions = [];
@@ -1501,10 +1513,10 @@ export class NamesGeneratorApp extends Application {
             allowDuplicates: false
           });
 
-          // Add gender info to each suggestion
+          // Add gender info to each suggestion (only if recipe has gender-relevant parts)
           const suggestionsWithGender = genderResult.suggestions.map(s => ({
             ...s,
-            gender: gender
+            gender: recipeHasGenderParts ? gender : null
           }));
           suggestions.push(...suggestionsWithGender);
 
@@ -1540,6 +1552,9 @@ export class NamesGeneratorApp extends Application {
         return { suggestions: [], errors: ['Recipe not found'] };
       }
 
+      // Check if recipe has gender-relevant parts
+      const recipeHasGenderParts = this._recipeHasGenderRelevantParts(originalRecipe);
+
       const modifiedRecipe = JSON.parse(JSON.stringify(originalRecipe));
       modifiedRecipe.id = `_temp_${recipeId}_gendered`;
 
@@ -1563,8 +1578,8 @@ export class NamesGeneratorApp extends Application {
         allowDuplicates: false
       });
 
-      // Add gender info to all results
-      if (result.suggestions) {
+      // Add gender info (only if recipe has gender-relevant parts)
+      if (result.suggestions && recipeHasGenderParts) {
         result.suggestions = result.suggestions.map(s => ({
           ...s,
           gender: selectedGenders[0]
@@ -1583,6 +1598,39 @@ export class NamesGeneratorApp extends Application {
       seed: userSeed,
       allowDuplicates: false
     });
+  }
+
+  /**
+   * Check if a recipe has gender-relevant parts (firstnames, titles, nicknames)
+   * Used to determine if gender colors should be applied
+   */
+  _recipeHasGenderRelevantParts(recipe) {
+    const GENDER_RELEVANT_TAGS = ['firstnames', 'titles', 'nicknames'];
+
+    if (!recipe || !recipe.pattern || !Array.isArray(recipe.pattern)) {
+      return false;
+    }
+
+    for (const block of recipe.pattern) {
+      // Check select blocks
+      if (block.select && block.select.where && block.select.where.tags) {
+        if (block.select.where.tags.some(tag => GENDER_RELEVANT_TAGS.includes(tag))) {
+          return true;
+        }
+      }
+
+      // Also check nested blocks (e.g., in pp.ref)
+      if (block.pp && block.pp.ref && block.pp.ref.select) {
+        const nestedSelect = block.pp.ref.select;
+        if (nestedSelect.where && nestedSelect.where.tags) {
+          if (nestedSelect.where.tags.some(tag => GENDER_RELEVANT_TAGS.includes(tag))) {
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
   }
 
   /**

@@ -193,17 +193,6 @@
     },
     {
       "species": "dragonborn",
-      "category": "male-min",
-      "files": [
-        {
-          "path": "modules/nomina-names/data/de.dragonborn.male-min.json",
-          "language": "de",
-          "enabled": true
-        }
-      ]
-    },
-    {
-      "species": "dragonborn",
       "category": "nonbinary",
       "files": [
         {
