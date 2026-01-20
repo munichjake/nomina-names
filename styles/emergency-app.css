@@ -410,12 +410,95 @@
   }
 }
 
+/* ===============================
+   Emergency Gender Colors
+   =============================== */
+
+/* CSS Variables for emergency gender colors */
+.emergency-names-grid {
+  --emergency-gender-color-male: #4a90d9;
+  --emergency-gender-color-female: #d94a6b;
+  --emergency-gender-color-nonbinary: #9b59b6;
+}
+
+/* Gender-colored emergency pills */
+.emergency-name-pill.emergency-gender-colored[data-gender="male"] {
+  background: linear-gradient(135deg,
+    var(--emergency-gender-color-male) 0%,
+    color-mix(in srgb, var(--emergency-gender-color-male) 70%, #ff8533) 100%
+  );
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--emergency-gender-color-male) 40%, transparent);
+}
+
+.emergency-name-pill.emergency-gender-colored[data-gender="female"] {
+  background: linear-gradient(135deg,
+    var(--emergency-gender-color-female) 0%,
+    color-mix(in srgb, var(--emergency-gender-color-female) 70%, #ff8533) 100%
+  );
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--emergency-gender-color-female) 40%, transparent);
+}
+
+.emergency-name-pill.emergency-gender-colored[data-gender="nonbinary"] {
+  background: linear-gradient(135deg,
+    var(--emergency-gender-color-nonbinary) 0%,
+    color-mix(in srgb, var(--emergency-gender-color-nonbinary) 70%, #ff8533) 100%
+  );
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--emergency-gender-color-nonbinary) 40%, transparent);
+}
+
+/* Hover states for gender-colored pills */
+.emergency-name-pill.emergency-gender-colored:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.emergency-name-pill.emergency-gender-colored[data-gender="male"]:hover {
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--emergency-gender-color-male) 50%, transparent);
+}
+
+.emergency-name-pill.emergency-gender-colored[data-gender="female"]:hover {
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--emergency-gender-color-female) 50%, transparent);
+}
+
+.emergency-name-pill.emergency-gender-colored[data-gender="nonbinary"]:hover {
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--emergency-gender-color-nonbinary) 50%, transparent);
+}
+
+/* Fallback for browsers without color-mix support */
+@supports not (background: color-mix(in srgb, red 50%, blue)) {
+  .emergency-name-pill.emergency-gender-colored[data-gender="male"] {
+    background: linear-gradient(135deg, #4a90d9 0%, #6ba3e0 100%);
+    box-shadow: 0 2px 8px rgba(74, 144, 217, 0.4);
+  }
+
+  .emergency-name-pill.emergency-gender-colored[data-gender="female"] {
+    background: linear-gradient(135deg, #d94a6b 0%, #e06d88 100%);
+    box-shadow: 0 2px 8px rgba(217, 74, 107, 0.4);
+  }
+
+  .emergency-name-pill.emergency-gender-colored[data-gender="nonbinary"] {
+    background: linear-gradient(135deg, #9b59b6 0%, #af7ac5 100%);
+    box-shadow: 0 2px 8px rgba(155, 89, 182, 0.4);
+  }
+
+  .emergency-name-pill.emergency-gender-colored[data-gender="male"]:hover {
+    box-shadow: 0 6px 20px rgba(74, 144, 217, 0.5);
+  }
+
+  .emergency-name-pill.emergency-gender-colored[data-gender="female"]:hover {
+    box-shadow: 0 6px 20px rgba(217, 74, 107, 0.5);
+  }
+
+  .emergency-name-pill.emergency-gender-colored[data-gender="nonbinary"]:hover {
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.5);
+  }
+}
+
 /* Dark mode enhancements */
 @media (prefers-color-scheme: dark) {
   .emergency-header p {
     color: #ccc;
   }
-  
+
   .emergency-loading p {
     color: #ccc;
   }

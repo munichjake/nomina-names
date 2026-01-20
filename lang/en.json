@@ -259,6 +259,14 @@
                 "name": "Configure Gender Colors",
                 "hint": "Set individual colors for each gender",
                 "label": "Configure Colors"
+            },
+            "enableEmergencyGenderColors": {
+                "name": "Emergency Gender Colors",
+                "hint": "Display emergency names with color-coding based on gender"
+            },
+            "emergencyGenderColors": {
+                "name": "Emergency Gender Colors",
+                "hint": "Color configuration for each gender in emergency names"
             }
         },
         "// ===== GENDER COLORS CONFIG =====": "",
@@ -274,6 +282,13 @@
             "save": "Save",
             "cancel": "Cancel",
             "saved": "Colors have been saved!"
+        },
+        "emergencyGenderColorsConfig": {
+            "sectionTitle": "Emergency Generator Colors",
+            "enable": "Enable gender colors in Emergency Generator",
+            "description": "Separate color settings for the Emergency Names generator.",
+            "copyFromAbove": "Copy from main generator",
+            "copiedSuccess": "Colors copied from main generator"
         },
         "// ===== SPECIES CONFIG =====": "",
         "speciesConfig": {

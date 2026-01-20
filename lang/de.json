@@ -258,6 +258,14 @@
                 "name": "Geschlechter-Farben konfigurieren",
                 "hint": "Lege individuelle Farben für jedes Geschlecht fest",
                 "label": "Farben konfigurieren"
+            },
+            "enableEmergencyGenderColors": {
+                "name": "Emergency Geschlechter-Farben",
+                "hint": "Zeigt Emergency-Namen farblich nach Geschlecht unterschieden an"
+            },
+            "emergencyGenderColors": {
+                "name": "Emergency Geschlechter-Farben",
+                "hint": "Farbkonfiguration für jedes Geschlecht im Emergency Generator"
             }
         },
         "// ===== GENDER COLORS CONFIG =====": "",
@@ -273,6 +281,13 @@
             "save": "Speichern",
             "cancel": "Abbrechen",
             "saved": "Farben wurden gespeichert!"
+        },
+        "emergencyGenderColorsConfig": {
+            "sectionTitle": "Emergency Generator Farben",
+            "enable": "Geschlechter-Farben im Emergency Generator aktivieren",
+            "description": "Separate Farbeinstellungen für den Emergency Namen-Generator.",
+            "copyFromAbove": "Farben vom Hauptgenerator kopieren",
+            "copiedSuccess": "Farben vom Hauptgenerator übernommen"
         },
         "// ===== SPECIES CONFIG =====": "",
         "speciesConfig": {
