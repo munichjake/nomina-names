@@ -141,7 +141,8 @@ export class EmergencyNamesApp extends Application {
         try {
           const speciesObj = filteredSpecies[Math.floor(Math.random() * filteredSpecies.length)];
           const species = speciesObj.code;
-          const preferredGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+          // Weighted gender selection: 40% male, 40% female, 20% nonbinary
+          const preferredGender = this._selectWeightedGender(supportedGenders);
           const packageCode = `${species}-${language}`;
 
           const generationResult = await this._generateNameWithFallback(
@@ -571,6 +572,28 @@ export class EmergencyNamesApp extends Application {
       : `(${this.enabledSpecies.size}/${totalSpecies})`;
 
     countSpan.text(countText);
+  }
+
+  /**
+   * Select a gender with weighted probability
+   * @param {Array<string>} supportedGenders - Available genders
+   * @returns {string} Selected gender
+   */
+  _selectWeightedGender(supportedGenders) {
+    // If nonbinary is not in the list, use equal distribution
+    if (!supportedGenders.includes('nonbinary')) {
+      return supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+    }
+
+    // Weighted selection: 40% male, 40% female, 20% nonbinary
+    const roll = Math.random();
+    if (roll < 0.4) {
+      return 'male';
+    } else if (roll < 0.8) {
+      return 'female';
+    } else {
+      return 'nonbinary';
+    }
   }
 
   /**
