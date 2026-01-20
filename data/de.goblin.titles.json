@@ -1,0 +1,80 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "goblin-de",
+    "displayName": {
+      "de": "Goblin Titel",
+      "en": "Goblin Titles"
+    },
+    "languages": ["de"],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Giftkönig" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Schattenherzog" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Höhlenfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Sumpfgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Rattenbaron" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Dunkelgraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Schleichritter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Moderherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Pilzfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Krallengraf" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Giftkönigin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Schattenherzogin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Höhlenfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Sumpfgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Rattenbaronin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Dunkelgräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Schleichritterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Moderfrau" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Pilzfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Krallengräfin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Schattenthron" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Gifterbe" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Höhlenwächter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Nachtkrone" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Sumpfhüter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Rattenprinz" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Finsterwart" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Moderhüter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Schleichorden" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Krallenthron" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": ["TrimSpaces"],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "gender": {
+        "labels": { "en": "Gender", "de": "Geschlecht" },
+        "values": {
+          "male": { "de": "Männlich", "en": "Male" },
+          "female": { "de": "Weiblich", "en": "Female" },
+          "nonbinary": { "de": "Divers", "en": "Non-Binary" }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": { "de": "Titel", "en": "Titles" },
+      "query": {
+        "category": "names",
+        "tags": ["titles"]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

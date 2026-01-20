@@ -35,7 +35,8 @@ export class DataManager {
       await this.loadIndex();
 
       // Load all packages from new index format
-      const loadPromises = [];
+      // Group files by packageCode to avoid race conditions when merging
+      const filesByPackage = new Map();
 
       for (const pkg of this.indexData.packages || []) {
         // Process each file in the package
@@ -43,12 +44,33 @@ export class DataManager {
           if (file.enabled !== false) {
             // Build package code from species and language
             const packageCode = `${pkg.species}-${file.language}`;
-            loadPromises.push(this.loadPackage(file.path, packageCode, pkg.species, pkg.category));
+
+            if (!filesByPackage.has(packageCode)) {
+              filesByPackage.set(packageCode, []);
+            }
+            filesByPackage.get(packageCode).push({
+              path: file.path,
+              packageCode,
+              species: pkg.species,
+              category: pkg.category
+            });
           }
         }
       }
 
-      await Promise.all(loadPromises);
+      // Load packages in parallel, but files within each package sequentially
+      // This prevents race conditions when merging data into the same package
+      const packagePromises = [];
+      for (const [packageCode, files] of filesByPackage) {
+        const loadPackageFiles = async () => {
+          for (const file of files) {
+            await this.loadPackage(file.path, file.packageCode, file.species, file.category);
+          }
+        };
+        packagePromises.push(loadPackageFiles());
+      }
+
+      await Promise.all(packagePromises);
 
       this.isLoaded = true;
       logInfo(`DataManager initialized: ${this.packages.size} packages loaded`);
@@ -392,7 +414,9 @@ export class DataManager {
     // Get the default language from the package
     const defaultLang = pkg.data.package?.languages?.[0] || 'en';
 
-    return Object.keys(pkg.data.catalogs).map(catalogKey => {
+    return Object.keys(pkg.data.catalogs)
+      .filter(catalogKey => !pkg.data.catalogs[catalogKey].hidden)
+      .map(catalogKey => {
       const catalog = pkg.data.catalogs[catalogKey];
 
       // Try to get localized displayName, fallback to capitalized key

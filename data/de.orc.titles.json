@@ -1,0 +1,101 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "orc-de",
+    "displayName": {
+      "de": "Ork Adelstitel",
+      "en": "Orc Noble Titles"
+    },
+    "languages": [
+      "de"
+    ],
+    "phoneticLanguage": "de"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "de": "Namen",
+        "en": "Names"
+      },
+      "items": [
+        { "t": { "de": "Kriegsherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Kriegsherrin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Häuptling" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Häuptlingin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Blutfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Blutfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Hordenfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Hordenfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Stammesführer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Stammesführerin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Knochenbrecher" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Knochenbrecherin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Schlachtmeister" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Schlachtmeisterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Schreckensherr" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Schreckensherrin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Bannführer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Bannführerin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Blutmarschall" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Blutmarschallin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Klingenfürst" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Klingenfürstin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Clanmeister" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Clanmeisterin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Heerführer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "de": "Heerführerin" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "de": "Großhäuptling" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Oberster Kriegsherr" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Herrscher der Horde" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "de": "Meister der Schlacht" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "gender": {
+        "labels": {
+          "en": "Gender",
+          "de": "Geschlecht"
+        },
+        "values": {
+          "male": {
+            "de": "Männlich",
+            "en": "Male"
+          },
+          "female": {
+            "de": "Weiblich",
+            "en": "Female"
+          },
+          "nonbinary": {
+            "de": "Neutral",
+            "en": "Neutral"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "de": "Adelstitel",
+        "en": "Noble Titles"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
