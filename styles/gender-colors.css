@@ -226,3 +226,54 @@
     background: linear-gradient(90deg, rgba(155, 89, 182, 0.15) 0%, transparent 100%);
   }
 }
+
+/* ===============================
+   Extended Config for Emergency Colors
+   =============================== */
+
+.names-gender-colors-config .config-section {
+  margin-bottom: 1.5rem;
+}
+
+.names-gender-colors-config .section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary, #f0f0e0);
+  border-bottom: 1px solid var(--color-border-light-tertiary, #4a4a4a);
+  padding-bottom: 0.5rem;
+}
+
+.names-gender-colors-config .section-divider {
+  border: none;
+  border-top: 2px solid var(--color-border-highlight, #ff6400);
+  margin: 1.5rem 0;
+  opacity: 0.5;
+}
+
+.names-gender-colors-config .emergency-colors-actions {
+  margin-bottom: 1rem;
+}
+
+.names-gender-colors-config .copy-colors-btn {
+  background: linear-gradient(135deg, #ff6400 0%, #ff8533 100%);
+  border: 1px solid #e55a00;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.names-gender-colors-config .copy-colors-btn:hover {
+  background: linear-gradient(135deg, #ff8533 0%, #ffaa66 100%);
+  box-shadow: 0 2px 6px rgba(255, 100, 0, 0.3);
+}
+
+.names-gender-colors-config .copy-colors-btn i {
+  font-size: 0.85rem;
+}

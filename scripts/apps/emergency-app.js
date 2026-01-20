@@ -5,7 +5,7 @@
 
 import { getGlobalGenerator } from '../api/generator.js';
 import { showLoadingState, hideLoadingState, copyToClipboard, fallbackCopyToClipboard } from '../utils/ui-helpers.js';
-import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, MODULE_ID } from '../shared/constants.js';
+import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, MODULE_ID, DEFAULT_GENDER_COLORS } from '../shared/constants.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
@@ -262,12 +262,28 @@ export class EmergencyNamesApp extends Application {
 
     logDebug(`Updating display with ${this.emergencyNames.length} names`);
 
+    // Check if emergency gender colors are enabled
+    const genderColorsEnabled = game.settings.get(MODULE_ID, "enableEmergencyGenderColors");
+
+    // Set CSS variables if colors are enabled
+    if (genderColorsEnabled) {
+      const genderColors = game.settings.get(MODULE_ID, "emergencyGenderColors") || DEFAULT_GENDER_COLORS;
+      container.css('--emergency-gender-color-male', genderColors.male || DEFAULT_GENDER_COLORS.male);
+      container.css('--emergency-gender-color-female', genderColors.female || DEFAULT_GENDER_COLORS.female);
+      container.css('--emergency-gender-color-nonbinary', genderColors.nonbinary || DEFAULT_GENDER_COLORS.nonbinary);
+    }
+
     container.empty();
 
     for (const nameData of this.emergencyNames) {
       const genderSymbol = GENDER_SYMBOLS[nameData.gender] || '';
+
+      // Gender color classes and attributes
+      const genderAttr = genderColorsEnabled && nameData.gender ? `data-gender="${nameData.gender}"` : '';
+      const genderClass = genderColorsEnabled && nameData.gender ? 'emergency-gender-colored' : '';
+
       const nameElement = $(`
-        <div class="emergency-name-pill" data-name="${nameData.name}" title="${game.i18n.localize("names.emergency.clickToCopy") || "Klicken zum Kopieren"}">
+        <div class="emergency-name-pill ${genderClass}" data-name="${nameData.name}" ${genderAttr} title="${game.i18n.localize("names.emergency.clickToCopy") || "Klicken zum Kopieren"}">
           <div class="name-text">${nameData.name}</div>
           <div class="species-text">${nameData.displaySpecies} ${genderSymbol}</div>
         </div>

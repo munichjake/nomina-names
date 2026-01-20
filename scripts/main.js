@@ -998,6 +998,25 @@ function registerModuleSettings() {
     default: DEFAULT_GENDER_COLORS
   });
 
+  // Emergency Gender Colors Settings
+  game.settings.register(MODULE_ID, "enableEmergencyGenderColors", {
+    name: game.i18n.localize("names.settings.enableEmergencyGenderColors.name"),
+    hint: game.i18n.localize("names.settings.enableEmergencyGenderColors.hint"),
+    scope: "client",
+    config: false,
+    type: Boolean,
+    default: false
+  });
+
+  game.settings.register(MODULE_ID, "emergencyGenderColors", {
+    name: game.i18n.localize("names.settings.emergencyGenderColors.name"),
+    hint: game.i18n.localize("names.settings.emergencyGenderColors.hint"),
+    scope: "client",
+    config: false,
+    type: Object,
+    default: DEFAULT_GENDER_COLORS
+  });
+
   // Log Level Setting - für Entwicklung/Debugging am Ende der Client-Settings
   game.settings.register(MODULE_ID, "logLevel", {
     name: game.i18n.localize("names.settings.logLevel.name") || "Log Level",

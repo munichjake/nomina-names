@@ -1,25 +1,66 @@
 <form class="names-gender-colors-config">
-  <div class="enable-toggle-row">
-    <label class="enable-toggle">
-      <input type="checkbox" name="enabled" {{#if enabled}}checked{{/if}} />
-      <span class="toggle-label">{{localize "names.genderColorsConfig.enable"}}</span>
-    </label>
+  {{!-- HAUPTGENERATOR SECTION --}}
+  <div class="config-section main-generator-section">
+    <h3 class="section-title">{{localize "names.genderColorsConfig.title"}}</h3>
+
+    <div class="enable-toggle-row">
+      <label class="enable-toggle">
+        <input type="checkbox" name="enabled" {{#if enabled}}checked{{/if}} />
+        <span class="toggle-label">{{localize "names.genderColorsConfig.enable"}}</span>
+      </label>
+    </div>
+
+    <p class="notes">{{description}}</p>
+
+    <div class="gender-colors-list main-colors {{#unless enabled}}disabled{{/unless}}">
+      {{#each genders}}
+      <div class="gender-color-row">
+        <div class="gender-color-preview" data-gender="{{this.key}}" data-section="main" style="background: linear-gradient(135deg, {{this.color}}15 0%, {{this.color}}08 100%); border-left: 3px solid {{this.color}}; box-shadow: inset 0 0 20px {{this.color}}10;">
+          <span class="preview-name">{{this.label}}</span>
+        </div>
+        <div class="color-picker-wrapper">
+          <input type="color" name="color_{{this.key}}" value="{{this.color}}" data-section="main" />
+          <span class="color-hex">{{this.color}}</span>
+        </div>
+      </div>
+      {{/each}}
+    </div>
   </div>
 
-  <p class="notes">{{description}}</p>
+  <hr class="section-divider" />
 
-  <div class="gender-colors-list {{#unless enabled}}disabled{{/unless}}">
-    {{#each genders}}
-    <div class="gender-color-row">
-      <div class="gender-color-preview" data-gender="{{this.key}}" style="background: linear-gradient(135deg, {{this.color}}15 0%, {{this.color}}08 100%); border-left: 3px solid {{this.color}}; box-shadow: inset 0 0 20px {{this.color}}10;">
-        <span class="preview-name">{{this.label}}</span>
-      </div>
-      <div class="color-picker-wrapper">
-        <input type="color" name="color_{{this.key}}" value="{{this.color}}" />
-        <span class="color-hex">{{this.color}}</span>
-      </div>
+  {{!-- EMERGENCY GENERATOR SECTION --}}
+  <div class="config-section emergency-generator-section">
+    <h3 class="section-title">{{localize "names.emergencyGenderColorsConfig.sectionTitle"}}</h3>
+
+    <div class="enable-toggle-row">
+      <label class="enable-toggle">
+        <input type="checkbox" name="emergencyEnabled" {{#if emergencyEnabled}}checked{{/if}} />
+        <span class="toggle-label">{{localize "names.emergencyGenderColorsConfig.enable"}}</span>
+      </label>
     </div>
-    {{/each}}
+
+    <p class="notes">{{localize "names.emergencyGenderColorsConfig.description"}}</p>
+
+    <div class="emergency-colors-actions">
+      <button type="button" name="copyFromMain" class="copy-colors-btn">
+        <i class="fas fa-copy"></i> {{localize "names.emergencyGenderColorsConfig.copyFromAbove"}}
+      </button>
+    </div>
+
+    <div class="gender-colors-list emergency-colors {{#unless emergencyEnabled}}disabled{{/unless}}">
+      {{#each emergencyGenders}}
+      <div class="gender-color-row">
+        <div class="gender-color-preview" data-gender="{{this.key}}" data-section="emergency" style="background: linear-gradient(135deg, {{this.color}}15 0%, {{this.color}}08 100%); border-left: 3px solid {{this.color}}; box-shadow: inset 0 0 20px {{this.color}}10;">
+          <span class="preview-name">{{this.label}}</span>
+        </div>
+        <div class="color-picker-wrapper">
+          <input type="color" name="emergency_color_{{this.key}}" value="{{this.color}}" data-section="emergency" />
+          <span class="color-hex">{{this.color}}</span>
+        </div>
+      </div>
+      {{/each}}
+    </div>
   </div>
 
   <footer class="sheet-footer flexrow">
