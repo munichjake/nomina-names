@@ -137,13 +137,36 @@ export class EmergencyNamesApp extends Application {
 
       logDebug('=== EMERGENCY GENERATION START ===');
 
-      for (let i = 0; i < 6; i++) {
+      // Retry loop configuration
+      const TARGET_NAME_COUNT = 6;
+      const MAX_ATTEMPTS = 100;
+      const usedNameCombinations = new Set(); // Track species+gender combinations we've tried
+      let attempts = 0;
+
+      // Generate names until we reach target or exhaust attempts
+      while (names.length < TARGET_NAME_COUNT && attempts < MAX_ATTEMPTS) {
+        attempts++;
+
         try {
+          // Select a random species from filtered options
           const speciesObj = filteredSpecies[Math.floor(Math.random() * filteredSpecies.length)];
           const species = speciesObj.code;
+
           // Weighted gender selection: 40% male, 40% female, 20% nonbinary
           const preferredGender = this._selectWeightedGender(supportedGenders);
           const packageCode = `${species}-${language}`;
+
+          // Create combination key to track attempts
+          const combinationKey = `${species}:${preferredGender}`;
+
+          // Skip if we've already tried this combination and failed
+          if (usedNameCombinations.has(combinationKey)) {
+            logDebug(`[${attempts}] Skipping already tried combination: ${combinationKey}`);
+            continue;
+          }
+
+          // Mark this combination as attempted
+          usedNameCombinations.add(combinationKey);
 
           const generationResult = await this._generateNameWithFallback(
             packageCode,
@@ -163,16 +186,21 @@ export class EmergencyNamesApp extends Application {
 
             // Debug output for each generated name
             if (actualGender !== preferredGender) {
-              logDebug(`[${i + 1}/6] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender} (fallback from ${preferredGender})`);
+              logDebug(`[${names.length}/${TARGET_NAME_COUNT}] [Attempt ${attempts}] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender} (fallback from ${preferredGender})`);
             } else {
-              logDebug(`[${i + 1}/6] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender}`, suggestion.metadata);
+              logDebug(`[${names.length}/${TARGET_NAME_COUNT}] [Attempt ${attempts}] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender}`, suggestion.metadata);
             }
           } else {
-            logWarn(`Failed to generate name ${i + 1} even with fallbacks`);
+            logDebug(`[${attempts}] Failed to generate name for combination: ${combinationKey}`);
           }
         } catch (error) {
-          logWarn(`Failed to generate name ${i + 1}`, error);
+          logWarn(`[${attempts}] Error during name generation`, error);
         }
+      }
+
+      // Warn if we couldn't generate the target number of names
+      if (names.length < TARGET_NAME_COUNT) {
+        logWarn(`Only generated ${names.length} of ${TARGET_NAME_COUNT} names after ${attempts} attempts. Tried ${usedNameCombinations.size} unique species+gender combinations.`);
       }
 
       logDebug('=== EMERGENCY GENERATION END ===');
@@ -597,25 +625,30 @@ export class EmergencyNamesApp extends Application {
   }
 
   /**
-   * Attempt to generate a name with gender fallback
-   * @param {string} packageCode - Package code
-   * @param {string} language - Language code
-   * @param {string} preferredGender - Preferred gender
-   * @param {Array<string>} supportedGenders - All supported genders
-   * @returns {Promise<Object|null>} Generated name data or null
+   * Generate a name with intelligent gender fallback chain.
+   *
+   * The fallback strategy works bidirectionally:
+   * - Non-binary → Male → Female (or Female → Male based on availability)
+   * - Male → Non-binary (if available) → Female (if available)
+   * - Female → Non-binary (if available) → Male (if available)
+   *
+   * @param {string} packageCode - The name package code
+   * @param {string} language - The locale/language code
+   * @param {string} preferredGender - The user's preferred gender
+   * @param {Array<string>} supportedGenders - List of genders supported by this package
+   * @returns {Promise<{suggestion: string, actualGender: string}|null>} The generated name info or null if all attempts fail
    */
   async _generateNameWithFallback(packageCode, language, preferredGender, supportedGenders) {
-    const gendersToTry = [preferredGender];
+    // Build fallback chain based on preferred gender and available options
+    const gendersToTry = this._buildFallbackChain(preferredGender, supportedGenders);
 
-    // Add fallback genders if nonbinary was preferred
-    if (preferredGender === 'nonbinary') {
-      // Try male, then female as fallbacks
-      if (!gendersToTry.includes('male')) gendersToTry.push('male');
-      if (!gendersToTry.includes('female')) gendersToTry.push('female');
-    }
+    logDebug(`[Fallback Chain] Trying genders in order: ${gendersToTry.join(' → ')} (preferred: ${preferredGender})`);
 
+    // Attempt generation with each gender in the fallback chain
     for (const gender of gendersToTry) {
       try {
+        logDebug(`[Attempt] Generating name for gender: ${gender}`);
+
         const result = await this.generator.generatePersonName(packageCode, {
           locale: language,
           n: 1,
@@ -625,17 +658,79 @@ export class EmergencyNamesApp extends Application {
           allowDuplicates: false
         });
 
-        if (result.suggestions && result.suggestions.length > 0) {
+        if (result?.suggestions?.length > 0) {
+          const successGender = gender === preferredGender ? gender : `${gender} (fallback from ${preferredGender})`;
+          logDebug(`[Success] Generated name with gender: ${successGender}`);
+
           return {
             suggestion: result.suggestions[0],
             actualGender: gender
           };
         }
+
+        logDebug(`[No Result] No suggestions returned for gender: ${gender}`);
       } catch (error) {
-        logDebug(`Generation failed for gender ${gender}, trying next fallback`);
+        // Log error but continue to next fallback option
+        logDebug(`[Error] Generation failed for gender ${gender}: ${error.message || error}`);
       }
     }
 
+    // All fallback options exhausted
+    logDebug(`[Exhausted] All gender fallback options failed for package ${packageCode}, language ${language}`);
     return null;
+  }
+
+  /**
+   * Build an intelligent fallback chain based on preferred gender and supported genders.
+   * Implements bidirectional fallback strategy.
+   *
+   * @param {string} preferredGender - The user's preferred gender
+   * @param {Array<string>} supportedGenders - Genders supported by the name package
+   * @returns {Array<string>} Ordered list of genders to try
+   * @private
+   */
+  _buildFallbackChain(preferredGender, supportedGenders) {
+    const supportedSet = new Set(supportedGenders);
+    const chain = [];
+
+    // Helper to add gender if supported and not already in chain
+    const addIfSupported = (gender) => {
+      if (supportedSet.has(gender) && !chain.includes(gender)) {
+        chain.push(gender);
+      }
+    };
+
+    // Always try preferred gender first
+    addIfSupported(preferredGender);
+
+    // Build fallback chain based on preference
+    switch (preferredGender) {
+      case 'nonbinary':
+        // Non-binary → Male → Female
+        addIfSupported('male');
+        addIfSupported('female');
+        break;
+
+      case 'male':
+        // Male → Non-binary (if available) → Female (if available)
+        addIfSupported('nonbinary');
+        addIfSupported('female');
+        break;
+
+      case 'female':
+        // Female → Non-binary (if available) → Male (if available)
+        addIfSupported('nonbinary');
+        addIfSupported('male');
+        break;
+
+      default:
+        // Unknown preference - try all supported genders as fallback
+        addIfSupported('male');
+        addIfSupported('female');
+        addIfSupported('nonbinary');
+        break;
+    }
+
+    return chain;
   }
 }
