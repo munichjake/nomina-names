@@ -1,6 +1,15 @@
 /**
  * Generation API
- * Single entry point for all name generation
+ * Single entry point for all name generation in Nomina Names.
+ *
+ * This module provides the public API for:
+ * - Generating names using recipes
+ * - Generating person names with customizable components
+ * - Generating from catalogs directly
+ * - Generating from collections (v4.0.1)
+ * - Querying available packages, species, recipes, and catalogs
+ *
+ * @module generator
  */
 
 import { getGlobalDataManager } from '../core/data-manager.js';
@@ -9,6 +18,9 @@ import { logDebug, logWarn, logError } from '../utils/logger.js';
 /**
  * Tags that indicate a part carries gender information.
  * Only parts with these tags should be used for gender extraction.
+ * Parts like surnames and settlements do NOT provide gender information.
+ * @constant {string[]}
+ * @private
  */
 const GENDER_RELEVANT_TAGS = ['firstnames', 'titles', 'nicknames'];
 
@@ -24,20 +36,49 @@ const GENDER_RELEVANT_TAGS = ['firstnames', 'titles', 'nicknames'];
  */
 
 /**
- * Generator
- * Provides API for generating names from v4.0 packages
+ * Generator - Main API class for name generation.
+ * Provides methods for generating names using recipes, catalogs, and collections.
+ * Handles initialization, gender extraction, and result formatting.
+ *
+ * @class Generator
+ * @example
+ * const generator = getGlobalGenerator();
+ * await generator.initialize();
+ *
+ * // Generate using a recipe
+ * const result = await generator.generate({
+ *   packageCode: 'human-de',
+ *   locale: 'de',
+ *   recipes: ['full_name'],
+ *   n: 5
+ * });
+ *
+ * // Generate person names with specific components
+ * const personResult = await generator.generatePersonName('human-de', {
+ *   locale: 'de',
+ *   gender: 'female',
+ *   components: ['firstname', 'surname'],
+ *   n: 3
+ * });
  */
 export class Generator {
+  /**
+   * Creates a new Generator instance.
+   */
   constructor() {
+    /** @type {DataManager|null} Reference to the data manager */
     this.dataManager = null;
   }
 
   /**
-   * Extract gender from suggestion parts
+   * Extract gender from suggestion parts.
    * Only extracts gender from parts that have gender-relevant tags (firstnames, titles, nicknames).
    * Parts like surnames and settlements are ignored for gender extraction.
+   * Priority: FN (firstname) alias checked first, then other parts.
+   *
    * @param {Object} parts - The parts object from the engine suggestion
-   * @returns {string|null} - 'male', 'female', 'nonbinary', or null if not found
+   * @returns {string|null} Gender string ('male', 'female', 'nonbinary') or null if not determinable
+   * @private
    */
   _extractGenderFromParts(parts) {
     if (!parts) return null;
@@ -64,11 +105,13 @@ export class Generator {
   }
 
   /**
-   * Extract gender from a single part
+   * Extract gender from a single part item.
    * Only extracts gender from parts that have gender-relevant tags (firstnames, titles, nicknames).
-   * Parts like surnames and settlements should NOT provide gender information.
+   * Checks tags first, then attrs.gender as fallback.
+   *
    * @param {Object} part - A single part from the parts object
-   * @returns {string|null} - 'male', 'female', 'nonbinary', or null
+   * @returns {string|null} Gender string ('male', 'female', 'nonbinary') or null
+   * @private
    */
   _getGenderFromPart(part) {
     if (!part) return null;
@@ -102,7 +145,12 @@ export class Generator {
   }
 
   /**
-   * Initialize generator
+   * Initialize the generator by loading all data packages.
+   * Must be called before any generation methods.
+   * Safe to call multiple times - subsequent calls are no-ops.
+   *
+   * @async
+   * @returns {Promise<void>} Resolves when initialization is complete
    */
   async initialize() {
     this.dataManager = getGlobalDataManager();
@@ -110,10 +158,32 @@ export class Generator {
   }
 
   /**
-   * Generate names
+   * Generate names using specified recipes.
+   * Main generation method that delegates to the engine and formats results.
    *
- * @param {GenerationOptions} options - Generation options
+   * @async
+   * @param {GenerationOptions} options - Generation options
+   * @param {string} options.packageCode - Package identifier (e.g., "human-de")
+   * @param {string} options.locale - Target locale for output
+   * @param {number} [options.n=1] - Number of names to generate
+   * @param {string|string[]} options.recipes - Recipe ID(s) to use
+   * @param {string} [options.seed] - Optional seed for deterministic results
+   * @param {boolean} [options.allowDuplicates=false] - Allow duplicate names
    * @returns {Promise<Object>} Generation result
+   * @returns {Array<Object>} return.suggestions - Array of generated suggestions
+   * @returns {string} return.suggestions[].text - Generated name text
+   * @returns {string} return.suggestions[].recipe - Recipe ID used
+   * @returns {Object} return.suggestions[].parts - Named parts from generation
+   * @returns {string|null} return.suggestions[].gender - Extracted gender or null
+   * @returns {Object} return.suggestions[].metadata - Additional metadata (seed)
+   * @returns {Array<Object>} return.errors - Array of errors if any occurred
+   * @example
+   * const result = await generator.generate({
+   *   packageCode: 'human-de',
+   *   locale: 'de',
+   *   recipes: ['full_name'],
+   *   n: 5
+   * });
    */
   async generate(options) {
     const {
@@ -174,7 +244,12 @@ export class Generator {
   }
 
   /**
-   * Get available recipes for a package
+   * Get available recipes for a package with localized display names.
+   *
+   * @async
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} [locale='en'] - Locale for display names
+   * @returns {Promise<Array<{id: string, displayName: string}>>} Array of recipe metadata
    */
   async getAvailableRecipes(packageCode, locale = 'en') {
     if (!this.dataManager) {
@@ -185,7 +260,10 @@ export class Generator {
   }
 
   /**
-   * Get available packages
+   * Get all available (loaded) packages with their metadata.
+   *
+   * @async
+   * @returns {Promise<Array<{code: string, displayName: Object, languages: string[]}>>} Array of package info
    */
   async getAvailablePackages() {
     if (!this.dataManager) {
@@ -208,7 +286,10 @@ export class Generator {
   }
 
   /**
-   * Get available languages
+   * Get all available languages across loaded packages.
+   *
+   * @async
+   * @returns {Promise<string[]>} Sorted array of language codes (e.g., ["de", "en"])
    */
   async getAvailableLanguages() {
     if (!this.dataManager) {
@@ -234,7 +315,12 @@ export class Generator {
   }
 
   /**
-   * Get available catalogs (categories) for a package
+   * Get available catalogs (categories) for a package.
+   *
+   * @async
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} [locale='en'] - Locale for display names
+   * @returns {Promise<Array<{code: string, name: string}>>} Array of catalog info
    */
   async getAvailableCatalogs(packageCode, locale = 'en') {
     if (!this.dataManager) {
@@ -245,8 +331,29 @@ export class Generator {
   }
 
   /**
-   * Generate a person name from components (firstname, surname, title, nickname)
-   * Creates a dynamic recipe based on selected components and gender
+   * Generate a person name from components (firstname, surname, title, nickname).
+   * Creates a dynamic recipe based on selected components and gender.
+   * Supports gender-based filtering and agreement between components.
+   *
+   * @async
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {Object} [options={}] - Generation options
+   * @param {string} [options.locale] - Target locale for output
+   * @param {number} [options.n=1] - Number of names to generate
+   * @param {string|null} [options.gender=null] - Gender filter ('male', 'female', 'nonbinary', or null for any)
+   * @param {string[]} [options.components=['firstname', 'surname']] - Name components to include
+   * @param {string} [options.format='{firstname} {surname}'] - Format template for name assembly
+   * @param {string} [options.seed] - Optional seed for deterministic results
+   * @param {boolean} [options.allowDuplicates=false] - Allow duplicate names
+   * @returns {Promise<Object>} Generation result (same format as generate())
+   * @example
+   * const result = await generator.generatePersonName('human-de', {
+   *   locale: 'de',
+   *   gender: 'female',
+   *   components: ['firstname', 'surname', 'title'],
+   *   format: '{title} {firstname} {surname}',
+   *   n: 3
+   * });
    */
   async generatePersonName(packageCode, options = {}) {
     const {
@@ -382,37 +489,40 @@ export class Generator {
 
             pattern.push(selectBlock);
 
-            // Add space before settlement (only if title was successful)
-            pattern.push({
-              literal: ' ',
-              ext: { optionalWith: 'T' }
-            });
+            // Only add settlement PP block if settlements catalog exists in the package
+            if (pkg.data.catalogs && pkg.data.catalogs.settlements) {
+              // Add space before settlement (only if title was successful)
+              pattern.push({
+                literal: ' ',
+                ext: { optionalWith: 'T' }
+              });
 
-            // Add PP block: "von/of Settlement" (only if title was successful)
-            // Get preposition from langRules if available, otherwise use defaults
-            let prep = 'von'; // Default fallback
-            if (pkg.data.langRules && pkg.data.langRules[locale]) {
-              const langRule = pkg.data.langRules[locale];
-              if (langRule.defaults && langRule.defaults.titlePrep) {
-                prep = langRule.defaults.titlePrep;
-              }
-            } else if (locale === 'en') {
-              prep = 'of';
-            }
-
-            pattern.push({
-              pp: {
-                prep: prep,
-                ref: {
-                  select: {
-                    from: 'catalog',
-                    key: 'settlements'
-                    // No where clause - select from all settlements regardless of tags
-                  }
+              // Add PP block: "von/of Settlement" (only if title was successful)
+              // Get preposition from langRules if available, otherwise use defaults
+              let prep = 'von'; // Default fallback
+              if (pkg.data.langRules && pkg.data.langRules[locale]) {
+                const langRule = pkg.data.langRules[locale];
+                if (langRule.defaults && langRule.defaults.titlePrep) {
+                  prep = langRule.defaults.titlePrep;
                 }
-              },
-              ext: { optionalWith: 'T' }
-            });
+              } else if (locale === 'en') {
+                prep = 'of';
+              }
+
+              pattern.push({
+                pp: {
+                  prep: prep,
+                  ref: {
+                    select: {
+                      from: 'catalog',
+                      key: 'settlements'
+                      // No where clause - select from all settlements regardless of tags
+                    }
+                  }
+                },
+                ext: { optionalWith: 'T' }
+              });
+            }
           }
           // Handle nickname: use agreeWith if we have a firstname
           else if (componentName === 'nickname' && firstnameAlias) {
@@ -488,8 +598,27 @@ export class Generator {
   }
 
   /**
-   * Generate from a catalog directly (simplified API)
-   * Creates a simple recipe on-the-fly if needed
+   * Generate names directly from a catalog (simplified API).
+   * Creates a simple recipe on-the-fly if no matching recipe exists.
+   * Supports tag filtering with AND or OR logic.
+   *
+   * @async
+   * @param {string} packageCode - Package identifier (e.g., "human-de")
+   * @param {string} catalogKey - Catalog key (e.g., "names", "settlements")
+   * @param {Object} [options={}] - Generation options
+   * @param {string} [options.locale] - Target locale for output
+   * @param {number} [options.n=1] - Number of names to generate
+   * @param {string[]} [options.tags=[]] - Tags to filter by
+   * @param {boolean} [options.anyOfTags=false] - Use OR logic for tags (default is AND)
+   * @param {string} [options.seed] - Optional seed for deterministic results
+   * @param {boolean} [options.allowDuplicates=false] - Allow duplicate names
+   * @returns {Promise<Object>} Generation result (same format as generate())
+   * @example
+   * const result = await generator.generateFromCatalog('human-de', 'names', {
+   *   locale: 'de',
+   *   tags: ['firstnames', 'female'],
+   *   n: 5
+   * });
    */
   async generateFromCatalog(packageCode, catalogKey, options = {}) {
     const {
@@ -603,8 +732,25 @@ export class Generator {
   }
 
   /**
-   * Generate from a collection (v4.0.1)
-   * A collection is a preset query that defines catalog + tags filter
+   * Generate names from a collection (v4.0.1 feature).
+   * A collection is a preset query that defines catalog + tags filter.
+   * Useful for generating from predefined categories without specifying filters.
+   *
+   * @async
+   * @param {string} packageCode - Package identifier (e.g., "tavern-de")
+   * @param {string} collectionKey - Collection key (e.g., "upscale", "common")
+   * @param {Object} [options={}] - Generation options
+   * @param {string} [options.locale='en'] - Target locale for output
+   * @param {number} [options.n=1] - Number of names to generate
+   * @param {string} [options.seed] - Optional seed for deterministic results
+   * @param {boolean} [options.allowDuplicates=false] - Allow duplicate names
+   * @returns {Promise<Object>} Generation result (same format as generate())
+   * @throws {Error} If collection not found or has no category defined
+   * @example
+   * const result = await generator.generateFromCollection('tavern-de', 'upscale', {
+   *   locale: 'de',
+   *   n: 5
+   * });
    */
   async generateFromCollection(packageCode, collectionKey, options = {}) {
     const {
@@ -648,7 +794,14 @@ export class Generator {
 let globalGenerator = null;
 
 /**
- * Get or create global generator
+ * Get or create the global Generator singleton instance.
+ * The Generator is shared across all components to ensure consistent state.
+ *
+ * @returns {Generator} The global Generator instance
+ * @example
+ * const generator = getGlobalGenerator();
+ * await generator.initialize();
+ * const result = await generator.generate({ ... });
  */
 export function getGlobalGenerator() {
   if (!globalGenerator) {
@@ -658,7 +811,19 @@ export function getGlobalGenerator() {
 }
 
 /**
- * Convenience function: Generate names with simple options
+ * Convenience function: Generate names with simple options.
+ * Shorthand for getting the global generator and calling generate().
+ *
+ * @async
+ * @param {string} packageCode - Package identifier (e.g., "human-de")
+ * @param {Object} [options={}] - Generation options (see Generator.generate())
+ * @returns {Promise<Object>} Generation result
+ * @example
+ * const result = await generateNames('human-de', {
+ *   locale: 'de',
+ *   recipes: ['full_name'],
+ *   n: 5
+ * });
  */
 export async function generateNames(packageCode, options = {}) {
   const generator = getGlobalGenerator();

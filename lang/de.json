@@ -434,7 +434,8 @@
                 "empty-hint": "Diese Kategorie enthält noch keine Namen. Versuche eine andere Kategorie oder Spezies.",
                 "no-match": "Keine Namen entsprechen deinen Filterkriterien",
                 "no-match-hint": "Entferne einige Filter oder wähle andere Optionen.",
-                "not-found": "Kategorie '{catalog}' nicht gefunden",
+                "not-found": "Datenkatalog '{catalog}' nicht gefunden",
+                "missing-required": "Fehlende Datenkataloge: {catalogs}",
                 "no-distinct": "Konnte keine einzigartigen Namen nach {attempts} Versuchen finden",
                 "no-distinct-hint": "Es sind nicht genug unterschiedliche Namen verfügbar. Versuche weniger Namen auf einmal zu generieren."
             },

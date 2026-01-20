@@ -1,0 +1,242 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "orc-en",
+    "displayName": {
+      "en": "Orc Nicknames",
+      "de": "Ork Beinamen"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "en": "Names",
+        "de": "Namen"
+      },
+      "items": [
+        { "t": { "en": "the Butcher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Scarred" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Undefeated" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Cruel" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bonebreaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Bloody" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Ironbiter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Terror" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Mankiller" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Skullcrusher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Fleshripper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the One-Eyed" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Black" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Wild" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Destroyer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Mighty" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Conqueror" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Merciless" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Brutal" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Wrathful" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Iron" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Steelskull" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Ravager" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Firestarter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Thunderer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Unyielding" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Bloodthirsty" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Fearless" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Raging" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Shadowslayer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Beastrider" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Wolfheart" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Rockbreaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Beast" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Feared" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Monster" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Rampaging" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Furious" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Berserker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Murderous" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Relentless" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Greedy" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Ruthless" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Insatiable" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Stone" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Unbending" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Steelhard" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Unbreakable" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Tough" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Unconquerable" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Hardened" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Dark" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Gloomy" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Shadowy" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Cursed" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Damned" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Doombringer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Crusher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Smasher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Shatterer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Plunderer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Burner" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Demolisher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Splitter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Stomper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Squasher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bonegnawer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Strangler" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Grinder" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Hunter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Hound" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Stalker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Trapper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Slasher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Assassin" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Headhunter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Maimed" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Branded" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Wounded" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Torn" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Giant" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Hunchback" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Long-Armed" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Crooked" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Squat" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Rustbiter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bladesplitter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Armorbreaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Shieldshatterer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Chainripper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Axeswinger" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Clubbearer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Wolfbrother" }, "tags": ["male", "nicknames"], "w": 1 },
+        { "t": { "en": "Wolfsister" }, "tags": ["female", "nicknames"], "w": 1 },
+        { "t": { "en": "Bearripper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Crowfriend" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Hyenalaugher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Wargtamer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Warglord" }, "tags": ["male", "nicknames"], "w": 1 },
+        { "t": { "en": "Warglady" }, "tags": ["female", "nicknames"], "w": 1 },
+        { "t": { "en": "Lizardrider" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Vulturelord" }, "tags": ["male", "nicknames"], "w": 1 },
+        { "t": { "en": "Vulturelady" }, "tags": ["female", "nicknames"], "w": 1 },
+        { "t": { "en": "the Bestial" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Savage" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Fang" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Clawbearer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Deathwatcher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Gravewalker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Soulcatcher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Ghostcaller" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bonepreacher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Ashwalker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Shadowwalker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Mistsneaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Flameeater" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Stormcaller" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Earthshaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Lightningbearer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Frostbiter" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Seer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bloodprophet" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Dreameater" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Runeweaver" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bonereader" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Omenreader" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Legendary" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Unforgotten" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Glorious" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Infamous" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Predator" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Doom" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Horror" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Dread" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bloodsoaked" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Gorecovered" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Bonecruncher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Skulltaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Reaver" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Marauder" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Raider" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Elfbane" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Dwarfcrusher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Humanslayer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Warchief" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Warleader" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Warlord" }, "tags": ["male", "nicknames"], "w": 1 },
+        { "t": { "en": "the Warlady" }, "tags": ["female", "nicknames"], "w": 1 },
+        { "t": { "en": "Bloodfury" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Ironjaw" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Blacktusk" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Redfang" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Grimskull" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Defiler" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Desecrator" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Pillager" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Tormentor" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Punisher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Executioner" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Slaughterer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Gutripper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Heartcrusher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Spinesnapper" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Impaler" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Skinner" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Flayer" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Neckbreaker" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Gnasher" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "Eyegouger" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Mangler" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 },
+        { "t": { "en": "the Mauler" }, "tags": ["male", "female", "nonbinary", "nicknames"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "gender": {
+        "labels": {
+          "en": "Gender",
+          "de": "Geschlecht"
+        },
+        "values": {
+          "male": {
+            "en": "Male",
+            "de": "Mannlich"
+          },
+          "female": {
+            "en": "Female",
+            "de": "Weiblich"
+          },
+          "nonbinary": {
+            "en": "Neutral",
+            "de": "Neutral"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "en": "Nicknames",
+        "de": "Beinamen"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "nicknames"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

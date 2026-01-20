@@ -1,0 +1,136 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "orc-en",
+    "displayName": {
+      "en": "Orc Noble Titles",
+      "de": "Ork Adelstitel"
+    },
+    "languages": [
+      "en"
+    ],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "en": "Names",
+        "de": "Namen"
+      },
+      "items": [
+        { "t": { "en": "Warlord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Warchief" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Chieftain" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood King" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Horde Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Tribal Leader" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Bonebreaker" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Battle Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Dread Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Banner Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Marshal" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blade Prince" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Clan Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "War Captain" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Gore King" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Skull Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Iron Khan" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Fang Chief" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Carnage King" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Fury Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Raid Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Blood Shaman" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "War Priest" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Siege Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Death Bringer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "War Queen" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Warchief" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Chieftainess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Queen" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Horde Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Tribal Matriarch" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Bonebreaker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Battle Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dread Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Banner Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Matron" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blade Princess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Clan Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "War Captain" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Gore Queen" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Skull Lady" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Iron Khatun" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Fang Matriarch" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Carnage Queen" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Fury Matron" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Raid Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Blood Shamaness" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "War Priestess" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Siege Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Death Bringer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Great Chieftain" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Supreme Warlord" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Horde Ruler" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Battle Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "War Leader" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "High Commander" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Blood Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Grand Warchief" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Supreme Commander" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Horde Commander" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Battle Marshal" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "War Executor" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dread Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Skull Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Iron Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": [
+      "TrimSpaces"
+    ],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "gender": {
+        "labels": {
+          "en": "Gender",
+          "de": "Geschlecht"
+        },
+        "values": {
+          "male": {
+            "en": "Male",
+            "de": "Mannlich"
+          },
+          "female": {
+            "en": "Female",
+            "de": "Weiblich"
+          },
+          "nonbinary": {
+            "en": "Neutral",
+            "de": "Neutral"
+          }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": {
+        "en": "Noble Titles",
+        "de": "Adelstitel"
+      },
+      "query": {
+        "category": "names",
+        "tags": [
+          "titles"
+        ]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}

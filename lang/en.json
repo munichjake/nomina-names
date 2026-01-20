@@ -434,7 +434,8 @@
                 "empty-hint": "This category doesn't contain any names yet. Try a different category or species.",
                 "no-match": "No names match your filter criteria",
                 "no-match-hint": "Try removing some filters or selecting different options.",
-                "not-found": "Category '{catalog}' not found",
+                "not-found": "Data catalog '{catalog}' not found",
+                "missing-required": "Missing data catalogs: {catalogs}",
                 "no-distinct": "Unable to find unique names after {attempts} attempts",
                 "no-distinct-hint": "There aren't enough different names available. Try generating fewer names at once."
             },

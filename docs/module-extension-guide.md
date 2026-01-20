@@ -64,8 +64,8 @@ Create `module.json` in your folder:
   "description": "Adds goblin names with German and English support",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "11",
-    "verified": "12"
+    "minimum": "12",
+    "verified": "13"
   },
   "relationships": {
     "requires": [{
@@ -234,8 +234,8 @@ my-monster-names/
     "url": "https://your-website.com"
   }],
   "compatibility": {
-    "minimum": "11",
-    "verified": "12"
+    "minimum": "12",
+    "verified": "13"
   },
   "relationships": {
     "requires": [{
@@ -642,22 +642,150 @@ This makes `{ attrs: { rarity: "rare" } }` display as "⭐ Selten" in German!
 
 ### Collections
 
-Predefined filter sets for quick access:
+Collections are predefined filter sets that allow quick access to subsets of your content. They are one of the most powerful features for organizing and presenting your data to users.
+
+#### Why Use Collections?
+
+1. **Better User Experience**: Users select "Harbor Taverns" instead of manually picking catalog + tags
+2. **Consistent Filtering**: Define the correct tag combinations once, reuse everywhere
+3. **Localized Labels**: Display names in the user's language
+4. **API Simplification**: One `collection` parameter instead of multiple `catalog` + `tags` parameters
+
+#### Collection Structure
 
 ```javascript
 collections: [
   {
-    key: "warrior_names",
-    labels: { de: "Kriegernamen", en: "Warrior Names" },
-    description: { de: "Namen für Krieger", en: "Names for warriors" },
-    query: {
-      category: "names",
-      tags: ["male", "fierce"],
-      limit: 50
+    key: "warrior_names",           // Unique identifier (required)
+    labels: {                       // Localized display names (required)
+      de: "Kriegernamen",
+      en: "Warrior Names"
+    },
+    description: {                  // Localized descriptions (optional)
+      de: "Namen für tapfere Krieger",
+      en: "Names for brave warriors"
+    },
+    query: {                        // The filter definition (required)
+      category: "names",            // Which catalog to query
+      tags: ["male", "fierce"],     // Tags to filter by (AND logic)
+      limit: 50                     // Max items to consider (optional)
     }
   }
 ]
 ```
+
+#### Complete Collection Example: Tavern Types
+
+Here's a real-world example showing how to organize tavern names by type:
+
+```javascript
+{
+  format: "4.0.0",
+  package: {
+    code: "taverns-de",
+    displayName: { de: "Tavernen", en: "Taverns" },
+    languages: ["de"]
+  },
+  catalogs: {
+    taverns: {
+      displayName: { de: "Tavernen & Gasthäuser", en: "Taverns & Inns" },
+      items: [
+        // Upscale inns - for nobles and wealthy merchants
+        { t: { de: "Goldener Greif" }, tags: ["upscale_inn"], w: 1 },
+        { t: { de: "Silberner Hirsch" }, tags: ["upscale_inn"], w: 1 },
+        { t: { de: "Kristallpalast" }, tags: ["upscale_inn"], w: 1 },
+
+        // Common taverns - for everyday folk
+        { t: { de: "Brauner Bär" }, tags: ["common_tavern"], w: 1 },
+        { t: { de: "Müder Wanderer" }, tags: ["common_tavern"], w: 1 },
+        { t: { de: "Warme Stube" }, tags: ["common_tavern"], w: 1 },
+
+        // Harbor taverns - for sailors and dock workers
+        { t: { de: "Zum Anker" }, tags: ["harbor_tavern"], w: 1 },
+        { t: { de: "Salziger Hund" }, tags: ["harbor_tavern"], w: 1 },
+        { t: { de: "Windrose" }, tags: ["harbor_tavern"], w: 1 },
+
+        // Adventurer taverns - for heroes and mercenaries
+        { t: { de: "Rostiges Schwert" }, tags: ["adventurer_tavern"], w: 1 },
+        { t: { de: "Letzte Chance" }, tags: ["adventurer_tavern"], w: 1 },
+        { t: { de: "Goldener Würfel" }, tags: ["adventurer_tavern"], w: 1 }
+      ]
+    }
+  },
+  vocab: {
+    fields: {
+      type: {
+        labels: { de: "Typ", en: "Type" },
+        values: {
+          upscale_inn: { de: "Gehobenes Gasthaus", en: "Upscale Inn" },
+          common_tavern: { de: "Gewöhnliche Taverne", en: "Common Tavern" },
+          harbor_tavern: { de: "Hafentaverne", en: "Harbor Tavern" },
+          adventurer_tavern: { de: "Abenteurertaverne", en: "Adventurer Tavern" }
+        }
+      }
+    },
+    icons: {
+      upscale_inn: "⭐",
+      common_tavern: "🍺",
+      harbor_tavern: "⚓",
+      adventurer_tavern: "⚔️"
+    }
+  },
+  collections: [
+    {
+      key: "upscale_inns",
+      labels: { de: "Gehobene Gasthäuser", en: "Upscale Inns" },
+      description: { de: "Feine Etablissements für wohlhabende Gäste", en: "Fine establishments for wealthy guests" },
+      query: { category: "taverns", tags: ["upscale_inn"] }
+    },
+    {
+      key: "common_taverns",
+      labels: { de: "Gewöhnliche Tavernen", en: "Common Taverns" },
+      description: { de: "Einfache Tavernen für das gemeine Volk", en: "Simple taverns for common folk" },
+      query: { category: "taverns", tags: ["common_tavern"] }
+    },
+    {
+      key: "harbor_taverns",
+      labels: { de: "Hafentavernen", en: "Harbor Taverns" },
+      description: { de: "Raue Lokale am Hafen", en: "Rough places at the harbor" },
+      query: { category: "taverns", tags: ["harbor_tavern"] }
+    },
+    {
+      key: "adventurer_taverns",
+      labels: { de: "Abenteurertavernen", en: "Adventurer Taverns" },
+      description: { de: "Treffpunkte für Helden und Söldner", en: "Meeting places for heroes and mercenaries" },
+      query: { category: "taverns", tags: ["adventurer_tavern"] }
+    }
+  ]
+}
+```
+
+#### Using Collections via API
+
+Once registered, users can generate from your collections:
+
+```javascript
+const api = game.modules.get('nomina-names').api;
+
+// Generate using collection instead of manual filtering
+const harborTavern = await api.generateFromCollection({
+  species: 'human',  // or your custom species
+  language: 'de',
+  collection: 'harbor_taverns',
+  count: 1
+});
+
+console.log(harborTavern);
+// Result: ["Zum Anker"]
+```
+
+#### Collection Best Practices
+
+1. **Plan your tags first**: Before creating collections, design a consistent tagging system
+2. **Use semantic names**: `harbor_tavern` is better than `type_3`
+3. **Provide all languages**: If your package supports multiple languages, add labels for each
+4. **Add descriptions**: Help users understand what each collection contains
+5. **Test thoroughly**: Verify each collection returns the expected items
 
 Users can select "Warrior Names" in the UI instead of manually filtering!
 
@@ -980,7 +1108,7 @@ Adds three monster species to Nomina Names: Goblins, Orcs, and Trolls.
 Use this URL: `https://github.com/yourusername/monster-names/releases/latest/download/module.json`
 
 ## Requirements
-- Foundry VTT v11 or higher
+- Foundry VTT v12 or higher
 - Nomina Names module v3.0.0 or higher
 
 ## Usage

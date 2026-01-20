@@ -1,0 +1,163 @@
+{
+  "format": "4.0.0",
+  "package": {
+    "code": "goblin-en",
+    "displayName": {
+      "en": "Goblin Titles",
+      "de": "Goblin-Titel"
+    },
+    "languages": ["en"],
+    "phoneticLanguage": "en"
+  },
+  "catalogs": {
+    "names": {
+      "displayName": {
+        "en": "Titles",
+        "de": "Titel"
+      },
+      "items": [
+        { "t": { "en": "Goblin King" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "War Chief" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Battle Lord" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Rat King" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Tribe Boss" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Cave Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "War Captain" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Clan Chief" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sub-Chieftain" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Battle Scarred" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Axe Wielder" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Sword Breaker" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shield Splitter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Skull Crusher" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Bone Snapper" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Gem Keeper" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Trap Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Scrap Forger" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Bone Carver" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Goblin Smith" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Wolf Rider" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Night Hunter" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Stalker" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Cave Prowler" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Tunnel Runner" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Rock Thrower" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Worg Master" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Bugbear Friend" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Hobgoblin Ally" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Kobold Leader" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Goblin Hexer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Witch Doctor" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Spirit Speaker" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Curse Caster" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Poison Brewer" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Rune Carver" }, "tags": ["male", "titles"], "w": 1 },
+        { "t": { "en": "Cave Witch" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Hex Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Bone Mother" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Night Hag" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dark Seeress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Spirit Caller" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Curse Weaver" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Poison Maker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Potion Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Rune Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Witch" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Bone Witch" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Silent Walker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Wise Mother" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Clan Elder" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Tribe Speaker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Lore Keeper" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Storyteller" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Trap Setter" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Scrap Gatherer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Dancer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Night Singer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Viper Charmer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Spider Friend" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Rat Mistress" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Bat Caller" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Toad Queen" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Scorpion Keeper" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Snake Sister" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Cave Mother" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Troll Whisperer" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Dream Walker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Vision Seeker" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Moon Watcher" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Star Reader" }, "tags": ["female", "titles"], "w": 1 },
+        { "t": { "en": "Shaman" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Seer" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Oracle" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Prophet" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Mystic" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sage" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Wise One" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Elder" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dark Oracle" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Spirit Guide" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Dream Reader" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Omen Interpreter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Rune Reader" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Keeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Watcher" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Guardian" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Night Sentinel" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Shadow Warden" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Scout" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Runner" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Hunter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Stalker" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Prowler" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Gatherer" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Scavenger" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Forager" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Seeker" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Finder" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Collector" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Stone Picker" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Metal Scavenger" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Gem Hunter" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Trinket Seeker" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Bone Collector" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Scrap King" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Digger" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Miner" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Delver" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Sapper" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Tunnel Sage" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Cave Sage" }, "tags": ["nonbinary", "titles"], "w": 1 },
+        { "t": { "en": "Rider of Rats" }, "tags": ["nonbinary", "titles"], "w": 1 }
+      ]
+    }
+  },
+  "output": {
+    "transforms": ["TrimSpaces"],
+    "uniqueWithinBatch": true
+  },
+  "vocab": {
+    "fields": {
+      "gender": {
+        "labels": { "en": "Gender", "de": "Geschlecht" },
+        "values": {
+          "male": { "en": "Male", "de": "Männlich" },
+          "female": { "en": "Female", "de": "Weiblich" },
+          "nonbinary": { "en": "Non-Binary", "de": "Divers" }
+        }
+      }
+    },
+    "icons": {}
+  },
+  "collections": [
+    {
+      "key": "names",
+      "labels": { "en": "Titles", "de": "Titel" },
+      "query": {
+        "category": "names",
+        "tags": ["titles"]
+      }
+    }
+  ],
+  "fileVersion": "4.0.1"
+}
