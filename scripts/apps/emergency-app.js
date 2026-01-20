@@ -109,6 +109,23 @@ export class EmergencyNamesApp extends Application {
     }
   }
 
+  /**
+   * Generate emergency names with retry logic to ensure 6 names are always produced.
+   *
+   * This method implements a robust retry mechanism that:
+   * - Attempts to generate exactly TARGET_NAME_COUNT (6) names
+   * - Tracks which species+gender combinations have been tried
+   * - Uses weighted gender distribution (40% male, 40% female, 20% nonbinary)
+   * - Falls back through alternative genders when preferred gender fails
+   * - Skips already-failed combinations to avoid infinite loops
+   * - Warns if unable to generate the target number of names
+   *
+   * The retry loop continues until either:
+   * - Target name count is reached, OR
+   * - Maximum attempts (MAX_ATTEMPTS) is exhausted
+   *
+   * @private
+   */
   async _generateEmergencyNames() {
     logDebug("Generating emergency names...");
 
@@ -137,9 +154,20 @@ export class EmergencyNamesApp extends Application {
 
       logDebug('=== EMERGENCY GENERATION START ===');
 
-      // Retry loop configuration
+      /**
+       * Target number of names the emergency generator should produce
+       * @constant {number}
+       */
       const TARGET_NAME_COUNT = 6;
+
+      /**
+       * Maximum number of generation attempts before giving up
+       * Set high enough to allow trying multiple species+gender combinations
+       * but low enough to prevent performance issues (100 attempts for 6 names)
+       * @constant {number}
+       */
       const MAX_ATTEMPTS = 100;
+
       const usedNameCombinations = new Set(); // Track species+gender combinations we've tried
       let attempts = 0;
 
@@ -632,11 +660,15 @@ export class EmergencyNamesApp extends Application {
    * - Male → Non-binary (if available) → Female (if available)
    * - Female → Non-binary (if available) → Male (if available)
    *
-   * @param {string} packageCode - The name package code
-   * @param {string} language - The locale/language code
-   * @param {string} preferredGender - The user's preferred gender
+   * This method is part of the retry logic that ensures the emergency generator
+   * always produces 6 names even when some species/gender combinations fail.
+   *
+   * @param {string} packageCode - The name package code (e.g., "human-de")
+   * @param {string} language - The locale/language code (e.g., "de", "en")
+   * @param {string} preferredGender - The user's preferred gender (male/female/nonbinary)
    * @param {Array<string>} supportedGenders - List of genders supported by this package
-   * @returns {Promise<{suggestion: string, actualGender: string}|null>} The generated name info or null if all attempts fail
+   * @returns {Promise<{suggestion: Object, actualGender: string}|null>} The generated name info or null if all attempts fail
+   * @private
    */
   async _generateNameWithFallback(packageCode, language, preferredGender, supportedGenders) {
     // Build fallback chain based on preferred gender and available options
@@ -684,9 +716,13 @@ export class EmergencyNamesApp extends Application {
    * Build an intelligent fallback chain based on preferred gender and supported genders.
    * Implements bidirectional fallback strategy.
    *
-   * @param {string} preferredGender - The user's preferred gender
+   * The fallback chain ensures that when a preferred gender fails to generate names,
+   * alternative genders are tried in a logical order to maximize name variety while
+   * respecting user preferences as much as possible.
+   *
+   * @param {string} preferredGender - The user's preferred gender (male/female/nonbinary)
    * @param {Array<string>} supportedGenders - Genders supported by the name package
-   * @returns {Array<string>} Ordered list of genders to try
+   * @returns {Array<string>} Ordered list of genders to try, from most to least preferred
    * @private
    */
   _buildFallbackChain(preferredGender, supportedGenders) {

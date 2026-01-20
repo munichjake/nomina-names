@@ -5,6 +5,27 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- **Too Few Names Generated**: Emergency Generator garantiert jetzt immer 6 Namen durch verbesserte Retry-Logik
+  - Neue Retry-Schleife mit TARGET_NAME_COUNT (6) und MAX_ATTEMPTS (100) Konstanten
+  - Verfolgt bereits versuchte Spezies+Geschlecht-Kombinationen um Dopplungen zu vermeiden
+  - Weighted Gender Distribution (40% männlich, 40% weiblich, 20% nichtbinär)
+  - Intelligente Fallback-Kette probiert alternative Geschlechter bei Fehlern
+  - `_buildFallbackChain()` Methode implementiert bidirektionale Fallback-Strategie
+  - `_generateNameWithFallback()` Methode ermöglicht Geschlechts-Fallback mit Logging
+  - Besseres Debug-Logging zeigt Fortschritt und Fehlversuche
+
+- **Multi-Gender-Generierung verbessert**: Generator App jetzt mit Retry-Schleife für mehrere Geschlechter
+  - Generiert einen Namen nach dem anderen statt Batch-Anforderung
+  - MAX_ATTEMPTS = count * 5 ermöglicht robuste Generierung auch bei limitierten Daten
+  - Verhindert Duplikate durch Set-basiertes Tracking über alle Geschlechter hinweg
+  - Shuffle-Mischung am Ende für gute Geschlechter-Verteilung
+  - Warn-Logging wenn nicht genug eindeutige Namen generiert werden konnten
+  - Ausführliche JSDoc-Dokumentation der Retry-Logik
+
 ## [3.1.0] - 2025-01-18
 
 ### Added
