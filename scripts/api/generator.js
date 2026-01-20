@@ -7,6 +7,24 @@ import { getGlobalDataManager } from '../core/data-manager.js';
 import { logDebug, logWarn, logError } from '../utils/logger.js';
 
 /**
+ * Check if a catalog has items matching the given gender tag
+ * @param {Object} catalog - The catalog to check
+ * @param {string} genderTag - The gender tag to search for ('male', 'female', 'nonbinary')
+ * @returns {boolean} True if matching items exist
+ */
+function catalogHasGenderedItems(catalog, genderTag) {
+  if (!catalog || !catalog.items || !Array.isArray(catalog.items)) {
+    return false;
+  }
+
+  return catalog.items.some(item =>
+    item.tags && Array.isArray(item.tags) &&
+    item.tags.includes(genderTag) &&
+    item.tags.includes('firstnames')
+  );
+}
+
+/**
  * Tags that indicate a part carries gender information.
  * Only parts with these tags should be used for gender extraction.
  */
@@ -274,7 +292,17 @@ export class Generator {
     const pattern = [];
     const genderTag = gender === 'male' ? 'male' : gender === 'female' ? 'female' : gender === 'nonbinary' ? 'nonbinary' : null;
 
-    logDebug(`generatePersonName: package=${packageCode}, gender=${gender}, genderTag=${genderTag}, components=`, components);
+    // Check if nonbinary firstnames exist, fallback to male if not
+    let effectiveGenderTag = genderTag;
+    if (genderTag === 'nonbinary') {
+      const namesCatalog = pkg.data.catalogs?.names;
+      if (!catalogHasGenderedItems(namesCatalog, 'nonbinary')) {
+        logDebug(`No nonbinary firstnames found for ${packageCode}, falling back to male`);
+        effectiveGenderTag = 'male';
+      }
+    }
+
+    logDebug(`generatePersonName: package=${packageCode}, gender=${gender}, genderTag=${genderTag}, effectiveGenderTag=${effectiveGenderTag}, components=`, components);
 
     // THREE-PHASE APPROACH:
     // Phase 1: Check if firstname is in the components (needed for agreement)
@@ -299,8 +327,8 @@ export class Generator {
       };
 
       // Apply gender filter to firstname
-      if (genderTag) {
-        firstnameBlock.select.where.tags.push(genderTag);
+      if (effectiveGenderTag) {
+        firstnameBlock.select.where.tags.push(effectiveGenderTag);
       }
 
       pattern.push(firstnameBlock);
@@ -354,8 +382,8 @@ export class Generator {
               selectBlock.as = firstnameAlias;
 
               // Apply gender filter to firstname
-              if (genderTag) {
-                selectBlock.select.where.tags.push(genderTag);
+              if (effectiveGenderTag) {
+                selectBlock.select.where.tags.push(effectiveGenderTag);
               }
               pattern.push(selectBlock);
             }

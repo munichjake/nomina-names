@@ -353,8 +353,11 @@ export function hasNonbinaryNamesForSpecies(language, species) {
     return false;
   }
 
-  // Check if any entry/item has the 'nonbinary' tag
+  // Check if any entry/item has BOTH the 'nonbinary' AND 'firstnames' tags
+  // This ensures we're checking for actual nonbinary first names, not just any nonbinary item
   return itemsArray.some(item =>
-    item.tags && Array.isArray(item.tags) && item.tags.includes('nonbinary')
+    item.tags && Array.isArray(item.tags) &&
+    item.tags.includes('nonbinary') &&
+    item.tags.includes('firstnames')
   );
 }

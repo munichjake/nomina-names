@@ -141,29 +141,33 @@ export class EmergencyNamesApp extends Application {
         try {
           const speciesObj = filteredSpecies[Math.floor(Math.random() * filteredSpecies.length)];
           const species = speciesObj.code;
-          const gender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
+          const preferredGender = supportedGenders[Math.floor(Math.random() * supportedGenders.length)];
           const packageCode = `${species}-${language}`;
 
-          const result = await this.generator.generatePersonName(packageCode, {
-            locale: language,
-            n: 1,
-            gender: gender,
-            components: ['firstname', 'surname'],
-            format: '{firstname} {surname}',
-            allowDuplicates: false
-          });
+          const generationResult = await this._generateNameWithFallback(
+            packageCode,
+            language,
+            preferredGender,
+            supportedGenders
+          );
 
-          if (result.suggestions && result.suggestions.length > 0) {
-            const suggestion = result.suggestions[0];
+          if (generationResult) {
+            const { suggestion, actualGender } = generationResult;
             names.push({
               name: suggestion.text,
               species: species,
-              gender: gender,
+              gender: actualGender, // Use actual gender (may differ from preferred)
               displaySpecies: this._getLocalizedSpecies(species)
             });
 
             // Debug output for each generated name
-            logDebug(`[${i + 1}/6] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${gender} | Catalog: ${suggestion.catalog || 'unknown'}`, suggestion.metadata);
+            if (actualGender !== preferredGender) {
+              logDebug(`[${i + 1}/6] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender} (fallback from ${preferredGender})`);
+            } else {
+              logDebug(`[${i + 1}/6] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender}`, suggestion.metadata);
+            }
+          } else {
+            logWarn(`Failed to generate name ${i + 1} even with fallbacks`);
           }
         } catch (error) {
           logWarn(`Failed to generate name ${i + 1}`, error);
@@ -567,5 +571,48 @@ export class EmergencyNamesApp extends Application {
       : `(${this.enabledSpecies.size}/${totalSpecies})`;
 
     countSpan.text(countText);
+  }
+
+  /**
+   * Attempt to generate a name with gender fallback
+   * @param {string} packageCode - Package code
+   * @param {string} language - Language code
+   * @param {string} preferredGender - Preferred gender
+   * @param {Array<string>} supportedGenders - All supported genders
+   * @returns {Promise<Object|null>} Generated name data or null
+   */
+  async _generateNameWithFallback(packageCode, language, preferredGender, supportedGenders) {
+    const gendersToTry = [preferredGender];
+
+    // Add fallback genders if nonbinary was preferred
+    if (preferredGender === 'nonbinary') {
+      // Try male, then female as fallbacks
+      if (!gendersToTry.includes('male')) gendersToTry.push('male');
+      if (!gendersToTry.includes('female')) gendersToTry.push('female');
+    }
+
+    for (const gender of gendersToTry) {
+      try {
+        const result = await this.generator.generatePersonName(packageCode, {
+          locale: language,
+          n: 1,
+          gender: gender,
+          components: ['firstname', 'surname'],
+          format: '{firstname} {surname}',
+          allowDuplicates: false
+        });
+
+        if (result.suggestions && result.suggestions.length > 0) {
+          return {
+            suggestion: result.suggestions[0],
+            actualGender: gender
+          };
+        }
+      } catch (error) {
+        logDebug(`Generation failed for gender ${gender}, trying next fallback`);
+      }
+    }
+
+    return null;
   }
 }
