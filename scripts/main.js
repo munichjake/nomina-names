@@ -86,8 +86,16 @@ Hooks.once('ready', () => {
 
   dataManager.initializeData().then(() => {
     // Setup NamesAPI after DataManager is ready
-    NamesAPI.setup();
-    logDebug("V4 DataManager and NamesAPI initialization completed");
+    try {
+      NamesAPI.setup();
+      logDebug("V4 DataManager and NamesAPI initialization completed");
+
+      // Fire API ready event for external modules
+      Hooks.callAll('nomina-names.api.ready', NamesAPI);
+      logDebug("Fired nomina-names.api.ready event");
+    } catch (error) {
+      logError("Failed to setup NamesAPI", error);
+    }
   }).catch(error => {
     logError("Failed to initialize V4 DataManager", error);
   });
@@ -120,7 +128,7 @@ Hooks.once('ready', () => {
     initializeEnhancedDropdownsForModule();
   }, 200);
   
-  // Fire the data loaded hook for other modules
+  // Fire legacy event for backwards compatibility
   Hooks.callAll('namesModuleReady', NamesAPI);
 });
 

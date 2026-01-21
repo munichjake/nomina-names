@@ -120,6 +120,73 @@ Hooks.once('ready', async () => {
 });
 ```
 
+### API Ready Event (Recommended)
+
+The recommended way to integrate with the Nomina Names API is to listen for the dedicated API ready event. This ensures your module waits until the API is fully initialized before attempting to use it.
+
+```javascript
+Hooks.once('nomina-names.api.ready', async (api) => {
+  console.log('Nomina Names API is ready!');
+
+  // The api instance is passed directly
+  const name = await api.generateName({
+    species: 'elf',
+    gender: 'female',
+    language: 'en'
+  });
+
+  console.log('Generated name:', name);
+});
+
+// With error handling
+Hooks.once('nomina-names.api.ready', async (api) => {
+  try {
+    const name = await api.generateName({
+      species: 'elf',
+      gender: 'female',
+      language: 'en'
+    });
+    console.log('Generated name:', name);
+  } catch (error) {
+    console.error('Failed to generate name:', error);
+    ui.notifications.error('Name generation failed');
+  }
+});
+```
+
+**Advantages**:
+- **No polling required**: Event fires immediately when ready
+- **API instance provided**: No need to call `game.modules.get()` again
+- **Clear intent**: Event name is self-documenting
+- **Standard pattern**: Follows Foundry VTT module conventions
+
+**Alternative: ready() Method**
+
+For cases where you prefer async/await patterns, you can use the `ready()` method:
+
+```javascript
+const api = game.modules.get('nomina-names').api;
+await api.ready();
+
+// API is now ready
+const name = await api.generateName({ species: 'human' });
+```
+
+**Note**: The `ready()` method internally polls for readiness, which is less efficient than the event-based approach.
+
+### Legacy Events
+
+For backwards compatibility, the following legacy event is still supported:
+
+```javascript
+Hooks.once('namesModuleReady', async (api) => {
+  // Legacy event, still works but deprecated
+  const name = await api.generateName({ species: 'human' });
+});
+```
+
+**Migration**: Replace `namesModuleReady` with `nomina-names.api.ready` in new code.
+
 </details>
 
 <details>

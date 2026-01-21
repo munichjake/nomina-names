@@ -91,22 +91,85 @@ Create `module.json` in your folder:
 Create `main.js` in your folder:
 
 ```javascript
-// Wait for Foundry to be ready
-Hooks.once('ready', async () => {
-  console.log('Goblin Names | Loading...');
+// Wait for Nomina Names API to be ready (Recommended)
+Hooks.once('nomina-names.api.ready', async (api) => {
+  console.log('Goblin Names | Nomina Names API ready, loading...');
 
-  // Get the Nomina Names API
-  const nominaAPI = game.modules.get('nomina-names')?.api;
-
-  // Check if Nomina Names is installed
-  if (!nominaAPI) {
-    console.error('Goblin Names | Nomina Names module not found!');
-    return;
-  }
+  // The api instance is provided directly
+  const nominaAPI = api;
 
   // Define our goblin data
   const goblinData = {
     format: "4.0.0",
+    package: {
+      code: "goblin-de",
+      displayName: {
+        de: "Goblins",
+        en: "Goblins"
+      },
+      languages: ["de"],
+      phoneticLanguage: "de"
+    },
+    catalogs: {
+      names: {
+        displayName: {
+          de: "Namen",
+          en: "Names"
+        },
+        items: [
+          // Male first names
+          { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Snarl" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Vex" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Grimjaw" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+          { t: { de: "Skreech" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
+
+          // Female first names
+          { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Shiv" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Hex" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Razorclaw" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+          { t: { de: "Sneer" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
+
+          // Surnames (clan names)
+          { t: { de: "Skullcrusher" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Ratbiter" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Mudfoot" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Ironteeth" }, tags: ["surnames"], w: 1 },
+          { t: { de: "Shadowblade" }, tags: ["surnames"], w: 1 }
+        ]
+      }
+    },
+    recipes: [
+      {
+        id: "fullname",
+        displayName: { de: "Voller Name", en: "Full Name" },
+        pattern: [
+          { select: { from: "catalog", key: "names", where: { tags: ["firstnames"] } } },
+          { literal: " " },
+          { select: { from: "catalog", key: "names", where: { tags: ["surnames"] } } }
+        ],
+        post: ["TrimSpaces", "CollapseSpaces"]
+      }
+    ]
+  };
+
+  try {
+    // Register the goblin package with Nomina Names
+    await nominaAPI.registerPackage({
+      code: 'goblin-de',
+      data: goblinData
+    });
+
+    console.log('Goblin Names | Successfully registered!');
+    ui.notifications.info('Goblin names are now available!');
+
+  } catch (error) {
+    console.error('Goblin Names | Failed to register:', error);
+    ui.notifications.error('Failed to load goblin names');
+  }
+});
+```
     package: {
       code: "goblin-de",
       displayName: {
@@ -408,18 +471,12 @@ const PACKAGES = [
   { code: 'troll-de', data: TROLL_DE, name: 'Trolls' }
 ];
 
-// Wait for Foundry to be ready
-Hooks.once('ready', async () => {
-  console.log('Monster Names Pack | Initializing...');
+// Wait for Nomina Names API to be ready (Recommended)
+Hooks.once('nomina-names.api.ready', async (api) => {
+  console.log('Monster Names Pack | API ready, initializing...');
 
-  // Get Nomina Names API
-  const nominaAPI = game.modules.get('nomina-names')?.api;
-
-  if (!nominaAPI) {
-    console.error('Monster Names Pack | Nomina Names not found!');
-    ui.notifications.error('Monster Names Pack requires Nomina Names module');
-    return;
-  }
+  // The api instance is provided directly
+  const nominaAPI = api;
 
   // Register all packages
   let successCount = 0;
@@ -869,9 +926,9 @@ Instead of JS files, use JSON:
 
 **main.js:**
 ```javascript
-Hooks.once('ready', async () => {
-  const nominaAPI = game.modules.get('nomina-names')?.api;
-  if (!nominaAPI) return;
+// Wait for Nomina Names API to be ready (Recommended)
+Hooks.once('nomina-names.api.ready', async (api) => {
+  const nominaAPI = api;
 
   try {
     const response = await fetch('modules/my-goblin-names/data/goblin-de.json');
@@ -909,8 +966,9 @@ Hooks.once('init', () => {
   });
 });
 
-// Use the setting
-Hooks.once('ready', async () => {
+// Use the setting with the API ready event
+Hooks.once('nomina-names.api.ready', async (api) => {
+  const nominaAPI = api;
   const enableRare = game.settings.get('monster-names-pack', 'enableRareNames');
 
   if (!enableRare) {
@@ -927,16 +985,12 @@ Hooks.once('ready', async () => {
 ### Error Handling Best Practices
 
 ```javascript
-Hooks.once('ready', async () => {
+// Wait for Nomina Names API to be ready (Recommended)
+Hooks.once('nomina-names.api.ready', async (api) => {
   console.log('Monster Names | Starting...');
 
-  // Check for Nomina Names
-  const nominaAPI = game.modules.get('nomina-names')?.api;
-  if (!nominaAPI) {
-    console.error('Monster Names | Nomina Names not found');
-    ui.notifications.error('Monster Names requires Nomina Names module');
-    return;
-  }
+  // The api instance is provided directly
+  const nominaAPI = api;
 
   // Register packages with detailed error handling
   for (const pkg of PACKAGES) {

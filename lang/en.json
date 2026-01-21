@@ -486,6 +486,29 @@
                 "select-language-species": "Please select both language and species",
                 "select-components": "Please select at least one name component",
                 "select-category": "Please select a category"
+            },
+            "api": {
+                "invalid-language": "Invalid language: '{language}'",
+                "invalid-language-hint": "Available languages: {available}",
+                "invalid-species": "Invalid species: '{species}'",
+                "invalid-species-hint": "Available species: {available}",
+                "invalid-gender": "Invalid gender: '{gender}'",
+                "invalid-gender-hint": "Available genders: {available}",
+                "invalid-components": "Invalid name components: {components}",
+                "invalid-components-hint": "Components must be valid name part types (e.g., 'firstname', 'surname', 'title')",
+                "invalid-format": "Invalid format: '{format}'",
+                "invalid-format-hint": "Format must be a valid name template string",
+                "invalid-count": "Invalid count: {count}",
+                "invalid-count-hint": "Count must be a number between 1 and 100",
+                "invalid-package-code": "Invalid package code: '{code}'",
+                "invalid-package-code-hint": "Package code must be in format 'language.species' (e.g., 'de.human')",
+                "invalid-catalog": "Invalid catalog: '{catalog}'",
+                "invalid-catalog-hint": "Catalog must be a valid data catalog identifier",
+                "invalid-tags": "Invalid tags: {tags}",
+                "invalid-tags-hint": "Tags must be provided as an array of strings",
+                "missing-required-param": "Missing required parameter: '{param}'",
+                "module-not-ready": "Module is not ready yet",
+                "module-not-ready-hint": "The name generator is still initializing. Please wait a moment and try again."
             }
         }
     }

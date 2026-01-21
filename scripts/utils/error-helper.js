@@ -27,7 +27,19 @@ export const ErrorType = {
   GENERATION_UNSUPPORTED_GENDER: 'generation.unsupported-gender',
   GENERATION_NO_SUBCATEGORIES: 'generation.no-subcategories',
   GENERATION_NO_DATA: 'generation.no-data',
-  GENERATION_TEMPLATE_FAILED: 'generation.template-failed'
+  GENERATION_TEMPLATE_FAILED: 'generation.template-failed',
+  // API-specific error types
+  API_INVALID_LANGUAGE: 'api.invalid-language',
+  API_INVALID_SPECIES: 'api.invalid-species',
+  API_INVALID_GENDER: 'api.invalid-gender',
+  API_INVALID_COMPONENTS: 'api.invalid-components',
+  API_INVALID_FORMAT: 'api.invalid-format',
+  API_INVALID_COUNT: 'api.invalid-count',
+  API_INVALID_PACKAGE_CODE: 'api.invalid-package-code',
+  API_INVALID_CATALOG: 'api.invalid-catalog',
+  API_INVALID_TAGS: 'api.invalid-tags',
+  API_MISSING_REQUIRED_PARAM: 'api.missing-required-param',
+  API_MODULE_NOT_READY: 'api.module-not-ready'
 };
 
 /**
@@ -183,4 +195,27 @@ export function withErrorHandling(fn, context = {}) {
       throw error;
     }
   };
+}
+
+/**
+ * Creates a validation error for API input validation
+ * @param {string} errorType - The validation error type from ErrorType enum (e.g., API_INVALID_LANGUAGE)
+ * @param {Object} context - Context data for the error (e.g., { value: 'xyz', allowed: ['en', 'de'] })
+ * @returns {Error} A NominaError with validation details
+ */
+export function createValidationError(errorType, context = {}) {
+  return createNominaError(errorType, context);
+}
+
+/**
+ * Throws a validation error if the validation condition fails
+ * @param {boolean} validation - The validation condition to check
+ * @param {string} errorType - The error type to throw if validation fails
+ * @param {Object} context - Context data for the error message
+ * @throws {Error} Throws a NominaError if validation is false
+ */
+export function throwIfInvalid(validation, errorType, context = {}) {
+  if (!validation) {
+    throw createValidationError(errorType, context);
+  }
 }

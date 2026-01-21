@@ -486,6 +486,29 @@
                 "select-language-species": "Bitte wähle sowohl Sprache als auch Spezies",
                 "select-components": "Bitte wähle mindestens eine Namenskomponente",
                 "select-category": "Bitte wähle eine Kategorie"
+            },
+            "api": {
+                "invalid-language": "Ungültige Sprache: '{language}'",
+                "invalid-language-hint": "Verfügbare Sprachen: {available}",
+                "invalid-species": "Ungültige Spezies: '{species}'",
+                "invalid-species-hint": "Verfügbare Spezies: {available}",
+                "invalid-gender": "Ungültiges Geschlecht: '{gender}'",
+                "invalid-gender-hint": "Verfügbare Geschlechter: {available}",
+                "invalid-components": "Ungültige Namenskomponenten: {components}",
+                "invalid-components-hint": "Komponenten müssen gültige Namensbestandteile sein (z.B. 'firstname', 'surname', 'title')",
+                "invalid-format": "Ungültiges Format: '{format}'",
+                "invalid-format-hint": "Format muss eine gültige Namensvorlage sein",
+                "invalid-count": "Ungültige Anzahl: {count}",
+                "invalid-count-hint": "Anzahl muss eine Zahl zwischen 1 und 100 sein",
+                "invalid-package-code": "Ungültiger Paketcode: '{code}'",
+                "invalid-package-code-hint": "Paketcode muss das Format 'sprache.spezies' haben (z.B. 'de.human')",
+                "invalid-catalog": "Ungültiger Katalog: '{catalog}'",
+                "invalid-catalog-hint": "Katalog muss ein gültiger Datenkatalog-Bezeichner sein",
+                "invalid-tags": "Ungültige Tags: {tags}",
+                "invalid-tags-hint": "Tags müssen als Array von Strings angegeben werden",
+                "missing-required-param": "Fehlender erforderlicher Parameter: '{param}'",
+                "module-not-ready": "Modul ist noch nicht bereit",
+                "module-not-ready-hint": "Der Namen-Generator wird noch initialisiert. Bitte warte einen Moment und versuche es erneut."
             }
         }
     }
