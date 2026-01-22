@@ -3,52 +3,13 @@
 <details open>
 <summary><strong>🇬🇧 English</strong></summary>
 
-## Overview
+## Quickstart
 
-The Nomina Names API provides a comprehensive system for generating names and content for fantasy tabletop games. Whether you need character names, settlement names, tavern names, or other fantasy content, this API offers a flexible and extensible solution for Foundry VTT modules.
+Get started with the Nomina Names API in 3 simple steps:
 
-The API supports multiple languages, species, and content types, with built-in fallback mechanisms and intelligent generation algorithms. Built on the powerful JSON Format 4.0.0, it provides tag-based filtering, weighted selections, recipe-based generation, vocabulary system, and collections.
+### Step 1: Add Module Dependency
 
-### Key Features
-
-- **Multi-language Support**: German and English content with extensibility for other languages
-- **Species Diversity**: Built-in support for 8+ fantasy species (Human, Elf, Dwarf, etc.)
-- **JSON Format 4.0.0**: Modern data format with catalogs, tags, recipes, vocab, and collections
-- **Tag-based Filtering**: Flexible filtering with tags and collections
-- **Weighted Selection**: Control probability of name generation
-- **Recipe System**: Complex name composition with templates and patterns
-- **Robust Error Handling**: Graceful degradation and fallback mechanisms
-- **Performance Optimized**: Package-based caching and efficient data loading
-
-</details>
-
-<details>
-<summary><strong>🇩🇪 Deutsch</strong></summary>
-
-## Übersicht
-
-Die Nomina Names API bietet ein umfassendes System zur Generierung von Namen und Inhalten für Fantasy-Tabletop-Spiele. Ob Sie Charakternamen, Siedlungsnamen, Tavernennamen oder andere Fantasy-Inhalte benötigen, diese API bietet eine flexible und erweiterbare Lösung für Foundry VTT Module.
-
-Die API unterstützt mehrere Sprachen, Spezies und Inhaltstypen mit eingebauten Fallback-Mechanismen und intelligenten Generierungsalgorithmen. Sie ist sowohl für einfache Aufgaben leicht zu verwenden als auch für erweiterte Anwendungsfälle anpassbar.
-
-### Hauptfunktionen
-
-- **Mehrsprachige Unterstützung**: Deutsche und englische Inhalte mit Erweiterbarkeit für andere Sprachen
-- **Spezies-Vielfalt**: Eingebaute Unterstützung für 8+ Fantasy-Spezies (Mensch, Elf, Zwerg, etc.)
-- **Inhaltskategorien**: Namen, Siedlungen, Tavernen, Geschäfte, Bücher, Schiffe und mehr
-- **Format-Unterstützung**: JSON Format 3.0.0+ mit optionalen Metadaten (3.0.1)
-- **Externe Modul-Integration**: Einfache Registrierung eigener Spezies und Inhalte
-- **Robuste Fehlerbehandlung**: Graceful Degradation und Fallback-Mechanismen
-- **Performance-Optimiert**: Lazy Loading und intelligentes Caching
-
-</details>
-
-<details open>
-<summary><strong>🇬🇧 Getting Started</strong></summary>
-
-### Basic Setup
-
-To use the Nomina Names API in your module, first ensure it's listed as a dependency in your `module.json`:
+Add `nomina-names` to your `module.json`:
 
 ```json
 {
@@ -68,67 +29,15 @@ To use the Nomina Names API in your module, first ensure it's listed as a depend
 }
 ```
 
-### Accessing the API
+### Step 2: Listen for API Ready Event
 
-The API is available through the global game object once Foundry VTT has loaded:
-
-```javascript
-// Wait for the system to be ready
-Hooks.once('ready', () => {
-  const namesAPI = game.modules.get('nomina-names').api;
-
-  // Now you can use the API
-  generateCharacterName();
-});
-
-async function generateCharacterName() {
-  const api = game.modules.get('nomina-names').api;
-  const name = await api.generateName({
-    species: 'elf',
-    gender: 'female',
-    language: 'en',
-    components: ['firstname', 'surname'],
-    format: '{firstname} {surname}'
-  });
-
-  console.log('Generated name:', name);
-  // Result: "Aerdeth Moonwhisper"
-}
-```
-
-### Event-Based Integration
-
-For more reliable integration, use the ready hook to ensure the names system is fully initialized:
-
-```javascript
-Hooks.once('ready', async () => {
-  if (!game.modules.get('nomina-names')?.active) {
-    console.warn('Nomina Names module not available');
-    return;
-  }
-
-  const api = game.modules.get('nomina-names').api;
-
-  // Generate a name
-  const name = await api.generateName({
-    species: 'human',
-    gender: 'male',
-    language: 'en'
-  });
-
-  console.log('Generated name:', name);
-});
-```
-
-### API Ready Event (Recommended)
-
-The recommended way to integrate with the Nomina Names API is to listen for the dedicated API ready event. This ensures your module waits until the API is fully initialized before attempting to use it.
+The recommended way to access the API is using the dedicated ready event. **Important:** The API is automatically passed as the `api` parameter - you don't need to call `game.modules.get('nomina-names').api` yourself.
 
 ```javascript
 Hooks.once('nomina-names.api.ready', async (api) => {
-  console.log('Nomina Names API is ready!');
+  // The 'api' parameter contains the ready-to-use API
+  // No need to call game.modules.get() here!
 
-  // The api instance is passed directly
   const name = await api.generateName({
     species: 'elf',
     gender: 'female',
@@ -136,167 +45,119 @@ Hooks.once('nomina-names.api.ready', async (api) => {
   });
 
   console.log('Generated name:', name);
-});
-
-// With error handling
-Hooks.once('nomina-names.api.ready', async (api) => {
-  try {
-    const name = await api.generateName({
-      species: 'elf',
-      gender: 'female',
-      language: 'en'
-    });
-    console.log('Generated name:', name);
-  } catch (error) {
-    console.error('Failed to generate name:', error);
-    ui.notifications.error('Name generation failed');
-  }
+  // Output: "Aerdeth Moonwhisper"
 });
 ```
 
-**Advantages**:
-- **No polling required**: Event fires immediately when ready
-- **API instance provided**: No need to call `game.modules.get()` again
-- **Clear intent**: Event name is self-documenting
-- **Standard pattern**: Follows Foundry VTT module conventions
+**How it works:**
+- The `nomina-names.api.ready` event fires automatically when the API is initialized
+- The API instance is passed directly as the `api` parameter
+- You can use `api` immediately without any additional setup
 
-**Alternative: ready() Method**
-
-For cases where you prefer async/await patterns, you can use the `ready()` method:
+**Alternative (outside the event):**
+If you need to access the API outside of the ready event, you can use the shorter global access point:
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
+// Get the API reference (shorter way)
+const api = game.NominaAPI;
+
+// Wait for it to be ready
 await api.ready();
 
-// API is now ready
-const name = await api.generateName({ species: 'human' });
+// Now use it
+const name = await api.generateName({ species: 'elf' });
 ```
 
-**Note**: The `ready()` method internally polls for readiness, which is less efficient than the event-based approach.
+**Note:** `game.NominaAPI` is the recommended shorthand. You can also use `game.modules.get('nomina-names').api` if you prefer the explicit path.
 
-### Legacy Events
+### Step 3: Generate Names
 
-For backwards compatibility, the following legacy event is still supported:
+That's it! You can now generate names. Here are some common examples:
 
 ```javascript
-Hooks.once('namesModuleReady', async (api) => {
-  // Legacy event, still works but deprecated
-  const name = await api.generateName({ species: 'human' });
+// Simple character name
+const name = await api.generateName({
+  species: 'human',
+  gender: 'male',
+  language: 'en'
 });
-```
+// Result: "John Smith"
 
-**Migration**: Replace `namesModuleReady` with `nomina-names.api.ready` in new code.
-
-</details>
-
-<details>
-<summary><strong>🇩🇪 Erste Schritte</strong></summary>
-
-### Grundeinrichtung
-
-Um die Nomina Names API in Ihrem Modul zu verwenden, stellen Sie zunächst sicher, dass sie als Abhängigkeit in Ihrer `module.json` aufgeführt ist:
-
-```json
-{
-  "dependencies": [
-    {
-      "name": "nomina-names",
-      "type": "module"
-    }
-  ]
-}
-```
-
-### API-Zugriff
-
-Die API ist über das globale Game-Objekt verfügbar, sobald Foundry VTT geladen wurde:
-
-```javascript
-// Warten Sie, bis das System bereit ist
-Hooks.once('ready', () => {
-  const namesAPI = game.modules.get('nomina-names').api;
-
-  // Jetzt können Sie die API verwenden
-  generateCharacterName();
+// Multiple names at once
+const names = await api.generateName({
+  species: 'elf',
+  language: 'de',
+  count: 5
 });
+// Result: ["Arwen Mondglanz", "Galadriel Silberblatt", ...]
 
-async function generateCharacterName() {
-  const api = game.modules.get('nomina-names').api;
-  const name = await api.generateName({
-    species: 'elf',
-    gender: 'female',
-    language: 'de'
-  });
-
-  console.log('Generierter Name:', name);
-}
-```
-
-### Event-basierte Integration
-
-Für eine zuverlässigere Integration verwenden Sie das Core-Loaded-Event, um sicherzustellen, dass das Namenssystem vollständig initialisiert ist:
-
-```javascript
-Hooks.once('nomina-names:coreLoaded', async () => {
-  console.log('Namenssystem ist bereit!');
-
-  // Registrieren Sie hier Ihre benutzerdefinierten Spezies
-  await registerMySpecies();
-
-  // Beginnen Sie mit der Verwendung der API
-  const name = await game.modules.get('nomina-names').api.generateName({
-    species: 'human',
-    category: 'names'
-  });
+// Name with title
+const nobleName = await api.generateName({
+  species: 'human',
+  gender: 'female',
+  language: 'en',
+  components: ['title', 'firstname', 'surname'],
+  format: '{title} {firstname} {surname}'
 });
+// Result: "Lady von Goldenhaven Elara Brightblade"
+
+// Get surnames only
+const surnames = await api.generateFromCatalog({
+  species: 'dwarf',
+  language: 'en',
+  catalog: 'surnames',
+  count: 5
+});
+// Result: ["Ironbeard", "Stonehelm", "Goldseeker", ...]
 ```
 
-</details>
+## Overview
 
-<details open>
-<summary><strong>🇬🇧 Core Functions</strong></summary>
+The Nomina Names API provides a comprehensive system for generating fantasy names and content. Built on JSON Format 4.0.0, it offers:
 
-## Core Functions
+- **8+ Species**: Human, Elf, Dwarf, Halfling, Gnome, Dragonborn, Tiefling, Aasimar
+- **2 Languages**: German and English (extensible)
+- **Multiple Content Types**: Names, settlements, taverns, shops, books, ships
+- **Tag-based Filtering**: Fine-grained control over generated content
+- **Input Validation**: Automatic parameter validation with clear error messages
+
+---
+
+## API Reference
 
 ### Name Generation
 
-The primary function for generating names using the V4 system with packages, catalogs, and recipes.
-
 #### `generateName(options)`
 
-Generates a single name or multiple names based on the provided options.
+Generate a single name or multiple names.
 
 **Parameters:**
 
-- `options` (Object): Configuration object with the following properties:
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `language` | string | `'de'` | Language code (`'de'`, `'en'`) |
+| `species` | string | `'human'` | Species code (`'human'`, `'elf'`, `'dwarf'`, etc.) |
+| `gender` | string\|null | `null` | Gender (`'male'`, `'female'`, `'nonbinary'`, or `null` for random) |
+| `components` | string[] | `['firstname', 'surname']` | Name components to include |
+| `format` | string | `'{firstname} {surname}'` | Name format template |
+| `count` | number | `1` | Number of names to generate (1-100) |
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `language` | string | `'de'` | Language code ('de', 'en') |
-| `species` | string | `'human'` | Species identifier (e.g., 'human', 'elf', 'dwarf') |
-| `gender` | string | `null` | Gender for name generation ('male', 'female', 'nonbinary', null for any) |
-| `components` | array | `['firstname', 'surname']` | Name components to include |
-| `format` | string | `'{firstname} {surname}'` | Name format template with placeholders |
-| `count` | number | `1` | Number of names to generate |
+**Returns:** `Promise<string>` when count=1, `Promise<string[]>` when count>1
 
-**Returns:** `Promise<string>` when `count=1`, `Promise<Array<string>>` when `count>1`
+**Valid Components:** `'firstname'`, `'surname'`, `'title'`, `'nickname'`
 
-**Basic Examples:**
+**Examples:**
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
-
-// Simple character name (firstname + surname)
-const characterName = await api.generateName({
+// Basic usage
+const name = await api.generateName({
   species: 'elf',
   gender: 'male',
-  language: 'en',
-  components: ['firstname', 'surname'],
-  format: '{firstname} {surname}'
+  language: 'en'
 });
 // Result: "Aerdeth Moonwhisper"
 
-// Just a first name
+// First name only
 const firstName = await api.generateName({
   species: 'human',
   gender: 'female',
@@ -306,100 +167,67 @@ const firstName = await api.generateName({
 });
 // Result: "Emma"
 
-// Generate multiple names at once
-const names = await api.generateName({
-  species: 'dwarf',
-  gender: 'male',
-  language: 'en',
-  count: 5
-});
-// Result: ["Thorin Ironforge", "Balin Stonehelm", ...]
-```
-
-**Advanced Examples:**
-
-```javascript
-// Name with title
-const formalName = await api.generateName({
-  species: 'human',
-  gender: 'female',
-  language: 'en',
-  components: ['title', 'firstname', 'surname'],
-  format: '{title} {firstname} {surname}'
-});
-// Result: "Lady von Goldenhaven Elara Brightblade"
-// Note: Title automatically includes settlement with preposition
-
 // Name with nickname
-const nicknameFormat = await api.generateName({
+const nicknameName = await api.generateName({
   species: 'dwarf',
   gender: 'male',
   language: 'en',
   components: ['firstname', 'nickname', 'surname'],
   format: '{firstname} "{nickname}" {surname}'
 });
-// Result: "Thorin "Stonefist" Ironforge"
+// Result: 'Thorin "Stonefist" Ironforge'
 
-// Full name with all components
-const fullName = await api.generateName({
-  species: 'elf',
+// Generate multiple names
+const names = await api.generateName({
+  species: 'human',
   gender: 'female',
-  language: 'de',
-  components: ['title', 'firstname', 'nickname', 'surname'],
-  format: '{title} {firstname} "{nickname}" {surname}'
+  language: 'en',
+  count: 5
 });
-// Result: "Lady von Silbermond Arwen "Sternentänzerin" Mondglanz"
+// Result: ["Emma Watson", "Sarah Jones", "Emily Davis", ...]
 ```
+
+---
 
 #### `generateNames(options)`
 
-Convenience function that calls `generateName()` with `count > 1`. Returns an array of names.
+Convenience method for generating multiple names. Always returns an array.
+
+**Parameters:** Same as `generateName()`
+
+**Returns:** `Promise<string[]>`
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
-
-// Generate multiple character names
 const names = await api.generateNames({
   species: 'human',
   gender: 'male',
   count: 5,
   language: 'en'
 });
-// Result: ["John Smith", "William Brown", "Robert Davis", "James Wilson", "Michael Anderson"]
-
-// Generate female elf names
-const elfNames = await api.generateNames({
-  species: 'elf',
-  gender: 'female',
-  count: 3,
-  language: 'de'
-});
-// Result: ["Arwen Mondglanz", "Galadriel Silberblatt", "Lúthien Sternenlied"]
+// Result: ["John Smith", "William Brown", "Robert Davis", ...]
 ```
+
+---
 
 ### Catalog Generation
 
 #### `generateFromCatalog(options)`
 
-Generate directly from a specific catalog (e.g., surnames only, titles only).
+Generate items directly from a specific catalog.
 
 **Parameters:**
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
 | `language` | string | `'de'` | Language code |
-| `species` | string | `'human'` | Species identifier |
-| `catalog` | string | - | Catalog key (e.g., 'surnames', 'titles', 'settlements') |
-| `tags` | array | `[]` | Filter tags |
+| `species` | string | `'human'` | Species code |
+| `catalog` | string | - | Catalog key (required) |
+| `tags` | string[] | `[]` | Filter by tags |
 | `count` | number | `1` | Number of items to generate |
 
-**Returns:** `Promise<Array<string>>` - Always returns an array
-
-**Examples:**
+**Returns:** `Promise<string[]>`
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
-
 // Get surnames only
 const surnames = await api.generateFromCatalog({
   species: 'dwarf',
@@ -407,7 +235,7 @@ const surnames = await api.generateFromCatalog({
   catalog: 'surnames',
   count: 5
 });
-// Result: ["Ironbeard", "Stonehelm", "Goldseeker", "Hammerhand", "Deepdelver"]
+// Result: ["Ironbeard", "Stonehelm", "Goldseeker", ...]
 
 // Get nicknames
 const nicknames = await api.generateFromCatalog({
@@ -429,20 +257,24 @@ const harbors = await api.generateFromCatalog({
 // Result: ["Port Royal", "Seahaven", "Anchor Bay"]
 ```
 
+---
+
 ### Information Functions
 
 #### `getAvailableLanguages()`
 
-Get list of available languages.
+Get all available language codes.
 
 ```javascript
 const languages = await api.getAvailableLanguages();
 // Result: ['de', 'en']
 ```
 
+---
+
 #### `getAvailableSpecies(language)`
 
-Get list of available species for a language.
+Get all available species for a given language.
 
 ```javascript
 const species = await api.getAvailableSpecies('en');
@@ -454,20 +286,22 @@ const species = await api.getAvailableSpecies('en');
 // ]
 ```
 
+---
+
 #### `getAllSpeciesCodes()`
 
-Get all species codes across all languages. This is useful for configuration dialogs and administrative interfaces that need to display all registered species regardless of language availability.
+Get all species codes across all languages.
 
 ```javascript
 const allSpecies = api.getAllSpeciesCodes();
-// Result: ['aasimar', 'dragonborn', 'dwarf', 'elf', 'gnome', 'halfling', 'human', 'orc', 'tiefling']
+// Result: ['aasimar', 'dragonborn', 'dwarf', 'elf', ...]
 ```
 
-**Note:** This method returns a synchronous array of species codes sorted alphabetically. Unlike `getAvailableSpecies()`, it does not filter by language or provide localized names.
+---
 
 #### `getAvailableCatalogs(language, species)`
 
-Get available catalogs (categories) for a species/language package.
+Get available catalogs for a species-language combination.
 
 ```javascript
 const catalogs = await api.getAvailableCatalogs('de', 'human');
@@ -479,1060 +313,1024 @@ const catalogs = await api.getAvailableCatalogs('de', 'human');
 // ]
 ```
 
-## UI Functions
+---
 
-The API also provides functions to open the built-in user interfaces.
+#### `getAvailableCollections(language, species)`
 
-### `openGenerator()`
-
-Opens the main name generator application.
+Get available collections (v4.0.1+ feature).
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
+const collections = await api.getAvailableCollections('de', 'human');
+// Result: [
+//   { key: 'noble', displayName: 'Adelige' },
+//   { key: 'rare', displayName: 'Selten' },
+//   ...
+// ]
+```
+
+---
+
+#### `getSupportedGenders()`
+
+Get all supported gender codes.
+
+```javascript
+const genders = api.getSupportedGenders();
+// Result: ['male', 'female', 'nonbinary']
+```
+
+---
+
+### Readiness Functions
+
+#### `ready()`
+
+Wait for the API to be ready. Alternative to the event-based approach.
+
+```javascript
+const api = game.NominaAPI;
+await api.ready();
+// API is now ready
+const name = await api.generateName({ species: 'human' });
+```
+
+---
+
+#### `isReady()`
+
+Check if the API is ready without waiting.
+
+```javascript
+const api = game.NominaAPI;
+if (api.isReady()) {
+  // Safe to use API
+  const name = await api.generateName({ language: 'de' });
+}
+```
+
+---
+
+#### `hasPackage(species, language)`
+
+Check if a specific species-language package exists.
+
+```javascript
+const hasGoblins = await api.hasPackage('goblin', 'en');
+if (hasGoblins) {
+  // Package exists, safe to generate names
+  const name = await api.generateName({ species: 'goblin' });
+}
+```
+
+---
+
+### UI Functions
+
+#### `openGenerator()`
+
+Open the main name generator application.
+
+```javascript
 api.openGenerator();
 ```
 
-### `openPicker(actor)`
+---
 
-Opens the name picker for a specific actor.
+#### `openPicker(actor)`
+
+Open the name picker for a specific actor.
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
 const actor = game.actors.getName("My Character");
 api.openPicker(actor);
 ```
 
-### `openEmergency()`
+---
 
-Opens the emergency quick-name generator.
+#### `openEmergency()`
+
+Open the emergency quick-name generator.
 
 ```javascript
-const api = game.modules.get('nomina-names').api;
 api.openEmergency();
 ```
 
-## Extension System
+---
 
-### Hook Registration
+### Extension Functions
 
-You can register hooks to be notified of events in the name generation system.
+#### `registerPackage(options)`
 
-```javascript
-const api = game.modules.get('nomina-names').api;
-
-// Register a hook before name generation
-api.registerHook('names.beforeGenerate', (data) => {
-  console.log('About to generate name with options:', data.options);
-});
-
-// Register a hook after name generation
-api.registerHook('names.afterGenerate', (data) => {
-  console.log('Generated name:', data.result);
-  console.log('Used options:', data.options);
-});
-```
-
-Available hooks:
-- `names.beforeGenerate` - Fired before name generation
-- `names.afterGenerate` - Fired after name generation
-- `names.dataLoaded` - Fired when data is loaded
-
-## Adding Custom Content (V4 Format)
-
-External modules can register custom species and content at runtime using the V4 package registration API.
-
-### `registerPackage(options)`
-
-Register a new package (species-language combination) with custom names and content.
+Register a custom package at runtime.
 
 **Parameters:**
 
-| Property | Type | Required | Description |
-|----------|------|----------|-------------|
-| `code` | string | Yes | Package code in format 'species-language' (e.g., 'goblin-de') |
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `code` | string | Yes | Package code (`'species-language'`) |
 | `data` | object | Yes | Package data following JSON Format 4.0.0 |
 
-**Returns:** `Promise<void>`
-
-**Example - Basic Registration:**
-
 ```javascript
-Hooks.once('ready', async () => {
-  const api = game.modules.get('nomina-names')?.api;
-  if (!api) return;
-
-  await api.registerPackage({
-    code: 'goblin-de',
-    data: {
-      format: "4.0.0",
-      package: {
-        code: "goblin-de",
-        displayName: { de: "Goblins", en: "Goblins" },
-        languages: ["de"],
-        phoneticLanguage: "de"
-      },
-      catalogs: {
-        names: {
-          displayName: { de: "Namen", en: "Names" },
-          items: [
-            { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
-            { t: { de: "Snarl" }, tags: ["male", "firstnames"], w: 1, attrs: { gender: "m" } },
-            { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 1, attrs: { gender: "f" } },
-            { t: { de: "Skullcrusher" }, tags: ["surnames"], w: 1 },
-            { t: { de: "Ratbiter" }, tags: ["surnames"], w: 1 }
-          ]
-        },
-        settlements: {
-          displayName: { de: "Siedlungen", en: "Settlements" },
-          items: [
-            { t: { de: "Knochenfels" }, tags: ["camp"], w: 1 },
-            { t: { de: "Schädelhöhle" }, tags: ["cave"], w: 1 }
-          ]
-        }
-      },
-      recipes: [
-        {
-          id: "fullname",
-          displayName: { de: "Voller Name", en: "Full Name" },
-          pattern: [
-            { select: { from: "catalog", key: "names", where: { tags: ["firstnames"] } } },
-            { literal: " " },
-            { select: { from: "catalog", key: "names", where: { tags: ["surnames"] } } }
-          ],
-          post: ["TrimSpaces", "CollapseSpaces"]
-        }
-      ]
-    }
-  });
-
-  ui.notifications.info('Goblin species registered!');
-});
-```
-
-**Example - Loading from JSON File:**
-
-```javascript
-Hooks.once('ready', async () => {
-  const api = game.modules.get('nomina-names')?.api;
-  if (!api) return;
-
-  try {
-    // Load package data from your module's data folder
-    const response = await fetch('modules/my-goblin-module/data/goblin-de.json');
-    const packageData = await response.json();
-
-    // Register the package
-    await api.registerPackage({
-      code: 'goblin-de',
-      data: packageData
-    });
-
-    console.log('Goblin package registered successfully');
-  } catch (error) {
-    console.error('Failed to register goblin package:', error);
-  }
-});
-```
-
-### `registerPackages(packages)`
-
-Register multiple packages at once.
-
-**Parameters:**
-- `packages` (Array): Array of package registration options
-
-**Example:**
-
-```javascript
-await api.registerPackages([
-  {
-    code: 'goblin-de',
-    data: goblinDeData
-  },
-  {
-    code: 'goblin-en',
-    data: goblinEnData
-  },
-  {
-    code: 'orc-de',
-    data: orcDeData
-  }
-]);
-```
-
-### Package Data Format
-
-Your package data must follow JSON Format 4.0.0. See the [JSON Format 4.0.0 Specification](json_v_4_spec.md) for complete details.
-
-**Minimum Required Structure:**
-
-```json
-{
-  "format": "4.0.0",
-  "package": {
-    "code": "species-language",
-    "displayName": { "de": "Name", "en": "Name" },
-    "languages": ["de"],
-    "phoneticLanguage": "de"
-  },
-  "catalogs": {
-    "names": {
-      "displayName": { "de": "Namen", "en": "Names" },
-      "items": [
-        { "t": { "de": "Text" }, "tags": ["tag1"], "w": 1 }
-      ]
-    }
-  }
-}
-```
-
-For more information on creating custom content, see the [Module Extension Guide](module-extension-guide.md) and [JSON Format 4.0.0 Specification](json_v_4_spec.md).
-
-## Collections
-
-Collections are predefined filter queries that simplify access to specific subsets of catalog items. They provide a convenient way to group related items without the need to manually specify tags every time.
-
-### What are Collections?
-
-A Collection is a named query that defines:
-- Which catalog to query (e.g., "taverns", "names")
-- Which tags to filter by (e.g., ["harbor_tavern"], ["male", "rare"])
-- Optional display labels and descriptions in multiple languages
-
-Collections serve two main purposes:
-1. **Simplify API calls**: Instead of specifying `catalog: "taverns", tags: ["upscale_inn"]`, you just use `collection: "upscale_inns"`
-2. **Provide user-friendly UI labels**: Collections can have localized display names for dropdown menus
-
-### Tag-based Collections vs Recipe-based Collections
-
-**Tag-based Collections** (most common):
-- Define a catalog and tag filter
-- Items are selected randomly from filtered results
-- Perfect for categorized content like tavern types or name subsets
-
-```json
-{
-  "key": "harbor_taverns",
-  "labels": { "de": "Hafentavernen", "en": "Harbor Taverns" },
-  "query": {
-    "category": "taverns",
-    "tags": ["harbor_tavern"]
-  }
-}
-```
-
-**Recipe-based Collections** (advanced):
-- Reference a recipe instead of raw tags
-- Enable complex composition patterns
-- Used when collection items need multi-step generation
-
-```json
-{
-  "key": "full_noble_names",
-  "labels": { "de": "Volle Adelsnamen", "en": "Full Noble Names" },
-  "query": {
-    "recipe": "noble_fullname"
-  }
-}
-```
-
-### Collection Definition in JSON
-
-Collections are defined in the `collections` array of a v4.0.0 package JSON file:
-
-```json
-{
-  "format": "4.0.0",
-  "package": {
-    "code": "human-de",
-    "displayName": { "de": "Menschen", "en": "Humans" },
-    "languages": ["de"]
-  },
-  "catalogs": {
-    "taverns": {
-      "displayName": { "de": "Tavernen", "en": "Taverns" },
-      "items": [
-        { "t": { "de": "Goldener Greif" }, "tags": ["upscale_inn"], "w": 1 },
-        { "t": { "de": "Zum Anker" }, "tags": ["harbor_tavern"], "w": 1 },
-        { "t": { "de": "Brauner Bar" }, "tags": ["common_tavern"], "w": 1 },
-        { "t": { "de": "Rostiges Schwert" }, "tags": ["adventurer_tavern"], "w": 1 }
-      ]
-    }
-  },
-  "collections": [
-    {
-      "key": "upscale_inns",
-      "labels": {
-        "de": "Gehobene Gasthauser",
-        "en": "Upscale Inns"
-      },
-      "description": {
-        "de": "Feine Etablissements fur wohlhabende Gaste",
-        "en": "Fine establishments for wealthy guests"
-      },
-      "query": {
-        "category": "taverns",
-        "tags": ["upscale_inn"]
-      }
-    },
-    {
-      "key": "harbor_taverns",
-      "labels": {
-        "de": "Hafentavernen",
-        "en": "Harbor Taverns"
-      },
-      "query": {
-        "category": "taverns",
-        "tags": ["harbor_tavern"]
-      }
-    }
-  ],
-  "fileVersion": "4.0.1"
-}
-```
-
-#### Collection Properties
-
-| Property | Type | Required | Description |
-|----------|------|----------|-------------|
-| `key` | string | Yes | Unique identifier for the collection (e.g., "upscale_inns") |
-| `labels` | object | Yes | Localized display names `{ "de": "...", "en": "..." }` |
-| `description` | object | No | Localized descriptions for UI tooltips |
-| `query` | object | Yes | The filter query definition |
-| `query.category` | string | Yes | The catalog key to query (e.g., "taverns", "names") |
-| `query.tags` | array | No | Tags that items must have (AND logic - all tags required) |
-| `query.limit` | number | No | Maximum number of items to consider |
-
-### API Methods for Collections
-
-#### `generateFromCollection(options)`
-
-Generate content using a predefined collection.
-
-**Parameters:**
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `language` | string | `'de'` | Language code |
-| `species` | string | `'human'` | Species identifier |
-| `collection` | string | - | Collection key (e.g., "upscale_inns") |
-| `count` | number | `1` | Number of items to generate |
-
-**Returns:** `Promise<Array<string>>` - Array of generated names/items
-
-**Examples:**
-
-```javascript
-const api = game.modules.get('nomina-names').api;
-
-// Generate an upscale inn name
-const upscaleInns = await api.generateFromCollection({
-  species: 'human',
-  language: 'de',
-  collection: 'upscale_inns',
-  count: 1
-});
-// Result: ["Goldener Greif"]
-
-// Generate multiple harbor tavern names
-const harborTaverns = await api.generateFromCollection({
-  species: 'human',
-  language: 'de',
-  collection: 'harbor_taverns',
-  count: 5
-});
-// Result: ["Zum Anker", "Salziger Hund", "Windrose", "Tiefes Wasser", "Nebelhafen"]
-
-// Generate adventurer tavern names
-const adventurerTaverns = await api.generateFromCollection({
-  species: 'human',
-  language: 'de',
-  collection: 'adventurer_taverns',
-  count: 3
-});
-// Result: ["Rostiges Schwert", "Letzte Chance", "Goldener Wurfel"]
-```
-
-#### `getAvailableCollections(language, species)`
-
-Get all collections available for a species/language combination.
-
-```javascript
-const api = game.modules.get('nomina-names').api;
-
-const collections = await api.getAvailableCollections('de', 'human');
-// Result: [
-//   { key: 'upscale_inns', label: 'Gehobene Gasthauser' },
-//   { key: 'harbor_taverns', label: 'Hafentavernen' },
-//   { key: 'common_taverns', label: 'Gewohnliche Tavernen' },
-//   { key: 'adventurer_taverns', label: 'Abenteurertavernen' }
-// ]
-```
-
-### Practical Collection Examples
-
-#### Example 1: Tavern Generator with Types
-
-```javascript
-async function generateTavernByType(type) {
-  const api = game.modules.get('nomina-names').api;
-
-  // Map tavern type to collection
-  const collectionMap = {
-    'upscale': 'upscale_inns',
-    'common': 'common_taverns',
-    'harbor': 'harbor_taverns',
-    'adventurer': 'adventurer_taverns'
-  };
-
-  const collection = collectionMap[type];
-  if (!collection) {
-    throw new Error(`Unknown tavern type: ${type}`);
-  }
-
-  const names = await api.generateFromCollection({
-    species: 'human',
-    language: 'de',
-    collection: collection,
-    count: 1
-  });
-
-  return names[0];
-}
-
-// Usage
-const harborTavern = await generateTavernByType('harbor');
-console.log(`Welcome to ${harborTavern}!`);
-// Output: "Welcome to Zum Anker!"
-```
-
-#### Example 2: Building a Settlement with Themed Locations
-
-```javascript
-async function generateSettlement() {
-  const api = game.modules.get('nomina-names').api;
-
-  // Generate settlement name
-  const settlementNames = await api.generateFromCatalog({
-    species: 'human',
-    language: 'de',
-    catalog: 'settlements',
-    count: 1
-  });
-
-  // Generate different tavern types using collections
-  const upscaleInn = await api.generateFromCollection({
-    species: 'human',
-    language: 'de',
-    collection: 'upscale_inns',
-    count: 1
-  });
-
-  const commonTavern = await api.generateFromCollection({
-    species: 'human',
-    language: 'de',
-    collection: 'common_taverns',
-    count: 1
-  });
-
-  const harborTavern = await api.generateFromCollection({
-    species: 'human',
-    language: 'de',
-    collection: 'harbor_taverns',
-    count: 1
-  });
-
-  return {
-    name: settlementNames[0],
-    locations: {
-      nobleTavern: upscaleInn[0],
-      commonTavern: commonTavern[0],
-      docks: harborTavern[0]
-    }
-  };
-}
-
-// Usage
-const settlement = await generateSettlement();
-console.log(`Welcome to ${settlement.name}!`);
-console.log(`  Noble district: ${settlement.locations.nobleTavern}`);
-console.log(`  Market square: ${settlement.locations.commonTavern}`);
-console.log(`  Docks: ${settlement.locations.docks}`);
-```
-
-#### Example 3: Dynamic Collection Selection in UI
-
-```javascript
-async function buildCollectionDropdown(species, language) {
-  const api = game.modules.get('nomina-names').api;
-
-  // Get all available collections
-  const collections = await api.getAvailableCollections(language, species);
-
-  // Build HTML dropdown
-  let html = '<select id="collection-select">';
-  html += '<option value="">-- Select Type --</option>';
-
-  for (const collection of collections) {
-    html += `<option value="${collection.key}">${collection.label}</option>`;
-  }
-
-  html += '</select>';
-  return html;
-}
-
-// Generate based on selected collection
-async function generateFromSelectedCollection() {
-  const select = document.getElementById('collection-select');
-  const collectionKey = select.value;
-
-  if (!collectionKey) {
-    ui.notifications.warn('Please select a collection');
-    return;
-  }
-
-  const api = game.modules.get('nomina-names').api;
-  const results = await api.generateFromCollection({
-    species: 'human',
-    language: 'de',
-    collection: collectionKey,
-    count: 5
-  });
-
-  console.log('Generated:', results);
-}
-```
-
-### Creating Custom Collections
-
-When creating your own module extension, you can define custom collections to provide themed name subsets:
-
-```javascript
-// In your module's main.js
-const myPackageData = {
-  format: "4.0.0",
-  package: {
-    code: "goblin-de",
-    displayName: { de: "Goblins", en: "Goblins" },
-    languages: ["de"]
-  },
-  catalogs: {
-    names: {
-      displayName: { de: "Namen", en: "Names" },
-      items: [
-        // Chieftain names - important goblins
-        { t: { de: "Grax der Grosse" }, tags: ["male", "firstnames", "chieftain"], w: 1 },
-        { t: { de: "Vyx Schaedelspalter" }, tags: ["female", "firstnames", "chieftain"], w: 1 },
-        // Common goblin names
-        { t: { de: "Snarl" }, tags: ["male", "firstnames", "common"], w: 1 },
-        { t: { de: "Grit" }, tags: ["female", "firstnames", "common"], w: 1 },
-        // Shaman names
-        { t: { de: "Hexzahn" }, tags: ["male", "firstnames", "shaman"], w: 1 },
-        { t: { de: "Knochenauge" }, tags: ["female", "firstnames", "shaman"], w: 1 }
-      ]
-    }
-  },
-  collections: [
-    {
-      key: "chieftains",
-      labels: { de: "Hauptlinge", en: "Chieftains" },
-      description: { de: "Namen fur Goblin-Anfuhrer", en: "Names for goblin leaders" },
-      query: {
-        category: "names",
-        tags: ["firstnames", "chieftain"]
-      }
-    },
-    {
-      key: "shamans",
-      labels: { de: "Schamanen", en: "Shamans" },
-      description: { de: "Namen fur Goblin-Schamanen", en: "Names for goblin shamans" },
-      query: {
-        category: "names",
-        tags: ["firstnames", "shaman"]
-      }
-    },
-    {
-      key: "common_goblins",
-      labels: { de: "Gewohnliche Goblins", en: "Common Goblins" },
-      query: {
-        category: "names",
-        tags: ["firstnames", "common"]
-      }
-    }
-  ]
-};
-
-// Register with Nomina Names
 await api.registerPackage({
   code: 'goblin-de',
-  data: myPackageData
-});
-```
-
-### Best Practices for Collections
-
-1. **Use descriptive keys**: Use clear, lowercase keys with underscores (e.g., `harbor_taverns`, not `ht` or `HarborTaverns`)
-
-2. **Always provide labels**: Include labels in all supported languages for proper UI display
-
-3. **Document with descriptions**: Add descriptions to help users understand what each collection contains
-
-4. **Keep queries focused**: Each collection should represent a distinct, useful subset of items
-
-5. **Match tags consistently**: Ensure your catalog items have the tags your collections query for
-
-6. **Test your collections**: Verify that collections return expected results before publishing
-
-## Practical Examples
-
-### Creating a Complete NPC Generator
-
-```javascript
-async function generateNPC() {
-  const api = game.modules.get('nomina-names').api;
-
-  // Available species and genders
-  const species = ['human', 'elf', 'dwarf', 'halfling'];
-  const genders = ['male', 'female'];
-
-  // Random selections
-  const randomSpecies = species[Math.floor(Math.random() * species.length)];
-  const randomGender = genders[Math.floor(Math.random() * genders.length)];
-
-  // Generate the name
-  const name = await api.generateName({
-    species: randomSpecies,
-    gender: randomGender,
-    components: ['firstname', 'surname'],
-    format: '{firstname} {surname}',
-    language: 'en'
-  });
-
-  return {
-    name,
-    species: randomSpecies,
-    gender: randomGender
-  };
-}
-
-// Usage
-const npc = await generateNPC();
-console.log(`Meet ${npc.name}, a ${npc.gender} ${npc.species}`);
-```
-
-### Building a Settlement Generator
-
-```javascript
-async function generateSettlement() {
-  const api = game.modules.get('nomina-names').api;
-
-  const cultures = ['human', 'elf', 'dwarf'];
-  const culture = cultures[Math.floor(Math.random() * cultures.length)];
-
-  // Generate settlement name from settlements catalog
-  const settlementNames = await api.generateFromCatalog({
-    species: culture,
-    catalog: 'settlements',
-    language: 'en',
-    count: 1
-  });
-  const settlementName = settlementNames[0];
-
-  // Generate a tavern in the settlement
-  const tavernNames = await api.generateFromCatalog({
-    species: culture,
-    catalog: 'taverns',
-    language: 'en',
-    count: 1
-  });
-  const tavernName = tavernNames[0];
-
-  // Generate the tavern keeper
-  const tavernKeeper = await api.generateName({
-    species: culture,
-    gender: Math.random() > 0.5 ? 'male' : 'female',
-    components: ['firstname', 'surname'],
-    format: '{firstname} {surname}',
-    language: 'en'
-  });
-
-  return {
-    name: settlementName,
-    culture: culture,
-    tavern: {
-      name: tavernName,
-      keeper: tavernKeeper
+  data: {
+    format: "4.0.0",
+    package: {
+      code: "goblin-de",
+      displayName: { de: "Goblins", en: "Goblins" },
+      languages: ["de"],
+      phoneticLanguage: "de"
+    },
+    catalogs: {
+      names: {
+        displayName: { de: "Namen", en: "Names" },
+        items: [
+          { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1 },
+          { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 1 }
+        ]
+      }
     }
-  };
-}
-
-// Usage
-const settlement = await generateSettlement();
-console.log(`Welcome to ${settlement.name}, a ${settlement.culture} settlement`);
-console.log(`Visit ${settlement.tavern.name}, run by ${settlement.tavern.keeper}`);
-```
-
-### Creating a Library Generator
-
-```javascript
-async function generateLibrary() {
-  const api = game.modules.get('nomina-names').api;
-
-  const books = [];
-
-  // Generate 5 books from the books catalog
-  const titles = await api.generateFromCatalog({
-    species: 'human',
-    catalog: 'books',
-    language: 'en',
-    count: 5
-  });
-
-  for (const title of titles) {
-    const author = await api.generateName({
-      species: 'human',
-      gender: Math.random() > 0.5 ? 'male' : 'female',
-      components: ['firstname', 'surname'],
-      format: '{firstname} {surname}',
-      language: 'en'
-    });
-
-    books.push({
-      title,
-      author
-    });
-  }
-
-  return books;
-}
-
-// Usage
-const library = await generateLibrary();
-library.forEach(book => {
-  console.log(`"${book.title}" by ${book.author}`);
-});
-```
-
-## Chat Commands Integration
-
-You can easily integrate the names API with Foundry's chat system:
-
-```javascript
-// Register a chat command for generating names
-Hooks.on('chatMessage', async (chatlog, messageText, chatdata) => {
-  const parts = messageText.split(' ');
-
-  if (parts[0] === '/name') {
-    const species = parts[1] || 'human';
-    const gender = parts[2] || 'male';
-
-    try {
-      const api = game.modules.get('nomina-names').api;
-      const name = await api.generateName({
-        species: species,
-        gender: gender,
-        language: 'en'
-      });
-
-      ChatMessage.create({
-        content: `Generated ${species} ${gender} name: <strong>${name}</strong>`,
-        speaker: ChatMessage.getSpeaker()
-      });
-    } catch (error) {
-      ChatMessage.create({
-        content: `Error generating name: ${error.message}`,
-        speaker: ChatMessage.getSpeaker()
-      });
-    }
-
-    return false; // Prevent default chat processing
   }
 });
-
-// Usage in chat:
-// /name elf female
-// /name dwarf male
-// /name human
 ```
-
-## Macro Integration
-
-Create useful macros for your players and GMs:
-
-```javascript
-// Quick NPC Generator Macro
-async function quickNPC() {
-  const api = game.modules.get('nomina-names').api;
-
-  if (!api) {
-    ui.notifications.error('Nomina Names module not found or not active');
-    return;
-  }
-
-  try {
-    const species = ['human', 'elf', 'dwarf', 'halfling'];
-    const randomSpecies = species[Math.floor(Math.random() * species.length)];
-    const randomGender = Math.random() > 0.5 ? 'male' : 'female';
-
-    const name = await api.generateName({
-      species: randomSpecies,
-      gender: randomGender,
-      language: 'en'
-    });
-
-    const message = `
-      <h3>Random NPC Generated</h3>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Species:</strong> ${randomSpecies}</p>
-      <p><strong>Gender:</strong> ${randomGender}</p>
-    `;
-
-    ChatMessage.create({
-      content: message,
-      speaker: ChatMessage.getSpeaker()
-    });
-
-  } catch (error) {
-    ui.notifications.error(`Failed to generate NPC: ${error.message}`);
-  }
-}
-
-// Run the macro
-quickNPC();
-```
-
-## Error Handling
-
-The API includes comprehensive error handling. Always wrap API calls in try-catch blocks:
-
-```javascript
-async function safeNameGeneration() {
-  const api = game.modules.get('nomina-names').api;
-
-  try {
-    const name = await api.generateName({
-      species: 'unknown-species', // This will cause an error
-      gender: 'male'
-    });
-
-    console.log('Generated:', name);
-  } catch (error) {
-    console.error('Name generation failed:', error.message);
-
-    // Fallback to a simple name
-    const fallbackName = await api.generateName({
-      species: 'human',
-      gender: 'male'
-    });
-
-    console.log('Using fallback name:', fallbackName);
-  }
-}
-```
-
-## Available Species and Languages
-
-### Built-in Species
-
-The following species are available by default:
-
-- `human` - Human names and content
-- `elf` - Elven names and content
-- `dwarf` - Dwarven names and content
-- `halfling` - Halfling names and content
-- `gnome` - Gnome names and content
-- `dragonborn` - Dragonborn names and content
-- `tiefling` - Tiefling names and content
-- `aasimar` - Aasimar names and content
-
-### Supported Languages
-
-- `de` - German
-- `en` - English
-
-### Available Categories
-
-- `names` - Character names (supports gender-specific generation)
-- `settlements` - Settlement and place names
-- `taverns` - Tavern and inn names
-- `shops` - Shop and business names
-- `books` - Book and tome titles
-- `ships` - Ship and vessel names
-
-## Version 3.1.0 Features
-
-### Gender Color Coding
-
-Version 3.1.0 introduces configurable gender color coding for generated names. This feature allows visual distinction of names by gender in the Generator App.
-
-#### Settings Access
-
-You can programmatically check and modify the gender color settings:
-
-```javascript
-// Check if gender colors are enabled
-const enabled = game.settings.get('nomina-names', 'enableGenderColors');
-
-// Get current color configuration
-const colors = game.settings.get('nomina-names', 'genderColors');
-// Result: { male: '#4a90d9', female: '#d94a6b', nonbinary: '#9b59b6' }
-
-// Enable gender colors programmatically
-await game.settings.set('nomina-names', 'enableGenderColors', true);
-
-// Set custom colors
-await game.settings.set('nomina-names', 'genderColors', {
-  male: '#3498db',
-  female: '#e74c3c',
-  nonbinary: '#9b59b6'
-});
-```
-
-#### Default Colors
-
-| Gender | Default Color | Hex Code |
-|--------|--------------|----------|
-| Male | Blue | `#4a90d9` |
-| Female | Pink/Rose | `#d94a6b` |
-| Nonbinary | Purple | `#9b59b6` |
-
-#### CSS Variables
-
-When gender colors are enabled, the following CSS variables are set on the results panel:
-
-```css
---gender-color-male: #4a90d9;
---gender-color-female: #d94a6b;
---gender-color-nonbinary: #9b59b6;
-```
-
-You can override these in your own CSS to customize the appearance further.
-
-### Generate Button Placement
-
-The position of the generate button in the Generator App can be configured via the `generateButtonPlacement` setting:
-
-```javascript
-// Get current placement
-const placement = game.settings.get('nomina-names', 'generateButtonPlacement');
-// Result: 'legacy', 'floating', or 'result'
-
-// Change placement
-await game.settings.set('nomina-names', 'generateButtonPlacement', 'floating');
-```
-
-**Available Values:**
-
-| Value | Description |
-|-------|-------------|
-| `legacy` | Classic position below the options panel (default) |
-| `floating` | Sticky position at the bottom of the options panel |
-| `result` | In the results area next to the copy button |
 
 ---
 
-## Advanced Configuration
+#### `registerPackages(packages)`
 
-### Custom Name Formats
-
-You can create custom name formats using template strings:
+Register multiple packages at once.
 
 ```javascript
-// Available placeholders
-const formats = {
-  simple: '{firstname}',
-  standard: '{firstname} {surname}',
-  formal: '{title} {firstname} {surname}',
-  nickname: '{firstname} "{nickname}" {surname}',
-  full: '{title} {firstname} {surname} of {place}'
-};
+await api.registerPackages([
+  { code: 'goblin-de', data: goblinDeData },
+  { code: 'goblin-en', data: goblinEnData }
+]);
+```
 
-// Usage
-const name = await api.generateName({
-  species: 'elf',
-  gender: 'female',
-  format: formats.formal,
-  components: ['title', 'firstname', 'surname']
+---
+
+#### `registerHook(hookName, callback)`
+
+Register a hook for events.
+
+**Available Hooks:**
+- `'names.beforeGenerate'` - Fired before name generation
+- `'names.afterGenerate'` - Fired after name generation
+- `'names.dataLoaded'` - Fired when data is loaded
+
+```javascript
+api.registerHook('names.beforeGenerate', (data) => {
+  console.log('Generating with options:', data.options);
+});
+
+api.registerHook('names.afterGenerate', (data) => {
+  console.log('Generated:', data.result);
 });
 ```
 
-### Debugging and Development
+---
 
-Enable debug mode to see detailed logging:
+### Validation Functions
+
+#### `getValidator()`
+
+Get access to the input validation utilities.
 
 ```javascript
-// In browser console
-game.settings.set('nomina-names', 'logLevel', 'debug');
+const validator = api.getValidator();
 
-// Check available data
-const dataManager = game.modules.get('nomina-names').dataManager;
-console.log('Available languages:', Array.from(dataManager.availableLanguages));
-console.log('Available species:', Array.from(dataManager.availableSpecies));
-
-// Inspect specific species data
-console.log('Core species:', dataManager.coreSpecies);
-console.log('API species:', dataManager.apiSpecies);
-
-// Check if specific data exists
-console.log('Has genasi names data?', dataManager.hasData('de', 'genasi', 'names'));
-
-// List all registered data keys
-console.log('All data keys:', Array.from(dataManager.consolidatedData.keys()));
-
-// Check species availability
-const speciesManager = game.modules.get('nomina-names').speciesManager;
-console.log('Is genasi available?', speciesManager.isSpeciesAvailable('genasi'));
+// Validate user input
+const result = validator.validateLanguage(userInput);
+if (!result.isValid) {
+  ui.notifications.error(`Invalid: ${result.error}`);
+  return;
+}
+// Use normalized value
+const name = await api.generateName({ language: result.normalized });
 ```
 
-## Performance Considerations
+**Available Validators:**
+- `validateLanguage(value)` - Validate language codes
+- `validateSpecies(value, availableSpecies)` - Validate species codes
+- `validateGender(value)` - Validate gender values
+- `validateComponents(value)` - Validate component arrays
+- `validateFormat(value, components)` - Validate format strings
+- `validateCatalog(value, availableCatalogs)` - Validate catalog codes
+- `validateTags(value)` - Validate tag arrays
+- `validateCount(value)` - Validate count values (1-100)
+- `validatePackageCode(value)` - Validate package codes
 
-The names system uses lazy loading and caching for optimal performance:
+All validators return:
+```javascript
+{
+  isValid: boolean,
+  error: string | null,
+  normalized: any
+}
+```
+
+---
+
+## Integration Patterns
+
+### Pattern 1: Event-Based (Recommended)
+
+Best for modules that need to integrate as soon as the API is available.
 
 ```javascript
-// Preload data for better performance
-const dataManager = game.modules.get('nomina-names').dataManager;
-await dataManager.ensureDataLoaded('en', 'elf', 'names');
+Hooks.once('nomina-names.api.ready', async (api) => {
+  // Register custom content
+  await api.registerPackage({
+    code: 'custom-de',
+    data: myCustomData
+  });
 
-// Generate multiple names efficiently
-const names = await api.generateNames({
-  species: 'elf',
-  count: 10,
+  // API is ready to use
+  const name = await api.generateName({ species: 'custom' });
+});
+```
+
+---
+
+### Pattern 2: Async/Await
+
+Best for one-time scripts or macros.
+
+```javascript
+const api = game.NominaAPI;
+await api.ready();
+
+const name = await api.generateName({
+  species: 'human',
+  gender: 'male',
   language: 'en'
 });
 ```
 
-## Module Integration Best Practices
+---
 
-1. **Always check for module availability:**
+### Pattern 3: Safe Check
+
+Best for optional integration.
+
 ```javascript
-const namesModule = game.modules.get('nomina-names');
-if (!namesModule?.active) {
-  console.warn('Nomina Names module not available');
+const api = game.NominaAPI;
+if (!api) {
+  console.warn('Nomina Names not available');
   return;
+}
+
+if (api.isReady()) {
+  const name = await api.generateName({ species: 'human' });
 }
 ```
 
-2. **Use the core loaded hook for initialization:**
+---
+
+## Error Handling
+
+All API methods throw errors on failure. Wrap calls in try-catch:
+
 ```javascript
-Hooks.once('nomina-names:coreLoaded', () => {
-  // Your integration code here
+try {
+  const name = await api.generateName({
+    species: 'unknown-species'  // Invalid!
+  });
+} catch (error) {
+  console.error('Error:', error.message);
+  // Output: "Species 'unknown-species' is not available. Available species: human, elf, dwarf, ..."
+}
+```
+
+For user-facing code, provide fallbacks:
+
+```javascript
+async function generateNameSafe(options) {
+  try {
+    return await api.generateName(options);
+  } catch (error) {
+    ui.notifications.warn(`Name generation failed: ${error.message}`);
+    // Fallback to human name
+    return await api.generateName({ species: 'human' });
+  }
+}
+```
+
+---
+
+## Available Options Reference
+
+### Species Codes
+
+| Code | Description |
+|------|-------------|
+| `human` | Human names |
+| `elf` | Elven names |
+| `dwarf` | Dwarven names |
+| `halfling` | Halfling names |
+| `gnome` | Gnome names |
+| `dragonborn` | Dragonborn names |
+| `tiefling` | Tiefling names |
+| `aasimar` | Aasimar names |
+| *(more can be added via `registerPackage`)* |  |
+
+### Language Codes
+
+| Code | Language |
+|------|----------|
+| `de` | German |
+| `en` | English |
+
+### Gender Codes
+
+| Code | Description |
+|------|-------------|
+| `male` | Male names |
+| `female` | Female names |
+| `nonbinary` | Non-binary names |
+| `null` | Random gender |
+| `'random'` | Random gender (alias for null) |
+
+### Catalog Codes
+
+| Code | Description |
+|------|-------------|
+| `names` | Character names |
+| `settlements` | Settlement names |
+| `taverns` | Tavern/inn names |
+| `shops` | Shop names |
+| `books` | Book titles |
+| `ships` | Ship names |
+
+### Format Placeholders
+
+| Placeholder | Description |
+|-------------|-------------|
+| `{firstname}` | First name |
+| `{surname}` | Surname |
+| `{title}` | Title (includes settlement) |
+| `{nickname}` | Nickname |
+
+---
+
+## Advanced Examples
+
+### NPC Generator with Random Attributes
+
+```javascript
+async function generateRandomNPC() {
+  const species = ['human', 'elf', 'dwarf', 'halfling'];
+  const genders = ['male', 'female'];
+
+  const randomSpecies = species[Math.floor(Math.random() * species.length)];
+  const randomGender = genders[Math.floor(Math.random() * genders.length)];
+
+  const name = await api.generateName({
+    species: randomSpecies,
+    gender: randomGender,
+    language: 'en'
+  });
+
+  return { name, species: randomSpecies, gender: randomGender };
+}
+```
+
+---
+
+### Settlement Generator
+
+```javascript
+async function generateSettlement(species = 'human', language = 'de') {
+  const settlementName = (await api.generateFromCatalog({
+    species,
+    catalog: 'settlements',
+    language,
+    count: 1
+  }))[0];
+
+  const tavernName = (await api.generateFromCatalog({
+    species,
+    catalog: 'taverns',
+    language,
+    count: 1
+  }))[0];
+
+  const innkeeper = await api.generateName({
+    species,
+    language,
+    components: ['firstname', 'surname'],
+    format: '{firstname} {surname}'
+  });
+
+  return {
+    name: settlementName,
+    tavern: { name: tavernName, keeper: innkeeper }
+  };
+}
+```
+
+---
+
+### Macro: Quick NPC Generator
+
+```javascript
+// Create a Foundry macro for quick NPC generation
+async function quickNPC() {
+  const api = game.NominaAPI;
+  if (!api) {
+    ui.notifications.error('Nomina Names module not found');
+    return;
+  }
+
+  await api.ready();
+
+  const species = ['human', 'elf', 'dwarf', 'halfling'];
+  const genders = ['male', 'female'];
+
+  const randomSpecies = species[Math.floor(Math.random() * species.length)];
+  const randomGender = genders[Math.floor(Math.random() * genders.length)];
+
+  const name = await api.generateName({
+    species: randomSpecies,
+    gender: randomGender,
+    language: 'en'
+  });
+
+  const message = `
+    <h3>Random NPC</h3>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Species:</strong> ${randomSpecies}</p>
+    <p><strong>Gender:</strong> ${randomGender}</p>
+  `;
+
+  ChatMessage.create({
+    content: message,
+    speaker: ChatMessage.getSpeaker()
+  });
+}
+
+quickNPC();
+```
+
+---
+
+## Events Reference
+
+### `nomina-names.api.ready`
+
+Fired when the API is fully initialized and ready to use.
+
+```javascript
+Hooks.once('nomina-names.api.ready', (api) => {
+  // Use api immediately
 });
 ```
 
-3. **Handle errors gracefully:**
+---
+
+### `names.beforeGenerate`
+
+Fired before name generation starts.
+
 ```javascript
-try {
-  const name = await api.generateName(options);
-} catch (error) {
-  // Provide fallback or user feedback
-  ui.notifications.warn('Name generation failed, using default');
+Hooks.on('names.beforeGenerate', (data) => {
+  console.log('Generation options:', data.options);
+});
+```
+
+---
+
+### `names.afterGenerate`
+
+Fired after name generation completes.
+
+```javascript
+Hooks.on('names.afterGenerate', (data) => {
+  console.log('Generated:', data.result);
+});
+```
+
+---
+
+### `names.dataLoaded`
+
+Fired when new data is loaded.
+
+```javascript
+Hooks.on('names.dataLoaded', (data) => {
+  console.log('Package loaded:', data.packageCode);
+});
+```
+
+---
+
+## Constants
+
+### API Events
+
+```javascript
+import { NamesAPI } from './scripts/api-system.js';
+
+NamesAPI.EVENTS.API_READY      // 'nomina-names.api.ready'
+NamesAPI.EVENTS.CORE_LOADED    // 'nomina-names:coreLoaded'
+NamesAPI.EVENTS.MODULE_READY   // 'namesModuleReady' (deprecated)
+```
+
+---
+
+</details>
+
+<details>
+<summary><strong>🇩🇪 Deutsch</strong></summary>
+
+## Quickstart
+
+Starten Sie mit der Nomina Names API in 3 einfachen Schritten:
+
+### Schritt 1: Modul-Abhängigkeit hinzufügen
+
+Fügen Sie `nomina-names` zu Ihrer `module.json` hinzu:
+
+```json
+{
+  "id": "my-module",
+  "title": "My Module",
+  "relationships": {
+    "requires": [
+      {
+        "id": "nomina-names",
+        "type": "module"
+      }
+    ]
+  }
 }
 ```
 
-4. **Cache frequently used data:**
+### Schritt 2: Auf API-Ready-Event warten
+
+Die empfohlene Methode für den API-Zugriff ist das dedizierte Ready-Event. **Wichtig:** Die API wird automatisch als `api`-Parameter übergeben - Sie müssen nicht selbst `game.modules.get('nomina-names').api` aufrufen.
+
 ```javascript
-// Store API reference for performance
-const api = game.modules.get('nomina-names').api;
+Hooks.once('nomina-names.api.ready', async (api) => {
+  // Der 'api'-Parameter enthält die fertige API
+  // Kein Aufruf von game.modules.get() nötig!
+
+  const name = await api.generateName({
+    species: 'elf',
+    gender: 'female',
+    language: 'de'
+  });
+
+  console.log('Generierter Name:', name);
+  // Ausgabe: "Arwen Mondglanz"
+});
 ```
 
-This comprehensive API provides everything you need to integrate rich name and content generation into your Foundry VTT modules. Whether you're creating simple character generators or complex world-building tools, the Nomina Names API offers the flexibility and reliability you need.
+**Wie es funktioniert:**
+- Das `nomina-names.api.ready`-Event wird automatisch ausgelöst, wenn die API initialisiert ist
+- Die API-Instanz wird direkt als `api`-Parameter übergeben
+- Sie können `api` sofort verwenden, ohne zusätzliche Einrichtung
+
+**Alternative (außerhalb des Events):**
+Wenn Sie außerhalb des Ready-Events auf die API zugreifen müssen, verwenden Sie den kürzeren globalen Zugriff:
+
+```javascript
+// API-Referenz holen (kürzere Schreibweise)
+const api = game.NominaAPI;
+
+// Warten bis sie bereit ist
+await api.ready();
+
+// Jetzt verwenden
+const name = await api.generateName({ species: 'elf' });
+```
+
+**Hinweis:** `game.NominaAPI` ist die empfohlene Kurzschreibweise. Sie können auch `game.modules.get('nomina-names').api` verwenden, wenn Sie den expliziten Pfad bevorzugen.
+
+### Schritt 3: Namen generieren
+
+Das war's schon! Hier sind einige gängige Beispiele:
+
+```javascript
+// Einfacher Charaktername
+const name = await api.generateName({
+  species: 'human',
+  gender: 'male',
+  language: 'de'
+});
+// Ergebnis: "Max Müller"
+
+// Mehrere Namen auf einmal
+const names = await api.generateName({
+  species: 'elf',
+  language: 'de',
+  count: 5
+});
+// Ergebnis: ["Arwen Mondglanz", "Galadriel Silberblatt", ...]
+
+// Name mit Titel
+const nobleName = await api.generateName({
+  species: 'human',
+  gender: 'female',
+  language: 'de',
+  components: ['title', 'firstname', 'surname'],
+  format: '{title} {firstname} {surname}'
+});
+// Ergebnis: "Lady von Goldburg Emma Brightblade"
+
+// Nur Nachnamen
+const surnames = await api.generateFromCatalog({
+  species: 'dwarf',
+  language: 'de',
+  catalog: 'surnames',
+  count: 5
+});
+// Ergebnis: ["Eisenbart", "Steinhelm", "Goldsucher", ...]
+```
+
+## Übersicht
+
+Die Nomina Names API bietet ein umfassendes System zur Generierung von Fantasynamen. Basierend auf JSON Format 4.0.0 bietet sie:
+
+- **8+ Spezies**: Mensch, Elf, Zwerg, Halbling, Gnom, Drachenblut, Tiefling, Aasimar
+- **2 Sprachen**: Deutsch und Englisch (erweiterbar)
+- **Mehrere Inhaltstypen**: Namen, Siedlungen, Tavernen, Geschäfte, Bücher, Schiffe
+- **Tag-basierte Filterung**: Feinkörnige Kontrolle über generierte Inhalte
+- **Eingabevalidierung**: Automatische Parameterüberprüfung mit klaren Fehlermeldungen
+
+---
+
+## API-Referenz
+
+### Namensgenerierung
+
+#### `generateName(options)`
+
+Generiert einen einzelnen Namen oder mehrere Namen.
+
+**Parameter:**
+
+| Parameter | Typ | Standard | Beschreibung |
+|-----------|-----|----------|--------------|
+| `language` | string | `'de'` | Sprachcode (`'de'`, `'en'`) |
+| `species` | string | `'human'` | Spezies-Code (`'human'`, `'elf'`, `'dwarf'`, etc.) |
+| `gender` | string\|null | `null` | Geschlecht (`'male'`, `'female'`, `'nonbinary'`, oder `null` für zufällig) |
+| `components` | string[] | `['firstname', 'surname']` | Namenskomponenten |
+| `format` | string | `'{firstname} {surname}'` | Namensformat-Vorlage |
+| `count` | number | `1` | Anzahl zu generierender Namen (1-100) |
+
+**Rückgabe:** `Promise<string>` bei count=1, `Promise<string[]>` bei count>1
+
+**Gültige Komponenten:** `'firstname'`, `'surname'`, `'title'`, `'nickname'`
+
+**Beispiele:**
+
+```javascript
+// Grundlegende Verwendung
+const name = await api.generateName({
+  species: 'elf',
+  gender: 'male',
+  language: 'de'
+});
+// Ergebnis: "Aereth Mondwandler"
+
+// Nur Vorname
+const firstName = await api.generateName({
+  species: 'human',
+  gender: 'female',
+  language: 'de',
+  components: ['firstname'],
+  format: '{firstname}'
+});
+// Ergebnis: "Emma"
+
+// Name mit Spitznamen
+const nicknameName = await api.generateName({
+  species: 'dwarf',
+  gender: 'male',
+  language: 'de',
+  components: ['firstname', 'nickname', 'surname'],
+  format: '{firstname} "{nickname}" {surname}'
+});
+// Ergebnis: 'Thorin "Steinfaust" Eisenbart'
+
+// Mehrere Namen generieren
+const names = await api.generateName({
+  species: 'human',
+  gender: 'female',
+  language: 'de',
+  count: 5
+});
+// Ergebnis: ["Emma Müller", "Anna Schmidt", "Maria Fischer", ...]
+```
+
+---
+
+#### `generateNames(options)`
+
+Bequeme Methode zum Generieren mehrerer Namen. Gibt immer ein Array zurück.
+
+**Parameter:** Gleich wie `generateName()`
+
+**Rückgabe:** `Promise<string[]>`
+
+```javascript
+const names = await api.generateNames({
+  species: 'human',
+  gender: 'male',
+  count: 5,
+  language: 'de'
+});
+// Ergebnis: ["Max Müller", "Johann Schmidt", "Heinrich Fischer", ...]
+```
+
+---
+
+### Katalog-Generierung
+
+#### `generateFromCatalog(options)`
+
+Generiert Elemente direkt aus einem spezifischen Katalog.
+
+**Parameter:**
+
+| Parameter | Typ | Standard | Beschreibung |
+|-----------|-----|----------|--------------|
+| `language` | string | `'de'` | Sprachcode |
+| `species` | string | `'human'` | Spezies-Code |
+| `catalog` | string | - | Katalog-Schlüssel (erforderlich) |
+| `tags` | string[] | `[]` | Nach Tags filtern |
+| `count` | number | `1` | Anzahl zu generierender Elemente |
+
+**Rückgabe:** `Promise<string[]>`
+
+```javascript
+// Nur Nachnamen
+const surnames = await api.generateFromCatalog({
+  species: 'dwarf',
+  language: 'de',
+  catalog: 'surnames',
+  count: 5
+});
+// Ergebnis: ["Eisenbart", "Steinhelm", "Goldsucher", ...]
+
+// Spitznamen
+const nicknames = await api.generateFromCatalog({
+  species: 'human',
+  language: 'de',
+  catalog: 'nicknames',
+  count: 3
+});
+// Ergebnis: ["der Tapfere", "die Weise", "Eisenfaust"]
+
+// Siedlungen mit Tag-Filterung
+const harbors = await api.generateFromCatalog({
+  species: 'human',
+  language: 'de',
+  catalog: 'settlements',
+  tags: ['hafen', 'küste'],
+  count: 3
+});
+// Ergebnis: ["Hafenstadt", "Küstenort", "Ankerplatz"]
+```
+
+---
+
+### Informationsfunktionen
+
+#### `getAvailableLanguages()`
+
+Ruft alle verfügbaren Sprachcodes ab.
+
+```javascript
+const languages = await api.getAvailableLanguages();
+// Ergebnis: ['de', 'en']
+```
+
+---
+
+#### `getAvailableSpecies(language)`
+
+Ruft alle verfügbaren Spezies für eine Sprache ab.
+
+```javascript
+const species = await api.getAvailableSpecies('de');
+// Ergebnis: [
+//   { code: 'human', name: 'Menschen' },
+//   { code: 'elf', name: 'Elfen' },
+//   { code: 'dwarf', name: 'Zwerge' },
+//   ...
+// ]
+```
+
+---
+
+#### `getAllSpeciesCodes()`
+
+Ruft alle Spezies-Codes über alle Sprachen hinweg ab.
+
+```javascript
+const allSpecies = api.getAllSpeciesCodes();
+// Ergebnis: ['aasimar', 'dragonborn', 'dwarf', 'elf', ...]
+```
+
+---
+
+#### `getAvailableCatalogs(language, species)`
+
+Ruft verfügbare Kataloge für eine Kombination ab.
+
+```javascript
+const catalogs = await api.getAvailableCatalogs('de', 'human');
+// Ergebnis: [
+//   { code: 'names', displayName: 'Namen' },
+//   { code: 'settlements', displayName: 'Siedlungen' },
+//   { code: 'taverns', displayName: 'Tavernen' },
+//   ...
+// ]
+```
+
+---
+
+#### `getSupportedGenders()`
+
+Ruft alle unterstützten Geschlechtscodes ab.
+
+```javascript
+const genders = api.getSupportedGenders();
+// Ergebnis: ['male', 'female', 'nonbinary']
+```
+
+---
+
+### Bereitschaftsfunktionen
+
+#### `ready()`
+
+Wartet darauf, dass die API bereit ist. Alternative zum event-basierten Ansatz.
+
+```javascript
+const api = game.NominaAPI;
+await api.ready();
+// API ist jetzt bereit
+const name = await api.generateName({ species: 'human' });
+```
+
+---
+
+#### `isReady()`
+
+Überprüft, ob die API bereit ist, ohne zu warten.
+
+```javascript
+const api = game.NominaAPI;
+if (api.isReady()) {
+  // Sicher, API zu verwenden
+  const name = await api.generateName({ language: 'de' });
+}
+```
+
+---
+
+#### `hasPackage(species, language)`
+
+Überprüft, ob ein bestimmtes Spezies-Sprach-Paket existiert.
+
+```javascript
+const hasGoblins = await api.hasPackage('goblin', 'de');
+if (hasGoblins) {
+  // Paket existiert, sicher, Namen zu generieren
+  const name = await api.generateName({ species: 'goblin' });
+}
+```
+
+---
+
+### UI-Funktionen
+
+#### `openGenerator()`
+
+Öffnet die Hauptanwendung.
+
+```javascript
+api.openGenerator();
+```
+
+---
+
+#### `openPicker(actor)`
+
+Öffnet den Namenswähler für einen spezifischen Akteur.
+
+```javascript
+const actor = game.actors.getName("Mein Charakter");
+api.openPicker(actor);
+```
+
+---
+
+#### `openEmergency()`
+
+Öffnet den Notfall-Schnellnamensgenerator.
+
+```javascript
+api.openEmergency();
+```
+
+---
+
+### Erweiterungsfunktionen
+
+#### `registerPackage(options)`
+
+Registriert ein benutzerdefiniertes Paket zur Laufzeit.
+
+**Parameter:**
+
+| Parameter | Typ | Erforderlich | Beschreibung |
+|-----------|-----|--------------|--------------|
+| `code` | string | Ja | Paket-Code (`'species-language'`) |
+| `data` | object | Ja | Paketdaten nach JSON Format 4.0.0 |
+
+```javascript
+await api.registerPackage({
+  code: 'goblin-de',
+  data: {
+    format: "4.0.0",
+    package: {
+      code: "goblin-de",
+      displayName: { de: "Goblins", en: "Goblins" },
+      languages: ["de"],
+      phoneticLanguage: "de"
+    },
+    catalogs: {
+      names: {
+        displayName: { de: "Namen", en: "Names" },
+        items: [
+          { t: { de: "Grax" }, tags: ["male", "firstnames"], w: 1 },
+          { t: { de: "Vyx" }, tags: ["female", "firstnames"], w: 1 }
+        ]
+      }
+    }
+  }
+});
+```
+
+---
+
+## Verfügbare Optionen
+
+### Spezies-Codes
+
+| Code | Beschreibung |
+|------|--------------|
+| `human` | Menschnamen |
+| `elf` | Elennamen |
+| `dwarf` | Zwergennamen |
+| `halfling` | Halblingnamen |
+| `gnome` | Gnomnamen |
+| `dragonborn` | Drachenblut-Namen |
+| `tiefling` | Tiefling-Namen |
+| `aasimar` | Aasimar-Namen |
+| *(mehr via `registerPackage`)* |  |
+
+### Sprachcodes
+
+| Code | Sprache |
+|------|---------|
+| `de` | Deutsch |
+| `en` | Englisch |
+
+### Geschlechtscodes
+
+| Code | Beschreibung |
+|------|--------------|
+| `male` | Männliche Namen |
+| `female` | Weibliche Namen |
+| `nonbinary` | Non-binäre Namen |
+| `null` | Zufälliges Geschlecht |
+| `'random'` | Zufälliges Geschlecht (Alias für null) |
+
+### Katalog-Codes
+
+| Code | Beschreibung |
+|------|--------------|
+| `names` | Charakternamen |
+| `settlements` | Siedlungsnamen |
+| `taverns` | Taveren-/Gasthausnamen |
+| `shops` | Ladennamen |
+| `books` | Büchertitel |
+| `ships` | Schiffnamen |
+
+### Format-Platzhalter
+
+| Platzhalter | Beschreibung |
+|-------------|--------------|
+| `{firstname}` | Vorname |
+| `{surname}` | Nachname |
+| `{title}` | Titel (inklusive Siedlung) |
+| `{nickname}` | Spitzname |
+
+---
+
+</details>
