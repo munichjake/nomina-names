@@ -9,6 +9,7 @@ import { TEMPLATE_PATHS, CSS_CLASSES, GENDER_SYMBOLS, getSupportedGenders, MODUL
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
+import { sanitizeHTML } from '../utils/sanitizer.js';
 
 export class EmergencyNamesApp extends Application {
   constructor(options = {}) {
@@ -340,17 +341,16 @@ export class EmergencyNamesApp extends Application {
       const genderSymbol = GENDER_SYMBOLS[nameData.gender] || '';
 
       // Gender color classes and attributes
-      const genderAttr = genderColorsEnabled && nameData.gender ? `data-gender="${nameData.gender}"` : '';
+      const genderAttr = genderColorsEnabled && nameData.gender ? `data-gender="${sanitizeHTML(nameData.gender)}"` : '';
       const genderClass = genderColorsEnabled && nameData.gender ? 'emergency-gender-colored' : '';
 
-      const nameElement = $(`
-        <div class="emergency-name-pill ${genderClass}" data-name="${nameData.name}" ${genderAttr} title="${game.i18n.localize("names.emergency.clickToCopy") || "Klicken zum Kopieren"}">
-          <div class="name-text">${nameData.name}</div>
-          <div class="species-text">${nameData.displaySpecies} ${genderSymbol}</div>
-        </div>
-      `);
+      // Use text() for name and species to prevent XSS - build element with jQuery
+      const titleText = game.i18n.localize("names.emergency.clickToCopy") || "Klicken zum Kopieren";
+      const $nameElement = $(`<div class="emergency-name-pill ${genderClass}" data-name="${sanitizeHTML(nameData.name)}" ${genderAttr} title="${sanitizeHTML(titleText)}"></div>`);
+      $nameElement.append($('<div class="name-text"></div>').text(nameData.name));
+      $nameElement.append($('<div class="species-text"></div>').text(`${nameData.displaySpecies} ${genderSymbol}`));
 
-      container.append(nameElement);
+      container.append($nameElement);
     }
 
     html.find('.emergency-name-pill').off('click').on('click', this._onCopyName.bind(this));
@@ -364,7 +364,7 @@ export class EmergencyNamesApp extends Application {
     const rerollBtn = html.find('.emergency-reroll-btn');
 
     rerollBtn.prop('disabled', true);
-    rerollBtn.html('<i class="fas fa-spinner fa-spin"></i> ' + (game.i18n.localize("names.emergency.generating") || "Generiere..."));
+    rerollBtn.html('<i class="fas fa-spinner fa-spin"></i> ' + sanitizeHTML(game.i18n.localize("names.emergency.generating") || "Generiere..."));
 
     try {
       await this._generateEmergencyNames();
@@ -374,7 +374,7 @@ export class EmergencyNamesApp extends Application {
       ui.notifications.error(game.i18n.localize("names.emergency.error") || game.i18n.localize("names.generation-error"));
     } finally {
       rerollBtn.prop('disabled', false);
-      rerollBtn.html('<i class="fas fa-dice"></i> ' + (game.i18n.localize("names.emergency.reroll") || "Neue Namen"));
+      rerollBtn.html('<i class="fas fa-dice"></i> ' + sanitizeHTML(game.i18n.localize("names.emergency.reroll") || "Neue Namen"));
     }
   }
 
@@ -477,7 +477,7 @@ export class EmergencyNamesApp extends Application {
       user: game.user.id,
       speaker: ChatMessage.getSpeaker(),
       content: `<div class="nomina-names-chat-post">
-        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${sanitizeHTML(name)}
       </div>`,
       whisper: whisperTargets
     };
@@ -600,12 +600,12 @@ export class EmergencyNamesApp extends Application {
 
       if (targetSpecies) {
         this.enabledSpecies.add(targetSpecies.code);
-        html.find(`.species-pill[data-species="${targetSpecies.code}"]`).addClass('active');
+        html.find(`.species-pill[data-species="${sanitizeHTML(targetSpecies.code)}"]`).addClass('active');
 
         // Update the button label to show the actually selected species
-        const buttonText = humanSpecies
+        const buttonText = sanitizeHTML(humanSpecies
           ? game.i18n.localize("names.emergency.selectHumans")
-          : targetSpecies.displayName;
+          : targetSpecies.displayName);
         $(event.currentTarget).text(buttonText);
 
         logDebug(`Selected only ${targetSpecies.code} species`);

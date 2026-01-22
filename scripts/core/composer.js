@@ -8,6 +8,7 @@
  * - Post-processing transforms (TitleCase, TrimSpaces, etc.)
  * - Cross-package catalog references
  * - Agreement logic between name parts
+ * - Pattern compilation and caching for performance optimization
  *
  * @module composer
  */
@@ -15,6 +16,24 @@
 import { selectFromCatalog } from './selector.js';
 import { buildPPPhrase, getLocalizedText, adaptTitleToGender } from '../utils/grammar.js';
 import { logDebug, logWarn, logError } from '../utils/logger.js';
+import { PatternCompiler } from './pattern-compiler.js';
+import { createNominaError, ErrorType } from '../utils/error-helper.js';
+
+/**
+ * Create a PatternCompiler instance for compiling patterns.
+ * The compiler caches compiled patterns for better performance.
+ *
+ * @param {Object} catalogs - Available catalogs from the package
+ * @param {Object} langRules - Language rules for grammar (articles, prepositions)
+ * @param {Function} [getPackageCatalog] - Optional function to resolve cross-package catalogs
+ * @returns {PatternCompiler} New compiler instance
+ * @example
+ * const compiler = createPatternCompiler(pkg.catalogs, langRules, context.getPackageCatalog);
+ * const compiled = compiler.compile(recipe.pattern);
+ */
+export function createPatternCompiler(catalogs, langRules, getPackageCatalog = null) {
+  return new PatternCompiler(catalogs, langRules, getPackageCatalog);
+}
 
 /**
  * Execute a recipe pattern and return generated text.
@@ -27,7 +46,10 @@ import { logDebug, logWarn, logError } from '../utils/logger.js';
  * - PP: Preposition-article-phrase (e.g., "von Berlin")
  * - REF: Reference a previously generated alias
  *
- * @param {Array<Object>} pattern - Array of pattern blocks
+ * This function supports both raw patterns and pre-compiled patterns.
+ * Pre-compiled patterns (from PatternCompiler) provide better performance.
+ *
+ * @param {Array<Object>} pattern - Array of pattern blocks (raw or compiled)
  * @param {Object} catalogs - Available catalogs from the package
  * @param {Object} langRules - Language rules for grammar (articles, prepositions)
  * @param {string} locale - Target locale for text output
@@ -43,6 +65,11 @@ import { logDebug, logWarn, logError } from '../utils/logger.js';
  *   [{ select: { from: 'catalog', key: 'names' }, as: 'FN' }, { literal: ' ' }, { ref: 'FN' }],
  *   catalogs, langRules, 'de', null, {}, {}, context
  * );
+ * @example
+ * // With pre-compiled pattern (better performance)
+ * const compiler = createPatternCompiler(catalogs, langRules, getPackageCatalog);
+ * const compiled = compiler.compile(recipe.pattern);
+ * const { text, parts } = executePattern(compiled, catalogs, langRules, 'de', null, {}, {}, context);
  */
 export function executePattern(pattern, catalogs, langRules, locale, seed, filters = {}, components = {}, context = {}) {
   const parts = {}; // Store aliased selections
@@ -66,7 +93,8 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
 
       if (block.select) {
         // SELECT block (legacy - still supported)
-        const result = handleSelectBlock(block, catalogs, locale, parts, blockSeed, filters, context);
+        const compiled = block._compiled || null;
+        const result = handleSelectBlock(block, catalogs, locale, parts, blockSeed, filters, context, compiled);
 
         // Check if block should be skipped
         if (result.skip) {
@@ -109,7 +137,8 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
         }
       } else if (block.generate) {
         // GENERATE block (new syntax)
-        const result = handleGenerateBlock(block, catalogs, langRules, locale, parts, blockSeed, filters, context);
+        const compiled = block._compiled || null;
+        const result = handleGenerateBlock(block, catalogs, langRules, locale, parts, blockSeed, filters, context, compiled);
 
         // Check if block should be skipped
         if (result.skip) {
@@ -166,7 +195,8 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
         tokens.push(literalText);
       } else if (block.pp) {
         // PP (preposition-article-phrase) block
-        const ppText = handlePPBlock(block, catalogs, langRules, locale, parts, blockSeed, filters, context);
+        const compiled = block._compiled || null;
+        const ppText = handlePPBlock(block, catalogs, langRules, locale, parts, blockSeed, filters, context, compiled);
         tokens.push(ppText);
       } else if (block.ref) {
         // REF block - insert text from a previously generated alias
@@ -205,10 +235,11 @@ export function executePattern(pattern, catalogs, langRules, locale, seed, filte
  * @param {string|null} seed - Random seed
  * @param {Object} [filters={}] - Runtime filters per catalog key
  * @param {Object} [context={}] - Execution context
+ * @param {Object} [compiled=null] - Pre-compiled metadata from PatternCompiler
  * @returns {Object} Result with text, item, and optional skip flag
  * @private
  */
-function handleSelectBlock(block, catalogs, locale, parts, seed, filters = {}, context = {}) {
+function handleSelectBlock(block, catalogs, locale, parts, seed, filters = {}, context = {}, compiled = null) {
   const { select, distinctFrom } = block;
 
   // Handle different source types
@@ -217,7 +248,7 @@ function handleSelectBlock(block, catalogs, locale, parts, seed, filters = {}, c
     return handleGeneratorSelect(select, locale, seed, context);
   } else if (select.from === 'catalog') {
     // Catalog: select from existing items (original behavior)
-    return handleCatalogSelect(select, catalogs, locale, parts, seed, filters, distinctFrom, block.ext, context);
+    return handleCatalogSelect(select, catalogs, locale, parts, seed, filters, distinctFrom, block.ext, context, compiled);
   } else {
     throw new Error(`Unsupported select source: ${select.from}`);
   }
@@ -267,6 +298,10 @@ function handleGeneratorSelect(select, locale, seed, context) {
  * Handle catalog selection by picking an item from the catalog.
  * Supports cross-package references, agreement logic, and fallback handling.
  *
+ * This function is optimized to work with pre-compiled patterns.
+ * If the block has _compiled metadata (from PatternCompiler), it uses
+ * the pre-resolved catalog information instead of resolving at runtime.
+ *
  * @param {Object} select - Select configuration with catalog key and where clause
  * @param {Object} catalogs - Available catalogs in current package
  * @param {string} locale - Target locale
@@ -276,34 +311,50 @@ function handleGeneratorSelect(select, locale, seed, context) {
  * @param {Array<string>} [distinctFrom] - Aliases to ensure distinctness from
  * @param {Object} [blockExt={}] - Block extension data (agreeWith, optional, etc.)
  * @param {Object} [context={}] - Execution context for cross-package references
+ * @param {Object} [compiled=null] - Pre-compiled metadata from PatternCompiler
  * @returns {Object} Result with text, item, and optional skip flag
  * @throws {Error} If catalog not found or selection fails
  * @private
  */
-function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}, distinctFrom, blockExt = {}, context = {}) {
+function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}, distinctFrom, blockExt = {}, context = {}, compiled = null) {
 
-  // Parse catalog key - support cross-package references
-  // Format: "packageCode:catalogKey" or just "catalogKey" for current package
+  // Use pre-compiled catalog resolution if available
   let catalog;
   let catalogKey = select.key;
 
-  if (catalogKey.includes(':')) {
-    // Cross-package reference
-    const [packageCode, remoteCatalogKey] = catalogKey.split(':', 2);
+  if (compiled && compiled.catalogKey) {
+    // Use pre-resolved catalog from compilation
+    catalog = compiled.catalog;
+    catalogKey = compiled.catalogKey;
 
-    if (!context.getPackageCatalog) {
-      throw new Error(`Cross-package references require context.getPackageCatalog function`);
+    // Check if this block should be skipped (optional with missing catalog)
+    if (compiled.skipOnExecution) {
+      logWarn(`Skipping optional block with missing catalog: ${select.key}`);
+      return { skip: true };
     }
-
-    catalog = context.getPackageCatalog(packageCode, remoteCatalogKey);
-    catalogKey = remoteCatalogKey; // Use just the catalog key for filters
   } else {
-    // Local catalog
-    catalog = catalogs[catalogKey];
+    // Parse catalog key - support cross-package references (legacy path)
+    // Format: "packageCode:catalogKey" or just "catalogKey" for current package
+    if (catalogKey.includes(':')) {
+      // Cross-package reference
+      const [packageCode, remoteCatalogKey] = catalogKey.split(':', 2);
+
+      if (!context.getPackageCatalog) {
+        throw new Error(`Cross-package references require context.getPackageCatalog function`);
+      }
+
+      catalog = context.getPackageCatalog(packageCode, remoteCatalogKey);
+      catalogKey = remoteCatalogKey; // Use just the catalog key for filters
+    } else {
+      // Local catalog
+      catalog = catalogs[catalogKey];
+    }
   }
 
   if (!catalog || !catalog.items) {
-    throw new Error(`Catalog not found: ${select.key}`);
+    throw createNominaError(ErrorType.CATALOG_NOT_FOUND, {
+      catalog: select.key
+    });
   }
 
   // Merge recipe where with runtime filters for this catalog key
@@ -381,11 +432,12 @@ function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}
  * @param {string|null} seed - Random seed
  * @param {Object} [filters={}] - Runtime filters per catalog key
  * @param {Object} [context={}] - Execution context
+ * @param {Object} [compiled=null] - Pre-compiled metadata from PatternCompiler
  * @returns {string} Formatted preposition-article-noun phrase
  * @throws {Error} If referenced alias not found or invalid ref configuration
  * @private
  */
-function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}) {
+function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}, compiled = null) {
   const { pp } = block;
   const prep = pp.prep;
 
@@ -399,9 +451,10 @@ function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters 
       throw new Error(`PP Error: Unknown alias "${pp.ref}"`);
     }
   } else if (pp.ref && pp.ref.select) {
-    // Inline select
+    // Inline select - use compiled catalog if available
     const inlineBlock = { select: pp.ref.select };
-    const result = handleSelectBlock(inlineBlock, catalogs, locale, parts, seed, filters, context);
+    const inlineCompiled = compiled && compiled.hasInlineSelect ? compiled : null;
+    const result = handleSelectBlock(inlineBlock, catalogs, locale, parts, seed, filters, context, inlineCompiled);
     targetItem = result.item;
   } else {
     throw new Error('PP Error: Invalid ref - must be alias string or inline select');
@@ -426,11 +479,12 @@ function handlePPBlock(block, catalogs, langRules, locale, parts, seed, filters 
  * @param {string|null} seed - Random seed
  * @param {Object} [filters={}] - Runtime filters per catalog key
  * @param {Object} [context={}] - Execution context with recipes and collections
+ * @param {Object} [compiled=null] - Pre-compiled metadata from PatternCompiler
  * @returns {Object} Result with text, item, and optional skip flag
  * @throws {Error} If generation fails or required context is missing
  * @private
  */
-function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}) {
+function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, filters = {}, context = {}, compiled = null) {
   const { generate } = block;
   const { from, key, collection, where } = generate;
 
@@ -520,7 +574,10 @@ function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, fi
         `Requested catalog: "${key}"\n` +
         `Available catalogs: ${availableCatalogs || '(none)'}`;
       logError(errorMsg);
-      throw new Error(errorMsg);
+      throw createNominaError(ErrorType.CATALOG_NOT_FOUND, {
+        catalog: key,
+        available: availableCatalogs || '(none)'
+      });
     }
 
     // If collection is specified, filter by collection

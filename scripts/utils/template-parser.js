@@ -8,6 +8,8 @@
  */
 
 import { logDebug, logWarn } from './logger.js';
+import { isNullOrUndefined, isEmpty } from './null-checks.js';
+import { logAndThrow } from './error-handler.js';
 
 /**
  * Regular expression to match template placeholders
@@ -30,12 +32,12 @@ const PLACEHOLDER_REGEX = /{(\w+)(?:\|(\w+))?}/g;
  * // Returns: "Eisenschmiede" or "Goldschmiede"
  */
 export function parseTemplate(template, components, language) {
-  if (!template || typeof template !== 'string') {
-    throw new Error('Template must be a non-empty string');
+  if (isNullOrUndefined(template) || typeof template !== 'string') {
+    logAndThrow('Template must be a non-empty string');
   }
 
-  if (!components || typeof components !== 'object') {
-    throw new Error('Components must be an object');
+  if (isNullOrUndefined(components) || typeof components !== 'object') {
+    logAndThrow('Components must be an object');
   }
 
   logDebug(`Parsing template: "${template}" for language: ${language}`);
@@ -97,7 +99,7 @@ export function parseTemplate(template, components, language) {
  * // Returns: ["prefix", "suffix"]
  */
 export function extractPlaceholders(template) {
-  if (!template || typeof template !== 'string') {
+  if (isEmpty(template) || typeof template !== 'string') {
     return [];
   }
 

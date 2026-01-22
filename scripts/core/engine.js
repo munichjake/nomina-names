@@ -7,7 +7,11 @@ import { addItemIndices } from './selector.js';
 import { executePattern, applyTransforms, validatePatternCatalogs } from './composer.js';
 import { getLocalizedText } from '../utils/grammar.js';
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
-import { createNominaError, ErrorType } from '../utils/error-helper.js';
+import { createNominaError, ErrorType, isStructuralError } from '../utils/error-helper.js';
+import { validateSeed } from '../utils/api-input-validator.js';
+import { CatalogFilterCache } from './catalog-filter-cache.js';
+import { isNullOrUndefined } from '../utils/null-checks.js';
+import { logAndThrow, validateRequired, assert } from '../utils/error-handler.js';
 
 /**
  * Generation Engine
@@ -27,6 +31,9 @@ export class Engine {
   constructor() {
     /** @type {Map<string, Object>} Map of package code to loaded package data */
     this.packages = new Map();
+
+    /** @type {CatalogFilterCache} Cache for catalog filtering results to improve performance */
+    this.filterCache = new CatalogFilterCache(100);
   }
 
   /**
@@ -54,18 +61,15 @@ export class Engine {
    */
   loadPackage(packageData) {
     // Validate format
-    if (packageData.format !== '4.0.0') {
-      throw new Error(`Invalid format version: ${packageData.format}. Expected 4.0.0`);
-    }
+    assert(packageData.format === '4.0.0', `Invalid format version: ${packageData.format}. Expected 4.0.0`);
 
     // Validate required fields
-    if (!packageData.package || !packageData.package.code) {
-      throw new Error('Package must have package.code');
-    }
+    assert(packageData.package && packageData.package.code, 'Package must have package.code');
 
-    if (!packageData.catalogs || Object.keys(packageData.catalogs).length === 0) {
-      throw new Error('Package must have at least one catalog');
-    }
+    assert(
+      packageData.catalogs && Object.keys(packageData.catalogs).length > 0,
+      'Package must have at least one catalog'
+    );
 
     // Add indices to catalog items for identity tracking
     const packageWithIndices = {
@@ -78,6 +82,12 @@ export class Engine {
         ...catalog,
         items: addItemIndices(catalog.items || [])
       };
+    }
+
+    // Create recipe map for O(1) lookup performance
+    packageWithIndices.recipeMap = new Map();
+    for (const recipe of packageData.recipes || []) {
+      packageWithIndices.recipeMap.set(recipe.id, recipe);
     }
 
     const code = packageData.package.code;
@@ -112,8 +122,12 @@ export class Engine {
    * @param {boolean} [options.allowDuplicates=false] - Allow duplicate results
    * @param {Object} [options.filters={}] - Runtime filters per catalog key (e.g., {names: {tags: ["female"]}})
    * @param {Object} [options.components={}] - Optional component flags (e.g., {useTitle: true})
-   * @returns {Promise<Object>} Generation response with suggestions and optional errors
+   * @returns {Promise<Object>} Generation response with suggestions, metadata, and optional errors
    * @returns {Array<Object>} return.suggestions - Array of generated suggestions
+   * @returns {Object} return.metadata - Metadata about the generation result
+   * @returns {number} return.metadata.requested - Number of names requested
+   * @returns {number} return.metadata.generated - Number of names actually generated
+   * @returns {boolean} return.metadata.complete - Whether all requested names were generated
    * @returns {Array<Object>} [return.errors] - Array of errors if any occurred
    * @throws {Error} If no recipes specified or n is out of range
    * @example
@@ -123,7 +137,10 @@ export class Engine {
    *   recipes: ['full_name'],
    *   filters: { names: { tags: ['female'] } }
    * });
-   * // Returns: { suggestions: [{ text: 'Anna Müller', recipe: 'full_name', parts: {...} }, ...] }
+   * // Returns: {
+   * //   suggestions: [{ text: 'Anna Müller', recipe: 'full_name', parts: {...} }, ...],
+   * //   metadata: { requested: 5, generated: 5, complete: true }
+   * // }
    */
   async generate(packageCode, options = {}) {
     const {
@@ -138,13 +155,14 @@ export class Engine {
     } = options;
 
     // Validate inputs
-    if (!recipes || recipes.length === 0) {
-      throw createNominaError(ErrorType.RECIPE_MISSING, {});
-    }
+    assert(recipes && recipes.length > 0, 'Recipes must be specified and non-empty');
 
-    if (n <= 0 || n > 100) {
-      throw new Error('n must be between 1 and 100');
-    }
+    assert(n > 0 && n <= 100, 'n must be between 1 and 100');
+
+    // Validate seed parameter
+    const seedValidation = validateSeed(seed);
+    assert(seedValidation.isValid, `Invalid seed: ${seedValidation.error}`);
+    const normalizedSeed = seedValidation.normalized;
 
     // Get package
     const pkg = this.getPackage(packageCode);
@@ -168,8 +186,12 @@ export class Engine {
     let consecutiveErrors = 0;
 
     let attempts = 0;
-    const maxAttempts = n * 10; // Allow retries for uniqueness
+    const maxAttempts = Math.min(n * 3, 50); // Reduced from n * 10 for better performance
     const maxConsecutiveErrors = 3; // Stop after 3 consecutive identical errors (structural problem)
+
+    // Track duplicate rate for adaptive strategy
+    let duplicateCount = 0;
+    const duplicateThreshold = n * 0.5; // Switch to batch if 50% of attempts are duplicates
 
     while (suggestions.length < n && attempts < maxAttempts) {
       try {
@@ -177,14 +199,24 @@ export class Engine {
         const recipeId = recipes[suggestions.length % recipes.length];
 
         // Generate sub-seed
-        const genSeed = seed ? `${seed}:${attempts}` : null;
+        const genSeed = normalizedSeed ? `${normalizedSeed}:${attempts}` : null;
 
         // Generate single result
         const result = this.generateOne(pkg, recipeId, locale, genSeed, filters, components);
 
         // Check for duplicates if needed
         if (!allowDuplicates && seenTexts.has(result.text)) {
+          duplicateCount++;
           attempts++;
+
+          // Adaptive strategy: switch to batch generation if duplicate rate is high
+          // Only for larger n where batch generation is beneficial
+          if (duplicateCount >= duplicateThreshold && n > 5) {
+            logInfo(`High duplicate rate detected (${duplicateCount}/${attempts}), switching to batch generation`);
+            const batchResult = await this.generateBatchUnique(packageCode, { ...options, seed: normalizedSeed }, suggestions, seenTexts);
+            suggestions.push(...batchResult.suggestions);
+            break; // Exit while loop since batch generation completed the request
+          }
           continue;
         }
 
@@ -198,14 +230,9 @@ export class Engine {
         const errorMessage = error.message;
 
         // Check if this is a structural error that won't be fixed by retrying
-        const isStructuralError =
-          errorMessage.includes('Catalog not found') ||
-          errorMessage.includes('missing required catalogs') ||
-          errorMessage.includes('Recipe not found') ||
-          errorMessage.includes('Package not found') ||
-          errorMessage.includes('Invalid format');
-
-        if (isStructuralError) {
+        // Using error.code instead of fragile string matching
+        const isStructural = isStructuralError(error);
+        if (isStructural) {
           // Structural errors: log once and stop immediately
           logError(`Structural error (not retrying):`, error);
           errors.push({
@@ -260,10 +287,86 @@ export class Engine {
       logWarn(`Only generated ${suggestions.length}/${n} suggestions`);
     }
 
+    // Build metadata object for partial generation tracking
+    const metadata = {
+      requested: n,
+      generated: suggestions.length,
+      complete: suggestions.length >= n
+    };
+
     return {
       suggestions,
-      errors: errors.length > 0 ? errors : undefined
+      errors: errors.length > 0 ? errors : undefined,
+      metadata
     };
+  }
+
+  /**
+   * Generate unique names using batch strategy for large n with high duplicate rates.
+   * This method generates a larger batch upfront and filters for uniqueness, which is more
+   * efficient than iterative retries when the available name space is limited.
+   *
+   * @async
+   * @param {string} packageCode - Package code to use (e.g., "human-de")
+   * @param {Object} options - Original generation options
+   * @param {Array} existingSuggestions - Already generated suggestions
+   * @param {Set} seenTexts - Set of already seen text values
+   * @returns {Promise<Object>} Generation result with suggestions array
+   * @returns {Array<Object>} return.suggestions - Newly generated unique suggestions
+   * @private
+   */
+  async generateBatchUnique(packageCode, options, existingSuggestions, seenTexts) {
+    const { n, filters = {}, components = {} } = options;
+    const needed = n - existingSuggestions.length;
+
+    // Generate a larger batch to increase probability of getting enough unique results
+    // Batch size scales with needed count but has an upper limit to avoid excessive generation
+    const maxIterations = Math.min(needed * 10, 500);
+
+    logInfo(`Batch generation: generating up to ${maxIterations} candidates, need ${needed} unique`);
+
+    const pkg = this.getPackage(packageCode);
+    const suggestions = [];
+    const errors = [];
+
+    // Generate batch of candidates
+    for (let i = 0; i < maxIterations; i++) {
+      // Log progress every 25 iterations for long-running batches
+      if (i > 0 && i % 25 === 0) {
+        logInfo(`Batch generation progress: ${i}/${maxIterations} iterations, ${suggestions.length}/${needed} unique found`);
+      }
+
+      try {
+        const recipeId = options.recipes[i % options.recipes.length];
+        const genSeed = options.seed ? `${options.seed}:batch:${i}` : null;
+
+        const result = this.generateOne(pkg, recipeId, options.locale, genSeed, filters, components);
+
+        // Only add if unique
+        if (!seenTexts.has(result.text)) {
+          seenTexts.add(result.text);
+          suggestions.push(result);
+
+          // Stop if we have enough
+          if (suggestions.length >= needed) {
+            break;
+          }
+        }
+      } catch (error) {
+        // Collect errors but continue - batch generation should be resilient
+        errors.push({
+          code: 'batch_generation_failed',
+          message: error.message,
+          batchIndex: i
+        });
+      }
+    }
+
+    if (suggestions.length < needed) {
+      logWarn(`Batch generation: only generated ${suggestions.length}/${needed} unique suggestions`);
+    }
+
+    return { suggestions, errors };
   }
 
   /**
@@ -306,7 +409,7 @@ export class Engine {
       // Use seed for deterministic selection if provided
       let selectedIndex;
       if (seed) {
-        selectedIndex = Math.abs(hashCode(seed)) % options.length;
+        selectedIndex = Math.abs(_hashCode(seed)) % options.length;
       } else {
         selectedIndex = Math.floor(Math.random() * options.length);
       }
@@ -338,11 +441,16 @@ export class Engine {
         // Get catalog from another package
         const targetPkg = this.getPackage(packageCode);
         if (!targetPkg) {
-          throw new Error(`Cross-package reference failed: Package not found: ${packageCode}`);
+          throw createNominaError(ErrorType.PACKAGE_NOT_FOUND, {
+            species: packageCode,
+            language: 'unknown'
+          });
         }
         const catalog = targetPkg.catalogs[catalogKey];
         if (!catalog) {
-          throw new Error(`Cross-package reference failed: Catalog not found: ${packageCode}:${catalogKey}`);
+          throw createNominaError(ErrorType.CATALOG_NOT_FOUND, {
+            catalog: `${packageCode}:${catalogKey}`
+          });
         }
         return catalog;
       }
@@ -354,7 +462,11 @@ export class Engine {
       const errorMsg = `Recipe '${recipeId}' references missing required catalogs: ${validation.missingRequired.join(', ')}. ` +
         `Available catalogs: ${Object.keys(pkg.catalogs || {}).join(', ') || '(none)'}`;
       logError(errorMsg);
-      throw new Error(errorMsg);
+      throw createNominaError(ErrorType.CATALOG_MISSING_REQUIRED, {
+        recipe: recipeId,
+        catalogs: validation.missingRequired.join(', '),
+        available: Object.keys(pkg.catalogs || {}).join(', ') || '(none)'
+      });
     }
 
     // Execute pattern
@@ -396,12 +508,20 @@ export class Engine {
 
   /**
    * Find a recipe by its ID within a package.
+   * Uses map-based O(1) lookup for optimal performance with fallback to array search
+   * for backward compatibility with legacy packages.
    *
    * @param {Object} pkg - Loaded package data
    * @param {string} recipeId - Recipe ID to find
    * @returns {Object|null} Recipe object if found, null otherwise
    */
   findRecipe(pkg, recipeId) {
+    // Fast path: O(1) map lookup for modern packages
+    if (pkg.recipeMap && pkg.recipeMap.has(recipeId)) {
+      return pkg.recipeMap.get(recipeId);
+    }
+
+    // Fallback: O(n) array search for legacy packages without recipeMap
     if (!pkg.recipes || pkg.recipes.length === 0) {
       return null;
     }
@@ -421,7 +541,7 @@ export class Engine {
    */
   getAvailableRecipes(packageCode, locale = 'en') {
     const pkg = this.getPackage(packageCode);
-    if (!pkg || !pkg.recipes) {
+    if (isNullOrUndefined(pkg) || isNullOrUndefined(pkg.recipes)) {
       return [];
     }
 
@@ -443,7 +563,7 @@ export class Engine {
    */
   getAvailableCatalogs(packageCode, locale = 'en') {
     const pkg = this.getPackage(packageCode);
-    if (!pkg || !pkg.catalogs) {
+    if (isNullOrUndefined(pkg) || isNullOrUndefined(pkg.catalogs)) {
       return [];
     }
 
@@ -461,6 +581,55 @@ export class Engine {
   getLoadedPackages() {
     return Array.from(this.packages.keys());
   }
+
+  /**
+   * Unload a package from the engine.
+   * Removes the package from the internal packages map, freeing memory.
+   * This should be called through DataManager.unloadPackage() to ensure proper cleanup.
+   *
+   * @param {string} packageCode - Package code to unload (e.g., "human-de")
+   * @returns {boolean} True if package was found and unloaded, false otherwise
+   * @example
+   * engine.unloadPackage('custom-de');
+   */
+  unloadPackage(packageCode) {
+    if (!this.packages.has(packageCode)) {
+      return false;
+    }
+
+    // Get package before deleting to invalidate cached filter results
+    const pkg = this.packages.get(packageCode);
+
+    this.packages.delete(packageCode);
+
+    // Invalidate cached filter results for this package's catalogs
+    if (pkg && pkg.catalogs) {
+      for (const catalogKey of Object.keys(pkg.catalogs)) {
+        this.filterCache.invalidateCatalog(catalogKey);
+      }
+    }
+
+    logDebug(`Unloaded package from engine: ${packageCode}`);
+    return true;
+  }
+
+  getFilterCache() {
+    return this.filterCache;
+  }
+
+  /**
+   * Clear the catalog filter cache.
+   * Removes all cached filter results. Use this when packages are reloaded or
+   * catalog data is modified to prevent stale cached results.
+   *
+   * @returns {void}
+   * @example
+   * // After reloading all packages
+   * engine.clearFilterCache();
+   */
+  clearFilterCache() {
+    this.filterCache.clear();
+  }
 }
 
 /**
@@ -471,7 +640,7 @@ export class Engine {
  * @returns {number} 32-bit integer hash code
  * @private
  */
-function hashCode(str) {
+function _hashCode(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);

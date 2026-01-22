@@ -20,7 +20,9 @@ import {
   validateCatalog,
   validateTags,
   validateCount,
-  validatePackageCode
+  validatePackageCode,
+  validateCatalogTransforms,
+  validatePackageRecipes
 } from './utils/api-input-validator.js';
 import {
   throwIfInvalid,
@@ -107,7 +109,10 @@ class NamesModuleAPI {
    * const name = await api.generateName({ species: 'human' });
    * ```
    *
+   * @param {Object} options - Options object (optional, for backward compatibility)
+   * @param {number} options.timeout - Timeout in milliseconds before throwing an error (default: 30000)
    * @returns {Promise<void>} Resolves when API is ready
+   * @throws {NominaError} When timeout is exceeded before API is ready
    *
    * @example
    * // Wait for API to be ready before generating names
@@ -116,9 +121,28 @@ class NamesModuleAPI {
    *   language: 'de',
    *   species: 'human'
    * });
+   *
+   * @example
+   * // Wait with custom timeout (60 seconds)
+   * await game.modules.get('nomina-names').api.ready({ timeout: 60000 });
    */
-  async ready() {
+  async ready(options = {}) {
+    // Support both object parameter and direct timeout for backward compatibility
+    const timeout = (typeof options === 'number') ? options : (options?.timeout ?? 30000);
+
+    const startTime = Date.now();
+    const timeoutMs = timeout;
+
     while (!this._isSetup) {
+      // Check if timeout has been exceeded
+      if (Date.now() - startTime > timeoutMs) {
+        throw createValidationError(ErrorType.API_MODULE_NOT_READY, {
+          error: `API ready timeout: waited ${timeoutMs}ms but API is still not ready. ` +
+                 `This may indicate a problem with the nomina-names module initialization. ` +
+                 `Try increasing the timeout or check the console for errors.`
+        });
+      }
+
       await new Promise(resolve => setTimeout(resolve, 50));
     }
     await this._ensureSetup();
@@ -752,6 +776,21 @@ class NamesModuleAPI {
    */
   async registerPackage(options) {
     // === SAFETY WRAPPER: This method must NEVER crash Foundry ===
+    await this._ensureSetupOrThrow();
+
+    // === VALIDATION PHASE: Validate all inputs ===
+    const { packageCode, data } = this.validateAndParseOptions(options);
+
+    // === REGISTRATION PHASE: All validation passed, register the package ===
+    await this.registerValidatedPackage(packageCode, data);
+  }
+
+  /**
+   * Ensure API is setup, throw error if not
+   * @throws {NominaError} When API is not ready
+   * @private
+   */
+  async _ensureSetupOrThrow() {
     try {
       await this._ensureSetup();
     } catch (error) {
@@ -759,9 +798,56 @@ class NamesModuleAPI {
         error: error.message
       });
     }
+  }
 
-    // === VALIDATION LAYER 1: options parameter ===
-    // Type-safe check before accessing any properties
+  /**
+   * Validate and parse package registration options
+   * Performs comprehensive validation of all input parameters
+   * @param {Object} options - Raw registration options
+   * @returns {Object} Parsed and validated package code and data
+   * @returns {string} return.packageCode - Validated package code
+   * @returns {Object} return.data - Validated package data
+   * @throws {NominaError} When validation fails
+   * @private
+   */
+  validateAndParseOptions(options) {
+    // Validate options parameter
+    this._validateOptionsParameter(options);
+
+    // Validate and normalize package code
+    const packageCode = this._validateAndNormalizePackageCode(options.code);
+
+    // Validate data parameter
+    const data = this._validateDataParameter(options.data);
+
+    // Validate format
+    this._validateFormat(data.format);
+
+    // Validate package info
+    this._validatePackageInfo(data.package, packageCode);
+
+    // Validate catalogs
+    const { catalogs, catalogKeys } = this._validateCatalogsParameter(data.catalogs, packageCode);
+
+    // Validate individual catalogs
+    this._validateIndividualCatalogs(catalogs, catalogKeys, packageCode);
+
+    // Validate transforms
+    this._validateCatalogTransforms(catalogs, catalogKeys, packageCode);
+
+    // Validate recipes
+    this._validatePackageRecipes(data, catalogKeys, packageCode);
+
+    return { packageCode, data };
+  }
+
+  /**
+   * Validate options parameter exists and is an object
+   * @param {*} options - Options to validate
+   * @throws {NominaError} When options is invalid
+   * @private
+   */
+  _validateOptionsParameter(options) {
     if (options === null || options === undefined) {
       throw createValidationError(ErrorType.API_MISSING_REQUIRED_PARAM, {
         param: 'options',
@@ -769,7 +855,6 @@ class NamesModuleAPI {
       });
     }
 
-    // Ensure options is an object (not array, string, number, etc.)
     if (typeof options !== 'object' || Array.isArray(options)) {
       throw createValidationError(ErrorType.API_MISSING_REQUIRED_PARAM, {
         param: 'options',
@@ -777,38 +862,49 @@ class NamesModuleAPI {
         error: 'options must be an object'
       });
     }
+  }
 
-    // === VALIDATION LAYER 2: code parameter ===
-    // Check if code exists
-    if (!('code' in options) || options.code === null || options.code === undefined) {
+  /**
+   * Validate and normalize package code
+   * @param {string} code - Package code to validate
+   * @returns {string} Normalized package code
+   * @throws {NominaError} When code is invalid
+   * @private
+   */
+  _validateAndNormalizePackageCode(code) {
+    if (!('code' in arguments) || code === null || code === undefined) {
       throw createValidationError(ErrorType.API_MISSING_REQUIRED_PARAM, {
         param: 'code',
         error: 'options.code is required'
       });
     }
 
-    // Validate code using the Validator module
-    const codeValidation = validatePackageCode(options.code);
+    const codeValidation = validatePackageCode(code);
     if (!codeValidation.isValid) {
       throw createValidationError(ErrorType.API_INVALID_PACKAGE_CODE, {
-        value: options.code,
+        value: code,
         error: codeValidation.error
       });
     }
 
-    const packageCode = codeValidation.normalized;
+    return codeValidation.normalized;
+  }
 
-    // === VALIDATION LAYER 3: data parameter ===
-    // Check if data exists
-    if (!('data' in options) || options.data === null || options.data === undefined) {
+  /**
+   * Validate data parameter exists and is an object
+   * @param {*} data - Data to validate
+   * @returns {Object} Validated data object
+   * @throws {NominaError} When data is invalid
+   * @private
+   */
+  _validateDataParameter(data) {
+    if (!('data' in arguments) || data === null || data === undefined) {
       throw createValidationError(ErrorType.API_MISSING_REQUIRED_PARAM, {
         param: 'data',
         error: 'options.data is required'
       });
     }
 
-    // Ensure data is an object
-    const data = options.data;
     if (typeof data !== 'object' || Array.isArray(data)) {
       throw createValidationError(ErrorType.API_MISSING_REQUIRED_PARAM, {
         param: 'data',
@@ -817,43 +913,54 @@ class NamesModuleAPI {
       });
     }
 
-    // === VALIDATION LAYER 4: data.format ===
-    // Check if format exists
-    if (!('format' in data) || data.format === null || data.format === undefined) {
+    return data;
+  }
+
+  /**
+   * Validate format field
+   * @param {*} format - Format to validate
+   * @throws {NominaError} When format is invalid
+   * @private
+   */
+  _validateFormat(format) {
+    if (!('format' in arguments) || format === null || format === undefined) {
       throw createValidationError(ErrorType.PACKAGE_INVALID_FORMAT, {
         error: 'data.format is required'
       });
     }
 
-    // Ensure format is a string
-    if (typeof data.format !== 'string') {
+    if (typeof format !== 'string') {
       throw createValidationError(ErrorType.PACKAGE_INVALID_FORMAT, {
-        value: data.format,
-        received: typeof data.format,
+        value: format,
+        received: typeof format,
         error: 'data.format must be a string'
       });
     }
 
-    // Validate format value (ONLY 4.0.0 is supported)
-    if (data.format !== '4.0.0') {
+    if (format !== '4.0.0') {
       throw createValidationError(ErrorType.PACKAGE_INVALID_FORMAT, {
-        value: data.format,
+        value: format,
         supported: '4.0.0',
-        error: `Unsupported format "${data.format}". Only format "4.0.0" is supported.`
+        error: `Unsupported format "${format}". Only format "4.0.0" is supported.`
       });
     }
+  }
 
-    // === VALIDATION LAYER 5: data.package ===
-    // Check if package object exists
-    if (!('package' in data) || data.package === null || data.package === undefined) {
+  /**
+   * Validate package info object
+   * @param {*} packageInfo - Package info to validate
+   * @param {string} packageCode - Expected package code
+   * @throws {NominaError} When package info is invalid
+   * @private
+   */
+  _validatePackageInfo(packageInfo, packageCode) {
+    if (!('package' in arguments) || packageInfo === null || packageInfo === undefined) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'package',
         error: 'data.package is required'
       });
     }
 
-    // Ensure package is an object
-    const packageInfo = data.package;
     if (typeof packageInfo !== 'object' || Array.isArray(packageInfo)) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'package',
@@ -862,7 +969,6 @@ class NamesModuleAPI {
       });
     }
 
-    // Check if package.code exists (required field)
     if (!('code' in packageInfo) || packageInfo.code === null || packageInfo.code === undefined) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'package.code',
@@ -870,7 +976,6 @@ class NamesModuleAPI {
       });
     }
 
-    // Ensure package.code is a string
     if (typeof packageInfo.code !== 'string') {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'package.code',
@@ -879,22 +984,27 @@ class NamesModuleAPI {
       });
     }
 
-    // Verify package.code matches options.code
     if (packageInfo.code.trim() !== packageCode) {
       logWarn(`Package code mismatch: options.code="${packageCode}" but data.package.code="${packageInfo.code}". Using options.code.`);
     }
+  }
 
-    // === VALIDATION LAYER 6: data.catalogs ===
-    // Check if catalogs object exists
-    if (!('catalogs' in data) || data.catalogs === null || data.catalogs === undefined) {
+  /**
+   * Validate catalogs parameter
+   * @param {*} catalogs - Catalogs to validate
+   * @param {string} packageCode - Package code for error messages
+   * @returns {Object} Validated catalogs and their keys
+   * @throws {NominaError} When catalogs are invalid
+   * @private
+   */
+  _validateCatalogsParameter(catalogs, packageCode) {
+    if (!('catalogs' in arguments) || catalogs === null || catalogs === undefined) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'catalogs',
         error: 'data.catalogs is required'
       });
     }
 
-    // Ensure catalogs is an object
-    const catalogs = data.catalogs;
     if (typeof catalogs !== 'object' || Array.isArray(catalogs)) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'catalogs',
@@ -903,7 +1013,6 @@ class NamesModuleAPI {
       });
     }
 
-    // Check if catalogs has at least one entry
     const catalogKeys = Object.keys(catalogs);
     if (catalogKeys.length === 0) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
@@ -912,69 +1021,38 @@ class NamesModuleAPI {
       });
     }
 
-    // === VALIDATION LAYER 7: Individual catalog validation (with try-catch) ===
-    // This validation uses try-catch to ensure individual catalog errors don't crash Foundry
-    let validCatalogCount = 0;
+    return { catalogs, catalogKeys };
+  }
+
+  /**
+   * Validate individual catalog structures
+   * @param {Object} catalogs - Catalogs object
+   * @param {Array<string>} catalogKeys - Catalog keys to validate
+   * @param {string} packageCode - Package code for error messages
+   * @throws {NominaError} When no valid catalogs are found
+   * @private
+   */
+  _validateIndividualCatalogs(catalogs, catalogKeys, packageCode) {
     const catalogValidationErrors = [];
+    let validCatalogCount = 0;
 
     for (const catalogKey of catalogKeys) {
       try {
         const catalog = catalogs[catalogKey];
+        const validationResult = this._validateSingleCatalog(catalog, catalogKey, packageCode);
 
-        // Skip null/undefined catalogs (log warning)
-        if (catalog === null || catalog === undefined) {
-          catalogValidationErrors.push(`${catalogKey}: catalog is ${catalog}`);
-          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is ${catalog}, skipping.`);
-          continue;
+        if (validationResult.isValid) {
+          validCatalogCount++;
+        } else {
+          catalogValidationErrors.push(validationResult.error);
         }
-
-        // Ensure catalog is an object
-        if (typeof catalog !== 'object' || Array.isArray(catalog)) {
-          catalogValidationErrors.push(`${catalogKey}: catalog must be an object, got ${typeof catalog}`);
-          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is not an object, skipping.`);
-          continue;
-        }
-
-        // Check for displayName (recommended but not required)
-        if ('displayName' in catalog && catalog.displayName !== null && catalog.displayName !== undefined) {
-          if (typeof catalog.displayName !== 'object' || Array.isArray(catalog.displayName)) {
-            logWarn(`Catalog "${catalogKey}" has invalid displayName type, skipping validation.`);
-          }
-        }
-
-        // Check for items array (required for a functional catalog)
-        if (!('items' in catalog) || catalog.items === null || catalog.items === undefined) {
-          catalogValidationErrors.push(`${catalogKey}: missing required items array`);
-          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is missing items array, skipping.`);
-          continue;
-        }
-
-        // Ensure items is an array
-        if (!Array.isArray(catalog.items)) {
-          catalogValidationErrors.push(`${catalogKey}: items must be an array, got ${typeof catalog.items}`);
-          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" has non-array items, skipping.`);
-          continue;
-        }
-
-        // Check if items array has at least one item
-        if (catalog.items.length === 0) {
-          catalogValidationErrors.push(`${catalogKey}: items array is empty`);
-          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" has empty items array, skipping.`);
-          continue;
-        }
-
-        // Catalog passed all validation checks
-        validCatalogCount++;
-
       } catch (error) {
-        // Individual catalog errors should never crash Foundry
         const errorMsg = `${catalogKey}: ${error.message}`;
         catalogValidationErrors.push(errorMsg);
         logError(`Error validating catalog "${catalogKey}" in package "${packageCode}":`, error);
       }
     }
 
-    // Check if we have at least one valid catalog
     if (validCatalogCount === 0) {
       throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
         field: 'catalogs',
@@ -983,16 +1061,139 @@ class NamesModuleAPI {
       });
     }
 
-    // Log warnings for any catalogs that failed validation (but don't fail registration)
     if (catalogValidationErrors.length > 0) {
       logWarn(`Package "${packageCode}" has ${catalogValidationErrors.length} catalog(s) with validation errors:`, catalogValidationErrors);
     }
+  }
 
-    // === REGISTRATION: All validation passed, register the package ===
+  /**
+   * Validate a single catalog structure
+   * @param {*} catalog - Catalog to validate
+   * @param {string} catalogKey - Catalog key for error messages
+   * @param {string} packageCode - Package code for error messages
+   * @returns {Object} Validation result with isValid and error
+   * @private
+   */
+  _validateSingleCatalog(catalog, catalogKey, packageCode) {
+    // Skip null/undefined catalogs
+    if (catalog === null || catalog === undefined) {
+      logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is ${catalog}, skipping.`);
+      return { isValid: false, error: `${catalogKey}: catalog is ${catalog}` };
+    }
+
+    // Ensure catalog is an object
+    if (typeof catalog !== 'object' || Array.isArray(catalog)) {
+      logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is not an object, skipping.`);
+      return { isValid: false, error: `${catalogKey}: catalog must be an object, got ${typeof catalog}` };
+    }
+
+    // Check for displayName (recommended but not required)
+    if ('displayName' in catalog && catalog.displayName !== null && catalog.displayName !== undefined) {
+      if (typeof catalog.displayName !== 'object' || Array.isArray(catalog.displayName)) {
+        logWarn(`Catalog "${catalogKey}" has invalid displayName type, skipping validation.`);
+      }
+    }
+
+    // Check for items array (required for a functional catalog)
+    if (!('items' in catalog) || catalog.items === null || catalog.items === undefined) {
+      logWarn(`Catalog "${catalogKey}" in package "${packageCode}" is missing items array, skipping.`);
+      return { isValid: false, error: `${catalogKey}: missing required items array` };
+    }
+
+    // Ensure items is an array
+    if (!Array.isArray(catalog.items)) {
+      logWarn(`Catalog "${catalogKey}" in package "${packageCode}" has non-array items, skipping.`);
+      return { isValid: false, error: `${catalogKey}: items must be an array, got ${typeof catalog.items}` };
+    }
+
+    // Check if items array has at least one item
+    if (catalog.items.length === 0) {
+      logWarn(`Catalog "${catalogKey}" in package "${packageCode}" has empty items array, skipping.`);
+      return { isValid: false, error: `${catalogKey}: items array is empty` };
+    }
+
+    return { isValid: true };
+  }
+
+  /**
+   * Validate catalog transforms for circular references and max depth
+   * @param {Object} catalogs - Catalogs object
+   * @param {Array<string>} catalogKeys - Catalog keys to validate
+   * @param {string} packageCode - Package code for error messages
+   * @private
+   */
+  _validateCatalogTransforms(catalogs, catalogKeys, packageCode) {
+    const transformValidationErrors = [];
+
+    for (const catalogKey of catalogKeys) {
+      try {
+        const catalog = catalogs[catalogKey];
+
+        if (catalog === null || catalog === undefined) {
+          continue;
+        }
+
+        const transformResult = validateCatalogTransforms(catalog, {
+          maxDepth: 10,
+          maxTransforms: 1000
+        });
+
+        if (!transformResult.isValid) {
+          transformValidationErrors.push(`${catalogKey}: ${transformResult.error}`);
+          logWarn(`Catalog "${catalogKey}" in package "${packageCode}" has invalid transforms:`, transformResult.error);
+        }
+
+      } catch (error) {
+        const errorMsg = `${catalogKey}: ${error.message}`;
+        transformValidationErrors.push(errorMsg);
+        logError(`Error validating transforms in catalog "${catalogKey}" in package "${packageCode}":`, error);
+      }
+    }
+
+    if (transformValidationErrors.length > 0) {
+      logWarn(`Package "${packageCode}" has ${transformValidationErrors.length} transform(s) with validation errors:`, transformValidationErrors);
+    }
+  }
+
+  /**
+   * Validate package recipes
+   * @param {Object} data - Package data
+   * @param {Array<string>} catalogKeys - Available catalog keys
+   * @param {string} packageCode - Package code for error messages
+   * @throws {NominaError} When recipes are invalid
+   * @private
+   */
+  _validatePackageRecipes(data, catalogKeys, packageCode) {
+    if ('recipes' in data && data.recipes !== null && data.recipes !== undefined) {
+      const recipeValidationResult = validatePackageRecipes(data, catalogKeys, {
+        maxDepth: 10,
+        maxTransforms: 1000
+      });
+
+      if (!recipeValidationResult.isValid) {
+        throw createValidationError(ErrorType.PACKAGE_MISSING_DATA, {
+          field: 'recipes',
+          error: recipeValidationResult.error
+        });
+      }
+
+      logInfo(`Package "${packageCode}" has valid recipes: ${Object.keys(data.recipes).join(', ')}`);
+    }
+  }
+
+  /**
+   * Register a validated package with the data manager
+   * @param {string} packageCode - Package code
+   * @param {Object} data - Validated package data
+   * @returns {Promise<void>}
+   * @throws {NominaError} When registration fails
+   * @private
+   */
+  async registerValidatedPackage(packageCode, data) {
     try {
       await this.dataManager.registerPackage(packageCode, data);
 
-      logInfo(`Successfully registered package: ${packageCode} with ${validCatalogCount} valid catalog(s)`);
+      logInfo(`Successfully registered package: ${packageCode}`);
 
       // Fire hook
       this._fireHook('names.dataLoaded', { packageCode, data });
@@ -1123,6 +1324,10 @@ class NamesModuleAPI {
    * @returns {Function} return.validateTags - Validate tag arrays
    * @returns {Function} return.validateCount - Validate count values
    * @returns {Function} return.validatePackageCode - Validate package codes
+   * @returns {Function} return.validateTransform - Validate transform definitions
+   * @returns {Function} return.validateCatalogTransforms - Validate all transforms in a catalog
+   * @returns {Function} return.validateRecipe - Validate recipe data structures
+   * @returns {Function} return.validatePackageRecipes - Validate all recipes in a package
    *
    * @example
    * // Validate user input before calling API
@@ -1145,6 +1350,26 @@ class NamesModuleAPI {
    * if (speciesCheck.isValid && genderCheck.isValid) {
    *   // Both valid, proceed with generation
    * }
+   *
+   * @example
+   * // Validate transforms for circular references and max depth
+   * const validator = api.getValidator();
+   * const transformResult = validator.validateTransform({
+   *   id: 'add-prefix',
+   *   type: 'prefix',
+   *   value: 'von '
+   * }, { maxDepth: 10 });
+   * if (!transformResult.isValid) {
+   *   console.error(transformResult.error);
+   * }
+   *
+   * @example
+   * // Validate recipes in package data
+   * const validator = api.getValidator();
+   * const recipesResult = validator.validatePackageRecipes(packageData, ['firstnames', 'surnames']);
+   * if (!recipesResult.isValid) {
+   *   console.error('Invalid recipes:', recipesResult.error);
+   * }
    */
   getValidator() {
     return {
@@ -1156,7 +1381,11 @@ class NamesModuleAPI {
       validateCatalog,
       validateTags,
       validateCount,
-      validatePackageCode
+      validatePackageCode,
+      validateTransform,
+      validateCatalogTransforms,
+      validateRecipe,
+      validatePackageRecipes
     };
   }
 }

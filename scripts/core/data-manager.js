@@ -38,12 +38,19 @@ export class DataManager {
     this.isLoaded = false;
     /** @type {boolean} Whether data is currently being loaded */
     this.isLoading = false;
+    /** @type {Promise<void>|null} Promise-based lock to prevent race conditions during initialization */
+    this._initPromise = null;
+    /** @type {Map<string, string>} Map of packageCode to error message for failed packages */
+    this.failedPackages = new Map();
+    /** @type {Map<string, Object>} Map tracking package metadata for memory management (loadTime, source, size) */
+    this.packageMetadata = new Map();
   }
 
   /**
    * Initialize and load all data packages from the index.
    * Loads the index.json file first, then loads all enabled packages in parallel.
    * Files within the same package are loaded sequentially to avoid race conditions during merging.
+   * Uses a promise-based lock pattern to prevent race conditions from parallel initialization calls.
    *
    * @async
    * @returns {Promise<void>} Resolves when all packages are loaded
@@ -54,7 +61,42 @@ export class DataManager {
    * console.log(`Loaded ${dataManager.packages.size} packages`);
    */
   async initializeData() {
-    if (this.isLoaded || this.isLoading) {
+    // If already loaded, return immediately
+    if (this.isLoaded) {
+      return;
+    }
+
+    // If initialization is in progress, return the existing promise
+    // This prevents race conditions from parallel calls
+    if (this._initPromise) {
+      return this._initPromise;
+    }
+
+    // Create and store the initialization promise
+    // This acts as a lock - all parallel calls will await this same promise
+    this._initPromise = this._performInitialization()
+      .finally(() => {
+        // Clear the promise reference when done (success or failure)
+        // Allows retry if initialization fails
+        this._initPromise = null;
+      });
+
+    return this._initPromise;
+  }
+
+  /**
+   * Internal method that performs the actual initialization work.
+   * Separated from initializeData() to support the promise-based lock pattern.
+   * Loads index, processes packages, and merges data into the engine.
+   *
+   * @async
+   * @private
+   * @returns {Promise<void>} Resolves when initialization is complete
+   * @throws {Error} If index loading or critical package loading fails
+   */
+  async _performInitialization() {
+    // Check again inside the locked region
+    if (this.isLoaded) {
       return;
     }
 
@@ -152,156 +194,327 @@ export class DataManager {
    */
   async loadPackage(path, packageCode, species, category) {
     try {
+      // Fetch and parse package data
+      const data = await this._fetchPackageData(path, packageCode);
+      if (!data) return; // Error already logged
+
+      // Validate package format
+      if (!this._validatePackageFormat(data, packageCode, path)) {
+        return; // Error already logged
+      }
+
+      // Get or create package entry
+      const packageData = this._getOrCreatePackage(packageCode, species, data);
+
+      // Merge all data sections
+      this._mergeCatalogs(packageData, data.catalogs, category, packageCode);
+      this._mergeRecipes(packageData, data.recipes, packageCode, path);
+      this._mergeLangRules(packageData, data.langRules);
+      this._mergeVocab(packageData, data.vocab, packageCode);
+      this._mergeCollections(packageData, data.collections, packageCode);
+      this._updateFileVersion(packageData, data.fileVersion);
+
+      // Track category
+      this._trackCategory(packageData, category);
+
+      // Load merged package into engine
+      this._finalizePackageLoading(packageData, packageCode, path, data);
+
+    } catch (error) {
+      const errorMsg = `Error loading package file ${path}: ${error.message}`;
+      this.failedPackages.set(packageCode, errorMsg);
+      logError(errorMsg);
+    }
+  }
+
+  /**
+   * Fetch and parse package data from file
+   * @param {string} path - Path to the JSON package file
+   * @param {string} packageCode - Package identifier
+   * @returns {Promise<Object|null>} Parsed data or null if fetch failed
+   * @private
+   */
+  async _fetchPackageData(path, packageCode) {
+    try {
       const response = await fetch(path);
 
       if (!response.ok) {
-        logWarn(`Failed to load package from ${path}`);
-        return;
+        const error = `Failed to load package from ${path} (HTTP ${response.status})`;
+        this.failedPackages.set(packageCode, error);
+        logWarn(error);
+        return null;
       }
 
-      const data = await response.json();
-
-      // Validate format
-      if (data.format !== '4.0.0') {
-        logWarn(`Package ${packageCode} has unsupported format: ${data.format}`);
-        return;
-      }
-
-      // Check if package already exists (multi-file package)
-      let packageData = this.packages.get(packageCode);
-
-      if (!packageData) {
-        // Create new package entry
-        packageData = {
-          data: {
-            format: data.format,
-            fileVersion: data.fileVersion || null,
-            package: data.package || {
-              code: packageCode,
-              displayName: this._getSpeciesDisplayName(species),
-              languages: [data.package?.languages?.[0] || 'en'],
-              phoneticLanguage: data.package?.phoneticLanguage || 'en'
-            },
-            catalogs: {},
-            recipes: [],
-            langRules: data.langRules || {},
-            output: data.output || {},
-            vocab: data.vocab || null,
-            collections: []
-          },
-          code: packageCode,
-          species: species,
-          categories: []
-        };
-        this.packages.set(packageCode, packageData);
-      }
-
-      // Merge catalogs from this file
-      if (data.catalogs) {
-        for (const [catalogKey, catalogData] of Object.entries(data.catalogs)) {
-          if (!packageData.data.catalogs[catalogKey]) {
-            // Catalog doesn't exist yet, add it
-            packageData.data.catalogs[catalogKey] = {
-              ...catalogData,
-              displayNameByCategory: {}
-            };
-
-            // Store displayName by category (e.g., "male", "female")
-            if (catalogData.displayName && category) {
-              for (const [lang, value] of Object.entries(catalogData.displayName)) {
-                if (!packageData.data.catalogs[catalogKey].displayNameByCategory[lang]) {
-                  packageData.data.catalogs[catalogKey].displayNameByCategory[lang] = {};
-                }
-                packageData.data.catalogs[catalogKey].displayNameByCategory[lang][category] = value;
-                logDebug(`Stored displayName for catalog '${catalogKey}': [${lang}][${category}] = "${value}"`);
-              }
-            }
-          } else {
-            // Catalog exists, merge items
-            if (catalogData.items && Array.isArray(catalogData.items)) {
-              packageData.data.catalogs[catalogKey].items.push(...catalogData.items);
-            }
-
-            // Store displayName by category instead of overwriting
-            if (catalogData.displayName && category) {
-              if (!packageData.data.catalogs[catalogKey].displayNameByCategory) {
-                packageData.data.catalogs[catalogKey].displayNameByCategory = {};
-              }
-
-              for (const [lang, value] of Object.entries(catalogData.displayName)) {
-                if (!packageData.data.catalogs[catalogKey].displayNameByCategory[lang]) {
-                  packageData.data.catalogs[catalogKey].displayNameByCategory[lang] = {};
-                }
-                packageData.data.catalogs[catalogKey].displayNameByCategory[lang][category] = value;
-                logDebug(`Stored displayName for catalog '${catalogKey}': [${lang}][${category}] = "${value}"`);
-              }
-            }
-          }
-        }
-      }
-
-      // Merge recipes from this file (deduplicate by ID)
-      if (data.recipes && Array.isArray(data.recipes)) {
-        const existingIds = new Set(packageData.data.recipes.map(r => r.id));
-        for (const recipe of data.recipes) {
-          if (existingIds.has(recipe.id)) {
-            logDebug(`Skipping duplicate recipe '${recipe.id}' in package ${packageCode} (from ${path})`);
-          } else {
-            packageData.data.recipes.push(recipe);
-            existingIds.add(recipe.id);
-          }
-        }
-      }
-
-      // Merge langRules
-      if (data.langRules) {
-        Object.assign(packageData.data.langRules, data.langRules);
-      }
-
-      // Merge vocab (v4.0.1) - use first non-null vocab found
-      if (data.vocab && !packageData.data.vocab) {
-        packageData.data.vocab = data.vocab;
-        logDebug(`Loaded vocab for package: ${packageCode}`);
-      } else if (data.vocab && packageData.data.vocab) {
-        // Merge vocab fields and icons
-        if (data.vocab.fields) {
-          if (!packageData.data.vocab.fields) {
-            packageData.data.vocab.fields = {};
-          }
-          Object.assign(packageData.data.vocab.fields, data.vocab.fields);
-        }
-        if (data.vocab.icons) {
-          if (!packageData.data.vocab.icons) {
-            packageData.data.vocab.icons = {};
-          }
-          Object.assign(packageData.data.vocab.icons, data.vocab.icons);
-        }
-        logDebug(`Merged vocab for package: ${packageCode}`);
-      }
-
-      // Merge collections (v4.0.1)
-      if (data.collections && Array.isArray(data.collections)) {
-        packageData.data.collections.push(...data.collections);
-        logDebug(`Merged ${data.collections.length} collections for package: ${packageCode}`);
-      }
-
-      // Update fileVersion if present
-      if (data.fileVersion && !packageData.data.fileVersion) {
-        packageData.data.fileVersion = data.fileVersion;
-      }
-
-      // Track categories
-      if (category && !packageData.categories.includes(category)) {
-        packageData.categories.push(category);
-      }
-
-      // Load merged package into engine
-      this.engine.loadPackage(packageData.data);
-
-      logDebug(`Loaded and merged file into package: ${packageCode} (${path})`);
+      return await response.json();
     } catch (error) {
-      logError(`Error loading package file ${path}:`, error);
+      const errorMsg = `Failed to fetch package from ${path}: ${error.message}`;
+      this.failedPackages.set(packageCode, errorMsg);
+      logError(errorMsg);
+      return null;
     }
+  }
+
+  /**
+   * Validate package format version
+   * @param {Object} data - Package data
+   * @param {string} packageCode - Package identifier
+   * @param {string} path - File path for error messages
+   * @returns {boolean} True if format is valid
+   * @private
+   */
+  _validatePackageFormat(data, packageCode, path) {
+    if (data.format !== '4.0.0') {
+      const error = `Package ${packageCode} has unsupported format: ${data.format}`;
+      this.failedPackages.set(packageCode, error);
+      logWarn(error);
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Get existing package or create new one
+   * @param {string} packageCode - Package identifier
+   * @param {string} species - Species code
+   * @param {Object} data - Package data
+   * @returns {Object} Package data object
+   * @private
+   */
+  _getOrCreatePackage(packageCode, species, data) {
+    let packageData = this.packages.get(packageCode);
+
+    if (!packageData) {
+      // Create new package entry
+      packageData = {
+        data: {
+          format: data.format,
+          fileVersion: data.fileVersion || null,
+          package: data.package || {
+            code: packageCode,
+            displayName: this._getSpeciesDisplayName(species),
+            languages: [data.package?.languages?.[0] || 'en'],
+            phoneticLanguage: data.package?.phoneticLanguage || 'en'
+          },
+          catalogs: {},
+          recipes: [],
+          langRules: data.langRules || {},
+          output: data.output || {},
+          vocab: data.vocab || null,
+          collections: []
+        },
+        code: packageCode,
+        species: species,
+        categories: []
+      };
+      this.packages.set(packageCode, packageData);
+    }
+
+    return packageData;
+  }
+
+  /**
+   * Merge catalogs from file into package data
+   * @param {Object} packageData - Package data to merge into
+   * @param {Object} catalogs - Catalogs to merge
+   * @param {string} category - Category for display names
+   * @param {string} packageCode - Package identifier for logging
+   * @private
+   */
+  _mergeCatalogs(packageData, catalogs, category, packageCode) {
+    if (!catalogs) return;
+
+    for (const [catalogKey, catalogData] of Object.entries(catalogs)) {
+      if (!packageData.data.catalogs[catalogKey]) {
+        // Catalog doesn't exist yet, add it
+        this._addNewCatalog(packageData, catalogKey, catalogData, category, packageCode);
+      } else {
+        // Catalog exists, merge items
+        this._mergeExistingCatalog(packageData, catalogKey, catalogData, category, packageCode);
+      }
+    }
+  }
+
+  /**
+   * Add a new catalog to package data
+   * @param {Object} packageData - Package data
+   * @param {string} catalogKey - Catalog key
+   * @param {Object} catalogData - Catalog data
+   * @param {string} category - Category for display names
+   * @param {string} packageCode - Package identifier
+   * @private
+   */
+  _addNewCatalog(packageData, catalogKey, catalogData, category, packageCode) {
+    packageData.data.catalogs[catalogKey] = {
+      ...catalogData,
+      displayNameByCategory: {}
+    };
+
+    // Store displayName by category
+    if (catalogData.displayName && category) {
+      for (const [lang, value] of Object.entries(catalogData.displayName)) {
+        if (!packageData.data.catalogs[catalogKey].displayNameByCategory[lang]) {
+          packageData.data.catalogs[catalogKey].displayNameByCategory[lang] = {};
+        }
+        packageData.data.catalogs[catalogKey].displayNameByCategory[lang][category] = value;
+        logDebug(`Stored displayName for catalog '${catalogKey}': [${lang}][${category}] = "${value}"`);
+      }
+    }
+  }
+
+  /**
+   * Merge data into existing catalog
+   * @param {Object} packageData - Package data
+   * @param {string} catalogKey - Catalog key
+   * @param {Object} catalogData - Catalog data to merge
+   * @param {string} category - Category for display names
+   * @param {string} packageCode - Package identifier
+   * @private
+   */
+  _mergeExistingCatalog(packageData, catalogKey, catalogData, category, packageCode) {
+    // Merge items
+    if (catalogData.items && Array.isArray(catalogData.items)) {
+      packageData.data.catalogs[catalogKey].items.push(...catalogData.items);
+    }
+
+    // Store displayName by category instead of overwriting
+    if (catalogData.displayName && category) {
+      if (!packageData.data.catalogs[catalogKey].displayNameByCategory) {
+        packageData.data.catalogs[catalogKey].displayNameByCategory = {};
+      }
+
+      for (const [lang, value] of Object.entries(catalogData.displayName)) {
+        if (!packageData.data.catalogs[catalogKey].displayNameByCategory[lang]) {
+          packageData.data.catalogs[catalogKey].displayNameByCategory[lang] = {};
+        }
+        packageData.data.catalogs[catalogKey].displayNameByCategory[lang][category] = value;
+        logDebug(`Stored displayName for catalog '${catalogKey}': [${lang}][${category}] = "${value}"`);
+      }
+    }
+  }
+
+  /**
+   * Merge recipes from file into package data
+   * @param {Object} packageData - Package data
+   * @param {Array} recipes - Recipes to merge
+   * @param {string} packageCode - Package identifier
+   * @param {string} path - File path for logging
+   * @private
+   */
+  _mergeRecipes(packageData, recipes, packageCode, path) {
+    if (!recipes || !Array.isArray(recipes)) return;
+
+    const existingIds = new Set(packageData.data.recipes.map(r => r.id));
+    for (const recipe of recipes) {
+      if (existingIds.has(recipe.id)) {
+        logDebug(`Skipping duplicate recipe '${recipe.id}' in package ${packageCode} (from ${path})`);
+      } else {
+        packageData.data.recipes.push(recipe);
+        existingIds.add(recipe.id);
+      }
+    }
+  }
+
+  /**
+   * Merge language rules
+   * @param {Object} packageData - Package data
+   * @param {Object} langRules - Language rules to merge
+   * @private
+   */
+  _mergeLangRules(packageData, langRules) {
+    if (!langRules) return;
+    Object.assign(packageData.data.langRules, langRules);
+  }
+
+  /**
+   * Merge vocab from file into package data
+   * @param {Object} packageData - Package data
+   * @param {Object} vocab - Vocab to merge
+   * @param {string} packageCode - Package identifier
+   * @private
+   */
+  _mergeVocab(packageData, vocab, packageCode) {
+    if (!vocab) return;
+
+    if (!packageData.data.vocab) {
+      // Use first non-null vocab found
+      packageData.data.vocab = vocab;
+      logDebug(`Loaded vocab for package: ${packageCode}`);
+    } else {
+      // Merge vocab fields and icons
+      if (vocab.fields) {
+        if (!packageData.data.vocab.fields) {
+          packageData.data.vocab.fields = {};
+        }
+        Object.assign(packageData.data.vocab.fields, vocab.fields);
+      }
+      if (vocab.icons) {
+        if (!packageData.data.vocab.icons) {
+          packageData.data.vocab.icons = {};
+        }
+        Object.assign(packageData.data.vocab.icons, vocab.icons);
+      }
+      logDebug(`Merged vocab for package: ${packageCode}`);
+    }
+  }
+
+  /**
+   * Merge collections from file into package data
+   * @param {Object} packageData - Package data
+   * @param {Array} collections - Collections to merge
+   * @param {string} packageCode - Package identifier
+   * @private
+   */
+  _mergeCollections(packageData, collections, packageCode) {
+    if (!collections || !Array.isArray(collections)) return;
+    packageData.data.collections.push(...collections);
+    logDebug(`Merged ${collections.length} collections for package: ${packageCode}`);
+  }
+
+  /**
+   * Update file version if present
+   * @param {Object} packageData - Package data
+   * @param {string} fileVersion - File version
+   * @private
+   */
+  _updateFileVersion(packageData, fileVersion) {
+    if (fileVersion && !packageData.data.fileVersion) {
+      packageData.data.fileVersion = fileVersion;
+    }
+  }
+
+  /**
+   * Track category in package data
+   * @param {Object} packageData - Package data
+   * @param {string} category - Category to track
+   * @private
+   */
+  _trackCategory(packageData, category) {
+    if (category && !packageData.categories.includes(category)) {
+      packageData.categories.push(category);
+    }
+  }
+
+  /**
+   * Finalize package loading by loading into engine and tracking metadata
+   * @param {Object} packageData - Package data
+   * @param {string} packageCode - Package identifier
+   * @param {string} path - File path
+   * @param {Object} data - Original data for size calculation
+   * @private
+   */
+  _finalizePackageLoading(packageData, packageCode, path, data) {
+    // Load merged package into engine
+    this.engine.loadPackage(packageData.data);
+
+    // Track package metadata for memory management
+    const dataSize = JSON.stringify(data).length;
+    this.packageMetadata.set(packageCode, {
+      loadTime: Date.now(),
+      source: path,
+      size: dataSize
+    });
+
+    logDebug(`Loaded and merged file into package: ${packageCode} (${path}) [${dataSize} bytes]`);
   }
 
   /**
@@ -374,6 +587,14 @@ export class DataManager {
     // Load into engine
     this.engine.loadPackage(packageData.data);
 
+    // Track package metadata for memory management
+    const dataSize = JSON.stringify(data).length;
+    this.packageMetadata.set(packageCode, {
+      loadTime: Date.now(),
+      source: 'external',
+      size: dataSize
+    });
+
     // Update index data to include new species if not present
     if (!this.indexData.species) {
       this.indexData.species = {};
@@ -382,7 +603,7 @@ export class DataManager {
       this.indexData.species[species] = data.package.displayName;
     }
 
-    logInfo(`Registered external package: ${packageCode} (species: ${species}, language: ${language})`);
+    logInfo(`Registered external package: ${packageCode} (species: ${species}, language: ${language}) [${dataSize} bytes]`);
   }
 
   /**
@@ -571,6 +792,62 @@ export class DataManager {
    */
   getLoadedPackages() {
     return Array.from(this.packages.keys());
+  }
+
+  /**
+   * Get all packages that failed to load with their error messages.
+   * Returns a copy of the internal Map to prevent external modification.
+   *
+   * @returns {Map<string, string>} Map of packageCode to error message
+   * @example
+   * const failed = dataManager.getFailedPackages();
+   * if (failed.size > 0) {
+   *   console.warn('Failed packages:', Array.from(failed.entries()));
+   * }
+   */
+  getFailedPackages() {
+    return new Map(this.failedPackages);
+  }
+
+  /**
+   * Check if a specific package failed to load.
+   *
+   * @param {string} packageCode - Package code to check (e.g., "human-de")
+   * @returns {boolean} True if the package failed to load
+   * @example
+   * if (dataManager.hasPackageFailed('human-de')) {
+   *   console.error('German human names failed to load');
+   * }
+   */
+  hasPackageFailed(packageCode) {
+    return this.failedPackages.has(packageCode);
+  }
+
+  /**
+   * Get the error message for a specific failed package.
+   *
+   * @param {string} packageCode - Package code to check (e.g., "human-de")
+   * @returns {string|undefined} Error message if package failed, undefined otherwise
+   * @example
+   * const error = dataManager.getPackageError('human-de');
+   * if (error) {
+   *   console.error('Load error:', error);
+   * }
+   */
+  getPackageError(packageCode) {
+    return this.failedPackages.get(packageCode);
+  }
+
+  /**
+   * Clear all failed package records.
+   * Useful for retrying package loading after fixing issues.
+   *
+   * @example
+   * dataManager.clearFailedPackages();
+   * await dataManager.initializeData();
+   */
+  clearFailedPackages() {
+    this.failedPackages.clear();
   }
 
   /**
@@ -851,6 +1128,159 @@ export class DataManager {
   getFileVersion(packageCode) {
     const pkg = this.packages.get(packageCode);
     return pkg?.data?.fileVersion || null;
+  }
+
+  // ============================================================
+  // Memory Management
+  // ============================================================
+
+  /**
+   * Unload a package from both data manager and engine.
+   * Removes the package and its metadata from memory, freeing resources.
+   * This is useful for dynamic packages that are no longer needed.
+   *
+   * @param {string} packageCode - Package code to unload (e.g., "human-de")
+   * @returns {boolean} True if package was found and unloaded, false otherwise
+   * @throws {TypeError} If packageCode is not a valid string
+   * @example
+   * const unloaded = dataManager.unloadPackage('custom-de');
+   * if (unloaded) {
+   *   console.log('Package unloaded successfully');
+   * }
+   */
+  unloadPackage(packageCode) {
+    // Input validation: ensure packageCode is a valid non-empty string
+    if (typeof packageCode !== 'string' || packageCode.trim().length === 0) {
+      throw new TypeError('packageCode must be a non-empty string');
+    }
+
+    const pkg = this.packages.get(packageCode);
+    if (!pkg) {
+      logWarn(`Cannot unload package ${packageCode}: not found`);
+      return false;
+    }
+
+    // Also unload from engine
+    this.engine.unloadPackage(packageCode);
+
+    // Remove from packages map
+    this.packages.delete(packageCode);
+
+    // Remove metadata
+    const metadata = this.packageMetadata.get(packageCode);
+    this.packageMetadata.delete(packageCode);
+
+    // Remove from failed packages if present
+    this.failedPackages.delete(packageCode);
+
+    logInfo(`Unloaded package: ${packageCode} (freed ${metadata?.size || 0} bytes)`);
+    return true;
+  }
+
+  /**
+   * Reload a package by unloading and loading it again.
+   * Useful for refreshing package data after updates or for debugging.
+   * For externally registered packages, the original data must be provided.
+   *
+   * CRITICAL: Validates reload capability BEFORE unloading to prevent inconsistent state.
+   * File-based packages cannot be reloaded and must not be unloaded.
+   *
+   * @async
+   * @param {string} packageCode - Package code to reload (e.g., "human-de")
+   * @param {Object} [data=null] - Package data for external packages (required for packages registered via registerPackage)
+   * @param {boolean} [allowReload=true] - Whether to allow reloading (for safety checks)
+   * @returns {Promise<boolean>} True if package was reloaded successfully, false otherwise
+   * @throws {TypeError} If packageCode is not a valid string
+   * @throws {Error} If attempting to reload external package without providing data
+   * @example
+   * // Reload a file-based package
+   * await dataManager.reloadPackage('human-de');
+   *
+   * // Reload an external package (must provide data)
+   * await dataManager.reloadPackage('custom-de', updatedData);
+   */
+  async reloadPackage(packageCode, data = null, allowReload = true) {
+    // Input validation: ensure packageCode is a valid non-empty string
+    if (typeof packageCode !== 'string' || packageCode.trim().length === 0) {
+      throw new TypeError('packageCode must be a non-empty string');
+    }
+
+    if (!allowReload) {
+      logWarn(`Reload blocked for package: ${packageCode}`);
+      return false;
+    }
+
+    const pkg = this.packages.get(packageCode);
+    if (!pkg) {
+      logWarn(`Cannot reload package ${packageCode}: not found`);
+      return false;
+    }
+
+    // Check if this is an external package
+    const isExternal = pkg._external === true;
+
+    // CHECK FIRST if reload is possible BEFORE unload
+    // This prevents inconsistent state from premature unloading
+    if (!isExternal) {
+      logWarn(`Cannot reload file-based package ${packageCode}. Please reinitialize the data manager.`);
+      return false; // Do not unload since it cannot be reloaded
+    }
+
+    if (isExternal && !data) {
+      throw new Error(`Cannot reload external package ${packageCode} without providing data. Use registerPackage() with new data instead.`);
+    }
+
+    // Only now is it safe to unload and reload the package
+    const metadata = this.packageMetadata.get(packageCode);
+    logInfo(`Reloading package: ${packageCode} (source: ${metadata?.source || 'unknown'})`);
+
+    // Unload the package
+    this.unloadPackage(packageCode);
+
+    // Re-register external package
+    await this.registerPackage(packageCode, data);
+
+    logInfo(`Successfully reloaded package: ${packageCode}`);
+    return true;
+  }
+
+  /**
+   * Get memory usage statistics for all loaded packages.
+   * Useful for debugging and monitoring memory consumption.
+   *
+   * @returns {Object} Memory usage statistics
+   * @returns {number} return.totalPackages - Number of loaded packages
+   * @returns {number} return.totalSize - Total size in bytes (approximate JSON string length)
+   * @returns {number} return.totalSizeKB - Total size in kilobytes
+   * @returns {Array<Object>} return.packages - Array of package metadata with code, size, loadTime, and source
+   * @example
+   * const usage = dataManager.getMemoryUsage();
+   * console.log(`Total packages: ${usage.totalPackages}, Total size: ${usage.totalSizeKB} KB`);
+   * usage.packages.forEach(pkg => {
+   *   console.log(`${pkg.code}: ${pkg.size} bytes from ${pkg.source}`);
+   * });
+   */
+  getMemoryUsage() {
+    let totalSize = 0;
+    const packages = [];
+
+    for (const [code, metadata] of this.packageMetadata.entries()) {
+      totalSize += metadata.size || 0;
+      packages.push({
+        code,
+        size: metadata.size || 0,
+        loadTime: metadata.loadTime,
+        source: metadata.source,
+        ageMs: Date.now() - metadata.loadTime
+      });
+    }
+
+    return {
+      totalPackages: this.packages.size,
+      totalSize,
+      totalSizeKB: Math.round(totalSize / 1024 * 100) / 100,
+      packages: packages.sort((a, b) => b.size - a.size) // Sort by size descending
+    };
   }
 }
 

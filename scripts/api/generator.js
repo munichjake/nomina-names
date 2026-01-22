@@ -14,6 +14,8 @@
 
 import { getGlobalDataManager } from '../core/data-manager.js';
 import { logDebug, logWarn, logError } from '../utils/logger.js';
+import { isNullOrUndefined } from '../utils/null-checks.js';
+import { logAndThrow } from '../utils/error-handler.js';
 
 /**
  * Check if a catalog has items matching the given gender tag
@@ -22,7 +24,7 @@ import { logDebug, logWarn, logError } from '../utils/logger.js';
  * @returns {boolean} True if matching items exist
  */
 function catalogHasGenderedItems(catalog, genderTag) {
-  if (!catalog || !catalog.items || !Array.isArray(catalog.items)) {
+  if (isNullOrUndefined(catalog) || isNullOrUndefined(catalog.items) || !Array.isArray(catalog.items)) {
     return false;
   }
 
@@ -99,7 +101,7 @@ export class Generator {
    * @private
    */
   _extractGenderFromParts(parts) {
-    if (!parts) return null;
+    if (isNullOrUndefined(parts)) return null;
 
     // Priority: Check firstname parts first (FN, FN_OUT), then any part with gender info
     const priorityAliases = ['FN', 'FN_OUT'];
@@ -132,7 +134,7 @@ export class Generator {
    * @private
    */
   _getGenderFromPart(part) {
-    if (!part) return null;
+    if (isNullOrUndefined(part)) return null;
 
     // First, check if this part has gender-relevant tags
     // Only parts with tags like 'firstnames', 'titles', 'nicknames' should provide gender
@@ -221,7 +223,7 @@ export class Generator {
     const pkg = this.dataManager.getPackage(packageCode);
 
     if (!pkg) {
-      throw new Error(`Package not found: ${packageCode}`);
+      logAndThrow(`Package not found: ${packageCode}`);
     }
 
     // Get engine
@@ -392,7 +394,7 @@ export class Generator {
     const pkg = this.dataManager.getPackage(packageCode);
 
     if (!pkg) {
-      throw new Error(`Package not found: ${packageCode}`);
+      logAndThrow(`Package not found: ${packageCode}`);
     }
 
     // Build pattern from components and format
@@ -796,7 +798,7 @@ export class Generator {
     const collection = this.dataManager.getCollection(packageCode, collectionKey);
 
     if (!collection) {
-      throw new Error(`Collection '${collectionKey}' not found in package '${packageCode}'`);
+      logAndThrow(`Collection '${collectionKey}' not found in package '${packageCode}'`);
     }
 
     // Extract query parameters
@@ -804,7 +806,7 @@ export class Generator {
     const tags = collection.query?.tags || [];
 
     if (!catalogKey) {
-      throw new Error(`Collection '${collectionKey}' has no category defined in query`);
+      logAndThrow(`Collection '${collectionKey}' has no category defined in query`);
     }
 
     // Use generateFromCatalog with the collection's query parameters

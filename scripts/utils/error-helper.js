@@ -6,6 +6,18 @@
 import { logError, logWarn, logDebug } from './logger.js';
 
 /**
+ * Error codes for structural error classification
+ * These codes are used to identify structural errors that cannot be fixed by retrying
+ */
+export const ErrorCodes = {
+  CATALOG_NOT_FOUND: 'CATALOG_NOT_FOUND',
+  MISSING_REQUIRED_CATALOGS: 'MISSING_REQUIRED_CATALOGS',
+  RECIPE_NOT_FOUND: 'RECIPE_NOT_FOUND',
+  PACKAGE_NOT_FOUND: 'PACKAGE_NOT_FOUND',
+  INVALID_FORMAT: 'INVALID_FORMAT'
+};
+
+/**
  * Error types for categorization
  */
 export const ErrorType = {
@@ -13,6 +25,7 @@ export const ErrorType = {
   CATALOG_NO_MATCH: 'catalog.no-match',
   CATALOG_NOT_FOUND: 'catalog.not-found',
   CATALOG_NO_DISTINCT: 'catalog.no-distinct',
+  CATALOG_MISSING_REQUIRED: 'catalog.missing-required',
   PACKAGE_NOT_FOUND: 'package.not-found',
   PACKAGE_INVALID_FORMAT: 'package.invalid-format',
   PACKAGE_MISSING_DATA: 'package.missing-data',
@@ -43,11 +56,83 @@ export const ErrorType = {
 };
 
 /**
+ * Mapping from ErrorType to ErrorCodes
+ * Maps each ErrorType constant to its corresponding ErrorCode for structural error detection
+ * NOTE: This map must be defined AFTER ErrorType since it references ErrorType constants
+ */
+const ErrorTypeToCodeMap = {
+  [ErrorType.CATALOG_NOT_FOUND]: ErrorCodes.CATALOG_NOT_FOUND,
+  [ErrorType.CATALOG_MISSING_REQUIRED]: ErrorCodes.MISSING_REQUIRED_CATALOGS,
+  [ErrorType.PACKAGE_NOT_FOUND]: ErrorCodes.PACKAGE_NOT_FOUND,
+  [ErrorType.RECIPE_NOT_FOUND]: ErrorCodes.RECIPE_NOT_FOUND,
+  [ErrorType.PACKAGE_INVALID_FORMAT]: ErrorCodes.INVALID_FORMAT
+};
+
+/**
+ * Generates a unique correlation ID for error tracking
+ * @returns {string} A unique correlation ID in format: err_<timestamp>_<random>
+ */
+function generateCorrelationId() {
+  return `err_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+}
+
+/**
+ * NominaError Class - Enhanced error class with context tracking
+ * Provides structured error information with correlation IDs for debugging
+ */
+export class NominaError extends Error {
+  /**
+   * Creates a new NominaError instance
+   * @param {string} message - The user-friendly error message
+   * @param {string} type - The error type from ErrorType enum
+   * @param {Object} context - Context data for the error (e.g., catalog name, species, etc.)
+   * @param {Error} [originalError] - The original technical error if any
+   */
+  constructor(message, type, context = {}, originalError = null) {
+    super(message);
+    this.name = 'NominaError';
+    this.type = type;
+    this.errorType = type; // Alias for backward compatibility
+    this.code = ErrorTypeToCodeMap[type] || null;
+    this.originalError = originalError;
+    this.isNominaError = true;
+
+    // Enhanced context with timestamp and correlation ID
+    this.context = {
+      ...context,
+      timestamp: new Date().toISOString(),
+      correlationId: generateCorrelationId()
+    };
+
+    // Maintain proper stack trace (only available on V8)
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, NominaError);
+    }
+  }
+
+  /**
+   * Returns a detailed error summary for logging
+   * @returns {Object} Detailed error information
+   */
+  toDetailedObject() {
+    return {
+      type: this.type,
+      code: this.code,
+      message: this.message,
+      context: this.context,
+      correlationId: this.context.correlationId,
+      timestamp: this.context.timestamp,
+      stack: this.stack
+    };
+  }
+}
+
+/**
  * Creates a user-friendly error with technical details logged to console
  * @param {string} errorType - The error type from ErrorType enum
  * @param {Object} context - Context data for the error (e.g., catalog name, species, etc.)
  * @param {Error} [originalError] - The original technical error if any
- * @returns {Error} An error with user-friendly message
+ * @returns {NominaError} A NominaError with user-friendly message and enhanced context
  */
 export function createNominaError(errorType, context = {}, originalError = null) {
   // Get localized message
@@ -69,13 +154,8 @@ export function createNominaError(errorType, context = {}, originalError = null)
   // Log technical details to console
   logTechnicalDetails(errorType, context, originalError);
 
-  // Create error with user-friendly message
-  const error = new Error(userMessage);
-  error.name = 'NominaError';
-  error.errorType = errorType;
-  error.context = context;
-  error.originalError = originalError;
-  error.isNominaError = true;
+  // Create enhanced NominaError with context tracking
+  const error = new NominaError(userMessage, errorType, context, originalError);
 
   return error;
 }
@@ -105,56 +185,65 @@ function logTechnicalDetails(errorType, context, originalError) {
 
 /**
  * Extracts user-friendly message from an error (handles both Nomina and standard errors)
+ *
+ * NOTE: This function serves as a FALLBACK for non-Nomina errors. Since the introduction
+ * of the Error Code System, all NominaErrors should already have user-friendly messages
+ * via createNominaError(). This function only handles legacy errors or errors from
+ * external sources that don't use the Nomina error system.
+ *
  * @param {Error} error - The error to extract message from
  * @returns {string} User-friendly message
  */
 export function getUserFriendlyMessage(error) {
+  // NominaErrors already have properly formatted messages from createNominaError()
   if (error.isNominaError) {
     return error.message;
   }
 
-  // Try to map common error patterns to friendly messages
+  // Fallback for legacy/external errors: minimal string matching for common patterns
+  // This should be rarely used since all new code should use createNominaError()
   const message = error.message || '';
+  const lowerMessage = message.toLowerCase();
 
-  if (message.includes('Catalog is empty') || message.includes('SelectionError: Catalog is empty')) {
+  // Map common legacy error patterns to localized messages
+  if (lowerMessage.includes('catalog is empty') || lowerMessage.includes('selectionerror')) {
     return game.i18n.localize('names.errors.catalog.empty');
   }
 
-  if (message.includes('No candidates match') || message.includes('filter criteria')) {
+  if (lowerMessage.includes('no candidates match') || lowerMessage.includes('filter criteria')) {
     return game.i18n.localize('names.errors.catalog.no-match');
   }
 
-  if (message.includes('Package not found')) {
+  if (lowerMessage.includes('package not found')) {
     return game.i18n.localize('names.errors.package.not-found');
   }
 
-  if (message.includes('Recipe not found')) {
+  if (lowerMessage.includes('recipe not found')) {
     return game.i18n.localize('names.errors.recipe.not-found');
   }
 
-  if (message.includes('Catalog not found')) {
-    // Extract the catalog name from the error message
-    const match = message.match(/Catalog not found:\s*(\w+)/);
+  if (lowerMessage.includes('catalog not found')) {
+    const match = message.match(/catalog not found:\s*(\w+)/i);
     const catalogName = match ? match[1] : 'unknown';
     return game.i18n.format('names.errors.catalog.not-found', { catalog: catalogName });
   }
 
-  if (message.includes('missing required catalogs')) {
-    // Extract the catalog names from the error message
-    const match = message.match(/missing required catalogs:\s*([^.]+)/);
+  if (lowerMessage.includes('missing required catalogs')) {
+    const match = message.match(/missing required catalogs:\s*([^.]+)/i);
     const catalogNames = match ? match[1] : 'unknown';
     return game.i18n.format('names.errors.catalog.missing-required', { catalogs: catalogNames });
   }
 
-  if (message.includes('No suggestions could be generated') || message.includes('No names could be generated')) {
+  if (lowerMessage.includes('no suggestions could be generated') ||
+      lowerMessage.includes('no names could be generated')) {
     return game.i18n.localize('names.errors.generation.failed');
   }
 
-  if (message.includes('No name components')) {
+  if (lowerMessage.includes('no name components')) {
     return game.i18n.localize('names.errors.generation.no-components');
   }
 
-  // Fallback to generic error
+  // Generic fallback for completely unknown errors
   return game.i18n.localize('names.errors.generation.failed');
 }
 
@@ -218,4 +307,16 @@ export function throwIfInvalid(validation, errorType, context = {}) {
   if (!validation) {
     throw createValidationError(errorType, context);
   }
+}
+
+/**
+ * Checks if an error is a structural error that cannot be fixed by retrying
+ * @param {Error} error - The error to check
+ * @returns {boolean} True if the error is structural, false otherwise
+ */
+export function isStructuralError(error) {
+  if (!error || !error.code) {
+    return false;
+  }
+  return Object.values(ErrorCodes).includes(error.code);
 }

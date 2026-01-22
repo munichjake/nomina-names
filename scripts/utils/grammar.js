@@ -4,6 +4,8 @@
  */
 
 import { logDebug, logWarn } from './logger.js';
+import { isNullOrUndefined } from './null-checks.js';
+import { logAndThrow } from './error-handler.js';
 
 /**
  * Build a pp (preposition + article + noun) phrase according to language rules
@@ -14,8 +16,8 @@ import { logDebug, logWarn } from './logger.js';
  * @returns {string} Formatted phrase
  */
 export function buildPPPhrase(targetItem, locale, prep, langRules) {
-  if (!targetItem || !targetItem.t) {
-    throw new Error('PP Error: Target item must have text (t)');
+  if (isNullOrUndefined(targetItem) || isNullOrUndefined(targetItem.t)) {
+    logAndThrow('PP Error: Target item must have text (t)');
   }
 
   // Get target text in requested locale
@@ -152,7 +154,7 @@ export function adaptTitleToGender(titleItem, personGender, langRules, locale, k
 
   // Look up title forms in langRules
   const rules = langRules?.[locale];
-  if (!rules || !rules.titles || !rules.titles[titleId]) {
+  if (isNullOrUndefined(rules) || isNullOrUndefined(rules.titles) || isNullOrUndefined(rules.titles[titleId])) {
     logWarn(`No title forms found for "${titleId}" in ${locale}`);
     return getLocalizedText(titleItem.t, locale);
   }
@@ -185,7 +187,7 @@ export function adaptTitleToGender(titleItem, personGender, langRules, locale, k
 export function validateLangRules(langRules, locale) {
   const missing = [];
 
-  if (!langRules || !langRules[locale]) {
+  if (isNullOrUndefined(langRules) || isNullOrUndefined(langRules[locale])) {
     return { isValid: false, missing: ['langRules'] };
   }
 

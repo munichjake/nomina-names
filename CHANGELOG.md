@@ -5,26 +5,51 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.2.0] - 2026-01-22
+
+### Added
+
+- **English Goblin Names**: Complete goblin name data in English
+  - Surnames with procedural generation
+  - Titles for goblin characters
+  - Expanded name variety
+
+- **German Orc & Goblin Names**: Orc and goblin name data in German
+  - Complete name data for both species
+  - First names, surnames, and titles
+
+- **Gender Color Coding for Emergency App**: Color-coded generated names in emergency generator
+  - Gender-specific colors for better visual distinction
+  - Consistent display with generator app
+
+### Changed
+
+- **API Documentation**: Complete API documentation rewrite
+  - New quickstart section for fast onboarding
+  - Simplified examples and better structure
+  - Shorter, more understandable explanations
 
 ### Fixed
 
-- **Too Few Names Generated**: Emergency Generator garantiert jetzt immer 6 Namen durch verbesserte Retry-Logik
-  - Neue Retry-Schleife mit TARGET_NAME_COUNT (6) und MAX_ATTEMPTS (100) Konstanten
-  - Verfolgt bereits versuchte Spezies+Geschlecht-Kombinationen um Dopplungen zu vermeiden
-  - Weighted Gender Distribution (40% männlich, 40% weiblich, 20% nichtbinär)
-  - Intelligente Fallback-Kette probiert alternative Geschlechter bei Fehlern
-  - `_buildFallbackChain()` Methode implementiert bidirektionale Fallback-Strategie
-  - `_generateNameWithFallback()` Methode ermöglicht Geschlechts-Fallback mit Logging
-  - Besseres Debug-Logging zeigt Fortschritt und Fehlversuche
+- **Gender Color Application**: Colors now only apply to gender-relevant name parts
+  - Fixes issue with surnames and titles without gender context
 
-- **Multi-Gender-Generierung verbessert**: Generator App jetzt mit Retry-Schleife für mehrere Geschlechter
-  - Generiert einen Namen nach dem anderen statt Batch-Anforderung
-  - MAX_ATTEMPTS = count * 5 ermöglicht robuste Generierung auch bei limitierten Daten
-  - Verhindert Duplikate durch Set-basiertes Tracking über alle Geschlechter hinweg
-  - Shuffle-Mischung am Ende für gute Geschlechter-Verteilung
-  - Warn-Logging wenn nicht genug eindeutige Namen generiert werden konnten
-  - Ausführliche JSDoc-Dokumentation der Retry-Logik
+- **Too Few Names Generated**: Emergency generator now guarantees 6 names with improved retry logic
+  - New retry loop with TARGET_NAME_COUNT (6) and MAX_ATTEMPTS (100) constants
+  - Tracks already tried species+gender combinations to avoid duplicates
+  - Weighted gender distribution (40% male, 40% female, 20% nonbinary)
+  - Smart fallback chain tries alternative genders on errors
+  - `_buildFallbackChain()` method implements bidirectional fallback strategy
+  - `_generateNameWithFallback()` method enables gender fallback with logging
+  - Better debug logging shows progress and failed attempts
+
+- **Multi-Gender Generation Improved**: Generator app now uses retry loop for multiple genders
+  - Generates one name at a time instead of batch request
+  - MAX_ATTEMPTS = count * 5 enables robust generation even with limited data
+  - Prevents duplicates through set-based tracking across all genders
+  - Final shuffle for good gender distribution
+  - Warning logging when not enough unique names could be generated
+  - Comprehensive JSDoc documentation of retry logic
 
 ## [3.1.0] - 2025-01-18
 

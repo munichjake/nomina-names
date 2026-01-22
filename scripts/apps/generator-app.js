@@ -12,6 +12,7 @@ import { getUserFriendlyMessage, notifyError } from '../utils/error-helper.js';
 import { NamesHistoryApp } from './history-app.js';
 import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
 import { hasNonbinaryNamesForSpecies } from '../utils/ui-helpers.js';
+import { sanitizeHTML } from '../utils/sanitizer.js';
 
 export class NamesGeneratorApp extends Application {
   constructor(options = {}) {
@@ -346,7 +347,7 @@ export class NamesGeneratorApp extends Application {
 
     // Species is now array of { code, name } objects with localized names
     for (const item of species) {
-      speciesSelect.append(`<option value="${item.code}">${item.name}</option>`);
+      speciesSelect.append(`<option value="${sanitizeHTML(item.code)}">${sanitizeHTML(item.name)}</option>`);
     }
 
     // If enhanced dropdown exists, reload its items
@@ -370,7 +371,7 @@ export class NamesGeneratorApp extends Application {
       if (catalogs && catalogs.length > 0) {
         for (const catalog of catalogs) {
           // Catalog is already an object with { code, name } where name is localized
-          categorySelect.append(`<option value="${catalog.code}" class="names-category-item">${catalog.name}</option>`);
+          categorySelect.append(`<option value="${sanitizeHTML(catalog.code)}" class="names-category-item">${sanitizeHTML(catalog.name)}</option>`);
         }
       }
     }
@@ -466,10 +467,10 @@ export class NamesGeneratorApp extends Application {
         continue;
       }
 
-      const label = game.i18n.localize(`names.gender.${gender}`) || gender;
+      const label = sanitizeHTML(game.i18n.localize(`names.gender.${gender}`) || gender);
       const checkbox = `
         <label class="names-module-checkbox-item selected">
-          <input type="checkbox" name="names-gender-${gender}" checked>
+          <input type="checkbox" name="names-gender-${sanitizeHTML(gender)}" checked>
           <span class="names-module-checkmark"></span>
           ${label}
         </label>
@@ -852,6 +853,16 @@ export class NamesGeneratorApp extends Application {
         ui.notifications.error(errorMessage);
       }
 
+      // Show user feedback for partial generation
+      if (result.metadata && !result.metadata.complete) {
+        const partialMessage = game.i18n.format('names.partial-generation', {
+          generated: result.metadata.generated,
+          requested: result.metadata.requested
+        }) || `Only ${result.metadata.generated} of ${result.metadata.requested} names could be generated.`;
+        ui.notifications.warn(partialMessage);
+        logWarn(`Partial generation: ${result.metadata.generated}/${result.metadata.requested} names generated`);
+      }
+
       // Keep favorited names and add new ones
       const newNames = result.suggestions.map(s => s.text);
       const favoritedNamesArray = Array.from(this.favoritedNames);
@@ -921,7 +932,7 @@ export class NamesGeneratorApp extends Application {
 
     if (this.generatedNames.length === 0) {
       resultDiv.html('<div class="names-module-no-result">' +
-        game.i18n.localize("names.select-options") + '</div>');
+        sanitizeHTML(game.i18n.localize("names.select-options")) + '</div>');
       return;
     }
 
@@ -965,14 +976,13 @@ export class NamesGeneratorApp extends Application {
           const nameClass = isFavorited ? 'favorited' : '';
           // Gender color attributes
           const gender = this.nameGenders.get(name);
-          const genderAttr = genderColorsEnabled && gender ? `data-gender="${gender}"` : '';
+          const genderAttr = genderColorsEnabled && gender ? `data-gender="${sanitizeHTML(gender)}"` : '';
           const genderClass = genderColorsEnabled && gender ? 'gender-colored' : '';
-          const itemHtml = `
-            <div class="names-module-simple-name ${nameClass} ${genderClass} initial-render" data-name="${name}" ${genderAttr}>
-              <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-              <span class="generator-name-display">${name}</span>
-            </div>`;
-          container.append(itemHtml);
+          // Use text() for name to prevent XSS - build element with jQuery
+          const $item = $(`<div class="names-module-simple-name ${nameClass} ${genderClass} initial-render" data-name="${sanitizeHTML(name)}" ${genderAttr}></div>`);
+          $item.append(`<button type="button" class="favorite-toggle ${favClass}">⭐</button>`);
+          $item.append($('<span class="generator-name-display"></span>').text(name));
+          container.append($item);
         }
       }
 
@@ -991,19 +1001,17 @@ export class NamesGeneratorApp extends Application {
           const nameClass = isFavorited ? 'favorited' : '';
           // Gender color attributes
           const gender = this.nameGenders.get(name);
-          const genderAttr = genderColorsEnabled && gender ? `data-gender="${gender}"` : '';
+          const genderAttr = genderColorsEnabled && gender ? `data-gender="${sanitizeHTML(gender)}"` : '';
           const genderClass = genderColorsEnabled && gender ? 'gender-colored' : '';
-          const itemHtml = `
-            <div class="names-module-generated-name ${nameClass} ${genderClass} initial-render" data-name="${name}" ${genderAttr}>
-              <div class="name-content-wrapper">
-                <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-                <div class="name-content">
-                  <div class="name-title">${name}</div>
-                </div>
-              </div>
-            </div>
-          `;
-          resultDiv.append(itemHtml);
+          // Use text() for name to prevent XSS - build element with jQuery
+          const $item = $(`<div class="names-module-generated-name ${nameClass} ${genderClass} initial-render" data-name="${sanitizeHTML(name)}" ${genderAttr}></div>`);
+          const $wrapper = $('<div class="name-content-wrapper"></div>');
+          $wrapper.append(`<button type="button" class="favorite-toggle ${favClass}">⭐</button>`);
+          const $content = $('<div class="name-content"></div>');
+          $content.append($('<div class="name-title"></div>').text(name));
+          $wrapper.append($content);
+          $item.append($wrapper);
+          resultDiv.append($item);
         }
       }
     }
@@ -1033,23 +1041,23 @@ export class NamesGeneratorApp extends Application {
           // Transform to simple view with shrink animation
           $el.addClass('view-transition');
           $el.removeClass('names-module-generated-name').addClass('names-module-simple-name');
-          $el.html(`
-            <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-            <span class="generator-name-display">${name}</span>
-          `);
+          // Use text() for name to prevent XSS
+          $el.empty();
+          $el.append(`<button type="button" class="favorite-toggle ${favClass}">⭐</button>`);
+          $el.append($('<span class="generator-name-display"></span>').text(name));
           setTimeout(() => $el.removeClass('view-transition'), 400);
         } else {
           // Transform to detailed view with grow animation
           $el.addClass('view-transition');
           $el.removeClass('names-module-simple-name').addClass('names-module-generated-name');
-          $el.html(`
-            <div class="name-content-wrapper">
-              <button type="button" class="favorite-toggle ${favClass}">⭐</button>
-              <div class="name-content">
-                <div class="name-title">${name}</div>
-              </div>
-            </div>
-          `);
+          // Use text() for name to prevent XSS
+          $el.empty();
+          const $wrapper = $('<div class="name-content-wrapper"></div>');
+          $wrapper.append(`<button type="button" class="favorite-toggle ${favClass}">⭐</button>`);
+          const $content = $('<div class="name-content"></div>');
+          $content.append($('<div class="name-title"></div>').text(name));
+          $wrapper.append($content);
+          $el.append($wrapper);
           setTimeout(() => $el.removeClass('view-transition'), 400);
         }
       });
@@ -1184,22 +1192,22 @@ export class NamesGeneratorApp extends Application {
 
     for (const collection of collections) {
       // Get translated label
-      const label = collection.labels?.[this.currentLanguage] ||
+      const label = sanitizeHTML(collection.labels?.[this.currentLanguage] ||
                    collection.labels?.en ||
-                   collection.key;
+                   collection.key);
 
       // Get icon for the first tag if available
       let icon = '';
       if (collection.query?.tags && collection.query.tags.length > 0) {
         const tagIcon = dataManager.getVocabIcon(packageCode, collection.query.tags[0]);
         if (tagIcon) {
-          icon = tagIcon + ' ';
+          icon = sanitizeHTML(tagIcon) + ' ';
         }
       }
 
       const checkbox = `
         <label class="names-module-checkbox-item selected">
-          <input type="checkbox" name="names-collection-${collection.key}" value="${collection.key}" checked>
+          <input type="checkbox" name="names-collection-${sanitizeHTML(collection.key)}" value="${sanitizeHTML(collection.key)}" checked>
           <span class="names-module-checkmark"></span>
           ${icon}${label}
         </label>
@@ -1249,8 +1257,8 @@ export class NamesGeneratorApp extends Application {
 
       // Create option with display name as main text and example as subtitle
       const examplePrefix = game.i18n.localize('names.example-prefix') || 'z.B.:';
-      const subtitle = `${examplePrefix} ${exampleName}`;
-      recipeSelect.append(`<option value="${recipe.id}" data-subtitle="${subtitle}">${displayName}</option>`);
+      const subtitle = `${examplePrefix} ${sanitizeHTML(exampleName)}`;
+      recipeSelect.append(`<option value="${sanitizeHTML(recipe.id)}" data-subtitle="${subtitle}">${sanitizeHTML(displayName)}</option>`);
     }
 
     // Initialize or reload enhanced dropdown
@@ -1811,7 +1819,7 @@ export class NamesGeneratorApp extends Application {
       user: game.user.id,
       speaker: ChatMessage.getSpeaker(),
       content: `<div class="nomina-names-chat-post">
-        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${name}
+        <strong>${game.i18n.localize('names.generated-name') || 'Generated Name'}:</strong> ${sanitizeHTML(name)}
       </div>`,
       whisper: whisperTargets
     };
