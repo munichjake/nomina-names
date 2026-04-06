@@ -5,6 +5,22 @@ All notable changes to the Nomina Names module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Filter/Settings Persistierung**: Letzte Auswahl wird in Emergency, Generator und Picker Apps gespeichert
+  - Spezies-Filter, Kategorie-Auswahl und Einstellungen bleiben beim Schließen erhalten
+  - Speicherung per `game.settings` (scope: `user`)
+
+### Changed
+
+- **Foundry VTT v14 Kompatibilität**:
+  - v12-Support entfernt (Mindestversion jetzt v13)
+  - `registerTokenControls` v12-Branch (Array) entfernt
+  - `activateSceneControls`-Hook für v14 ergänzt (parallel zu `controlTool` für v13)
+  - `module.json`: `minimum: 12 → 13`, `verified: 13 → 14`
+
 ## [3.2.0] - 2026-01-22
 
 ### Added
@@ -29,10 +45,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Simplified examples and better structure
   - Shorter, more understandable explanations
 
+- **Codebase Improvements**: Umfangreiche Code-Qualitätsverbesserungen (20 Tasks)
+  - Konsistente Code-Struktur und Formatierung
+  - Verbesserte Fehlerbehandlung und Logging
+
+- **API Input Validation**: Umfassendes Validierungssystem für alle API-Eingaben
+  - Validierung von Language, Species, Gender, Components, Format, Catalog, Tags, Count
+  - Einheitliche Fehlertypen und Fehlermeldungen über `error-helper.js`
+
 ### Fixed
 
 - **Gender Color Application**: Colors now only apply to gender-relevant name parts
   - Fixes issue with surnames and titles without gender context
+
+- **Gender Color Cache**: Cache wird bei Context Switch korrekt geleert
+  - Verhindert veraltete Farbzuordnungen nach Spezies-/Kategorie-Wechsel
 
 - **Too Few Names Generated**: Emergency generator now guarantees 6 names with improved retry logic
   - New retry loop with TARGET_NAME_COUNT (6) and MAX_ATTEMPTS (100) constants

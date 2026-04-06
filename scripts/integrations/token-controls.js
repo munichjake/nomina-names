@@ -1,7 +1,6 @@
 /**
  * Token Controls Integration
  * Adds Names Generator button to Foundry VTT token toolbar
- * Compatible with both Foundry VTT v12 and v13
  */
 
 import { hasNamesGeneratorPermission } from '../utils/permissions.js';
@@ -36,54 +35,33 @@ function openNamesGenerator() {
 
 /**
  * Token Controls integration - adds Names Generator button to token toolbar
- * Compatible with both Foundry VTT v12 and v13
- * @param {Array|Object} controls - Array of control button groups (v12) or controls object (v13)
+ * @param {Object} controls - Controls object with .tokens structure
  */
 export function registerTokenControls(controls) {
   if (!game.settings.get(MODULE_ID, "showInTokenControls")) return;
   if (!hasNamesGeneratorPermission()) return;
 
-  // v12 compatibility - controls is an array
-  if (Array.isArray(controls)) {
-    const token = controls.find(c => c.name === 'token');
-    if (!token) return;
-
-    if (token.tools.some(t => t.name === 'names-generator')) return;
-
-    token.tools.push({
+  if (controls.tokens?.tools && !controls.tokens.tools.namesGenerator) {
+    controls.tokens.tools.namesGenerator = {
       name: 'names-generator',
       title: game.i18n.localize("names.title"),
       icon: 'fas fa-user-tag',
+      order: 999,
       button: true,
-      visible: () => hasNamesGeneratorPermission(),
-      onClick: () => openNamesGenerator()
-    });
+      visible: true,
+      onClick: () => {
+        logDebug("Names generator clicked via token controls");
+        openNamesGenerator();
+      }
+    };
 
-    logDebug("Names generator tool added to token controls (v12)");
-  } else if (controls.tokens) {
-    // v13 - controls.tokens structure
-    if (controls.tokens.tools && !controls.tokens.tools.namesGenerator) {
-      controls.tokens.tools.namesGenerator = {
-        name: 'names-generator',
-        title: game.i18n.localize("names.title") || "Namen-Generator",
-        icon: 'fas fa-user-tag',
-        order: 999,
-        button: true,
-        visible: true,
-        onClick: () => {
-          logDebug("Names generator clicked via v13 token controls");
-          openNamesGenerator();
-        }
-      };
-
-      logDebug("Names generator tool added to token controls (v13)");
-    }
+    logDebug("Names generator tool added to token controls");
   }
 }
 
 /**
- * Direct DOM injection for v13 Token Controls
- * Fallback method for when getSceneControlButtons doesn't work
+ * Direct DOM injection fallback
+ * Used when getSceneControlButtons doesn't work
  */
 export function injectTokenControlsButtonDirectly() {
   if (!game.settings.get(MODULE_ID, "showInTokenControls")) {
@@ -191,43 +169,53 @@ export function injectTokenControlsButtonDirectly() {
 
   // Setup event handlers after injection
   setTimeout(() => {
-    setupV13EventHandling();
+    setupControlEventHandling();
   }, 100);
 }
 
-// Track if v13 hooks are already registered
-let v13HooksRegistered = false;
+// Track if hooks are already registered
+let controlHooksRegistered = false;
 
 /**
- * Setup v13 specific event handling for token controls
+ * Setup event handling for token controls
  */
-function setupV13EventHandling() {
+function setupControlEventHandling() {
   // Debug: Log all existing token tools
   const existingTools = $('[data-tool]');
-  logDebug("setupV13EventHandling: Found existing tools", {
+  logDebug("setupControlEventHandling: Found existing tools", {
     count: existingTools.length,
     tools: existingTools.map((i, el) => $(el).attr('data-tool')).get()
   });
 
-  // Hook into control tool activation for v13 - only register once
-  if (!v13HooksRegistered) {
+  // Hook into control tool activation - only register once
+  if (!controlHooksRegistered) {
+    // v13: controlTool hook
     Hooks.on('controlTool', function namesControlToolHandler(tool, active) {
       logDebug("controlTool hook called", { tool, active });
       if (tool === 'names-generator' && active) {
-        logDebug("Names generator activated via controlTool hook");
+        logDebug("Names generator activated via controlTool hook (v13)");
         openNamesGenerator();
       }
     });
-    v13HooksRegistered = true;
-    logDebug("Registered controlTool hook for v13");
+
+    // v14: activateSceneControls replaces controlTool for tool-change events
+    Hooks.on('activateSceneControls', function namesActivateSceneControlsHandler(sceneControls, { control, tool } = {}) {
+      logDebug("activateSceneControls hook called", { control, tool });
+      if (tool === 'names-generator') {
+        logDebug("Names generator activated via activateSceneControls hook (v14)");
+        openNamesGenerator();
+      }
+    });
+
+    controlHooksRegistered = true;
+    logDebug("Registered controlTool (v13) and activateSceneControls (v14) hooks");
   }
 
-  // Additional event delegation specifically for v13 token tools
-  $(document).off('click.names-v13');
-  $(document).on('click.names-v13', '[data-tool="names-generator"]', function(event) {
+  $(document).off('click.names-tools');
+  $(document).on('click.names-tools', '[data-tool="names-generator"]', function(event) {
     event.preventDefault();
     event.stopPropagation();
-    logDebug("Names tool clicked via v13 event delegation", {
+    logDebug("Names tool clicked via event delegation", {
       target: event.target.tagName,
       currentTarget: event.currentTarget.tagName,
       dataTool: $(this).attr('data-tool')
@@ -243,7 +231,7 @@ function setupV13EventHandling() {
     openNamesGenerator();
   });
 
-  logDebug("v13 event handling setup completed", {
+  logDebug("Control event handling setup completed", {
     namesToolsFound: $('[data-tool="names-generator"]').length
   });
 }
@@ -271,9 +259,8 @@ export function setupGlobalEventDelegation() {
 }
 
 /**
- * v13 Token Controls - Direct DOM injection approach
+ * Token Controls - Direct DOM injection approach
  * Adds button directly to the rendered scene controls
- * Compatible with both jQuery and native HTMLElement
  */
 export function registerRenderSceneControls(sceneControls, html, data) {
   try {
@@ -286,24 +273,12 @@ export function registerRenderSceneControls(sceneControls, html, data) {
       hasControls: !!sceneControls?.controls
     });
 
-    // Only for v13 - check if we're not in v12 mode
-    if (Array.isArray(sceneControls?.controls)) {
-      logDebug("renderSceneControls: v12 detected, skipping DOM injection");
-      return;
-    }
-
-    // Handle both jQuery and native HTMLElement for v13 compatibility
-    let $html;
-    if (html && typeof html.find === 'function') {
-      // v12 - html is jQuery object
-      $html = html;
-    } else if (html instanceof HTMLElement) {
-      // v13 - html is HTMLElement
-      $html = $(html);
-    } else {
+    if (!(html instanceof HTMLElement)) {
       logError("renderSceneControls: Unexpected html parameter type", typeof html);
       return;
     }
+
+    const $html = $(html);
 
     logDebug("renderSceneControls: HTML converted to jQuery", { htmlLength: $html.length });
 
@@ -369,7 +344,7 @@ export function registerRenderSceneControls(sceneControls, html, data) {
         });
 
         controlsContainer.append(namesButton);
-        logDebug("Names generator button added to main controls (v13 alternative)");
+        logDebug("Names generator button added to main controls (fallback)");
         return;
       }
 
@@ -395,11 +370,11 @@ export function registerRenderSceneControls(sceneControls, html, data) {
 
     // Add the button to the token tools
     tokenToolsContainer.append(namesButton);
-    logDebug("Names generator tool added to token controls (v13)");
+    logDebug("Names generator tool added to token controls");
 
     // Setup event handlers after DOM injection
     setTimeout(() => {
-      setupV13EventHandling();
+      setupControlEventHandling();
     }, 100);
   } catch (error) {
     logError("Error in renderSceneControls hook", error);

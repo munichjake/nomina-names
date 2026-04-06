@@ -18,76 +18,76 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "en": "Lightbringer" }, "tags": ["male", "female", "titles"], "w": 1 },
-        { "t": { "en": "Heavenprince" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Heavenprincess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Radiancebaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Radiancebaroness" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Celestial Knight" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Celestial Dame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Divine Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Divine Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Holy Count" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Holy Countess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Star Knight" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Star Dame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Pure Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Pure Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Gracebringer" }, "tags": ["male", "female", "titles"], "w": 1 },
-        { "t": { "en": "Seraphim Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Seraphim Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Baron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Baroness" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Count" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Countess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Duke" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Duchess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Prince" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Princess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Knight" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Dame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Archduke" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Archduchess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Grand Duke" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Grand Duchess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "High Prince" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "High Princess" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Marquis" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "Marquise" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "High Master" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "en": "High Mistress" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "en": "Guardian" }, "tags": ["male", "female", "titles"], "w": 1 },
-        { "t": { "en": "Warden" }, "tags": ["male", "female", "titles"], "w": 1 },
-        { "t": { "en": "Chosen One" }, "tags": ["male", "female", "titles"], "w": 1 },
-        { "t": { "en": "Archpaladin" }, "tags": ["male", "female", "nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Lightkeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Heavenward" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Radianceguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Celestialward" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Divineguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Holykeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Starwarden" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Pureguard" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Gracekeeper" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Starchild" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Commander" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Legate" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Magistrate" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Oracle" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Protector" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Tribune" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "en": "Dux" }, "tags": ["nonbinary", "titles"], "w": 1 }
+        { "t": { "en": "Lightbringer" }, "tags": ["male", "female", "titles"], "w": 1, "attrs": { "titleId": "lightbringer" } },
+        { "t": { "en": "Heavenprince" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "heavenprince" } },
+        { "t": { "en": "Heavenprincess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "heavenprince" } },
+        { "t": { "en": "Radiancebaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "radiancebaron" } },
+        { "t": { "en": "Radiancebaroness" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "radiancebaron" } },
+        { "t": { "en": "Celestial Knight" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "celestial_knight" } },
+        { "t": { "en": "Celestial Dame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "celestial_knight" } },
+        { "t": { "en": "Divine Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "divine_lord" } },
+        { "t": { "en": "Divine Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "divine_lord" } },
+        { "t": { "en": "Holy Count" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "holy_count" } },
+        { "t": { "en": "Holy Countess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "holy_count" } },
+        { "t": { "en": "Star Knight" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "star_knight" } },
+        { "t": { "en": "Star Dame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "star_knight" } },
+        { "t": { "en": "Pure Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "pure_lord" } },
+        { "t": { "en": "Pure Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "pure_lord" } },
+        { "t": { "en": "Gracebringer" }, "tags": ["male", "female", "titles"], "w": 1, "attrs": { "titleId": "gracebringer" } },
+        { "t": { "en": "Seraphim Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "seraphim_lord" } },
+        { "t": { "en": "Seraphim Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "seraphim_lord" } },
+        { "t": { "en": "Baron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "en": "Baroness" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "en": "Count" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "count" } },
+        { "t": { "en": "Countess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "count" } },
+        { "t": { "en": "Duke" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "duke" } },
+        { "t": { "en": "Duchess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "duke" } },
+        { "t": { "en": "Prince" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "prince" } },
+        { "t": { "en": "Princess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "prince" } },
+        { "t": { "en": "Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "lord" } },
+        { "t": { "en": "Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "lord" } },
+        { "t": { "en": "Knight" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "knight" } },
+        { "t": { "en": "Dame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "knight" } },
+        { "t": { "en": "Archduke" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "archduke" } },
+        { "t": { "en": "Archduchess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "archduke" } },
+        { "t": { "en": "Grand Duke" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "grand_duke" } },
+        { "t": { "en": "Grand Duchess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "grand_duke" } },
+        { "t": { "en": "High Prince" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "high_prince" } },
+        { "t": { "en": "High Princess" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "high_prince" } },
+        { "t": { "en": "Marquis" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "marquis" } },
+        { "t": { "en": "Marquise" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "marquis" } },
+        { "t": { "en": "High Master" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "high_master" } },
+        { "t": { "en": "High Mistress" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "high_master" } },
+        { "t": { "en": "Guardian" }, "tags": ["male", "female", "titles"], "w": 1, "attrs": { "titleId": "guardian" } },
+        { "t": { "en": "Warden" }, "tags": ["male", "female", "titles"], "w": 1, "attrs": { "titleId": "warden" } },
+        { "t": { "en": "Chosen One" }, "tags": ["male", "female", "titles"], "w": 1, "attrs": { "titleId": "chosen_one" } },
+        { "t": { "en": "Archpaladin" }, "tags": ["male", "female", "nonbinary", "titles"], "w": 1, "attrs": { "titleId": "archpaladin" } },
+        { "t": { "en": "Lightkeeper" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "lightkeeper" } },
+        { "t": { "en": "Heavenward" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "heavenward" } },
+        { "t": { "en": "Radianceguard" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "radianceguard" } },
+        { "t": { "en": "Celestialward" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "celestialward" } },
+        { "t": { "en": "Divineguard" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "divineguard" } },
+        { "t": { "en": "Holykeeper" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "holykeeper" } },
+        { "t": { "en": "Starwarden" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "starwarden" } },
+        { "t": { "en": "Pureguard" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "pureguard" } },
+        { "t": { "en": "Gracekeeper" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "gracekeeper" } },
+        { "t": { "en": "Starchild" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "starchild" } },
+        { "t": { "en": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "archon" } },
+        { "t": { "en": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "axiom" } },
+        { "t": { "en": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "exarch" } },
+        { "t": { "en": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "hegemon" } },
+        { "t": { "en": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "idol" } },
+        { "t": { "en": "Commander" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "commander" } },
+        { "t": { "en": "Legate" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "legate" } },
+        { "t": { "en": "Magistrate" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "magistrate" } },
+        { "t": { "en": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "monarch" } },
+        { "t": { "en": "Sovereign" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "sovereign" } },
+        { "t": { "en": "Oracle" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "oracle" } },
+        { "t": { "en": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "pontifex" } },
+        { "t": { "en": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "primus" } },
+        { "t": { "en": "Protector" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "protector" } },
+        { "t": { "en": "Tribune" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "tribune" } },
+        { "t": { "en": "Dux" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "dux" } }
       ]
     }
   },
@@ -96,6 +96,369 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "en": {
+      "titles": {
+        "lightbringer": {
+          "forms": {
+            "m": { "plain": "Lightbringer" },
+            "f": { "plain": "Lightbringer" },
+            "n": { "plain": "Lightbringer" }
+          }
+        },
+        "heavenprince": {
+          "forms": {
+            "m": { "plain": "Heavenprince" },
+            "f": { "plain": "Heavenprincess" },
+            "n": { "plain": "Heavenprince" }
+          }
+        },
+        "radiancebaron": {
+          "forms": {
+            "m": { "plain": "Radiancebaron" },
+            "f": { "plain": "Radiancebaroness" },
+            "n": { "plain": "Radiancebaron" }
+          }
+        },
+        "celestial_knight": {
+          "forms": {
+            "m": { "plain": "Celestial Knight" },
+            "f": { "plain": "Celestial Dame" },
+            "n": { "plain": "Celestial Knight" }
+          }
+        },
+        "divine_lord": {
+          "forms": {
+            "m": { "plain": "Divine Lord" },
+            "f": { "plain": "Divine Lady" },
+            "n": { "plain": "Divine Lord" }
+          }
+        },
+        "holy_count": {
+          "forms": {
+            "m": { "plain": "Holy Count" },
+            "f": { "plain": "Holy Countess" },
+            "n": { "plain": "Holy Count" }
+          }
+        },
+        "star_knight": {
+          "forms": {
+            "m": { "plain": "Star Knight" },
+            "f": { "plain": "Star Dame" },
+            "n": { "plain": "Star Knight" }
+          }
+        },
+        "pure_lord": {
+          "forms": {
+            "m": { "plain": "Pure Lord" },
+            "f": { "plain": "Pure Lady" },
+            "n": { "plain": "Pure Lord" }
+          }
+        },
+        "gracebringer": {
+          "forms": {
+            "m": { "plain": "Gracebringer" },
+            "f": { "plain": "Gracebringer" },
+            "n": { "plain": "Gracebringer" }
+          }
+        },
+        "seraphim_lord": {
+          "forms": {
+            "m": { "plain": "Seraphim Lord" },
+            "f": { "plain": "Seraphim Lady" },
+            "n": { "plain": "Seraphim Lord" }
+          }
+        },
+        "baron": {
+          "forms": {
+            "m": { "plain": "Baron" },
+            "f": { "plain": "Baroness" },
+            "n": { "plain": "Baron" }
+          }
+        },
+        "count": {
+          "forms": {
+            "m": { "plain": "Count" },
+            "f": { "plain": "Countess" },
+            "n": { "plain": "Count" }
+          }
+        },
+        "duke": {
+          "forms": {
+            "m": { "plain": "Duke" },
+            "f": { "plain": "Duchess" },
+            "n": { "plain": "Duke" }
+          }
+        },
+        "prince": {
+          "forms": {
+            "m": { "plain": "Prince" },
+            "f": { "plain": "Princess" },
+            "n": { "plain": "Prince" }
+          }
+        },
+        "lord": {
+          "forms": {
+            "m": { "plain": "Lord" },
+            "f": { "plain": "Lady" },
+            "n": { "plain": "Lord" }
+          }
+        },
+        "knight": {
+          "forms": {
+            "m": { "plain": "Knight" },
+            "f": { "plain": "Dame" },
+            "n": { "plain": "Knight" }
+          }
+        },
+        "archduke": {
+          "forms": {
+            "m": { "plain": "Archduke" },
+            "f": { "plain": "Archduchess" },
+            "n": { "plain": "Archduke" }
+          }
+        },
+        "grand_duke": {
+          "forms": {
+            "m": { "plain": "Grand Duke" },
+            "f": { "plain": "Grand Duchess" },
+            "n": { "plain": "Grand Duke" }
+          }
+        },
+        "high_prince": {
+          "forms": {
+            "m": { "plain": "High Prince" },
+            "f": { "plain": "High Princess" },
+            "n": { "plain": "High Prince" }
+          }
+        },
+        "marquis": {
+          "forms": {
+            "m": { "plain": "Marquis" },
+            "f": { "plain": "Marquise" },
+            "n": { "plain": "Marquis" }
+          }
+        },
+        "high_master": {
+          "forms": {
+            "m": { "plain": "High Master" },
+            "f": { "plain": "High Mistress" },
+            "n": { "plain": "High Master" }
+          }
+        },
+        "guardian": {
+          "forms": {
+            "m": { "plain": "Guardian" },
+            "f": { "plain": "Guardian" },
+            "n": { "plain": "Guardian" }
+          }
+        },
+        "warden": {
+          "forms": {
+            "m": { "plain": "Warden" },
+            "f": { "plain": "Warden" },
+            "n": { "plain": "Warden" }
+          }
+        },
+        "chosen_one": {
+          "forms": {
+            "m": { "plain": "Chosen One" },
+            "f": { "plain": "Chosen One" },
+            "n": { "plain": "Chosen One" }
+          }
+        },
+        "archpaladin": {
+          "forms": {
+            "m": { "plain": "Archpaladin" },
+            "f": { "plain": "Archpaladin" },
+            "n": { "plain": "Archpaladin" }
+          }
+        },
+        "lightkeeper": {
+          "forms": {
+            "m": { "plain": "Lightkeeper" },
+            "f": { "plain": "Lightkeeper" },
+            "n": { "plain": "Lightkeeper" }
+          }
+        },
+        "heavenward": {
+          "forms": {
+            "m": { "plain": "Heavenward" },
+            "f": { "plain": "Heavenward" },
+            "n": { "plain": "Heavenward" }
+          }
+        },
+        "radianceguard": {
+          "forms": {
+            "m": { "plain": "Radianceguard" },
+            "f": { "plain": "Radianceguard" },
+            "n": { "plain": "Radianceguard" }
+          }
+        },
+        "celestialward": {
+          "forms": {
+            "m": { "plain": "Celestialward" },
+            "f": { "plain": "Celestialward" },
+            "n": { "plain": "Celestialward" }
+          }
+        },
+        "divineguard": {
+          "forms": {
+            "m": { "plain": "Divineguard" },
+            "f": { "plain": "Divineguard" },
+            "n": { "plain": "Divineguard" }
+          }
+        },
+        "holykeeper": {
+          "forms": {
+            "m": { "plain": "Holykeeper" },
+            "f": { "plain": "Holykeeper" },
+            "n": { "plain": "Holykeeper" }
+          }
+        },
+        "starwarden": {
+          "forms": {
+            "m": { "plain": "Starwarden" },
+            "f": { "plain": "Starwarden" },
+            "n": { "plain": "Starwarden" }
+          }
+        },
+        "pureguard": {
+          "forms": {
+            "m": { "plain": "Pureguard" },
+            "f": { "plain": "Pureguard" },
+            "n": { "plain": "Pureguard" }
+          }
+        },
+        "gracekeeper": {
+          "forms": {
+            "m": { "plain": "Gracekeeper" },
+            "f": { "plain": "Gracekeeper" },
+            "n": { "plain": "Gracekeeper" }
+          }
+        },
+        "starchild": {
+          "forms": {
+            "m": { "plain": "Starchild" },
+            "f": { "plain": "Starchild" },
+            "n": { "plain": "Starchild" }
+          }
+        },
+        "archon": {
+          "forms": {
+            "m": { "plain": "Archon" },
+            "f": { "plain": "Archon" },
+            "n": { "plain": "Archon" }
+          }
+        },
+        "axiom": {
+          "forms": {
+            "m": { "plain": "Axiom" },
+            "f": { "plain": "Axiom" },
+            "n": { "plain": "Axiom" }
+          }
+        },
+        "exarch": {
+          "forms": {
+            "m": { "plain": "Exarch" },
+            "f": { "plain": "Exarch" },
+            "n": { "plain": "Exarch" }
+          }
+        },
+        "hegemon": {
+          "forms": {
+            "m": { "plain": "Hegemon" },
+            "f": { "plain": "Hegemon" },
+            "n": { "plain": "Hegemon" }
+          }
+        },
+        "idol": {
+          "forms": {
+            "m": { "plain": "Idol" },
+            "f": { "plain": "Idol" },
+            "n": { "plain": "Idol" }
+          }
+        },
+        "commander": {
+          "forms": {
+            "m": { "plain": "Commander" },
+            "f": { "plain": "Commander" },
+            "n": { "plain": "Commander" }
+          }
+        },
+        "legate": {
+          "forms": {
+            "m": { "plain": "Legate" },
+            "f": { "plain": "Legate" },
+            "n": { "plain": "Legate" }
+          }
+        },
+        "magistrate": {
+          "forms": {
+            "m": { "plain": "Magistrate" },
+            "f": { "plain": "Magistrate" },
+            "n": { "plain": "Magistrate" }
+          }
+        },
+        "monarch": {
+          "forms": {
+            "m": { "plain": "Monarch" },
+            "f": { "plain": "Monarch" },
+            "n": { "plain": "Monarch" }
+          }
+        },
+        "sovereign": {
+          "forms": {
+            "m": { "plain": "Sovereign" },
+            "f": { "plain": "Sovereign" },
+            "n": { "plain": "Sovereign" }
+          }
+        },
+        "oracle": {
+          "forms": {
+            "m": { "plain": "Oracle" },
+            "f": { "plain": "Oracle" },
+            "n": { "plain": "Oracle" }
+          }
+        },
+        "pontifex": {
+          "forms": {
+            "m": { "plain": "Pontifex" },
+            "f": { "plain": "Pontifex" },
+            "n": { "plain": "Pontifex" }
+          }
+        },
+        "primus": {
+          "forms": {
+            "m": { "plain": "Primus" },
+            "f": { "plain": "Primus" },
+            "n": { "plain": "Primus" }
+          }
+        },
+        "protector": {
+          "forms": {
+            "m": { "plain": "Protector" },
+            "f": { "plain": "Protector" },
+            "n": { "plain": "Protector" }
+          }
+        },
+        "tribune": {
+          "forms": {
+            "m": { "plain": "Tribune" },
+            "f": { "plain": "Tribune" },
+            "n": { "plain": "Tribune" }
+          }
+        },
+        "dux": {
+          "forms": {
+            "m": { "plain": "Dux" },
+            "f": { "plain": "Dux" },
+            "n": { "plain": "Dux" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

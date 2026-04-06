@@ -18,67 +18,67 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Auserwählter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Dux" }, "tags": ["male", "nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Edelmann" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzpaladin" }, "tags": ["male", "nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Großherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Himmelsfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Himmelsritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Herr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hochfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hochmeister" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Lichtbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Lichtfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Prinz" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Reichsfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Seraphim-Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Sternenritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Wächter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Auserwählte" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Edelfrau" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Erzherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Großherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Himmelsfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Himmelsdame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Herrin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Hochfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Lichtbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Lichtfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Prinzessin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Reichsfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Seraphim-Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Sternendame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Sternenkind" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Wächterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Komtur" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Legat" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Magistrat" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Oberhaupt" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Orakel" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Protektor" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Tribun" }, "tags": ["nonbinary", "titles"], "w": 1 }
+        { "t": { "de": "Auserwählter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "auserwahlter" } },
+        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "de": "Dux" }, "tags": ["male", "nonbinary", "titles"], "w": 1, "attrs": { "titleId": "dux" } },
+        { "t": { "de": "Edelmann" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "edelmann" } },
+        { "t": { "de": "Erzherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "erzherzog" } },
+        { "t": { "de": "Erzpaladin" }, "tags": ["male", "nonbinary", "titles"], "w": 1, "attrs": { "titleId": "erzpaladin" } },
+        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "fuerst" } },
+        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "graf" } },
+        { "t": { "de": "Großherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "grossherzog" } },
+        { "t": { "de": "Himmelsfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "himmelsfuerst" } },
+        { "t": { "de": "Himmelsritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "himmelsritter" } },
+        { "t": { "de": "Herr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "herr" } },
+        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "herzog" } },
+        { "t": { "de": "Hochfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hochfuerst" } },
+        { "t": { "de": "Hochmeister" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hochmeister" } },
+        { "t": { "de": "Lichtbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "lichtbaron" } },
+        { "t": { "de": "Lichtfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "lichtfuerst" } },
+        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "markgraf" } },
+        { "t": { "de": "Prinz" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "prinz" } },
+        { "t": { "de": "Reichsfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "reichsfuerst" } },
+        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "ritter" } },
+        { "t": { "de": "Seraphim-Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "seraphim_lord" } },
+        { "t": { "de": "Sternenritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "sternenritter" } },
+        { "t": { "de": "Wächter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "waechter" } },
+        { "t": { "de": "Auserwählte" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "auserwahlter" } },
+        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "de": "Edelfrau" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "edelmann" } },
+        { "t": { "de": "Erzherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "erzherzog" } },
+        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "fuerst" } },
+        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "graf" } },
+        { "t": { "de": "Großherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "grossherzog" } },
+        { "t": { "de": "Himmelsfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "himmelsfuerst" } },
+        { "t": { "de": "Himmelsdame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "himmelsritter" } },
+        { "t": { "de": "Herrin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "herr" } },
+        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "herzog" } },
+        { "t": { "de": "Hochfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hochfuerst" } },
+        { "t": { "de": "Lichtbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "lichtbaron" } },
+        { "t": { "de": "Lichtfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "lichtfuerst" } },
+        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "markgraf" } },
+        { "t": { "de": "Prinzessin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "prinz" } },
+        { "t": { "de": "Reichsfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "reichsfuerst" } },
+        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "ritter" } },
+        { "t": { "de": "Seraphim-Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "seraphim_lord" } },
+        { "t": { "de": "Sternendame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "sternenritter" } },
+        { "t": { "de": "Sternenkind" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "sternenkind" } },
+        { "t": { "de": "Wächterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "waechter" } },
+        { "t": { "de": "Archon" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "archon" } },
+        { "t": { "de": "Axiom" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "axiom" } },
+        { "t": { "de": "Exarch" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "exarch" } },
+        { "t": { "de": "Hegemon" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "hegemon" } },
+        { "t": { "de": "Idol" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "idol" } },
+        { "t": { "de": "Komtur" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "komtur" } },
+        { "t": { "de": "Legat" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "legat" } },
+        { "t": { "de": "Magistrat" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "magistrat" } },
+        { "t": { "de": "Monarch" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "monarch" } },
+        { "t": { "de": "Oberhaupt" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "oberhaupt" } },
+        { "t": { "de": "Orakel" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "orakel" } },
+        { "t": { "de": "Pontifex" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "pontifex" } },
+        { "t": { "de": "Primus" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "primus" } },
+        { "t": { "de": "Protektor" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "protektor" } },
+        { "t": { "de": "Tribun" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "tribun" } }
       ]
     }
   },
@@ -87,6 +87,292 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "auserwahlter": {
+          "forms": {
+            "m": { "nom": "Auserwählter", "gen": "des Auserwählten", "dat": "dem Auserwählten", "akk": "den Auserwählten" },
+            "f": { "nom": "Auserwählte", "gen": "der Auserwählten", "dat": "der Auserwählten", "akk": "die Auserwählte" },
+            "n": { "nom": "Auserwählter", "gen": "des Auserwählten", "dat": "dem Auserwählten", "akk": "den Auserwählten" }
+          }
+        },
+        "baron": {
+          "forms": {
+            "m": { "nom": "Baron", "gen": "des Barons", "dat": "dem Baron", "akk": "den Baron" },
+            "f": { "nom": "Baronin", "gen": "der Baronin", "dat": "der Baronin", "akk": "die Baronin" },
+            "n": { "nom": "Baron", "gen": "des Barons", "dat": "dem Baron", "akk": "den Baron" }
+          }
+        },
+        "dux": {
+          "forms": {
+            "m": { "nom": "Dux", "gen": "des Dux", "dat": "dem Dux", "akk": "den Dux" },
+            "f": { "nom": "Dux", "gen": "der Dux", "dat": "der Dux", "akk": "die Dux" },
+            "n": { "nom": "Dux", "gen": "des Dux", "dat": "dem Dux", "akk": "den Dux" }
+          }
+        },
+        "edelmann": {
+          "forms": {
+            "m": { "nom": "Edelmann", "gen": "des Edelmanns", "dat": "dem Edelmann", "akk": "den Edelmann" },
+            "f": { "nom": "Edelfrau", "gen": "der Edelfrau", "dat": "der Edelfrau", "akk": "die Edelfrau" },
+            "n": { "nom": "Edelmann", "gen": "des Edelmanns", "dat": "dem Edelmann", "akk": "den Edelmann" }
+          }
+        },
+        "erzherzog": {
+          "forms": {
+            "m": { "nom": "Erzherzog", "gen": "des Erzherzogs", "dat": "dem Erzherzog", "akk": "den Erzherzog" },
+            "f": { "nom": "Erzherzogin", "gen": "der Erzherzogin", "dat": "der Erzherzogin", "akk": "die Erzherzogin" },
+            "n": { "nom": "Erzherzog", "gen": "des Erzherzogs", "dat": "dem Erzherzog", "akk": "den Erzherzog" }
+          }
+        },
+        "erzpaladin": {
+          "forms": {
+            "m": { "nom": "Erzpaladin", "gen": "des Erzpaladins", "dat": "dem Erzpaladin", "akk": "den Erzpaladin" },
+            "f": { "nom": "Erzpaladinin", "gen": "der Erzpaladinin", "dat": "der Erzpaladinin", "akk": "die Erzpaladinin" },
+            "n": { "nom": "Erzpaladin", "gen": "des Erzpaladins", "dat": "dem Erzpaladin", "akk": "den Erzpaladin" }
+          }
+        },
+        "fuerst": {
+          "forms": {
+            "m": { "nom": "Fürst", "gen": "des Fürsten", "dat": "dem Fürsten", "akk": "den Fürsten" },
+            "f": { "nom": "Fürstin", "gen": "der Fürstin", "dat": "der Fürstin", "akk": "die Fürstin" },
+            "n": { "nom": "Fürst", "gen": "des Fürsten", "dat": "dem Fürsten", "akk": "den Fürsten" }
+          }
+        },
+        "graf": {
+          "forms": {
+            "m": { "nom": "Graf", "gen": "des Grafen", "dat": "dem Grafen", "akk": "den Grafen" },
+            "f": { "nom": "Gräfin", "gen": "der Gräfin", "dat": "der Gräfin", "akk": "die Gräfin" },
+            "n": { "nom": "Graf", "gen": "des Grafen", "dat": "dem Grafen", "akk": "den Grafen" }
+          }
+        },
+        "grossherzog": {
+          "forms": {
+            "m": { "nom": "Großherzog", "gen": "des Großherzogs", "dat": "dem Großherzog", "akk": "den Großherzog" },
+            "f": { "nom": "Großherzogin", "gen": "der Großherzogin", "dat": "der Großherzogin", "akk": "die Großherzogin" },
+            "n": { "nom": "Großherzog", "gen": "des Großherzogs", "dat": "dem Großherzog", "akk": "den Großherzog" }
+          }
+        },
+        "himmelsfuerst": {
+          "forms": {
+            "m": { "nom": "Himmelsfürst", "gen": "des Himmelsfürsten", "dat": "dem Himmelsfürsten", "akk": "den Himmelsfürsten" },
+            "f": { "nom": "Himmelsfürstin", "gen": "der Himmelsfürstin", "dat": "der Himmelsfürstin", "akk": "die Himmelsfürstin" },
+            "n": { "nom": "Himmelsfürst", "gen": "des Himmelsfürsten", "dat": "dem Himmelsfürsten", "akk": "den Himmelsfürsten" }
+          }
+        },
+        "himmelsritter": {
+          "forms": {
+            "m": { "nom": "Himmelsritter", "gen": "des Himmelsritters", "dat": "dem Himmelsritter", "akk": "den Himmelsritter" },
+            "f": { "nom": "Himmelsdame", "gen": "der Himmelsdame", "dat": "der Himmelsdame", "akk": "die Himmelsdame" },
+            "n": { "nom": "Himmelsritter", "gen": "des Himmelsritters", "dat": "dem Himmelsritter", "akk": "den Himmelsritter" }
+          }
+        },
+        "herr": {
+          "forms": {
+            "m": { "nom": "Herr", "gen": "des Herrn", "dat": "dem Herrn", "akk": "den Herrn" },
+            "f": { "nom": "Herrin", "gen": "der Herrin", "dat": "der Herrin", "akk": "die Herrin" },
+            "n": { "nom": "Herr", "gen": "des Herrn", "dat": "dem Herrn", "akk": "den Herrn" }
+          }
+        },
+        "herzog": {
+          "forms": {
+            "m": { "nom": "Herzog", "gen": "des Herzogs", "dat": "dem Herzog", "akk": "den Herzog" },
+            "f": { "nom": "Herzogin", "gen": "der Herzogin", "dat": "der Herzogin", "akk": "die Herzogin" },
+            "n": { "nom": "Herzog", "gen": "des Herzogs", "dat": "dem Herzog", "akk": "den Herzog" }
+          }
+        },
+        "hochfuerst": {
+          "forms": {
+            "m": { "nom": "Hochfürst", "gen": "des Hochfürsten", "dat": "dem Hochfürsten", "akk": "den Hochfürsten" },
+            "f": { "nom": "Hochfürstin", "gen": "der Hochfürstin", "dat": "der Hochfürstin", "akk": "die Hochfürstin" },
+            "n": { "nom": "Hochfürst", "gen": "des Hochfürsten", "dat": "dem Hochfürsten", "akk": "den Hochfürsten" }
+          }
+        },
+        "hochmeister": {
+          "forms": {
+            "m": { "nom": "Hochmeister", "gen": "des Hochmeisters", "dat": "dem Hochmeister", "akk": "den Hochmeister" },
+            "f": { "nom": "Hochmeisterin", "gen": "der Hochmeisterin", "dat": "der Hochmeisterin", "akk": "die Hochmeisterin" },
+            "n": { "nom": "Hochmeister", "gen": "des Hochmeisters", "dat": "dem Hochmeister", "akk": "den Hochmeister" }
+          }
+        },
+        "lichtbaron": {
+          "forms": {
+            "m": { "nom": "Lichtbaron", "gen": "des Lichtbarons", "dat": "dem Lichtbaron", "akk": "den Lichtbaron" },
+            "f": { "nom": "Lichtbaronin", "gen": "der Lichtbaronin", "dat": "der Lichtbaronin", "akk": "die Lichtbaronin" },
+            "n": { "nom": "Lichtbaron", "gen": "des Lichtbarons", "dat": "dem Lichtbaron", "akk": "den Lichtbaron" }
+          }
+        },
+        "lichtfuerst": {
+          "forms": {
+            "m": { "nom": "Lichtfürst", "gen": "des Lichtfürsten", "dat": "dem Lichtfürsten", "akk": "den Lichtfürsten" },
+            "f": { "nom": "Lichtfürstin", "gen": "der Lichtfürstin", "dat": "der Lichtfürstin", "akk": "die Lichtfürstin" },
+            "n": { "nom": "Lichtfürst", "gen": "des Lichtfürsten", "dat": "dem Lichtfürsten", "akk": "den Lichtfürsten" }
+          }
+        },
+        "markgraf": {
+          "forms": {
+            "m": { "nom": "Markgraf", "gen": "des Markgrafen", "dat": "dem Markgrafen", "akk": "den Markgrafen" },
+            "f": { "nom": "Markgräfin", "gen": "der Markgräfin", "dat": "der Markgräfin", "akk": "die Markgräfin" },
+            "n": { "nom": "Markgraf", "gen": "des Markgrafen", "dat": "dem Markgrafen", "akk": "den Markgrafen" }
+          }
+        },
+        "prinz": {
+          "forms": {
+            "m": { "nom": "Prinz", "gen": "des Prinzen", "dat": "dem Prinzen", "akk": "den Prinzen" },
+            "f": { "nom": "Prinzessin", "gen": "der Prinzessin", "dat": "der Prinzessin", "akk": "die Prinzessin" },
+            "n": { "nom": "Prinz", "gen": "des Prinzen", "dat": "dem Prinzen", "akk": "den Prinzen" }
+          }
+        },
+        "reichsfuerst": {
+          "forms": {
+            "m": { "nom": "Reichsfürst", "gen": "des Reichsfürsten", "dat": "dem Reichsfürsten", "akk": "den Reichsfürsten" },
+            "f": { "nom": "Reichsfürstin", "gen": "der Reichsfürstin", "dat": "der Reichsfürstin", "akk": "die Reichsfürstin" },
+            "n": { "nom": "Reichsfürst", "gen": "des Reichsfürsten", "dat": "dem Reichsfürsten", "akk": "den Reichsfürsten" }
+          }
+        },
+        "ritter": {
+          "forms": {
+            "m": { "nom": "Ritter", "gen": "des Ritters", "dat": "dem Ritter", "akk": "den Ritter" },
+            "f": { "nom": "Dame", "gen": "der Dame", "dat": "der Dame", "akk": "die Dame" },
+            "n": { "nom": "Ritter", "gen": "des Ritters", "dat": "dem Ritter", "akk": "den Ritter" }
+          }
+        },
+        "seraphim_lord": {
+          "forms": {
+            "m": { "nom": "Seraphim-Lord", "gen": "des Seraphim-Lords", "dat": "dem Seraphim-Lord", "akk": "den Seraphim-Lord" },
+            "f": { "nom": "Seraphim-Lady", "gen": "der Seraphim-Lady", "dat": "der Seraphim-Lady", "akk": "die Seraphim-Lady" },
+            "n": { "nom": "Seraphim-Lord", "gen": "des Seraphim-Lords", "dat": "dem Seraphim-Lord", "akk": "den Seraphim-Lord" }
+          }
+        },
+        "sternenritter": {
+          "forms": {
+            "m": { "nom": "Sternenritter", "gen": "des Sternenritters", "dat": "dem Sternenritter", "akk": "den Sternenritter" },
+            "f": { "nom": "Sternendame", "gen": "der Sternendame", "dat": "der Sternendame", "akk": "die Sternendame" },
+            "n": { "nom": "Sternenritter", "gen": "des Sternenritters", "dat": "dem Sternenritter", "akk": "den Sternenritter" }
+          }
+        },
+        "waechter": {
+          "forms": {
+            "m": { "nom": "Wächter", "gen": "des Wächters", "dat": "dem Wächter", "akk": "den Wächter" },
+            "f": { "nom": "Wächterin", "gen": "der Wächterin", "dat": "der Wächterin", "akk": "die Wächterin" },
+            "n": { "nom": "Wächter", "gen": "des Wächters", "dat": "dem Wächter", "akk": "den Wächter" }
+          }
+        },
+        "sternenkind": {
+          "forms": {
+            "m": { "nom": "Sternenkind", "gen": "des Sternenkindes", "dat": "dem Sternenkind", "akk": "den Sternenkind" },
+            "f": { "nom": "Sternenkind", "gen": "der Sternenkind", "dat": "der Sternenkind", "akk": "die Sternenkind" },
+            "n": { "nom": "Sternenkind", "gen": "des Sternenkindes", "dat": "dem Sternenkind", "akk": "den Sternenkind" }
+          }
+        },
+        "archon": {
+          "forms": {
+            "m": { "nom": "Archon", "gen": "des Archons", "dat": "dem Archon", "akk": "den Archon" },
+            "f": { "nom": "Archontin", "gen": "der Archontin", "dat": "der Archontin", "akk": "die Archontin" },
+            "n": { "nom": "Archon", "gen": "des Archons", "dat": "dem Archon", "akk": "den Archon" }
+          }
+        },
+        "axiom": {
+          "forms": {
+            "m": { "nom": "Axiom", "gen": "des Axioms", "dat": "dem Axiom", "akk": "den Axiom" },
+            "f": { "nom": "Axiom", "gen": "der Axiom", "dat": "der Axiom", "akk": "die Axiom" },
+            "n": { "nom": "Axiom", "gen": "des Axioms", "dat": "dem Axiom", "akk": "den Axiom" }
+          }
+        },
+        "exarch": {
+          "forms": {
+            "m": { "nom": "Exarch", "gen": "des Exarchen", "dat": "dem Exarchen", "akk": "den Exarchen" },
+            "f": { "nom": "Exarchin", "gen": "der Exarchin", "dat": "der Exarchin", "akk": "die Exarchin" },
+            "n": { "nom": "Exarch", "gen": "des Exarchen", "dat": "dem Exarchen", "akk": "den Exarchen" }
+          }
+        },
+        "hegemon": {
+          "forms": {
+            "m": { "nom": "Hegemon", "gen": "des Hegemons", "dat": "dem Hegemon", "akk": "den Hegemon" },
+            "f": { "nom": "Hegemonin", "gen": "der Hegemonin", "dat": "der Hegemonin", "akk": "die Hegemonin" },
+            "n": { "nom": "Hegemon", "gen": "des Hegemons", "dat": "dem Hegemon", "akk": "den Hegemon" }
+          }
+        },
+        "idol": {
+          "forms": {
+            "m": { "nom": "Idol", "gen": "des Idols", "dat": "dem Idol", "akk": "den Idol" },
+            "f": { "nom": "Idol", "gen": "der Idol", "dat": "der Idol", "akk": "die Idol" },
+            "n": { "nom": "Idol", "gen": "des Idols", "dat": "dem Idol", "akk": "den Idol" }
+          }
+        },
+        "komtur": {
+          "forms": {
+            "m": { "nom": "Komtur", "gen": "des Komturs", "dat": "dem Komtur", "akk": "den Komtur" },
+            "f": { "nom": "Komturin", "gen": "der Komturin", "dat": "der Komturin", "akk": "die Komturin" },
+            "n": { "nom": "Komtur", "gen": "des Komturs", "dat": "dem Komtur", "akk": "den Komtur" }
+          }
+        },
+        "legat": {
+          "forms": {
+            "m": { "nom": "Legat", "gen": "des Legaten", "dat": "dem Legaten", "akk": "den Legaten" },
+            "f": { "nom": "Legatin", "gen": "der Legatin", "dat": "der Legatin", "akk": "die Legatin" },
+            "n": { "nom": "Legat", "gen": "des Legaten", "dat": "dem Legaten", "akk": "den Legaten" }
+          }
+        },
+        "magistrat": {
+          "forms": {
+            "m": { "nom": "Magistrat", "gen": "des Magistrats", "dat": "dem Magistrat", "akk": "den Magistrat" },
+            "f": { "nom": "Magistratin", "gen": "der Magistratin", "dat": "der Magistratin", "akk": "die Magistratin" },
+            "n": { "nom": "Magistrat", "gen": "des Magistrats", "dat": "dem Magistrat", "akk": "den Magistrat" }
+          }
+        },
+        "monarch": {
+          "forms": {
+            "m": { "nom": "Monarch", "gen": "des Monarchen", "dat": "dem Monarchen", "akk": "den Monarchen" },
+            "f": { "nom": "Monarchin", "gen": "der Monarchin", "dat": "der Monarchin", "akk": "die Monarchin" },
+            "n": { "nom": "Monarch", "gen": "des Monarchen", "dat": "dem Monarchen", "akk": "den Monarchen" }
+          }
+        },
+        "oberhaupt": {
+          "forms": {
+            "m": { "nom": "Oberhaupt", "gen": "des Oberhaupts", "dat": "dem Oberhaupt", "akk": "den Oberhaupt" },
+            "f": { "nom": "Oberhaupt", "gen": "der Oberhaupt", "dat": "der Oberhaupt", "akk": "die Oberhaupt" },
+            "n": { "nom": "Oberhaupt", "gen": "des Oberhaupts", "dat": "dem Oberhaupt", "akk": "den Oberhaupt" }
+          }
+        },
+        "orakel": {
+          "forms": {
+            "m": { "nom": "Orakel", "gen": "des Orakels", "dat": "dem Orakel", "akk": "den Orakel" },
+            "f": { "nom": "Orakel", "gen": "der Orakel", "dat": "der Orakel", "akk": "die Orakel" },
+            "n": { "nom": "Orakel", "gen": "des Orakels", "dat": "dem Orakel", "akk": "den Orakel" }
+          }
+        },
+        "pontifex": {
+          "forms": {
+            "m": { "nom": "Pontifex", "gen": "des Pontifex", "dat": "dem Pontifex", "akk": "den Pontifex" },
+            "f": { "nom": "Pontifex", "gen": "der Pontifex", "dat": "der Pontifex", "akk": "die Pontifex" },
+            "n": { "nom": "Pontifex", "gen": "des Pontifex", "dat": "dem Pontifex", "akk": "den Pontifex" }
+          }
+        },
+        "primus": {
+          "forms": {
+            "m": { "nom": "Primus", "gen": "des Primus", "dat": "dem Primus", "akk": "den Primus" },
+            "f": { "nom": "Prima", "gen": "der Prima", "dat": "der Prima", "akk": "die Prima" },
+            "n": { "nom": "Primus", "gen": "des Primus", "dat": "dem Primus", "akk": "den Primus" }
+          }
+        },
+        "protektor": {
+          "forms": {
+            "m": { "nom": "Protektor", "gen": "des Protektors", "dat": "dem Protektor", "akk": "den Protektor" },
+            "f": { "nom": "Protektorin", "gen": "der Protektorin", "dat": "der Protektorin", "akk": "die Protektorin" },
+            "n": { "nom": "Protektor", "gen": "des Protektors", "dat": "dem Protektor", "akk": "den Protektor" }
+          }
+        },
+        "tribun": {
+          "forms": {
+            "m": { "nom": "Tribun", "gen": "des Tribuns", "dat": "dem Tribun", "akk": "den Tribun" },
+            "f": { "nom": "Tribunin", "gen": "der Tribunin", "dat": "der Tribunin", "akk": "die Tribunin" },
+            "n": { "nom": "Tribun", "gen": "des Tribuns", "dat": "dem Tribun", "akk": "den Tribun" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

@@ -692,13 +692,11 @@
 }
 
 /* Token HUD Button Styling */
-.token-hud .control-icon {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 3px;
-  margin: 2px;
+.nomina-token-hud-btn {
+  padding: 0 2px 2px 2px;
 }
 
-.token-hud .control-icon:hover {
+.nomina-token-hud-btn:hover {
   background: var(--color-border-highlight, #ff6400);
 }
 

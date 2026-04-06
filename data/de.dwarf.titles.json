@@ -18,34 +18,34 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "König" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hochkönig" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Bergbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Tiefenherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Felsengraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Runenmeister" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schildwächter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Ältester" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Gildenherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Königin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Erzfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Bergbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Tiefenherrin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Felsengräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Runenmeisterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Älteste" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Gildenherrin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Eckstein" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Kronenträger" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Erzlenker" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Tiefenkern" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Berghüter" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Runenwahrer" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Schildhalter" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Stammesahn" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Gildenprimus" }, "tags": ["non-binary", "titles"], "w": 1 },
-        { "t": { "de": "Felsenkern" }, "tags": ["non-binary", "titles"], "w": 1 }
+        { "t": { "de": "König" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "koenig" } },
+        { "t": { "de": "Hochkönig" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hochkoenig" } },
+        { "t": { "de": "Erzfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "erzfuerst" } },
+        { "t": { "de": "Bergbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "bergbaron" } },
+        { "t": { "de": "Tiefenherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "tiefenherr" } },
+        { "t": { "de": "Felsengraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "felsengraf" } },
+        { "t": { "de": "Runenmeister" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "runenmeister" } },
+        { "t": { "de": "Schildwächter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schildwaechter" } },
+        { "t": { "de": "Ältester" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "aeltester" } },
+        { "t": { "de": "Gildenherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "gildenherr" } },
+        { "t": { "de": "Königin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "koenig" } },
+        { "t": { "de": "Erzfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "erzfuerst" } },
+        { "t": { "de": "Bergbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "bergbaron" } },
+        { "t": { "de": "Tiefenherrin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "tiefenherr" } },
+        { "t": { "de": "Felsengräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "felsengraf" } },
+        { "t": { "de": "Runenmeisterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "runenmeister" } },
+        { "t": { "de": "Älteste" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "aeltester" } },
+        { "t": { "de": "Gildenherrin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "gildenherr" } },
+        { "t": { "de": "Eckstein" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "hochkoenig" } },
+        { "t": { "de": "Kronenträger" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "koenig" } },
+        { "t": { "de": "Erzlenker" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "erzfuerst" } },
+        { "t": { "de": "Tiefenkern" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "tiefenherr" } },
+        { "t": { "de": "Berghüter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "bergbaron" } },
+        { "t": { "de": "Runenwahrer" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "runenmeister" } },
+        { "t": { "de": "Schildhalter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "schildwaechter" } },
+        { "t": { "de": "Stammesahn" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "aeltester" } },
+        { "t": { "de": "Gildenprimus" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "gildenherr" } },
+        { "t": { "de": "Felsenkern" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "felsengraf" } }
       ]
     }
   },
@@ -54,6 +54,82 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "koenig": {
+          "forms": {
+            "m": { "nom": "König", "gen": "des Königs", "dat": "dem König", "akk": "den König" },
+            "f": { "nom": "Königin", "gen": "der Königin", "dat": "der Königin", "akk": "die Königin" },
+            "n": { "nom": "Kronenträger", "gen": "des Kronenträgers", "dat": "dem Kronenträger", "akk": "den Kronenträger" }
+          }
+        },
+        "hochkoenig": {
+          "forms": {
+            "m": { "nom": "Hochkönig", "gen": "des Hochkönigs", "dat": "dem Hochkönig", "akk": "den Hochkönig" },
+            "f": { "nom": "Hochkönig", "gen": "des Hochkönigs", "dat": "dem Hochkönig", "akk": "den Hochkönig" },
+            "n": { "nom": "Eckstein", "gen": "des Ecksteins", "dat": "dem Eckstein", "akk": "den Eckstein" }
+          }
+        },
+        "erzfuerst": {
+          "forms": {
+            "m": { "nom": "Erzfürst", "gen": "des Erzfürsten", "dat": "dem Erzfürsten", "akk": "den Erzfürsten" },
+            "f": { "nom": "Erzfürstin", "gen": "der Erzfürstin", "dat": "der Erzfürstin", "akk": "die Erzfürstin" },
+            "n": { "nom": "Erzlenker", "gen": "des Erzlenkers", "dat": "dem Erzlenker", "akk": "den Erzlenker" }
+          }
+        },
+        "bergbaron": {
+          "forms": {
+            "m": { "nom": "Bergbaron", "gen": "des Bergbarons", "dat": "dem Bergbaron", "akk": "den Bergbaron" },
+            "f": { "nom": "Bergbaronin", "gen": "der Bergbaronin", "dat": "der Bergbaronin", "akk": "die Bergbaronin" },
+            "n": { "nom": "Berghüter", "gen": "des Berghüters", "dat": "dem Berghüter", "akk": "den Berghüter" }
+          }
+        },
+        "tiefenherr": {
+          "forms": {
+            "m": { "nom": "Tiefenherr", "gen": "des Tiefenherrn", "dat": "dem Tiefenherrn", "akk": "den Tiefenherrn" },
+            "f": { "nom": "Tiefenherrin", "gen": "der Tiefenherrin", "dat": "der Tiefenherrin", "akk": "die Tiefenherrin" },
+            "n": { "nom": "Tiefenkern", "gen": "des Tiefenkerns", "dat": "dem Tiefenkern", "akk": "den Tiefenkern" }
+          }
+        },
+        "felsengraf": {
+          "forms": {
+            "m": { "nom": "Felsengraf", "gen": "des Felsengrafen", "dat": "dem Felsengrafen", "akk": "den Felsengrafen" },
+            "f": { "nom": "Felsengräfin", "gen": "der Felsengräfin", "dat": "der Felsengräfin", "akk": "die Felsengräfin" },
+            "n": { "nom": "Felsenkern", "gen": "des Felsenkerns", "dat": "dem Felsenkern", "akk": "den Felsenkern" }
+          }
+        },
+        "runenmeister": {
+          "forms": {
+            "m": { "nom": "Runenmeister", "gen": "des Runenmeisters", "dat": "dem Runenmeister", "akk": "den Runenmeister" },
+            "f": { "nom": "Runenmeisterin", "gen": "der Runenmeisterin", "dat": "der Runenmeisterin", "akk": "die Runenmeisterin" },
+            "n": { "nom": "Runenwahrer", "gen": "des Runenwahrers", "dat": "dem Runenwahrer", "akk": "den Runenwahrer" }
+          }
+        },
+        "schildwaechter": {
+          "forms": {
+            "m": { "nom": "Schildwächter", "gen": "des Schildwächters", "dat": "dem Schildwächter", "akk": "den Schildwächter" },
+            "f": { "nom": "Schildwächter", "gen": "des Schildwächters", "dat": "dem Schildwächter", "akk": "den Schildwächter" },
+            "n": { "nom": "Schildhalter", "gen": "des Schildhalters", "dat": "dem Schildhalter", "akk": "den Schildhalter" }
+          }
+        },
+        "aeltester": {
+          "forms": {
+            "m": { "nom": "Ältester", "gen": "des Ältesten", "dat": "dem Ältesten", "akk": "den Ältesten" },
+            "f": { "nom": "Älteste", "gen": "der Ältesten", "dat": "der Ältesten", "akk": "die Älteste" },
+            "n": { "nom": "Stammesahn", "gen": "des Stammesahns", "dat": "dem Stammesahn", "akk": "den Stammesahn" }
+          }
+        },
+        "gildenherr": {
+          "forms": {
+            "m": { "nom": "Gildenherr", "gen": "des Gildenherrn", "dat": "dem Gildenherrn", "akk": "den Gildenherrn" },
+            "f": { "nom": "Gildenherrin", "gen": "der Gildenherrin", "dat": "der Gildenherrin", "akk": "die Gildenherrin" },
+            "n": { "nom": "Gildenprimus", "gen": "des Gildenprimus", "dat": "dem Gildenprimus", "akk": "den Gildenprimus" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

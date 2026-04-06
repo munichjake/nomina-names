@@ -18,20 +18,20 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Werkmeister" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hammerherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Zahnradbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Funkenritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Kupferfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Dampfmarkgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Eisenweber" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Werkmeisterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Hammerherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Zahnradbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Funkenritterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Kupferfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Dampfmarkgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Eisenweberin" }, "tags": ["female", "titles"], "w": 1 }
+        { "t": { "de": "Werkmeister" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "werkmeister" } },
+        { "t": { "de": "Hammerherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hammerherzog" } },
+        { "t": { "de": "Zahnradbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "zahnradbaron" } },
+        { "t": { "de": "Funkenritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "funkenritter" } },
+        { "t": { "de": "Kupferfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "kupferfuerst" } },
+        { "t": { "de": "Dampfmarkgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "dampfmarkgraf" } },
+        { "t": { "de": "Eisenweber" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "eisenweber" } },
+        { "t": { "de": "Werkmeisterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "werkmeister" } },
+        { "t": { "de": "Hammerherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hammerherzog" } },
+        { "t": { "de": "Zahnradbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "zahnradbaron" } },
+        { "t": { "de": "Funkenritterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "funkenritter" } },
+        { "t": { "de": "Kupferfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "kupferfuerst" } },
+        { "t": { "de": "Dampfmarkgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "dampfmarkgraf" } },
+        { "t": { "de": "Eisenweberin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "eisenweber" } }
       ]
     }
   },
@@ -40,6 +40,61 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "werkmeister": {
+          "forms": {
+            "m": { "nom": "Werkmeister", "gen": "des Werkmeisters", "dat": "dem Werkmeister", "akk": "den Werkmeister" },
+            "f": { "nom": "Werkmeisterin", "gen": "der Werkmeisterin", "dat": "der Werkmeisterin", "akk": "die Werkmeisterin" },
+            "n": { "nom": "Werkmeister", "gen": "des Werkmeisters", "dat": "dem Werkmeister", "akk": "den Werkmeister" }
+          }
+        },
+        "hammerherzog": {
+          "forms": {
+            "m": { "nom": "Hammerherzog", "gen": "des Hammerherzogs", "dat": "dem Hammerherzog", "akk": "den Hammerherzog" },
+            "f": { "nom": "Hammerherzogin", "gen": "der Hammerherzogin", "dat": "der Hammerherzogin", "akk": "die Hammerherzogin" },
+            "n": { "nom": "Hammerherzog", "gen": "des Hammerherzogs", "dat": "dem Hammerherzog", "akk": "den Hammerherzog" }
+          }
+        },
+        "zahnradbaron": {
+          "forms": {
+            "m": { "nom": "Zahnradbaron", "gen": "des Zahnradbarons", "dat": "dem Zahnradbaron", "akk": "den Zahnradbaron" },
+            "f": { "nom": "Zahnradbaronin", "gen": "der Zahnradbaronin", "dat": "der Zahnradbaronin", "akk": "die Zahnradbaronin" },
+            "n": { "nom": "Zahnradbaron", "gen": "des Zahnradbarons", "dat": "dem Zahnradbaron", "akk": "den Zahnradbaron" }
+          }
+        },
+        "funkenritter": {
+          "forms": {
+            "m": { "nom": "Funkenritter", "gen": "des Funkenritters", "dat": "dem Funkenritter", "akk": "den Funkenritter" },
+            "f": { "nom": "Funkenritterin", "gen": "der Funkenritterin", "dat": "der Funkenritterin", "akk": "die Funkenritterin" },
+            "n": { "nom": "Funkenritter", "gen": "des Funkenritters", "dat": "dem Funkenritter", "akk": "den Funkenritter" }
+          }
+        },
+        "kupferfuerst": {
+          "forms": {
+            "m": { "nom": "Kupferfürst", "gen": "des Kupferfürsten", "dat": "dem Kupferfürsten", "akk": "den Kupferfürsten" },
+            "f": { "nom": "Kupferfürstin", "gen": "der Kupferfürstin", "dat": "der Kupferfürstin", "akk": "die Kupferfürstin" },
+            "n": { "nom": "Kupferfürst", "gen": "des Kupferfürsten", "dat": "dem Kupferfürsten", "akk": "den Kupferfürsten" }
+          }
+        },
+        "dampfmarkgraf": {
+          "forms": {
+            "m": { "nom": "Dampfmarkgraf", "gen": "des Dampfmarkgrafen", "dat": "dem Dampfmarkgrafen", "akk": "den Dampfmarkgrafen" },
+            "f": { "nom": "Dampfmarkgräfin", "gen": "der Dampfmarkgräfin", "dat": "der Dampfmarkgräfin", "akk": "die Dampfmarkgräfin" },
+            "n": { "nom": "Dampfmarkgraf", "gen": "des Dampfmarkgrafen", "dat": "dem Dampfmarkgrafen", "akk": "den Dampfmarkgrafen" }
+          }
+        },
+        "eisenweber": {
+          "forms": {
+            "m": { "nom": "Eisenweber", "gen": "des Eisenwebers", "dat": "dem Eisenweber", "akk": "den Eisenweber" },
+            "f": { "nom": "Eisenweberin", "gen": "der Eisenweberin", "dat": "der Eisenweberin", "akk": "die Eisenweberin" },
+            "n": { "nom": "Eisenweber", "gen": "des Eisenwebers", "dat": "dem Eisenweber", "akk": "den Eisenweber" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

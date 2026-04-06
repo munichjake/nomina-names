@@ -16,42 +16,118 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Giftkönig" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schattenherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Höhlenfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Sumpfgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Rattenbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Dunkelgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schleichritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Moderherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Pilzfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Krallengraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Giftkönigin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schattenherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Höhlenfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Sumpfgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Rattenbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Dunkelgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schleichritterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Moderfrau" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Pilzfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Krallengräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schattenthron" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Gifterbe" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Höhlenwächter" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Nachtkrone" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Sumpfhüter" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Rattenprinz" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Finsterwart" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Moderhüter" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Schleichorden" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Krallenthron" }, "tags": ["nonbinary", "titles"], "w": 1 }
+        { "t": { "de": "Giftkönig" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "giftkoenig" } },
+        { "t": { "de": "Schattenherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schattenherzog" } },
+        { "t": { "de": "Höhlenfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hoehlenfuerst" } },
+        { "t": { "de": "Sumpfgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "sumpfgraf" } },
+        { "t": { "de": "Rattenbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "rattenbaron" } },
+        { "t": { "de": "Dunkelgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "dunkelgraf" } },
+        { "t": { "de": "Schleichritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schleichritter" } },
+        { "t": { "de": "Moderherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "moderherr" } },
+        { "t": { "de": "Pilzfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "pilzfuerst" } },
+        { "t": { "de": "Krallengraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "krallengraf" } },
+        { "t": { "de": "Giftkönigin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "giftkoenig" } },
+        { "t": { "de": "Schattenherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schattenherzog" } },
+        { "t": { "de": "Höhlenfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hoehlenfuerst" } },
+        { "t": { "de": "Sumpfgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "sumpfgraf" } },
+        { "t": { "de": "Rattenbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "rattenbaron" } },
+        { "t": { "de": "Dunkelgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "dunkelgraf" } },
+        { "t": { "de": "Schleichritterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schleichritter" } },
+        { "t": { "de": "Moderfrau" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "moderherr" } },
+        { "t": { "de": "Pilzfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "pilzfuerst" } },
+        { "t": { "de": "Krallengräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "krallengraf" } },
+        { "t": { "de": "Schattenthron" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "schattenherzog" } },
+        { "t": { "de": "Gifterbe" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "giftkoenig" } },
+        { "t": { "de": "Höhlenwächter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "hoehlenfuerst" } },
+        { "t": { "de": "Nachtkrone" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "pilzfuerst" } },
+        { "t": { "de": "Sumpfhüter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "sumpfgraf" } },
+        { "t": { "de": "Rattenprinz" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "rattenbaron" } },
+        { "t": { "de": "Finsterwart" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "dunkelgraf" } },
+        { "t": { "de": "Moderhüter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "moderherr" } },
+        { "t": { "de": "Schleichorden" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "schleichritter" } },
+        { "t": { "de": "Krallenthron" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "krallengraf" } }
       ]
     }
   },
   "output": {
     "transforms": ["TrimSpaces"],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "giftkoenig": {
+          "forms": {
+            "m": { "nom": "Giftkönig", "gen": "des Giftkönigs", "dat": "dem Giftkönig", "akk": "den Giftkönig" },
+            "f": { "nom": "Giftkönigin", "gen": "der Giftkönigin", "dat": "der Giftkönigin", "akk": "die Giftkönigin" },
+            "n": { "nom": "Gifterbe", "gen": "des Gifterben", "dat": "dem Gifterben", "akk": "den Gifterben" }
+          }
+        },
+        "schattenherzog": {
+          "forms": {
+            "m": { "nom": "Schattenherzog", "gen": "des Schattenherzogs", "dat": "dem Schattenherzog", "akk": "den Schattenherzog" },
+            "f": { "nom": "Schattenherzogin", "gen": "der Schattenherzogin", "dat": "der Schattenherzogin", "akk": "die Schattenherzogin" },
+            "n": { "nom": "Schattenthron", "gen": "des Schattenthrons", "dat": "dem Schattenthron", "akk": "den Schattenthron" }
+          }
+        },
+        "hoehlenfuerst": {
+          "forms": {
+            "m": { "nom": "Höhlenfürst", "gen": "des Höhlenfürsten", "dat": "dem Höhlenfürsten", "akk": "den Höhlenfürsten" },
+            "f": { "nom": "Höhlenfürstin", "gen": "der Höhlenfürstin", "dat": "der Höhlenfürstin", "akk": "die Höhlenfürstin" },
+            "n": { "nom": "Höhlenwächter", "gen": "des Höhlenwächters", "dat": "dem Höhlenwächter", "akk": "den Höhlenwächter" }
+          }
+        },
+        "sumpfgraf": {
+          "forms": {
+            "m": { "nom": "Sumpfgraf", "gen": "des Sumpfgrafen", "dat": "dem Sumpfgrafen", "akk": "den Sumpfgrafen" },
+            "f": { "nom": "Sumpfgräfin", "gen": "der Sumpfgräfin", "dat": "der Sumpfgräfin", "akk": "die Sumpfgräfin" },
+            "n": { "nom": "Sumpfhüter", "gen": "des Sumpfhüters", "dat": "dem Sumpfhüter", "akk": "den Sumpfhüter" }
+          }
+        },
+        "rattenbaron": {
+          "forms": {
+            "m": { "nom": "Rattenbaron", "gen": "des Rattenbarons", "dat": "dem Rattenbaron", "akk": "den Rattenbaron" },
+            "f": { "nom": "Rattenbaronin", "gen": "der Rattenbaronin", "dat": "der Rattenbaronin", "akk": "die Rattenbaronin" },
+            "n": { "nom": "Rattenprinz", "gen": "des Rattenprinzen", "dat": "dem Rattenprinzen", "akk": "den Rattenprinzen" }
+          }
+        },
+        "dunkelgraf": {
+          "forms": {
+            "m": { "nom": "Dunkelgraf", "gen": "des Dunkelgrafen", "dat": "dem Dunkelgrafen", "akk": "den Dunkelgrafen" },
+            "f": { "nom": "Dunkelgräfin", "gen": "der Dunkelgräfin", "dat": "der Dunkelgräfin", "akk": "die Dunkelgräfin" },
+            "n": { "nom": "Finsterwart", "gen": "des Finsterwarts", "dat": "dem Finsterwart", "akk": "den Finsterwart" }
+          }
+        },
+        "schleichritter": {
+          "forms": {
+            "m": { "nom": "Schleichritter", "gen": "des Schleichritters", "dat": "dem Schleichritter", "akk": "den Schleichritter" },
+            "f": { "nom": "Schleichritterin", "gen": "der Schleichritterin", "dat": "der Schleichritterin", "akk": "die Schleichritterin" },
+            "n": { "nom": "Schleichorden", "gen": "des Schleichordens", "dat": "dem Schleichorden", "akk": "den Schleichorden" }
+          }
+        },
+        "moderherr": {
+          "forms": {
+            "m": { "nom": "Moderherr", "gen": "des Moderherrn", "dat": "dem Moderherrn", "akk": "den Moderherrn" },
+            "f": { "nom": "Moderfrau", "gen": "der Moderfrau", "dat": "der Moderfrau", "akk": "die Moderfrau" },
+            "n": { "nom": "Moderhüter", "gen": "des Moderhüters", "dat": "dem Moderhüter", "akk": "den Moderhüter" }
+          }
+        },
+        "pilzfuerst": {
+          "forms": {
+            "m": { "nom": "Pilzfürst", "gen": "des Pilzfürsten", "dat": "dem Pilzfürsten", "akk": "den Pilzfürsten" },
+            "f": { "nom": "Pilzfürstin", "gen": "der Pilzfürstin", "dat": "der Pilzfürstin", "akk": "die Pilzfürstin" },
+            "n": { "nom": "Nachtkrone", "gen": "der Nachtkrone", "dat": "der Nachtkrone", "akk": "die Nachtkrone" }
+          }
+        },
+        "krallengraf": {
+          "forms": {
+            "m": { "nom": "Krallengraf", "gen": "des Krallengrafen", "dat": "dem Krallengrafen", "akk": "den Krallengrafen" },
+            "f": { "nom": "Krallengräfin", "gen": "der Krallengräfin", "dat": "der Krallengräfin", "akk": "die Krallengräfin" },
+            "n": { "nom": "Krallenthron", "gen": "des Krallenthrons", "dat": "dem Krallenthron", "akk": "den Krallenthron" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

@@ -18,44 +18,44 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Erzherzog der Hölle" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzherzogin der Hölle" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Höllenherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Höllenherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schattenfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schattenfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Düstergraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Düstergräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Aschefürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Aschefürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schwefelbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schwefelbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Blutgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Blutgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Seelenkönig" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Seelenkönigin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Infernalritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Infernaldame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Lord der Tiefe" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Lady der Tiefe" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Herrscher der Schatten" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Herrscherin der Schatten" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Peinsfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Peinsfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Feuermarkgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Feuermarkgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Abgrundherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Abgründin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Dämonenjäger" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Dämonenjägerin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Erzmagier des Blutes" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Erzmagierin des Blutes" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schwarzer Lord" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schwarze Lady" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Fürst der Verdammnis" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Fürstin der Verdammnis" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Prinz der Scherben" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Prinzessin der Scherben" }, "tags": ["female", "titles"], "w": 1 }
+        { "t": { "de": "Erzherzog der Hölle" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "erzherzog_der_hoelle" } },
+        { "t": { "de": "Erzherzogin der Hölle" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "erzherzog_der_hoelle" } },
+        { "t": { "de": "Höllenherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hoellenherzog" } },
+        { "t": { "de": "Höllenherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hoellenherzog" } },
+        { "t": { "de": "Schattenfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schattenfuerst" } },
+        { "t": { "de": "Schattenfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schattenfuerst" } },
+        { "t": { "de": "Düstergraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "duestergraf" } },
+        { "t": { "de": "Düstergräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "duestergraf" } },
+        { "t": { "de": "Aschefürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "aschefuerst" } },
+        { "t": { "de": "Aschefürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "aschefuerst" } },
+        { "t": { "de": "Schwefelbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schwefelbaron" } },
+        { "t": { "de": "Schwefelbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schwefelbaron" } },
+        { "t": { "de": "Blutgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "blutgraf" } },
+        { "t": { "de": "Blutgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "blutgraf" } },
+        { "t": { "de": "Seelenkönig" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "seelenkoenig" } },
+        { "t": { "de": "Seelenkönigin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "seelenkoenig" } },
+        { "t": { "de": "Infernalritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "infernalritter" } },
+        { "t": { "de": "Infernaldame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "infernalritter" } },
+        { "t": { "de": "Lord der Tiefe" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "lord_der_tiefe" } },
+        { "t": { "de": "Lady der Tiefe" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "lord_der_tiefe" } },
+        { "t": { "de": "Herrscher der Schatten" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "herrscher_der_schatten" } },
+        { "t": { "de": "Herrscherin der Schatten" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "herrscher_der_schatten" } },
+        { "t": { "de": "Peinsfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "peinsfuerst" } },
+        { "t": { "de": "Peinsfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "peinsfuerst" } },
+        { "t": { "de": "Feuermarkgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "feuermarkgraf" } },
+        { "t": { "de": "Feuermarkgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "feuermarkgraf" } },
+        { "t": { "de": "Abgrundherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "abgrundherr" } },
+        { "t": { "de": "Abgründin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "abgrundherr" } },
+        { "t": { "de": "Dämonenjäger" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "daemonenjaeger" } },
+        { "t": { "de": "Dämonenjägerin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "daemonenjaeger" } },
+        { "t": { "de": "Erzmagier des Blutes" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "erzmagier_des_blutes" } },
+        { "t": { "de": "Erzmagierin des Blutes" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "erzmagier_des_blutes" } },
+        { "t": { "de": "Schwarzer Lord" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schwarzer_lord" } },
+        { "t": { "de": "Schwarze Lady" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schwarzer_lord" } },
+        { "t": { "de": "Fürst der Verdammnis" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "fuerst_der_verdammnis" } },
+        { "t": { "de": "Fürstin der Verdammnis" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "fuerst_der_verdammnis" } },
+        { "t": { "de": "Prinz der Scherben" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "prinz_der_scherben" } },
+        { "t": { "de": "Prinzessin der Scherben" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "prinz_der_scherben" } }
       ]
     }
   },
@@ -64,6 +64,145 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "erzherzog_der_hoelle": {
+          "forms": {
+            "m": { "nom": "Erzherzog der Hölle", "gen": "des Erzherzogs der Hölle", "dat": "dem Erzherzog der Hölle", "akk": "den Erzherzog der Hölle" },
+            "f": { "nom": "Erzherzogin der Hölle", "gen": "der Erzherzogin der Hölle", "dat": "der Erzherzogin der Hölle", "akk": "die Erzherzogin der Hölle" },
+            "n": { "nom": "Erzherzog der Hölle", "gen": "des Erzherzogs der Hölle", "dat": "dem Erzherzog der Hölle", "akk": "den Erzherzog der Hölle" }
+          }
+        },
+        "hoellenherzog": {
+          "forms": {
+            "m": { "nom": "Höllenherzog", "gen": "des Höllenherzogs", "dat": "dem Höllenherzog", "akk": "den Höllenherzog" },
+            "f": { "nom": "Höllenherzogin", "gen": "der Höllenherzogin", "dat": "der Höllenherzogin", "akk": "die Höllenherzogin" },
+            "n": { "nom": "Höllenherzog", "gen": "des Höllenherzogs", "dat": "dem Höllenherzog", "akk": "den Höllenherzog" }
+          }
+        },
+        "schattenfuerst": {
+          "forms": {
+            "m": { "nom": "Schattenfürst", "gen": "des Schattenfürsten", "dat": "dem Schattenfürsten", "akk": "den Schattenfürsten" },
+            "f": { "nom": "Schattenfürstin", "gen": "der Schattenfürstin", "dat": "der Schattenfürstin", "akk": "die Schattenfürstin" },
+            "n": { "nom": "Schattenfürst", "gen": "des Schattenfürsten", "dat": "dem Schattenfürsten", "akk": "den Schattenfürsten" }
+          }
+        },
+        "duestergraf": {
+          "forms": {
+            "m": { "nom": "Düstergraf", "gen": "des Düstergrafen", "dat": "dem Düstergrafen", "akk": "den Düstergrafen" },
+            "f": { "nom": "Düstergräfin", "gen": "der Düstergräfin", "dat": "der Düstergräfin", "akk": "die Düstergräfin" },
+            "n": { "nom": "Düstergraf", "gen": "des Düstergrafen", "dat": "dem Düstergrafen", "akk": "den Düstergrafen" }
+          }
+        },
+        "aschefuerst": {
+          "forms": {
+            "m": { "nom": "Aschefürst", "gen": "des Aschefürsten", "dat": "dem Aschefürsten", "akk": "den Aschefürsten" },
+            "f": { "nom": "Aschefürstin", "gen": "der Aschefürstin", "dat": "der Aschefürstin", "akk": "die Aschefürstin" },
+            "n": { "nom": "Aschefürst", "gen": "des Aschefürsten", "dat": "dem Aschefürsten", "akk": "den Aschefürsten" }
+          }
+        },
+        "schwefelbaron": {
+          "forms": {
+            "m": { "nom": "Schwefelbaron", "gen": "des Schwefelbarons", "dat": "dem Schwefelbaron", "akk": "den Schwefelbaron" },
+            "f": { "nom": "Schwefelbaronin", "gen": "der Schwefelbaronin", "dat": "der Schwefelbaronin", "akk": "die Schwefelbaronin" },
+            "n": { "nom": "Schwefelbaron", "gen": "des Schwefelbarons", "dat": "dem Schwefelbaron", "akk": "den Schwefelbaron" }
+          }
+        },
+        "blutgraf": {
+          "forms": {
+            "m": { "nom": "Blutgraf", "gen": "des Blutgrafen", "dat": "dem Blutgrafen", "akk": "den Blutgrafen" },
+            "f": { "nom": "Blutgräfin", "gen": "der Blutgräfin", "dat": "der Blutgräfin", "akk": "die Blutgräfin" },
+            "n": { "nom": "Blutgraf", "gen": "des Blutgrafen", "dat": "dem Blutgrafen", "akk": "den Blutgrafen" }
+          }
+        },
+        "seelenkoenig": {
+          "forms": {
+            "m": { "nom": "Seelenkönig", "gen": "des Seelenkönigs", "dat": "dem Seelenkönig", "akk": "den Seelenkönig" },
+            "f": { "nom": "Seelenkönigin", "gen": "der Seelenkönigin", "dat": "der Seelenkönigin", "akk": "die Seelenkönigin" },
+            "n": { "nom": "Seelenkönig", "gen": "des Seelenkönigs", "dat": "dem Seelenkönig", "akk": "den Seelenkönig" }
+          }
+        },
+        "infernalritter": {
+          "forms": {
+            "m": { "nom": "Infernalritter", "gen": "des Infernalritters", "dat": "dem Infernalritter", "akk": "den Infernalritter" },
+            "f": { "nom": "Infernaldame", "gen": "der Infernaldame", "dat": "der Infernaldame", "akk": "die Infernaldame" },
+            "n": { "nom": "Infernalritter", "gen": "des Infernalritters", "dat": "dem Infernalritter", "akk": "den Infernalritter" }
+          }
+        },
+        "lord_der_tiefe": {
+          "forms": {
+            "m": { "nom": "Lord der Tiefe", "gen": "des Lords der Tiefe", "dat": "dem Lord der Tiefe", "akk": "den Lord der Tiefe" },
+            "f": { "nom": "Lady der Tiefe", "gen": "der Lady der Tiefe", "dat": "der Lady der Tiefe", "akk": "die Lady der Tiefe" },
+            "n": { "nom": "Lord der Tiefe", "gen": "des Lords der Tiefe", "dat": "dem Lord der Tiefe", "akk": "den Lord der Tiefe" }
+          }
+        },
+        "herrscher_der_schatten": {
+          "forms": {
+            "m": { "nom": "Herrscher der Schatten", "gen": "des Herrschers der Schatten", "dat": "dem Herrscher der Schatten", "akk": "den Herrscher der Schatten" },
+            "f": { "nom": "Herrscherin der Schatten", "gen": "der Herrscherin der Schatten", "dat": "der Herrscherin der Schatten", "akk": "die Herrscherin der Schatten" },
+            "n": { "nom": "Herrscher der Schatten", "gen": "des Herrschers der Schatten", "dat": "dem Herrscher der Schatten", "akk": "den Herrscher der Schatten" }
+          }
+        },
+        "peinsfuerst": {
+          "forms": {
+            "m": { "nom": "Peinsfürst", "gen": "des Peinsfürsten", "dat": "dem Peinsfürsten", "akk": "den Peinsfürsten" },
+            "f": { "nom": "Peinsfürstin", "gen": "der Peinsfürstin", "dat": "der Peinsfürstin", "akk": "die Peinsfürstin" },
+            "n": { "nom": "Peinsfürst", "gen": "des Peinsfürsten", "dat": "dem Peinsfürsten", "akk": "den Peinsfürsten" }
+          }
+        },
+        "feuermarkgraf": {
+          "forms": {
+            "m": { "nom": "Feuermarkgraf", "gen": "des Feuermarkgrafen", "dat": "dem Feuermarkgrafen", "akk": "den Feuermarkgrafen" },
+            "f": { "nom": "Feuermarkgräfin", "gen": "der Feuermarkgräfin", "dat": "der Feuermarkgräfin", "akk": "die Feuermarkgräfin" },
+            "n": { "nom": "Feuermarkgraf", "gen": "des Feuermarkgrafen", "dat": "dem Feuermarkgrafen", "akk": "den Feuermarkgrafen" }
+          }
+        },
+        "abgrundherr": {
+          "forms": {
+            "m": { "nom": "Abgrundherr", "gen": "des Abgrundherrn", "dat": "dem Abgrundherrn", "akk": "den Abgrundherrn" },
+            "f": { "nom": "Abgründin", "gen": "der Abgründin", "dat": "der Abgründin", "akk": "die Abgründin" },
+            "n": { "nom": "Abgrundherr", "gen": "des Abgrundherrn", "dat": "dem Abgrundherrn", "akk": "den Abgrundherrn" }
+          }
+        },
+        "daemonenjaeger": {
+          "forms": {
+            "m": { "nom": "Dämonenjäger", "gen": "des Dämonenjägers", "dat": "dem Dämonenjäger", "akk": "den Dämonenjäger" },
+            "f": { "nom": "Dämonenjägerin", "gen": "der Dämonenjägerin", "dat": "der Dämonenjägerin", "akk": "die Dämonenjägerin" },
+            "n": { "nom": "Dämonenjäger", "gen": "des Dämonenjägers", "dat": "dem Dämonenjäger", "akk": "den Dämonenjäger" }
+          }
+        },
+        "erzmagier_des_blutes": {
+          "forms": {
+            "m": { "nom": "Erzmagier des Blutes", "gen": "des Erzmagiers des Blutes", "dat": "dem Erzmagier des Blutes", "akk": "den Erzmagier des Blutes" },
+            "f": { "nom": "Erzmagierin des Blutes", "gen": "der Erzmagierin des Blutes", "dat": "der Erzmagierin des Blutes", "akk": "die Erzmagierin des Blutes" },
+            "n": { "nom": "Erzmagier des Blutes", "gen": "des Erzmagiers des Blutes", "dat": "dem Erzmagier des Blutes", "akk": "den Erzmagier des Blutes" }
+          }
+        },
+        "schwarzer_lord": {
+          "forms": {
+            "m": { "nom": "Schwarzer Lord", "gen": "des Schwarzen Lords", "dat": "dem Schwarzen Lord", "akk": "den Schwarzen Lord" },
+            "f": { "nom": "Schwarze Lady", "gen": "der Schwarzen Lady", "dat": "der Schwarzen Lady", "akk": "die Schwarze Lady" },
+            "n": { "nom": "Schwarzer Lord", "gen": "des Schwarzen Lords", "dat": "dem Schwarzen Lord", "akk": "den Schwarzen Lord" }
+          }
+        },
+        "fuerst_der_verdammnis": {
+          "forms": {
+            "m": { "nom": "Fürst der Verdammnis", "gen": "des Fürsten der Verdammnis", "dat": "dem Fürsten der Verdammnis", "akk": "den Fürsten der Verdammnis" },
+            "f": { "nom": "Fürstin der Verdammnis", "gen": "der Fürstin der Verdammnis", "dat": "der Fürstin der Verdammnis", "akk": "die Fürstin der Verdammnis" },
+            "n": { "nom": "Fürst der Verdammnis", "gen": "des Fürsten der Verdammnis", "dat": "dem Fürsten der Verdammnis", "akk": "den Fürsten der Verdammnis" }
+          }
+        },
+        "prinz_der_scherben": {
+          "forms": {
+            "m": { "nom": "Prinz der Scherben", "gen": "des Prinzen der Scherben", "dat": "dem Prinzen der Scherben", "akk": "den Prinzen der Scherben" },
+            "f": { "nom": "Prinzessin der Scherben", "gen": "der Prinzessin der Scherben", "dat": "der Prinzessin der Scherben", "akk": "die Prinzessin der Scherben" },
+            "n": { "nom": "Prinz der Scherben", "gen": "des Prinzen der Scherben", "dat": "dem Prinzen der Scherben", "akk": "den Prinzen der Scherben" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

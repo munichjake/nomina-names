@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create module.zip
+        run: |
+          zip -r module.zip . \
+            --exclude "*.git*" \
+            --exclude ".github/*" \
+            --exclude "_dev/*" \
+            --exclude ".prettierrc.json" \
+            --exclude "CHANGELOG.md" \
+            --exclude "README.md" \
+            --exclude ".gitignore"
+
+      - name: Create GitHub Release & notify FoundryVTT
+        uses: cs96and/FoundryVTT-release-package@v1
+        with:
+          package-token: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
+          manifest-url: https://github.com/munichjake/nomina-names/releases/download/${{ github.ref_name }}/module.json
+          files: |
+            module.zip
+            module.json

@@ -4,8 +4,8 @@
   "description": "Ein flexibler Namensgenerator mit konfigurierbaren JSON-Dateien für verschiedene Sprachen, Spezies und Kategorien.",
   "version": "3.1.0",
   "compatibility": {
-    "minimum": "12",
-    "verified": "13"
+    "minimum": "13",
+    "verified": "14"
   },
   "authors": [
     {

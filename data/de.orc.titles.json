@@ -18,36 +18,36 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Kriegsherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Kriegsherrin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Häuptling" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Häuptlingin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Blutfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Blutfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Hordenfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hordenfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Stammesführer" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Stammesführerin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Knochenbrecher" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Knochenbrecherin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schlachtmeister" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schlachtmeisterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Schreckensherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Schreckensherrin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Bannführer" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Bannführerin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Blutmarschall" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Blutmarschallin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Klingenfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Klingenfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Clanmeister" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Clanmeisterin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Heerführer" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Heerführerin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Großhäuptling" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Oberster Kriegsherr" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Herrscher der Horde" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Meister der Schlacht" }, "tags": ["nonbinary", "titles"], "w": 1 }
+        { "t": { "de": "Kriegsherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "kriegsherr" } },
+        { "t": { "de": "Kriegsherrin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "kriegsherr" } },
+        { "t": { "de": "Häuptling" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "haeuptling" } },
+        { "t": { "de": "Häuptlingin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "haeuptling" } },
+        { "t": { "de": "Blutfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "blutfuerst" } },
+        { "t": { "de": "Blutfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "blutfuerst" } },
+        { "t": { "de": "Hordenfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hordenfuerst" } },
+        { "t": { "de": "Hordenfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hordenfuerst" } },
+        { "t": { "de": "Stammesführer" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "stammesfuehrer" } },
+        { "t": { "de": "Stammesführerin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "stammesfuehrer" } },
+        { "t": { "de": "Knochenbrecher" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "knochenbrecher" } },
+        { "t": { "de": "Knochenbrecherin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "knochenbrecher" } },
+        { "t": { "de": "Schlachtmeister" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schlachtmeister" } },
+        { "t": { "de": "Schlachtmeisterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schlachtmeister" } },
+        { "t": { "de": "Schreckensherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "schreckensherr" } },
+        { "t": { "de": "Schreckensherrin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "schreckensherr" } },
+        { "t": { "de": "Bannführer" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "bannfuehrer" } },
+        { "t": { "de": "Bannführerin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "bannfuehrer" } },
+        { "t": { "de": "Blutmarschall" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "blutmarschall" } },
+        { "t": { "de": "Blutmarschallin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "blutmarschall" } },
+        { "t": { "de": "Klingenfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "klingenfuerst" } },
+        { "t": { "de": "Klingenfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "klingenfuerst" } },
+        { "t": { "de": "Clanmeister" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "clanmeister" } },
+        { "t": { "de": "Clanmeisterin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "clanmeister" } },
+        { "t": { "de": "Heerführer" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "heerfuehrer" } },
+        { "t": { "de": "Heerführerin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "heerfuehrer" } },
+        { "t": { "de": "Großhäuptling" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "grosshaeuptling" } },
+        { "t": { "de": "Oberster Kriegsherr" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "oberster_kriegsherr" } },
+        { "t": { "de": "Herrscher der Horde" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "herrscher_der_horde" } },
+        { "t": { "de": "Meister der Schlacht" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "meister_der_schlacht" } }
       ]
     }
   },
@@ -56,6 +56,131 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "kriegsherr": {
+          "forms": {
+            "m": { "nom": "Kriegsherr", "gen": "des Kriegsherrn", "dat": "dem Kriegsherrn", "akk": "den Kriegsherrn" },
+            "f": { "nom": "Kriegsherrin", "gen": "der Kriegsherrin", "dat": "der Kriegsherrin", "akk": "die Kriegsherrin" },
+            "n": { "nom": "Kriegsherr", "gen": "des Kriegsherrn", "dat": "dem Kriegsherrn", "akk": "den Kriegsherrn" }
+          }
+        },
+        "haeuptling": {
+          "forms": {
+            "m": { "nom": "Häuptling", "gen": "des Häuptlings", "dat": "dem Häuptling", "akk": "den Häuptling" },
+            "f": { "nom": "Häuptlingin", "gen": "der Häuptlingin", "dat": "der Häuptlingin", "akk": "die Häuptlingin" },
+            "n": { "nom": "Häuptling", "gen": "des Häuptlings", "dat": "dem Häuptling", "akk": "den Häuptling" }
+          }
+        },
+        "blutfuerst": {
+          "forms": {
+            "m": { "nom": "Blutfürst", "gen": "des Blutfürsten", "dat": "dem Blutfürsten", "akk": "den Blutfürsten" },
+            "f": { "nom": "Blutfürstin", "gen": "der Blutfürstin", "dat": "der Blutfürstin", "akk": "die Blutfürstin" },
+            "n": { "nom": "Blutfürst", "gen": "des Blutfürsten", "dat": "dem Blutfürsten", "akk": "den Blutfürsten" }
+          }
+        },
+        "hordenfuerst": {
+          "forms": {
+            "m": { "nom": "Hordenfürst", "gen": "des Hordenfürsten", "dat": "dem Hordenfürsten", "akk": "den Hordenfürsten" },
+            "f": { "nom": "Hordenfürstin", "gen": "der Hordenfürstin", "dat": "der Hordenfürstin", "akk": "die Hordenfürstin" },
+            "n": { "nom": "Hordenfürst", "gen": "des Hordenfürsten", "dat": "dem Hordenfürsten", "akk": "den Hordenfürsten" }
+          }
+        },
+        "stammesfuehrer": {
+          "forms": {
+            "m": { "nom": "Stammesführer", "gen": "des Stammesführers", "dat": "dem Stammesführer", "akk": "den Stammesführer" },
+            "f": { "nom": "Stammesführerin", "gen": "der Stammesführerin", "dat": "der Stammesführerin", "akk": "die Stammesführerin" },
+            "n": { "nom": "Stammesführer", "gen": "des Stammesführers", "dat": "dem Stammesführer", "akk": "den Stammesführer" }
+          }
+        },
+        "knochenbrecher": {
+          "forms": {
+            "m": { "nom": "Knochenbrecher", "gen": "des Knochenbrechers", "dat": "dem Knochenbrecher", "akk": "den Knochenbrecher" },
+            "f": { "nom": "Knochenbrecherin", "gen": "der Knochenbrecherin", "dat": "der Knochenbrecherin", "akk": "die Knochenbrecherin" },
+            "n": { "nom": "Knochenbrecher", "gen": "des Knochenbrechers", "dat": "dem Knochenbrecher", "akk": "den Knochenbrecher" }
+          }
+        },
+        "schlachtmeister": {
+          "forms": {
+            "m": { "nom": "Schlachtmeister", "gen": "des Schlachtmeisters", "dat": "dem Schlachtmeister", "akk": "den Schlachtmeister" },
+            "f": { "nom": "Schlachtmeisterin", "gen": "der Schlachtmeisterin", "dat": "der Schlachtmeisterin", "akk": "die Schlachtmeisterin" },
+            "n": { "nom": "Schlachtmeister", "gen": "des Schlachtmeisters", "dat": "dem Schlachtmeister", "akk": "den Schlachtmeister" }
+          }
+        },
+        "schreckensherr": {
+          "forms": {
+            "m": { "nom": "Schreckensherr", "gen": "des Schreckensherrn", "dat": "dem Schreckensherrn", "akk": "den Schreckensherrn" },
+            "f": { "nom": "Schreckensherrin", "gen": "der Schreckensherrin", "dat": "der Schreckensherrin", "akk": "die Schreckensherrin" },
+            "n": { "nom": "Schreckensherr", "gen": "des Schreckensherrn", "dat": "dem Schreckensherrn", "akk": "den Schreckensherrn" }
+          }
+        },
+        "bannfuehrer": {
+          "forms": {
+            "m": { "nom": "Bannführer", "gen": "des Bannführers", "dat": "dem Bannführer", "akk": "den Bannführer" },
+            "f": { "nom": "Bannführerin", "gen": "der Bannführerin", "dat": "der Bannführerin", "akk": "die Bannführerin" },
+            "n": { "nom": "Bannführer", "gen": "des Bannführers", "dat": "dem Bannführer", "akk": "den Bannführer" }
+          }
+        },
+        "blutmarschall": {
+          "forms": {
+            "m": { "nom": "Blutmarschall", "gen": "des Blutmarschalls", "dat": "dem Blutmarschall", "akk": "den Blutmarschall" },
+            "f": { "nom": "Blutmarschallin", "gen": "der Blutmarschallin", "dat": "der Blutmarschallin", "akk": "die Blutmarschallin" },
+            "n": { "nom": "Blutmarschall", "gen": "des Blutmarschalls", "dat": "dem Blutmarschall", "akk": "den Blutmarschall" }
+          }
+        },
+        "klingenfuerst": {
+          "forms": {
+            "m": { "nom": "Klingenfürst", "gen": "des Klingenfürsten", "dat": "dem Klingenfürsten", "akk": "den Klingenfürsten" },
+            "f": { "nom": "Klingenfürstin", "gen": "der Klingenfürstin", "dat": "der Klingenfürstin", "akk": "die Klingenfürstin" },
+            "n": { "nom": "Klingenfürst", "gen": "des Klingenfürsten", "dat": "dem Klingenfürsten", "akk": "den Klingenfürsten" }
+          }
+        },
+        "clanmeister": {
+          "forms": {
+            "m": { "nom": "Clanmeister", "gen": "des Clanmeisters", "dat": "dem Clanmeister", "akk": "den Clanmeister" },
+            "f": { "nom": "Clanmeisterin", "gen": "der Clanmeisterin", "dat": "der Clanmeisterin", "akk": "die Clanmeisterin" },
+            "n": { "nom": "Clanmeister", "gen": "des Clanmeisters", "dat": "dem Clanmeister", "akk": "den Clanmeister" }
+          }
+        },
+        "heerfuehrer": {
+          "forms": {
+            "m": { "nom": "Heerführer", "gen": "des Heerführers", "dat": "dem Heerführer", "akk": "den Heerführer" },
+            "f": { "nom": "Heerführerin", "gen": "der Heerführerin", "dat": "der Heerführerin", "akk": "die Heerführerin" },
+            "n": { "nom": "Heerführer", "gen": "des Heerführers", "dat": "dem Heerführer", "akk": "den Heerführer" }
+          }
+        },
+        "grosshaeuptling": {
+          "forms": {
+            "m": { "nom": "Großhäuptling", "gen": "des Großhäuptlings", "dat": "dem Großhäuptling", "akk": "den Großhäuptling" },
+            "f": { "nom": "Großhäuptlingin", "gen": "der Großhäuptlingin", "dat": "der Großhäuptlingin", "akk": "die Großhäuptlingin" },
+            "n": { "nom": "Großhäuptling", "gen": "des Großhäuptlings", "dat": "dem Großhäuptling", "akk": "den Großhäuptling" }
+          }
+        },
+        "oberster_kriegsherr": {
+          "forms": {
+            "m": { "nom": "Oberster Kriegsherr", "gen": "des Obersten Kriegsherrn", "dat": "dem Obersten Kriegsherrn", "akk": "den Obersten Kriegsherrn" },
+            "f": { "nom": "Oberste Kriegsherrin", "gen": "der Obersten Kriegsherrin", "dat": "der Obersten Kriegsherrin", "akk": "die Oberste Kriegsherrin" },
+            "n": { "nom": "Oberster Kriegsherr", "gen": "des Obersten Kriegsherrn", "dat": "dem Obersten Kriegsherrn", "akk": "den Obersten Kriegsherrn" }
+          }
+        },
+        "herrscher_der_horde": {
+          "forms": {
+            "m": { "nom": "Herrscher der Horde", "gen": "des Herrschers der Horde", "dat": "dem Herrscher der Horde", "akk": "den Herrscher der Horde" },
+            "f": { "nom": "Herrscherin der Horde", "gen": "der Herrscherin der Horde", "dat": "der Herrscherin der Horde", "akk": "die Herrscherin der Horde" },
+            "n": { "nom": "Herrscher der Horde", "gen": "des Herrschers der Horde", "dat": "dem Herrscher der Horde", "akk": "den Herrscher der Horde" }
+          }
+        },
+        "meister_der_schlacht": {
+          "forms": {
+            "m": { "nom": "Meister der Schlacht", "gen": "des Meisters der Schlacht", "dat": "dem Meister der Schlacht", "akk": "den Meister der Schlacht" },
+            "f": { "nom": "Meisterin der Schlacht", "gen": "der Meisterin der Schlacht", "dat": "der Meisterin der Schlacht", "akk": "die Meisterin der Schlacht" },
+            "n": { "nom": "Meister der Schlacht", "gen": "des Meisters der Schlacht", "dat": "dem Meister der Schlacht", "akk": "den Meister der Schlacht" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

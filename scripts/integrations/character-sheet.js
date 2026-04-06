@@ -63,7 +63,7 @@ export function registerTokenHUDIntegration(app, html, data) {
     }
 
     const button = $(`
-      <div class="control-icon" title="${game.i18n.localize("names.title")}">
+      <div class="control-icon nomina-token-hud-btn" title="${game.i18n.localize("names.title")}">
         <i class="fas fa-user-tag"></i>
       </div>
     `);

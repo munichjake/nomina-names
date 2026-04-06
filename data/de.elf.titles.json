@@ -18,20 +18,20 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Blütenfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Hainherzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Mondbaron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Waldritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Sternfürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Silbermarkgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Lichtweber" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Blütenfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Hainherzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Mondbaronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Walddame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Sternfürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "SilbermarkgräFin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Lichtweberin" }, "tags": ["female", "titles"], "w": 1 }
+        { "t": { "de": "Blütenfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "bluetenfuerst" } },
+        { "t": { "de": "Hainherzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "hainherzog" } },
+        { "t": { "de": "Mondbaron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "mondbaron" } },
+        { "t": { "de": "Waldritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "waldritter" } },
+        { "t": { "de": "Sternfürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "sternfuerst" } },
+        { "t": { "de": "Silbermarkgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "silbermarkgraf" } },
+        { "t": { "de": "Lichtweber" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "lichtweber" } },
+        { "t": { "de": "Blütenfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "bluetenfuerst" } },
+        { "t": { "de": "Hainherzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "hainherzog" } },
+        { "t": { "de": "Mondbaronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "mondbaron" } },
+        { "t": { "de": "Walddame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "waldritter" } },
+        { "t": { "de": "Sternfürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "sternfuerst" } },
+        { "t": { "de": "Silbermarkgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "silbermarkgraf" } },
+        { "t": { "de": "Lichtweberin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "lichtweber" } }
       ]
     }
   },
@@ -40,6 +40,61 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "bluetenfuerst": {
+          "forms": {
+            "m": { "nom": "Blütenfürst", "gen": "des Blütenfürsten", "dat": "dem Blütenfürsten", "akk": "den Blütenfürsten" },
+            "f": { "nom": "Blütenfürstin", "gen": "der Blütenfürstin", "dat": "der Blütenfürstin", "akk": "die Blütenfürstin" },
+            "n": { "nom": "Blütenfürst", "gen": "des Blütenfürsten", "dat": "dem Blütenfürsten", "akk": "den Blütenfürsten" }
+          }
+        },
+        "hainherzog": {
+          "forms": {
+            "m": { "nom": "Hainherzog", "gen": "des Hainherzogs", "dat": "dem Hainherzog", "akk": "den Hainherzog" },
+            "f": { "nom": "Hainherzogin", "gen": "der Hainherzogin", "dat": "der Hainherzogin", "akk": "die Hainherzogin" },
+            "n": { "nom": "Hainherzog", "gen": "des Hainherzogs", "dat": "dem Hainherzog", "akk": "den Hainherzog" }
+          }
+        },
+        "mondbaron": {
+          "forms": {
+            "m": { "nom": "Mondbaron", "gen": "des Mondbarons", "dat": "dem Mondbaron", "akk": "den Mondbaron" },
+            "f": { "nom": "Mondbaronin", "gen": "der Mondbaronin", "dat": "der Mondbaronin", "akk": "die Mondbaronin" },
+            "n": { "nom": "Mondbaron", "gen": "des Mondbarons", "dat": "dem Mondbaron", "akk": "den Mondbaron" }
+          }
+        },
+        "waldritter": {
+          "forms": {
+            "m": { "nom": "Waldritter", "gen": "des Waldritters", "dat": "dem Waldritter", "akk": "den Waldritter" },
+            "f": { "nom": "Walddame", "gen": "der Walddame", "dat": "der Walddame", "akk": "die Walddame" },
+            "n": { "nom": "Waldritter", "gen": "des Waldritters", "dat": "dem Waldritter", "akk": "den Waldritter" }
+          }
+        },
+        "sternfuerst": {
+          "forms": {
+            "m": { "nom": "Sternfürst", "gen": "des Sternfürsten", "dat": "dem Sternfürsten", "akk": "den Sternfürsten" },
+            "f": { "nom": "Sternfürstin", "gen": "der Sternfürstin", "dat": "der Sternfürstin", "akk": "die Sternfürstin" },
+            "n": { "nom": "Sternfürst", "gen": "des Sternfürsten", "dat": "dem Sternfürsten", "akk": "den Sternfürsten" }
+          }
+        },
+        "silbermarkgraf": {
+          "forms": {
+            "m": { "nom": "Silbermarkgraf", "gen": "des Silbermarkgrafen", "dat": "dem Silbermarkgrafen", "akk": "den Silbermarkgrafen" },
+            "f": { "nom": "Silbermarkgräfin", "gen": "der Silbermarkgräfin", "dat": "der Silbermarkgräfin", "akk": "die Silbermarkgräfin" },
+            "n": { "nom": "Silbermarkgraf", "gen": "des Silbermarkgrafen", "dat": "dem Silbermarkgrafen", "akk": "den Silbermarkgrafen" }
+          }
+        },
+        "lichtweber": {
+          "forms": {
+            "m": { "nom": "Lichtweber", "gen": "des Lichtwebers", "dat": "dem Lichtweber", "akk": "den Lichtweber" },
+            "f": { "nom": "Lichtweberin", "gen": "der Lichtweberin", "dat": "der Lichtweberin", "akk": "die Lichtweberin" },
+            "n": { "nom": "Lichtweber", "gen": "des Lichtwebers", "dat": "dem Lichtweber", "akk": "den Lichtweber" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

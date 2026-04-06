@@ -18,30 +18,30 @@
         "en": "Names"
       },
       "items": [
-        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Freiherr" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1 },
-        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Freifrau" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1 },
-        { "t": { "de": "Regent" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Herrscher" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Souverän" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Erbe" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Wächter" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Hüter" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Bewahrer" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Beschützer" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Wahrer" }, "tags": ["nonbinary", "titles"], "w": 1 },
-        { "t": { "de": "Thronerbe" }, "tags": ["nonbinary", "titles"], "w": 1 }
+        { "t": { "de": "Graf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "graf" } },
+        { "t": { "de": "Herzog" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "herzog" } },
+        { "t": { "de": "Baron" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "de": "Freiherr" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "freiherr" } },
+        { "t": { "de": "Ritter" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "ritter" } },
+        { "t": { "de": "Fürst" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "fuerst" } },
+        { "t": { "de": "Markgraf" }, "tags": ["male", "titles"], "w": 1, "attrs": { "titleId": "markgraf" } },
+        { "t": { "de": "Gräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "graf" } },
+        { "t": { "de": "Herzogin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "herzog" } },
+        { "t": { "de": "Baronin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "baron" } },
+        { "t": { "de": "Freifrau" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "freiherr" } },
+        { "t": { "de": "Dame" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "ritter" } },
+        { "t": { "de": "Fürstin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "fuerst" } },
+        { "t": { "de": "Markgräfin" }, "tags": ["female", "titles"], "w": 1, "attrs": { "titleId": "markgraf" } },
+        { "t": { "de": "Regent" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "regent" } },
+        { "t": { "de": "Herrscher" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "herrscher" } },
+        { "t": { "de": "Souverän" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "souveraen" } },
+        { "t": { "de": "Erbe" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "erbe" } },
+        { "t": { "de": "Wächter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "waechter" } },
+        { "t": { "de": "Hüter" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "hueter" } },
+        { "t": { "de": "Bewahrer" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "bewahrer" } },
+        { "t": { "de": "Beschützer" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "beschuetzer" } },
+        { "t": { "de": "Wahrer" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "wahrer" } },
+        { "t": { "de": "Thronerbe" }, "tags": ["nonbinary", "titles"], "w": 1, "attrs": { "titleId": "thronerbe" } }
       ]
     }
   },
@@ -50,6 +50,131 @@
       "TrimSpaces"
     ],
     "uniqueWithinBatch": true
+  },
+  "langRules": {
+    "de": {
+      "titles": {
+        "graf": {
+          "forms": {
+            "m": { "nom": "Graf", "gen": "des Grafen", "dat": "dem Grafen", "akk": "den Grafen" },
+            "f": { "nom": "Gräfin", "gen": "der Gräfin", "dat": "der Gräfin", "akk": "die Gräfin" },
+            "n": { "nom": "Graf", "gen": "des Grafen", "dat": "dem Grafen", "akk": "den Grafen" }
+          }
+        },
+        "herzog": {
+          "forms": {
+            "m": { "nom": "Herzog", "gen": "des Herzogs", "dat": "dem Herzog", "akk": "den Herzog" },
+            "f": { "nom": "Herzogin", "gen": "der Herzogin", "dat": "der Herzogin", "akk": "die Herzogin" },
+            "n": { "nom": "Herzog", "gen": "des Herzogs", "dat": "dem Herzog", "akk": "den Herzog" }
+          }
+        },
+        "baron": {
+          "forms": {
+            "m": { "nom": "Baron", "gen": "des Barons", "dat": "dem Baron", "akk": "den Baron" },
+            "f": { "nom": "Baronin", "gen": "der Baronin", "dat": "der Baronin", "akk": "die Baronin" },
+            "n": { "nom": "Baron", "gen": "des Barons", "dat": "dem Baron", "akk": "den Baron" }
+          }
+        },
+        "freiherr": {
+          "forms": {
+            "m": { "nom": "Freiherr", "gen": "des Freiherrn", "dat": "dem Freiherrn", "akk": "den Freiherrn" },
+            "f": { "nom": "Freifrau", "gen": "der Freifrau", "dat": "der Freifrau", "akk": "die Freifrau" },
+            "n": { "nom": "Freiherr", "gen": "des Freiherrn", "dat": "dem Freiherrn", "akk": "den Freiherrn" }
+          }
+        },
+        "ritter": {
+          "forms": {
+            "m": { "nom": "Ritter", "gen": "des Ritters", "dat": "dem Ritter", "akk": "den Ritter" },
+            "f": { "nom": "Dame", "gen": "der Dame", "dat": "der Dame", "akk": "die Dame" },
+            "n": { "nom": "Ritter", "gen": "des Ritters", "dat": "dem Ritter", "akk": "den Ritter" }
+          }
+        },
+        "fuerst": {
+          "forms": {
+            "m": { "nom": "Fürst", "gen": "des Fürsten", "dat": "dem Fürsten", "akk": "den Fürsten" },
+            "f": { "nom": "Fürstin", "gen": "der Fürstin", "dat": "der Fürstin", "akk": "die Fürstin" },
+            "n": { "nom": "Fürst", "gen": "des Fürsten", "dat": "dem Fürsten", "akk": "den Fürsten" }
+          }
+        },
+        "markgraf": {
+          "forms": {
+            "m": { "nom": "Markgraf", "gen": "des Markgrafen", "dat": "dem Markgrafen", "akk": "den Markgrafen" },
+            "f": { "nom": "Markgräfin", "gen": "der Markgräfin", "dat": "der Markgräfin", "akk": "die Markgräfin" },
+            "n": { "nom": "Markgraf", "gen": "des Markgrafen", "dat": "dem Markgrafen", "akk": "den Markgrafen" }
+          }
+        },
+        "regent": {
+          "forms": {
+            "m": { "nom": "Regent", "gen": "des Regenten", "dat": "dem Regenten", "akk": "den Regenten" },
+            "f": { "nom": "Regentin", "gen": "der Regentin", "dat": "der Regentin", "akk": "die Regentin" },
+            "n": { "nom": "Regent", "gen": "des Regenten", "dat": "dem Regenten", "akk": "den Regenten" }
+          }
+        },
+        "herrscher": {
+          "forms": {
+            "m": { "nom": "Herrscher", "gen": "des Herrschers", "dat": "dem Herrscher", "akk": "den Herrscher" },
+            "f": { "nom": "Herrscherin", "gen": "der Herrscherin", "dat": "der Herrscherin", "akk": "die Herrscherin" },
+            "n": { "nom": "Herrscher", "gen": "des Herrschers", "dat": "dem Herrscher", "akk": "den Herrscher" }
+          }
+        },
+        "souveraen": {
+          "forms": {
+            "m": { "nom": "Souverän", "gen": "des Souveräns", "dat": "dem Souverän", "akk": "den Souverän" },
+            "f": { "nom": "Souveränin", "gen": "der Souveränin", "dat": "der Souveränin", "akk": "die Souveränin" },
+            "n": { "nom": "Souverän", "gen": "des Souveräns", "dat": "dem Souverän", "akk": "den Souverän" }
+          }
+        },
+        "erbe": {
+          "forms": {
+            "m": { "nom": "Erbe", "gen": "des Erben", "dat": "dem Erben", "akk": "den Erben" },
+            "f": { "nom": "Erbin", "gen": "der Erbin", "dat": "der Erbin", "akk": "die Erbin" },
+            "n": { "nom": "Erbe", "gen": "des Erben", "dat": "dem Erben", "akk": "den Erben" }
+          }
+        },
+        "waechter": {
+          "forms": {
+            "m": { "nom": "Wächter", "gen": "des Wächters", "dat": "dem Wächter", "akk": "den Wächter" },
+            "f": { "nom": "Wächterin", "gen": "der Wächterin", "dat": "der Wächterin", "akk": "die Wächterin" },
+            "n": { "nom": "Wächter", "gen": "des Wächters", "dat": "dem Wächter", "akk": "den Wächter" }
+          }
+        },
+        "hueter": {
+          "forms": {
+            "m": { "nom": "Hüter", "gen": "des Hüters", "dat": "dem Hüter", "akk": "den Hüter" },
+            "f": { "nom": "Hüterin", "gen": "der Hüterin", "dat": "der Hüterin", "akk": "die Hüterin" },
+            "n": { "nom": "Hüter", "gen": "des Hüters", "dat": "dem Hüter", "akk": "den Hüter" }
+          }
+        },
+        "bewahrer": {
+          "forms": {
+            "m": { "nom": "Bewahrer", "gen": "des Bewahrers", "dat": "dem Bewahrer", "akk": "den Bewahrer" },
+            "f": { "nom": "Bewahrerin", "gen": "der Bewahrerin", "dat": "der Bewahrerin", "akk": "die Bewahrerin" },
+            "n": { "nom": "Bewahrer", "gen": "des Bewahrers", "dat": "dem Bewahrer", "akk": "den Bewahrer" }
+          }
+        },
+        "beschuetzer": {
+          "forms": {
+            "m": { "nom": "Beschützer", "gen": "des Beschützers", "dat": "dem Beschützer", "akk": "den Beschützer" },
+            "f": { "nom": "Beschützerin", "gen": "der Beschützerin", "dat": "der Beschützerin", "akk": "die Beschützerin" },
+            "n": { "nom": "Beschützer", "gen": "des Beschützers", "dat": "dem Beschützer", "akk": "den Beschützer" }
+          }
+        },
+        "wahrer": {
+          "forms": {
+            "m": { "nom": "Wahrer", "gen": "des Wahrers", "dat": "dem Wahrer", "akk": "den Wahrer" },
+            "f": { "nom": "Wahrerin", "gen": "der Wahrerin", "dat": "der Wahrerin", "akk": "die Wahrerin" },
+            "n": { "nom": "Wahrer", "gen": "des Wahrers", "dat": "dem Wahrer", "akk": "den Wahrer" }
+          }
+        },
+        "thronerbe": {
+          "forms": {
+            "m": { "nom": "Thronerbe", "gen": "des Thronerben", "dat": "dem Thronerben", "akk": "den Thronerben" },
+            "f": { "nom": "Thronerbin", "gen": "der Thronerbin", "dat": "der Thronerbin", "akk": "die Thronerbin" },
+            "n": { "nom": "Thronerbe", "gen": "des Thronerben", "dat": "dem Thronerben", "akk": "den Thronerben" }
+          }
+        }
+      }
+    }
   },
   "vocab": {
     "fields": {

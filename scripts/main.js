@@ -18,6 +18,24 @@ import { updateLogLevel, logInfoL, logDebug, logError } from './utils/logger.js'
 import { EnhancedDropdown, initializeEnhancedDropdowns } from './components/enhanced-dropdown.js';
 import { getHistoryManager } from './core/history-manager.js';
 import { registerHandlebarsHelpers } from './utils/handlebars-helpers.js';
+import { SavrasLib } from './savras-lib.js';
+
+// ===== TELEMETRY =====
+
+/**
+ * SavrasLib telemetry instance - shared across the module.
+ * Instantiated at module level so its auto-registered hooks (init/ready) fire correctly.
+ */
+const telemetry = new SavrasLib({
+  moduleId:       MODULE_ID,
+  telemetryUrl:   'https://savras.dnd-session.de/api/v1/telemetry',
+  startupMessage: 'Nomina Names v3.1.0 loaded – anonymous telemetry active (opt-out in settings)',
+});
+
+/** @returns {SavrasLib} */
+export function getTelemetry() {
+  return telemetry;
+}
 
 // ===== MODULE INITIALIZATION =====
 
@@ -301,7 +319,7 @@ Hooks.on('getSceneControlButtons', (controls) => {
 });
 
 /**
- * v13 Token Controls - Direct DOM injection approach
+ * Token Controls - Direct DOM injection approach
  * Adds button directly to the rendered scene controls
  */
 Hooks.on('renderSceneControls', (sceneControls, html, data) => {
