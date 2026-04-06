@@ -435,4 +435,63 @@ function registerHiddenSettings() {
     type: Object,
     default: {}
   });
+
+  // Emergency App - remembered species filter
+  game.settings.register(MODULE_ID, "emergencyFilterSpecies", {
+    name: "Emergency Filter Species",
+    scope: "client",
+    config: false,
+    type: Array,
+    default: []
+  });
+
+  // Generator App - remembered selections
+  game.settings.register(MODULE_ID, "generatorLastLanguage", {
+    name: "Generator Last Language",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastSpecies", {
+    name: "Generator Last Species",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastCategory", {
+    name: "Generator Last Category",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  // Picker App - remembered selections
+  game.settings.register(MODULE_ID, "pickerLastLanguage", {
+    name: "Picker Last Language",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "pickerLastSpecies", {
+    name: "Picker Last Species",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "pickerLastCategory", {
+    name: "Picker Last Category",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
 }

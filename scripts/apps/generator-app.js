@@ -13,6 +13,7 @@ import { NamesHistoryApp } from './history-app.js';
 import { initializeEnhancedDropdowns } from '../components/enhanced-dropdown.js';
 import { hasNonbinaryNamesForSpecies } from '../utils/ui-helpers.js';
 import { sanitizeHTML } from '../utils/sanitizer.js';
+import { getTelemetry } from '../main.js';
 
 export class NamesGeneratorApp extends Application {
   constructor(options = {}) {
@@ -117,6 +118,13 @@ export class NamesGeneratorApp extends Application {
   activateListeners(html) {
     super.activateListeners(html);
 
+    // Telemetry ping (once per session per view)
+    getTelemetry()?.send('generator', {
+      contentLanguage: this.currentLanguage ?? '',
+    }).then(msg => {
+      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
+    });
+
     // Set generate button placement from settings
     const buttonPlacement = game.settings.get(MODULE_ID, "generateButtonPlacement") || "legacy";
     // Use filter() for root element, find() for children - try both
@@ -138,6 +146,7 @@ export class NamesGeneratorApp extends Application {
       this.currentCategory = null;
       this.generatedNames = [];
       this.nameGenders.clear();
+      game.settings.set(MODULE_ID, "generatorLastLanguage", this.currentLanguage || "");
       await this._updateSpeciesDropdown(html);
       await this._updateCategoriesDropdown(html);
     });
@@ -148,6 +157,7 @@ export class NamesGeneratorApp extends Application {
       this.currentCategory = null;
       this.generatedNames = [];
       this.nameGenders.clear();
+      game.settings.set(MODULE_ID, "generatorLastSpecies", this.currentSpecies || "");
       await this._updateCategoriesDropdown(html);
     });
 
@@ -155,6 +165,7 @@ export class NamesGeneratorApp extends Application {
     html.find('#names-category-select').change(async (ev) => {
       this.currentCategory = ev.target.value;
       this.nameGenders.clear();
+      game.settings.set(MODULE_ID, "generatorLastCategory", this.currentCategory || "");
       await this._updateComponentsPanel(html);
     });
 
@@ -1135,14 +1146,64 @@ export class NamesGeneratorApp extends Application {
     }
   }
 
-  _setDefaultLanguage(html) {
-    const defaultLang = this._getFoundryLanguage();
+  async _setDefaultLanguage(html) {
+    // Try to restore saved selections, fall back to defaults
+    const savedLanguage = game.settings.get(MODULE_ID, "generatorLastLanguage");
+    const savedSpecies = game.settings.get(MODULE_ID, "generatorLastSpecies");
+    const savedCategory = game.settings.get(MODULE_ID, "generatorLastCategory");
+
+    const targetLang = savedLanguage || this._getFoundryLanguage();
     const languageSelect = html.find('#names-language-select');
 
-    if (languageSelect.length && defaultLang) {
-      languageSelect.val(defaultLang);
-      languageSelect.trigger('change');
+    if (!languageSelect.length || !targetLang) return;
+
+    // Set language and trigger the cascade
+    languageSelect.val(targetLang);
+    this.currentLanguage = targetLang;
+    game.settings.set(MODULE_ID, "generatorLastLanguage", targetLang);
+    await this._updateSpeciesDropdown(html);
+
+    // Restore species if saved and still available
+    if (savedSpecies) {
+      const speciesSelect = html.find('#names-species-select');
+      if (speciesSelect.find(`option[value="${savedSpecies}"]`).length > 0) {
+        speciesSelect.val(savedSpecies);
+        this.currentSpecies = savedSpecies;
+
+        // Update enhanced dropdown display
+        const speciesContainer = speciesSelect[0]?.nextSibling;
+        if (speciesContainer?._enhancedDropdown) {
+          speciesContainer._enhancedDropdown.updateDisplay();
+        }
+
+        await this._updateCategoriesDropdown(html);
+
+        // Restore category if saved and still available
+        if (savedCategory) {
+          const categorySelect = html.find('#names-category-select');
+          if (categorySelect.find(`option[value="${savedCategory}"]`).length > 0) {
+            categorySelect.val(savedCategory);
+            this.currentCategory = savedCategory;
+
+            // Update enhanced dropdown display
+            const categoryContainer = categorySelect[0]?.nextSibling;
+            if (categoryContainer?._enhancedDropdown) {
+              categoryContainer._enhancedDropdown.updateDisplay();
+            }
+
+            await this._updateComponentsPanel(html);
+          }
+        }
+      }
     }
+
+    // Update language enhanced dropdown display
+    const langContainer = languageSelect[0]?.nextSibling;
+    if (langContainer?._enhancedDropdown) {
+      langContainer._enhancedDropdown.updateDisplay();
+    }
+
+    logDebug(`Restored generator selections: lang=${targetLang}, species=${savedSpecies || 'none'}, category=${savedCategory || 'none'}`);
   }
 
   // ============================================================

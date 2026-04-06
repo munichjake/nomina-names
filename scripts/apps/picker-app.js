@@ -9,6 +9,7 @@ import { getSupportedGenders, TEMPLATE_PATHS, CSS_CLASSES, MODULE_ID } from '../
 import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
+import { getTelemetry } from '../main.js';
 
 export class NamesPickerApp extends Application {
   constructor(options = {}) {
@@ -45,7 +46,7 @@ export class NamesPickerApp extends Application {
     }
 
     const actorSpecies = this._getActorSpecies();
-    const defaultLanguage = this._getDefaultContentLanguage();
+    const defaultLanguage = this._getSavedOrDefaultLanguage();
 
     const languages = await this.generator.getAvailableLanguages();
     const species = await this.generator.getAvailableSpecies(defaultLanguage);
@@ -69,8 +70,9 @@ export class NamesPickerApp extends Application {
         return { code, name: localizedName };
       }),
       currentNames: this.currentNames,
-      actorSpecies: actorSpecies,
+      actorSpecies: this._getSavedOrDefaultSpecies(actorSpecies),
       defaultLanguage: defaultLanguage,
+      savedCategory: game.settings.get(MODULE_ID, "pickerLastCategory") || "",
       isLoading: false,
       isLoaded: true,
       supportedGenders: getSupportedGenders()
@@ -186,6 +188,11 @@ export class NamesPickerApp extends Application {
   activateListeners(html) {
     super.activateListeners(html);
 
+    // Telemetry ping (once per session per view)
+    getTelemetry()?.send('picker').then(msg => {
+      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
+    });
+
     // Update supported genders on render
     this.supportedGenders = getSupportedGenders();
     logDebug("Updated supported genders:", this.supportedGenders);
@@ -198,6 +205,7 @@ export class NamesPickerApp extends Application {
     // Update category options when species changes
     html.find('#picker-species').change(async (event) => {
       await this._updateCategoryOptions(html);
+      this._savePickerSelections();
     });
 
     // Prevent multiple initialization
@@ -206,18 +214,36 @@ export class NamesPickerApp extends Application {
       return;
     }
 
-    // Update category options on initial load
-    this._updateCategoryOptions(html);
+    // Update category options on initial load, then restore saved category
+    this._updateCategoryOptions(html).then(() => {
+      const savedCategory = game.settings.get(MODULE_ID, "pickerLastCategory");
+      if (savedCategory) {
+        const categorySelect = html.find('#picker-category');
+        if (categorySelect.find(`option[value="${savedCategory}"]`).length > 0) {
+          categorySelect.val(savedCategory);
+          // Update enhanced dropdown if present
+          const enhancedContainer = categorySelect.next('.enhanced-dropdown');
+          if (enhancedContainer.length > 0) {
+            const enhancedDropdown = enhancedContainer[0]._enhancedDropdown;
+            if (enhancedDropdown) enhancedDropdown.updateDisplay();
+          }
+          logDebug(`Restored saved category: ${savedCategory}`);
+        }
+      }
 
-    // Generate initial names
-    logDebug("Generating initial names for picker");
-    this._onGenerateNames();
-    this._initialized = true;
+      // Generate initial names
+      logDebug("Generating initial names for picker");
+      this._onGenerateNames();
+      this._initialized = true;
+    });
   }
 
   async _onOptionChange(event) {
     const changedElement = event.currentTarget;
     logDebug(`Picker option changed: ${changedElement.name} = ${changedElement.value}`);
+
+    // Save selections for next time
+    this._savePickerSelections();
 
     // Always regenerate names when any option changes
     await this._onGenerateNames();
@@ -317,6 +343,43 @@ export class NamesPickerApp extends Application {
       logError("Failed to update actor name", error);
       ui.notifications.error(game.i18n.localize("names.name-error"));
     }
+  }
+
+  /**
+   * Get saved language or fall back to default content language
+   * @returns {string} Language code
+   */
+  _getSavedOrDefaultLanguage() {
+    const saved = game.settings.get(MODULE_ID, "pickerLastLanguage");
+    if (saved) return saved;
+    return this._getDefaultContentLanguage();
+  }
+
+  /**
+   * Get saved species or fall back to actor/default species
+   * @param {string} actorSpecies - Species detected from actor
+   * @returns {string} Species code
+   */
+  _getSavedOrDefaultSpecies(actorSpecies) {
+    const saved = game.settings.get(MODULE_ID, "pickerLastSpecies");
+    if (saved) return saved;
+    return actorSpecies;
+  }
+
+  /**
+   * Save current picker selections to settings
+   */
+  _savePickerSelections() {
+    const html = this.element;
+    if (!html || html.length === 0) return;
+
+    const language = html.find('#picker-language').val();
+    const species = html.find('#picker-species').val();
+    const category = html.find('#picker-category').val();
+
+    if (language) game.settings.set(MODULE_ID, "pickerLastLanguage", language);
+    if (species) game.settings.set(MODULE_ID, "pickerLastSpecies", species);
+    game.settings.set(MODULE_ID, "pickerLastCategory", category || "");
   }
 
   /**

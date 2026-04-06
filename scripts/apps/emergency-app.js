@@ -10,6 +10,7 @@ import { logDebug, logInfo, logWarn, logError } from '../utils/logger.js';
 import { getHistoryManager } from '../core/history-manager.js';
 import { NamesHistoryApp } from './history-app.js';
 import { sanitizeHTML } from '../utils/sanitizer.js';
+import { getTelemetry } from '../main.js';
 
 export class EmergencyNamesApp extends Application {
   constructor(options = {}) {
@@ -43,9 +44,21 @@ export class EmergencyNamesApp extends Application {
     const language = this._getFoundryLanguage();
     const allSpecies = await this.generator.getAvailableSpecies(language);
 
-    // Initialize enabled species if not already done
+    // Initialize enabled species: restore from saved settings or default to all
     if (this.enabledSpecies.size === 0) {
-      allSpecies.forEach(s => this.enabledSpecies.add(s.code));
+      const savedSpecies = game.settings.get(MODULE_ID, "emergencyFilterSpecies");
+      if (savedSpecies?.length > 0) {
+        const validCodes = new Set(allSpecies.map(s => s.code));
+        const restored = savedSpecies.filter(code => validCodes.has(code));
+        if (restored.length > 0) {
+          restored.forEach(code => this.enabledSpecies.add(code));
+          logDebug(`Restored ${restored.length} species from saved filter`);
+        } else {
+          allSpecies.forEach(s => this.enabledSpecies.add(s.code));
+        }
+      } else {
+        allSpecies.forEach(s => this.enabledSpecies.add(s.code));
+      }
     }
 
     this.availableSpecies = allSpecies.map(s => ({
@@ -77,6 +90,11 @@ export class EmergencyNamesApp extends Application {
 
   activateListeners(html) {
     super.activateListeners(html);
+
+    // Telemetry ping (once per session per view)
+    getTelemetry()?.send('emergency').then(msg => {
+      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
+    });
 
     html.find('.emergency-reroll-btn').off('click').on('click', this._onRerollNames.bind(this));
     html.find('.emergency-open-generator-btn').off('click').on('click', this._onOpenGenerator.bind(this));
@@ -574,6 +592,7 @@ export class EmergencyNamesApp extends Application {
     }
 
     this._updateFilterLabel();
+    this._saveSpeciesFilter();
     logDebug(`Toggled species ${species}, now ${this.enabledSpecies.size} enabled`);
   }
 
@@ -613,6 +632,14 @@ export class EmergencyNamesApp extends Application {
     }
 
     this._updateFilterLabel();
+    this._saveSpeciesFilter();
+  }
+
+  /**
+   * Save species filter to settings for persistence across sessions
+   */
+  _saveSpeciesFilter() {
+    game.settings.set(MODULE_ID, "emergencyFilterSpecies", [...this.enabledSpecies]);
   }
 
   /**
