@@ -198,7 +198,7 @@ export class EmergencyNamesApp extends Application {
        */
       const MAX_ATTEMPTS = 100;
 
-      const usedNameCombinations = new Set(); // Track species+gender combinations we've tried
+      const failedCombinations = new Set(); // Track species+gender combinations that failed
       let attempts = 0;
 
       // Generate names until we reach target or exhaust attempts
@@ -217,14 +217,11 @@ export class EmergencyNamesApp extends Application {
           // Create combination key to track attempts
           const combinationKey = `${species}:${preferredGender}`;
 
-          // Skip if we've already tried this combination and failed
-          if (usedNameCombinations.has(combinationKey)) {
-            logDebug(`[${attempts}] Skipping already tried combination: ${combinationKey}`);
+          // Skip if we've already tried this combination and it failed
+          if (failedCombinations.has(combinationKey)) {
+            logDebug(`[${attempts}] Skipping previously failed combination: ${combinationKey}`);
             continue;
           }
-
-          // Mark this combination as attempted
-          usedNameCombinations.add(combinationKey);
 
           const generationResult = await this._generateNameWithFallback(
             packageCode,
@@ -249,6 +246,8 @@ export class EmergencyNamesApp extends Application {
               logDebug(`[${names.length}/${TARGET_NAME_COUNT}] [Attempt ${attempts}] Name: "${suggestion.text}" | Package: ${packageCode} | Gender: ${actualGender}`, suggestion.metadata);
             }
           } else {
+            // Only track failed combinations to avoid retrying them
+            failedCombinations.add(combinationKey);
             logDebug(`[${attempts}] Failed to generate name for combination: ${combinationKey}`);
           }
         } catch (error) {
@@ -258,7 +257,7 @@ export class EmergencyNamesApp extends Application {
 
       // Warn if we couldn't generate the target number of names
       if (names.length < TARGET_NAME_COUNT) {
-        logWarn(`Only generated ${names.length} of ${TARGET_NAME_COUNT} names after ${attempts} attempts. Tried ${usedNameCombinations.size} unique species+gender combinations.`);
+        logWarn(`Only generated ${names.length} of ${TARGET_NAME_COUNT} names after ${attempts} attempts. ${failedCombinations.size} species+gender combinations failed.`);
       }
 
       logDebug('=== EMERGENCY GENERATION END ===');

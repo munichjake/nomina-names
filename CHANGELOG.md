@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.0] - 2026-04-08
+
 ### Added
+
+- **English Orc Names**: Complete English orc name data
+  - Female names, surnames, titles, nicknames
+  - Massively expanded procedural name generation (prefixes, suffixes, infixes)
+  - Full parity with German orc name data
+
+- **Orc Settlements**: New settlement name category for orcs
+  - English and German settlement names
+  - Registered in index.json as new orc category
 
 - **Filter/Settings Persistierung**: Letzte Auswahl wird in Emergency, Generator und Picker Apps gespeichert
   - Spezies-Filter, Kategorie-Auswahl und Einstellungen bleiben beim Schließen erhalten
@@ -15,11 +26,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Foundry VTT v14 Kompatibilität**:
-  - v12-Support entfernt (Mindestversion jetzt v13)
-  - `registerTokenControls` v12-Branch (Array) entfernt
-  - `activateSceneControls`-Hook für v14 ergänzt (parallel zu `controlTool` für v13)
-  - `module.json`: `minimum: 12 → 13`, `verified: 13 → 14`
+- **Foundry VTT v12–v14 Kompatibilität**:
+  - v14-Support: `activateSceneControls`-Hook ergänzt (parallel zu `controlTool` für v13)
+  - v12-Support wiederhergestellt: Array-basierte Token Controls, jQuery-Fallbacks für DOM-Selektoren
+  - `renderSceneControls`: Unterstützung für jQuery (v12) und HTMLElement (v13+)
+  - Emergency Button: jQuery-Fallback-Selektoren für v12 DOM-Struktur
+  - `module.json`: `verified: 13 → 14`, `minimum` bleibt v12
+
+### Fixed
+
+- **Telemetrie Chat-Nachrichten entfernt**: `send()` gibt ein Array zurück, kein einzelnes Message-Objekt — Zugriff auf `.title`/`.content` erzeugte "undefined undefined" Whisper-Nachrichten beim ersten Öffnen. Chat-Logik war redundant (savras-lib zeigt bereits Popups)
+
+- **Emergency Generator Kombinations-Tracking**: `usedNameCombinations` in `failedCombinations` umbenannt — Kombinationen werden erst nach tatsächlichem Fehlschlag gesperrt, nicht schon beim ersten Versuch
 
 ## [3.2.0] - 2026-01-22
 
