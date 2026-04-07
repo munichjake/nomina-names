@@ -25,11 +25,16 @@ jobs:
             --exclude "README.md" \
             --exclude ".gitignore"
 
-      - name: Create GitHub Release & notify FoundryVTT
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            module.zip
+            module.json
+          generate_release_notes: true
+
+      - name: Notify FoundryVTT
         uses: cs96and/FoundryVTT-release-package@v1
         with:
           package-token: ${{ secrets.FOUNDRY_PACKAGE_TOKEN }}
           manifest-url: https://github.com/munichjake/nomina-names/releases/download/${{ github.ref_name }}/module.json
-          files: |
-            module.zip
-            module.json
