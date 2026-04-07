@@ -105,9 +105,7 @@ export class EmergencyNamesApp extends Application {
     super.activateListeners(html);
 
     // Telemetry ping (once per session per view)
-    getTelemetry()?.send('emergency').then(msg => {
-      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
-    });
+    getTelemetry()?.send('emergency');
 
     html.find('.emergency-reroll-btn').off('click').on('click', this._onRerollNames.bind(this));
     html.find('.emergency-open-generator-btn').off('click').on('click', this._onOpenGenerator.bind(this));

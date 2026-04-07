@@ -162,8 +162,6 @@ export class NamesGeneratorApp extends Application {
     // Telemetry ping (once per session per view)
     getTelemetry()?.send('generator', {
       contentLanguage: this.currentLanguage ?? '',
-    }).then(msg => {
-      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
     });
 
     // Set generate button placement from settings

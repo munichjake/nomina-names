@@ -211,9 +211,7 @@ export class NamesPickerApp extends Application {
     super.activateListeners(html);
 
     // Telemetry ping (once per session per view)
-    getTelemetry()?.send('picker').then(msg => {
-      if (msg) ChatMessage.create({ content: `<strong>${msg.title}</strong><br>${msg.content}`, whisper: [game.user.id] });
-    });
+    getTelemetry()?.send('picker');
 
     // Update supported genders on render
     this.supportedGenders = getSupportedGenders();
