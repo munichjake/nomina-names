@@ -46,6 +46,47 @@ export class NamesGeneratorApp extends Application {
     });
   }
 
+  async close(options) {
+    if (game.settings.get(MODULE_ID, "rememberSelections")) {
+      this._saveState();
+    }
+    return super.close(options);
+  }
+
+  _saveState() {
+    const html = this.element;
+    if (!html?.length) return;
+
+    game.settings.set(MODULE_ID, "generatorLastLanguage", this.currentLanguage || "");
+    game.settings.set(MODULE_ID, "generatorLastSpecies", this.currentSpecies || "");
+    game.settings.set(MODULE_ID, "generatorLastCategory", this.currentCategory || "");
+
+    // Save checked genders
+    const genders = [];
+    html.find('input[name^="names-gender-"]:checked').each(function () {
+      genders.push(this.name.replace('names-gender-', ''));
+    });
+    game.settings.set(MODULE_ID, "generatorLastGenders", genders);
+
+    // Save checked components
+    const components = [];
+    for (const comp of ['firstname', 'surname', 'title', 'nickname']) {
+      if (html.find(`input[name="names-include-${comp}"]:checked`).length) {
+        components.push(comp);
+      }
+    }
+    game.settings.set(MODULE_ID, "generatorLastComponents", components);
+
+    // Save mode, count, view
+    game.settings.set(MODULE_ID, "generatorLastMode", this.currentMode || "components");
+    game.settings.set(MODULE_ID, "generatorLastCount", parseInt(html.find('#names-count-input').val()) || 5);
+
+    const activeView = html.find('.names-module-toggle-btn.active').data('view');
+    game.settings.set(MODULE_ID, "generatorLastView", activeView || "detailed");
+
+    logDebug('Generator state saved on close');
+  }
+
   async getData() {
     if (!this.generator) {
       this.generator = getGlobalGenerator();
@@ -146,7 +187,6 @@ export class NamesGeneratorApp extends Application {
       this.currentCategory = null;
       this.generatedNames = [];
       this.nameGenders.clear();
-      game.settings.set(MODULE_ID, "generatorLastLanguage", this.currentLanguage || "");
       await this._updateSpeciesDropdown(html);
       await this._updateCategoriesDropdown(html);
     });
@@ -157,7 +197,6 @@ export class NamesGeneratorApp extends Application {
       this.currentCategory = null;
       this.generatedNames = [];
       this.nameGenders.clear();
-      game.settings.set(MODULE_ID, "generatorLastSpecies", this.currentSpecies || "");
       await this._updateCategoriesDropdown(html);
     });
 
@@ -165,7 +204,6 @@ export class NamesGeneratorApp extends Application {
     html.find('#names-category-select').change(async (ev) => {
       this.currentCategory = ev.target.value;
       this.nameGenders.clear();
-      game.settings.set(MODULE_ID, "generatorLastCategory", this.currentCategory || "");
       await this._updateComponentsPanel(html);
     });
 
@@ -334,11 +372,11 @@ export class NamesGeneratorApp extends Application {
       }
     });
 
-    // Set default language only on first render
+    // Restore state only on first render
     if (this._isFirstRender) {
       this._isFirstRender = false;
       setTimeout(() => {
-        this._setDefaultLanguage(html);
+        this._restoreState(html);
       }, 100);
     }
   }
@@ -1146,21 +1184,25 @@ export class NamesGeneratorApp extends Application {
     }
   }
 
-  async _setDefaultLanguage(html) {
-    // Try to restore saved selections, fall back to defaults
-    const savedLanguage = game.settings.get(MODULE_ID, "generatorLastLanguage");
-    const savedSpecies = game.settings.get(MODULE_ID, "generatorLastSpecies");
-    const savedCategory = game.settings.get(MODULE_ID, "generatorLastCategory");
+  async _restoreState(html) {
+    const remember = game.settings.get(MODULE_ID, "rememberSelections");
 
-    const targetLang = savedLanguage || this._getFoundryLanguage();
+    // Determine target values: saved selections if remembering, otherwise defaults
+    const targetLang = remember
+      ? (game.settings.get(MODULE_ID, "generatorLastLanguage") || this._getFoundryLanguage())
+      : this._getFoundryLanguage();
+
+    const savedSpecies = remember ? game.settings.get(MODULE_ID, "generatorLastSpecies") : "";
+    const savedCategory = remember ? game.settings.get(MODULE_ID, "generatorLastCategory") : "";
+
     const languageSelect = html.find('#names-language-select');
-
     if (!languageSelect.length || !targetLang) return;
 
     // Set language and trigger the cascade
     languageSelect.val(targetLang);
     this.currentLanguage = targetLang;
-    game.settings.set(MODULE_ID, "generatorLastLanguage", targetLang);
+    this._syncEnhancedDropdown(languageSelect, targetLang);
+
     await this._updateSpeciesDropdown(html);
 
     // Restore species if saved and still available
@@ -1169,12 +1211,7 @@ export class NamesGeneratorApp extends Application {
       if (speciesSelect.find(`option[value="${savedSpecies}"]`).length > 0) {
         speciesSelect.val(savedSpecies);
         this.currentSpecies = savedSpecies;
-
-        // Update enhanced dropdown display
-        const speciesContainer = speciesSelect[0]?.nextSibling;
-        if (speciesContainer?._enhancedDropdown) {
-          speciesContainer._enhancedDropdown.updateDisplay();
-        }
+        this._syncEnhancedDropdown(speciesSelect, savedSpecies);
 
         await this._updateCategoriesDropdown(html);
 
@@ -1184,12 +1221,7 @@ export class NamesGeneratorApp extends Application {
           if (categorySelect.find(`option[value="${savedCategory}"]`).length > 0) {
             categorySelect.val(savedCategory);
             this.currentCategory = savedCategory;
-
-            // Update enhanced dropdown display
-            const categoryContainer = categorySelect[0]?.nextSibling;
-            if (categoryContainer?._enhancedDropdown) {
-              categoryContainer._enhancedDropdown.updateDisplay();
-            }
+            this._syncEnhancedDropdown(categorySelect, savedCategory);
 
             await this._updateComponentsPanel(html);
           }
@@ -1197,13 +1229,84 @@ export class NamesGeneratorApp extends Application {
       }
     }
 
-    // Update language enhanced dropdown display
-    const langContainer = languageSelect[0]?.nextSibling;
-    if (langContainer?._enhancedDropdown) {
-      langContainer._enhancedDropdown.updateDisplay();
+    // Restore additional state only when remembering
+    if (remember) {
+      this._restoreExtendedState(html);
     }
 
-    logDebug(`Restored generator selections: lang=${targetLang}, species=${savedSpecies || 'none'}, category=${savedCategory || 'none'}`);
+    logDebug(`Restored generator state (remember=${remember}): lang=${targetLang}, species=${savedSpecies || 'none'}, category=${savedCategory || 'none'}`);
+  }
+
+  /**
+   * Restore extended state: genders, components, mode, count, view
+   */
+  _restoreExtendedState(html) {
+    // Restore gender checkboxes
+    const savedGenders = game.settings.get(MODULE_ID, "generatorLastGenders");
+    if (savedGenders?.length > 0) {
+      html.find('input[name^="names-gender-"]').each(function () {
+        const gender = this.name.replace('names-gender-', '');
+        const shouldCheck = savedGenders.includes(gender);
+        this.checked = shouldCheck;
+        const label = $(this).closest('.names-module-checkbox-item');
+        label.toggleClass('selected', shouldCheck);
+      });
+    }
+
+    // Restore component checkboxes
+    const savedComponents = game.settings.get(MODULE_ID, "generatorLastComponents");
+    if (savedComponents?.length > 0) {
+      for (const comp of ['firstname', 'surname', 'title', 'nickname']) {
+        const checkbox = html.find(`input[name="names-include-${comp}"]`);
+        if (checkbox.length) {
+          const shouldCheck = savedComponents.includes(comp);
+          checkbox.prop('checked', shouldCheck);
+          checkbox.closest('.names-module-checkbox-item').toggleClass('selected', shouldCheck);
+        }
+      }
+      this._updateFormatField(html);
+    }
+
+    // Restore mode (components vs recipe)
+    const savedMode = game.settings.get(MODULE_ID, "generatorLastMode");
+    if (savedMode && savedMode !== this.currentMode) {
+      this.currentMode = savedMode;
+      html.find('.names-module-mode-btn').removeClass('active');
+      html.find(`.names-module-mode-btn[data-mode="${savedMode}"]`).addClass('active');
+      if (savedMode === 'recipe') {
+        html.find('.names-module-components-content').hide();
+        html.find('.names-module-recipe-content').show();
+        this._updateRecipeDropdown(html);
+      } else {
+        html.find('.names-module-recipe-content').hide();
+        html.find('.names-module-components-content').show();
+      }
+    }
+
+    // Restore name count
+    const savedCount = game.settings.get(MODULE_ID, "generatorLastCount");
+    if (savedCount > 0) {
+      html.find('#names-count-input').val(savedCount);
+    }
+
+    // Restore view (detailed vs simple)
+    const savedView = game.settings.get(MODULE_ID, "generatorLastView");
+    if (savedView && savedView !== this.currentView) {
+      this.currentView = savedView;
+      html.find('.names-module-toggle-btn').removeClass('active');
+      html.find(`.names-module-toggle-btn[data-view="${savedView}"]`).addClass('active');
+    }
+  }
+
+  /**
+   * Sync an enhanced dropdown's selectedValues with a native select value
+   */
+  _syncEnhancedDropdown(selectEl, value) {
+    const container = selectEl[0]?.nextSibling;
+    if (container?._enhancedDropdown) {
+      container._enhancedDropdown.selectedValues = value;
+      container._enhancedDropdown.updateDisplay();
+    }
   }
 
   // ============================================================

@@ -35,6 +35,14 @@ export class EmergencyNamesApp extends Application {
     });
   }
 
+  async close(options) {
+    if (game.settings.get(MODULE_ID, "rememberSelections")) {
+      game.settings.set(MODULE_ID, "emergencyFilterSpecies", [...this.enabledSpecies]);
+      logDebug('Emergency state saved on close');
+    }
+    return super.close(options);
+  }
+
   async getData() {
     if (!this.generator) {
       this.generator = getGlobalGenerator();
@@ -44,15 +52,20 @@ export class EmergencyNamesApp extends Application {
     const language = this._getFoundryLanguage();
     const allSpecies = await this.generator.getAvailableSpecies(language);
 
-    // Initialize enabled species: restore from saved settings or default to all
+    // Initialize enabled species: restore from saved settings if remembering, otherwise default to all
     if (this.enabledSpecies.size === 0) {
-      const savedSpecies = game.settings.get(MODULE_ID, "emergencyFilterSpecies");
-      if (savedSpecies?.length > 0) {
-        const validCodes = new Set(allSpecies.map(s => s.code));
-        const restored = savedSpecies.filter(code => validCodes.has(code));
-        if (restored.length > 0) {
-          restored.forEach(code => this.enabledSpecies.add(code));
-          logDebug(`Restored ${restored.length} species from saved filter`);
+      const remember = game.settings.get(MODULE_ID, "rememberSelections");
+      if (remember) {
+        const savedSpecies = game.settings.get(MODULE_ID, "emergencyFilterSpecies");
+        if (savedSpecies?.length > 0) {
+          const validCodes = new Set(allSpecies.map(s => s.code));
+          const restored = savedSpecies.filter(code => validCodes.has(code));
+          if (restored.length > 0) {
+            restored.forEach(code => this.enabledSpecies.add(code));
+            logDebug(`Restored ${restored.length} species from saved filter`);
+          } else {
+            allSpecies.forEach(s => this.enabledSpecies.add(s.code));
+          }
         } else {
           allSpecies.forEach(s => this.enabledSpecies.add(s.code));
         }
@@ -592,7 +605,6 @@ export class EmergencyNamesApp extends Application {
     }
 
     this._updateFilterLabel();
-    this._saveSpeciesFilter();
     logDebug(`Toggled species ${species}, now ${this.enabledSpecies.size} enabled`);
   }
 
@@ -632,14 +644,6 @@ export class EmergencyNamesApp extends Application {
     }
 
     this._updateFilterLabel();
-    this._saveSpeciesFilter();
-  }
-
-  /**
-   * Save species filter to settings for persistence across sessions
-   */
-  _saveSpeciesFilter() {
-    game.settings.set(MODULE_ID, "emergencyFilterSpecies", [...this.enabledSpecies]);
   }
 
   /**

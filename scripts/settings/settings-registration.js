@@ -47,6 +47,7 @@ function registerClientSettings(logLevelChoices) {
   migrateLegacyLanguageSettings();
   registerLanguageSettings();
   registerDisplaySettings();
+  registerPersistenceSettings();
   registerHistorySettings();
   registerGenderColorsSettings();
   registerLogLevelSetting(logLevelChoices);
@@ -199,6 +200,21 @@ function registerDisplaySettings() {
       "result": game.i18n.localize("names.settings.generateButtonPlacement.result") || "Ergebnisbereich (neben Kopieren-Button)"
     },
     default: "legacy"
+  });
+}
+
+/**
+ * Register persistence settings
+ * Controls whether app selections are remembered across sessions
+ */
+function registerPersistenceSettings() {
+  game.settings.register(MODULE_ID, "rememberSelections", {
+    name: game.i18n.localize("names.settings.rememberSelections.name") || "Auswahlen merken",
+    hint: game.i18n.localize("names.settings.rememberSelections.hint") || "Speichert alle Formular-Auswahlen beim Schließen und stellt sie beim nächsten Öffnen wieder her",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true
   });
 }
 
@@ -464,6 +480,46 @@ function registerHiddenSettings() {
 
   game.settings.register(MODULE_ID, "generatorLastCategory", {
     name: "Generator Last Category",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastGenders", {
+    name: "Generator Last Genders",
+    scope: "client",
+    config: false,
+    type: Array,
+    default: []
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastComponents", {
+    name: "Generator Last Components",
+    scope: "client",
+    config: false,
+    type: Array,
+    default: []
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastMode", {
+    name: "Generator Last Mode",
+    scope: "client",
+    config: false,
+    type: String,
+    default: ""
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastCount", {
+    name: "Generator Last Count",
+    scope: "client",
+    config: false,
+    type: Number,
+    default: 0
+  });
+
+  game.settings.register(MODULE_ID, "generatorLastView", {
+    name: "Generator Last View",
     scope: "client",
     config: false,
     type: String,

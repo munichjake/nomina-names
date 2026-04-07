@@ -384,7 +384,8 @@ function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}
     const selectedItem = selectFromCatalog(candidates, {
       where: effectiveWhere,
       distinctFrom: distinctFromIds,
-      seed
+      seed,
+      catalogKey
     });
 
     // Extract text in target locale
@@ -410,7 +411,8 @@ function handleCatalogSelect(select, catalogs, locale, parts, seed, filters = {}
         const selectedItem = selectFromCatalog(candidates, {
           where: fallbackWhere,
           distinctFrom: distinctFromIds,
-          seed
+          seed,
+          catalogKey
         });
         const text = getLocalizedText(selectedItem.t, locale);
         return { text, item: selectedItem };
@@ -616,7 +618,8 @@ function handleGenerateBlock(block, catalogs, langRules, locale, parts, seed, fi
     try {
       const selectedItem = selectFromCatalog(candidates, {
         where: effectiveWhere,
-        seed
+        seed,
+        catalogKey: key
       });
 
       const text = getLocalizedText(selectedItem.t, locale);

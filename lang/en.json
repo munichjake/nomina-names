@@ -251,6 +251,10 @@
                 "whisper": "GM Only (WHISPER)",
                 "public": "Public (PUBLIC)"
             },
+            "rememberSelections": {
+                "name": "Remember Selections",
+                "hint": "Saves all form selections (language, species, category, genders, components, etc.) on close and restores them when reopened"
+            },
             "enableGenderColors": {
                 "name": "Enable Gender Colors",
                 "hint": "Display generated names with color-coding based on gender"

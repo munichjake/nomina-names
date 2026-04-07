@@ -250,6 +250,10 @@
                 "whisper": "Nur für GM sichtbar (WHISPER)",
                 "public": "Öffentlich (PUBLIC)"
             },
+            "rememberSelections": {
+                "name": "Auswahlen merken",
+                "hint": "Speichert alle Formular-Auswahlen (Sprache, Spezies, Kategorie, Geschlechter, Komponenten, etc.) beim Schließen und stellt sie beim nächsten Öffnen wieder her"
+            },
             "enableGenderColors": {
                 "name": "Geschlechter-Farben aktivieren",
                 "hint": "Zeigt generierte Namen farblich nach Geschlecht unterschieden an"

@@ -1259,6 +1259,11 @@
           "path": "modules/nomina-names/data/de.goblin.male.json",
           "language": "de",
           "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.goblin.male.json",
+          "language": "en",
+          "enabled": true
         }
       ]
     },
@@ -1269,6 +1274,11 @@
         {
           "path": "modules/nomina-names/data/de.goblin.female.json",
           "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.goblin.female.json",
+          "language": "en",
           "enabled": true
         }
       ]
@@ -1324,6 +1334,11 @@
           "path": "modules/nomina-names/data/de.goblin.nicknames.json",
           "language": "de",
           "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.goblin.nicknames.json",
+          "language": "en",
+          "enabled": true
         }
       ]
     },
@@ -1334,6 +1349,11 @@
         {
           "path": "modules/nomina-names/data/de.goblin.recipes.json",
           "language": "de",
+          "enabled": true
+        },
+        {
+          "path": "modules/nomina-names/data/en.goblin.recipes.json",
+          "language": "en",
           "enabled": true
         }
       ]

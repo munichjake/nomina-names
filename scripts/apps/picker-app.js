@@ -90,6 +90,28 @@ export class NamesPickerApp extends Application {
     return data;
   }
 
+  async close(options) {
+    if (game.settings.get(MODULE_ID, "rememberSelections")) {
+      this._saveState();
+    }
+    return super.close(options);
+  }
+
+  _saveState() {
+    const html = this.element;
+    if (!html?.length) return;
+
+    const language = html.find('#picker-language').val();
+    const species = html.find('#picker-species').val();
+    const category = html.find('#picker-category').val();
+
+    if (language) game.settings.set(MODULE_ID, "pickerLastLanguage", language);
+    if (species) game.settings.set(MODULE_ID, "pickerLastSpecies", species);
+    game.settings.set(MODULE_ID, "pickerLastCategory", category || "");
+
+    logDebug('Picker state saved on close');
+  }
+
   _capitalizeSpecies(species) {
     return species.charAt(0).toUpperCase() + species.slice(1);
   }
@@ -205,7 +227,6 @@ export class NamesPickerApp extends Application {
     // Update category options when species changes
     html.find('#picker-species').change(async (event) => {
       await this._updateCategoryOptions(html);
-      this._savePickerSelections();
     });
 
     // Prevent multiple initialization
@@ -216,18 +237,23 @@ export class NamesPickerApp extends Application {
 
     // Update category options on initial load, then restore saved category
     this._updateCategoryOptions(html).then(() => {
-      const savedCategory = game.settings.get(MODULE_ID, "pickerLastCategory");
-      if (savedCategory) {
-        const categorySelect = html.find('#picker-category');
-        if (categorySelect.find(`option[value="${savedCategory}"]`).length > 0) {
-          categorySelect.val(savedCategory);
-          // Update enhanced dropdown if present
-          const enhancedContainer = categorySelect.next('.enhanced-dropdown');
-          if (enhancedContainer.length > 0) {
-            const enhancedDropdown = enhancedContainer[0]._enhancedDropdown;
-            if (enhancedDropdown) enhancedDropdown.updateDisplay();
+      if (game.settings.get(MODULE_ID, "rememberSelections")) {
+        const savedCategory = game.settings.get(MODULE_ID, "pickerLastCategory");
+        if (savedCategory) {
+          const categorySelect = html.find('#picker-category');
+          if (categorySelect.find(`option[value="${savedCategory}"]`).length > 0) {
+            categorySelect.val(savedCategory);
+            // Update enhanced dropdown if present
+            const enhancedContainer = categorySelect.next('.enhanced-dropdown');
+            if (enhancedContainer.length > 0) {
+              const enhancedDropdown = enhancedContainer[0]._enhancedDropdown;
+              if (enhancedDropdown) {
+                enhancedDropdown.selectedValues = savedCategory;
+                enhancedDropdown.updateDisplay();
+              }
+            }
+            logDebug(`Restored saved category: ${savedCategory}`);
           }
-          logDebug(`Restored saved category: ${savedCategory}`);
         }
       }
 
@@ -241,9 +267,6 @@ export class NamesPickerApp extends Application {
   async _onOptionChange(event) {
     const changedElement = event.currentTarget;
     logDebug(`Picker option changed: ${changedElement.name} = ${changedElement.value}`);
-
-    // Save selections for next time
-    this._savePickerSelections();
 
     // Always regenerate names when any option changes
     await this._onGenerateNames();
@@ -350,8 +373,10 @@ export class NamesPickerApp extends Application {
    * @returns {string} Language code
    */
   _getSavedOrDefaultLanguage() {
-    const saved = game.settings.get(MODULE_ID, "pickerLastLanguage");
-    if (saved) return saved;
+    if (game.settings.get(MODULE_ID, "rememberSelections")) {
+      const saved = game.settings.get(MODULE_ID, "pickerLastLanguage");
+      if (saved) return saved;
+    }
     return this._getDefaultContentLanguage();
   }
 
@@ -361,25 +386,11 @@ export class NamesPickerApp extends Application {
    * @returns {string} Species code
    */
   _getSavedOrDefaultSpecies(actorSpecies) {
-    const saved = game.settings.get(MODULE_ID, "pickerLastSpecies");
-    if (saved) return saved;
+    if (game.settings.get(MODULE_ID, "rememberSelections")) {
+      const saved = game.settings.get(MODULE_ID, "pickerLastSpecies");
+      if (saved) return saved;
+    }
     return actorSpecies;
-  }
-
-  /**
-   * Save current picker selections to settings
-   */
-  _savePickerSelections() {
-    const html = this.element;
-    if (!html || html.length === 0) return;
-
-    const language = html.find('#picker-language').val();
-    const species = html.find('#picker-species').val();
-    const category = html.find('#picker-category').val();
-
-    if (language) game.settings.set(MODULE_ID, "pickerLastLanguage", language);
-    if (species) game.settings.set(MODULE_ID, "pickerLastSpecies", species);
-    game.settings.set(MODULE_ID, "pickerLastCategory", category || "");
   }
 
   /**

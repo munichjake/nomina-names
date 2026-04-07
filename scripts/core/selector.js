@@ -15,10 +15,10 @@ import { createNominaError, ErrorType } from '../utils/error-helper.js';
  * @param {number} maxRetries - Maximum retry attempts for distinctness (default: 20)
  * @returns {Object} Selected item
  */
-export function selectFromCatalog(items, { where = null, distinctFrom = [], seed = null, maxRetries = 20 } = {}) {
+export function selectFromCatalog(items, { where = null, distinctFrom = [], seed = null, maxRetries = 20, catalogKey = 'unknown' } = {}) {
   if (!items || items.length === 0) {
     throw createNominaError(ErrorType.CATALOG_EMPTY, {
-      catalog: this.catalogKey || 'unknown'
+      catalog: catalogKey
     });
   }
 
@@ -27,7 +27,7 @@ export function selectFromCatalog(items, { where = null, distinctFrom = [], seed
 
   if (candidates.length === 0) {
     throw createNominaError(ErrorType.CATALOG_NO_MATCH, {
-      catalog: this.catalogKey || 'unknown',
+      catalog: catalogKey,
       totalItems: items.length,
       filters: JSON.stringify(where || {})
     });
