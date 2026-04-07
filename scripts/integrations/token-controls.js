@@ -35,13 +35,33 @@ function openNamesGenerator() {
 
 /**
  * Token Controls integration - adds Names Generator button to token toolbar
- * @param {Object} controls - Controls object with .tokens structure
+ * @param {Object|Array} controls - Controls object with .tokens structure (v13+) or Array of controls (v12)
  */
 export function registerTokenControls(controls) {
   if (!game.settings.get(MODULE_ID, "showInTokenControls")) return;
   if (!hasNamesGeneratorPermission()) return;
 
-  if (controls.tokens?.tools && !controls.tokens.tools.namesGenerator) {
+  // v12 compatibility - controls is an array
+  if (Array.isArray(controls)) {
+    const token = controls.find(c => c.name === 'token');
+    if (!token) return;
+
+    if (token.tools.some(t => t.name === 'names-generator')) return;
+
+    token.tools.push({
+      name: 'names-generator',
+      title: game.i18n.localize("names.title"),
+      icon: 'fas fa-user-tag',
+      button: true,
+      visible: () => hasNamesGeneratorPermission(),
+      onClick: () => {
+        logDebug("Names generator clicked via token controls (v12)");
+        openNamesGenerator();
+      }
+    });
+
+    logDebug("Names generator tool added to token controls (v12)");
+  } else if (controls.tokens?.tools && !controls.tokens.tools.namesGenerator) {
     controls.tokens.tools.namesGenerator = {
       name: 'names-generator',
       title: game.i18n.localize("names.title"),
@@ -267,18 +287,27 @@ export function registerRenderSceneControls(sceneControls, html, data) {
     if (!game.settings.get(MODULE_ID, "showInTokenControls")) return;
     if (!hasNamesGeneratorPermission()) return;
 
+    // v12 uses array-based controls, skip DOM injection
+    if (Array.isArray(sceneControls?.controls)) {
+      logDebug("renderSceneControls: v12 detected, skipping DOM injection");
+      return;
+    }
+
     logDebug("renderSceneControls called", {
       sceneControlsType: typeof sceneControls,
       htmlType: typeof html,
       hasControls: !!sceneControls?.controls
     });
 
-    if (!(html instanceof HTMLElement)) {
+    let $html;
+    if (html && typeof html.find === 'function') {
+      $html = html;
+    } else if (html instanceof HTMLElement) {
+      $html = $(html);
+    } else {
       logError("renderSceneControls: Unexpected html parameter type", typeof html);
       return;
     }
-
-    const $html = $(html);
 
     logDebug("renderSceneControls: HTML converted to jQuery", { htmlLength: $html.length });
 

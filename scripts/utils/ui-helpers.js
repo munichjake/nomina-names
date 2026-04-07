@@ -82,7 +82,7 @@ export function fallbackCopyToClipboard(text, successMessage = null) {
 
 /**
  * Injects the emergency names button into the chat
- * Compatible with Foundry v12 and v13 using native DOM API
+ * Compatible with Foundry v12 (jQuery fallback) and v13+ (native DOM API)
  */
 export function injectEmergencyButton() {
   // Check settings
@@ -92,16 +92,9 @@ export function injectEmergencyButton() {
   }
 
   // Remove existing button if present
-  if (document.getElementById('emergency-names-button')) {
-    document.getElementById('emergency-names-button').remove();
-  }
-
-  // Get the chat input element for reliable positioning
-  const inputElement = document.getElementById("chat-message");
-
-  if (!inputElement) {
-    logWarn("Could not find chat-message input for emergency button");
-    return;
+  const existingButton = document.getElementById('emergency-names-button');
+  if (existingButton) {
+    existingButton.remove();
   }
 
   // Create button HTML
@@ -112,8 +105,30 @@ export function injectEmergencyButton() {
     </div>
   `;
 
-  // Inject button after chat input using native DOM API for better performance
-  inputElement.insertAdjacentHTML("afterend", buttonHTML);
+  // Try v13+ approach first: position relative to chat-message input
+  const inputElement = document.getElementById("chat-message");
+  if (inputElement) {
+    inputElement.insertAdjacentHTML("afterend", buttonHTML);
+  } else {
+    // v12 fallback: find chat container with multiple selectors
+    let chatContainer = $('#chat-log');
+    if (chatContainer.length === 0) chatContainer = $('#sidebar-tabs .tab[data-tab="chat"]');
+    if (chatContainer.length === 0) chatContainer = $('#chat');
+    if (chatContainer.length === 0) chatContainer = $('.sidebar .tab.chat');
+
+    const chatForm = $('#chat-form');
+
+    if (chatContainer.length === 0) {
+      logWarn("Could not find chat container for emergency button");
+      return;
+    }
+
+    if (chatForm.length > 0) {
+      chatForm.after(buttonHTML);
+    } else {
+      chatContainer.append(buttonHTML);
+    }
+  }
 
   // Get the injected button and add event listeners
   const emergencyButton = document.getElementById('emergency-names-button');
@@ -131,7 +146,6 @@ export function injectEmergencyButton() {
 
     try {
       if (hasNamesGeneratorPermission()) {
-        // Import and create app dynamically
         import('../apps/emergency-app.js').then(({ EmergencyNamesApp }) => {
           new EmergencyNamesApp().render(true);
         }).catch(error => {
@@ -176,11 +190,19 @@ export function removeEmergencyButton() {
  */
 export function moveEmergencyButton() {
   const button = document.getElementById('emergency-names-button');
-  const inputElement = document.getElementById("chat-message");
+  if (!button) return;
 
-  if (button && inputElement) {
+  const inputElement = document.getElementById("chat-message");
+  if (inputElement) {
     inputElement.insertAdjacentElement("afterend", button);
     logDebug("Emergency button repositioned");
+  } else {
+    // v12 fallback: reposition relative to chat-form if available
+    const chatForm = $('#chat-form');
+    if (chatForm.length > 0) {
+      chatForm.after(button);
+      logDebug("Emergency button repositioned (v12 fallback)");
+    }
   }
 }
 
