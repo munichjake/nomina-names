@@ -16,7 +16,8 @@ jobs:
 
       - name: Update download URL in module.json
         run: |
-          sed -i 's|"download":.*|"download": "https://github.com/munichjake/nomina-names/releases/download/${{ github.ref_name }}/module.zip"|' module.json
+          jq -c --arg url "https://github.com/munichjake/nomina-names/releases/download/${{ github.ref_name }}/module.zip" \
+            '.download = $url' module.json > module.tmp && mv module.tmp module.json
 
       - name: Create module.zip
         run: |
