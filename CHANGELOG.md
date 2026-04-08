@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.2] - 2026-04-08
+
+### Fixed
+
+- **Download-URL**: Stabile `/releases/latest/download/` URL in `module.json` — funktioniert automatisch für jedes Release ohne dynamische Anpassung im Workflow
+
 ## [3.3.1] - 2026-04-08
 
 ### Fixed

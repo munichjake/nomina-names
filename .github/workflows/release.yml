@@ -14,11 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update download URL in module.json
-        run: |
-          jq -c --arg url "https://github.com/munichjake/nomina-names/releases/download/${{ github.ref_name }}/module.zip" \
-            '.download = $url' module.json > module.tmp && mv module.tmp module.json
-
       - name: Create module.zip
         run: |
           zip -r module.zip . \
