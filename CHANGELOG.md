@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.1] - 2026-04-08
+
+### Fixed
+
+- **Release Workflow**: GitHub Release wird jetzt korrekt mit `softprops/action-gh-release` erstellt, bevor FoundryVTT benachrichtigt wird
+- **Download-URL**: `module.json` enthält jetzt automatisch die korrekte Download-URL für das aktuelle Release (via `jq` im Workflow)
+- **Pre-Commit Hook**: JSON-Minifizierung auf `data/*.json` eingeschränkt — `module.json` bleibt lesbar
+
 ## [3.3.0] - 2026-04-08
 
 ### Added
